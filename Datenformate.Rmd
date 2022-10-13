@@ -1,0 +1,180 @@
+# Datenformate
+
+```{r, fig.cap = "Skalar, Vektor, Matrix", echo = FALSE}
+knitr::include_graphics(c("images/Datenformat_1.png"))
+```
+
+## Skalar
+
+Der einfachste Objekttyp in R ist der **Skalar**. Ein Skalar Objekt ist einfach nur ein einzelner Wert, z.B. eine Zahl oder ein Wort.
+
+Hier sind einige Beispiele für numerische Skalar Objekte:
+
+```{r}
+# Examples of numeric scalars
+a <- 100
+b <- 3 / 100
+c <- (a + b) / b
+```
+
+Skalare müssen nicht numerisch sein, sondern auch Worte. Wortobjekte heißen in R **characters** (aka strings). In R schreibt man characters immer in Anführungszeichen `""`. Hier sind einige Beispiele für character Skalare:
+
+```{r}
+# Beispiele für character Skalare
+d <- "Psychologe"
+e <- "Zigarre"
+f <- "Haben Psychologen wirklich alle Bärte und rauchen Zigarre?"
+```
+
+Wie Sie sich vermutlich vorstellen können, behandelt R numerische und character Skalare unterschiedlich. Zum Beispiel lassen sich mir numerischen Skalaren grundlegende arithmetische Operationen durchfühlen (Addition, Subtraktion, Multiplikation...) -- das funktioniert mit character Skalaren nicht.
+Wenn Sie dennoch probieren numerische Operationen auf character Skalare anzuwenden, bekommen Sie eine Fehlermeldung, so wie diese:
+
+```{r, eval = FALSE}
+a = "1"
+b = "2"
+a + b
+```
+*"Fehler in a + b : nicht-numerisches Argument für binären Operator"*
+
+## Vektor
+
+Machen wir weiter mit `Vektoren`. Ein Vektor Objekt ist einfach eine Kombination mehrerer Skalare in einem einzelnen Objekt (z.B. eine Zahlen- oder Wortreihe).
+Zum Beispiel könnten die Zahlen von 1-10 in einen Vektor mit der Länge 10 kombiniert werden. Oder die Buchstaben des Alphabets könnten in einen Vektor mit der Länge 26 gespeichert werden. Genau wie Skalare, können Vektoren numerisch oder characters sein (Aber nicht beides auf einmal!)
+
+Die einfachste Art einen Vektor zu erstellen ist mit der `c()` Funktion. Das c steht für "concatenate", was auf Englisch so viel heißt wie "zusammenbringen". Die `c()` Funktion nimmt mehrere Skalare als Input und erstellt einen Vektor, der diese Objekte enthält.
+
+Wenn man`c()` benutzt, muss man immer ein **Komma** zwischen die Objekte setzen (Skalare oder Vektoren), die man kombinieren möchte.
+
+Lassen Sie uns die `c()` Funktion nutzen um einen Vektor zu erstellen der `a` heißt und die Zahlen von 1 bis 7 enthält
+
+Let's use the `c()` function to create a vector called `a` containing the integers from 1 to 5.
+
+```{r}
+a = c(1, 2, 3, 4, 5, 6, 7)
+# Das Ergebnis ausgeben
+a
+```
+
+Sie können auch character Vektoren erstellen, indem Sie die `c()` auf einzelne character Skalare Funktion anwenden: 
+
+```{r}
+char.vec = c("Freud", "Wundt", "Bandura", "Watson", "Jung")
+# Das Ergebnis ausgeben
+char.vec
+```
+
+### Vektor Typen
+
+Vektoren sind ein zentrales Element von R. Ein Vektor kann Zahlen, Buchstaben oder logische Werte enthalten, aber niemals eine Kombination
+
+Der Vektor ist die Entsprechung der **Variable** und die Skalare, aus denen der Vektor besteht sind die **Merkmalsausprägungen** der Variable.
+
+### Faktor Variablen
+
+Wir haben bereits gelernt, wie man einen Vektor aus character Objekten erstellt. Manchmal brauchen wir in R jedoch Variablen, die nicht nur Worte enthalten, sondern dem Programm mitteilen, dass es sich um feste Gruppen oder **Kategorien** handelt. Es geht also nicht nur um eine "Sammlung" von Worten (z.B. Nachnamen von Probanden), sondern um festgelegte Analyseeinheiten. Solche Variablen heißen in R `factor`. 
+
+In einer factor Variable ist jeder Kategorie eine Zahl zugeordnet (z.B. 1 = männlich, 2 = weiblich).
+
+Um Faktor Variablen zu erstellen, machen wie einen Vorgang, den man **Kodieren** nennt und das geht so:
+
+Wir haben einen Vektor mit Codes 1 und 2 für männlich und weiblich vorliegen:
+
+```{r}
+geschlecht = c(1, 2, 2, 1, 2)
+# Das Ergebnis ausgeben
+geschlecht
+```
+
+In dieser Form erkennt R diesen Vektor als numerische Variable. Um Sie in einen Faktor umzuwandeln, definieren wir die Zahlen (1 und 2) als `levels` des Faktors und geben dann jedem level einen Namen (`labels`):
+
+```{r}
+geschlecht = factor(geschlecht, levels = c(1,2), labels = c("männlich", "weiblich"))
+# Das Ergebnis ausgeben
+geschlecht
+```
+
+Das Ergebnis ist eine codierte Faktorvariable. Wenn wir Sie uns ausgeben lassen erhalten wir unter den Merkmalsausprägungen eine Liste mit den einzelnen Kategorien (levels) des Faktors.
+
+R wird uns für Faktoren alle Ergebnisse nach der **Reihenfolge** der levels anzeigen. Wenn wir keine Faktorvariable haben, sondern eine character Variable funktioniert die Reihenfolge immer alphabetisch.
+
+### Vektor Indizierung
+
+Manchmal möchten wir wieder einen einzelnen Skalar auswählen, der als Teil von einem Vektor gespeichert ist. Diese **Auswahl** eines Einzelelements nennt man **Indizierung**. Die Auswahl eines kleineren Objekts aus einem größeren Objekt funktioniert in R immer mit `[]`. 
+
+Benötigen wir aus einem Vektor z.B. genau den 3. Skalar, schreiben wir einfach eine 3 in eckige Klammern hinter den Vektor.
+
+```{r}
+char.vec = c("Freud", "Wundt", "Bandura", "Watson", "Jung")
+# Das Ergebnis ausgeben
+char.vec[5]
+```
+
+## Matrizen und Dataframes
+
+In der Psychologie beobachten wir für unsere Studien fast immer mehr als eine Variable. Wir könnten diese alle in einzelnen Vektoren speichern und uns die Objektnamen merken. Z.B.
+
+```{r}
+Name = c("Max", "Maja", "Mia", "Moritz", "Markus")
+Alter = c(20, 31, 25, 34, 51)
+Diagnose = c("Depression", "Zwangsstörung", "Depression", "Soziale Phobie", "Depression")
+```
+
+### Erstellen von Datenmatrizen
+
+Praktischer ist es, die einzelnen Vektoren in Tabellenform zu speichern, der **Datenmatrix**. In R heißen Datenmatrizen `data.frame`. Wir können die Vektoren folgendermaßen zu einem data.frame kombinieren:
+
+```{r}
+df = data.frame(Name, Alter, Diagnose)
+# Das Ergebnis ausgeben
+df
+```
+
+Wie in jeder Datenmatrix entsprechen die **Zeilen** den einzelnen Personen (Fällen) und die **Spalten** den Variablen. 
+
+R bezeichnet Zeilen und Spalten als **rows** und **columns**. Wollen wir z.B. wissen, wie viele Zeilen der data.frame hat, können wir `nrow()` benutzen. Für die Anzahl der Spalten nehmen wir `ncol()`:
+
+```{r}
+nrow(df)
+ncol(df)
+```
+
+Wenn wir die einzelnen Vektoren nicht bereits vorher definiert haben, können wir auch alles in einem Schritt machen. Das Ergebnis ist das gleiche:
+
+```{r}
+df = data.frame("Name" = c("Max", "Maja", "Mia", "Moritz", "Markus"),
+                "Alter" = c(20, 31, 25, 34, 51),
+                "Diagnose" = c("Depression", "Zwangsstörung", "Depression", "Soziale Phobie", "Depression")
+                )
+# Das Ergebnis ausgeben
+df
+```
+
+Wollen wir wieder eine einzelne Variable aus dem benutzen, können wir diese über das `$` Zeichen anwählen:
+
+```{r}
+df$Alter
+```
+
+### Indizierung
+
+Wollen wir aus dem data.frame wieder einzelne Elemente benutzen, nutzen wir wieder die Indizierung. Auch hier brauchen wir die `[]`. Da wir im data.frame Zeilen und Spalten haben, brauchen wir eine Möglichkeit beides auszuwählen, wie ein Curser der von links nach rechts, bzw. von oben nach unten läuft. 
+
+Wir trennen dafür unsere `[]` mit einem Komma `[,]`. Alles was **links vom Komma** steht bezieht sich auf Zeilen alles **rechts vom Komma** bezieht sich auf Spalten.
+
+Lassen Sie uns einmal die Zelle in der 1. Zeile (also die 1. Person) und der 3. Variable auswählen:
+
+```{r}
+df[1,3]
+```
+
+Lassen wir die Zahl vor dem Komma weg, bekommen wir alle Werte aus der Spalte:
+
+```{r}
+df[,3]
+```
+
+Lassen wir die Zahl nach dem Komma weg, bekommen wir alle Werte aus der Reihe:
+
+```{r}
+df[1,]
+```

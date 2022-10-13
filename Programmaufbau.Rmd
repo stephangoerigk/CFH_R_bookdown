@@ -1,0 +1,115 @@
+# Programmaufbau
+
+## Die vier RStudio Fenster
+
+Wenn Sie RStudio öffnen, sehen Sie vier Fenster, wie in der folgenden Abbildung dargestellt: 
+
+Wenn Sie mögen, können Sie die Reihenfolge der Fenster in den RStudio Einstellungen verändern. 
+Sie können die Fenster auch verstecken (Minimieren/Maximieren Symbol an der oberen rechten Ecke jedes Fensters) oder ihre Größe verändern, indem die sie ihre Grenzbalken anklicken und verschieben.
+
+Lassen Sie uns jetzt schauen, was genau die Funktion jedes der Fenster ist:
+
+### Source - Ihr Schreibblock für Code
+
+Im Source Fenster erstellen und bearbeiten Sie "R-Skripte" - Ihre Codesammlungen. Keine Sorge, R-Skripte sind nur Textdateien mit der Erweiterung ".R". 
+Wenn Sie RStudio öffnen, wird automatisch ein neues unbenanntes Skript gestartet. 
+Bevor Sie mit der Eingabe eines unbenannten R-Skripts beginnen, sollten Sie die Datei immer unter einem neuen Dateinamen speichern (z.B. "Mein_RScript.R"). 
+Wenn Ihr Computer während der Arbeit abstürzt, steht Ihr Code in R zur Verfügung, wenn Sie RStudio erneut öffnen.
+
+Sie werden feststellen, dass R beim Schreiben des Skripts den Code während der Eingabe nicht tatsächlich ausführt. Damit R Ihren Code tatsächlich ausführt, müssen Sie den Code zunächst an die Konsole "senden" (wir werden im nächsten Abschnitt darüber sprechen).
+
+Es gibt viele Möglichkeiten, Ihren Code aus dem Skript an die Konsole zu senden. Die langsamste Methode ist das Kopieren und Einfügen. Schneller geht es, wenn Sie den Code, den Sie auswerten möchten, markieren und auf die Schaltfläche "Run" oben rechts in der Quelle klicken. Alternativ können Sie auch die Tastenkombination "Command + Return" auf dem Mac oder "Control + Enter" auf dem PC verwenden, um den gesamten markierten Code an die Konsole zu senden.
+
+### Konsole - Das Herzstück von R
+
+Die Konsole ist das Herzstück von R. Hier führt R den Code aus. Am Anfang der Konsole sehen Sie das Zeichen ">". Dies ist eine Eingabeaufforderung (sog. "Prompt"), die Ihnen mitteilt, dass R bereit für neuen Code ist. Sie können direkt nach dem Prompt `>` Code in die Konsole eingeben und erhalten sofort eine Antwort. Wenn Sie zum Beispiel 2+2 in die Konsole eingeben und die Eingabetaste drücken, werden Sie sehen, dass R sofort eine Ausgabe von 4 liefert.
+
+```{r}
+2+2
+```
+
+Versuchen Sie, 2+2 zu berechnen, indem Sie den Code direkt in die Konsole eingeben - und dann Enter drücken. 
+Sie sollten das Ergebnis `[1] 4` sehen. Machen Sie sich keine Gedanken über die `[1]`, dazu kommen wir später. 
+
+Geben Sie denselben Code in das Skript ein und senden Sie ihn an die Konsole, indem Sie den Code markieren und auf die Schaltfläche "Run" in der oberen rechten Ecke des Quelltextfensters klicken. Alternativ können Sie auch die Tastenkombination "Command + Return" auf dem Mac oder "Control + Enter" unter Windows verwenden.
+
+**Tipp**: Wie Sie sehen, können Sie Code entweder über das Skript oder durch direkte Eingabe in die Konsole ausführen. In 99\% der Fälle sollten Sie jedoch das Skript und nicht die Konsole verwenden. Der Grund dafür ist ganz einfach: Wenn Sie den Code in die Konsole eingeben, wird er nicht gespeichert (obwohl Sie in Ihrem Befehlsverlauf nachsehen können). Und wenn Sie beim Eingeben von Code in die Konsole einen Fehler machen, müssen Sie alles noch einmal von vorne eingeben. Stattdessen ist es besser, den gesamten Code in das Skript zu schreiben. Wenn Sie bereit sind, einen Code auszuführen, können Sie ihn mit "Run" an die Konsole senden.
+
+### Environment/History - Das Gedächtnis von R
+
+In dem Tab "Environtment" dieses Bereichs werden die Namen aller Datenobjekte (wie Vektoren, Matrizen und Datenrahmen) angezeigt, die Sie in Ihrer aktuellen R-Session definiert haben. Sie können auch Informationen wie die Anzahl der Spalten und Zeilen in Datensätzen sehen. Der Tab enthält auch einige anklickbare Aktionen wie  
+ Datensatz importieren", wodurch eine grafische Benutzeroberfläche (GUI) für wichtige Daten in R geöffnet wird.
+
+Der Tab "Historiy" dieses Bereichs zeigt Ihnen einfach eine Sammlung aller Befehle an den Sie zuvor in der Konsole ausgewertet haben. Wenn man mit Skripten arbeitet, schaut man sich diese, allerdings relativ selten an.
+
+Wenn Sie sich mit R besser auskennen, werden Sie das Fenster Environment/History vielleicht nützlich finden. Aber für den Moment können Sie es einfach ignorieren. Wenn Sie Ihren Bildschirm entrümpeln wollen, können Sie das Fenster auch einfach minimieren, indem Sie auf die Schaltfläche Minimieren oben rechts im Fenster klicken.
+
+### Files/Plots/Packages/Help/Viewer - Interaktion von R mit Dateien
+
+Die Tabs Files/Plots/Packages/Help/Viewer zeigen Ihnen viele hilfreiche Informationen. Schauen wir uns die einzelnen Registerkarten im Detail an:
+
+1. Files - Der Tab "Files" gibt Ihnen Zugriff auf das Dateiverzeichnis auf Ihrer Festplatte. Dateien, die Sie in Ihrem R Projekt benutzen liegen in der Regel in einem von Ihnen definierten Arbeitsverzeichnis. Wir werden in Kürze ausführlicher über Arbeitsverzeichnisse sprechen.
+
+2. Plots - Das Plots-Panel zeigt (keine große Überraschung) alle Ihre Plots an. 
+
+3. Pakete - Zeigt eine Liste aller auf Ihrer Festplatte installierten R-Pakete an und gibt an, ob sie derzeit geladen sind oder nicht. Pakete, die in der aktuellen Sitzung geladen sind, sind markiert, während Pakete, die installiert, aber noch nicht geladen sind, nicht markiert sind. Auf die Pakete gehen wir im nächsten Abschnitt näher ein.
+
+4. Hilfe - Hilfemenü für R-Funktionen. Sie können entweder den Namen einer Funktion in das Suchfenster eingeben oder den Code \texttt{?function.name} verwenden, um nach einer Funktion mit dem Namen \texttt{function.name} zu suchen:
+
+```{r, eval = FALSE}
+?hist   # Wie funktioniert die Histogrammfunktion?
+?t.test # Wie funktioniert der t-Test?
+```
+
+## R Packages
+
+Wenn Sie R zum ersten Mal herunterladen und installieren, installieren Sie die Base R Software. 
+Base R enthält die meisten Funktionen, die Sie täglich verwenden werden, wie mean() und hist(). 
+Allerdings werden hier nur Funktionen angezeigt, die von den ursprünglichen Autoren der Sprache R geschrieben wurden. 
+Wenn Sie auf Daten und Code zugreifen möchten, die von anderen Personen geschrieben wurden, müssen Sie diese als "Package" installieren. 
+Ein R-Package ist einfach ein Bündel von Funktionen (also bereits geschriebener Code), die in einem übersichtlichen Paket gespeichert sind.
+
+Ein Paket ist wie eine Glühbirne. Um es nutzen zu können, müssen Sie es zunächst in Ihr Haus (d.h. auf Ihren Computer) bestellen, indem Sie es installieren. Wenn Sie ein Paket einmal installiert haben, brauchen Sie es nie wieder zu installieren. Jedes Mal, wenn Sie das Paket tatsächlich verwenden wollen, müssen Sie es jedoch einschalten, indem Sie es laden. Und so geht's:
+
+### R Packages installieren
+
+Ein Paket zu installieren bedeutet einfach, den Paketcode auf Ihren Computer herunterzuladen. Die gängigste Methode ist das Herunterladen aus dem Comprehensive R Archive Network (CRAN).
+
+Um ein neues R-Paket von CRAN zu installieren, können Sie einfach den Code install.packages("name") ausführen, wobei "name" der Name des Pakets ist.
+
+Um zum Beispiel das Paket ggplot2 herunterzuladen, welches wir oft zum Erstellen von Graphen verwenden, geben Sie ein:
+
+```{r, message = FALSE}
+# install.packages("ggplot2")
+```
+
+### R Packages laden
+
+Sobald Sie ein Paket installiert haben, befindet es sich auf Ihrem Computer. Aber nur weil es auf Ihrem Computer ist, bedeutet das nicht, dass R bereit ist, es zu benutzen. Wenn Sie etwas, wie eine Funktion oder einen Datensatz, aus einem Paket verwenden wollen, müssen Sie *immer* zuerst das Paket in Ihrer R-Sitzung *laden*. Genau wie bei einer Glühbirne müssen Sie sie einschalten, um sie zu benutzen!
+
+Um ein Paket zu laden, verwenden Sie die Funktion `library()`. Nachdem wir zum Beispiel das Paket `ggplot2` installiert haben, können wir es mit `library("ggplot2")` laden:
+
+```{r, message = FALSE}
+#   Laden des "ggplot2" Pakekts, damit wir es benutzen können!
+#   Pakete müssen zu Beginn jeder R Session neu geladen werden!
+library("ggplot2")
+```
+
+Jetzt, wo Sie das Paket `ggplot2` geladen haben, können Sie jede seiner Funktionen benutzen (hier die Funktion ggplot, um einen Graph zu erstellen)!
+
+```{r, message = FALSE}
+ggplot(data = iris, aes(x = Sepal.Length)) + 
+  geom_histogram()
+```
+
+Pakete müssen zu Beginn jeder R Session neu geladen werden. Deswegen schreiben wir in der Regel ganz an den Anfang unseres Skripts gleich mehrere Zeilen, mit `library()` Befehlen für alle R Pakete, die wir für unsere Analyse benötigen werden.
+
+In R gibt es eine Möglichkeit, ein Paket vorübergehend zu laden, ohne die Funktion `library()` zu verwenden. Um dies zu tun, können Sie einfach die Notation `package::funktion` verwenden. Diese Notation sagt R einfach, dass es das Paket nur für diesen einen Codeabschnitt laden soll. Zum Beispiel könnte ich die Funktion `ggplot` aus dem Paket `ggplot2` wie folgt verwenden:
+
+```{r, message = FALSE}
+ggplot2::ggplot(data = iris, aes(x = Sepal.Length)) + 
+  geom_histogram()
+```
+
+Ein Vorteil der Notation "package::function" ist, dass für jeden, der den Code liest, sofort klar ist, welches Paket die Funktion enthält. Ein Nachteil ist jedoch, dass Sie, wenn Sie eine Funktion aus einem Paket häufig verwenden, gezwungen sind, den Paketnamen ständig neu einzugeben. Sie können jede Methode verwenden, die für Sie sinnvoll ist.
+

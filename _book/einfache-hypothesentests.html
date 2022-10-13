@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 12 Einfache Hypothesentests | Einführung in R</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 12 Einfache Hypothesentests | Einführung in R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 12 Einfache Hypothesentests | Einführung in R" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Stephan Goerigk" />
+
+
+<meta name="date" content="2022-10-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="korrelation.html"/>
+<link rel="next" href="regression.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R and der CFH</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="über-dieses-skript.html"><a href="über-dieses-skript.html"><i class="fa fa-check"></i>Über dieses Skript</a></li>
+<li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>1.1</b> Installation von R</a></li>
+<li class="chapter" data-level="1.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>1.2</b> Installation von RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="programmaufbau.html"><a href="programmaufbau.html"><i class="fa fa-check"></i><b>2</b> Programmaufbau</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="programmaufbau.html"><a href="programmaufbau.html#die-vier-rstudio-fenster"><i class="fa fa-check"></i><b>2.1</b> Die vier RStudio Fenster</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="programmaufbau.html"><a href="programmaufbau.html#source---ihr-schreibblock-für-code"><i class="fa fa-check"></i><b>2.1.1</b> Source - Ihr Schreibblock für Code</a></li>
+<li class="chapter" data-level="2.1.2" data-path="programmaufbau.html"><a href="programmaufbau.html#konsole---das-herzstück-von-r"><i class="fa fa-check"></i><b>2.1.2</b> Konsole - Das Herzstück von R</a></li>
+<li class="chapter" data-level="2.1.3" data-path="programmaufbau.html"><a href="programmaufbau.html#environmenthistory---das-gedächtnis-von-r"><i class="fa fa-check"></i><b>2.1.3</b> Environment/History - Das Gedächtnis von R</a></li>
+<li class="chapter" data-level="2.1.4" data-path="programmaufbau.html"><a href="programmaufbau.html#filesplotspackageshelpviewer---interaktion-von-r-mit-dateien"><i class="fa fa-check"></i><b>2.1.4</b> Files/Plots/Packages/Help/Viewer - Interaktion von R mit Dateien</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages"><i class="fa fa-check"></i><b>2.2</b> R Packages</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages-installieren"><i class="fa fa-check"></i><b>2.2.1</b> R Packages installieren</a></li>
+<li class="chapter" data-level="2.2.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages-laden"><i class="fa fa-check"></i><b>2.2.2</b> R Packages laden</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="datenformate.html"><a href="datenformate.html"><i class="fa fa-check"></i><b>3</b> Datenformate</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="datenformate.html"><a href="datenformate.html#skalar"><i class="fa fa-check"></i><b>3.1</b> Skalar</a></li>
+<li class="chapter" data-level="3.2" data-path="datenformate.html"><a href="datenformate.html#vektor"><i class="fa fa-check"></i><b>3.2</b> Vektor</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="datenformate.html"><a href="datenformate.html#vektor-typen"><i class="fa fa-check"></i><b>3.2.1</b> Vektor Typen</a></li>
+<li class="chapter" data-level="3.2.2" data-path="datenformate.html"><a href="datenformate.html#vektor-indizierung"><i class="fa fa-check"></i><b>3.2.2</b> Vektor Indizierung</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-dataframes"><i class="fa fa-check"></i><b>3.3</b> Matrizen und Dataframes</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="datenformate.html"><a href="datenformate.html#indizierung"><i class="fa fa-check"></i><b>3.3.1</b> Indizierung</a></li>
+<li class="chapter" data-level="3.3.2" data-path="datenformate.html"><a href="datenformate.html#long-format-und-wide-format"><i class="fa fa-check"></i><b>3.3.2</b> Long Format und Wide Format</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="datenformate.html"><a href="datenformate.html#listen"><i class="fa fa-check"></i><b>3.4</b> Listen</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="daten-erstellen.html"><a href="daten-erstellen.html"><i class="fa fa-check"></i><b>4</b> Daten erstellen</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="daten-erstellen.html"><a href="daten-erstellen.html#manuell"><i class="fa fa-check"></i><b>4.1</b> Manuell</a></li>
+<li class="chapter" data-level="4.2" data-path="daten-erstellen.html"><a href="daten-erstellen.html#automatisch"><i class="fa fa-check"></i><b>4.2</b> Automatisch</a></li>
+<li class="chapter" data-level="4.3" data-path="daten-erstellen.html"><a href="daten-erstellen.html#zufällig"><i class="fa fa-check"></i><b>4.3</b> Zufällig</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html"><i class="fa fa-check"></i><b>5</b> Daten importieren und speichern</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-directory"><i class="fa fa-check"></i><b>5.1</b> Working Directory</a></li>
+<li class="chapter" data-level="5.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>5.2</b> Working Environment</a></li>
+<li class="chapter" data-level="5.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>5.3</b> Daten importieren</a></li>
+<li class="chapter" data-level="5.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>5.4</b> Daten speichern</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="daten-explorieren.html"><a href="daten-explorieren.html"><i class="fa fa-check"></i><b>6</b> Daten Explorieren</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-r-objekt"><i class="fa fa-check"></i><b>6.1</b> Informationen über R Objekt</a></li>
+<li class="chapter" data-level="6.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>6.2</b> Deskriptivstatistiken</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#nominale-variablen"><i class="fa fa-check"></i><b>6.2.1</b> Nominale Variablen</a></li>
+<li class="chapter" data-level="6.2.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#numerische-variablen"><i class="fa fa-check"></i><b>6.2.2</b> Numerische Variablen</a></li>
+<li class="chapter" data-level="6.2.3" data-path="daten-explorieren.html"><a href="daten-explorieren.html#alles-auf-einen-blick"><i class="fa fa-check"></i><b>6.2.3</b> Alles auf einen Blick</a></li>
+<li class="chapter" data-level="6.2.4" data-path="daten-explorieren.html"><a href="daten-explorieren.html#gruppenweise-deskriptivstatistiken"><i class="fa fa-check"></i><b>6.2.4</b> Gruppenweise Deskriptivstatistiken</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="datenmanipulation.html"><a href="datenmanipulation.html"><i class="fa fa-check"></i><b>7</b> Datenmanipulation</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#löschen"><i class="fa fa-check"></i><b>7.1</b> Löschen</a></li>
+<li class="chapter" data-level="7.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#selektieren"><i class="fa fa-check"></i><b>7.2</b> Selektieren</a></li>
+<li class="chapter" data-level="7.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#umbennen"><i class="fa fa-check"></i><b>7.3</b> Umbennen</a></li>
+<li class="chapter" data-level="7.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#verändern"><i class="fa fa-check"></i><b>7.4</b> Verändern</a></li>
+<li class="chapter" data-level="7.5" data-path="datenmanipulation.html"><a href="datenmanipulation.html#aggreggieren"><i class="fa fa-check"></i><b>7.5</b> Aggreggieren</a></li>
+<li class="chapter" data-level="7.6" data-path="datenmanipulation.html"><a href="datenmanipulation.html#transformieren"><i class="fa fa-check"></i><b>7.6</b> Transformieren</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#von-long-nach-wide"><i class="fa fa-check"></i><b>7.6.1</b> Von Long nach Wide</a></li>
+<li class="chapter" data-level="7.6.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#skalieren"><i class="fa fa-check"></i><b>7.6.2</b> Skalieren</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="graphiken.html"><a href="graphiken.html"><i class="fa fa-check"></i><b>8</b> Graphiken</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="graphiken.html"><a href="graphiken.html#ggplot"><i class="fa fa-check"></i><b>8.1</b> ggplot()</a></li>
+<li class="chapter" data-level="8.2" data-path="graphiken.html"><a href="graphiken.html#geom_histogram"><i class="fa fa-check"></i><b>8.2</b> geom_histogram()</a></li>
+<li class="chapter" data-level="8.3" data-path="graphiken.html"><a href="graphiken.html#geom_point"><i class="fa fa-check"></i><b>8.3</b> geom_point()</a></li>
+<li class="chapter" data-level="8.4" data-path="graphiken.html"><a href="graphiken.html#geom_line-und-geom_smooth"><i class="fa fa-check"></i><b>8.4</b> geom_line() und geom_smooth()</a></li>
+<li class="chapter" data-level="8.5" data-path="graphiken.html"><a href="graphiken.html#geom_bar"><i class="fa fa-check"></i><b>8.5</b> geom_bar()</a></li>
+<li class="chapter" data-level="8.6" data-path="graphiken.html"><a href="graphiken.html#geom_boxplot"><i class="fa fa-check"></i><b>8.6</b> geom_boxplot()</a></li>
+<li class="chapter" data-level="8.7" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>8.7</b> Facetting</a></li>
+<li class="chapter" data-level="8.8" data-path="graphiken.html"><a href="graphiken.html#ästhetische-anpassungen"><i class="fa fa-check"></i><b>8.8</b> Ästhetische Anpassungen</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="graphiken.html"><a href="graphiken.html#ggtitle"><i class="fa fa-check"></i><b>8.8.1</b> ggtitle()</a></li>
+<li class="chapter" data-level="8.8.2" data-path="graphiken.html"><a href="graphiken.html#labs"><i class="fa fa-check"></i><b>8.8.2</b> labs()</a></li>
+<li class="chapter" data-level="8.8.3" data-path="graphiken.html"><a href="graphiken.html#farben-formen-füllungen"><i class="fa fa-check"></i><b>8.8.3</b> Farben, Formen, Füllungen</a></li>
+<li class="chapter" data-level="8.8.4" data-path="graphiken.html"><a href="graphiken.html#achsen-verändern"><i class="fa fa-check"></i><b>8.8.4</b> Achsen verändern</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="graphiken.html"><a href="graphiken.html#theme"><i class="fa fa-check"></i><b>8.9</b> theme()</a></li>
+<li class="chapter" data-level="8.10" data-path="graphiken.html"><a href="graphiken.html#abbildungen-kombinieren"><i class="fa fa-check"></i><b>8.10</b> Abbildungen kombinieren</a></li>
+<li class="chapter" data-level="8.11" data-path="graphiken.html"><a href="graphiken.html#abbildungen-exportieren"><i class="fa fa-check"></i><b>8.11</b> Abbildungen exportieren</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="tabellen.html"><a href="tabellen.html"><i class="fa fa-check"></i><b>9</b> Tabellen</a></li>
+<li class="chapter" data-level="10" data-path="preprocessing.html"><a href="preprocessing.html"><i class="fa fa-check"></i><b>10</b> Preprocessing</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="preprocessing.html"><a href="preprocessing.html#fehlende-werte"><i class="fa fa-check"></i><b>10.1</b> Fehlende Werte</a></li>
+<li class="chapter" data-level="10.2" data-path="preprocessing.html"><a href="preprocessing.html#ausreißer"><i class="fa fa-check"></i><b>10.2</b> Ausreißer</a></li>
+<li class="chapter" data-level="10.3" data-path="preprocessing.html"><a href="preprocessing.html#schiefe-daten"><i class="fa fa-check"></i><b>10.3</b> Schiefe Daten</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>11</b> Korrelation</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>11.1</b> Pearson Korrelation</a></li>
+<li class="chapter" data-level="11.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation"><i class="fa fa-check"></i><b>11.2</b> Spearman Korrelation</a></li>
+<li class="chapter" data-level="11.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>11.3</b> Kendall Korrelation</a></li>
+<li class="chapter" data-level="11.4" data-path="korrelation.html"><a href="korrelation.html#korrelationmatrix"><i class="fa fa-check"></i><b>11.4</b> Korrelationmatrix</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html"><i class="fa fa-check"></i><b>12</b> Einfache Hypothesentests</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>12.1</b> Ein-Stichproben t-Test</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen"><i class="fa fa-check"></i><b>12.1.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="12.1.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>12.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="12.1.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen"><i class="fa fa-check"></i><b>12.1.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="12.1.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>12.1.4</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="12.1.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-berichten"><i class="fa fa-check"></i><b>12.1.5</b> Ergebnis berichten</a></li>
+<li class="chapter" data-level="12.1.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke"><i class="fa fa-check"></i><b>12.1.6</b> Effektstärke</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>12.2</b> T-Test bei unabhängigen Stichproben</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>12.2.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="12.2.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-1"><i class="fa fa-check"></i><b>12.2.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="12.2.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>12.2.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="12.2.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>12.2.4</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="12.2.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-1"><i class="fa fa-check"></i><b>12.2.5</b> Effektstärke</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>12.3</b> T-Test bei abhängigen Stichproben</a></li>
+<li class="chapter" data-level="12.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannwhitney-u-test"><i class="fa fa-check"></i><b>12.4</b> Wilcoxon–Mann–Whitney-U Test</a></li>
+<li class="chapter" data-level="12.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannu-test"><i class="fa fa-check"></i><b>12.5</b> Wilcoxon–Mann–U Test</a></li>
+<li class="chapter" data-level="12.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#chi2-test"><i class="fa fa-check"></i><b>12.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a></li>
+<li class="chapter" data-level="12.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#fishers-exakter-test"><i class="fa fa-check"></i><b>12.7</b> Fisher’s Exakter Test</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>13</b> Regression</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="regression.html"><a href="regression.html#lineare-regression"><i class="fa fa-check"></i><b>13.1</b> Lineare Regression</a></li>
+<li class="chapter" data-level="13.2" data-path="regression.html"><a href="regression.html#logistische-regression"><i class="fa fa-check"></i><b>13.2</b> Logistische Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="mehrstufige-uvs.html"><a href="mehrstufige-uvs.html"><i class="fa fa-check"></i><b>14</b> Mehrstufige UVs</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="mehrstufige-uvs.html"><a href="mehrstufige-uvs.html#omnibus-test"><i class="fa fa-check"></i><b>14.1</b> Omnibus Test</a></li>
+<li class="chapter" data-level="14.2" data-path="mehrstufige-uvs.html"><a href="mehrstufige-uvs.html#paarweise-vergleiche"><i class="fa fa-check"></i><b>14.2</b> Paarweise Vergleiche</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="mehrere-uvs.html"><a href="mehrere-uvs.html"><i class="fa fa-check"></i><b>15</b> Mehrere UVs</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="mehrere-uvs.html"><a href="mehrere-uvs.html#multiple-regression"><i class="fa fa-check"></i><b>15.1</b> Multiple Regression</a></li>
+<li class="chapter" data-level="15.2" data-path="mehrere-uvs.html"><a href="mehrere-uvs.html#interaktionsterme"><i class="fa fa-check"></i><b>15.2</b> Interaktionsterme</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="manuskripterstellung.html"><a href="manuskripterstellung.html"><i class="fa fa-check"></i><b>16</b> Manuskripterstellung</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Einführung in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="einfache-hypothesentests" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Kapitel 12</span> Einfache Hypothesentests<a href="einfache-hypothesentests.html#einfache-hypothesentests" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="ein-stichproben-t-test" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Ein-Stichproben t-Test<a href="einfache-hypothesentests.html#ein-stichproben-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Mit einem Ein-Stichproben t-Test vergleichen wir den Mittelwert einer Gruppe mit einem hypothetischen Mittelwert.
+Zum Beispiel könnten wir eine Stichprobe von Menschen aus Deutschland erhoben haben und uns dafür interessieren, ob diese signifikant größer, bzw. kleiner als der Durchschnitt in Deutschland sind.</p>
+<p>Die ersten Zeilen des Stichprobendatensatzes könnten so aussehen:</p>
+<pre><code>##   gewicht groesse
+## 1      77     182
+## 2      68     177
+## 3      76     170
+## 4      76     167
+## 5      69     186
+## 6      71     178</code></pre>
+<p>Zunächst brauchen wir einen hypothetischen Vergleichswert. Sucht man die geschlechterübergreifende Durchschnittsgröße in Deutschland im Internet findet man einen Wert von ca. 173 cm.</p>
+<div id="hypothesen" class="section level3 hasAnchor" number="12.1.1">
+<h3><span class="header-section-number">12.1.1</span> Hypothesen<a href="einfache-hypothesentests.html#hypothesen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="deskriptive-einordnung" class="section level3 hasAnchor" number="12.1.2">
+<h3><span class="header-section-number">12.1.2</span> Deskriptive Einordnung<a href="einfache-hypothesentests.html#deskriptive-einordnung" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die Berechnung unseres Mittelwerts ist einfache Deskriptivstatistik:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="einfache-hypothesentests.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data<span class="sc">$</span>groesse)</span></code></pre></div>
+<pre><code>## [1] 177.6087</code></pre>
+<p>Der Sachverhalt lässt sich auch graphisch darstellen:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="einfache-hypothesentests.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> groesse)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="einfache-hypothesentests.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="einfache-hypothesentests.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Größe&quot;</span>, <span class="at">y =</span> <span class="st">&quot;N&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="einfache-hypothesentests.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">173</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="einfache-hypothesentests.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(data<span class="sc">$</span>groesse), <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;green&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="einfache-hypothesentests.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Die grüne Linie im Zentrum des Histogramms stellt unseren Stichprobenmittelwert dar. Die rote Linie ist der angenommene Mittelwert in der Population von 173 cm.</p>
+</div>
+<div id="test-durchführen" class="section level3 hasAnchor" number="12.1.3">
+<h3><span class="header-section-number">12.1.3</span> Test durchführen<a href="einfache-hypothesentests.html#test-durchführen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zur Durchführung des Tests nutzen wir die in der Grundform von R vorinstallierte <code>t.test()</code> Funktion.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="einfache-hypothesentests.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  data$groesse
+## t = 4.4969, df = 22, p-value = 0.0001792
+## alternative hypothesis: true mean is not equal to 173
+## 95 percent confidence interval:
+##  175.4833 179.7341
+## sample estimates:
+## mean of x 
+##  177.6087</code></pre>
+<p>Wir wählen die Variable <code>groesse</code> innerhalb unseres Datensatzes mit dem <code>$</code> Zeichen an. Über das <code>mu</code> Argument geben wir den hypothetischen Vergleichswert an. Unter <code>alternative</code> können wir auswählen, ob der Test gerichtet oder ungerichtet (aka ein- oder zweiseitig) durchgeführt werden soll. Je nach Hypothese wählen wir <code>"two.sided"</code> für einen ungerichteten Test und entweder <code>"less"</code> oder <code>"greater"</code> für einen gerichteten Test. Das <code>conf.level</code> entsprich unserem Signifikanzniveau.</p>
+</div>
+<div id="ergebnis-interpretieren" class="section level3 hasAnchor" number="12.1.4">
+<h3><span class="header-section-number">12.1.4</span> Ergebnis interpretieren<a href="einfache-hypothesentests.html#ergebnis-interpretieren" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Das Ergebnis des Tests lässt sich am P-Wert ablesen (p=0.0001792). Ist der P-wert kleiner als das gewählte Signifikanzniveau (i.d.R <span class="math inline">\(\alpha=.05\)</span>) unterscheidet sich unser Stichprobenmittelwert (177.61 cm) signifikant von der Durchschnittsgröße in Deutschland (173 cm). Wir verwerfen also die Nullhypothese (H0) zugunsten unserer Alternativhypothese (H1).</p>
+</div>
+<div id="ergebnis-berichten" class="section level3 hasAnchor" number="12.1.5">
+<h3><span class="header-section-number">12.1.5</span> Ergebnis berichten<a href="einfache-hypothesentests.html#ergebnis-berichten" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die relevanten Parameter zum Berichten eines Ein-Stichproben t-Tests sind</p>
+<ul>
+<li>M (Mittelwert)</li>
+<li>Grenzen des Konfidenzintervalls des Mittelwerts</li>
+<li>t-Wert (Teststatistik)</li>
+<li>df (Freiheitsgerade)</li>
+<li>P-Wert</li>
+</ul>
+<p>Beim Berichten im Fließtext schreibt man:</p>
+<p>Die Größe in der Stichpobe unterschied sich signifikant von der Durchschnittsgröße in Deutschland (173 cm), M = 177.61, 95% CI (175.48, 179.73), t (22) = 4.5; p &lt; .001.</p>
+<p>Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:</p>
+<p>t-Wert (Teststatistik):</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="einfache-hypothesentests.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>statistic</span></code></pre></div>
+<pre><code>##        t 
+## 4.496872</code></pre>
+<p>df (Freiheitsgerade):</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="einfache-hypothesentests.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>parameter</span></code></pre></div>
+<pre><code>## df 
+## 22</code></pre>
+<p>P-Wert:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="einfache-hypothesentests.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.0001792355</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="einfache-hypothesentests.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 175.4833</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="einfache-hypothesentests.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 179.7341</code></pre>
+<p>Zur sauberen Darstellung des Ergebnisses in einer bereits nach APA formatierten Tabelle, lassen sich die Funktionen <code>apa_print</code> und <code>apa_table</code> aus dem Paket <code>papaja</code> verwenden.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="einfache-hypothesentests.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span></code></pre></div>
+<pre><code>## Lade nötiges Paket: tinylabels</code></pre>
+<pre><code>## Warning: Paket &#39;tinylabels&#39; wurde unter R Version 3.6.2 erstellt</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="einfache-hypothesentests.html#cb35-1" aria-hidden="true" tabindex="-1"></a>apa_test <span class="ot">&lt;-</span> <span class="fu">apa_print</span>(</span>
+<span id="cb35-2"><a href="einfache-hypothesentests.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb35-3"><a href="einfache-hypothesentests.html#cb35-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-4"><a href="einfache-hypothesentests.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">apa_table</span>(</span>
+<span id="cb35-5"><a href="einfache-hypothesentests.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  apa_test<span class="sc">$</span>table, <span class="at">caption =</span> <span class="st">&quot;Tabelle für den Ein-Stichproben t-Test.&quot;</span></span>
+<span id="cb35-6"><a href="einfache-hypothesentests.html#cb35-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<caption>
+<span id="tab:unnamed-chunk-25">Table 12.1: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Tabelle für den Ein-Stichproben t-Test.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(M\)</span></th>
+<th align="left">95% CI</th>
+<th align="left"><span class="math inline">\(t\)</span></th>
+<th align="left"><span class="math inline">\(\mathit{df}\)</span></th>
+<th align="left"><span class="math inline">\(p\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">177.61</td>
+<td align="left">[175.48, 179.73]</td>
+<td align="left">4.50</td>
+<td align="left">22</td>
+<td align="left">&lt; .001</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="effektstärke" class="section level3 hasAnchor" number="12.1.6">
+<h3><span class="header-section-number">12.1.6</span> Effektstärke<a href="einfache-hypothesentests.html#effektstärke" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="cohens-d" class="section level4 hasAnchor" number="12.1.6.1">
+<h4><span class="header-section-number">12.1.6.1</span> Cohen’s d<a href="einfache-hypothesentests.html#cohens-d" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Die am häufigsten verwendete Effektstärke für den Ein-Stichproben t-Test ist Cohen’s d <span class="citation">Cohen (<a href="#ref-cohen1988statistical" role="doc-biblioref">1988</a>)</span>.
+Cohen’s d lässt sich mit dem Paket <code>effsize</code> berechnen. Dieses verwendet praktischerweise die gleiche Schreibweise, wie der t-Test:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="einfache-hypothesentests.html#cb36-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(data<span class="sc">$</span>groesse, <span class="at">f =</span> <span class="cn">NA</span>, <span class="at">mu =</span> <span class="dv">173</span>)</span></code></pre></div>
+<pre><code>## 
+## Cohen&#39;s d (single sample)
+## 
+## d estimate: 0.9376626 (large)
+## Reference mu: 173
+## 95 percent confidence interval:
+##      lower      upper 
+## 0.02651145 1.84881385</code></pre>
+<p>Auch die Einzelparameter von Cohen’s d lassen sich extrahieren:</p>
+<p>Cohen’s d:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="einfache-hypothesentests.html#cb38-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(<span class="at">d =</span> data<span class="sc">$</span>groesse, <span class="at">f =</span> <span class="cn">NA</span>, <span class="at">mu =</span> <span class="dv">173</span>)<span class="sc">$</span>estimate</span></code></pre></div>
+<pre><code>## [1] 0.9376626</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="einfache-hypothesentests.html#cb40-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(<span class="at">d =</span> data<span class="sc">$</span>groesse, <span class="at">f =</span> <span class="cn">NA</span>, <span class="at">mu =</span> <span class="dv">173</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##      lower 
+## 0.02651145</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="einfache-hypothesentests.html#cb42-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(<span class="at">d =</span> data<span class="sc">$</span>groesse, <span class="at">f =</span> <span class="cn">NA</span>, <span class="at">mu =</span> <span class="dv">173</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##    upper 
+## 1.848814</code></pre>
+<p>Die Interpretation von Cohens’d lautet wie folgt <span class="citation">Cohen (<a href="#ref-cohen1992quantitative" role="doc-biblioref">1992</a>)</span>:</p>
+<caption>
+<span id="tab:unnamed-chunk-29">Table 12.2: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Interpretation von Cohen’s d.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">d</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">|&gt;0.2|</td>
+<td align="left">kleiner Effekt</td>
+</tr>
+<tr class="even">
+<td align="left">|&gt;0.5|</td>
+<td align="left">mittlerer Effekt</td>
+</tr>
+<tr class="odd">
+<td align="left">|&gt;0.8|</td>
+<td align="left">großer Effekt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="t-test-bei-unabhängigen-stichproben" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> T-Test bei unabhängigen Stichproben<a href="einfache-hypothesentests.html#t-test-bei-unabhängigen-stichproben" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="deskriptive-einordnung-1" class="section level3 hasAnchor" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Deskriptive Einordnung<a href="einfache-hypothesentests.html#deskriptive-einordnung-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="einfache-hypothesentests.html#cb44-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describeBy</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)</span></code></pre></div>
+<pre><code>## 
+##  Descriptive statistics by group 
+## Gender: Females
+##             vars  n mean   sd median trimmed  mad min  max range skew kurtosis
+## Weight.loss    1 42 6.93 2.24      7     6.9 1.93 1.6 12.2  10.6 0.12     0.38
+##               se
+## Weight.loss 0.35
+## ------------------------------------------------------------ 
+## Gender: Males
+##             vars  n mean   sd median trimmed  mad  min max range skew kurtosis
+## Weight.loss    1 45 3.72 2.59    3.4    3.75 2.82 -2.1 8.5  10.6 0.01    -0.92
+##               se
+## Weight.loss 0.39</code></pre>
+</div>
+<div id="test-durchführen-1" class="section level3 hasAnchor" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Test durchführen<a href="einfache-hypothesentests.html#test-durchführen-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="einfache-hypothesentests.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Weight.loss by Gender
+## t = 6.191, df = 84.544, p-value = 0.00000002069
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  2.178046 4.239097
+## sample estimates:
+## mean in group Females   mean in group Males 
+##              6.928571              3.720000</code></pre>
+<p>Alternative Schreibweise:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="einfache-hypothesentests.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>Weight.loss[data<span class="sc">$</span>Gender <span class="sc">==</span> <span class="st">&quot;Males&quot;</span>], data<span class="sc">$</span>Weight.loss[data<span class="sc">$</span>Gender <span class="sc">==</span> <span class="st">&quot;Females&quot;</span>])</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  data$Weight.loss[data$Gender == &quot;Males&quot;] and data$Weight.loss[data$Gender == &quot;Females&quot;]
+## t = -6.191, df = 84.544, p-value = 0.00000002069
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -4.239097 -2.178046
+## sample estimates:
+## mean of x mean of y 
+##  3.720000  6.928571</code></pre>
+</div>
+<div id="relevante-parameter-extrahieren" class="section level3 hasAnchor" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> Relevante Parameter extrahieren<a href="einfache-hypothesentests.html#relevante-parameter-extrahieren" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die relevanten Parameter zum Berichten eines t-Tests sind</p>
+<ul>
+<li><span class="math inline">\(\Delta\)</span>M (Differenz vom Mittelwert zum Referenzwert)</li>
+<li>Grenzen des Konfidenzintervalls der Mittelwertsdifferenz</li>
+<li>t-Wert (Teststatistik)</li>
+<li>df (Freiheitsgerade)</li>
+<li>P-Wert</li>
+</ul>
+<p>Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:</p>
+<p>t-Wert (Teststatistik):</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="einfache-hypothesentests.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>statistic</span></code></pre></div>
+<pre><code>##        t 
+## 6.191013</code></pre>
+<p>df (Freiheitsgerade):</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="einfache-hypothesentests.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>parameter</span></code></pre></div>
+<pre><code>##     df 
+## 84.544</code></pre>
+<p>P-Wert:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="einfache-hypothesentests.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.00000002069288</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="einfache-hypothesentests.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 2.178046</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="einfache-hypothesentests.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 4.239097</code></pre>
+</div>
+<div id="voraussetzungsprüfung-und-alternativen" class="section level3 hasAnchor" number="12.2.4">
+<h3><span class="header-section-number">12.2.4</span> Voraussetzungsprüfung und Alternativen<a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Folgende Vorraussetzungen gelten für den t-Test:
+* Intervallskala
+* Normalverteilung in beiden Gruppen
+* Homogenität der Varianzen</p>
+<p>Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt sein, muss ein robuster Test gerechnet werden (s.u.).</p>
+<p>Die Varianzhomogenität wird mittels Levene’s Test (F-Test) geprüft <span class="citation">Levene (<a href="#ref-levene1960robust" role="doc-biblioref">1960</a>)</span>. Eine Funktion dafür ist im Patek <code>car</code> enthalten.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="einfache-hypothesentests.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># https://www.youtube.com/watch?v=717UWGnyQGA&amp;feature=youtu.be</span></span>
+<span id="cb60-2"><a href="einfache-hypothesentests.html#cb60-2" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)</span></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##       Df F value Pr(&gt;F)
+## group  1  2.0175 0.1591
+##       85</code></pre>
+<p>Ein signifikanter Levene’s Test bedeutet, dass sich die Varianzen innerhalb der Gruppen signifikant unterscheiden. Sie sind also nicht “homogen”.</p>
+<p>Zum Berichten eines Levene’s Test gibt es nicht viel zu tun. Lediglich die Freiheitsgrade, der F-Wert und die Signifikanz sind zu berichten. Die übliche Form hierfür ist die folgende: F(1,49) = 16,908, p = 0,0001493</p>
+<p>Liegt keine Varianzhomogenität vor, berechnet man stattdessen einen <strong>Welch-Test</strong>.</p>
+<p>Um einen <strong>Welch-Test</strong> zu berechnen, ändern wir nur leicht die Funktion:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="einfache-hypothesentests.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Weight.loss by Gender
+## t = 6.191, df = 84.544, p-value = 0.00000002069
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  2.178046 4.239097
+## sample estimates:
+## mean in group Females   mean in group Males 
+##              6.928571              3.720000</code></pre>
+</div>
+<div id="effektstärke-1" class="section level3 hasAnchor" number="12.2.5">
+<h3><span class="header-section-number">12.2.5</span> Effektstärke<a href="einfache-hypothesentests.html#effektstärke-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="cohens-d-1" class="section level4 hasAnchor" number="12.2.5.1">
+<h4><span class="header-section-number">12.2.5.1</span> Cohen’s d<a href="einfache-hypothesentests.html#cohens-d-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Die am häufigsten verwendete Effektstärke für den Vergleich zweier unabhängiger Gruppen ist Cohen’s d <span class="citation">Cohen (<a href="#ref-cohen1988statistical" role="doc-biblioref">1988</a>)</span>.
+Cohen’s d lässt sich mit dem Paket <code>effsize</code> berechnen. Dieses verwendet praktischerweise die gleiche Schreibweise, wie der t-Test:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="einfache-hypothesentests.html#cb64-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)</span></code></pre></div>
+<pre><code>## 
+## Cohen&#39;s d
+## 
+## d estimate: 1.321689 (large)
+## 95 percent confidence interval:
+##     lower     upper 
+## 0.8508801 1.7924981</code></pre>
+<p>Auch die Einzelparameter von Cohen’s d lassen sich extrahieren:</p>
+<p>Cohen’s d:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="einfache-hypothesentests.html#cb66-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>estimate</span></code></pre></div>
+<pre><code>## [1] 1.321689</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="einfache-hypothesentests.html#cb68-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##     lower 
+## 0.8508801</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="einfache-hypothesentests.html#cb70-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##    upper 
+## 1.792498</code></pre>
+<p>Die Interpretation von Cohens’d lautet wie folgt <span class="citation">Cohen (<a href="#ref-cohen1992quantitative" role="doc-biblioref">1992</a>)</span>:</p>
+<caption>
+<span id="tab:unnamed-chunk-43">Table 12.3: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Interpretation von Cohen’s d.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">d</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">|&gt;0.2|</td>
+<td align="left">kleiner Effekt</td>
+</tr>
+<tr class="even">
+<td align="left">|&gt;0.5|</td>
+<td align="left">mittlerer Effekt</td>
+</tr>
+<tr class="odd">
+<td align="left">|&gt;0.8|</td>
+<td align="left">großer Effekt</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="hedges-g" class="section level4 hasAnchor" number="12.2.5.2">
+<h4><span class="header-section-number">12.2.5.2</span> Hedges’ g<a href="einfache-hypothesentests.html#hedges-g" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Eine gelegentlich verwendete Alternative zu Cohen’s d ist das Hedges’ g. Hedges’ g wird weitgehend analog zu Cohen’s d verwendet, korrigiert dabei jedoch statistisch für besonders kleine Gruppengößen (N&lt;20) <span class="citation">Hedges and Olkin (<a href="#ref-hedges2014statistical" role="doc-biblioref">2014</a>)</span>
+Es lässt sich mit der selben Funktion berechnen:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="einfache-hypothesentests.html#cb72-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data, <span class="at">hedges.correction =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+## Hedges&#39;s g
+## 
+## g estimate: 1.309993 (large)
+## 95 percent confidence interval:
+##     lower     upper 
+## 0.8440869 1.7758986</code></pre>
+<p>Die Interpretation von Hedges’ g ist identisch wie die von von Cohens’d:</p>
+<caption>
+<span id="tab:unnamed-chunk-45">Table 12.4: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Interpretation von Hedges’ g.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">g</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">|&gt;0.2|</td>
+<td align="left">kleiner Effekt</td>
+</tr>
+<tr class="even">
+<td align="left">|&gt;0.5|</td>
+<td align="left">mittlerer Effekt</td>
+</tr>
+<tr class="odd">
+<td align="left">|&gt;0.8|</td>
+<td align="left">großer Effekt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="t-test-bei-abhängigen-stichproben" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> T-Test bei abhängigen Stichproben<a href="einfache-hypothesentests.html#t-test-bei-abhängigen-stichproben" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="wilcoxonmannwhitney-u-test" class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> Wilcoxon–Mann–Whitney-U Test<a href="einfache-hypothesentests.html#wilcoxonmannwhitney-u-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="wilcoxonmannu-test" class="section level2 hasAnchor" number="12.5">
+<h2><span class="header-section-number">12.5</span> Wilcoxon–Mann–U Test<a href="einfache-hypothesentests.html#wilcoxonmannu-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="chi2-test" class="section level2 hasAnchor" number="12.6">
+<h2><span class="header-section-number">12.6</span> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test<a href="einfache-hypothesentests.html#chi2-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="fishers-exakter-test" class="section level2 hasAnchor" number="12.7">
+<h2><span class="header-section-number">12.7</span> Fisher’s Exakter Test<a href="einfache-hypothesentests.html#fishers-exakter-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+<h3> Manuskripterstellung<a href="manuskripterstellung.html#manuskripterstellung" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-cohen1988statistical" class="csl-entry">
+Cohen, Jacob. 1988. <span>“Statistical Power Analysis for the Behavioral Sciences. Lawrence Erlbaum Associates.”</span> <em>Hillsdale, NJ</em>, 20–26.
+</div>
+<div id="ref-cohen1992quantitative" class="csl-entry">
+———. 1992. <span>“Quantitative Methods in Psychology: A Power Primer.”</span> In <em>Psychological Bulletin</em>. Citeseer.
+</div>
+<div id="ref-hedges2014statistical" class="csl-entry">
+Hedges, Larry V, and Ingram Olkin. 2014. <em>Statistical Methods for Meta-Analysis</em>. Academic press.
+</div>
+<div id="ref-levene1960robust" class="csl-entry">
+Levene, Howard. 1960. <span>“Robust Tests for Equality of Variances. Contributions to Probability and Statistics (1960).”</span>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="korrelation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CFH_R_bookdown.pdf", "CFH_R_bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

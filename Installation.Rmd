@@ -1,0 +1,35 @@
+# Installation
+
+Um R benutzen zu können müssen wir zwei Softwarepakete herunterladen: 
+
+* **R**
+* **RStudio**
+
+R ist die Programmiersprache, mit der wir arbeiten. R-Studio ist eine Benutzeroberfläche, die uns das Programmieren mit R ungemein erleichtert.
+
+## Installation von R
+
+Um R zu installieren, klicken Sie auf den, Ihrem Betriebssystem entsprechenden, Link und befolgen Sie die Anleitungen:
+
+| Operating System| Link|
+|:------|:----|
+|     Windows|    [http://cran.r-project.org/bin/windows/base/](http://cran.r-project.org/bin/windows/base/)|
+|     Mac|    [http://cran.r-project.org/bin/macosx/](http://cran.r-project.org/bin/macosx/)|
+
+Nach dieser Installation haben Sie bereits die volle Funktionalität des Programms. Sie werden jedoch feststellen, dass beinahe alle R-Nutzer RStudio zum programmieren nutzen, da dieses eine leichter nutzbare Oberfläche hat. 
+Tatsächlich müssen Sie nach der Installation von RStudio das R Basisprogramm nie wieder öffnen.
+
+## Installation von RStudio
+
+Bitte installieren Sie dann RStudio - das Programm, über welches wir auf R zugreifen und mit dem wir unsere Skripte schreiben.
+
+Um RStudio zu installieren, klicken Sie auf diesen Link und befolgen Sie die Anleitungen: [http://www.rstudio.com/products/rstudio/download/](http://www.rstudio.com/products/rstudio/download/)
+
+```{r eval=FALSE, include=FALSE}
+#Ginzberg
+#Salaries
+#Leerkes # WRS2
+#spider
+#teachsat
+```
+

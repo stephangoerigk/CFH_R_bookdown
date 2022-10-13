@@ -1,0 +1,9 @@
+# Korrelation
+
+## Pearson Korrelation
+
+## Spearman Korrelation
+
+## Kendall Korrelation
+
+## Korrelationmatrix

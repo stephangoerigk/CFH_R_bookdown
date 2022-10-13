@@ -1,0 +1,294 @@
+# Einfache Hypothesentests
+
+```{r echo = F}
+options(scipen = 999)
+```
+
+## Ein-Stichproben t-Test
+
+```{r include=FALSE}
+# https://www.youtube.com/watch?v=KRO5y0M__BA
+data = read.csv("data/One sample t-test.csv")
+names(data) = c("gewicht", "groesse")
+```
+
+Mit einem Ein-Stichproben t-Test vergleichen wir den Mittelwert einer Gruppe mit einem hypothetischen Mittelwert. 
+Zum Beispiel könnten wir eine Stichprobe von Menschen aus Deutschland erhoben haben und uns dafür interessieren, ob diese signifikant größer, bzw. kleiner als der Durchschnitt in Deutschland sind.
+
+Die ersten Zeilen des Stichprobendatensatzes könnten so aussehen:
+```{r echo=FALSE}
+head(data)
+```
+
+Zunächst brauchen wir einen hypothetischen Vergleichswert. Sucht man die geschlechterübergreifende Durchschnittsgröße in Deutschland im Internet findet man einen Wert von ca. 173 cm. 
+
+### Hypothesen
+
+### Deskriptive Einordnung
+
+Die Berechnung unseres Mittelwerts ist einfache Deskriptivstatistik:
+
+```{r}
+mean(data$groesse)
+```
+
+Der Sachverhalt lässt sich auch graphisch darstellen: 
+```{r}
+ggplot(data = data, aes(x = groesse)) +
+  geom_histogram(bins = 40, fill = "black") +
+  labs(x = "Größe", y = "N") +
+  geom_vline(xintercept = 173, linetype = "dashed", colour = "red") +
+  geom_vline(xintercept = mean(data$groesse), linetype = "dashed", colour = "green") +
+  theme_classic() 
+```
+
+Die grüne Linie im Zentrum des Histogramms stellt unseren Stichprobenmittelwert dar. Die rote Linie ist der angenommene Mittelwert in der Population von 173 cm.
+
+### Test durchführen
+
+Zur Durchführung des Tests nutzen wir die in der Grundform von R vorinstallierte `t.test()` Funktion. 
+```{r}
+t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)
+```
+Wir wählen die Variable `groesse` innerhalb unseres Datensatzes mit dem `$` Zeichen an. Über das `mu` Argument geben wir den hypothetischen Vergleichswert an. Unter `alternative` können wir auswählen, ob der Test gerichtet oder ungerichtet (aka ein- oder zweiseitig) durchgeführt werden soll. Je nach Hypothese wählen wir `"two.sided"` für einen ungerichteten Test und entweder `"less"` oder `"greater"` für einen gerichteten Test. Das `conf.level` entsprich unserem  Signifikanzniveau. 
+
+### Ergebnis interpretieren
+
+Das Ergebnis des Tests lässt sich am P-Wert ablesen (p=`r t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$p.value`). Ist der P-wert kleiner als das gewählte Signifikanzniveau (i.d.R $\alpha=.05$) unterscheidet sich unser Stichprobenmittelwert (`r round(mean(data$groesse), 2)` cm) signifikant von der Durchschnittsgröße in Deutschland (173 cm). Wir verwerfen also die Nullhypothese (H0) zugunsten unserer Alternativhypothese (H1).
+
+### Ergebnis berichten
+
+Die relevanten Parameter zum Berichten eines Ein-Stichproben t-Tests sind
+
+* M (Mittelwert)
+* Grenzen des Konfidenzintervalls des Mittelwerts
+* t-Wert (Teststatistik)
+* df (Freiheitsgerade)
+* P-Wert
+
+Beim Berichten im Fließtext schreibt man: 
+
+Die Größe in der Stichpobe unterschied sich signifikant von der Durchschnittsgröße in Deutschland (173 cm),  M = `r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$estimate, 2)`, 95% CI (`r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$conf.int[1], 2)`, `r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$conf.int[2], 2)`), t (`r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$parameter, 2)`) = `r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$statistic, 2)`; p < .001.
+
+Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:
+
+t-Wert (Teststatistik):
+```{r}
+t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$statistic
+```
+
+df (Freiheitsgerade):
+```{r}
+t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$parameter
+```
+
+P-Wert:
+```{r}
+t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$p.value
+```
+
+Grenzen des Konfidenzintervalls (unten & oben):
+```{r}
+t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$conf.int[1]
+t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$conf.int[2]
+```
+
+Zur sauberen Darstellung des Ergebnisses in einer bereits nach APA formatierten Tabelle, lassen sich die Funktionen `apa_print` und `apa_table` aus dem Paket `papaja` verwenden.
+
+```{r}
+library(papaja)
+apa_test <- apa_print(
+  t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)
+)
+apa_table(
+  apa_test$table, caption = "Tabelle für den Ein-Stichproben t-Test."
+)
+```
+
+### Effektstärke 
+
+#### Cohen's d
+
+Die am häufigsten verwendete Effektstärke für den Ein-Stichproben t-Test ist Cohen's d @cohen1988statistical.
+Cohen's d lässt sich mit dem Paket `effsize` berechnen. Dieses verwendet praktischerweise die gleiche Schreibweise, wie der t-Test:
+
+```{r}
+effsize::cohen.d(data$groesse, f = NA, mu = 173)
+```
+
+Auch die Einzelparameter von Cohen's d lassen sich extrahieren:
+
+Cohen's d:
+```{r}
+effsize::cohen.d(d = data$groesse, f = NA, mu = 173)$estimate
+```
+
+Grenzen des Konfidenzintervalls (unten & oben):
+```{r}
+effsize::cohen.d(d = data$groesse, f = NA, mu = 173)$conf.int[1]
+effsize::cohen.d(d = data$groesse, f = NA, mu = 173)$conf.int[2]
+```
+
+Die Interpretation von Cohens'd lautet wie folgt @cohen1992quantitative:
+
+```{r echo = F}
+d = data.frame("d" = c("|>0.2|",
+                       "|>0.5|",
+                       "|>0.8|"),
+               Interpretation = c("kleiner Effekt",
+                                  "mittlerer Effekt",
+                                  "großer Effekt"))
+apa_table(d, caption = "Interpretation von Cohen's d.")
+```
+
+
+## T-Test bei unabhängigen Stichproben
+
+```{r include=FALSE}
+data = read.csv("data/Independent t-test.csv")
+```
+
+### Deskriptive Einordnung
+
+```{r}
+psych::describeBy(Weight.loss ~ Gender, data = data)
+```
+
+### Test durchführen
+
+```{r}
+t.test(Weight.loss ~ Gender, data = data)
+```
+
+Alternative Schreibweise:
+
+```{r}
+t.test(data$Weight.loss[data$Gender == "Males"], data$Weight.loss[data$Gender == "Females"])
+```
+
+### Relevante Parameter extrahieren
+
+Die relevanten Parameter zum Berichten eines t-Tests sind
+
+* $\Delta$M (Differenz vom Mittelwert zum Referenzwert)
+* Grenzen des Konfidenzintervalls der Mittelwertsdifferenz
+* t-Wert (Teststatistik)
+* df (Freiheitsgerade)
+* P-Wert
+
+Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:
+
+t-Wert (Teststatistik):
+```{r}
+t.test(Weight.loss ~ Gender, data = data)$statistic
+```
+
+df (Freiheitsgerade):
+```{r}
+t.test(Weight.loss ~ Gender, data = data)$parameter
+```
+
+P-Wert:
+```{r}
+t.test(Weight.loss ~ Gender, data = data)$p.value
+```
+
+Grenzen des Konfidenzintervalls (unten & oben):
+```{r}
+t.test(Weight.loss ~ Gender, data = data)$conf.int[1]
+t.test(Weight.loss ~ Gender, data = data)$conf.int[2]
+```
+
+### Voraussetzungsprüfung und Alternativen
+
+Folgende Vorraussetzungen gelten für den t-Test:
+* Intervallskala
+* Normalverteilung in beiden Gruppen 
+* Homogenität der Varianzen
+
+Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt sein, muss ein robuster Test gerechnet werden (s.u.).
+
+Die Varianzhomogenität wird mittels Levene's Test (F-Test) geprüft @levene1960robust. Eine Funktion dafür ist im Patek `car` enthalten.
+
+```{r}
+# https://www.youtube.com/watch?v=717UWGnyQGA&feature=youtu.be
+car::leveneTest(Weight.loss ~ Gender, data = data)
+```
+
+Ein signifikanter Levene's Test bedeutet, dass sich die Varianzen innerhalb der Gruppen signifikant unterscheiden. Sie sind also nicht "homogen".
+
+Zum Berichten eines Levene's Test gibt es nicht viel zu tun. Lediglich die Freiheitsgrade, der F-Wert und die Signifikanz sind zu berichten. Die übliche Form hierfür ist die folgende: F(1,49) = 16,908, p = 0,0001493
+
+Liegt keine Varianzhomogenität vor, berechnet man stattdessen einen **Welch-Test**.
+
+Um einen **Welch-Test** zu berechnen, ändern wir nur leicht die Funktion:
+```{r}
+t.test(Weight.loss ~ Gender, data = data, var.equal = FALSE)
+```
+
+### Effektstärke
+
+#### Cohen's d
+
+Die am häufigsten verwendete Effektstärke für den Vergleich zweier unabhängiger Gruppen ist Cohen's d @cohen1988statistical.
+Cohen's d lässt sich mit dem Paket `effsize` berechnen. Dieses verwendet praktischerweise die gleiche Schreibweise, wie der t-Test:
+
+```{r}
+effsize::cohen.d(Weight.loss ~ Gender, data = data)
+```
+
+Auch die Einzelparameter von Cohen's d lassen sich extrahieren:
+
+Cohen's d:
+```{r}
+effsize::cohen.d(Weight.loss ~ Gender, data = data)$estimate
+```
+
+Grenzen des Konfidenzintervalls (unten & oben):
+```{r}
+effsize::cohen.d(Weight.loss ~ Gender, data = data)$conf.int[1]
+effsize::cohen.d(Weight.loss ~ Gender, data = data)$conf.int[2]
+```
+
+Die Interpretation von Cohens'd lautet wie folgt @cohen1992quantitative:
+
+```{r echo = F}
+d = data.frame("d" = c("|>0.2|",
+                       "|>0.5|",
+                       "|>0.8|"),
+               Interpretation = c("kleiner Effekt",
+                                  "mittlerer Effekt",
+                                  "großer Effekt"))
+apa_table(d, caption = "Interpretation von Cohen's d.")
+```
+
+#### Hedges' g
+
+Eine gelegentlich verwendete Alternative zu Cohen's d ist das Hedges' g. Hedges' g wird weitgehend analog zu Cohen's d verwendet, korrigiert dabei jedoch statistisch für besonders kleine Gruppengößen (N<20) @hedges2014statistical
+Es lässt sich mit der selben Funktion berechnen:
+
+```{r}
+effsize::cohen.d(Weight.loss ~ Gender, data = data, hedges.correction = TRUE)
+```
+
+Die Interpretation von Hedges' g ist identisch wie die von von Cohens'd: 
+
+```{r echo = F}
+d = data.frame("g" = c("|>0.2|",
+                       "|>0.5|",
+                       "|>0.8|"),
+               Interpretation = c("kleiner Effekt",
+                                  "mittlerer Effekt",
+                                  "großer Effekt"))
+apa_table(d, caption = "Interpretation von Hedges' g.")
+```
+
+## T-Test bei abhängigen Stichproben
+
+## Wilcoxon–Mann–Whitney-U Test
+
+## Wilcoxon–Mann–U Test
+
+## $\chi$^2^-Test
+
+## Fisher's Exakter Test

@@ -1,0 +1,10 @@
+# Preprocessing
+
+## Fehlende Werte
+
+## Ausreißer
+
+## Schiefe Daten
+
+
+

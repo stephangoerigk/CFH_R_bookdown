@@ -1,0 +1,17 @@
+# Datenmanipulation
+
+
+## Löschen
+
+## Umbennen
+
+## Verändern
+
+## Aggreggieren
+
+## Transformieren
+
+### Von Long nach Wide
+
+### Skalieren
+

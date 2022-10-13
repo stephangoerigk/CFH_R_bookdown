@@ -1,0 +1,25 @@
+book_filename: "CFH_R_bookdown"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Kapitel "
+rmd_files: [
+  "Index.Rmd",
+  "Installation.Rmd",
+  "Programmaufbau.Rmd",
+  "Datenformate.Rmd",
+  "Daten_Generieren.Rmd",
+  "Importieren_Speichern.Rmd",
+  "Daten_Auswaehlen.Rmd",
+  "Daten_Beschreiben.Rmd",
+  "Daten_Manipulieren.Rmd",
+  "Graphiken.Rmd",
+  "Tabellen.Rmd",
+  "Preprocessing.Rmd",
+  "Korrelationen.Rmd",
+  #"Einfache_Gruppenvergleiche.Rmd",
+  "Regression.Rmd",
+  "Mehrstufige_UVs.Rmd",
+  "Mehrere_UVs.Rmd",
+  "RMarkdown_Manuskripterstellung.Rmd"
+  ]     

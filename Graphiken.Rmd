@@ -1,0 +1,32 @@
+# Graphiken
+
+## ggplot()
+
+## geom_histogram()
+
+## geom_point()
+
+## geom_line() und geom_smooth()
+
+## geom_bar()
+
+## geom_boxplot()
+
+## Facetting
+
+## Ästhetische Anpassungen
+
+### ggtitle()
+
+### labs()
+
+### Farben, Formen, Füllungen
+
+### Achsen verändern
+
+## theme()
+
+## Abbildungen kombinieren
+
+## Abbildungen exportieren
+

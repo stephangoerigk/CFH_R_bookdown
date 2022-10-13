@@ -1,0 +1,48 @@
+# Daten erstellen
+
+## Manuell
+
+Die manuelle Eingabe von Daten erfolgt über die `c()` Funktion. Mit ihrer Hilfe können wir Skalare zu Vektoren verbinden...
+
+```{r}
+a = c(1, 2, 4, 6, 1)
+```
+
+...mehrere Vektoren aneinanderhängen...
+
+```{r}
+a = c(1, 2, 4, 6, 1)
+b = c(2, 3)
+c = c(a, b)
+c
+```
+
+...und Vektoren gleicher Länge zu data.frames kombinieren:
+
+```{r}
+daten = data.frame(aufmerksamkeit = c(58, 46, 29, 51),
+                   gedaechtnis = c(22, 67, 22, 31))
+daten
+```
+
+## Automatisch
+
+Wir haben bereits die `c()` Funktion gelernt.
+
+Die `c()` Funktion ist die einfachste Art einen Vektor zu erstellen, sie ist aber vermutlich auch die umständlichste. Stellen Sie sich zum Beispiel vor, Sie wollen einen Vektor erstellen, der alle Zahlen von 0 bis 100 enthält. Diese Zahlen wollen Sie definitiv nicht alle in die Klammer von `c()` eintippen.
+
+Glücklicherweise hat R viele eingebaute Funktionen, um leicht automatisch numerische Vektoren zu erstellen. 
+
+Lassen Sie uns mit dreien davon starten`a:b`, `seq()`, and `rep()`:
+
+| Funktion| Beispiel|Ergebnis |
+|:-------------------------|:-----------------------------|:----------|
+|     `c(a, b, ...)`|    `c(1, 5, 9)` |`r c(1, 5, 9)`     |
+|     `a:b`|    `1:5`|`r 1:5`    |
+|     `seq(from, to, by, length.out)`|    `seq(from = 0, to = 6, by = 2)`|`r seq(from = 0, to = 6, by = 2)`     |
+|     `rep(x, times, each, length.out)`|    `rep(c(7, 8), times = 2, each = 2)`|`r rep(c(7, 8), times = 2, each = 2)`     |
+
+
+
+## Zufällig
+

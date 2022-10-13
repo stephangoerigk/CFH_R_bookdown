@@ -1,0 +1,29 @@
+# Daten Explorieren
+
+## Informationen über R Objekt
+
+```{r}
+#length()
+#str()
+#nrow()
+#ncol()
+#is.na()
+```
+
+## Deskriptivstatistiken
+
+### Nominale Variablen
+
+#### Absolute Häufigkeiten
+
+#### Relative Häufigkeiten
+
+### Numerische Variablen
+
+#### Lagemaße
+
+#### Streuungsmaße
+
+### Alles auf einen Blick
+
+### Gruppenweise Deskriptivstatistiken
