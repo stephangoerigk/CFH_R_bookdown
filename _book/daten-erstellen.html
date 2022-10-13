@@ -181,7 +181,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-dataframes"><i class="fa fa-check"></i><b>5.3</b> Matrizen und Dataframes</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="datenformate.html"><a href="datenformate.html#indizierung"><i class="fa fa-check"></i><b>5.3.1</b> Indizierung</a></li>
+<li class="chapter" data-level="5.3.1" data-path="datenformate.html"><a href="datenformate.html#erstellen-von-datenmatrizen"><i class="fa fa-check"></i><b>5.3.1</b> Erstellen von Datenmatrizen</a></li>
+<li class="chapter" data-level="5.3.2" data-path="datenformate.html"><a href="datenformate.html#indizierung"><i class="fa fa-check"></i><b>5.3.2</b> Indizierung</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="daten-erstellen.html"><a href="daten-erstellen.html"><i class="fa fa-check"></i><b>6</b> Daten erstellen</a>
@@ -294,11 +295,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Kapitel 6</span> Daten erstellen<a href="daten-erstellen.html#daten-erstellen" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="manuell" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Manuell<a href="daten-erstellen.html#manuell" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Die manuelle Eingabe von Daten erfolgt über die <code>c()</code> Funktion. Mit ihrer Hilfe können wir Skalare zu Vektoren verbinden…</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="daten-erstellen.html#cb38-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">1</span>)</span></code></pre></div>
+<p>…mehrere Vektoren aneinanderhängen…</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="daten-erstellen.html#cb39-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb39-2"><a href="daten-erstellen.html#cb39-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb39-3"><a href="daten-erstellen.html#cb39-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">=</span> <span class="fu">c</span>(a, b)</span>
+<span id="cb39-4"><a href="daten-erstellen.html#cb39-4" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
+<pre><code>## [1] 1 2 4 6 1 2 3</code></pre>
+<p>…und Vektoren gleicher Länge zu data.frames kombinieren:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="daten-erstellen.html#cb41-1" aria-hidden="true" tabindex="-1"></a>daten <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">aufmerksamkeit =</span> <span class="fu">c</span>(<span class="dv">58</span>, <span class="dv">46</span>, <span class="dv">29</span>, <span class="dv">51</span>),</span>
+<span id="cb41-2"><a href="daten-erstellen.html#cb41-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">gedaechtnis =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">67</span>, <span class="dv">22</span>, <span class="dv">31</span>))</span>
+<span id="cb41-3"><a href="daten-erstellen.html#cb41-3" aria-hidden="true" tabindex="-1"></a>daten</span></code></pre></div>
+<pre><code>##   aufmerksamkeit gedaechtnis
+## 1             58          22
+## 2             46          67
+## 3             29          22
+## 4             51          31</code></pre>
 </div>
 <div id="automatisch" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Automatisch<a href="daten-erstellen.html#automatisch" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We have already learned the <code>c()</code> function.
-While the <code>c()</code> function is the most straightforward way to create a vector, it’s also one of the most tedious. For example, let’s say you wanted to create a vector of all integers from 1 to 100. You definitely don’t want to have to type all the numbers into a c() operator. Thankfully, R has many simple built-in functions for generating numeric vectors. Let’s start with three of them: <code>a:b</code>, <code>seq()</code>, and <code>rep()</code>:</p>
+<p>Wir haben bereits die <code>c()</code> Funktion gelernt.</p>
+<p>Die <code>c()</code> Funktion ist die einfachste Art einen Vektor zu erstellen, sie ist aber vermutlich auch die umständlichste. Stellen Sie sich zum Beispiel vor, Sie wollen einen Vektor erstellen, der alle Zahlen von 0 bis 100 enthält. Diese Zahlen wollen Sie definitiv nicht alle in die Klammer von <code>c()</code> eintippen.</p>
+<p>Glücklicherweise hat R viele eingebaute Funktionen, um leicht automatisch numerische Vektoren zu erstellen.</p>
+<p>Lassen Sie uns mit dreien davon starten<code>a:b</code>, <code>seq()</code>, and <code>rep()</code>:</p>
 <table>
 <colgroup>
 <col width="38%" />
@@ -338,6 +358,13 @@ While the <code>c()</code> function is the most straightforward way to create a 
 </div>
 <div id="zufällig" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Zufällig<a href="daten-erstellen.html#zufällig" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In R haben Sie die möglichkeit Daten anhand einer Wahrscheinlichkeitsverteilung zu simulieren.</p>
+<p>Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten erstellen, können wir die <code>rnorm()</code> Funktion nutzen. Dafür müssen wir lediglich angeben, wie viele Werte wir haben wollen (<code>n</code>) und welchen Mittelwert (<code>mean</code>) und welche Standardabweichung (<code>sd</code>) die Verteilung haben soll:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="daten-erstellen.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##  [1] -0.487652789  0.698239926 -0.301146845 -0.822692249 -1.136887680
+##  [6]  1.571620317 -0.113112997 -0.117894694 -1.550925565 -0.002060846
+## [11] -0.164633137 -0.916952293 -0.342626275  1.366126694 -0.965257833
+## [16] -1.256270283  1.301774147 -1.512180978 -0.599861572 -0.215365925</code></pre>
 
 </div>
 </div>

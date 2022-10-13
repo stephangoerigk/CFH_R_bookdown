@@ -181,9 +181,9 @@ Eine Google Suche nach einem spezifischen R Problem bringt Sie (fast) immer an I
 \hypertarget{andere-buxfccher}{%
 \section{Andere Bücher}\label{andere-buxfccher}}
 
-Die Inhalte dieser sind nicht prüfunsrelevant.
+Die Inhalte dieser Bücher sind nicht prüfunsrelevant.
 
-Es gibt viele, viele ausgezeichnete Bücher über R. Hier sind einige, die ich empfehlen kann (von denen eines sogar umsonst ist):
+Es gibt viele, viele ausgezeichnete Bücher über R. Hier sind zwei, die ich empfehlen kann (von denen eines sogar umsonst ist):
 
 \href{https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469/ref=sr_1_2?ie=UTF8\&qid=1487759316\&sr=8-2\&keywords=statistics+with+r}{Discovering Statistics with R von Field, Miles and Field}
 
@@ -551,6 +551,9 @@ In der Psychologie beobachten wir für unsere Studien fast immer mehr als eine V
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{erstellen-von-datenmatrizen}{%
+\subsection{Erstellen von Datenmatrizen}\label{erstellen-von-datenmatrizen}}
+
 Praktischer ist es, die einzelnen Vektoren in Tabellenform zu speichern, der \textbf{Datenmatrix}. In R heißen Datenmatrizen \texttt{data.frame}. Wir können die Vektoren folgendermaßen zu einem data.frame kombinieren:
 
 \begin{Shaded}
@@ -680,11 +683,57 @@ Lassen wir die Zahl nach dem Komma weg, bekommen wir alle Werte aus der Reihe:
 \hypertarget{manuell}{%
 \section{Manuell}\label{manuell}}
 
+Die manuelle Eingabe von Daten erfolgt über die \texttt{c()} Funktion. Mit ihrer Hilfe können wir Skalare zu Vektoren verbinden\ldots{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\ldots mehrere Vektoren aneinanderhängen\ldots{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{b }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{c }\OtherTok{=} \FunctionTok{c}\NormalTok{(a, b)}
+\NormalTok{c}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 4 6 1 2 3
+\end{verbatim}
+
+\ldots und Vektoren gleicher Länge zu data.frames kombinieren:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{daten }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{aufmerksamkeit =} \FunctionTok{c}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{46}\NormalTok{, }\DecValTok{29}\NormalTok{, }\DecValTok{51}\NormalTok{),}
+                   \AttributeTok{gedaechtnis =} \FunctionTok{c}\NormalTok{(}\DecValTok{22}\NormalTok{, }\DecValTok{67}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{31}\NormalTok{))}
+\NormalTok{daten}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   aufmerksamkeit gedaechtnis
+## 1             58          22
+## 2             46          67
+## 3             29          22
+## 4             51          31
+\end{verbatim}
+
 \hypertarget{automatisch}{%
 \section{Automatisch}\label{automatisch}}
 
-We have already learned the \texttt{c()} function.
-While the \texttt{c()} function is the most straightforward way to create a vector, it's also one of the most tedious. For example, let's say you wanted to create a vector of all integers from 1 to 100. You definitely don't want to have to type all the numbers into a c() operator. Thankfully, R has many simple built-in functions for generating numeric vectors. Let's start with three of them: \texttt{a:b}, \texttt{seq()}, and \texttt{rep()}:
+Wir haben bereits die \texttt{c()} Funktion gelernt.
+
+Die \texttt{c()} Funktion ist die einfachste Art einen Vektor zu erstellen, sie ist aber vermutlich auch die umständlichste. Stellen Sie sich zum Beispiel vor, Sie wollen einen Vektor erstellen, der alle Zahlen von 0 bis 100 enthält. Diese Zahlen wollen Sie definitiv nicht alle in die Klammer von \texttt{c()} eintippen.
+
+Glücklicherweise hat R viele eingebaute Funktionen, um leicht automatisch numerische Vektoren zu erstellen.
+
+Lassen Sie uns mit dreien davon starten\texttt{a:b}, \texttt{seq()}, and \texttt{rep()}:
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3881}}
@@ -709,6 +758,23 @@ Ergebnis
 
 \hypertarget{zufuxe4llig}{%
 \section{Zufällig}\label{zufuxe4llig}}
+
+In R haben Sie die möglichkeit Daten anhand einer Wahrscheinlichkeitsverteilung zu simulieren.
+
+Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten erstellen, können wir die \texttt{rnorm()} Funktion nutzen. Dafür müssen wir lediglich angeben, wie viele Werte wir haben wollen (\texttt{n}) und welchen Mittelwert (\texttt{mean}) und welche Standardabweichung (\texttt{sd}) die Verteilung haben soll:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{20}\NormalTok{, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] -0.349275137 -1.291614795  0.459790496  0.022437585 -1.497691293
+##  [6] -0.129973161 -0.672784039  0.344196398 -0.566134973 -0.493180957
+## [11] -1.216058195  0.356846236 -1.448826024 -1.582000467  0.007789353
+## [16]  2.021140100 -1.107137273  1.266657036  0.176661684 -2.645039461
+\end{verbatim}
 
 \hypertarget{daten-importieren-und-speichern}{%
 \chapter{Daten importieren und speichern}\label{daten-importieren-und-speichern}}

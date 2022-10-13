@@ -1,6 +1,5 @@
 # Datenmanipulation
 
-
 ## Löschen
 
 ## Umbennen

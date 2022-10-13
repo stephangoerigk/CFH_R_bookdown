@@ -42,7 +42,15 @@ Lassen Sie uns mit dreien davon starten`a:b`, `seq()`, and `rep()`:
 |     `seq(from, to, by, length.out)`|    `seq(from = 0, to = 6, by = 2)`|`r seq(from = 0, to = 6, by = 2)`     |
 |     `rep(x, times, each, length.out)`|    `rep(c(7, 8), times = 2, each = 2)`|`r rep(c(7, 8), times = 2, each = 2)`     |
 
-
-
 ## Zufällig
+
+In R haben Sie die möglichkeit Daten anhand einer Wahrscheinlichkeitsverteilung zu simulieren.
+
+Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten erstellen, können wir die `rnorm()` Funktion nutzen. Dafür müssen wir lediglich angeben, wie viele Werte wir haben wollen (`n`) und welchen Mittelwert  (`mean`) und welche Standardabweichung  (`sd`) die Verteilung haben soll:
+
+```{r}
+rnorm(n = 20, mean = 0, sd = 1)
+```
+
+
 
