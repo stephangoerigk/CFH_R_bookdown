@@ -193,10 +193,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html"><i class="fa fa-check"></i><b>7</b> Daten importieren und speichern</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-directory"><i class="fa fa-check"></i><b>7.1</b> Working Directory</a></li>
-<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.2</b> Working Environment</a></li>
-<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.3</b> Daten importieren</a></li>
-<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.4</b> Daten speichern</a></li>
+<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#funktionen-zur-organisation-des-workspace"><i class="fa fa-check"></i><b>7.1</b> Funktionen zur ORganisation des Workspace</a></li>
+<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#arbeitsverzeichnis-working-directory"><i class="fa fa-check"></i><b>7.2</b> Arbeitsverzeichnis (Working Directory)</a></li>
+<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.3</b> Working Environment</a></li>
+<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.4</b> Daten importieren</a></li>
+<li class="chapter" data-level="7.5" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.5</b> Daten speichern</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -220,17 +221,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="daten-importieren-und-speichern" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Kapitel 7</span> Daten importieren und speichern<a href="daten-importieren-und-speichern.html#daten-importieren-und-speichern" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="working-directory" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Working Directory<a href="daten-importieren-und-speichern.html#working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In diesem Kapitel werden wir die Grundlagen der R-Objektverwaltung behandeln. Es wird erläutert, wie Sie neue Objekte, z. B. externe Datensätze, in R laden, wie Sie die bereits vorhandenen Objekte verwalten und wie Sie Objekte aus R in externe Dateien exportieren, die Sie mit anderen Personen teilen oder für Ihre eigene zukünftige Verwendung speichern können.</p>
+<div id="funktionen-zur-organisation-des-workspace" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Funktionen zur ORganisation des Workspace<a href="daten-importieren-und-speichern.html#funktionen-zur-organisation-des-workspace" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In diesem Kapitel werden wir einige hilfreiche Funktionen zur Verwaltung Ihres Arbeitsbereichs vorstellen:</p>
+<table>
+<colgroup>
+<col width="41%" />
+<col width="58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>ls()</code></td>
+<td align="left">Alle Objekte im aktuellen Arbeitsbereich anzeigen</td>
+</tr>
+<tr class="even">
+<td align="left"><code>rm(x, y, ..)</code></td>
+<td align="left">Entfernt die Objete <code>y</code>, <code>y</code>… aus dem Arbeitsbereich</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>rm(list = ls())</code></td>
+<td align="left">Entfernt <em>alle</em> Objekte aus dem Arbeitsbereich</td>
+</tr>
+<tr class="even">
+<td align="left"><code>getwd()</code></td>
+<td align="left">Zeigt das aktuelle Arbeitsverzeichnis an</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>setwd(file = "dir)</code></td>
+<td align="left">Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad</td>
+</tr>
+<tr class="even">
+<td align="left"><code>list.files()</code></td>
+<td align="left">Zeigt die Namen aller Dateien im Arbeitsverzeichnis an</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>write.table(x, file = "mydata.txt", sep)</code></td>
+<td align="left">writes the object <code>x</code> to a text file called <code>mydata.txt</code>. Define how the columns will be separated with <code>sep</code> (e.g.; <code>sep = ","</code> for a comma–separated file, and <code>sep = \t"</code> for a tab–separated file).</td>
+</tr>
+<tr class="even">
+<td align="left"><code>save(x, y, .., file = "meineDaten.RData)</code></td>
+<td align="left">Speichert Objekte <code>x</code>, <code>y</code>, … in das R Objekt <code>meineDaten.RData</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>save.image(file = "meineSession.RData")</code></td>
+<td align="left">Speichert <em>alle</em> Objekte aus dem Arbeitsbereich nach <code>meineSession.RData</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>load(file = "meineDaten.RData")</code></td>
+<td align="left">Läd Objekte in der Datei <code>meineDaten.RData</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>foreign::read.spss("Daten.sav")</code></td>
+<td align="left">Läd den SPSS Datensatz <code>Daten.sav</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>read.csv("Daten.csv")</code></td>
+<td align="left">Läd den csv Datensatz <code>Daten.csv</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>readxl::read_xlsx("Daten.xlsx")</code></td>
+<td align="left">Läd den Excel Datensatz <code>Daten.xlsx</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ihr Computer ist ein Labyrinth aus Ordnern und Dateien. Wenn Sie außerhalb von R eine bestimmte Datei öffnen möchten, öffnen Sie wahrscheinlich ein Explorer-Fenster, mit dem Sie die Ordner auf Ihrem Computer visuell durchsuchen können. Oder Sie wählen die zuletzt geöffneten Dateien aus oder geben den Namen der Datei in ein Suchfeld ein, um den Computer die Suche für Sie übernehmen zu lassen. Während dieses Vorgehen normalerweise für nicht-programmierende Aufgaben funktioniert, ist es für R ein No-Go. Das Hauptproblem ist, dass Sie bei all diesen Methoden Ihre Ordner visuell durchsuchen und die Maus bewegen müssen, um Ordner und Dateien auszuwählen, die dem Gesuchten entsprechen. Wenn Sie in R programmieren, müssen Sie alle Schritte in Ihren Analysen so spezifizieren, dass sie von anderen und von Ihnen selbst leicht nachvollzogen werden können. Das bedeutet, dass Sie nicht einfach sagen können: “Finde diese eine Datei, die ich mir vor einer Woche gemailt habe” oder “Suche nach einer Datei, die so aussieht wie”MeinFoto.jpg”. Stattdessen müssen Sie in der Lage sein, R-Code zu schreiben, der R genau sagt, wo wichtige Dateien zu finden sind - entweder auf Ihrem Computer oder im Internet.</p>
+<p>Um diese Aufgabe zu erleichtern, verwendet R Arbeitsverzeichnisse.</p>
 </div>
-<div id="working-environment" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Working Environment<a href="daten-importieren-und-speichern.html#working-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="arbeitsverzeichnis-working-directory" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Arbeitsverzeichnis (Working Directory)<a href="daten-importieren-und-speichern.html#arbeitsverzeichnis-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Das Arbeitsverzeichnis ist lediglich ein Dateipfad auf Ihrem Computer, der den Standardspeicherort aller Dateien festlegt, die Sie in R einlesen oder aus R heraus speichern. Mit anderen Worten, ein Arbeitsverzeichnis ist wie eine kleine Kiste irgendwo auf Ihrem Computer, die an ein bestimmtes Analyseprojekt gebunden ist. Wenn Sie R auffordern, einen Datensatz zu importieren wird davon ausgegangen, dass sich die Datei in Ihrem Arbeitsverzeichnis befindet.</p>
+<p>Sie können zu jedem Zeitpunkt nur ein Arbeitsverzeichnis aktiv haben. Das aktive Arbeitsverzeichnis wird als Ihr aktuelles Arbeitsverzeichnis bezeichnet.</p>
 </div>
-<div id="daten-importieren" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Daten importieren<a href="daten-importieren-und-speichern.html#daten-importieren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="working-environment" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Working Environment<a href="daten-importieren-und-speichern.html#working-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Der Arbeitsbereich (auch als Arbeitsumgebung bezeichnet) enthält alle Objekte und Funktionen, die Sie entweder in der aktuellen Sitzung definiert oder aus einer früheren Sitzung geladen haben. Als Sie RStudio zum ersten Mal starteten, war die Arbeitsumgebung leer, da Sie keine neuen Objekte oder Funktionen erstellt hatten. Wenn Sie jedoch neue Objekte und Funktionen mit dem Zuweisungsoperator = definiert haben, wurden diese neuen Objekte in Ihrer Arbeitsumgebung gespeichert. Wenn Sie RStudio nach der Definition neuer Objekte schlossen, erhielten Sie wahrscheinlich eine Meldung mit der Frage “Save workspace image…?”. Damit möchte RStudio Sie fragen, ob Sie alle derzeit in Ihrem Arbeitsbereich definierten Objekte als Bilddatei auf Ihrem Computer speichern möchten.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="daten-importieren-und-speichern.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># getwd()</span></span></code></pre></div>
 </div>
-<div id="daten-speichern" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> Daten speichern<a href="daten-importieren-und-speichern.html#daten-speichern" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="daten-importieren" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Daten importieren<a href="daten-importieren-und-speichern.html#daten-importieren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="daten-speichern" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Daten speichern<a href="daten-importieren-und-speichern.html#daten-speichern" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>

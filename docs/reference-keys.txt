@@ -34,7 +34,8 @@ manuell
 automatisch
 zufällig
 daten-importieren-und-speichern
-working-directory
+funktionen-zur-organisation-des-workspace
+arbeitsverzeichnis-working-directory
 working-environment
 daten-importieren
 daten-speichern

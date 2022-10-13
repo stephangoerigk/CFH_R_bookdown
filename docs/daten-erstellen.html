@@ -193,10 +193,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html"><i class="fa fa-check"></i><b>7</b> Daten importieren und speichern</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-directory"><i class="fa fa-check"></i><b>7.1</b> Working Directory</a></li>
-<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.2</b> Working Environment</a></li>
-<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.3</b> Daten importieren</a></li>
-<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.4</b> Daten speichern</a></li>
+<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#funktionen-zur-organisation-des-workspace"><i class="fa fa-check"></i><b>7.1</b> Funktionen zur ORganisation des Workspace</a></li>
+<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#arbeitsverzeichnis-working-directory"><i class="fa fa-check"></i><b>7.2</b> Arbeitsverzeichnis (Working Directory)</a></li>
+<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.3</b> Working Environment</a></li>
+<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.4</b> Daten importieren</a></li>
+<li class="chapter" data-level="7.5" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.5</b> Daten speichern</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -288,10 +289,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In R haben Sie die möglichkeit Daten anhand einer Wahrscheinlichkeitsverteilung zu simulieren.</p>
 <p>Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten erstellen, können wir die <code>rnorm()</code> Funktion nutzen. Dafür müssen wir lediglich angeben, wie viele Werte wir haben wollen (<code>n</code>) und welchen Mittelwert (<code>mean</code>) und welche Standardabweichung (<code>sd</code>) die Verteilung haben soll:</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="daten-erstellen.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
-<pre><code>##  [1]  1.40987990  1.97118879  1.74003275 -2.46517776 -1.70511889  0.13207581
-##  [7] -1.21051421  0.85571922  1.11009364  1.21385523 -0.86409998 -0.04223043
-## [13] -0.46223686 -0.48850420  1.85728988  0.76145377  1.12708984 -0.92355340
-## [19]  1.01626446 -0.11044753</code></pre>
+<pre><code>##  [1] -0.4260464  1.6404275 -0.2833340 -1.1316044  0.3164867 -0.3906797
+##  [7] -0.2204286  0.6957351  0.1573187 -0.4491453 -0.6861208  0.7998028
+## [13] -0.6922638 -0.2163643  2.1262441  0.7902275 -0.5975677  0.3335141
+## [19] -0.1222743  0.4063314</code></pre>
 
 </div>
 </div>

@@ -1,8 +1,44 @@
 # Daten importieren und speichern
 
-## Working Directory
+In diesem Kapitel werden wir die Grundlagen der R-Objektverwaltung behandeln. Es wird erläutert, wie Sie neue Objekte, z. B. externe Datensätze, in R laden, wie Sie die bereits vorhandenen Objekte verwalten und wie Sie Objekte aus R in externe Dateien exportieren, die Sie mit anderen Personen teilen oder für Ihre eigene zukünftige Verwendung speichern können.
+
+## Funktionen zur ORganisation des Workspace
+
+In diesem Kapitel werden wir einige hilfreiche Funktionen zur Verwaltung Ihres Arbeitsbereichs vorstellen:
+
+| Code| Description| 
+|:------------------------|:----------------------------------|
+|`ls()`|Alle Objekte im aktuellen Arbeitsbereich anzeigen|
+|`rm(x, y, ..)`|Entfernt die Objete `y`, `y`... aus dem Arbeitsbereich|
+|`rm(list = ls())`|Entfernt *alle* Objekte aus dem Arbeitsbereich|
+|`getwd()`|Zeigt das aktuelle Arbeitsverzeichnis an |
+|`setwd(file = "dir)`|Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad |
+|`list.files()`|Zeigt die Namen aller Dateien im Arbeitsverzeichnis an |
+|`write.table(x, file = "mydata.txt", sep)`|writes the object `x` to a text file called `mydata.txt`. Define how the columns will be separated with `sep` (e.g.; `sep = ","` for a comma--separated file, and `sep = \t"` for a tab--separated file).|
+|`save(x, y, .., file = "meineDaten.RData)`|Speichert Objekte `x`, `y`, ... in das R Objekt  `meineDaten.RData` |
+|`save.image(file = "meineSession.RData")`|Speichert *alle* Objekte aus dem Arbeitsbereich nach `meineSession.RData`|
+|`load(file = "meineDaten.RData")`|Läd Objekte in der Datei `meineDaten.RData`|
+|`foreign::read.spss("Daten.sav")`|Läd den SPSS Datensatz `Daten.sav`|
+|`read.csv("Daten.csv")`|Läd den csv Datensatz `Daten.csv`|
+|`readxl::read_xlsx("Daten.xlsx")`|Läd den Excel Datensatz `Daten.xlsx`|
+
+Ihr Computer ist ein Labyrinth aus Ordnern und Dateien. Wenn Sie außerhalb von R eine bestimmte Datei öffnen möchten, öffnen Sie wahrscheinlich ein Explorer-Fenster, mit dem Sie die Ordner auf Ihrem Computer visuell durchsuchen können. Oder Sie wählen die zuletzt geöffneten Dateien aus oder geben den Namen der Datei in ein Suchfeld ein, um den Computer die Suche für Sie übernehmen zu lassen. Während dieses Vorgehen normalerweise für nicht-programmierende Aufgaben funktioniert, ist es für R ein No-Go. Das Hauptproblem ist, dass Sie bei all diesen Methoden Ihre Ordner visuell durchsuchen und die Maus bewegen müssen, um Ordner und Dateien auszuwählen, die dem Gesuchten entsprechen. Wenn Sie in R programmieren, müssen Sie alle Schritte in Ihren Analysen so spezifizieren, dass sie von anderen und von Ihnen selbst leicht nachvollzogen werden können. Das bedeutet, dass Sie nicht einfach sagen können: "Finde diese eine Datei, die ich mir vor einer Woche gemailt habe" oder "Suche nach einer Datei, die so aussieht wie "MeinFoto.jpg". Stattdessen müssen Sie in der Lage sein, R-Code zu schreiben, der R genau sagt, wo wichtige Dateien zu finden sind - entweder auf Ihrem Computer oder im Internet.
+
+Um diese Aufgabe zu erleichtern, verwendet R Arbeitsverzeichnisse.
+
+## Arbeitsverzeichnis (Working Directory)
+
+Das Arbeitsverzeichnis ist lediglich ein Dateipfad auf Ihrem Computer, der den Standardspeicherort aller Dateien festlegt, die Sie in R einlesen oder aus R heraus speichern. Mit anderen Worten, ein Arbeitsverzeichnis ist wie eine kleine Kiste irgendwo auf Ihrem Computer, die an ein bestimmtes Analyseprojekt gebunden ist. Wenn Sie R auffordern, einen Datensatz zu importieren wird davon ausgegangen, dass sich die Datei in Ihrem Arbeitsverzeichnis befindet.
+
+Sie können zu jedem Zeitpunkt nur ein Arbeitsverzeichnis aktiv haben. Das aktive Arbeitsverzeichnis wird als Ihr aktuelles Arbeitsverzeichnis bezeichnet.
 
 ## Working Environment
+
+Der Arbeitsbereich (auch als Arbeitsumgebung bezeichnet) enthält alle Objekte und Funktionen, die Sie entweder in der aktuellen Sitzung definiert oder aus einer früheren Sitzung geladen haben. Als Sie RStudio zum ersten Mal starteten, war die Arbeitsumgebung leer, da Sie keine neuen Objekte oder Funktionen erstellt hatten. Wenn Sie jedoch neue Objekte und Funktionen mit dem Zuweisungsoperator = definiert haben, wurden diese neuen Objekte in Ihrer Arbeitsumgebung gespeichert. Wenn Sie RStudio nach der Definition neuer Objekte schlossen, erhielten Sie wahrscheinlich eine Meldung mit der Frage "Save workspace image...?". Damit möchte RStudio Sie fragen, ob Sie alle derzeit in Ihrem Arbeitsbereich definierten Objekte als Bilddatei auf Ihrem Computer speichern möchten.
+
+```{r}
+# getwd()
+```
 
 ## Daten importieren
 
