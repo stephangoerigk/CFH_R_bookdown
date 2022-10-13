@@ -165,7 +165,7 @@ In R durchgeführte Analysen sind transparent, leicht weiterzugeben und reproduz
 \hypertarget{cheat-sheets}{%
 \section{Cheat Sheets}\label{cheat-sheets}}
 
-Im Laufe dieses Buches werden Sie viele neue Funktionen kennenlernen. Wäre es nicht schön, wenn jemand ein Wörterbuch mit vielen gängigen R-Funktionen erstellen würde? Ja, das wäre es, und zum Glück haben einige freundliche R-Programmierer genau das getan. Im Folgenden finden Sie eine Tabelle mit einigen der Funktionen, die ich empfehle. Ich empfehle Ihnen dringend, diese auszudrucken und die Funktionen zu markieren, wenn Sie sie lernen!
+In diesem Skript werden Sie viele neue Funktionen kennenlernen. Wäre es nicht schön, wenn jemand ein Wörterbuch mit vielen gängigen R-Funktionen erstellen würde? Ja, das wäre es, und zum Glück haben einige freundliche R-Programmierer genau das getan. Im Folgenden finden Sie eine Tabelle mit einigen der Funktionen, die ich empfehle. Ich empfehle Ihnen dringend, diese auszudrucken und die Funktionen zu markieren, wenn Sie sie lernen!
 
 \href{https://cran.r-project.org/doc/contrib/Short-refcard.pdf}{Link zum Base R Cheat Sheet}
 
@@ -770,10 +770,10 @@ Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten e
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]  1.55841478  0.12349688 -0.81843797  0.49951008 -1.67462373 -0.56036097
-##  [7] -0.19531351 -1.44516307 -1.58724874 -1.07656746 -1.41580396 -0.30508666
-## [13] -1.04031622  0.81096622  1.34244122 -0.06229402 -0.95722602  0.03262094
-## [19]  2.39932131  0.76793479
+##  [1] -0.676115136 -0.171969679  0.306232090 -0.800400057 -1.181672922
+##  [6]  1.029018284  0.320644226 -1.357536238 -0.296311223  0.899782910
+## [11] -1.438981709  0.822451877 -0.099150391 -0.009723485 -1.557083540
+## [16] -2.757032999  0.618971851 -0.061360696 -0.169244760  1.347032053
 \end{verbatim}
 
 \hypertarget{daten-importieren-und-speichern}{%
@@ -790,181 +790,6 @@ Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten e
 
 \hypertarget{daten-speichern}{%
 \section{Daten speichern}\label{daten-speichern}}
-
-\hypertarget{daten-explorieren}{%
-\chapter{Daten Explorieren}\label{daten-explorieren}}
-
-\hypertarget{informationen-uxfcber-r-objekt}{%
-\section{Informationen über R Objekt}\label{informationen-uxfcber-r-objekt}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#length()}
-\CommentTok{\#str()}
-\CommentTok{\#nrow()}
-\CommentTok{\#ncol()}
-\CommentTok{\#is.na()}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{deskriptivstatistiken}{%
-\section{Deskriptivstatistiken}\label{deskriptivstatistiken}}
-
-\hypertarget{nominale-variablen}{%
-\subsection{Nominale Variablen}\label{nominale-variablen}}
-
-\hypertarget{absolute-huxe4ufigkeiten}{%
-\subsubsection{Absolute Häufigkeiten}\label{absolute-huxe4ufigkeiten}}
-
-\hypertarget{relative-huxe4ufigkeiten}{%
-\subsubsection{Relative Häufigkeiten}\label{relative-huxe4ufigkeiten}}
-
-\hypertarget{numerische-variablen}{%
-\subsection{Numerische Variablen}\label{numerische-variablen}}
-
-\hypertarget{lagemauxdfe}{%
-\subsubsection{Lagemaße}\label{lagemauxdfe}}
-
-\hypertarget{streuungsmauxdfe}{%
-\subsubsection{Streuungsmaße}\label{streuungsmauxdfe}}
-
-\hypertarget{alles-auf-einen-blick}{%
-\subsection{Alles auf einen Blick}\label{alles-auf-einen-blick}}
-
-\hypertarget{gruppenweise-deskriptivstatistiken}{%
-\subsection{Gruppenweise Deskriptivstatistiken}\label{gruppenweise-deskriptivstatistiken}}
-
-\hypertarget{datenmanipulation}{%
-\chapter{Datenmanipulation}\label{datenmanipulation}}
-
-\hypertarget{luxf6schen}{%
-\section{Löschen}\label{luxf6schen}}
-
-\hypertarget{umbennen}{%
-\section{Umbennen}\label{umbennen}}
-
-\hypertarget{veruxe4ndern}{%
-\section{Verändern}\label{veruxe4ndern}}
-
-\hypertarget{aggreggieren}{%
-\section{Aggreggieren}\label{aggreggieren}}
-
-\hypertarget{transformieren}{%
-\section{Transformieren}\label{transformieren}}
-
-\hypertarget{von-long-nach-wide}{%
-\subsection{Von Long nach Wide}\label{von-long-nach-wide}}
-
-\hypertarget{skalieren}{%
-\subsection{Skalieren}\label{skalieren}}
-
-\hypertarget{graphiken}{%
-\chapter{Graphiken}\label{graphiken}}
-
-\hypertarget{ggplot}{%
-\section{ggplot()}\label{ggplot}}
-
-\hypertarget{geom_histogram}{%
-\section{geom\_histogram()}\label{geom_histogram}}
-
-\hypertarget{geom_point}{%
-\section{geom\_point()}\label{geom_point}}
-
-\hypertarget{geom_line-und-geom_smooth}{%
-\section{geom\_line() und geom\_smooth()}\label{geom_line-und-geom_smooth}}
-
-\hypertarget{geom_bar}{%
-\section{geom\_bar()}\label{geom_bar}}
-
-\hypertarget{geom_boxplot}{%
-\section{geom\_boxplot()}\label{geom_boxplot}}
-
-\hypertarget{facetting}{%
-\section{Facetting}\label{facetting}}
-
-\hypertarget{uxe4sthetische-anpassungen}{%
-\section{Ästhetische Anpassungen}\label{uxe4sthetische-anpassungen}}
-
-\hypertarget{ggtitle}{%
-\subsection{ggtitle()}\label{ggtitle}}
-
-\hypertarget{labs}{%
-\subsection{labs()}\label{labs}}
-
-\hypertarget{farben-formen-fuxfcllungen}{%
-\subsection{Farben, Formen, Füllungen}\label{farben-formen-fuxfcllungen}}
-
-\hypertarget{achsen-veruxe4ndern}{%
-\subsection{Achsen verändern}\label{achsen-veruxe4ndern}}
-
-\hypertarget{theme}{%
-\section{theme()}\label{theme}}
-
-\hypertarget{abbildungen-kombinieren}{%
-\section{Abbildungen kombinieren}\label{abbildungen-kombinieren}}
-
-\hypertarget{abbildungen-exportieren}{%
-\section{Abbildungen exportieren}\label{abbildungen-exportieren}}
-
-\hypertarget{tabellen}{%
-\chapter{Tabellen}\label{tabellen}}
-
-\hypertarget{preprocessing}{%
-\chapter{Preprocessing}\label{preprocessing}}
-
-\hypertarget{fehlende-werte}{%
-\section{Fehlende Werte}\label{fehlende-werte}}
-
-\hypertarget{ausreiuxdfer}{%
-\section{Ausreißer}\label{ausreiuxdfer}}
-
-\hypertarget{schiefe-daten}{%
-\section{Schiefe Daten}\label{schiefe-daten}}
-
-\hypertarget{korrelation}{%
-\chapter{Korrelation}\label{korrelation}}
-
-\hypertarget{pearson-korrelation}{%
-\section{Pearson Korrelation}\label{pearson-korrelation}}
-
-\hypertarget{spearman-korrelation}{%
-\section{Spearman Korrelation}\label{spearman-korrelation}}
-
-\hypertarget{kendall-korrelation}{%
-\section{Kendall Korrelation}\label{kendall-korrelation}}
-
-\hypertarget{korrelationmatrix}{%
-\section{Korrelationmatrix}\label{korrelationmatrix}}
-
-\hypertarget{regression}{%
-\chapter{Regression}\label{regression}}
-
-\hypertarget{lineare-regression}{%
-\section{Lineare Regression}\label{lineare-regression}}
-
-\hypertarget{logistische-regression}{%
-\section{Logistische Regression}\label{logistische-regression}}
-
-\hypertarget{mehrstufige-uvs}{%
-\chapter{Mehrstufige UVs}\label{mehrstufige-uvs}}
-
-\hypertarget{omnibus-test}{%
-\section{Omnibus Test}\label{omnibus-test}}
-
-\hypertarget{paarweise-vergleiche}{%
-\section{Paarweise Vergleiche}\label{paarweise-vergleiche}}
-
-\hypertarget{mehrere-uvs}{%
-\chapter{Mehrere UVs}\label{mehrere-uvs}}
-
-\hypertarget{multiple-regression}{%
-\section{Multiple Regression}\label{multiple-regression}}
-
-\hypertarget{interaktionsterme}{%
-\section{Interaktionsterme}\label{interaktionsterme}}
-
-\hypertarget{manuskripterstellung}{%
-\chapter{Manuskripterstellung}\label{manuskripterstellung}}
 
   \bibliography{book.bib,packages.bib}
 
