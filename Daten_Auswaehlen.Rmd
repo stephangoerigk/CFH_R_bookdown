@@ -38,13 +38,15 @@ testdata[3,]
 testdata[,2]
 ```
 
-Die Auswahl mittels eines numerischen Index ist unkompliziert , aber es lann manchmal aufwendig sein aus großen Datensätzen eine Vielzahl von Fällen bzw. Variablen auszuwählen. Zudem verschieben sich Indizes auch, wenn wir einzelne Fälle oder Variablen aus dem Datensatz löschen oder welche hinzufügen.
+Die Auswahl mittels eines numerischen Index ist unkompliziert, aber es kann manchmal aufwendig sein aus großen Datensätzen eine Vielzahl von Fällen bzw. Variablen auszuwählen. 
+Zudem **verschieben** sich Indizes auch, wenn wir einzelne Fälle oder Variablen aus dem Datensatz löschen oder welche hinzufügen.
 
 Wir brauchen also auch Strategien, nach welchen wir Daten mit einer **Logik** auswählen können. 
 
-Wir werden, um dies zu demontrieren, als Beispiel den Datensatz "starwars" aus dem `dplyr` Paket nutzen, welches wir vorher installieren und mittels `library()` laden. 
+Um dies auszuprobieren, werden wir als Beispiel den Datensatz "starwars" verwenden. Dieser ist in dem Paket `dplyr` gespeichert, welches wir vorher installieren und mittels `library()` laden. 
 
-Dieser Datensatz ist ausreichend groß, denn er umfasst alle in den Star-Wars Filmen vorkommenden Charaktere und beschreibt diese auf einer Vielzahl von Variablen. Wir wollen nur die ersten 11 Variablen nutzen (die anderen enthalten zu lange Einträge).
+Der Datensatz "starwars" umfasst alle in den Star-Wars Filmen vorkommenden Charaktere und beschreibt diese auf einer Vielzahl von Variablen. 
+Wir wollen nur die ersten 11 Variablen nutzen (die anderen enthalten zu lange Einträge).
 
 ```{r message=FALSE, warning=FALSE}
 library(dplyr)
@@ -70,7 +72,7 @@ Um zum z.B. die Gewichte aller Charaktere auszuwählen, die **genau** 79kg wiege
 gewicht[gewicht == 79]
 ```
 
-Wie wir sehen, wählt R genau die Charaktere, die 79kg wiegen. Zusätzlich behält R jedoch auch alle Positionen, die einen fehlenden Wert aufweise, da hier die Aussage `gewicht == 79` faktisch nicht **falsch** ist.
+Wie wir sehen, wählt R genau die Charaktere, die 79kg wiegen. Zusätzlich behält R jedoch auch alle Positionen, die einen fehlenden Wert aufweisen, da hier die Aussage `gewicht == 79` faktisch nicht **falsch** ist.
 
 Wollen wir die fehlenden Werte entfernen, können wir die sehr nützliche Funktion `which()` nutzen. Diese befiehlt R alle Werte auszuwählen, auf die das Statement **explizit zutrifft**:
 
@@ -91,7 +93,7 @@ Zur Auswahl nur braunhaariger Charaktere schreiben wir z.B.:
 haarfarbe[which(haarfarbe == "brown")]
 ```
 
-Interessieren uns alle Werte, die genau nicht 79 kg (also $\neq79$) sind nutzen wir `!`, was in R immer so viel wie *nicht* bedeutet:
+Interessieren uns alle Werte, die genau nicht 79 kg (also ungleich 79 sind) sind nutzen wir `!`, was in R immer so viel wie *nicht* bedeutet:
 
 ```{r}
 gewicht[which(gewicht != 79)]
@@ -123,6 +125,12 @@ gewicht[which(gewicht < 50 | gewicht > 100)]
 ```
 
 ## Dataframe
+
+Um die Ausgaben etwas übersichtlicher zu gestalten (der starwars dataframe hat 89 Zeilen), beschränken wir den Datensatz für den nächsten Abschnitt auf die ersten 5 Zeilen:
+
+```{r}
+starwars = starwars[1:5,]
+```
 
 ### Zeilen (Fälle) auswählen
 

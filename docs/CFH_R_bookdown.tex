@@ -117,7 +117,7 @@
 
 \title{Einführung in R}
 \author{Stephan Goerigk}
-\date{2022-10-13}
+\date{2022-10-20}
 
 \begin{document}
 \maketitle
@@ -134,7 +134,7 @@ Liebe Studierende,
 
 dieses Skript soll Sie in die grundlegenden Analysewerkzeuge in R einführen, von der grundlegenden Kodierung und Analyse bis hin zur Datenverarbeitung, dem Plotten und der statistischen Inferenz.
 
-Wenn R Ihre erste Programmiersprache ist, ist das völlig in Ordnung. Wir gehen alles Schritt für Schritt gemeinsam durch. Die Techniken in diesem Buch sind zwar auf die meisten Datenanalyseprobleme anwendbar, da wir jedoch aus der Psychologie kommen, werde ich den Kurs auf die Lösung von Analyseproblemen ausrichten, die in der psychologischen Forschung häufig auftreten.
+Wenn R Ihre erste Programmiersprache ist, ist das völlig in Ordnung. Wir gehen alles Schritt für Schritt gemeinsam durch. Die Techniken in diesem Skript sind zwar auf die meisten Datenanalyseprobleme anwendbar, da wir jedoch aus der Psychologie kommen, werde ich den Kurs auf die Lösung von Analyseproblemen ausrichten, die in der psychologischen Forschung häufig auftreten.
 
 Ich wünsche Ihnen Viel Erfolg und Spaß!
 
@@ -772,10 +772,10 @@ Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten e
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]  0.68071251  0.01081914  0.54228901  0.88462382  0.40850961 -0.71401971
-##  [7]  1.00804396 -0.74217360 -0.39099623  0.63593396 -0.26811788 -0.25618546
-## [13] -0.49961666 -0.61526780  0.31446141  0.21037250  1.01921704  0.70867677
-## [19]  0.89245593  1.46940607
+##  [1]  1.96501212 -0.25321365  0.47219103  1.28883583 -1.57347288  0.53415690
+##  [7] -0.29372307 -0.01285281  1.61534321  1.31635707 -0.23371774  0.49362428
+## [13]  0.23207484  0.02775664  0.48418720 -0.03156551  0.74986488  0.17634227
+## [19]  0.85342936  0.13942189
 \end{verbatim}
 
 \hypertarget{daten-importieren-und-speichern}{%
@@ -784,7 +784,7 @@ Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten e
 In diesem Kapitel werden wir die Grundlagen der R-Objektverwaltung behandeln. Es wird erläutert, wie Sie neue Objekte, z. B. externe Datensätze, in R laden, wie Sie die bereits vorhandenen Objekte verwalten und wie Sie Objekte aus R in externe Dateien exportieren, die Sie mit anderen Personen teilen oder für Ihre eigene zukünftige Verwendung speichern können.
 
 \hypertarget{funktionen-zur-organisation-des-workspace}{%
-\section{Funktionen zur ORganisation des Workspace}\label{funktionen-zur-organisation-des-workspace}}
+\section{Funktionen zur Organisation des Workspace}\label{funktionen-zur-organisation-des-workspace}}
 
 In diesem Kapitel werden wir einige hilfreiche Funktionen zur Verwaltung Ihres Arbeitsbereichs vorstellen:
 
@@ -806,9 +806,9 @@ Description
 \texttt{setwd(file\ =\ "dir)} & Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad \\
 \texttt{list.files()} & Zeigt die Namen aller Dateien im Arbeitsverzeichnis an \\
 \texttt{write.table(x,\ file\ =\ "mydata.txt",\ sep)} & writes the object \texttt{x} to a text file called \texttt{mydata.txt}. Define how the columns will be separated with \texttt{sep} (e.g.; \texttt{sep\ =\ ","} for a comma--separated file, and \texttt{sep\ =\ \textbackslash{}t"} for a tab--separated file). \\
-\texttt{save(x,\ y,\ ..,\ file\ =\ "meineDaten.RData)} & Speichert Objekte \texttt{x}, \texttt{y}, \ldots{} in das R Objekt \texttt{meineDaten.RData} \\
+\texttt{write\_rds(x,"meineDaten.rds)} & Speichert Objekt x in das R Objekt \texttt{meineDaten.rds} \\
 \texttt{save.image(file\ =\ "meineSession.RData")} & Speichert \emph{alle} Objekte aus dem Arbeitsbereich nach \texttt{meineSession.RData} \\
-\texttt{load(file\ =\ "meineDaten.RData")} & Läd Objekte in der Datei \texttt{meineDaten.RData} \\
+\texttt{read\_rds}(``Daten.rds'')\texttt{\textbar{}Läd\ das\ rds\ Objekt}Daten.rds\texttt{\textbar{}\ \textbar{}}read.csv\texttt{("Daten.csv")} & Läd den csv Datensatz \texttt{Daten.csv} \\
 \texttt{foreign::read.spss("Daten.sav")} & Läd den SPSS Datensatz \texttt{Daten.sav} \\
 \texttt{read.csv("Daten.csv")} & Läd den csv Datensatz \texttt{Daten.csv} \\
 \texttt{readxl::read\_xlsx("Daten.xlsx")} & Läd den Excel Datensatz \texttt{Daten.xlsx} \\
@@ -840,8 +840,761 @@ Der Arbeitsbereich (auch als Arbeitsumgebung bezeichnet) enthält alle Objekte u
 \hypertarget{daten-importieren}{%
 \section{Daten importieren}\label{daten-importieren}}
 
+Wenn Sie Daten in Ihrem Arbeitsverzeichnis haben, können Sie diese nun in R einlesen und dort mit ihnen rechnen. Nehmen wir an, Sie haben in Ihrem Arbeitsverzeichnis einen Ordner mit dem Namen \texttt{data}.
+
+Je nachdem in welchem Format die Daten vorliegen, muss ein eigener Befehl genutzt werden. Teilweise braucht man hier auch eigene Pakete (z.B. Excel- oder SPSS-Format).
+
+\hypertarget{rds-format}{%
+\subsection{rds-Format}\label{rds-format}}
+
+.rds ist das R-eigene Format. Es speichert alle Objekte die es in R gibt, also potentiell nicht nur Datensätze, sondern auch Testergebnisse, Bilder, o.ä. mittels der Funktion \texttt{read\_rds()} können wir die Objekte einlesen. Dafür müssen wir das Paket \texttt{readr} installiert und mittels \texttt{library} eingelesen haben.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{=} \FunctionTok{load}\NormalTok{(}\AttributeTok{file =} \StringTok{"data/personality.RData"}\NormalTok{)}
+
+\CommentTok{\# erste Zeilen des Datensatzes ansehen}
+\FunctionTok{head}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "data"
+\end{verbatim}
+
+\hypertarget{csv-format}{%
+\subsection{csv-Format}\label{csv-format}}
+
+Das .csv Format (comma-separated-values) ist eines der gängigsten in der Statistik. Es lässt sich mit allen gebräuchlichen Tabellenprogrammen öffnen (also neben R auch mit Excel, Numbers, o.ä.).
+
+Um einen .csv Datensatz einzulesen, speichern wir ihn mittel \texttt{read.csv()} in ein von uns benanntes Objekt. Dieses können wir nennen wie wir wollen, z.B. \texttt{data} (schön kurz):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/personality.csv"}\NormalTok{)}
+
+\CommentTok{\# erste Zeilen des Datensatzes ansehen}
+\FunctionTok{head}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
+## 1  1       2       4       0       3       3       0       2       3       0
+## 2  2       4       4       0       3       4       0       4       4       0
+## 3  3       4       4       2       4       4       0       4       4       0
+## 4  4       4       3       4       3       3       0       2       4       0
+## 5  5       4       4       1       3       3       0       3       4       4
+## 6  6       4       4       0       4       0       1       4       4       0
+##   NEO_10_G NEO_11_N NEO_12_E NEO_13_O NEO_14_V NEO_15_G NEO_16_N NEO_17_E
+## 1        3        4        1        2        0        4        4        3
+## 2        4        1        0        3        0        3        4        4
+## 3        4        4        2        4        0        0        4        4
+## 4        3        0        0        2        0        0        4        4
+## 5        3        1        4        4        0        0        4        4
+## 6        2        0        0        4        0        0        4        4
+##   NEO_18_O NEO_19_V NEO_20_G NEO_21_N NEO_22_E NEO_23_O NEO_24_V NEO_25_G
+## 1        4        3        4        0        4        2        2        3
+## 2        3        4        4        0        3        4        0        4
+## 3        0        4        4        0        4        4        1        4
+## 4        0        4        4        4        4        4        0        3
+## 5        0        4        1        1        3        4        0        2
+## 6        0        4        4        0        3        4        4        4
+##   NEO_26_N NEO_27_E NEO_28_O NEO_29_V NEO_30_G NEO_31_N NEO_32_E NEO_33_O
+## 1        4        4        4        2        4        3        0        0
+## 2        2        0        1        0        4        4        4        4
+## 3        4        0        0        0        1        4        4        3
+## 4        0        0        0        0        0        4        4        0
+## 5        0        4        4        2        4        4        3        4
+## 6        0        0        4        2        0        4        3        2
+##   NEO_34_V NEO_35_G NEO_36_N NEO_37_E NEO_38_O NEO_39_V NEO_40_G NEO_41_N
+## 1        3        4        2        4        1        0        4        4
+## 2        4        4        0        4        3        1        4        0
+## 3        4        4        3        4        2        0        4        0
+## 4        3        4        0        3        3        1        4        0
+## 5        3        3        0        4        0        2        3        0
+## 6        4        4        0        2        4        2        4        0
+##   NEO_42_E NEO_43_O NEO_44_V NEO_45_G NEO_46_N NEO_47_E NEO_48_O NEO_49_V
+## 1        2        1        4        0        4        4        3        3
+## 2        2        4        0        2        4        0        4        4
+## 3        4        4        4        0        4        0        4        4
+## 4        2        2        0        0        4        4        3        3
+## 5        0        2        0        1        4        0        2        3
+## 6        0        4        0        0        4        0        2        4
+##   NEO_50_G NEO_51_N NEO_52_E NEO_53_O NEO_54_V NEO_55_G NEO_56_N NEO_57_E
+## 1        3        0        4        2        0        0        2        2
+## 2        4        0        4        4        0        0        0        0
+## 3        4        3        4        4        4        0        0        1
+## 4        4        4        4        1        0        0        4        0
+## 5        3        0        3        3        0        4        0        1
+## 6        4        0        4        4        1        0        0        0
+##   NEO_58_O NEO_59_V NEO_60_G
+## 1        3        1        4
+## 2        3        0        4
+## 3        4        0        4
+## 4        4        1        3
+## 5        3        4        4
+## 6        4        0        3
+\end{verbatim}
+
+\hypertarget{sav-format}{%
+\subsection{sav-Format}\label{sav-format}}
+
+Das .sav Format ist das Format in welchem SPSS Datensätze abgespeichert werden. Dies kommt gerade in den Sozialwissenschaften relativ häufig vor, weshalb wir diese Art von Datein auf jeden Fall einlesen können sollten.
+
+Um einen .sav Datensatz einzulesen, speichern wir ihn mittel \texttt{read.spss()} in ein von uns benanntes Objekt. Dafür müssen wir das Paket \texttt{foreign} installiert und mittels \texttt{library} eingelesen haben. Damit R den Datensatz automatisch in einen data.frame speichert, geben wir als Zusatzoption \texttt{to.data.frame\ =\ TRUE} an:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(foreign)}
+\NormalTok{data }\OtherTok{=} \FunctionTok{read.spss}\NormalTok{(}\StringTok{"data/personality.sav"}\NormalTok{, }\AttributeTok{to.data.frame =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# erste Zeilen des Datensatzes ansehen}
+\FunctionTok{head}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
+## 1  1       2       4       0       3       3       0       2       3       0
+## 2  2       4       4       0       3       4       0       4       4       0
+## 3  3       4       4       2       4       4       0       4       4       0
+## 4  4       4       3       4       3       3       0       2       4       0
+## 5  5       4       4       1       3       3       0       3       4       4
+## 6  6       4       4       0       4       0       1       4       4       0
+##   NEO_10_G NEO_11_N NEO_12_E NEO_13_O NEO_14_V NEO_15_G NEO_16_N NEO_17_E
+## 1        3        4        1        2        0        4        4        3
+## 2        4        1        0        3        0        3        4        4
+## 3        4        4        2        4        0        0        4        4
+## 4        3        0        0        2        0        0        4        4
+## 5        3        1        4        4        0        0        4        4
+## 6        2        0        0        4        0        0        4        4
+##   NEO_18_O NEO_19_V NEO_20_G NEO_21_N NEO_22_E NEO_23_O NEO_24_V NEO_25_G
+## 1        4        3        4        0        4        2        2        3
+## 2        3        4        4        0        3        4        0        4
+## 3        0        4        4        0        4        4        1        4
+## 4        0        4        4        4        4        4        0        3
+## 5        0        4        1        1        3        4        0        2
+## 6        0        4        4        0        3        4        4        4
+##   NEO_26_N NEO_27_E NEO_28_O NEO_29_V NEO_30_G NEO_31_N NEO_32_E NEO_33_O
+## 1        4        4        4        2        4        3        0        0
+## 2        2        0        1        0        4        4        4        4
+## 3        4        0        0        0        1        4        4        3
+## 4        0        0        0        0        0        4        4        0
+## 5        0        4        4        2        4        4        3        4
+## 6        0        0        4        2        0        4        3        2
+##   NEO_34_V NEO_35_G NEO_36_N NEO_37_E NEO_38_O NEO_39_V NEO_40_G NEO_41_N
+## 1        3        4        2        4        1        0        4        4
+## 2        4        4        0        4        3        1        4        0
+## 3        4        4        3        4        2        0        4        0
+## 4        3        4        0        3        3        1        4        0
+## 5        3        3        0        4        0        2        3        0
+## 6        4        4        0        2        4        2        4        0
+##   NEO_42_E NEO_43_O NEO_44_V NEO_45_G NEO_46_N NEO_47_E NEO_48_O NEO_49_V
+## 1        2        1        4        0        4        4        3        3
+## 2        2        4        0        2        4        0        4        4
+## 3        4        4        4        0        4        0        4        4
+## 4        2        2        0        0        4        4        3        3
+## 5        0        2        0        1        4        0        2        3
+## 6        0        4        0        0        4        0        2        4
+##   NEO_50_G NEO_51_N NEO_52_E NEO_53_O NEO_54_V NEO_55_G NEO_56_N NEO_57_E
+## 1        3        0        4        2        0        0        2        2
+## 2        4        0        4        4        0        0        0        0
+## 3        4        3        4        4        4        0        0        1
+## 4        4        4        4        1        0        0        4        0
+## 5        3        0        3        3        0        4        0        1
+## 6        4        0        4        4        1        0        0        0
+##   NEO_58_O NEO_59_V NEO_60_G
+## 1        3        1        4
+## 2        3        0        4
+## 3        4        0        4
+## 4        4        1        3
+## 5        3        4        4
+## 6        4        0        3
+\end{verbatim}
+
+\hypertarget{xlsx-format}{%
+\subsection{xlsx-Format}\label{xlsx-format}}
+
+Das .xlsx Format ist das Format in welchem Excel Datensätze abgespeichert werden. Auch das kommt oft vor, da es viele Forscher:innen vorziehen Daten in Excel Tabellen einzutragen.
+
+Um einen .xlsx Datensatz einzulesen, speichern wir ihn mittel \texttt{read\_xlsx()} in ein von uns benanntes Objekt. Dafür müssen wir das Paket \texttt{readxl} installiert und mittels \texttt{library} eingelesen haben. Da in Excel Tabellen manchmal mehrere Arbeitsblätter (engl. ``sheets'') vorliegen, geben wir den Namen des Arbeitsblatt, welches wir brauchen, zusätzlich an:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readxl)}
+\NormalTok{data }\OtherTok{=} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"data/personality.xlsx"}\NormalTok{, }\AttributeTok{sheet =} \StringTok{"Tabelle1"}\NormalTok{)}
+
+\CommentTok{\# erste Zeilen des Datensatzes ansehen}
+\FunctionTok{head}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 61
+##      ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
+##   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl> <chr>     <dbl> <chr>  
+## 1     1       2       4       0       3       3       0 2             3 0      
+## 2     2       4       4       0       3       4       0 4             4 0      
+## 3     3       4       4       2       4       4       0 4             4 0      
+## 4     4       4       3       4       3       3       0 2             4 0      
+## 5     5       4       4       1       3       3       0 3             4 4      
+## 6     6       4       4       0       4       0       1 4             4 0      
+## # ... with 51 more variables: NEO_10_G <dbl>, NEO_11_N <dbl>, NEO_12_E <dbl>,
+## #   NEO_13_O <dbl>, NEO_14_V <dbl>, NEO_15_G <dbl>, NEO_16_N <dbl>,
+## #   NEO_17_E <dbl>, NEO_18_O <dbl>, NEO_19_V <dbl>, NEO_20_G <dbl>,
+## #   NEO_21_N <dbl>, NEO_22_E <dbl>, NEO_23_O <dbl>, NEO_24_V <dbl>,
+## #   NEO_25_G <dbl>, NEO_26_N <dbl>, NEO_27_E <dbl>, NEO_28_O <dbl>,
+## #   NEO_29_V <dbl>, NEO_30_G <dbl>, NEO_31_N <dbl>, NEO_32_E <dbl>,
+## #   NEO_33_O <dbl>, NEO_34_V <dbl>, NEO_35_G <dbl>, NEO_36_N <dbl>, ...
+\end{verbatim}
+
 \hypertarget{daten-speichern}{%
 \section{Daten speichern}\label{daten-speichern}}
+
+In alle vorgestellten Formate können wir unsere Daten natürlich auch abspeichern. Erstellen wir dafür einen schnellen Test-Datensatz mittels \texttt{data.frame}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{newdata }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Variable1 =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{),}
+                     \AttributeTok{Variable2 =} \FunctionTok{c}\NormalTok{(}\StringTok{"Person1"}\NormalTok{, }\StringTok{"Person2"}\NormalTok{, }\StringTok{"Person3"}\NormalTok{, }\StringTok{"Person4"}\NormalTok{))}
+\NormalTok{newdata}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Variable1 Variable2
+## 1         1   Person1
+## 2         2   Person2
+## 3         3   Person3
+## 4         4   Person4
+\end{verbatim}
+
+\hypertarget{rds-format-1}{%
+\subsection{rds-Format}\label{rds-format-1}}
+
+Um in das R eigene .rds Format zu speichern, nutzen wir wieder das \texttt{readr} Paket, welches wir zunächst mittels \texttt{library} laden. Der Befehl ist nun \texttt{write\_rds()}. Innerhalb des Befehls geben wir einfach das Objekt (z.B. unseren Datensatz) an, welches wir speichern wollen. Unter \texttt{file} geben wir der Datei einen Namen, so wie wir sie auf unserer Festplatte gepeichert haben wollen. Wichtig: Das Kürzel des Dateityps (.rds) nicht vergessen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Paket 'readr' wurde unter R Version 3.6.2 erstellt
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write\_rds}\NormalTok{(}\AttributeTok{x =}\NormalTok{ newdata, }\AttributeTok{file =} \StringTok{"data.rds"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Die Datei erscheint nun in Ihrem Arbeitsverzeichnis.
+
+\hypertarget{csv-format-1}{%
+\subsection{csv-Format}\label{csv-format-1}}
+
+Speichern in das .csv Format funktioniert analog:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write.csv}\NormalTok{(}\AttributeTok{x =}\NormalTok{ newdata, }\AttributeTok{file =} \StringTok{"newdata.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Hier ein Tipp für Sie: Wie oben bereits erwähnt ist csv ein ``Komma-getrenntes'' Format. In Deutschland haben wir die besonderheit, dass wir Dezimalstellen manchmal mit ``,'' trennen, während man im englisch-sprachigen Raum i.d.R. ``.'' verwendet. Sollte die abgespeicherte Datei komisch aussehen, wenn Sie sie z.B. in Excel öffnen, liegt das vermutlich an der deutschen Einstellung Ihres Programms. Probieren Sie in diesem Fall statt der \texttt{write.csv()} Funktion einmal die \texttt{write.csv2()} Funktion aus, dies wird Ihr Problem lösen.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write.csv2}\NormalTok{(}\AttributeTok{x =}\NormalTok{ newdata, }\AttributeTok{file =} \StringTok{"newdata.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{sav-format-1}{%
+\subsection{sav-Format}\label{sav-format-1}}
+
+Zum Speichern in das SPSS Format .sav nutzen wir die Funktion \texttt{write\_sav()} aus dem Paket \texttt{haven}, welches wir zuvor mittel \texttt{library()} laden.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(haven)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Paket 'haven' wurde unter R Version 3.6.2 erstellt
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write\_sav}\NormalTok{(newdata, }\StringTok{"newdata.sav"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{xlsx-format-1}{%
+\subsection{xlsx-Format}\label{xlsx-format-1}}
+
+Zum Speichern in das Excel Format .xlsx nutzen wir die Funktion \texttt{WriteXLS} aus dem Paket \texttt{WriteXLS}, welches wir zuvor mittel \texttt{library()} laden.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(WriteXLS)}
+
+\FunctionTok{WriteXLS}\NormalTok{(newdata, }\StringTok{"newdata.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{daten-auswuxe4hlen}{%
+\chapter{Daten auswählen}\label{daten-auswuxe4hlen}}
+
+Oft wollen wir nur mit einem Teil der verfügbaren Daten rechnen. In diesem Fall müssen wir uns die relevanten Daten aus dem größeren Datenobjet ``herausziehen''.
+
+Eine Möglichkeit, die \textbf{Indizierung} mit Zahlen haben wir bereits kennengelernt. Diese funktioniert mit eckigen Klammern \texttt{{[}{]}}. Für die Auswahl eines bestimmten Objekts schreiben wir einfach dessen numerische Position mittels einer Zahl in die Klammern:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{8}\NormalTok{)}
+
+\CommentTok{\# Für das 3. Objekt}
+\NormalTok{a[}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+Dies funktioniert auch, wenn wir mehrere Objekte auswählen wollen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Für das 1. und 3. Objekt}
+\NormalTok{a[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 6
+\end{verbatim}
+
+Bei data.frames, die sowohl Zeilen als auch Spalten haben, trennen wir die eckigen Klammern mit einem Komma \texttt{{[},{]}}. Alles vor dem Komma bezieht sich auf die Zeilen (Fälle), alles nach dem Komma auf die Spalen (Variablen):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testdata }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{IQ =} \FunctionTok{c}\NormalTok{(}\DecValTok{101}\NormalTok{, }\DecValTok{112}\NormalTok{, }\DecValTok{97}\NormalTok{, }\DecValTok{104}\NormalTok{),}
+                     \AttributeTok{Variable2 =} \FunctionTok{c}\NormalTok{(}\StringTok{"Person1"}\NormalTok{, }\StringTok{"Person2"}\NormalTok{, }\StringTok{"Person3"}\NormalTok{, }\StringTok{"Person4"}\NormalTok{))}
+
+\CommentTok{\# Für die Zelle in der 3. Zeile der 2. Spalte}
+\NormalTok{testdata[}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Person3
+## Levels: Person1 Person2 Person3 Person4
+\end{verbatim}
+
+Wir können uns auch ganze Zeilen und Spalten anzeigen lassen, wenn wir die Position vor, bzw. nach dem Komma leer lassen
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Für die ganze 3. Zeile}
+\NormalTok{testdata[}\DecValTok{3}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   IQ Variable2
+## 3 97   Person3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Für die ganze 2. Spalte}
+\NormalTok{testdata[,}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Person1 Person2 Person3 Person4
+## Levels: Person1 Person2 Person3 Person4
+\end{verbatim}
+
+Die Auswahl mittels eines numerischen Index ist unkompliziert, aber es kann manchmal aufwendig sein aus großen Datensätzen eine Vielzahl von Fällen bzw. Variablen auszuwählen.
+Zudem \textbf{verschieben} sich Indizes auch, wenn wir einzelne Fälle oder Variablen aus dem Datensatz löschen oder welche hinzufügen.
+
+Wir brauchen also auch Strategien, nach welchen wir Daten mit einer \textbf{Logik} auswählen können.
+
+Um dies auszuprobieren, werden wir als Beispiel den Datensatz ``starwars'' verwenden. Dieser ist in dem Paket \texttt{dplyr} gespeichert, welches wir vorher installieren und mittels \texttt{library()} laden.
+
+Der Datensatz ``starwars'' umfasst alle in den Star-Wars Filmen vorkommenden Charaktere und beschreibt diese auf einer Vielzahl von Variablen.
+Wir wollen nur die ersten 11 Variablen nutzen (die anderen enthalten zu lange Einträge).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{starwars }\OtherTok{=} \FunctionTok{as.data.frame}\NormalTok{(starwars[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{11}\NormalTok{])}
+\FunctionTok{head}\NormalTok{(starwars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             name height mass  hair_color  skin_color eye_color birth_year
+## 1 Luke Skywalker    172   77       blond        fair      blue       19.0
+## 2          C-3PO    167   75        <NA>        gold    yellow      112.0
+## 3          R2-D2     96   32        <NA> white, blue       red       33.0
+## 4    Darth Vader    202  136        none       white    yellow       41.9
+## 5    Leia Organa    150   49       brown       light     brown       19.0
+## 6      Owen Lars    178  120 brown, grey       light      blue       52.0
+##      sex    gender homeworld species
+## 1   male masculine  Tatooine   Human
+## 2   none masculine  Tatooine   Droid
+## 3   none masculine     Naboo   Droid
+## 4   male masculine  Tatooine   Human
+## 5 female  feminine  Alderaan   Human
+## 6   male masculine  Tatooine   Human
+\end{verbatim}
+
+\hypertarget{vektor-1}{%
+\section{Vektor}\label{vektor-1}}
+
+Als Beispielvektor nutzen wir das Körpergewicht der Charaktere, im Datensatz in der Variable \texttt{mass} gespeichert. Am besten wählen wir ihn einmal direkt an:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gewicht }\OtherTok{=}\NormalTok{ starwars}\SpecialCharTok{$}\NormalTok{mass}
+\NormalTok{gewicht}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]   77.0   75.0   32.0  136.0   49.0  120.0   75.0   32.0   84.0   77.0
+## [11]   84.0     NA  112.0   80.0   74.0 1358.0   77.0  110.0   17.0   75.0
+## [21]   78.2  140.0  113.0   79.0   79.0   83.0     NA     NA   20.0   68.0
+## [31]   89.0   90.0     NA   66.0   82.0     NA     NA     NA   40.0     NA
+## [41]     NA   80.0     NA   55.0   45.0     NA   65.0   84.0   82.0   87.0
+## [51]     NA   50.0     NA     NA   80.0     NA   85.0     NA     NA   80.0
+## [61]   56.2   50.0     NA   80.0     NA   79.0   55.0  102.0   88.0     NA
+## [71]     NA   15.0     NA   48.0     NA   57.0  159.0  136.0   79.0   48.0
+## [81]   80.0     NA     NA     NA     NA     NA   45.0
+\end{verbatim}
+
+Anstatt mit Indizes zu arbeiten können wir Werte nach einer Logik auswählen. Dafür eigenen sich sogenannte Bool'sche Operatoren \texttt{=,\ \textgreater{},\ \textless{}}
+
+Um zum z.B. die Gewichte aller Charaktere auszuwählen, die \textbf{genau} 79kg wiegen schreiben wir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gewicht[gewicht }\SpecialCharTok{==} \DecValTok{79}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] NA 79 79 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 79 NA NA NA
+## [26] NA 79 NA NA NA NA NA
+\end{verbatim}
+
+Wie wir sehen, wählt R genau die Charaktere, die 79kg wiegen. Zusätzlich behält R jedoch auch alle Positionen, die einen fehlenden Wert aufweisen, da hier die Aussage \texttt{gewicht\ ==\ 79} faktisch nicht \textbf{falsch} ist.
+
+Wollen wir die fehlenden Werte entfernen, können wir die sehr nützliche Funktion \texttt{which()} nutzen. Diese befiehlt R alle Werte auszuwählen, auf die das Statement \textbf{explizit zutrifft}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gewicht[}\FunctionTok{which}\NormalTok{(gewicht }\SpecialCharTok{==} \DecValTok{79}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 79 79 79 79
+\end{verbatim}
+
+Dasselbe funktioniert auch bei kategorischen Variablen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{haarfarbe }\OtherTok{=}\NormalTok{ starwars}\SpecialCharTok{$}\NormalTok{hair\_color}
+\NormalTok{haarfarbe}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "blond"         NA              NA              "none"         
+##  [5] "brown"         "brown, grey"   "brown"         NA             
+##  [9] "black"         "auburn, white" "blond"         "auburn, grey" 
+## [13] "brown"         "brown"         NA              NA             
+## [17] "brown"         "brown"         "white"         "grey"         
+## [21] "black"         "none"          "none"          "black"        
+## [25] "none"          "none"          "auburn"        "brown"        
+## [29] "brown"         "none"          "brown"         "none"         
+## [33] "blond"         "none"          "none"          "none"         
+## [37] "brown"         "black"         "none"          "black"        
+## [41] "black"         "none"          "none"          "none"         
+## [45] "none"          "none"          "none"          "none"         
+## [49] "white"         "none"          "black"         "none"         
+## [53] "none"          "none"          "none"          "none"         
+## [57] "black"         "brown"         "brown"         "none"         
+## [61] "black"         "black"         "brown"         "white"        
+## [65] "black"         "black"         "blonde"        "none"         
+## [69] "none"          "none"          "white"         "none"         
+## [73] "none"          "none"          "none"          "none"         
+## [77] "none"          "brown"         "brown"         "none"         
+## [81] "none"          "black"         "brown"         "brown"        
+## [85] "none"          "unknown"       "brown"
+\end{verbatim}
+
+Zur Auswahl nur braunhaariger Charaktere schreiben wir z.B.:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{haarfarbe[}\FunctionTok{which}\NormalTok{(haarfarbe }\SpecialCharTok{==} \StringTok{"brown"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "brown" "brown" "brown" "brown" "brown" "brown" "brown" "brown" "brown"
+## [10] "brown" "brown" "brown" "brown" "brown" "brown" "brown" "brown" "brown"
+\end{verbatim}
+
+Interessieren uns alle Werte, die genau nicht 79 kg (also ungleich 79 sind) sind nutzen wir \texttt{!}, was in R immer so viel wie \emph{nicht} bedeutet:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gewicht[}\FunctionTok{which}\NormalTok{(gewicht }\SpecialCharTok{!=} \DecValTok{79}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]   77.0   75.0   32.0  136.0   49.0  120.0   75.0   32.0   84.0   77.0
+## [11]   84.0  112.0   80.0   74.0 1358.0   77.0  110.0   17.0   75.0   78.2
+## [21]  140.0  113.0   83.0   20.0   68.0   89.0   90.0   66.0   82.0   40.0
+## [31]   80.0   55.0   45.0   65.0   84.0   82.0   87.0   50.0   80.0   85.0
+## [41]   80.0   56.2   50.0   80.0   55.0  102.0   88.0   15.0   48.0   57.0
+## [51]  159.0  136.0   48.0   80.0   45.0
+\end{verbatim}
+
+Für größer-kleiner Statements nutzen wir (nur bei numerischen Variablen):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gewicht[}\FunctionTok{which}\NormalTok{(gewicht }\SpecialCharTok{\textless{}} \DecValTok{79}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 77.0 75.0 32.0 49.0 75.0 32.0 77.0 74.0 77.0 17.0 75.0 78.2 20.0 68.0 66.0
+## [16] 40.0 55.0 45.0 65.0 50.0 56.2 50.0 55.0 15.0 48.0 57.0 48.0 45.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gewicht[}\FunctionTok{which}\NormalTok{(gewicht }\SpecialCharTok{\textgreater{}} \DecValTok{79}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  136  120   84   84  112   80 1358  110  140  113   83   89   90   82   80
+## [16]   84   82   87   80   85   80   80  102   88  159  136   80
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# bzw.}
+\NormalTok{gewicht[}\FunctionTok{which}\NormalTok{(gewicht }\SpecialCharTok{\textless{}=} \DecValTok{79}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 77.0 75.0 32.0 49.0 75.0 32.0 77.0 74.0 77.0 17.0 75.0 78.2 79.0 79.0 20.0
+## [16] 68.0 66.0 40.0 55.0 45.0 65.0 50.0 56.2 50.0 79.0 55.0 15.0 48.0 57.0 79.0
+## [31] 48.0 45.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gewicht[}\FunctionTok{which}\NormalTok{(gewicht }\SpecialCharTok{\textgreater{}=} \DecValTok{79}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  136  120   84   84  112   80 1358  110  140  113   79   79   83   89   90
+## [16]   82   80   84   82   87   80   85   80   80   79  102   88  159  136   79
+## [31]   80
+\end{verbatim}
+
+Oft wollen wir unsere Auswahl nicht nur nach einem Kriterium treffen, sondern mehrere Kriterien verbinden. Dabei helfen uns die Verknüpfungsoperatoren \texttt{\&} was soviel heißt wie \texttt{und} sowie \texttt{\textbar{}} was soviel heißt wie \texttt{oder}.
+
+Wollen wir beispielsweise nur das Gewicht von Charakteren auswählen, die mehr wiegen als 50 kg und weniger wiegen als 100kg schreiben wir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gewicht[}\FunctionTok{which}\NormalTok{(gewicht }\SpecialCharTok{\textgreater{}} \DecValTok{50} \SpecialCharTok{\&}\NormalTok{ gewicht }\SpecialCharTok{\textless{}} \DecValTok{100}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 77.0 75.0 75.0 84.0 77.0 84.0 80.0 74.0 77.0 75.0 78.2 79.0 79.0 83.0 68.0
+## [16] 89.0 90.0 66.0 82.0 80.0 55.0 65.0 84.0 82.0 87.0 80.0 85.0 80.0 56.2 80.0
+## [31] 79.0 55.0 88.0 57.0 79.0 80.0
+\end{verbatim}
+
+Dürfen die Charaktere entweder leichter als 50 kg oder schwerer als 100 kg sein schreiben wir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gewicht[}\FunctionTok{which}\NormalTok{(gewicht }\SpecialCharTok{\textless{}} \DecValTok{50} \SpecialCharTok{|}\NormalTok{ gewicht }\SpecialCharTok{\textgreater{}} \DecValTok{100}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]   32  136   49  120   32  112 1358  110   17  140  113   20   40   45  102
+## [16]   15   48  159  136   48   45
+\end{verbatim}
+
+\hypertarget{dataframe}{%
+\section{Dataframe}\label{dataframe}}
+
+Um die Ausgaben etwas übersichtlicher zu gestalten (der starwars dataframe hat 89 Zeilen), beschränken wir den Datensatz für den nächsten Abschnitt auf die ersten 5 Zeilen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars }\OtherTok{=}\NormalTok{ starwars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{zeilen-fuxe4lle-auswuxe4hlen}{%
+\subsection{Zeilen (Fälle) auswählen}\label{zeilen-fuxe4lle-auswuxe4hlen}}
+
+Die Logik in der Auswahl der Fälle funktioniert analog zur Auswahl bei den Vektoren. Diesmal müssen Sie jedoch, wie zuvor erwähnt, Ihre Selektion links vom Komma in die \texttt{{[}{]}} schreiben. Zudem müssen Sie beim Schreiben der Auswahlkriterien darauf achten, die Variablen mit dem \texttt{\$} anzuwählen.
+
+Zur Auswahl aller Fälle, die braune Haare haben, schreiben wir z.B.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# starwars[starwars$hair\_color == "brown",]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{spalten-variablen-auswuxe4hlen}{%
+\subsection{Spalten (Variablen) auswählen}\label{spalten-variablen-auswuxe4hlen}}
+
+Die Spalten eines Datensatzes wählt man am effizientesten über den \textbf{Variablennamen} aus.
+
+Noch einmal zum Überblick die Variablen im \texttt{starwars} Datensatz
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(starwars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "name"       "height"     "mass"       "hair_color" "skin_color"
+##  [6] "eye_color"  "birth_year" "sex"        "gender"     "homeworld" 
+## [11] "species"
+\end{verbatim}
+
+Bei einzelnen Variablen lässt sich dies einfach durch Nennung des Variablennamens in \texttt{""} bewerkstelligen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars[, }\StringTok{"height"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 172 167  96 202 150
+\end{verbatim}
+
+Möchte man jedoch nach einer bestimmten Logik aus den \textbf{Variablennamen} auswählen (letztlich ein Vektor aus Worten), ist die Funktion \texttt{select()} aus dem Paket \texttt{dplyr} herausragend gut geeignet.
+
+Folgende Hilfsfunktionen für den Befehl \texttt{select()} können wir nutzen:
+
+\begin{verbatim}
+##          Befehl                                  Funktion
+## 1 starts_with()           Variable beginnt mit dem Präfix
+## 2   ends_with()             Variable endet mit dem Suffix
+## 3    contains() Variable enthält genau diese Zeichenkette
+## 4   num_range()              Entspricht einer Zahlenfolge
+\end{verbatim}
+
+Wollen wir z.B. alle Variablen auswählen, deren Namen mit ``hair'' beginnen, schreiben wir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\FunctionTok{select}\NormalTok{(starwars, }\FunctionTok{starts\_with}\NormalTok{(}\StringTok{"hair"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   hair_color
+## 1      blond
+## 2       <NA>
+## 3       <NA>
+## 4       none
+## 5      brown
+\end{verbatim}
+
+Wollen wir z.B. alle Variablen auswählen, deren Namen mit ``color'' enden, schreiben wir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\FunctionTok{select}\NormalTok{(starwars, }\FunctionTok{ends\_with}\NormalTok{(}\StringTok{"color"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   hair_color  skin_color eye_color
+## 1      blond        fair      blue
+## 2       <NA>        gold    yellow
+## 3       <NA> white, blue       red
+## 4       none       white    yellow
+## 5      brown       light     brown
+\end{verbatim}
+
+Wollen wir z.B. alle Variablen auswählen, deren Namen die Zeichenkette ``me'' beinhalten, schreiben wir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\FunctionTok{select}\NormalTok{(starwars, }\FunctionTok{contains}\NormalTok{(}\StringTok{"me"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             name homeworld
+## 1 Luke Skywalker  Tatooine
+## 2          C-3PO  Tatooine
+## 3          R2-D2     Naboo
+## 4    Darth Vader  Tatooine
+## 5    Leia Organa  Alderaan
+\end{verbatim}
+
+Wir können die Bedingungen auch mit den \texttt{\&} und \texttt{\textbar{}} Operatoren verknüpfen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\FunctionTok{select}\NormalTok{(starwars, }\FunctionTok{starts\_with}\NormalTok{(}\StringTok{"hair"}\NormalTok{) }\SpecialCharTok{\&} \FunctionTok{ends\_with}\NormalTok{(}\StringTok{"color"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   hair_color
+## 1      blond
+## 2       <NA>
+## 3       <NA>
+## 4       none
+## 5      brown
+\end{verbatim}
 
   \bibliography{book.bib,packages.bib}
 

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 8 Daten auswählen | Einführung in R</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 8 Daten auswählen | Einführung in R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 8 Daten auswählen | Einführung in R" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Stephan Goerigk" />
+
+
+<meta name="date" content="2022-10-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="daten-importieren-und-speichern.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R and der CFH</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="über-dieses-skript.html"><a href="über-dieses-skript.html"><i class="fa fa-check"></i>Über dieses Skript</a></li>
+<li class="chapter" data-level="1" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html"><i class="fa fa-check"></i><b>1</b> Warum ist R so gut?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#open-source"><i class="fa fa-check"></i><b>1.1</b> Open Source</a></li>
+<li class="chapter" data-level="1.2" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#vielseitigkeit"><i class="fa fa-check"></i><b>1.2</b> Vielseitigkeit</a></li>
+<li class="chapter" data-level="1.3" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#r-markdown"><i class="fa fa-check"></i><b>1.3</b> R Markdown</a></li>
+<li class="chapter" data-level="1.4" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#transparenz"><i class="fa fa-check"></i><b>1.4</b> Transparenz</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-materialien.html"><a href="r-materialien.html"><i class="fa fa-check"></i><b>2</b> R Materialien</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-materialien.html"><a href="r-materialien.html#cheat-sheets"><i class="fa fa-check"></i><b>2.1</b> Cheat Sheets</a></li>
+<li class="chapter" data-level="2.2" data-path="r-materialien.html"><a href="r-materialien.html#hilfe-und-inspiration-online"><i class="fa fa-check"></i><b>2.2</b> Hilfe und Inspiration online</a></li>
+<li class="chapter" data-level="2.3" data-path="r-materialien.html"><a href="r-materialien.html#andere-bücher"><i class="fa fa-check"></i><b>2.3</b> Andere Bücher</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a></li>
+<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="programmaufbau.html"><a href="programmaufbau.html"><i class="fa fa-check"></i><b>4</b> Programmaufbau</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="programmaufbau.html"><a href="programmaufbau.html#die-vier-rstudio-fenster"><i class="fa fa-check"></i><b>4.1</b> Die vier RStudio Fenster</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="programmaufbau.html"><a href="programmaufbau.html#source---ihr-schreibblock-für-code"><i class="fa fa-check"></i><b>4.1.1</b> Source - Ihr Schreibblock für Code</a></li>
+<li class="chapter" data-level="4.1.2" data-path="programmaufbau.html"><a href="programmaufbau.html#konsole---das-herzstück-von-r"><i class="fa fa-check"></i><b>4.1.2</b> Konsole - Das Herzstück von R</a></li>
+<li class="chapter" data-level="4.1.3" data-path="programmaufbau.html"><a href="programmaufbau.html#environmenthistory---das-gedächtnis-von-r"><i class="fa fa-check"></i><b>4.1.3</b> Environment/History - Das Gedächtnis von R</a></li>
+<li class="chapter" data-level="4.1.4" data-path="programmaufbau.html"><a href="programmaufbau.html#filesplotspackageshelpviewer---interaktion-von-r-mit-dateien"><i class="fa fa-check"></i><b>4.1.4</b> Files/Plots/Packages/Help/Viewer - Interaktion von R mit Dateien</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages"><i class="fa fa-check"></i><b>4.2</b> R Packages</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages-installieren"><i class="fa fa-check"></i><b>4.2.1</b> R Packages installieren</a></li>
+<li class="chapter" data-level="4.2.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages-laden"><i class="fa fa-check"></i><b>4.2.2</b> R Packages laden</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="datenformate.html"><a href="datenformate.html"><i class="fa fa-check"></i><b>5</b> Datenformate</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datenformate.html"><a href="datenformate.html#skalar"><i class="fa fa-check"></i><b>5.1</b> Skalar</a></li>
+<li class="chapter" data-level="5.2" data-path="datenformate.html"><a href="datenformate.html#vektor"><i class="fa fa-check"></i><b>5.2</b> Vektor</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="datenformate.html"><a href="datenformate.html#vektor-typen"><i class="fa fa-check"></i><b>5.2.1</b> Vektor Typen</a></li>
+<li class="chapter" data-level="5.2.2" data-path="datenformate.html"><a href="datenformate.html#faktor-variablen"><i class="fa fa-check"></i><b>5.2.2</b> Faktor Variablen</a></li>
+<li class="chapter" data-level="5.2.3" data-path="datenformate.html"><a href="datenformate.html#vektor-indizierung"><i class="fa fa-check"></i><b>5.2.3</b> Vektor Indizierung</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-dataframes"><i class="fa fa-check"></i><b>5.3</b> Matrizen und Dataframes</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="datenformate.html"><a href="datenformate.html#erstellen-von-datenmatrizen"><i class="fa fa-check"></i><b>5.3.1</b> Erstellen von Datenmatrizen</a></li>
+<li class="chapter" data-level="5.3.2" data-path="datenformate.html"><a href="datenformate.html#indizierung"><i class="fa fa-check"></i><b>5.3.2</b> Indizierung</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="daten-erstellen.html"><a href="daten-erstellen.html"><i class="fa fa-check"></i><b>6</b> Daten erstellen</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="daten-erstellen.html"><a href="daten-erstellen.html#manuell"><i class="fa fa-check"></i><b>6.1</b> Manuell</a></li>
+<li class="chapter" data-level="6.2" data-path="daten-erstellen.html"><a href="daten-erstellen.html#automatisch"><i class="fa fa-check"></i><b>6.2</b> Automatisch</a></li>
+<li class="chapter" data-level="6.3" data-path="daten-erstellen.html"><a href="daten-erstellen.html#zufällig"><i class="fa fa-check"></i><b>6.3</b> Zufällig</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html"><i class="fa fa-check"></i><b>7</b> Daten importieren und speichern</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#funktionen-zur-organisation-des-workspace"><i class="fa fa-check"></i><b>7.1</b> Funktionen zur Organisation des Workspace</a></li>
+<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#arbeitsverzeichnis-working-directory"><i class="fa fa-check"></i><b>7.2</b> Arbeitsverzeichnis (Working Directory)</a></li>
+<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.3</b> Working Environment</a></li>
+<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.4</b> Daten importieren</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format"><i class="fa fa-check"></i><b>7.4.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.4.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format"><i class="fa fa-check"></i><b>7.4.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.4.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format"><i class="fa fa-check"></i><b>7.4.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.4.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format"><i class="fa fa-check"></i><b>7.4.4</b> xlsx-Format</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.5</b> Daten speichern</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format-1"><i class="fa fa-check"></i><b>7.5.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.5.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format-1"><i class="fa fa-check"></i><b>7.5.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.5.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format-1"><i class="fa fa-check"></i><b>7.5.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.5.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format-1"><i class="fa fa-check"></i><b>7.5.4</b> xlsx-Format</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="daten-auswählen.html"><a href="daten-auswählen.html"><i class="fa fa-check"></i><b>8</b> Daten auswählen</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#vektor-1"><i class="fa fa-check"></i><b>8.1</b> Vektor</a></li>
+<li class="chapter" data-level="8.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#dataframe"><i class="fa fa-check"></i><b>8.2</b> Dataframe</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#zeilen-fälle-auswählen"><i class="fa fa-check"></i><b>8.2.1</b> Zeilen (Fälle) auswählen</a></li>
+<li class="chapter" data-level="8.2.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#spalten-variablen-auswählen"><i class="fa fa-check"></i><b>8.2.2</b> Spalten (Variablen) auswählen</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Einführung in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="daten-auswählen" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Kapitel 8</span> Daten auswählen<a href="daten-auswählen.html#daten-auswählen" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Oft wollen wir nur mit einem Teil der verfügbaren Daten rechnen. In diesem Fall müssen wir uns die relevanten Daten aus dem größeren Datenobjet “herausziehen”.</p>
+<p>Eine Möglichkeit, die <strong>Indizierung</strong> mit Zahlen haben wir bereits kennengelernt. Diese funktioniert mit eckigen Klammern <code>[]</code>. Für die Auswahl eines bestimmten Objekts schreiben wir einfach dessen numerische Position mittels einer Zahl in die Klammern:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="daten-auswählen.html#cb65-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">8</span>)</span>
+<span id="cb65-2"><a href="daten-auswählen.html#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="daten-auswählen.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Für das 3. Objekt</span></span>
+<span id="cb65-4"><a href="daten-auswählen.html#cb65-4" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>Dies funktioniert auch, wenn wir mehrere Objekte auswählen wollen:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="daten-auswählen.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Für das 1. und 3. Objekt</span></span>
+<span id="cb67-2"><a href="daten-auswählen.html#cb67-2" aria-hidden="true" tabindex="-1"></a>a[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span></code></pre></div>
+<pre><code>## [1] 1 6</code></pre>
+<p>Bei data.frames, die sowohl Zeilen als auch Spalten haben, trennen wir die eckigen Klammern mit einem Komma <code>[,]</code>. Alles vor dem Komma bezieht sich auf die Zeilen (Fälle), alles nach dem Komma auf die Spalen (Variablen):</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="daten-auswählen.html#cb69-1" aria-hidden="true" tabindex="-1"></a>testdata <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">IQ =</span> <span class="fu">c</span>(<span class="dv">101</span>, <span class="dv">112</span>, <span class="dv">97</span>, <span class="dv">104</span>),</span>
+<span id="cb69-2"><a href="daten-auswählen.html#cb69-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Variable2 =</span> <span class="fu">c</span>(<span class="st">&quot;Person1&quot;</span>, <span class="st">&quot;Person2&quot;</span>, <span class="st">&quot;Person3&quot;</span>, <span class="st">&quot;Person4&quot;</span>))</span>
+<span id="cb69-3"><a href="daten-auswählen.html#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="daten-auswählen.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Für die Zelle in der 3. Zeile der 2. Spalte</span></span>
+<span id="cb69-5"><a href="daten-auswählen.html#cb69-5" aria-hidden="true" tabindex="-1"></a>testdata[<span class="dv">3</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] Person3
+## Levels: Person1 Person2 Person3 Person4</code></pre>
+<p>Wir können uns auch ganze Zeilen und Spalten anzeigen lassen, wenn wir die Position vor, bzw. nach dem Komma leer lassen</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="daten-auswählen.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Für die ganze 3. Zeile</span></span>
+<span id="cb71-2"><a href="daten-auswählen.html#cb71-2" aria-hidden="true" tabindex="-1"></a>testdata[<span class="dv">3</span>,]</span></code></pre></div>
+<pre><code>##   IQ Variable2
+## 3 97   Person3</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="daten-auswählen.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Für die ganze 2. Spalte</span></span>
+<span id="cb73-2"><a href="daten-auswählen.html#cb73-2" aria-hidden="true" tabindex="-1"></a>testdata[,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] Person1 Person2 Person3 Person4
+## Levels: Person1 Person2 Person3 Person4</code></pre>
+<p>Die Auswahl mittels eines numerischen Index ist unkompliziert, aber es kann manchmal aufwendig sein aus großen Datensätzen eine Vielzahl von Fällen bzw. Variablen auszuwählen.
+Zudem <strong>verschieben</strong> sich Indizes auch, wenn wir einzelne Fälle oder Variablen aus dem Datensatz löschen oder welche hinzufügen.</p>
+<p>Wir brauchen also auch Strategien, nach welchen wir Daten mit einer <strong>Logik</strong> auswählen können.</p>
+<p>Um dies auszuprobieren, werden wir als Beispiel den Datensatz “starwars” verwenden. Dieser ist in dem Paket <code>dplyr</code> gespeichert, welches wir vorher installieren und mittels <code>library()</code> laden.</p>
+<p>Der Datensatz “starwars” umfasst alle in den Star-Wars Filmen vorkommenden Charaktere und beschreibt diese auf einer Vielzahl von Variablen.
+Wir wollen nur die ersten 11 Variablen nutzen (die anderen enthalten zu lange Einträge).</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="daten-auswählen.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb75-2"><a href="daten-auswählen.html#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="daten-auswählen.html#cb75-3" aria-hidden="true" tabindex="-1"></a>starwars <span class="ot">=</span> <span class="fu">as.data.frame</span>(starwars[,<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>])</span>
+<span id="cb75-4"><a href="daten-auswählen.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(starwars)</span></code></pre></div>
+<pre><code>##             name height mass  hair_color  skin_color eye_color birth_year
+## 1 Luke Skywalker    172   77       blond        fair      blue       19.0
+## 2          C-3PO    167   75        &lt;NA&gt;        gold    yellow      112.0
+## 3          R2-D2     96   32        &lt;NA&gt; white, blue       red       33.0
+## 4    Darth Vader    202  136        none       white    yellow       41.9
+## 5    Leia Organa    150   49       brown       light     brown       19.0
+## 6      Owen Lars    178  120 brown, grey       light      blue       52.0
+##      sex    gender homeworld species
+## 1   male masculine  Tatooine   Human
+## 2   none masculine  Tatooine   Droid
+## 3   none masculine     Naboo   Droid
+## 4   male masculine  Tatooine   Human
+## 5 female  feminine  Alderaan   Human
+## 6   male masculine  Tatooine   Human</code></pre>
+<div id="vektor-1" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Vektor<a href="daten-auswählen.html#vektor-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Als Beispielvektor nutzen wir das Körpergewicht der Charaktere, im Datensatz in der Variable <code>mass</code> gespeichert. Am besten wählen wir ihn einmal direkt an:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="daten-auswählen.html#cb77-1" aria-hidden="true" tabindex="-1"></a>gewicht <span class="ot">=</span> starwars<span class="sc">$</span>mass</span>
+<span id="cb77-2"><a href="daten-auswählen.html#cb77-2" aria-hidden="true" tabindex="-1"></a>gewicht</span></code></pre></div>
+<pre><code>##  [1]   77.0   75.0   32.0  136.0   49.0  120.0   75.0   32.0   84.0   77.0
+## [11]   84.0     NA  112.0   80.0   74.0 1358.0   77.0  110.0   17.0   75.0
+## [21]   78.2  140.0  113.0   79.0   79.0   83.0     NA     NA   20.0   68.0
+## [31]   89.0   90.0     NA   66.0   82.0     NA     NA     NA   40.0     NA
+## [41]     NA   80.0     NA   55.0   45.0     NA   65.0   84.0   82.0   87.0
+## [51]     NA   50.0     NA     NA   80.0     NA   85.0     NA     NA   80.0
+## [61]   56.2   50.0     NA   80.0     NA   79.0   55.0  102.0   88.0     NA
+## [71]     NA   15.0     NA   48.0     NA   57.0  159.0  136.0   79.0   48.0
+## [81]   80.0     NA     NA     NA     NA     NA   45.0</code></pre>
+<p>Anstatt mit Indizes zu arbeiten können wir Werte nach einer Logik auswählen. Dafür eigenen sich sogenannte Bool’sche Operatoren <code>=, &gt;, &lt;</code></p>
+<p>Um zum z.B. die Gewichte aller Charaktere auszuwählen, die <strong>genau</strong> 79kg wiegen schreiben wir:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="daten-auswählen.html#cb79-1" aria-hidden="true" tabindex="-1"></a>gewicht[gewicht <span class="sc">==</span> <span class="dv">79</span>]</span></code></pre></div>
+<pre><code>##  [1] NA 79 79 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA 79 NA NA NA
+## [26] NA 79 NA NA NA NA NA</code></pre>
+<p>Wie wir sehen, wählt R genau die Charaktere, die 79kg wiegen. Zusätzlich behält R jedoch auch alle Positionen, die einen fehlenden Wert aufweisen, da hier die Aussage <code>gewicht == 79</code> faktisch nicht <strong>falsch</strong> ist.</p>
+<p>Wollen wir die fehlenden Werte entfernen, können wir die sehr nützliche Funktion <code>which()</code> nutzen. Diese befiehlt R alle Werte auszuwählen, auf die das Statement <strong>explizit zutrifft</strong>:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="daten-auswählen.html#cb81-1" aria-hidden="true" tabindex="-1"></a>gewicht[<span class="fu">which</span>(gewicht <span class="sc">==</span> <span class="dv">79</span>)]</span></code></pre></div>
+<pre><code>## [1] 79 79 79 79</code></pre>
+<p>Dasselbe funktioniert auch bei kategorischen Variablen:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="daten-auswählen.html#cb83-1" aria-hidden="true" tabindex="-1"></a>haarfarbe <span class="ot">=</span> starwars<span class="sc">$</span>hair_color</span>
+<span id="cb83-2"><a href="daten-auswählen.html#cb83-2" aria-hidden="true" tabindex="-1"></a>haarfarbe</span></code></pre></div>
+<pre><code>##  [1] &quot;blond&quot;         NA              NA              &quot;none&quot;         
+##  [5] &quot;brown&quot;         &quot;brown, grey&quot;   &quot;brown&quot;         NA             
+##  [9] &quot;black&quot;         &quot;auburn, white&quot; &quot;blond&quot;         &quot;auburn, grey&quot; 
+## [13] &quot;brown&quot;         &quot;brown&quot;         NA              NA             
+## [17] &quot;brown&quot;         &quot;brown&quot;         &quot;white&quot;         &quot;grey&quot;         
+## [21] &quot;black&quot;         &quot;none&quot;          &quot;none&quot;          &quot;black&quot;        
+## [25] &quot;none&quot;          &quot;none&quot;          &quot;auburn&quot;        &quot;brown&quot;        
+## [29] &quot;brown&quot;         &quot;none&quot;          &quot;brown&quot;         &quot;none&quot;         
+## [33] &quot;blond&quot;         &quot;none&quot;          &quot;none&quot;          &quot;none&quot;         
+## [37] &quot;brown&quot;         &quot;black&quot;         &quot;none&quot;          &quot;black&quot;        
+## [41] &quot;black&quot;         &quot;none&quot;          &quot;none&quot;          &quot;none&quot;         
+## [45] &quot;none&quot;          &quot;none&quot;          &quot;none&quot;          &quot;none&quot;         
+## [49] &quot;white&quot;         &quot;none&quot;          &quot;black&quot;         &quot;none&quot;         
+## [53] &quot;none&quot;          &quot;none&quot;          &quot;none&quot;          &quot;none&quot;         
+## [57] &quot;black&quot;         &quot;brown&quot;         &quot;brown&quot;         &quot;none&quot;         
+## [61] &quot;black&quot;         &quot;black&quot;         &quot;brown&quot;         &quot;white&quot;        
+## [65] &quot;black&quot;         &quot;black&quot;         &quot;blonde&quot;        &quot;none&quot;         
+## [69] &quot;none&quot;          &quot;none&quot;          &quot;white&quot;         &quot;none&quot;         
+## [73] &quot;none&quot;          &quot;none&quot;          &quot;none&quot;          &quot;none&quot;         
+## [77] &quot;none&quot;          &quot;brown&quot;         &quot;brown&quot;         &quot;none&quot;         
+## [81] &quot;none&quot;          &quot;black&quot;         &quot;brown&quot;         &quot;brown&quot;        
+## [85] &quot;none&quot;          &quot;unknown&quot;       &quot;brown&quot;</code></pre>
+<p>Zur Auswahl nur braunhaariger Charaktere schreiben wir z.B.:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="daten-auswählen.html#cb85-1" aria-hidden="true" tabindex="-1"></a>haarfarbe[<span class="fu">which</span>(haarfarbe <span class="sc">==</span> <span class="st">&quot;brown&quot;</span>)]</span></code></pre></div>
+<pre><code>##  [1] &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot;
+## [10] &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot; &quot;brown&quot;</code></pre>
+<p>Interessieren uns alle Werte, die genau nicht 79 kg (also ungleich 79 sind) sind nutzen wir <code>!</code>, was in R immer so viel wie <em>nicht</em> bedeutet:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="daten-auswählen.html#cb87-1" aria-hidden="true" tabindex="-1"></a>gewicht[<span class="fu">which</span>(gewicht <span class="sc">!=</span> <span class="dv">79</span>)]</span></code></pre></div>
+<pre><code>##  [1]   77.0   75.0   32.0  136.0   49.0  120.0   75.0   32.0   84.0   77.0
+## [11]   84.0  112.0   80.0   74.0 1358.0   77.0  110.0   17.0   75.0   78.2
+## [21]  140.0  113.0   83.0   20.0   68.0   89.0   90.0   66.0   82.0   40.0
+## [31]   80.0   55.0   45.0   65.0   84.0   82.0   87.0   50.0   80.0   85.0
+## [41]   80.0   56.2   50.0   80.0   55.0  102.0   88.0   15.0   48.0   57.0
+## [51]  159.0  136.0   48.0   80.0   45.0</code></pre>
+<p>Für größer-kleiner Statements nutzen wir (nur bei numerischen Variablen):</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="daten-auswählen.html#cb89-1" aria-hidden="true" tabindex="-1"></a>gewicht[<span class="fu">which</span>(gewicht <span class="sc">&lt;</span> <span class="dv">79</span>)]</span></code></pre></div>
+<pre><code>##  [1] 77.0 75.0 32.0 49.0 75.0 32.0 77.0 74.0 77.0 17.0 75.0 78.2 20.0 68.0 66.0
+## [16] 40.0 55.0 45.0 65.0 50.0 56.2 50.0 55.0 15.0 48.0 57.0 48.0 45.0</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="daten-auswählen.html#cb91-1" aria-hidden="true" tabindex="-1"></a>gewicht[<span class="fu">which</span>(gewicht <span class="sc">&gt;</span> <span class="dv">79</span>)]</span></code></pre></div>
+<pre><code>##  [1]  136  120   84   84  112   80 1358  110  140  113   83   89   90   82   80
+## [16]   84   82   87   80   85   80   80  102   88  159  136   80</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="daten-auswählen.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bzw.</span></span>
+<span id="cb93-2"><a href="daten-auswählen.html#cb93-2" aria-hidden="true" tabindex="-1"></a>gewicht[<span class="fu">which</span>(gewicht <span class="sc">&lt;=</span> <span class="dv">79</span>)]</span></code></pre></div>
+<pre><code>##  [1] 77.0 75.0 32.0 49.0 75.0 32.0 77.0 74.0 77.0 17.0 75.0 78.2 79.0 79.0 20.0
+## [16] 68.0 66.0 40.0 55.0 45.0 65.0 50.0 56.2 50.0 79.0 55.0 15.0 48.0 57.0 79.0
+## [31] 48.0 45.0</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="daten-auswählen.html#cb95-1" aria-hidden="true" tabindex="-1"></a>gewicht[<span class="fu">which</span>(gewicht <span class="sc">&gt;=</span> <span class="dv">79</span>)]</span></code></pre></div>
+<pre><code>##  [1]  136  120   84   84  112   80 1358  110  140  113   79   79   83   89   90
+## [16]   82   80   84   82   87   80   85   80   80   79  102   88  159  136   79
+## [31]   80</code></pre>
+<p>Oft wollen wir unsere Auswahl nicht nur nach einem Kriterium treffen, sondern mehrere Kriterien verbinden. Dabei helfen uns die Verknüpfungsoperatoren <code>&amp;</code> was soviel heißt wie <code>und</code> sowie <code>|</code> was soviel heißt wie <code>oder</code>.</p>
+<p>Wollen wir beispielsweise nur das Gewicht von Charakteren auswählen, die mehr wiegen als 50 kg und weniger wiegen als 100kg schreiben wir:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="daten-auswählen.html#cb97-1" aria-hidden="true" tabindex="-1"></a>gewicht[<span class="fu">which</span>(gewicht <span class="sc">&gt;</span> <span class="dv">50</span> <span class="sc">&amp;</span> gewicht <span class="sc">&lt;</span> <span class="dv">100</span>)]</span></code></pre></div>
+<pre><code>##  [1] 77.0 75.0 75.0 84.0 77.0 84.0 80.0 74.0 77.0 75.0 78.2 79.0 79.0 83.0 68.0
+## [16] 89.0 90.0 66.0 82.0 80.0 55.0 65.0 84.0 82.0 87.0 80.0 85.0 80.0 56.2 80.0
+## [31] 79.0 55.0 88.0 57.0 79.0 80.0</code></pre>
+<p>Dürfen die Charaktere entweder leichter als 50 kg oder schwerer als 100 kg sein schreiben wir:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="daten-auswählen.html#cb99-1" aria-hidden="true" tabindex="-1"></a>gewicht[<span class="fu">which</span>(gewicht <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">|</span> gewicht <span class="sc">&gt;</span> <span class="dv">100</span>)]</span></code></pre></div>
+<pre><code>##  [1]   32  136   49  120   32  112 1358  110   17  140  113   20   40   45  102
+## [16]   15   48  159  136   48   45</code></pre>
+</div>
+<div id="dataframe" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Dataframe<a href="daten-auswählen.html#dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Um die Ausgaben etwas übersichtlicher zu gestalten (der starwars dataframe hat 89 Zeilen), beschränken wir den Datensatz für den nächsten Abschnitt auf die ersten 5 Zeilen:</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="daten-auswählen.html#cb101-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="ot">=</span> starwars[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span></code></pre></div>
+<div id="zeilen-fälle-auswählen" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Zeilen (Fälle) auswählen<a href="daten-auswählen.html#zeilen-fälle-auswählen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die Logik in der Auswahl der Fälle funktioniert analog zur Auswahl bei den Vektoren. Diesmal müssen Sie jedoch, wie zuvor erwähnt, Ihre Selektion links vom Komma in die <code>[]</code> schreiben. Zudem müssen Sie beim Schreiben der Auswahlkriterien darauf achten, die Variablen mit dem <code>$</code> anzuwählen.</p>
+<p>Zur Auswahl aller Fälle, die braune Haare haben, schreiben wir z.B.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="daten-auswählen.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># starwars[starwars$hair_color == &quot;brown&quot;,]</span></span></code></pre></div>
+</div>
+<div id="spalten-variablen-auswählen" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Spalten (Variablen) auswählen<a href="daten-auswählen.html#spalten-variablen-auswählen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die Spalten eines Datensatzes wählt man am effizientesten über den <strong>Variablennamen</strong> aus.</p>
+<p>Noch einmal zum Überblick die Variablen im <code>starwars</code> Datensatz</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="daten-auswählen.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(starwars)</span></code></pre></div>
+<pre><code>##  [1] &quot;name&quot;       &quot;height&quot;     &quot;mass&quot;       &quot;hair_color&quot; &quot;skin_color&quot;
+##  [6] &quot;eye_color&quot;  &quot;birth_year&quot; &quot;sex&quot;        &quot;gender&quot;     &quot;homeworld&quot; 
+## [11] &quot;species&quot;</code></pre>
+<p>Bei einzelnen Variablen lässt sich dies einfach durch Nennung des Variablennamens in <code>""</code> bewerkstelligen:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="daten-auswählen.html#cb105-1" aria-hidden="true" tabindex="-1"></a>starwars[, <span class="st">&quot;height&quot;</span>]</span></code></pre></div>
+<pre><code>## [1] 172 167  96 202 150</code></pre>
+<p>Möchte man jedoch nach einer bestimmten Logik aus den <strong>Variablennamen</strong> auswählen (letztlich ein Vektor aus Worten), ist die Funktion <code>select()</code> aus dem Paket <code>dplyr</code> herausragend gut geeignet.</p>
+<p>Folgende Hilfsfunktionen für den Befehl <code>select()</code> können wir nutzen:</p>
+<pre><code>##          Befehl                                  Funktion
+## 1 starts_with()           Variable beginnt mit dem Präfix
+## 2   ends_with()             Variable endet mit dem Suffix
+## 3    contains() Variable enthält genau diese Zeichenkette
+## 4   num_range()              Entspricht einer Zahlenfolge</code></pre>
+<p>Wollen wir z.B. alle Variablen auswählen, deren Namen mit “hair” beginnen, schreiben wir:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="daten-auswählen.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb108-2"><a href="daten-auswählen.html#cb108-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-3"><a href="daten-auswählen.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(starwars, <span class="fu">starts_with</span>(<span class="st">&quot;hair&quot;</span>))</span></code></pre></div>
+<pre><code>##   hair_color
+## 1      blond
+## 2       &lt;NA&gt;
+## 3       &lt;NA&gt;
+## 4       none
+## 5      brown</code></pre>
+<p>Wollen wir z.B. alle Variablen auswählen, deren Namen mit “color” enden, schreiben wir:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="daten-auswählen.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb110-2"><a href="daten-auswählen.html#cb110-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-3"><a href="daten-auswählen.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(starwars, <span class="fu">ends_with</span>(<span class="st">&quot;color&quot;</span>))</span></code></pre></div>
+<pre><code>##   hair_color  skin_color eye_color
+## 1      blond        fair      blue
+## 2       &lt;NA&gt;        gold    yellow
+## 3       &lt;NA&gt; white, blue       red
+## 4       none       white    yellow
+## 5      brown       light     brown</code></pre>
+<p>Wollen wir z.B. alle Variablen auswählen, deren Namen die Zeichenkette “me” beinhalten, schreiben wir:</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="daten-auswählen.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb112-2"><a href="daten-auswählen.html#cb112-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-3"><a href="daten-auswählen.html#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(starwars, <span class="fu">contains</span>(<span class="st">&quot;me&quot;</span>))</span></code></pre></div>
+<pre><code>##             name homeworld
+## 1 Luke Skywalker  Tatooine
+## 2          C-3PO  Tatooine
+## 3          R2-D2     Naboo
+## 4    Darth Vader  Tatooine
+## 5    Leia Organa  Alderaan</code></pre>
+<p>Wir können die Bedingungen auch mit den <code>&amp;</code> und <code>|</code> Operatoren verknüpfen:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="daten-auswählen.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb114-2"><a href="daten-auswählen.html#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-3"><a href="daten-auswählen.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(starwars, <span class="fu">starts_with</span>(<span class="st">&quot;hair&quot;</span>) <span class="sc">&amp;</span> <span class="fu">ends_with</span>(<span class="st">&quot;color&quot;</span>))</span></code></pre></div>
+<pre><code>##   hair_color
+## 1      blond
+## 2       &lt;NA&gt;
+## 3       &lt;NA&gt;
+## 4       none
+## 5      brown</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="daten-importieren-und-speichern.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CFH_R_bookdown.pdf", "CFH_R_bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

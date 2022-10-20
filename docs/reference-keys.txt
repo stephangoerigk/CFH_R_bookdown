@@ -38,4 +38,17 @@ funktionen-zur-organisation-des-workspace
 arbeitsverzeichnis-working-directory
 working-environment
 daten-importieren
+rds-format
+csv-format
+sav-format
+xlsx-format
 daten-speichern
+rds-format-1
+csv-format-1
+sav-format-1
+xlsx-format-1
+daten-auswählen
+vektor-1
+dataframe
+zeilen-fälle-auswählen
+spalten-variablen-auswählen

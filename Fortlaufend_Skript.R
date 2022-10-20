@@ -134,8 +134,13 @@ df2$groesse + 50
 str(a)
 str(c)
 
+#?
 
+getwd()
+#setwd()
 
+#install.packages("")
+# library()
 
-
+#is.
 

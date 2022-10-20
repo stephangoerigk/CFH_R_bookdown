@@ -1,6 +1,10 @@
 # Daten Explorieren
 
-## Informationen über R Objekt
+## Informationen über R Objekte
+
+### Informationen über Vektoren
+
+### Informationen über Dataframes
 
 ```{r}
 #length()
@@ -12,7 +16,7 @@
 
 ## Deskriptivstatistiken
 
-### Nominale Variablen
+### Kategorische Variablen
 
 #### Absolute Häufigkeiten
 
