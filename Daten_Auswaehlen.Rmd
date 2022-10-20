@@ -1,0 +1,199 @@
+# Daten auswählen
+
+Oft wollen wir nur mit einem Teil der verfügbaren Daten rechnen. In diesem Fall müssen wir uns die relevanten Daten aus dem größeren Datenobjet "herausziehen".
+
+Eine Möglichkeit, die **Indizierung** mit Zahlen haben wir bereits kennengelernt. Diese funktioniert mit eckigen Klammern `[]`. Für die Auswahl eines bestimmten Objekts schreiben wir einfach dessen numerische Position mittels einer Zahl in die Klammern:
+
+```{r}
+a = c(1,5,6,8)
+
+# Für das 3. Objekt
+a[3]
+```
+
+Dies funktioniert auch, wenn wir mehrere Objekte auswählen wollen:
+
+```{r}
+# Für das 1. und 3. Objekt
+a[c(1, 3)]
+```
+
+Bei data.frames, die sowohl Zeilen als auch Spalten haben, trennen wir die eckigen Klammern mit einem Komma `[,]`. Alles vor dem Komma bezieht sich auf die Zeilen (Fälle), alles nach dem Komma auf die Spalen (Variablen):
+
+```{r}
+testdata = data.frame(IQ = c(101, 112, 97, 104),
+                     Variable2 = c("Person1", "Person2", "Person3", "Person4"))
+
+# Für die Zelle in der 3. Zeile der 2. Spalte
+testdata[3,2]
+```
+
+Wir können uns auch ganze Zeilen und Spalten anzeigen lassen, wenn wir die Position vor, bzw. nach dem Komma leer lassen
+
+```{r}
+# Für die ganze 3. Zeile
+testdata[3,]
+
+# Für die ganze 2. Spalte
+testdata[,2]
+```
+
+Die Auswahl mittels eines numerischen Index ist unkompliziert , aber es lann manchmal aufwendig sein aus großen Datensätzen eine Vielzahl von Fällen bzw. Variablen auszuwählen. Zudem verschieben sich Indizes auch, wenn wir einzelne Fälle oder Variablen aus dem Datensatz löschen oder welche hinzufügen.
+
+Wir brauchen also auch Strategien, nach welchen wir Daten mit einer **Logik** auswählen können. 
+
+Wir werden, um dies zu demontrieren, als Beispiel den Datensatz "starwars" aus dem `dplyr` Paket nutzen, welches wir vorher installieren und mittels `library()` laden. 
+
+Dieser Datensatz ist ausreichend groß, denn er umfasst alle in den Star-Wars Filmen vorkommenden Charaktere und beschreibt diese auf einer Vielzahl von Variablen. Wir wollen nur die ersten 11 Variablen nutzen (die anderen enthalten zu lange Einträge).
+
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
+
+starwars = as.data.frame(starwars[,1:11])
+head(starwars)
+```
+
+## Vektor
+
+Als Beispielvektor nutzen wir das Körpergewicht der Charaktere, im Datensatz in der Variable `mass` gespeichert. Am besten wählen wir ihn einmal direkt an:
+
+```{r}
+gewicht = starwars$mass
+gewicht
+```
+
+Anstatt mit Indizes zu arbeiten können wir Werte nach einer Logik auswählen. Dafür eigenen sich sogenannte Bool'sche Operatoren `=, >, <`
+
+Um zum z.B. die Gewichte aller Charaktere auszuwählen, die **genau** 79kg wiegen schreiben wir:
+
+```{r}
+gewicht[gewicht == 79]
+```
+
+Wie wir sehen, wählt R genau die Charaktere, die 79kg wiegen. Zusätzlich behält R jedoch auch alle Positionen, die einen fehlenden Wert aufweise, da hier die Aussage `gewicht == 79` faktisch nicht **falsch** ist.
+
+Wollen wir die fehlenden Werte entfernen, können wir die sehr nützliche Funktion `which()` nutzen. Diese befiehlt R alle Werte auszuwählen, auf die das Statement **explizit zutrifft**:
+
+```{r}
+gewicht[which(gewicht == 79)]
+```
+
+Dasselbe funktioniert auch bei kategorischen Variablen:
+
+```{r}
+haarfarbe = starwars$hair_color
+haarfarbe
+```
+
+Zur Auswahl nur braunhaariger Charaktere schreiben wir z.B.:
+
+```{r}
+haarfarbe[which(haarfarbe == "brown")]
+```
+
+Interessieren uns alle Werte, die genau nicht 79 kg (also $\neq79$) sind nutzen wir `!`, was in R immer so viel wie *nicht* bedeutet:
+
+```{r}
+gewicht[which(gewicht != 79)]
+```
+
+Für größer-kleiner Statements nutzen wir (nur bei numerischen Variablen):
+
+```{r}
+gewicht[which(gewicht < 79)]
+gewicht[which(gewicht > 79)]
+
+# bzw.
+gewicht[which(gewicht <= 79)]
+gewicht[which(gewicht >= 79)]
+```
+
+Oft wollen wir unsere Auswahl nicht nur nach einem Kriterium treffen, sondern mehrere Kriterien verbinden. Dabei helfen uns die Verknüpfungsoperatoren `&` was soviel heißt wie `und` sowie `|` was soviel heißt wie `oder`.
+
+Wollen wir beispielsweise nur das Gewicht von Charakteren auswählen, die mehr wiegen als 50 kg und weniger wiegen als 100kg schreiben wir:
+
+```{r}
+gewicht[which(gewicht > 50 & gewicht < 100)]
+```
+
+Dürfen die Charaktere entweder leichter als 50 kg oder schwerer als 100 kg sein schreiben wir:
+
+```{r}
+gewicht[which(gewicht < 50 | gewicht > 100)]
+```
+
+## Dataframe
+
+### Zeilen (Fälle) auswählen
+
+Die Logik in der Auswahl der Fälle funktioniert analog zur Auswahl bei den Vektoren. Diesmal müssen Sie jedoch, wie zuvor erwähnt, Ihre Selektion links vom Komma in die `[]` schreiben. Zudem müssen Sie beim Schreiben der Auswahlkriterien darauf achten, die Variablen mit dem `$` anzuwählen.
+
+Zur Auswahl aller Fälle, die braune Haare haben, schreiben wir z.B.
+
+```{r}
+# starwars[starwars$hair_color == "brown",]
+```
+
+### Spalten (Variablen) auswählen
+
+Die Spalten eines Datensatzes wählt man am effizientesten über den **Variablennamen** aus. 
+
+Noch einmal zum Überblick die Variablen im `starwars` Datensatz
+
+```{r}
+names(starwars)
+```
+
+Bei einzelnen Variablen lässt sich dies einfach durch Nennung des Variablennamens in `""` bewerkstelligen:
+
+```{r}
+starwars[, "height"]
+```
+
+Möchte man jedoch nach einer bestimmten Logik aus den **Variablennamen** auswählen (letztlich ein Vektor aus Worten), ist die Funktion `select()` aus dem Paket `dplyr` herausragend gut geeignet.
+
+Folgende Hilfsfunktionen für den Befehl `select()` können wir nutzen:
+
+```{r echo=F}
+d = data.frame(Befehl = c("starts_with()",
+                      "ends_with()",
+                      "contains()",
+                      "num_range()"),
+           Funktion = c("Variable beginnt mit dem Präfix",
+                        "Variable endet mit dem Suffix",
+                        "Variable enthält genau diese Zeichenkette",
+                        "Entspricht einer Zahlenfolge"))
+d
+```
+
+Wollen wir z.B. alle Variablen auswählen, deren Namen mit "hair" beginnen, schreiben wir:
+
+```{r}
+library(dplyr)
+
+select(starwars, starts_with("hair"))
+```
+
+Wollen wir z.B. alle Variablen auswählen, deren Namen mit "color" enden, schreiben wir:
+
+```{r}
+library(dplyr)
+
+select(starwars, ends_with("color"))
+```
+
+Wollen wir z.B. alle Variablen auswählen, deren Namen die Zeichenkette "me" beinhalten, schreiben wir:
+
+```{r}
+library(dplyr)
+
+select(starwars, contains("me"))
+```
+
+Wir können die Bedingungen auch mit den `&` und `|` Operatoren verknüpfen:
+
+```{r}
+library(dplyr)
+
+select(starwars, starts_with("hair") & ends_with("color"))
+```
