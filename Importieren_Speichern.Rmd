@@ -15,9 +15,10 @@ In diesem Kapitel werden wir einige hilfreiche Funktionen zur Verwaltung Ihres A
 |`setwd(file = "dir)`|Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad |
 |`list.files()`|Zeigt die Namen aller Dateien im Arbeitsverzeichnis an |
 |`write.table(x, file = "mydata.txt", sep)`|writes the object `x` to a text file called `mydata.txt`. Define how the columns will be separated with `sep` (e.g.; `sep = ","` for a comma--separated file, and `sep = \t"` for a tab--separated file).|
-|`save(x, y, .., file = "meineDaten.RData)`|Speichert Objekte `x`, `y`, ... in das R Objekt  `meineDaten.RData` |
+|`write_rds(x,"meineDaten.rds)`|Speichert Objekt x in das R Objekt  `meineDaten.rds` |
 |`save.image(file = "meineSession.RData")`|Speichert *alle* Objekte aus dem Arbeitsbereich nach `meineSession.RData`|
-|`load(file = "meineDaten.RData")`|Läd Objekte in der Datei `meineDaten.RData`|
+|`read_rds`("Daten.rds")`|Läd das rds Objekt `Daten.rds`|
+|`read.csv`("Daten.csv")`|Läd den csv Datensatz `Daten.csv`|
 |`foreign::read.spss("Daten.sav")`|Läd den SPSS Datensatz `Daten.sav`|
 |`read.csv("Daten.csv")`|Läd den csv Datensatz `Daten.csv`|
 |`readxl::read_xlsx("Daten.xlsx")`|Läd den Excel Datensatz `Daten.xlsx`|
@@ -42,4 +43,116 @@ Der Arbeitsbereich (auch als Arbeitsumgebung bezeichnet) enthält alle Objekte u
 
 ## Daten importieren
 
+Wenn Sie Daten in Ihrem Arbeitsverzeichnis haben, können Sie diese nun in R einlesen und dort mit ihnen rechnen. Nehmen wir an, Sie haben in Ihrem Arbeitsverzeichnis einen Ordner mit dem Namen `data`.
+
+Je nachdem in welchem Format die Daten vorliegen, muss ein eigener Befehl genutzt werden. Teilweise braucht man hier auch eigene Pakete (z.B. Excel- oder SPSS-Format).
+
+### rds-Format
+
+.rds ist das R-eigene Format. Es speichert alle Objekte die es in R gibt, also potentiell nicht nur Datensätze, sondern auch Testergebnisse, Bilder, o.ä. mittels der Funktion `read_rds()` können wir die Objekte einlesen. Dafür müssen wir das Paket `readr` installiert und mittels `library` eingelesen haben. 
+
+```{r}
+data = load(file = "data/personality.RData")
+
+# erste Zeilen des Datensatzes ansehen
+head(data)
+```
+
+### csv-Format
+
+Das .csv Format (comma-separated-values) ist eines der gängigsten in der Statistik. Es lässt sich mit allen gebräuchlichen Tabellenprogrammen öffnen (also neben R auch mit Excel, Numbers, o.ä.).
+
+Um einen .csv Datensatz einzulesen, speichern wir ihn mittel `read.csv()` in ein von uns benanntes Objekt. Dieses können wir nennen wie wir wollen, z.B. `data` (schön kurz): 
+
+```{r}
+data = read.csv("data/personality.csv")
+
+# erste Zeilen des Datensatzes ansehen
+head(data)
+```
+
+### sav-Format
+
+Das .sav Format ist das Format in welchem SPSS Datensätze abgespeichert werden. Dies kommt gerade in den Sozialwissenschaften relativ häufig vor, weshalb wir diese Art von Datein auf jeden Fall einlesen können sollten.
+
+Um einen .sav Datensatz einzulesen, speichern wir ihn mittel `read.spss()` in ein von uns benanntes Objekt. Dafür müssen wir das Paket `foreign` installiert und mittels `library` eingelesen haben. Damit R den Datensatz automatisch in einen data.frame speichert, geben wir als Zusatzoption `to.data.frame = TRUE` an:
+
+```{r}
+library(foreign)
+data = read.spss("data/personality.sav", to.data.frame = TRUE)
+
+# erste Zeilen des Datensatzes ansehen
+head(data)
+```
+
+### xlsx-Format
+
+Das .xlsx Format ist das Format in welchem Excel Datensätze abgespeichert werden. Auch das kommt oft vor, da es viele Forscher:innen vorziehen Daten in Excel Tabellen einzutragen.
+
+Um einen .xlsx Datensatz einzulesen, speichern wir ihn mittel `read_xlsx()` in ein von uns benanntes Objekt. Dafür müssen wir das Paket `readxl` installiert und mittels `library` eingelesen haben. Da in Excel Tabellen manchmal mehrere Arbeitsblätter (engl. "sheets") vorliegen, geben wir den Namen des Arbeitsblatt, welches wir brauchen, zusätzlich an:
+
+```{r}
+library(readxl)
+data = read_xlsx("data/personality.xlsx", sheet = "Tabelle1")
+
+# erste Zeilen des Datensatzes ansehen
+head(data)
+```
+
 ## Daten speichern
+
+In alle vorgestellten Formate können wir unsere Daten natürlich auch abspeichern. Erstellen wir dafür einen schnellen Test-Datensatz mittels `data.frame`:
+
+```{r}
+newdata = data.frame(Variable1 = c(1, 2, 3, 4),
+                     Variable2 = c("Person1", "Person2", "Person3", "Person4"))
+newdata
+```
+
+
+### rds-Format
+
+Um in das R eigene .rds Format zu speichern, nutzen wir wieder das `readr` Paket, welches wir zunächst mittels `library` laden. Der Befehl ist nun `write_rds()`. Innerhalb des Befehls geben wir einfach das Objekt (z.B. unseren Datensatz) an, welches wir speichern wollen. Unter `file` geben wir der Datei einen Namen, so wie wir sie auf unserer Festplatte gepeichert haben wollen. Wichtig: Das Kürzel des Dateityps (.rds) nicht vergessen:
+
+```{r}
+library(readr)
+
+write_rds(x = newdata, file = "data.rds")
+```
+
+Die Datei erscheint nun in Ihrem Arbeitsverzeichnis.
+
+### csv-Format
+
+Speichern in das .csv Format funktioniert analog:
+
+```{r}
+write.csv(x = newdata, file = "newdata.csv")
+```
+
+Hier ein Tipp für Sie: Wie oben bereits erwähnt ist csv ein "Komma-getrenntes" Format. In Deutschland haben wir die besonderheit, dass wir Dezimalstellen manchmal mit "," trennen, während man im englisch-sprachigen Raum i.d.R. "." verwendet. Sollte die abgespeicherte Datei komisch aussehen, wenn Sie sie z.B. in Excel öffnen, liegt das vermutlich an der deutschen Einstellung Ihres Programms. Probieren Sie in diesem Fall statt der `write.csv()` Funktion einmal die `write.csv2()` Funktion aus, dies wird Ihr Problem lösen.
+
+```{r}
+write.csv2(x = newdata, file = "newdata.csv")
+```
+
+### sav-Format
+
+Zum Speichern in das SPSS Format .sav nutzen wir die Funktion `write_sav()` aus dem Paket `haven`, welches wir zuvor mittel `library()` laden.
+
+```{r}
+library(haven)
+
+write_sav(newdata, "newdata.sav")
+```
+
+### xlsx-Format
+
+Zum Speichern in das Excel Format .xlsx nutzen wir die Funktion `WriteXLS` aus dem Paket `WriteXLS`, welches wir zuvor mittel `library()` laden.
+
+```{r}
+library(WriteXLS)
+
+WriteXLS(newdata, "newdata.xlsx")
+```
+
