@@ -1,6 +1,21 @@
 # Daten Explorieren
 
+Im folgenden Abschnitt werden wir lernen wie wir uns schnell einen Überblick über große Mengen von Daten machen können.
+
+Hierzu gehört natürlich, dass wir einzelne Variablen mit **Deskriptivstatistiken** (z.B. Mittelwert, Median, Standardabweichung...) zusammenfassen, so wie wir es im 1. Semester gelernt haben.
+
+Wir werden jedoch auch lernen, wie wir uns effizient Informationen über Datensätze ausgeben lassen können, z.B. über ihre Größe (z.B. Anzahl Zeilen und Spalten) Art der enthaltenen Variablen und fehlende Werte.
+
 ## Informationen über R Objekte
+
+Um schnell Informationen über ein R Objekt (Vektor, data.frame, Bild o.ä.) zu erhalten, nutzen wir den `str()` Befehl.
+
+So können wir einen schnellen Überblick erhalten, um was für ein Objekt es sich handelt und "was in dem Objekt drin steckt".
+
+```{r}
+
+```
+
 
 ### Informationen über Vektoren
 

@@ -129,18 +129,36 @@ df2$groesse
 
 df2$groesse + 50
 
+
+
+#?
+
+# install.packages("")
+# library()
+
 # immer wenn wir in R wissen wollen, was wir gerade für ein Objekt haben können wir str() benutzen
 
 str(a)
 str(c)
 
-#?
+#is.
+
+
 
 getwd()
 #setwd()
 
-#install.packages("")
-# library()
 
-#is.
+# einlesen
+
+# mean()
+# sd()
+# var()
+# min()
+# max()
+# summary()
+
+#hist()
+
+
 
