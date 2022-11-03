@@ -13,7 +13,7 @@ rmd_files: [
   "Importieren_Speichern.Rmd",
   "Daten_Auswaehlen.Rmd",
  # "Daten_Beschreiben.Rmd",
-  # "Daten_Manipulieren.Rmd",
+  "Daten_Manipulieren.Rmd",
   # "Graphiken.Rmd",
   # "Tabellen.Rmd",
   # "Preprocessing.Rmd",

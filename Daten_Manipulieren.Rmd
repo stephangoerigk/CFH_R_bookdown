@@ -1,12 +1,306 @@
 # Datenmanipulation
 
+## Hinzufügen
+
+### Variablen hinzufügen
+
+Mit den Operatoren `$` und Zuweisung `=` können Sie neue Spalten zu einem Datenrahmen hinzufügen. Dazu verwenden Sie einfach die Notation `df$Name` und weisen ihm einen neuen Datenvektor (Variable) zu.
+
+Erstellen wir zum Beispiel einen data.frame namens test mit zwei Spalten: `ID` und `Alter`:
+
+```{r}
+test <- data.frame("ID" = c(1, 2, 3, 4, 5),
+                     "Alter" = c(24, 25, 42, 56, 22))
+```
+
+Lassen Sie uns nun eine neue Spalte namens `Geschlecht` aus einem Vektor mit Geschlechtsdaten hinzufügen:
+
+```{r}
+test$Geschlecht = c("männlich", "weiblich", "weiblich", "männlich", "weiblich")
+```
+
+Hier ist das Ergebnis:
+
+```{r}
+test
+```
+
+Dasselbe funktioniert auch mit eckigen Klammern `[]`:
+
+```{r}
+test["Lieblingsfilm"] = c("Titanic", "Herr der Ringe", "Harry Potter", "Titanic", "Matrix")
+
+test
+```
+
+Diese Methoden hängen neue Spalten immer ganz hinten (ganz rechts) an den data.frame an. 
+Wollen wir die neue Variable an einer bestimmten Position des data.frames einfügen nutzen wir die `add_column()` Funktion aus dem `tibble` Paket.
+
+Wollen wir zum Beispiel eine Variable an die 2. Position des Datensatzes einfügen nutzen wir und spezifizieren das `.after` oder `.before` Argument mit dem Index oder dem Namen der vorherigen/folgenden Variable:
+
+```{r message=FALSE, warning=FALSE}
+library(tibble)
+
+test = add_column(test, Haustier = c("Hund", "Katze", "Hund", "Hund", "Fische"),  .after = 1)
+
+# oder 
+
+# test = add_column(test, Haustier = c("Hund", "Katze", "Hund", "Hund", "Fische"),  .before = "Alter")
+
+test
+```
+
 ## Löschen
 
-## Umbennen
+### Variablen löschen
+
+Wir möchten aus unserem `test` Datensatz die Variable `Lieblingsfilm` wieder löschen.
+
+Der einfachste Weg um eine Variable zu löschen funktioniert wieder einmal mit den `$` Operator.
+
+```{r}
+test$Lieblingsfilm = NULL
+
+test
+```
+
+Wollen wir mehrere Variablen auf einmal löschen empfiehlt sich die wie bereits bei der Auswahl von Variablen die `select()` Funktion aus dem `dplyr` Paket. Um wieder etwas zum löschen zu haben erstellen wir zunächst 3 leere Dummy Variablen:
+
+```{r}
+test$ZumLoeschen1 = NA
+test$ZumLoeschen2 = NA
+test$ZumLoeschen3 = NA
+
+test
+```
+
+Nun löschen wir diese 3 Variablen wieder 
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
+
+test = select(test, -c(ZumLoeschen1, ZumLoeschen2, ZumLoeschen3))
+
+# oder 
+
+# test = select(test, -contains("ZumLoeschen"))
+
+test
+```
+
+### Fälle löschen
+
+Die einfachste Art Fälle zu löschen ist das Überspeichern des data.frames ohne die zu löschenden Fälle. Diese Selektion machen wir einfach mit den eckigen Klammern `[]` und einem `-`
+
+Wir wollen die 2. Person im test data.frame löschen:
+
+```{r}
+test = test[-2,]
+
+test
+```
+
+Genau wie im Kapitel Daten auswählen gelernt, können wir auch die zu löschenden Personen nach einer Logik auswählen:
+
+Wir wollen alle Personen mit `Geschlecht == "männlich"` löschen:
+
+```{r}
+test = test[-c(test$Geschlecht == "männlich"),]
+
+# oder 
+
+# test = test[c(test$Geschlecht != "männlich"),]
+
+test
+```
+
+## Umbenennen
+
+### Variablennamen ändern
+
+Um uns die Variablennamen anzeigen zu lassen benutzen wie `names()`:
+
+```{r}
+names(test)
+```
+
+Die selbe Funktion können wir auch nutzen um Variablen umzubenennen.
+
+Wie wollen die 1. Variable anstelle von `ID` gerne `Idenfikation` nennen:
+
+```{r}
+names(test)[1] = "Idenfikation"
+
+test
+```
+
+Das selbe funktioniert auch mit logischen Argumenten (die Variable, die `ID` heisst...)
+
+```{r}
+names(test)[names(test) == "ID"] = "Idenfikation"
+```
+
+Wollen wir mehrere Variablen auf einmal umbennen eimpfiehlt sich die `rename()` Funktion aus `dplyr`. Wir bauen uns zunächst noch einmal 3 leere Dummy Variablen, die wir dann umbenennen:
+
+```{r}
+test$A = NA
+test$B = NA
+test$C = NA
+
+test
+```
+
+Nun zum Umbennen:
+
+```{r}
+test = rename(test, c(D = A, 
+                      E = B,
+                      F = C))
+
+test
+```
 
 ## Verändern
 
+```{r echo=F}
+test <- data.frame("ID" = c(1, 2, 3, 4, 5),
+                     "Alter" = c(24, 25, 42, 56, 22))
+test$Geschlecht = c("männlich", "weiblich", "weiblich", "männlich", "weiblich")
+```
+
+### Werte ändern
+
+Die einfachste Art zum Ändern von Werten ist wie immer das selektieren und überspeichern.
+
+Schauen wir uns einmal die `Alter` Variable in unserem test data.frame an:
+
+```{r}
+test
+```
+
+Wenn ich beispielsweise alle 25 Jahre alten Leute 35 werden lassen wollte, muss ich diese nur selektieren und überspeichern:
+
+```{r}
+test$Alter[test$Alter == 25] = 35
+
+test
+```
+
+### Recodieren
+
+Manchmal ist es nützlich Werte nicht nacheinander zu überspeichern, sondern simultan (also alle parallel) zu ändern.
+
+Nehmen wir einmal an ich hätte ein Fragebogenitem zum Thema Introversion (Rating von 1-5). Die Frage lautet "Gehen Sie gerne auf Parties"?
+
+```{r}
+test$Item = c(1, 3, 5, 4, 2)
+
+test
+```
+
+Dieses Item gibt uns eine nützliche Information hinsichtlich der Introversion der Person, denn jemand sehr introvertiertes würde vermutlich mit eine niedrige Zahl ankreuzen (z.B. Person 1). Um sie ggf. mit anderen Items zu verrechnen müssen wir Items jedoch häufig umdrehen (umpolen), sodass hohe Werte auch eine hohe Ausprägung des Konstrukts reflektieren.
+
+Mein Ziel ist also folgendes:
+
+1 $\rightarrow$ 5
+2 $\rightarrow$ 4
+3 $\rightarrow$ 3
+4 $\rightarrow$ 2
+5 $\rightarrow$ 1
+
+Der 1. Impuls wäre folgendes:
+
+```{r}
+# test$Item[test$Item == 1] = 5
+```
+
+Das Problem damit ist, dass alle ursprünglichen 1 Werte die ich zu 5 mache, sich wieder zu 1 verändern, sobald ich die ursprünglichen 5er in 1 verändere. Ich muss also alle Werte "auf einmal" ändern.
+
+Dafür nutzen wir die `recode()` Funktion aus dem Paket `dplyr`:
+
+```{r}
+test$Item = recode(test$Item, "1" = 5, "2" = 4, "4" = 2, "5" = 1)
+
+test
+```
+
+### Worte ändern
+
+Das selbe funktioniert natürlich für Worte. Lassen Sie uns `männlich` und `weiblich` doch einmal in `Mann` und `Frau` verändern:
+
+```{r}
+test$Geschlecht[test$Geschlecht == "männlich"] = "Mann"
+test$Geschlecht[test$Geschlecht == "weiblich"] = "Frau"
+
+test
+```
+
+Manchmal haben wir jedoch Variablen mit unterschiedlichen Ausprägungen, die alle einen bestimmten Wortteil haben, der verändert werden soll.
+
+Nehmen wir einmal folgende Variable:
+
+```{r}
+test$Gruppe = c("GruppeA", "GruppeB", "GruppeC", "GruppeD", "GruppeE")
+
+test
+```
+
+Nehmen wir an, ich wollte das Wort `Gruppe` ind `Klasse` verändern die Bezeichnungen A-E aber beibehalten. Dann muss ich einen bestimmten Worteil für alle Werte in der Variable ersetzten. Dafür ist die Funktion `gsub()` ideal:
+
+```{r}
+test$Gruppe = gsub(pattern = "Gruppe", replacement = "Klasse", x = test$Gruppe)
+
+test
+```
+
+Dasselbe lässt sich natürlich auf für Variablennamen anwenden. Wir erstellen noch einmal 3 leere Dummy Variablen
+
+```{r}
+test$Test1 = NA
+test$Test2 = NA
+test$Test3 = NA
+
+test
+```
+
+Nun bennen wir sie mit `gsub()` automatisch um. Wir wollen probieren, dass `Test` zu `Item` wird:
+
+```{r}
+names(test) = gsub(pattern = "Test", replacement = "Item", x = names(test))
+```
+
+### Faktorstufen ändern
+
+Zunächst legen wir einmal eine Faktorvariable an. Wir wollen die Variable `Diagnose` codieren für die Stufen Depression, Angststörung und Sucht.
+
+```{r}
+test$Diagnose = factor(c("Depression", "Angststörung", "Sucht", "Depression", "Angststörung"))
+
+test$Diagnose
+```
+
+Wir die Namen der Faktorstufen z.B. etwas abgekürzt haben. Wir gehen genauso vor wie bei der Umbenennung von Variablen, nur nutzen wir statt `names()` den Befehl `levels()`:
+
+```{r}
+levels(test$Diagnose) = c("Angst", "Depr.", "Sucht")
+
+test$Diagnose
+```
+
+Wie wir sehen, sortiert R Faktorstufen zunächst einmal immer alphabetisch. Vielleicht wollen wir, dass anstelle von Angst die Depression die 1. Faktorstufe ist (z.B. zur Darstellung in einer Graphik o.ä.). Dafür nutzen wir die Funktion `relevel()`
+
+```{r}
+test$Diagnose = relevel(test$Diagnose, "Depr.")
+
+test$Diagnose
+```
+
 ## Aggreggieren
+
+### rbind und cbind
+
+### merge
+
+## Sortieren
 
 ## Transformieren
 

@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2022-10-31" />
+<meta name="date" content="2022-11-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -220,6 +220,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#spalten-variablen-auswählen"><i class="fa fa-check"></i><b>8.2.2</b> Spalten (Variablen) auswählen</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="9" data-path="datenmanipulation.html"><a href="datenmanipulation.html"><i class="fa fa-check"></i><b>9</b> Datenmanipulation</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#hinzufügen"><i class="fa fa-check"></i><b>9.1</b> Hinzufügen</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-hinzufügen"><i class="fa fa-check"></i><b>9.1.1</b> Variablen hinzufügen</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#löschen"><i class="fa fa-check"></i><b>9.2</b> Löschen</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-löschen"><i class="fa fa-check"></i><b>9.2.1</b> Variablen löschen</a></li>
+<li class="chapter" data-level="9.2.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#fälle-löschen"><i class="fa fa-check"></i><b>9.2.2</b> Fälle löschen</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#umbenennen"><i class="fa fa-check"></i><b>9.3</b> Umbenennen</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablennamen-ändern"><i class="fa fa-check"></i><b>9.3.1</b> Variablennamen ändern</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#verändern"><i class="fa fa-check"></i><b>9.4</b> Verändern</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#werte-ändern"><i class="fa fa-check"></i><b>9.4.1</b> Werte ändern</a></li>
+<li class="chapter" data-level="9.4.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#recodieren"><i class="fa fa-check"></i><b>9.4.2</b> Recodieren</a></li>
+<li class="chapter" data-level="9.4.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#worte-ändern"><i class="fa fa-check"></i><b>9.4.3</b> Worte ändern</a></li>
+<li class="chapter" data-level="9.4.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#faktorstufen-ändern"><i class="fa fa-check"></i><b>9.4.4</b> Faktorstufen ändern</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="datenmanipulation.html"><a href="datenmanipulation.html#aggreggieren"><i class="fa fa-check"></i><b>9.5</b> Aggreggieren</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#rbind-und-cbind"><i class="fa fa-check"></i><b>9.5.1</b> rbind und cbind</a></li>
+<li class="chapter" data-level="9.5.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#merge"><i class="fa fa-check"></i><b>9.5.2</b> merge</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="datenmanipulation.html"><a href="datenmanipulation.html#sortieren"><i class="fa fa-check"></i><b>9.6</b> Sortieren</a></li>
+<li class="chapter" data-level="9.7" data-path="datenmanipulation.html"><a href="datenmanipulation.html#transformieren"><i class="fa fa-check"></i><b>9.7</b> Transformieren</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#von-long-nach-wide"><i class="fa fa-check"></i><b>9.7.1</b> Von Long nach Wide</a></li>
+<li class="chapter" data-level="9.7.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#skalieren"><i class="fa fa-check"></i><b>9.7.2</b> Skalieren</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -319,6 +353,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

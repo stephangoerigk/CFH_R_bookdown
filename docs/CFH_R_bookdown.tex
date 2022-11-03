@@ -117,7 +117,7 @@
 
 \title{Einführung in R}
 \author{Stephan Goerigk}
-\date{2022-10-31}
+\date{2022-11-03}
 
 \begin{document}
 \maketitle
@@ -772,10 +772,10 @@ Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten e
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]  0.27937464 -0.64817022 -1.21771039 -0.53721254  1.55755864  0.42285519
-##  [7] -1.42577481  2.29665855  0.53761077 -0.09185485  1.23517906  0.63837105
-## [13] -0.53382421 -0.86115246  0.52379564  0.11576233  1.21410540 -0.53969760
-## [19] -1.53772456  0.55406633
+##  [1]  0.52308012  0.78402081 -1.18388218 -0.06789963  0.48513422  1.08347533
+##  [7]  0.80711316 -0.84771851  1.60461952 -2.47195487  2.42155449  0.21161964
+## [13] -0.30229346 -0.92813652 -1.60498775  2.73660217  1.21276965  0.46303585
+## [19]  1.06936399  1.45763151
 \end{verbatim}
 
 \hypertarget{daten-importieren-und-speichern}{%
@@ -1595,6 +1595,568 @@ Wir können die Bedingungen auch mit den \texttt{\&} und \texttt{\textbar{}} Ope
 ## 4       none
 ## 5      brown
 \end{verbatim}
+
+\hypertarget{datenmanipulation}{%
+\chapter{Datenmanipulation}\label{datenmanipulation}}
+
+\hypertarget{hinzufuxfcgen}{%
+\section{Hinzufügen}\label{hinzufuxfcgen}}
+
+\hypertarget{variablen-hinzufuxfcgen}{%
+\subsection{Variablen hinzufügen}\label{variablen-hinzufuxfcgen}}
+
+Mit den Operatoren \texttt{\$} und Zuweisung \texttt{=} können Sie neue Spalten zu einem Datenrahmen hinzufügen. Dazu verwenden Sie einfach die Notation \texttt{df\$Name} und weisen ihm einen neuen Datenvektor (Variable) zu.
+
+Erstellen wir zum Beispiel einen data.frame namens test mit zwei Spalten: \texttt{ID} und \texttt{Alter}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\StringTok{"ID"} \OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{),}
+                     \StringTok{"Alter"} \OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{24}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{56}\NormalTok{, }\DecValTok{22}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Lassen Sie uns nun eine neue Spalte namens \texttt{Geschlecht} aus einem Vektor mit Geschlechtsdaten hinzufügen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Geschlecht }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"männlich"}\NormalTok{, }\StringTok{"weiblich"}\NormalTok{, }\StringTok{"weiblich"}\NormalTok{, }\StringTok{"männlich"}\NormalTok{, }\StringTok{"weiblich"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Hier ist das Ergebnis:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Alter Geschlecht
+## 1  1    24   männlich
+## 2  2    25   weiblich
+## 3  3    42   weiblich
+## 4  4    56   männlich
+## 5  5    22   weiblich
+\end{verbatim}
+
+Dasselbe funktioniert auch mit eckigen Klammern \texttt{{[}{]}}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test[}\StringTok{"Lieblingsfilm"}\NormalTok{] }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"Titanic"}\NormalTok{, }\StringTok{"Herr der Ringe"}\NormalTok{, }\StringTok{"Harry Potter"}\NormalTok{, }\StringTok{"Titanic"}\NormalTok{, }\StringTok{"Matrix"}\NormalTok{)}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Alter Geschlecht  Lieblingsfilm
+## 1  1    24   männlich        Titanic
+## 2  2    25   weiblich Herr der Ringe
+## 3  3    42   weiblich   Harry Potter
+## 4  4    56   männlich        Titanic
+## 5  5    22   weiblich         Matrix
+\end{verbatim}
+
+Diese Methoden hängen neue Spalten immer ganz hinten (ganz rechts) an den data.frame an.
+Wollen wir die neue Variable an einer bestimmten Position des data.frames einfügen nutzen wir die \texttt{add\_column()} Funktion aus dem \texttt{tibble} Paket.
+
+Wollen wir zum Beispiel eine Variable an die 2. Position des Datensatzes einfügen nutzen wir und spezifizieren das \texttt{.after} oder \texttt{.before} Argument mit dem Index oder dem Namen der vorherigen/folgenden Variable:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tibble)}
+
+\NormalTok{test }\OtherTok{=} \FunctionTok{add\_column}\NormalTok{(test, }\AttributeTok{Haustier =} \FunctionTok{c}\NormalTok{(}\StringTok{"Hund"}\NormalTok{, }\StringTok{"Katze"}\NormalTok{, }\StringTok{"Hund"}\NormalTok{, }\StringTok{"Hund"}\NormalTok{, }\StringTok{"Fische"}\NormalTok{),  }\AttributeTok{.after =} \DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# oder }
+
+\CommentTok{\# test = add\_column(test, Haustier = c("Hund", "Katze", "Hund", "Hund", "Fische"),  .before = "Alter")}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Haustier Alter Geschlecht  Lieblingsfilm
+## 1  1     Hund    24   männlich        Titanic
+## 2  2    Katze    25   weiblich Herr der Ringe
+## 3  3     Hund    42   weiblich   Harry Potter
+## 4  4     Hund    56   männlich        Titanic
+## 5  5   Fische    22   weiblich         Matrix
+\end{verbatim}
+
+\hypertarget{luxf6schen}{%
+\section{Löschen}\label{luxf6schen}}
+
+\hypertarget{variablen-luxf6schen}{%
+\subsection{Variablen löschen}\label{variablen-luxf6schen}}
+
+Wir möchten aus unserem \texttt{test} Datensatz die Variable \texttt{Lieblingsfilm} wieder löschen.
+
+Der einfachste Weg um eine Variable zu löschen funktioniert wieder einmal mit den \texttt{\$} Operator.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Lieblingsfilm }\OtherTok{=} \ConstantTok{NULL}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Haustier Alter Geschlecht
+## 1  1     Hund    24   männlich
+## 2  2    Katze    25   weiblich
+## 3  3     Hund    42   weiblich
+## 4  4     Hund    56   männlich
+## 5  5   Fische    22   weiblich
+\end{verbatim}
+
+Wollen wir mehrere Variablen auf einmal löschen empfiehlt sich die wie bereits bei der Auswahl von Variablen die \texttt{select()} Funktion aus dem \texttt{dplyr} Paket. Um wieder etwas zum löschen zu haben erstellen wir zunächst 3 leere Dummy Variablen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{ZumLoeschen1 }\OtherTok{=} \ConstantTok{NA}
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{ZumLoeschen2 }\OtherTok{=} \ConstantTok{NA}
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{ZumLoeschen3 }\OtherTok{=} \ConstantTok{NA}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Haustier Alter Geschlecht ZumLoeschen1 ZumLoeschen2 ZumLoeschen3
+## 1  1     Hund    24   männlich           NA           NA           NA
+## 2  2    Katze    25   weiblich           NA           NA           NA
+## 3  3     Hund    42   weiblich           NA           NA           NA
+## 4  4     Hund    56   männlich           NA           NA           NA
+## 5  5   Fische    22   weiblich           NA           NA           NA
+\end{verbatim}
+
+Nun löschen wir diese 3 Variablen wieder
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{test }\OtherTok{=} \FunctionTok{select}\NormalTok{(test, }\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(ZumLoeschen1, ZumLoeschen2, ZumLoeschen3))}
+
+\CommentTok{\# oder }
+
+\CommentTok{\# test = select(test, {-}contains("ZumLoeschen"))}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Haustier Alter Geschlecht
+## 1  1     Hund    24   männlich
+## 2  2    Katze    25   weiblich
+## 3  3     Hund    42   weiblich
+## 4  4     Hund    56   männlich
+## 5  5   Fische    22   weiblich
+\end{verbatim}
+
+\hypertarget{fuxe4lle-luxf6schen}{%
+\subsection{Fälle löschen}\label{fuxe4lle-luxf6schen}}
+
+Die einfachste Art Fälle zu löschen ist das Überspeichern des data.frames ohne die zu löschenden Fälle. Diese Selektion machen wir einfach mit den eckigen Klammern \texttt{{[}{]}} und einem \texttt{-}
+
+Wir wollen die 2. Person im test data.frame löschen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test }\OtherTok{=}\NormalTok{ test[}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{,]}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Haustier Alter Geschlecht
+## 1  1     Hund    24   männlich
+## 3  3     Hund    42   weiblich
+## 4  4     Hund    56   männlich
+## 5  5   Fische    22   weiblich
+\end{verbatim}
+
+Genau wie im Kapitel Daten auswählen gelernt, können wir auch die zu löschenden Personen nach einer Logik auswählen:
+
+Wir wollen alle Personen mit \texttt{Geschlecht\ ==\ "männlich"} löschen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test }\OtherTok{=}\NormalTok{ test[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{Geschlecht }\SpecialCharTok{==} \StringTok{"männlich"}\NormalTok{),]}
+
+\CommentTok{\# oder }
+
+\CommentTok{\# test = test[c(test$Geschlecht != "männlich"),]}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Haustier Alter Geschlecht
+## 3  3     Hund    42   weiblich
+## 4  4     Hund    56   männlich
+## 5  5   Fische    22   weiblich
+\end{verbatim}
+
+\hypertarget{umbenennen}{%
+\section{Umbenennen}\label{umbenennen}}
+
+\hypertarget{variablennamen-uxe4ndern}{%
+\subsection{Variablennamen ändern}\label{variablennamen-uxe4ndern}}
+
+Um uns die Variablennamen anzeigen zu lassen benutzen wie \texttt{names()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "ID"         "Haustier"   "Alter"      "Geschlecht"
+\end{verbatim}
+
+Die selbe Funktion können wir auch nutzen um Variablen umzubenennen.
+
+Wie wollen die 1. Variable anstelle von \texttt{ID} gerne \texttt{Idenfikation} nennen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(test)[}\DecValTok{1}\NormalTok{] }\OtherTok{=} \StringTok{"Idenfikation"}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Idenfikation Haustier Alter Geschlecht
+## 3            3     Hund    42   weiblich
+## 4            4     Hund    56   männlich
+## 5            5   Fische    22   weiblich
+\end{verbatim}
+
+Das selbe funktioniert auch mit logischen Argumenten (die Variable, die \texttt{ID} heisst\ldots)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(test)[}\FunctionTok{names}\NormalTok{(test) }\SpecialCharTok{==} \StringTok{"ID"}\NormalTok{] }\OtherTok{=} \StringTok{"Idenfikation"}
+\end{Highlighting}
+\end{Shaded}
+
+Wollen wir mehrere Variablen auf einmal umbennen eimpfiehlt sich die \texttt{rename()} Funktion aus \texttt{dplyr}. Wir bauen uns zunächst noch einmal 3 leere Dummy Variablen, die wir dann umbenennen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{A }\OtherTok{=} \ConstantTok{NA}
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{B }\OtherTok{=} \ConstantTok{NA}
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{C }\OtherTok{=} \ConstantTok{NA}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Idenfikation Haustier Alter Geschlecht  A  B  C
+## 3            3     Hund    42   weiblich NA NA NA
+## 4            4     Hund    56   männlich NA NA NA
+## 5            5   Fische    22   weiblich NA NA NA
+\end{verbatim}
+
+Nun zum Umbennen:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test }\OtherTok{=} \FunctionTok{rename}\NormalTok{(test, }\FunctionTok{c}\NormalTok{(}\AttributeTok{D =}\NormalTok{ A, }
+                      \AttributeTok{E =}\NormalTok{ B,}
+                      \AttributeTok{F =}\NormalTok{ C))}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Idenfikation Haustier Alter Geschlecht  D  E  F
+## 3            3     Hund    42   weiblich NA NA NA
+## 4            4     Hund    56   männlich NA NA NA
+## 5            5   Fische    22   weiblich NA NA NA
+\end{verbatim}
+
+\hypertarget{veruxe4ndern}{%
+\section{Verändern}\label{veruxe4ndern}}
+
+\hypertarget{werte-uxe4ndern}{%
+\subsection{Werte ändern}\label{werte-uxe4ndern}}
+
+Die einfachste Art zum Ändern von Werten ist wie immer das selektieren und überspeichern.
+
+Schauen wir uns einmal die \texttt{Alter} Variable in unserem test data.frame an:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Alter Geschlecht
+## 1  1    24   männlich
+## 2  2    25   weiblich
+## 3  3    42   weiblich
+## 4  4    56   männlich
+## 5  5    22   weiblich
+\end{verbatim}
+
+Wenn ich beispielsweise alle 25 Jahre alten Leute 35 werden lassen wollte, muss ich diese nur selektieren und überspeichern:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Alter[test}\SpecialCharTok{$}\NormalTok{Alter }\SpecialCharTok{==} \DecValTok{25}\NormalTok{] }\OtherTok{=} \DecValTok{35}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Alter Geschlecht
+## 1  1    24   männlich
+## 2  2    35   weiblich
+## 3  3    42   weiblich
+## 4  4    56   männlich
+## 5  5    22   weiblich
+\end{verbatim}
+
+\hypertarget{recodieren}{%
+\subsection{Recodieren}\label{recodieren}}
+
+Manchmal ist es nützlich Werte nicht nacheinander zu überspeichern, sondern simultan (also alle parallel) zu ändern.
+
+Nehmen wir einmal an ich hätte ein Fragebogenitem zum Thema Introversion (Rating von 1-5). Die Frage lautet ``Gehen Sie gerne auf Parties''?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Item }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Alter Geschlecht Item
+## 1  1    24   männlich    1
+## 2  2    35   weiblich    3
+## 3  3    42   weiblich    5
+## 4  4    56   männlich    4
+## 5  5    22   weiblich    2
+\end{verbatim}
+
+Dieses Item gibt uns eine nützliche Information hinsichtlich der Introversion der Person, denn jemand sehr introvertiertes würde vermutlich mit eine niedrige Zahl ankreuzen (z.B. Person 1). Um sie ggf. mit anderen Items zu verrechnen müssen wir Items jedoch häufig umdrehen (umpolen), sodass hohe Werte auch eine hohe Ausprägung des Konstrukts reflektieren.
+
+Mein Ziel ist also folgendes:
+
+1 \(\rightarrow\) 5
+2 \(\rightarrow\) 4
+3 \(\rightarrow\) 3
+4 \(\rightarrow\) 2
+5 \(\rightarrow\) 1
+
+Der 1. Impuls wäre folgendes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# test$Item[test$Item == 1] = 5}
+\end{Highlighting}
+\end{Shaded}
+
+Das Problem damit ist, dass alle ursprünglichen 1 Werte die ich zu 5 mache, sich wieder zu 1 verändern, sobald ich die ursprünglichen 5er in 1 verändere. Ich muss also alle Werte ``auf einmal'' ändern.
+
+Dafür nutzen wir die \texttt{recode()} Funktion aus dem Paket \texttt{dplyr}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Item }\OtherTok{=} \FunctionTok{recode}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{Item, }\StringTok{"1"} \OtherTok{=} \DecValTok{5}\NormalTok{, }\StringTok{"2"} \OtherTok{=} \DecValTok{4}\NormalTok{, }\StringTok{"4"} \OtherTok{=} \DecValTok{2}\NormalTok{, }\StringTok{"5"} \OtherTok{=} \DecValTok{1}\NormalTok{)}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Alter Geschlecht Item
+## 1  1    24   männlich    5
+## 2  2    35   weiblich    3
+## 3  3    42   weiblich    1
+## 4  4    56   männlich    2
+## 5  5    22   weiblich    4
+\end{verbatim}
+
+\hypertarget{worte-uxe4ndern}{%
+\subsection{Worte ändern}\label{worte-uxe4ndern}}
+
+Das selbe funktioniert natürlich für Worte. Lassen Sie uns \texttt{männlich} und \texttt{weiblich} doch einmal in \texttt{Mann} und \texttt{Frau} verändern:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Geschlecht[test}\SpecialCharTok{$}\NormalTok{Geschlecht }\SpecialCharTok{==} \StringTok{"männlich"}\NormalTok{] }\OtherTok{=} \StringTok{"Mann"}
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Geschlecht[test}\SpecialCharTok{$}\NormalTok{Geschlecht }\SpecialCharTok{==} \StringTok{"weiblich"}\NormalTok{] }\OtherTok{=} \StringTok{"Frau"}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Alter Geschlecht Item
+## 1  1    24       Mann    5
+## 2  2    35       Frau    3
+## 3  3    42       Frau    1
+## 4  4    56       Mann    2
+## 5  5    22       Frau    4
+\end{verbatim}
+
+Manchmal haben wir jedoch Variablen mit unterschiedlichen Ausprägungen, die alle einen bestimmten Wortteil haben, der verändert werden soll.
+
+Nehmen wir einmal folgende Variable:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Gruppe }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"GruppeA"}\NormalTok{, }\StringTok{"GruppeB"}\NormalTok{, }\StringTok{"GruppeC"}\NormalTok{, }\StringTok{"GruppeD"}\NormalTok{, }\StringTok{"GruppeE"}\NormalTok{)}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Alter Geschlecht Item  Gruppe
+## 1  1    24       Mann    5 GruppeA
+## 2  2    35       Frau    3 GruppeB
+## 3  3    42       Frau    1 GruppeC
+## 4  4    56       Mann    2 GruppeD
+## 5  5    22       Frau    4 GruppeE
+\end{verbatim}
+
+Nehmen wir an, ich wollte das Wort \texttt{Gruppe} ind \texttt{Klasse} verändern die Bezeichnungen A-E aber beibehalten. Dann muss ich einen bestimmten Worteil für alle Werte in der Variable ersetzten. Dafür ist die Funktion \texttt{gsub()} ideal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Gruppe }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\AttributeTok{pattern =} \StringTok{"Gruppe"}\NormalTok{, }\AttributeTok{replacement =} \StringTok{"Klasse"}\NormalTok{, }\AttributeTok{x =}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{Gruppe)}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Alter Geschlecht Item  Gruppe
+## 1  1    24       Mann    5 KlasseA
+## 2  2    35       Frau    3 KlasseB
+## 3  3    42       Frau    1 KlasseC
+## 4  4    56       Mann    2 KlasseD
+## 5  5    22       Frau    4 KlasseE
+\end{verbatim}
+
+Dasselbe lässt sich natürlich auf für Variablennamen anwenden. Wir erstellen noch einmal 3 leere Dummy Variablen
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Test1 }\OtherTok{=} \ConstantTok{NA}
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Test2 }\OtherTok{=} \ConstantTok{NA}
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Test3 }\OtherTok{=} \ConstantTok{NA}
+
+\NormalTok{test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID Alter Geschlecht Item  Gruppe Test1 Test2 Test3
+## 1  1    24       Mann    5 KlasseA    NA    NA    NA
+## 2  2    35       Frau    3 KlasseB    NA    NA    NA
+## 3  3    42       Frau    1 KlasseC    NA    NA    NA
+## 4  4    56       Mann    2 KlasseD    NA    NA    NA
+## 5  5    22       Frau    4 KlasseE    NA    NA    NA
+\end{verbatim}
+
+Nun bennen wir sie mit \texttt{gsub()} automatisch um. Wir wollen probieren, dass \texttt{Test} zu \texttt{Item} wird:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(test) }\OtherTok{=} \FunctionTok{gsub}\NormalTok{(}\AttributeTok{pattern =} \StringTok{"Test"}\NormalTok{, }\AttributeTok{replacement =} \StringTok{"Item"}\NormalTok{, }\AttributeTok{x =} \FunctionTok{names}\NormalTok{(test))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{faktorstufen-uxe4ndern}{%
+\subsection{Faktorstufen ändern}\label{faktorstufen-uxe4ndern}}
+
+Zunächst legen wir einmal eine Faktorvariable an. Wir wollen die Variable \texttt{Diagnose} codieren für die Stufen Depression, Angststörung und Sucht.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Diagnose }\OtherTok{=} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Depression"}\NormalTok{, }\StringTok{"Angststörung"}\NormalTok{, }\StringTok{"Sucht"}\NormalTok{, }\StringTok{"Depression"}\NormalTok{, }\StringTok{"Angststörung"}\NormalTok{))}
+
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Diagnose}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Depression   Angststörung Sucht        Depression   Angststörung
+## Levels: Angststörung Depression Sucht
+\end{verbatim}
+
+Wir die Namen der Faktorstufen z.B. etwas abgekürzt haben. Wir gehen genauso vor wie bei der Umbenennung von Variablen, nur nutzen wir statt \texttt{names()} den Befehl \texttt{levels()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{levels}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{Diagnose) }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"Angst"}\NormalTok{, }\StringTok{"Depr."}\NormalTok{, }\StringTok{"Sucht"}\NormalTok{)}
+
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Diagnose}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Depr. Angst Sucht Depr. Angst
+## Levels: Angst Depr. Sucht
+\end{verbatim}
+
+Wie wir sehen, sortiert R Faktorstufen zunächst einmal immer alphabetisch. Vielleicht wollen wir, dass anstelle von Angst die Depression die 1. Faktorstufe ist (z.B. zur Darstellung in einer Graphik o.ä.). Dafür nutzen wir die Funktion \texttt{relevel()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Diagnose }\OtherTok{=} \FunctionTok{relevel}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{Diagnose, }\StringTok{"Depr."}\NormalTok{)}
+
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{Diagnose}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Depr. Angst Sucht Depr. Angst
+## Levels: Depr. Angst Sucht
+\end{verbatim}
+
+\hypertarget{aggreggieren}{%
+\section{Aggreggieren}\label{aggreggieren}}
+
+\hypertarget{rbind-und-cbind}{%
+\subsection{rbind und cbind}\label{rbind-und-cbind}}
+
+\hypertarget{merge}{%
+\subsection{merge}\label{merge}}
+
+\hypertarget{sortieren}{%
+\section{Sortieren}\label{sortieren}}
+
+\hypertarget{transformieren}{%
+\section{Transformieren}\label{transformieren}}
+
+\hypertarget{von-long-nach-wide}{%
+\subsection{Von Long nach Wide}\label{von-long-nach-wide}}
+
+\hypertarget{skalieren}{%
+\subsection{Skalieren}\label{skalieren}}
 
   \bibliography{book.bib,packages.bib}
 
