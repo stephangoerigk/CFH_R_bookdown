@@ -12,7 +12,7 @@ rmd_files: [
   "Daten_Generieren.Rmd",
   "Importieren_Speichern.Rmd",
   "Daten_Auswaehlen.Rmd",
- # "Daten_Beschreiben.Rmd",
+  "Daten_Beschreiben.Rmd",
   "Daten_Manipulieren.Rmd",
   # "Graphiken.Rmd",
   # "Tabellen.Rmd",

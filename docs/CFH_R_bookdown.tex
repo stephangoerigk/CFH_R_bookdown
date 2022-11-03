@@ -772,10 +772,10 @@ Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten e
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]  0.52308012  0.78402081 -1.18388218 -0.06789963  0.48513422  1.08347533
-##  [7]  0.80711316 -0.84771851  1.60461952 -2.47195487  2.42155449  0.21161964
-## [13] -0.30229346 -0.92813652 -1.60498775  2.73660217  1.21276965  0.46303585
-## [19]  1.06936399  1.45763151
+##  [1]  0.03326313 -0.64748198 -0.76222417  0.21030747  0.20816745 -0.86630807
+##  [7]  0.92465383 -0.32997655  1.84286352 -0.93676248 -1.32057274 -0.13741470
+## [13] -0.84480970  0.37864617 -0.23948993 -0.15418745  1.25501306  0.89732122
+## [19] -2.01820412  0.23641736
 \end{verbatim}
 
 \hypertarget{daten-importieren-und-speichern}{%
@@ -1595,6 +1595,133 @@ Wir können die Bedingungen auch mit den \texttt{\&} und \texttt{\textbar{}} Ope
 ## 4       none
 ## 5      brown
 \end{verbatim}
+
+\hypertarget{daten-explorieren}{%
+\chapter{Daten Explorieren}\label{daten-explorieren}}
+
+Im folgenden Abschnitt werden wir lernen wie wir uns schnell einen Überblick über große Mengen von Daten machen können.
+
+Hierzu gehört natürlich, dass wir einzelne Variablen mit \textbf{Deskriptivstatistiken} (z.B. Mittelwert, Median, Standardabweichung\ldots) zusammenfassen, so wie wir es im 1. Semester gelernt haben.
+
+Wir werden jedoch auch lernen, wie wir uns effizient Informationen über Datensätze ausgeben lassen können, z.B. über ihre Größe (z.B. Anzahl Zeilen und Spalten) Art der enthaltenen Variablen und fehlende Werte.
+
+\hypertarget{informationen-uxfcber-r-objekte}{%
+\section{Informationen über R Objekte}\label{informationen-uxfcber-r-objekte}}
+
+Um schnell Informationen über ein R Objekt (Vektor, data.frame, Bild o.ä.) zu erhalten, nutzen wir den \texttt{str()} Befehl.
+
+So können wir einen schnellen Überblick erhalten, um was für ein Objekt es sich handelt und ``was in dem Objekt drin steckt''.
+
+\hypertarget{informationen-uxfcber-vektoren}{%
+\subsection{Informationen über Vektoren}\label{informationen-uxfcber-vektoren}}
+
+\hypertarget{length}{%
+\subsubsection{length()}\label{length}}
+
+Um herauszufinden, wie viele Stellen ein Vektor hat, nutzen wir die Funktion \texttt{length()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vektor }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{)}
+
+\FunctionTok{length}\NormalTok{(vektor)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\hypertarget{informationen-uxfcber-dataframes}{%
+\subsection{Informationen über Dataframes}\label{informationen-uxfcber-dataframes}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#length()}
+\CommentTok{\#str()}
+\CommentTok{\#nrow()}
+\CommentTok{\#ncol()}
+\CommentTok{\#is.na()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{deskriptivstatistiken}{%
+\section{Deskriptivstatistiken}\label{deskriptivstatistiken}}
+
+\hypertarget{kategorische-variablen}{%
+\subsection{Kategorische Variablen}\label{kategorische-variablen}}
+
+\hypertarget{deskription-kategorische-vektoren}{%
+\subsubsection{Deskription kategorische Vektoren}\label{deskription-kategorische-vektoren}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1392}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2658}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3291}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2658}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Funktion
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Beispiel
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Ergebnis
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Result
+\end{minipage} \\
+\midrule()
+\endhead
+\texttt{unique(x)} & Zeigt Vektor aller einzigartiger Werte an & \texttt{unique(c(1,\ 1,\ 2,\ 10))} & 1, 2, 10 \\
+\texttt{table(x,\ exclude)} & Gibt Tabelle aller einzigartiger Werte und deren absolute Häufigkeit an. Um auch fehlende Werte zu zählen wählen Sie \texttt{exclude\ =\ NULL} & \texttt{table(c("a",\ "a",\ "b",\ "c"))} & \texttt{2-"a",\ 1-"b",\ 1-"c"} \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{absolute-huxe4ufigkeiten}{%
+\subsubsection{Absolute Häufigkeiten}\label{absolute-huxe4ufigkeiten}}
+
+\hypertarget{relative-huxe4ufigkeiten}{%
+\subsubsection{Relative Häufigkeiten}\label{relative-huxe4ufigkeiten}}
+
+\hypertarget{numerische-variablen}{%
+\subsection{Numerische Variablen}\label{numerische-variablen}}
+
+\hypertarget{deskription-numerische-variablen}{%
+\subsubsection{Deskription numerische Variablen}\label{deskription-numerische-variablen}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2985}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3433}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3582}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Funktion
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Beispiel
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Ergebnis
+\end{minipage} \\
+\midrule()
+\endhead
+\texttt{sum(x),\ product(x)} & \texttt{sum(1:10)} & 55 \\
+\texttt{min(x),\ max(x)} & \texttt{min(1:10)} & 1 \\
+\texttt{mean(x),\ median(x)} & \texttt{mean(1:10)} & 5.5 \\
+\texttt{sd(x),\ var(x),\ range(x)} & \texttt{sd(1:10)} & 3.0276504 \\
+\texttt{quantile(x,\ probs)} & \texttt{quantile(1:10,\ probs\ =\ .2)} & 2.8 \\
+\texttt{summary(x)} & \texttt{summary(1:10)} & \texttt{Min\ =\ 1.00.\ 1st\ Qu.\ =\ 3.25,\ Median\ =\ 5.50,\ Mean\ =\ 5.50,\ 3rd\ Qu.\ =\ 7.75,\ Max\ =\ 10.0} \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{lagemauxdfe}{%
+\subsubsection{Lagemaße}\label{lagemauxdfe}}
+
+\hypertarget{streuungsmauxdfe}{%
+\subsubsection{Streuungsmaße}\label{streuungsmauxdfe}}
+
+\hypertarget{alles-auf-einen-blick}{%
+\subsection{Alles auf einen Blick}\label{alles-auf-einen-blick}}
+
+\hypertarget{gruppenweise-deskriptivstatistiken}{%
+\subsection{Gruppenweise Deskriptivstatistiken}\label{gruppenweise-deskriptivstatistiken}}
 
 \hypertarget{datenmanipulation}{%
 \chapter{Datenmanipulation}\label{datenmanipulation}}

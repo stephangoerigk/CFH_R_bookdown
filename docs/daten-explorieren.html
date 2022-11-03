@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 8 Daten Explorieren | Einführung in R</title>
+  <title>Kapitel 9 Daten Explorieren | Einführung in R</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 8 Daten Explorieren | Einführung in R" />
+  <meta property="og:title" content="Kapitel 9 Daten Explorieren | Einführung in R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 8 Daten Explorieren | Einführung in R" />
+  <meta name="twitter:title" content="Kapitel 9 Daten Explorieren | Einführung in R" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2022-10-13" />
+<meta name="date" content="2022-11-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="daten-importieren-und-speichern.html"/>
+<link rel="prev" href="daten-auswählen.html"/>
 <link rel="next" href="datenmanipulation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -193,84 +193,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html"><i class="fa fa-check"></i><b>7</b> Daten importieren und speichern</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-directory"><i class="fa fa-check"></i><b>7.1</b> Working Directory</a></li>
-<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.2</b> Working Environment</a></li>
-<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.3</b> Daten importieren</a></li>
-<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.4</b> Daten speichern</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="daten-explorieren.html"><a href="daten-explorieren.html"><i class="fa fa-check"></i><b>8</b> Daten Explorieren</a>
+<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#funktionen-zur-organisation-des-workspace"><i class="fa fa-check"></i><b>7.1</b> Funktionen zur Organisation des Workspace</a></li>
+<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#arbeitsverzeichnis-working-directory"><i class="fa fa-check"></i><b>7.2</b> Arbeitsverzeichnis (Working Directory)</a></li>
+<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.3</b> Working Environment</a></li>
+<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.4</b> Daten importieren</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-r-objekt"><i class="fa fa-check"></i><b>8.1</b> Informationen über R Objekt</a></li>
-<li class="chapter" data-level="8.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>8.2</b> Deskriptivstatistiken</a>
+<li class="chapter" data-level="7.4.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format"><i class="fa fa-check"></i><b>7.4.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.4.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format"><i class="fa fa-check"></i><b>7.4.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.4.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format"><i class="fa fa-check"></i><b>7.4.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.4.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format"><i class="fa fa-check"></i><b>7.4.4</b> xlsx-Format</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.5</b> Daten speichern</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#nominale-variablen"><i class="fa fa-check"></i><b>8.2.1</b> Nominale Variablen</a></li>
-<li class="chapter" data-level="8.2.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#numerische-variablen"><i class="fa fa-check"></i><b>8.2.2</b> Numerische Variablen</a></li>
-<li class="chapter" data-level="8.2.3" data-path="daten-explorieren.html"><a href="daten-explorieren.html#alles-auf-einen-blick"><i class="fa fa-check"></i><b>8.2.3</b> Alles auf einen Blick</a></li>
-<li class="chapter" data-level="8.2.4" data-path="daten-explorieren.html"><a href="daten-explorieren.html#gruppenweise-deskriptivstatistiken"><i class="fa fa-check"></i><b>8.2.4</b> Gruppenweise Deskriptivstatistiken</a></li>
+<li class="chapter" data-level="7.5.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format-1"><i class="fa fa-check"></i><b>7.5.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.5.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format-1"><i class="fa fa-check"></i><b>7.5.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.5.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format-1"><i class="fa fa-check"></i><b>7.5.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.5.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format-1"><i class="fa fa-check"></i><b>7.5.4</b> xlsx-Format</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="datenmanipulation.html"><a href="datenmanipulation.html"><i class="fa fa-check"></i><b>9</b> Datenmanipulation</a>
+<li class="chapter" data-level="8" data-path="daten-auswählen.html"><a href="daten-auswählen.html"><i class="fa fa-check"></i><b>8</b> Daten auswählen</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#löschen"><i class="fa fa-check"></i><b>9.1</b> Löschen</a></li>
-<li class="chapter" data-level="9.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#umbennen"><i class="fa fa-check"></i><b>9.2</b> Umbennen</a></li>
-<li class="chapter" data-level="9.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#verändern"><i class="fa fa-check"></i><b>9.3</b> Verändern</a></li>
-<li class="chapter" data-level="9.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#aggreggieren"><i class="fa fa-check"></i><b>9.4</b> Aggreggieren</a></li>
-<li class="chapter" data-level="9.5" data-path="datenmanipulation.html"><a href="datenmanipulation.html#transformieren"><i class="fa fa-check"></i><b>9.5</b> Transformieren</a>
+<li class="chapter" data-level="8.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#vektor-1"><i class="fa fa-check"></i><b>8.1</b> Vektor</a></li>
+<li class="chapter" data-level="8.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#dataframe"><i class="fa fa-check"></i><b>8.2</b> Dataframe</a>
 <ul>
-<li class="chapter" data-level="9.5.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#von-long-nach-wide"><i class="fa fa-check"></i><b>9.5.1</b> Von Long nach Wide</a></li>
-<li class="chapter" data-level="9.5.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#skalieren"><i class="fa fa-check"></i><b>9.5.2</b> Skalieren</a></li>
+<li class="chapter" data-level="8.2.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#zeilen-fälle-auswählen"><i class="fa fa-check"></i><b>8.2.1</b> Zeilen (Fälle) auswählen</a></li>
+<li class="chapter" data-level="8.2.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#spalten-variablen-auswählen"><i class="fa fa-check"></i><b>8.2.2</b> Spalten (Variablen) auswählen</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="graphiken.html"><a href="graphiken.html"><i class="fa fa-check"></i><b>10</b> Graphiken</a>
+<li class="chapter" data-level="9" data-path="daten-explorieren.html"><a href="daten-explorieren.html"><i class="fa fa-check"></i><b>9</b> Daten Explorieren</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="graphiken.html"><a href="graphiken.html#ggplot"><i class="fa fa-check"></i><b>10.1</b> ggplot()</a></li>
-<li class="chapter" data-level="10.2" data-path="graphiken.html"><a href="graphiken.html#geom_histogram"><i class="fa fa-check"></i><b>10.2</b> geom_histogram()</a></li>
-<li class="chapter" data-level="10.3" data-path="graphiken.html"><a href="graphiken.html#geom_point"><i class="fa fa-check"></i><b>10.3</b> geom_point()</a></li>
-<li class="chapter" data-level="10.4" data-path="graphiken.html"><a href="graphiken.html#geom_line-und-geom_smooth"><i class="fa fa-check"></i><b>10.4</b> geom_line() und geom_smooth()</a></li>
-<li class="chapter" data-level="10.5" data-path="graphiken.html"><a href="graphiken.html#geom_bar"><i class="fa fa-check"></i><b>10.5</b> geom_bar()</a></li>
-<li class="chapter" data-level="10.6" data-path="graphiken.html"><a href="graphiken.html#geom_boxplot"><i class="fa fa-check"></i><b>10.6</b> geom_boxplot()</a></li>
-<li class="chapter" data-level="10.7" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>10.7</b> Facetting</a></li>
-<li class="chapter" data-level="10.8" data-path="graphiken.html"><a href="graphiken.html#ästhetische-anpassungen"><i class="fa fa-check"></i><b>10.8</b> Ästhetische Anpassungen</a>
+<li class="chapter" data-level="9.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-r-objekte"><i class="fa fa-check"></i><b>9.1</b> Informationen über R Objekte</a>
 <ul>
-<li class="chapter" data-level="10.8.1" data-path="graphiken.html"><a href="graphiken.html#ggtitle"><i class="fa fa-check"></i><b>10.8.1</b> ggtitle()</a></li>
-<li class="chapter" data-level="10.8.2" data-path="graphiken.html"><a href="graphiken.html#labs"><i class="fa fa-check"></i><b>10.8.2</b> labs()</a></li>
-<li class="chapter" data-level="10.8.3" data-path="graphiken.html"><a href="graphiken.html#farben-formen-füllungen"><i class="fa fa-check"></i><b>10.8.3</b> Farben, Formen, Füllungen</a></li>
-<li class="chapter" data-level="10.8.4" data-path="graphiken.html"><a href="graphiken.html#achsen-verändern"><i class="fa fa-check"></i><b>10.8.4</b> Achsen verändern</a></li>
+<li class="chapter" data-level="9.1.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-vektoren"><i class="fa fa-check"></i><b>9.1.1</b> Informationen über Vektoren</a></li>
+<li class="chapter" data-level="9.1.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-dataframes"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.9" data-path="graphiken.html"><a href="graphiken.html#theme"><i class="fa fa-check"></i><b>10.9</b> theme()</a></li>
-<li class="chapter" data-level="10.10" data-path="graphiken.html"><a href="graphiken.html#abbildungen-kombinieren"><i class="fa fa-check"></i><b>10.10</b> Abbildungen kombinieren</a></li>
-<li class="chapter" data-level="10.11" data-path="graphiken.html"><a href="graphiken.html#abbildungen-exportieren"><i class="fa fa-check"></i><b>10.11</b> Abbildungen exportieren</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="tabellen.html"><a href="tabellen.html"><i class="fa fa-check"></i><b>11</b> Tabellen</a></li>
-<li class="chapter" data-level="12" data-path="preprocessing.html"><a href="preprocessing.html"><i class="fa fa-check"></i><b>12</b> Preprocessing</a>
+<li class="chapter" data-level="9.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>9.2</b> Deskriptivstatistiken</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="preprocessing.html"><a href="preprocessing.html#fehlende-werte"><i class="fa fa-check"></i><b>12.1</b> Fehlende Werte</a></li>
-<li class="chapter" data-level="12.2" data-path="preprocessing.html"><a href="preprocessing.html#ausreißer"><i class="fa fa-check"></i><b>12.2</b> Ausreißer</a></li>
-<li class="chapter" data-level="12.3" data-path="preprocessing.html"><a href="preprocessing.html#schiefe-daten"><i class="fa fa-check"></i><b>12.3</b> Schiefe Daten</a></li>
+<li class="chapter" data-level="9.2.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#kategorische-variablen"><i class="fa fa-check"></i><b>9.2.1</b> Kategorische Variablen</a></li>
+<li class="chapter" data-level="9.2.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#numerische-variablen"><i class="fa fa-check"></i><b>9.2.2</b> Numerische Variablen</a></li>
+<li class="chapter" data-level="9.2.3" data-path="daten-explorieren.html"><a href="daten-explorieren.html#alles-auf-einen-blick"><i class="fa fa-check"></i><b>9.2.3</b> Alles auf einen Blick</a></li>
+<li class="chapter" data-level="9.2.4" data-path="daten-explorieren.html"><a href="daten-explorieren.html#gruppenweise-deskriptivstatistiken"><i class="fa fa-check"></i><b>9.2.4</b> Gruppenweise Deskriptivstatistiken</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>13</b> Korrelation</a>
+</ul></li>
+<li class="chapter" data-level="10" data-path="datenmanipulation.html"><a href="datenmanipulation.html"><i class="fa fa-check"></i><b>10</b> Datenmanipulation</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>13.1</b> Pearson Korrelation</a></li>
-<li class="chapter" data-level="13.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation"><i class="fa fa-check"></i><b>13.2</b> Spearman Korrelation</a></li>
-<li class="chapter" data-level="13.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>13.3</b> Kendall Korrelation</a></li>
-<li class="chapter" data-level="13.4" data-path="korrelation.html"><a href="korrelation.html#korrelationmatrix"><i class="fa fa-check"></i><b>13.4</b> Korrelationmatrix</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>14</b> Regression</a>
+<li class="chapter" data-level="10.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#hinzufügen"><i class="fa fa-check"></i><b>10.1</b> Hinzufügen</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="regression.html"><a href="regression.html#lineare-regression"><i class="fa fa-check"></i><b>14.1</b> Lineare Regression</a></li>
-<li class="chapter" data-level="14.2" data-path="regression.html"><a href="regression.html#logistische-regression"><i class="fa fa-check"></i><b>14.2</b> Logistische Regression</a></li>
+<li class="chapter" data-level="10.1.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-hinzufügen"><i class="fa fa-check"></i><b>10.1.1</b> Variablen hinzufügen</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="mehrstufige-uvs.html"><a href="mehrstufige-uvs.html"><i class="fa fa-check"></i><b>15</b> Mehrstufige UVs</a>
+<li class="chapter" data-level="10.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#löschen"><i class="fa fa-check"></i><b>10.2</b> Löschen</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="mehrstufige-uvs.html"><a href="mehrstufige-uvs.html#omnibus-test"><i class="fa fa-check"></i><b>15.1</b> Omnibus Test</a></li>
-<li class="chapter" data-level="15.2" data-path="mehrstufige-uvs.html"><a href="mehrstufige-uvs.html#paarweise-vergleiche"><i class="fa fa-check"></i><b>15.2</b> Paarweise Vergleiche</a></li>
+<li class="chapter" data-level="10.2.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-löschen"><i class="fa fa-check"></i><b>10.2.1</b> Variablen löschen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#fälle-löschen"><i class="fa fa-check"></i><b>10.2.2</b> Fälle löschen</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="mehrere-uvs.html"><a href="mehrere-uvs.html"><i class="fa fa-check"></i><b>16</b> Mehrere UVs</a>
+<li class="chapter" data-level="10.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#umbenennen"><i class="fa fa-check"></i><b>10.3</b> Umbenennen</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="mehrere-uvs.html"><a href="mehrere-uvs.html#multiple-regression"><i class="fa fa-check"></i><b>16.1</b> Multiple Regression</a></li>
-<li class="chapter" data-level="16.2" data-path="mehrere-uvs.html"><a href="mehrere-uvs.html#interaktionsterme"><i class="fa fa-check"></i><b>16.2</b> Interaktionsterme</a></li>
+<li class="chapter" data-level="10.3.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablennamen-ändern"><i class="fa fa-check"></i><b>10.3.1</b> Variablennamen ändern</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="manuskripterstellung.html"><a href="manuskripterstellung.html"><i class="fa fa-check"></i><b>17</b> Manuskripterstellung</a></li>
+<li class="chapter" data-level="10.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#verändern"><i class="fa fa-check"></i><b>10.4</b> Verändern</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#werte-ändern"><i class="fa fa-check"></i><b>10.4.1</b> Werte ändern</a></li>
+<li class="chapter" data-level="10.4.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#recodieren"><i class="fa fa-check"></i><b>10.4.2</b> Recodieren</a></li>
+<li class="chapter" data-level="10.4.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#worte-ändern"><i class="fa fa-check"></i><b>10.4.3</b> Worte ändern</a></li>
+<li class="chapter" data-level="10.4.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#faktorstufen-ändern"><i class="fa fa-check"></i><b>10.4.4</b> Faktorstufen ändern</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="datenmanipulation.html"><a href="datenmanipulation.html#aggreggieren"><i class="fa fa-check"></i><b>10.5</b> Aggreggieren</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#rbind-und-cbind"><i class="fa fa-check"></i><b>10.5.1</b> rbind und cbind</a></li>
+<li class="chapter" data-level="10.5.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#merge"><i class="fa fa-check"></i><b>10.5.2</b> merge</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="datenmanipulation.html"><a href="datenmanipulation.html#sortieren"><i class="fa fa-check"></i><b>10.6</b> Sortieren</a></li>
+<li class="chapter" data-level="10.7" data-path="datenmanipulation.html"><a href="datenmanipulation.html#transformieren"><i class="fa fa-check"></i><b>10.7</b> Transformieren</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#von-long-nach-wide"><i class="fa fa-check"></i><b>10.7.1</b> Von Long nach Wide</a></li>
+<li class="chapter" data-level="10.7.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#skalieren"><i class="fa fa-check"></i><b>10.7.2</b> Skalieren</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -291,41 +289,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="daten-explorieren" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">Kapitel 8</span> Daten Explorieren<a href="daten-explorieren.html#daten-explorieren" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="informationen-über-r-objekt" class="section level2 hasAnchor" number="8.1">
-<h2><span class="header-section-number">8.1</span> Informationen über R Objekt<a href="daten-explorieren.html#informationen-über-r-objekt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="daten-explorieren.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#length()</span></span>
-<span id="cb45-2"><a href="daten-explorieren.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co">#str()</span></span>
-<span id="cb45-3"><a href="daten-explorieren.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">#nrow()</span></span>
-<span id="cb45-4"><a href="daten-explorieren.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">#ncol()</span></span>
-<span id="cb45-5"><a href="daten-explorieren.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">#is.na()</span></span></code></pre></div>
-</div>
-<div id="deskriptivstatistiken" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> Deskriptivstatistiken<a href="daten-explorieren.html#deskriptivstatistiken" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="nominale-variablen" class="section level3 hasAnchor" number="8.2.1">
-<h3><span class="header-section-number">8.2.1</span> Nominale Variablen<a href="daten-explorieren.html#nominale-variablen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="absolute-häufigkeiten" class="section level4 hasAnchor" number="8.2.1.1">
-<h4><span class="header-section-number">8.2.1.1</span> Absolute Häufigkeiten<a href="daten-explorieren.html#absolute-häufigkeiten" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-</div>
-<div id="relative-häufigkeiten" class="section level4 hasAnchor" number="8.2.1.2">
-<h4><span class="header-section-number">8.2.1.2</span> Relative Häufigkeiten<a href="daten-explorieren.html#relative-häufigkeiten" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-</div>
-</div>
-<div id="numerische-variablen" class="section level3 hasAnchor" number="8.2.2">
-<h3><span class="header-section-number">8.2.2</span> Numerische Variablen<a href="daten-explorieren.html#numerische-variablen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="lagemaße" class="section level4 hasAnchor" number="8.2.2.1">
-<h4><span class="header-section-number">8.2.2.1</span> Lagemaße<a href="daten-explorieren.html#lagemaße" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-</div>
-<div id="streuungsmaße" class="section level4 hasAnchor" number="8.2.2.2">
-<h4><span class="header-section-number">8.2.2.2</span> Streuungsmaße<a href="daten-explorieren.html#streuungsmaße" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="daten-explorieren" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Kapitel 9</span> Daten Explorieren<a href="daten-explorieren.html#daten-explorieren" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Im folgenden Abschnitt werden wir lernen wie wir uns schnell einen Überblick über große Mengen von Daten machen können.</p>
+<p>Hierzu gehört natürlich, dass wir einzelne Variablen mit <strong>Deskriptivstatistiken</strong> (z.B. Mittelwert, Median, Standardabweichung…) zusammenfassen, so wie wir es im 1. Semester gelernt haben.</p>
+<p>Wir werden jedoch auch lernen, wie wir uns effizient Informationen über Datensätze ausgeben lassen können, z.B. über ihre Größe (z.B. Anzahl Zeilen und Spalten) Art der enthaltenen Variablen und fehlende Werte.</p>
+<div id="informationen-über-r-objekte" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Informationen über R Objekte<a href="daten-explorieren.html#informationen-über-r-objekte" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Um schnell Informationen über ein R Objekt (Vektor, data.frame, Bild o.ä.) zu erhalten, nutzen wir den <code>str()</code> Befehl.</p>
+<p>So können wir einen schnellen Überblick erhalten, um was für ein Objekt es sich handelt und “was in dem Objekt drin steckt”.</p>
+<div id="informationen-über-vektoren" class="section level3 hasAnchor" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> Informationen über Vektoren<a href="daten-explorieren.html#informationen-über-vektoren" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="length" class="section level4 hasAnchor" number="9.1.1.1">
+<h4><span class="header-section-number">9.1.1.1</span> length()<a href="daten-explorieren.html#length" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Um herauszufinden, wie viele Stellen ein Vektor hat, nutzen wir die Funktion <code>length()</code>:</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="daten-explorieren.html#cb116-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
+<span id="cb116-2"><a href="daten-explorieren.html#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-3"><a href="daten-explorieren.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(vektor)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
 </div>
 </div>
-<div id="alles-auf-einen-blick" class="section level3 hasAnchor" number="8.2.3">
-<h3><span class="header-section-number">8.2.3</span> Alles auf einen Blick<a href="daten-explorieren.html#alles-auf-einen-blick" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="informationen-über-dataframes" class="section level3 hasAnchor" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Informationen über Dataframes<a href="daten-explorieren.html#informationen-über-dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="daten-explorieren.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co">#length()</span></span>
+<span id="cb118-2"><a href="daten-explorieren.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="co">#str()</span></span>
+<span id="cb118-3"><a href="daten-explorieren.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="co">#nrow()</span></span>
+<span id="cb118-4"><a href="daten-explorieren.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co">#ncol()</span></span>
+<span id="cb118-5"><a href="daten-explorieren.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="co">#is.na()</span></span></code></pre></div>
 </div>
-<div id="gruppenweise-deskriptivstatistiken" class="section level3 hasAnchor" number="8.2.4">
-<h3><span class="header-section-number">8.2.4</span> Gruppenweise Deskriptivstatistiken<a href="daten-explorieren.html#gruppenweise-deskriptivstatistiken" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="deskriptivstatistiken" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Deskriptivstatistiken<a href="daten-explorieren.html#deskriptivstatistiken" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="kategorische-variablen" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> Kategorische Variablen<a href="daten-explorieren.html#kategorische-variablen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="deskription-kategorische-vektoren" class="section level4 hasAnchor" number="9.2.1.1">
+<h4><span class="header-section-number">9.2.1.1</span> Deskription kategorische Vektoren<a href="daten-explorieren.html#deskription-kategorische-vektoren" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<table style="width:100%;">
+<colgroup>
+<col width="13%" />
+<col width="26%" />
+<col width="32%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Funktion</th>
+<th align="left">Beispiel</th>
+<th align="left">Ergebnis</th>
+<th align="left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>unique(x)</code></td>
+<td align="left">Zeigt Vektor aller einzigartiger Werte an</td>
+<td align="left"><code>unique(c(1, 1, 2, 10))</code></td>
+<td align="left">1, 2, 10</td>
+</tr>
+<tr class="even">
+<td align="left"><code>table(x, exclude)</code></td>
+<td align="left">Gibt Tabelle aller einzigartiger Werte und deren absolute Häufigkeit an. Um auch fehlende Werte zu zählen wählen Sie <code>exclude = NULL</code></td>
+<td align="left"><code>table(c("a", "a", "b", "c"))</code></td>
+<td align="left"><code>2-"a", 1-"b", 1-"c"</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="absolute-häufigkeiten" class="section level4 hasAnchor" number="9.2.1.2">
+<h4><span class="header-section-number">9.2.1.2</span> Absolute Häufigkeiten<a href="daten-explorieren.html#absolute-häufigkeiten" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="relative-häufigkeiten" class="section level4 hasAnchor" number="9.2.1.3">
+<h4><span class="header-section-number">9.2.1.3</span> Relative Häufigkeiten<a href="daten-explorieren.html#relative-häufigkeiten" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+</div>
+<div id="numerische-variablen" class="section level3 hasAnchor" number="9.2.2">
+<h3><span class="header-section-number">9.2.2</span> Numerische Variablen<a href="daten-explorieren.html#numerische-variablen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="deskription-numerische-variablen" class="section level4 hasAnchor" number="9.2.2.1">
+<h4><span class="header-section-number">9.2.2.1</span> Deskription numerische Variablen<a href="daten-explorieren.html#deskription-numerische-variablen" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<table>
+<colgroup>
+<col width="29%" />
+<col width="34%" />
+<col width="35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Funktion</th>
+<th align="left">Beispiel</th>
+<th align="left">Ergebnis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>sum(x), product(x)</code></td>
+<td align="left"><code>sum(1:10)</code></td>
+<td align="left">55</td>
+</tr>
+<tr class="even">
+<td align="left"><code>min(x), max(x)</code></td>
+<td align="left"><code>min(1:10)</code></td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mean(x), median(x)</code></td>
+<td align="left"><code>mean(1:10)</code></td>
+<td align="left">5.5</td>
+</tr>
+<tr class="even">
+<td align="left"><code>sd(x), var(x), range(x)</code></td>
+<td align="left"><code>sd(1:10)</code></td>
+<td align="left">3.0276504</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>quantile(x, probs)</code></td>
+<td align="left"><code>quantile(1:10, probs = .2)</code></td>
+<td align="left">2.8</td>
+</tr>
+<tr class="even">
+<td align="left"><code>summary(x)</code></td>
+<td align="left"><code>summary(1:10)</code></td>
+<td align="left"><code>Min = 1.00. 1st Qu. = 3.25, Median = 5.50, Mean = 5.50, 3rd Qu. = 7.75, Max = 10.0</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="lagemaße" class="section level4 hasAnchor" number="9.2.2.2">
+<h4><span class="header-section-number">9.2.2.2</span> Lagemaße<a href="daten-explorieren.html#lagemaße" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="streuungsmaße" class="section level4 hasAnchor" number="9.2.2.3">
+<h4><span class="header-section-number">9.2.2.3</span> Streuungsmaße<a href="daten-explorieren.html#streuungsmaße" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+</div>
+<div id="alles-auf-einen-blick" class="section level3 hasAnchor" number="9.2.3">
+<h3><span class="header-section-number">9.2.3</span> Alles auf einen Blick<a href="daten-explorieren.html#alles-auf-einen-blick" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="gruppenweise-deskriptivstatistiken" class="section level3 hasAnchor" number="9.2.4">
+<h3><span class="header-section-number">9.2.4</span> Gruppenweise Deskriptivstatistiken<a href="daten-explorieren.html#gruppenweise-deskriptivstatistiken" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
 </div>
 </div>
@@ -335,7 +434,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="daten-importieren-und-speichern.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="daten-auswählen.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="datenmanipulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -390,6 +489,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

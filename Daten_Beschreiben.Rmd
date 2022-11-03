@@ -19,6 +19,16 @@ So können wir einen schnellen Überblick erhalten, um was für ein Objekt es si
 
 ### Informationen über Vektoren
 
+#### length()
+
+Um herauszufinden, wie viele Stellen ein Vektor hat, nutzen wir die Funktion `length()`:
+
+```{r}
+vektor = c("A", "B", "C", "D")
+
+length(vektor)
+```
+
 ### Informationen über Dataframes
 
 ```{r}
@@ -33,11 +43,29 @@ So können wir einen schnellen Überblick erhalten, um was für ein Objekt es si
 
 ### Kategorische Variablen
 
+#### Deskription kategorische Vektoren
+
+| Funktion| Beispiel | Ergebnis|Result |
+|:----------|:--------------------|:-------------------------|:--------------------|
+|     `unique(x)`|  Zeigt Vektor aller einzigartiger Werte an |   `unique(c(1, 1, 2, 10))` |`r unique(c(1, 1, 2, 10))`     |
+|     `table(x, exclude)`|  Gibt Tabelle aller einzigartiger Werte und deren absolute Häufigkeit an. Um auch fehlende Werte zu zählen wählen Sie `exclude = NULL` |  `table(c("a", "a", "b", "c"))`|` 2-"a", 1-"b", 1-"c"`    |
+
 #### Absolute Häufigkeiten
 
 #### Relative Häufigkeiten
 
 ### Numerische Variablen
+
+#### Deskription numerische Variablen
+
+| Funktion| Beispiel|Ergebnis |
+|:-------------------|:----------------------|:-----------------------|
+|     `sum(x), product(x)`|    `sum(1:10)` |`r sum(1:10)`     |
+|     `min(x), max(x)`|    `min(1:10)`|`r min(1:10)`    |
+|     `mean(x), median(x)`|    `mean(1:10)`     | `r mean(1:10)` |
+|     `sd(x), var(x), range(x)`|    `sd(1:10)` | `r sd(1:10)` |
+|     `quantile(x, probs)`|    `quantile(1:10, probs = .2)`|`r quantile(1:10, probs = .2)`     |
+|     `summary(x)`|    `summary(1:10)`|`Min = 1.00. 1st Qu. = 3.25, Median = 5.50, Mean = 5.50, 3rd Qu. = 7.75, Max = 10.0`     |
 
 #### Lagemaße
 
