@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 7 Daten importieren und speichern | Einführung in R</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 7 Daten importieren und speichern | Einführung in R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 7 Daten importieren und speichern | Einführung in R" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Stephan Goerigk" />
+
+
+<meta name="date" content="2022-10-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="daten-erstellen.html"/>
+<link rel="next" href="daten-auswählen.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R and der CFH</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="über-dieses-skript.html"><a href="über-dieses-skript.html"><i class="fa fa-check"></i>Über dieses Skript</a></li>
+<li class="chapter" data-level="1" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html"><i class="fa fa-check"></i><b>1</b> Warum ist R so gut?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#open-source"><i class="fa fa-check"></i><b>1.1</b> Open Source</a></li>
+<li class="chapter" data-level="1.2" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#vielseitigkeit"><i class="fa fa-check"></i><b>1.2</b> Vielseitigkeit</a></li>
+<li class="chapter" data-level="1.3" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#r-markdown"><i class="fa fa-check"></i><b>1.3</b> R Markdown</a></li>
+<li class="chapter" data-level="1.4" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#transparenz"><i class="fa fa-check"></i><b>1.4</b> Transparenz</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-materialien.html"><a href="r-materialien.html"><i class="fa fa-check"></i><b>2</b> R Materialien</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-materialien.html"><a href="r-materialien.html#cheat-sheets"><i class="fa fa-check"></i><b>2.1</b> Cheat Sheets</a></li>
+<li class="chapter" data-level="2.2" data-path="r-materialien.html"><a href="r-materialien.html#hilfe-und-inspiration-online"><i class="fa fa-check"></i><b>2.2</b> Hilfe und Inspiration online</a></li>
+<li class="chapter" data-level="2.3" data-path="r-materialien.html"><a href="r-materialien.html#andere-bücher"><i class="fa fa-check"></i><b>2.3</b> Andere Bücher</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a></li>
+<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="programmaufbau.html"><a href="programmaufbau.html"><i class="fa fa-check"></i><b>4</b> Programmaufbau</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="programmaufbau.html"><a href="programmaufbau.html#die-vier-rstudio-fenster"><i class="fa fa-check"></i><b>4.1</b> Die vier RStudio Fenster</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="programmaufbau.html"><a href="programmaufbau.html#source---ihr-schreibblock-für-code"><i class="fa fa-check"></i><b>4.1.1</b> Source - Ihr Schreibblock für Code</a></li>
+<li class="chapter" data-level="4.1.2" data-path="programmaufbau.html"><a href="programmaufbau.html#konsole---das-herzstück-von-r"><i class="fa fa-check"></i><b>4.1.2</b> Konsole - Das Herzstück von R</a></li>
+<li class="chapter" data-level="4.1.3" data-path="programmaufbau.html"><a href="programmaufbau.html#environmenthistory---das-gedächtnis-von-r"><i class="fa fa-check"></i><b>4.1.3</b> Environment/History - Das Gedächtnis von R</a></li>
+<li class="chapter" data-level="4.1.4" data-path="programmaufbau.html"><a href="programmaufbau.html#filesplotspackageshelpviewer---interaktion-von-r-mit-dateien"><i class="fa fa-check"></i><b>4.1.4</b> Files/Plots/Packages/Help/Viewer - Interaktion von R mit Dateien</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages"><i class="fa fa-check"></i><b>4.2</b> R Packages</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages-installieren"><i class="fa fa-check"></i><b>4.2.1</b> R Packages installieren</a></li>
+<li class="chapter" data-level="4.2.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages-laden"><i class="fa fa-check"></i><b>4.2.2</b> R Packages laden</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="datenformate.html"><a href="datenformate.html"><i class="fa fa-check"></i><b>5</b> Datenformate</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datenformate.html"><a href="datenformate.html#skalar"><i class="fa fa-check"></i><b>5.1</b> Skalar</a></li>
+<li class="chapter" data-level="5.2" data-path="datenformate.html"><a href="datenformate.html#vektor"><i class="fa fa-check"></i><b>5.2</b> Vektor</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="datenformate.html"><a href="datenformate.html#vektor-typen"><i class="fa fa-check"></i><b>5.2.1</b> Vektor Typen</a></li>
+<li class="chapter" data-level="5.2.2" data-path="datenformate.html"><a href="datenformate.html#faktor-variablen"><i class="fa fa-check"></i><b>5.2.2</b> Faktor Variablen</a></li>
+<li class="chapter" data-level="5.2.3" data-path="datenformate.html"><a href="datenformate.html#vektor-indizierung"><i class="fa fa-check"></i><b>5.2.3</b> Vektor Indizierung</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-dataframes"><i class="fa fa-check"></i><b>5.3</b> Matrizen und Dataframes</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="datenformate.html"><a href="datenformate.html#erstellen-von-datenmatrizen"><i class="fa fa-check"></i><b>5.3.1</b> Erstellen von Datenmatrizen</a></li>
+<li class="chapter" data-level="5.3.2" data-path="datenformate.html"><a href="datenformate.html#indizierung"><i class="fa fa-check"></i><b>5.3.2</b> Indizierung</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="daten-erstellen.html"><a href="daten-erstellen.html"><i class="fa fa-check"></i><b>6</b> Daten erstellen</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="daten-erstellen.html"><a href="daten-erstellen.html#manuell"><i class="fa fa-check"></i><b>6.1</b> Manuell</a></li>
+<li class="chapter" data-level="6.2" data-path="daten-erstellen.html"><a href="daten-erstellen.html#automatisch"><i class="fa fa-check"></i><b>6.2</b> Automatisch</a></li>
+<li class="chapter" data-level="6.3" data-path="daten-erstellen.html"><a href="daten-erstellen.html#zufällig"><i class="fa fa-check"></i><b>6.3</b> Zufällig</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html"><i class="fa fa-check"></i><b>7</b> Daten importieren und speichern</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#funktionen-zur-organisation-des-workspace"><i class="fa fa-check"></i><b>7.1</b> Funktionen zur Organisation des Workspace</a></li>
+<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#arbeitsverzeichnis-working-directory"><i class="fa fa-check"></i><b>7.2</b> Arbeitsverzeichnis (Working Directory)</a></li>
+<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.3</b> Working Environment</a></li>
+<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.4</b> Daten importieren</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format"><i class="fa fa-check"></i><b>7.4.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.4.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format"><i class="fa fa-check"></i><b>7.4.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.4.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format"><i class="fa fa-check"></i><b>7.4.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.4.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format"><i class="fa fa-check"></i><b>7.4.4</b> xlsx-Format</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.5</b> Daten speichern</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format-1"><i class="fa fa-check"></i><b>7.5.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.5.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format-1"><i class="fa fa-check"></i><b>7.5.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.5.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format-1"><i class="fa fa-check"></i><b>7.5.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.5.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format-1"><i class="fa fa-check"></i><b>7.5.4</b> xlsx-Format</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="daten-auswählen.html"><a href="daten-auswählen.html"><i class="fa fa-check"></i><b>8</b> Daten auswählen</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#vektor-1"><i class="fa fa-check"></i><b>8.1</b> Vektor</a></li>
+<li class="chapter" data-level="8.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#dataframe"><i class="fa fa-check"></i><b>8.2</b> Dataframe</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#zeilen-fälle-auswählen"><i class="fa fa-check"></i><b>8.2.1</b> Zeilen (Fälle) auswählen</a></li>
+<li class="chapter" data-level="8.2.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#spalten-variablen-auswählen"><i class="fa fa-check"></i><b>8.2.2</b> Spalten (Variablen) auswählen</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Einführung in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="daten-importieren-und-speichern" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Kapitel 7</span> Daten importieren und speichern<a href="daten-importieren-und-speichern.html#daten-importieren-und-speichern" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In diesem Kapitel werden wir die Grundlagen der R-Objektverwaltung behandeln. Es wird erläutert, wie Sie neue Objekte, z. B. externe Datensätze, in R laden, wie Sie die bereits vorhandenen Objekte verwalten und wie Sie Objekte aus R in externe Dateien exportieren, die Sie mit anderen Personen teilen oder für Ihre eigene zukünftige Verwendung speichern können.</p>
+<div id="funktionen-zur-organisation-des-workspace" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Funktionen zur Organisation des Workspace<a href="daten-importieren-und-speichern.html#funktionen-zur-organisation-des-workspace" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In diesem Kapitel werden wir einige hilfreiche Funktionen zur Verwaltung Ihres Arbeitsbereichs vorstellen:</p>
+<table>
+<colgroup>
+<col width="41%" />
+<col width="58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>ls()</code></td>
+<td align="left">Alle Objekte im aktuellen Arbeitsbereich anzeigen</td>
+</tr>
+<tr class="even">
+<td align="left"><code>rm(x, y, ..)</code></td>
+<td align="left">Entfernt die Objete <code>y</code>, <code>y</code>… aus dem Arbeitsbereich</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>rm(list = ls())</code></td>
+<td align="left">Entfernt <em>alle</em> Objekte aus dem Arbeitsbereich</td>
+</tr>
+<tr class="even">
+<td align="left"><code>getwd()</code></td>
+<td align="left">Zeigt das aktuelle Arbeitsverzeichnis an</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>setwd(file = "dir)</code></td>
+<td align="left">Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad</td>
+</tr>
+<tr class="even">
+<td align="left"><code>list.files()</code></td>
+<td align="left">Zeigt die Namen aller Dateien im Arbeitsverzeichnis an</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>write.table(x, file = "mydata.txt", sep)</code></td>
+<td align="left">writes the object <code>x</code> to a text file called <code>mydata.txt</code>. Define how the columns will be separated with <code>sep</code> (e.g.; <code>sep = ","</code> for a comma–separated file, and <code>sep = \t"</code> for a tab–separated file).</td>
+</tr>
+<tr class="even">
+<td align="left"><code>write_rds(x,"meineDaten.rds)</code></td>
+<td align="left">Speichert Objekt x in das R Objekt <code>meineDaten.rds</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>save.image(file = "meineSession.RData")</code></td>
+<td align="left">Speichert <em>alle</em> Objekte aus dem Arbeitsbereich nach <code>meineSession.RData</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>read_rds</code>(“Daten.rds”)<code>|Läd das rds Objekt</code>Daten.rds<code>| |</code>read.csv<code>("Daten.csv")</code></td>
+<td align="left">Läd den csv Datensatz <code>Daten.csv</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>foreign::read.spss("Daten.sav")</code></td>
+<td align="left">Läd den SPSS Datensatz <code>Daten.sav</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>read.csv("Daten.csv")</code></td>
+<td align="left">Läd den csv Datensatz <code>Daten.csv</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>readxl::read_xlsx("Daten.xlsx")</code></td>
+<td align="left">Läd den Excel Datensatz <code>Daten.xlsx</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ihr Computer ist ein Labyrinth aus Ordnern und Dateien. Wenn Sie außerhalb von R eine bestimmte Datei öffnen möchten, öffnen Sie wahrscheinlich ein Explorer-Fenster, mit dem Sie die Ordner auf Ihrem Computer visuell durchsuchen können. Oder Sie wählen die zuletzt geöffneten Dateien aus oder geben den Namen der Datei in ein Suchfeld ein, um den Computer die Suche für Sie übernehmen zu lassen. Während dieses Vorgehen normalerweise für nicht-programmierende Aufgaben funktioniert, ist es für R ein No-Go. Das Hauptproblem ist, dass Sie bei all diesen Methoden Ihre Ordner visuell durchsuchen und die Maus bewegen müssen, um Ordner und Dateien auszuwählen, die dem Gesuchten entsprechen. Wenn Sie in R programmieren, müssen Sie alle Schritte in Ihren Analysen so spezifizieren, dass sie von anderen und von Ihnen selbst leicht nachvollzogen werden können. Das bedeutet, dass Sie nicht einfach sagen können: “Finde diese eine Datei, die ich mir vor einer Woche gemailt habe” oder “Suche nach einer Datei, die so aussieht wie”MeinFoto.jpg”. Stattdessen müssen Sie in der Lage sein, R-Code zu schreiben, der R genau sagt, wo wichtige Dateien zu finden sind - entweder auf Ihrem Computer oder im Internet.</p>
+<p>Um diese Aufgabe zu erleichtern, verwendet R Arbeitsverzeichnisse.</p>
+</div>
+<div id="arbeitsverzeichnis-working-directory" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Arbeitsverzeichnis (Working Directory)<a href="daten-importieren-und-speichern.html#arbeitsverzeichnis-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Das Arbeitsverzeichnis ist lediglich ein Dateipfad auf Ihrem Computer, der den Standardspeicherort aller Dateien festlegt, die Sie in R einlesen oder aus R heraus speichern. Mit anderen Worten, ein Arbeitsverzeichnis ist wie eine kleine Kiste irgendwo auf Ihrem Computer, die an ein bestimmtes Analyseprojekt gebunden ist. Wenn Sie R auffordern, einen Datensatz zu importieren wird davon ausgegangen, dass sich die Datei in Ihrem Arbeitsverzeichnis befindet.</p>
+<p>Sie können zu jedem Zeitpunkt nur ein Arbeitsverzeichnis aktiv haben. Das aktive Arbeitsverzeichnis wird als Ihr aktuelles Arbeitsverzeichnis bezeichnet.</p>
+</div>
+<div id="working-environment" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Working Environment<a href="daten-importieren-und-speichern.html#working-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Der Arbeitsbereich (auch als Arbeitsumgebung bezeichnet) enthält alle Objekte und Funktionen, die Sie entweder in der aktuellen Sitzung definiert oder aus einer früheren Sitzung geladen haben. Als Sie RStudio zum ersten Mal starteten, war die Arbeitsumgebung leer, da Sie keine neuen Objekte oder Funktionen erstellt hatten. Wenn Sie jedoch neue Objekte und Funktionen mit dem Zuweisungsoperator = definiert haben, wurden diese neuen Objekte in Ihrer Arbeitsumgebung gespeichert. Wenn Sie RStudio nach der Definition neuer Objekte schlossen, erhielten Sie wahrscheinlich eine Meldung mit der Frage “Save workspace image…?”. Damit möchte RStudio Sie fragen, ob Sie alle derzeit in Ihrem Arbeitsbereich definierten Objekte als Bilddatei auf Ihrem Computer speichern möchten.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="daten-importieren-und-speichern.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># getwd()</span></span></code></pre></div>
+</div>
+<div id="daten-importieren" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Daten importieren<a href="daten-importieren-und-speichern.html#daten-importieren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Wenn Sie Daten in Ihrem Arbeitsverzeichnis haben, können Sie diese nun in R einlesen und dort mit ihnen rechnen. Nehmen wir an, Sie haben in Ihrem Arbeitsverzeichnis einen Ordner mit dem Namen <code>data</code>.</p>
+<p>Je nachdem in welchem Format die Daten vorliegen, muss ein eigener Befehl genutzt werden. Teilweise braucht man hier auch eigene Pakete (z.B. Excel- oder SPSS-Format).</p>
+<div id="rds-format" class="section level3 hasAnchor" number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> rds-Format<a href="daten-importieren-und-speichern.html#rds-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>.rds ist das R-eigene Format. Es speichert alle Objekte die es in R gibt, also potentiell nicht nur Datensätze, sondern auch Testergebnisse, Bilder, o.ä. mittels der Funktion <code>read_rds()</code> können wir die Objekte einlesen. Dafür müssen wir das Paket <code>readr</code> installiert und mittels <code>library</code> eingelesen haben.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="daten-importieren-und-speichern.html#cb46-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">load</span>(<span class="at">file =</span> <span class="st">&quot;data/personality.RData&quot;</span>)</span>
+<span id="cb46-2"><a href="daten-importieren-und-speichern.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="daten-importieren-und-speichern.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb46-4"><a href="daten-importieren-und-speichern.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>## [1] &quot;data&quot;</code></pre>
+</div>
+<div id="csv-format" class="section level3 hasAnchor" number="7.4.2">
+<h3><span class="header-section-number">7.4.2</span> csv-Format<a href="daten-importieren-und-speichern.html#csv-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Das .csv Format (comma-separated-values) ist eines der gängigsten in der Statistik. Es lässt sich mit allen gebräuchlichen Tabellenprogrammen öffnen (also neben R auch mit Excel, Numbers, o.ä.).</p>
+<p>Um einen .csv Datensatz einzulesen, speichern wir ihn mittel <code>read.csv()</code> in ein von uns benanntes Objekt. Dieses können wir nennen wie wir wollen, z.B. <code>data</code> (schön kurz):</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="daten-importieren-und-speichern.html#cb48-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/personality.csv&quot;</span>)</span>
+<span id="cb48-2"><a href="daten-importieren-und-speichern.html#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="daten-importieren-und-speichern.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb48-4"><a href="daten-importieren-und-speichern.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
+## 1  1       2       4       0       3       3       0       2       3       0
+## 2  2       4       4       0       3       4       0       4       4       0
+## 3  3       4       4       2       4       4       0       4       4       0
+## 4  4       4       3       4       3       3       0       2       4       0
+## 5  5       4       4       1       3       3       0       3       4       4
+## 6  6       4       4       0       4       0       1       4       4       0
+##   NEO_10_G NEO_11_N NEO_12_E NEO_13_O NEO_14_V NEO_15_G NEO_16_N NEO_17_E
+## 1        3        4        1        2        0        4        4        3
+## 2        4        1        0        3        0        3        4        4
+## 3        4        4        2        4        0        0        4        4
+## 4        3        0        0        2        0        0        4        4
+## 5        3        1        4        4        0        0        4        4
+## 6        2        0        0        4        0        0        4        4
+##   NEO_18_O NEO_19_V NEO_20_G NEO_21_N NEO_22_E NEO_23_O NEO_24_V NEO_25_G
+## 1        4        3        4        0        4        2        2        3
+## 2        3        4        4        0        3        4        0        4
+## 3        0        4        4        0        4        4        1        4
+## 4        0        4        4        4        4        4        0        3
+## 5        0        4        1        1        3        4        0        2
+## 6        0        4        4        0        3        4        4        4
+##   NEO_26_N NEO_27_E NEO_28_O NEO_29_V NEO_30_G NEO_31_N NEO_32_E NEO_33_O
+## 1        4        4        4        2        4        3        0        0
+## 2        2        0        1        0        4        4        4        4
+## 3        4        0        0        0        1        4        4        3
+## 4        0        0        0        0        0        4        4        0
+## 5        0        4        4        2        4        4        3        4
+## 6        0        0        4        2        0        4        3        2
+##   NEO_34_V NEO_35_G NEO_36_N NEO_37_E NEO_38_O NEO_39_V NEO_40_G NEO_41_N
+## 1        3        4        2        4        1        0        4        4
+## 2        4        4        0        4        3        1        4        0
+## 3        4        4        3        4        2        0        4        0
+## 4        3        4        0        3        3        1        4        0
+## 5        3        3        0        4        0        2        3        0
+## 6        4        4        0        2        4        2        4        0
+##   NEO_42_E NEO_43_O NEO_44_V NEO_45_G NEO_46_N NEO_47_E NEO_48_O NEO_49_V
+## 1        2        1        4        0        4        4        3        3
+## 2        2        4        0        2        4        0        4        4
+## 3        4        4        4        0        4        0        4        4
+## 4        2        2        0        0        4        4        3        3
+## 5        0        2        0        1        4        0        2        3
+## 6        0        4        0        0        4        0        2        4
+##   NEO_50_G NEO_51_N NEO_52_E NEO_53_O NEO_54_V NEO_55_G NEO_56_N NEO_57_E
+## 1        3        0        4        2        0        0        2        2
+## 2        4        0        4        4        0        0        0        0
+## 3        4        3        4        4        4        0        0        1
+## 4        4        4        4        1        0        0        4        0
+## 5        3        0        3        3        0        4        0        1
+## 6        4        0        4        4        1        0        0        0
+##   NEO_58_O NEO_59_V NEO_60_G
+## 1        3        1        4
+## 2        3        0        4
+## 3        4        0        4
+## 4        4        1        3
+## 5        3        4        4
+## 6        4        0        3</code></pre>
+</div>
+<div id="sav-format" class="section level3 hasAnchor" number="7.4.3">
+<h3><span class="header-section-number">7.4.3</span> sav-Format<a href="daten-importieren-und-speichern.html#sav-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Das .sav Format ist das Format in welchem SPSS Datensätze abgespeichert werden. Dies kommt gerade in den Sozialwissenschaften relativ häufig vor, weshalb wir diese Art von Datein auf jeden Fall einlesen können sollten.</p>
+<p>Um einen .sav Datensatz einzulesen, speichern wir ihn mittel <code>read.spss()</code> in ein von uns benanntes Objekt. Dafür müssen wir das Paket <code>foreign</code> installiert und mittels <code>library</code> eingelesen haben. Damit R den Datensatz automatisch in einen data.frame speichert, geben wir als Zusatzoption <code>to.data.frame = TRUE</code> an:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="daten-importieren-und-speichern.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
+<span id="cb50-2"><a href="daten-importieren-und-speichern.html#cb50-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.spss</span>(<span class="st">&quot;data/personality.sav&quot;</span>, <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb50-3"><a href="daten-importieren-und-speichern.html#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="daten-importieren-und-speichern.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb50-5"><a href="daten-importieren-und-speichern.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
+## 1  1       2       4       0       3       3       0       2       3       0
+## 2  2       4       4       0       3       4       0       4       4       0
+## 3  3       4       4       2       4       4       0       4       4       0
+## 4  4       4       3       4       3       3       0       2       4       0
+## 5  5       4       4       1       3       3       0       3       4       4
+## 6  6       4       4       0       4       0       1       4       4       0
+##   NEO_10_G NEO_11_N NEO_12_E NEO_13_O NEO_14_V NEO_15_G NEO_16_N NEO_17_E
+## 1        3        4        1        2        0        4        4        3
+## 2        4        1        0        3        0        3        4        4
+## 3        4        4        2        4        0        0        4        4
+## 4        3        0        0        2        0        0        4        4
+## 5        3        1        4        4        0        0        4        4
+## 6        2        0        0        4        0        0        4        4
+##   NEO_18_O NEO_19_V NEO_20_G NEO_21_N NEO_22_E NEO_23_O NEO_24_V NEO_25_G
+## 1        4        3        4        0        4        2        2        3
+## 2        3        4        4        0        3        4        0        4
+## 3        0        4        4        0        4        4        1        4
+## 4        0        4        4        4        4        4        0        3
+## 5        0        4        1        1        3        4        0        2
+## 6        0        4        4        0        3        4        4        4
+##   NEO_26_N NEO_27_E NEO_28_O NEO_29_V NEO_30_G NEO_31_N NEO_32_E NEO_33_O
+## 1        4        4        4        2        4        3        0        0
+## 2        2        0        1        0        4        4        4        4
+## 3        4        0        0        0        1        4        4        3
+## 4        0        0        0        0        0        4        4        0
+## 5        0        4        4        2        4        4        3        4
+## 6        0        0        4        2        0        4        3        2
+##   NEO_34_V NEO_35_G NEO_36_N NEO_37_E NEO_38_O NEO_39_V NEO_40_G NEO_41_N
+## 1        3        4        2        4        1        0        4        4
+## 2        4        4        0        4        3        1        4        0
+## 3        4        4        3        4        2        0        4        0
+## 4        3        4        0        3        3        1        4        0
+## 5        3        3        0        4        0        2        3        0
+## 6        4        4        0        2        4        2        4        0
+##   NEO_42_E NEO_43_O NEO_44_V NEO_45_G NEO_46_N NEO_47_E NEO_48_O NEO_49_V
+## 1        2        1        4        0        4        4        3        3
+## 2        2        4        0        2        4        0        4        4
+## 3        4        4        4        0        4        0        4        4
+## 4        2        2        0        0        4        4        3        3
+## 5        0        2        0        1        4        0        2        3
+## 6        0        4        0        0        4        0        2        4
+##   NEO_50_G NEO_51_N NEO_52_E NEO_53_O NEO_54_V NEO_55_G NEO_56_N NEO_57_E
+## 1        3        0        4        2        0        0        2        2
+## 2        4        0        4        4        0        0        0        0
+## 3        4        3        4        4        4        0        0        1
+## 4        4        4        4        1        0        0        4        0
+## 5        3        0        3        3        0        4        0        1
+## 6        4        0        4        4        1        0        0        0
+##   NEO_58_O NEO_59_V NEO_60_G
+## 1        3        1        4
+## 2        3        0        4
+## 3        4        0        4
+## 4        4        1        3
+## 5        3        4        4
+## 6        4        0        3</code></pre>
+</div>
+<div id="xlsx-format" class="section level3 hasAnchor" number="7.4.4">
+<h3><span class="header-section-number">7.4.4</span> xlsx-Format<a href="daten-importieren-und-speichern.html#xlsx-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Das .xlsx Format ist das Format in welchem Excel Datensätze abgespeichert werden. Auch das kommt oft vor, da es viele Forscher:innen vorziehen Daten in Excel Tabellen einzutragen.</p>
+<p>Um einen .xlsx Datensatz einzulesen, speichern wir ihn mittel <code>read_xlsx()</code> in ein von uns benanntes Objekt. Dafür müssen wir das Paket <code>readxl</code> installiert und mittels <code>library</code> eingelesen haben. Da in Excel Tabellen manchmal mehrere Arbeitsblätter (engl. “sheets”) vorliegen, geben wir den Namen des Arbeitsblatt, welches wir brauchen, zusätzlich an:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="daten-importieren-und-speichern.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb52-2"><a href="daten-importieren-und-speichern.html#cb52-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/personality.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;Tabelle1&quot;</span>)</span>
+<span id="cb52-3"><a href="daten-importieren-und-speichern.html#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="daten-importieren-und-speichern.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb52-5"><a href="daten-importieren-und-speichern.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 61
+##      ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
+##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
+## 1     1       2       4       0       3       3       0 2             3 0      
+## 2     2       4       4       0       3       4       0 4             4 0      
+## 3     3       4       4       2       4       4       0 4             4 0      
+## 4     4       4       3       4       3       3       0 2             4 0      
+## 5     5       4       4       1       3       3       0 3             4 4      
+## 6     6       4       4       0       4       0       1 4             4 0      
+## # … with 51 more variables: NEO_10_G &lt;dbl&gt;, NEO_11_N &lt;dbl&gt;, NEO_12_E &lt;dbl&gt;,
+## #   NEO_13_O &lt;dbl&gt;, NEO_14_V &lt;dbl&gt;, NEO_15_G &lt;dbl&gt;, NEO_16_N &lt;dbl&gt;,
+## #   NEO_17_E &lt;dbl&gt;, NEO_18_O &lt;dbl&gt;, NEO_19_V &lt;dbl&gt;, NEO_20_G &lt;dbl&gt;,
+## #   NEO_21_N &lt;dbl&gt;, NEO_22_E &lt;dbl&gt;, NEO_23_O &lt;dbl&gt;, NEO_24_V &lt;dbl&gt;,
+## #   NEO_25_G &lt;dbl&gt;, NEO_26_N &lt;dbl&gt;, NEO_27_E &lt;dbl&gt;, NEO_28_O &lt;dbl&gt;,
+## #   NEO_29_V &lt;dbl&gt;, NEO_30_G &lt;dbl&gt;, NEO_31_N &lt;dbl&gt;, NEO_32_E &lt;dbl&gt;,
+## #   NEO_33_O &lt;dbl&gt;, NEO_34_V &lt;dbl&gt;, NEO_35_G &lt;dbl&gt;, NEO_36_N &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<div id="daten-speichern" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Daten speichern<a href="daten-importieren-und-speichern.html#daten-speichern" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In alle vorgestellten Formate können wir unsere Daten natürlich auch abspeichern. Erstellen wir dafür einen schnellen Test-Datensatz mittels <code>data.frame</code>:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="daten-importieren-und-speichern.html#cb54-1" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Variable1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
+<span id="cb54-2"><a href="daten-importieren-und-speichern.html#cb54-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Variable2 =</span> <span class="fu">c</span>(<span class="st">&quot;Person1&quot;</span>, <span class="st">&quot;Person2&quot;</span>, <span class="st">&quot;Person3&quot;</span>, <span class="st">&quot;Person4&quot;</span>))</span>
+<span id="cb54-3"><a href="daten-importieren-und-speichern.html#cb54-3" aria-hidden="true" tabindex="-1"></a>newdata</span></code></pre></div>
+<pre><code>##   Variable1 Variable2
+## 1         1   Person1
+## 2         2   Person2
+## 3         3   Person3
+## 4         4   Person4</code></pre>
+<div id="rds-format-1" class="section level3 hasAnchor" number="7.5.1">
+<h3><span class="header-section-number">7.5.1</span> rds-Format<a href="daten-importieren-und-speichern.html#rds-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Um in das R eigene .rds Format zu speichern, nutzen wir wieder das <code>readr</code> Paket, welches wir zunächst mittels <code>library</code> laden. Der Befehl ist nun <code>write_rds()</code>. Innerhalb des Befehls geben wir einfach das Objekt (z.B. unseren Datensatz) an, welches wir speichern wollen. Unter <code>file</code> geben wir der Datei einen Namen, so wie wir sie auf unserer Festplatte gepeichert haben wollen. Wichtig: Das Kürzel des Dateityps (.rds) nicht vergessen:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="daten-importieren-und-speichern.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
+<pre><code>## Warning: Paket &#39;readr&#39; wurde unter R Version 3.6.2 erstellt</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="daten-importieren-und-speichern.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;data.rds&quot;</span>)</span></code></pre></div>
+<p>Die Datei erscheint nun in Ihrem Arbeitsverzeichnis.</p>
+</div>
+<div id="csv-format-1" class="section level3 hasAnchor" number="7.5.2">
+<h3><span class="header-section-number">7.5.2</span> csv-Format<a href="daten-importieren-und-speichern.html#csv-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Speichern in das .csv Format funktioniert analog:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="daten-importieren-und-speichern.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;newdata.csv&quot;</span>)</span></code></pre></div>
+<p>Hier ein Tipp für Sie: Wie oben bereits erwähnt ist csv ein “Komma-getrenntes” Format. In Deutschland haben wir die besonderheit, dass wir Dezimalstellen manchmal mit “,” trennen, während man im englisch-sprachigen Raum i.d.R. “.” verwendet. Sollte die abgespeicherte Datei komisch aussehen, wenn Sie sie z.B. in Excel öffnen, liegt das vermutlich an der deutschen Einstellung Ihres Programms. Probieren Sie in diesem Fall statt der <code>write.csv()</code> Funktion einmal die <code>write.csv2()</code> Funktion aus, dies wird Ihr Problem lösen.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="daten-importieren-und-speichern.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv2</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;newdata.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="sav-format-1" class="section level3 hasAnchor" number="7.5.3">
+<h3><span class="header-section-number">7.5.3</span> sav-Format<a href="daten-importieren-und-speichern.html#sav-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zum Speichern in das SPSS Format .sav nutzen wir die Funktion <code>write_sav()</code> aus dem Paket <code>haven</code>, welches wir zuvor mittel <code>library()</code> laden.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="daten-importieren-und-speichern.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span></code></pre></div>
+<pre><code>## Warning: Paket &#39;haven&#39; wurde unter R Version 3.6.2 erstellt</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="daten-importieren-und-speichern.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sav</span>(newdata, <span class="st">&quot;newdata.sav&quot;</span>)</span></code></pre></div>
+</div>
+<div id="xlsx-format-1" class="section level3 hasAnchor" number="7.5.4">
+<h3><span class="header-section-number">7.5.4</span> xlsx-Format<a href="daten-importieren-und-speichern.html#xlsx-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zum Speichern in das Excel Format .xlsx nutzen wir die Funktion <code>WriteXLS</code> aus dem Paket <code>WriteXLS</code>, welches wir zuvor mittel <code>library()</code> laden.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="daten-importieren-und-speichern.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(WriteXLS)</span>
+<span id="cb64-2"><a href="daten-importieren-und-speichern.html#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="daten-importieren-und-speichern.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">WriteXLS</span>(newdata, <span class="st">&quot;newdata.xlsx&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="daten-erstellen.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="daten-auswählen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CFH_R_bookdown.pdf", "CFH_R_bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

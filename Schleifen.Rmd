@@ -1,0 +1,49 @@
+# Schleifen
+
+Schleifen (engl. Loops) sind eine der mächtigsten Funktionen in R. Sie erlauben uns die Power des Computers voll auszunutzen, da wir mit ihnen die Möglichkeit haben Vorgänge zu automatisieren. 
+
+Dies ist insbesondere nützlich, wenn wir eine Aktion häufig wiederholen müssen.
+
+## for() 
+
+Die `for() ` Schleife wiederholt alles was wir wollen, so oft wir wollen, für einen bestimmten Vektor. Man arbeitet hier mit einem so genannten Index (häufig nutzt man die Abkürzung i), der die Position in der Schleife anzeigt.
+
+Nehmen wir als Beispiel einen Vektor von Zahlen 1 bis 10
+
+```{r}
+1:10
+```
+
+Der Index nimmt nacheinander die Form des 1. bis letzten Objekts des Index an. Probieren wir einmal mit der `print()` Funktion **nach einander** die Zahl i für 1:10 anzeigen zu lassen. Der `for()` Loop hat immer folgende Form:
+
+```{r}
+# for (i in vector) {
+#   ...
+# }
+
+# Für unser Vorhaben:
+
+for (i in 1:10) {
+  print(i)
+}
+```
+
+Wörtlich macht der Loop folgendes:
+
+1. Start
+2. i ist = 1
+3. Drucke i mit der Funktion print()
+4. Durchlauf der Schleife fertig
+5. Beginn die Schleife von Anfang solange 1 nicht = 10 ist
+6. i ist = 2
+7. Drucke i mit der Funktion print()
+8. Durchlauf der Schleife fertig
+9. Beginn die Schleife von Anfang solange 1 nicht = 10 ist
+10. i ist = 3
+...
+40. i ist = 10
+41. Drucke i mit der Funktion print()
+42. Durchlauf der Schleife fertig
+43. i = 10, Ende des for() Loops
+
+## if() 

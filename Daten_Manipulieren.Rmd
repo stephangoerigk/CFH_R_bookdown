@@ -294,13 +294,173 @@ test$Diagnose = relevel(test$Diagnose, "Depr.")
 test$Diagnose
 ```
 
+## Sortieren
+
+Frisch gesammelte Daten können manchmal in ungeordneter Form bei uns ankommen. Eine Möglichkeit Ordnung in die Daten zu bekommen, ist das Sortieren der Daten, welches i.d.R. nach der Logik einer bestimmten Variable erfolgt. 
+
+### Sortieren nach numerischen Variablen
+
+Lassen Sie uns zur Demonstration einen **ungeordneten** Test dataframe erstellen:
+
+```{r}
+test <- data.frame("ID" = c(3, 5, 1, 2, 4),
+                     "Alter" = c(24, 25, 42, 56, 22))
+
+# dataframe ansehen:
+
+test
+```
+
+Der dataframe ist weder nach der `ID` Variable, noch nach dem inhaltlichen Kriterium des Alters (jung nach alt vs. alt nach jung) geordnet.
+
+Für ein schnelles Sortieren nutzen wir die Funktion `order()`. Diese wenden wir auf die Variable an, nach der wir sortieren wollen und schreiben den Befehl links vom Komma in den eckigen Klammern (Erinnerung: links vom Komma bezieht sich immer auf Zeilen, rechts auf die Spalten). Den sortierten dataframe wollen wir `test2` nennen.
+
+```{r}
+test2 = test[order(test$ID),]
+
+# sortierten dataframe ansehen:
+
+test2
+```
+
+Das selbe funktioniert mit der Altervariable (von jung nach alt).
+
+```{r}
+test3 = test[order(test$Alter),]
+
+# sortierten dataframe ansehen:
+
+test3
+```
+
+Wollten wir den dataframe anhand der Altervariable von alt nach jung sortieren, benutzen wir das Zusatzargument `decreasing = TRUE`:
+
+```{r}
+test4 = test[order(test$Alter, decreasing = TRUE),]
+
+# sortierten dataframe ansehen:
+
+test4
+```
+
+### Sortieren nach Variablen mit Worten
+
+Wollen wir unseren dataframe nach einer Variable sortieren, die Worte enthält, führt `order()` zu einer alphabetischen Sortierung. Wir hängen zum Ausprobieren eine character Variable an unseren `test` dataframe:
+
+```{r}
+test$Name = c("Klaus", "Jan", "Anna", "John", "Cleo")
+
+test
+```
+
+Sortieren mit `order()` anhand der Variable `Name` ergibt:
+
+```{r}
+test5 = test[order(test$Name),]
+```
+
 ## Aggreggieren
 
-### rbind und cbind
+Oft kommt es vor, dass wir zwei dataframes zusammensetzen wollen. Dies könnte der Fall sein, wenn wir unsere Daten in 2 unterschiedlichen Tabellen gesammelt haben, wir aber nun mit den kombinierten Daten rechnen wollen. Damit beschäftigen wir uns in den nächsten Abschnitten.
+
+### cbind und rbind  
+
+Beim Zusammensetzen von dataframes sind 2 Szenarien denkbar:
+
+1. **Spalten** des einen dataframes rechts an die Spalten des anderen dataframes (beide dataframes haben gleich viele Zeilen)
+2. **Zeilen** des einen dataframes unten an die Zeilen des anderen dataframes (beide dataframes haben gleich viele Spalten)
+
+Dafür gibt es die Funktionen `cbind()` (colums aka Spalten verbinden) und `rbind()` (rows aka Zeilen verbinden).
+
+#### cbind
+
+Zur Demonstration der `cbind()` Funktion bauen wir uns 2 kleine Test-dataframes. Wichtig ist, dass diese die selbe Anzahl von Zeilen haben:
+
+```{r}
+test1 <- data.frame("ID" = c(1, 2, 3, 4, 5),
+                     "Alter" = c(24, 25, 42, 56, 22))
+
+test2 <- data.frame("IQ" = c(100, 102, 98, 90, 121),
+                     "Neurotizismus" = c(11, 42, 31, 22, 13))
+```
+
+Hier haben wir den dataframe test1:
+
+```{r}
+test1
+```
+
+Und hier den dataframe test2:
+
+```{r}
+test2
+```
+
+Zum Zusammensetzen der beiden (test2 rechts an test 1 "dranhängen") schreiben wir beide dataframes in die `cbind()` Funktion. Der kombinierte Datensatz soll test 3 heißen:
+
+```{r}
+test3 = cbind(test1, test2)
+
+# Ergebnis ansehen:
+
+test3
+```
+
+#### rbind
+
+Zur Demonstration der `r`bind()` Funktion bauen wir uns 2 weitere kleine Test-dataframes. Wichtig ist, dass diese die selbe Anzahl von Spalten haben und dass diese die selben Variablennamen haben:
+
+```{r}
+test1 <- data.frame("ID" = c(1, 2, 3, 4, 5),
+                     "Alter" = c(24, 25, 42, 56, 22))
+
+test2 <- data.frame("ID" = c(6, 7, 8, 9, 10),
+                     "Alter" = c(27, 35, 31, 66, 51))
+```
+
+Hier haben wir den dataframe test1:
+
+```{r}
+test1
+```
+
+Und hier den dataframe test2:
+
+```{r}
+test2
+```
+
+Zum Zusammensetzen der beiden (test2 unten an test 1 "dranhängen") schreiben wir beide dataframes in die `r`bind()` Funktion. Der kombinierte Datensatz soll test 3 heißen:
+
+```{r}
+test3 = rbind(test1, test2)
+
+# Ergebnis ansehen:
+
+test3
+```
 
 ### merge
 
-## Sortieren
+Haben wir 2 ungeordnete dataframe mit Daten der selben Personen, jedoch mit unterschiedlichen Variablen, die wir zusammensetzen wollen, haben wir das Problem, dass die Zeilenreihenfolge des einen dataframes ggf. nicht mit der Zeilenreihenfolge des anderen dataframes übereinstimmt:
+
+```{r}
+test1 <- data.frame("ID" = c(1, 2, 3, 4, 5),
+                    "Alter" = c(24, 25, 42, 56, 22))
+
+test2 <- data.frame("ID" = c(2, 5, 3, 1, 4),
+                    "IQ" = c(100, 102, 98, 90, 121))
+```
+
+Setzen wir die dataframes einfach mit `cbind()` aneinander, bekommt z.B. Person mit der `ID == 1` den IQ Wert der Person mit `ID == 2`, da diese beide in der 1. Zeile der dataframes stehen.
+
+Wir könnten natürlich beide dataframes erst mit `order()` nach der `ID` Variable sortieren und sie anschließend mit `cbind()` kombinieren. Schneller geht es jedoch mit der Funktion `merge()`. Diese braucht als Information nur eine Variable, die R sagt welche Zeilen zusammengehören. Da `ID` eindeutige Werte aufweist und in beiden dataframes vorhanden ist, nutzen wir diese Variable für den merge:
+
+```{r}
+test3 = merge(test1, test2, by = "ID")
+
+test3
+```
 
 ## Transformieren
 

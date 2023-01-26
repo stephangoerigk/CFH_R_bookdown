@@ -1,9 +1,152 @@
 # Korrelation
 
-## Pearson Korrelation
+Als nächste Hypothesentests schauen wir uns die Korrelationen an: 
 
-## Spearman Korrelation
+Bei einem Korrelationstest wird die Beziehung zwischen zwei Variablen auf einer Verhältnis- oder Intervallskala untersucht: z. B. Größe und Gewicht oder Einkommen und Selbstvertrauen 
 
-## Kendall Korrelation
+Die Teststatistik bei einem Korrelationstest wird als Korrelationskoeffizient bezeichnet und durch den Buchstaben $r$ dargestellt. 
 
-## Korrelationmatrix
+Der Koeffizient kann zwischen -1 und +1 liegen, wobei -1 für eine starke negative Beziehung und +1 für eine starke positive Beziehung steht.
+
+```{r include=FALSE}
+library(faux)
+dat1 <- rnorm_multi(n = 100, 
+                  mu = c(20, 20),
+                  sd = c(5, 5),
+                  r = c(-0.81), 
+                  varnames = c("A", "B"),
+                  empirical = FALSE)
+dat2 <- rnorm_multi(n = 100, 
+                  mu = c(20, 20),
+                  sd = c(5, 5),
+                  r = c(0.02), 
+                  varnames = c("A", "B"),
+                  empirical = FALSE)
+dat3 <- rnorm_multi(n = 100, 
+                  mu = c(20, 20),
+                  sd = c(5, 5),
+                  r = c(0.79), 
+                  varnames = c("A", "B"),
+                  empirical = FALSE)
+```
+
+```{r echo=F, message=FALSE, warning=FALSE}
+ggpubr::ggarrange(ggplot(dat1, aes(A, B)) + geom_point() + geom_smooth(method = "lm") + ggtitle("r = -0.81") + theme_classic(),
+                  ggplot(dat2, aes(A, B)) + geom_point() + geom_smooth(method = "lm") + ggtitle("r = -0.02") + theme_classic(),
+                  ggplot(dat3, aes(A, B)) + geom_point() + geom_smooth(method = "lm") + ggtitle("r = -0.79") + theme_classic(),
+                  ncol = 3)
+```
+
+### Hypothesen
+
+```{r include=FALSE}
+data <- rnorm_multi(n = 100, 
+                  mu = c(100, 8),
+                  sd = c(25, 2),
+                  r = c(0.69), 
+                  varnames = c("Konzentration", "Schlaf"),
+                  empirical = FALSE)
+```
+
+Die Korrelation prüft als Signifikanztest, ob ein Zusammenhang zwischen 2 Variablen besteht. 
+
+Da Korrelationskoeffizient von 0 bedeutet, dass kein Zusammenhang zwischen den Variablen besteht, wird im Signifikanztest i.d.R. $r$ gegen 0 getestet (daher Nullhypothese).
+
+Folgende Hypothesen sind denkbar:
+
+Test auf Zusammenhang zwischen den beiden Variablen (ungerichtet):
+
+* $H_0$: $r = 0$
+* $H_1$: $r \neq 0$
+
+Test auf positiven/negativen Zusammenhang zwischen den beiden Variablen (gerichtet):
+
+* $H_0$: $r \leq 0$
+* $H_1$: $r > 0$ 
+
+beziehungsweise...
+
+* $H_0$: $r \geq 0$
+* $H_1$: $r < 0$ 
+
+Eine typische psychologische Fragestellung für eine Zusammenhangshypothese könnte sein, ob die Anzahl der in der Nacht geschlafenen Stunden (`Schlaf`) mit der Leistung in einem Konzentrationstest zusammenhängt (`Konzentration`).
+
+Ein entsprechender Datensatz könnte wie folgt aussehen (die ersten 6 Zeilen von $N=100)$:
+
+```{r}
+head(data)
+```
+
+Um einen ersten Eindruck vom Zusammenhang zu gewinnen, können wir uns die Daten in einem Streudiagramm darstellen:
+
+```{r message=FALSE, warning=FALSE}
+ggplot(data = data, aes(x = Schlaf, y = Konzentration)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+### Berechnung der Korrelation
+
+Der Korrelationskoeffizient lässt sich mit der R-Basisfunktion `cor()` berechnen.
+
+Dafür schreiben wir ganz einfach die beiden zu korrelierenden Variablen nebeneinander in die Funktion:
+
+```{r}
+cor(data$Konzentration, data$Schlaf)
+```
+
+Wie Sie sehen, erhalten wir einen Korrelationskoeffizienten von $r=$`r round(cor(data$Konzentration, data$Schlaf), 2)`. Also einen positiven Zusammenhang.
+
+### Unterschiedliche Korrelationsmethoden
+
+#### Pearson-Korrelation
+
+Nutzen wir die `cor()` Funktion ohne weitere Spezifikationen, wird der sogenannte **Pearson** Korrelationskoeffizient berechnet.
+
+Dieser stellt jedoch gewisse Voraussetzungen an die Daten:
+
+* Intervallskalenniveau
+* keine Ausreißer
+* Normalverteilung der Variablen
+
+Sollte eine (oder mehrere) der Voraussetzungen nicht erfüllt sein, berechnen wir einen der folgenden alternativen Korrelationskoeffizienten
+
+#### Spearman-Korrelation (aka Rangkorrelation)
+
+Der **Spearman** Korrelationskoeffizient funktioniert im Wesentlichen wie der Pearson Korrelationskoeffizient, jedoch wird er auf Ordinalskalenniveau berechnet.
+
+Das macht ihn unempfindlicher gegenüber Verteilungsverletzungen und Ausreißern.
+
+Die Berechnung des **Spearman** Korrelationskoeffizienten erfolgt nach der selben Methode, mit einer kleinen Spezifikation:
+
+```{r}
+cor(data$Konzentration, data$Schlaf, method = "spearman")
+```
+
+In der Regel ist die Abweichung der beiden Korrelationskoeffizienten voneinander nicht allzu hoch.
+
+#### Kendall-Korrelation 
+
+Die Rangkorrelationskoeffizienten von Spearman und Kendall sind beide Koeffizienten, die den Zusammenhang ordinalskalierter Merkmale beschreiben können.
+
+Der Vorteil des Kendall $τ$ liegt darin, dass seine Verteilung bei kleineren Stichprobenumfängen bessere statistische Eigenschaften bietet und er weniger empfindlich gegen Ausreißer-Rangpaare ist.
+
+```{r}
+cor(data$Konzentration, data$Schlaf, method = "kendall")
+```
+
+### Korrelation als Hypothesentest
+
+Wie Sie bereits bemerkt haben werden, liefert Ihnen die `cor()` Funktion lediglich den Korrelationskoeffizienten, jedoch keine Informationen über statistische Signifikanz.
+
+| Argument| Description| 
+|:------------|:-------------------------------------------------|
+|`formula`|A formula in the form `~ x + y`, where x and y are the names of the two variables you are testing. These variables should be two separate columns in a dataframe.|
+|`data`|The dataframe containing the variables x and y |
+|`alternative`|A string specifying the alternative hypothesis. Can be `"two.sided"` indicating a two-tailed test, or `"greater"` or "`less"` for a one-tailed test.|
+|`method`|A string indicating which correlation coefficient to calculate and test. `"pearson"` (the default) stands for Pearson, while `"kendall"` and `"spearman"` stand for Kendall and Spearman correlations respectively. |
+|`subset`|A vector specifying a subset of observations to use. E.g.; `subset = sex == "female"`|
+
+
+
+## Korrelationsmatrix
