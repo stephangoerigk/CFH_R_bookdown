@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2022-11-03" />
+<meta name="date" content="2023-02-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -92,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -119,6 +119,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -179,7 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="datenformate.html"><a href="datenformate.html#faktor-variablen"><i class="fa fa-check"></i><b>5.2.2</b> Faktor Variablen</a></li>
 <li class="chapter" data-level="5.2.3" data-path="datenformate.html"><a href="datenformate.html#vektor-indizierung"><i class="fa fa-check"></i><b>5.2.3</b> Vektor Indizierung</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-dataframes"><i class="fa fa-check"></i><b>5.3</b> Matrizen und Dataframes</a>
+<li class="chapter" data-level="5.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-data.frames"><i class="fa fa-check"></i><b>5.3</b> Matrizen und data.frames</a>
 <ul>
 <li class="chapter" data-level="5.3.1" data-path="datenformate.html"><a href="datenformate.html#erstellen-von-datenmatrizen"><i class="fa fa-check"></i><b>5.3.1</b> Erstellen von Datenmatrizen</a></li>
 <li class="chapter" data-level="5.3.2" data-path="datenformate.html"><a href="datenformate.html#indizierung"><i class="fa fa-check"></i><b>5.3.2</b> Indizierung</a></li>
@@ -237,36 +259,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10" data-path="datenmanipulation.html"><a href="datenmanipulation.html"><i class="fa fa-check"></i><b>10</b> Datenmanipulation</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#hinzufügen"><i class="fa fa-check"></i><b>10.1</b> Hinzufügen</a>
+<li class="chapter" data-level="10.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-hinzufügen"><i class="fa fa-check"></i><b>10.1</b> Daten hinzufügen</a>
 <ul>
 <li class="chapter" data-level="10.1.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-hinzufügen"><i class="fa fa-check"></i><b>10.1.1</b> Variablen hinzufügen</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#löschen"><i class="fa fa-check"></i><b>10.2</b> Löschen</a>
+<li class="chapter" data-level="10.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-löschen"><i class="fa fa-check"></i><b>10.2</b> Daten löschen</a>
 <ul>
 <li class="chapter" data-level="10.2.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-löschen"><i class="fa fa-check"></i><b>10.2.1</b> Variablen löschen</a></li>
 <li class="chapter" data-level="10.2.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#fälle-löschen"><i class="fa fa-check"></i><b>10.2.2</b> Fälle löschen</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#umbenennen"><i class="fa fa-check"></i><b>10.3</b> Umbenennen</a>
+<li class="chapter" data-level="10.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-umbenennen"><i class="fa fa-check"></i><b>10.3</b> Variablen umbenennen</a>
 <ul>
 <li class="chapter" data-level="10.3.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablennamen-ändern"><i class="fa fa-check"></i><b>10.3.1</b> Variablennamen ändern</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#verändern"><i class="fa fa-check"></i><b>10.4</b> Verändern</a>
+<li class="chapter" data-level="10.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-verändern"><i class="fa fa-check"></i><b>10.4</b> Daten verändern</a>
 <ul>
 <li class="chapter" data-level="10.4.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#werte-ändern"><i class="fa fa-check"></i><b>10.4.1</b> Werte ändern</a></li>
 <li class="chapter" data-level="10.4.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#recodieren"><i class="fa fa-check"></i><b>10.4.2</b> Recodieren</a></li>
 <li class="chapter" data-level="10.4.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#worte-ändern"><i class="fa fa-check"></i><b>10.4.3</b> Worte ändern</a></li>
 <li class="chapter" data-level="10.4.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#faktorstufen-ändern"><i class="fa fa-check"></i><b>10.4.4</b> Faktorstufen ändern</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="datenmanipulation.html"><a href="datenmanipulation.html#aggreggieren"><i class="fa fa-check"></i><b>10.5</b> Aggreggieren</a>
+<li class="chapter" data-level="10.5" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-sortieren"><i class="fa fa-check"></i><b>10.5</b> Daten sortieren</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#rbind-und-cbind"><i class="fa fa-check"></i><b>10.5.1</b> rbind und cbind</a></li>
-<li class="chapter" data-level="10.5.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#merge"><i class="fa fa-check"></i><b>10.5.2</b> merge</a></li>
+<li class="chapter" data-level="10.5.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#sortieren-nach-numerischen-variablen"><i class="fa fa-check"></i><b>10.5.1</b> Sortieren nach numerischen Variablen</a></li>
+<li class="chapter" data-level="10.5.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#sortieren-nach-variablen-mit-worten"><i class="fa fa-check"></i><b>10.5.2</b> Sortieren nach Variablen mit Worten</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="datenmanipulation.html"><a href="datenmanipulation.html#sortieren"><i class="fa fa-check"></i><b>10.6</b> Sortieren</a></li>
-<li class="chapter" data-level="10.7" data-path="datenmanipulation.html"><a href="datenmanipulation.html#transformieren"><i class="fa fa-check"></i><b>10.7</b> Transformieren</a>
+<li class="chapter" data-level="10.6" data-path="datenmanipulation.html"><a href="datenmanipulation.html#datensätze-aggreggieren"><i class="fa fa-check"></i><b>10.6</b> Datensätze Aggreggieren</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#cbind-und-rbind"><i class="fa fa-check"></i><b>10.6.1</b> cbind und rbind</a></li>
+<li class="chapter" data-level="10.6.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#merge"><i class="fa fa-check"></i><b>10.6.2</b> merge</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="datenmanipulation.html"><a href="datenmanipulation.html#datensätze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
 <ul>
 <li class="chapter" data-level="10.7.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#von-long-nach-wide"><i class="fa fa-check"></i><b>10.7.1</b> Von Long nach Wide</a></li>
 <li class="chapter" data-level="10.7.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#skalieren"><i class="fa fa-check"></i><b>10.7.2</b> Skalieren</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="schleifen-loops.html"><a href="schleifen-loops.html"><i class="fa fa-check"></i><b>11</b> Schleifen (Loops)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for"><i class="fa fa-check"></i><b>11.1</b> for()</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graphiken.html"><a href="graphiken.html"><i class="fa fa-check"></i><b>12</b> Graphiken</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="graphiken.html"><a href="graphiken.html#das-ggplot2-paket"><i class="fa fa-check"></i><b>12.1</b> Das ggplot2 Paket</a></li>
+<li class="chapter" data-level="12.2" data-path="graphiken.html"><a href="graphiken.html#ggplot"><i class="fa fa-check"></i><b>12.2</b> ggplot()</a></li>
+<li class="chapter" data-level="12.3" data-path="graphiken.html"><a href="graphiken.html#streu-punktdiagramm"><i class="fa fa-check"></i><b>12.3</b> Streu-/Punktdiagramm</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="graphiken.html"><a href="graphiken.html#streudiagramm-mit-2-variablen"><i class="fa fa-check"></i><b>12.3.1</b> Streudiagramm mit 2 Variablen</a></li>
+<li class="chapter" data-level="12.3.2" data-path="graphiken.html"><a href="graphiken.html#geom_point"><i class="fa fa-check"></i><b>12.3.2</b> geom_point()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="graphiken.html"><a href="graphiken.html#geom_smooth"><i class="fa fa-check"></i><b>12.3.3</b> geom_smooth()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="graphiken.html"><a href="graphiken.html#streudiagramm-mit-mehr-als-2-variablen"><i class="fa fa-check"></i><b>12.3.4</b> Streudiagramm mit mehr als 2 Variablen</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="graphiken.html"><a href="graphiken.html#histogramm"><i class="fa fa-check"></i><b>12.4</b> Histogramm</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-für-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm"><i class="fa fa-check"></i><b>12.5</b> Balkendiagramm</a></li>
+<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-3-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 3 Variablen</a></li>
+<li class="chapter" data-level="12.7" data-path="graphiken.html"><a href="graphiken.html#boxplot"><i class="fa fa-check"></i><b>12.7</b> Boxplot</a></li>
+<li class="chapter" data-level="12.8" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>12.8</b> Facetting</a></li>
+<li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#ästhetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
+<ul>
+<li class="chapter" data-level="12.9.1" data-path="graphiken.html"><a href="graphiken.html#ggtitle"><i class="fa fa-check"></i><b>12.9.1</b> ggtitle()</a></li>
+<li class="chapter" data-level="12.9.2" data-path="graphiken.html"><a href="graphiken.html#labs"><i class="fa fa-check"></i><b>12.9.2</b> labs()</a></li>
+<li class="chapter" data-level="12.9.3" data-path="graphiken.html"><a href="graphiken.html#achsen-verändern"><i class="fa fa-check"></i><b>12.9.3</b> Achsen verändern</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="graphiken.html"><a href="graphiken.html#theme"><i class="fa fa-check"></i><b>12.10</b> theme()</a>
+<ul>
+<li class="chapter" data-level="12.10.1" data-path="graphiken.html"><a href="graphiken.html#elemente-von-theme"><i class="fa fa-check"></i><b>12.10.1</b> Elemente von theme()</a></li>
+<li class="chapter" data-level="12.10.2" data-path="graphiken.html"><a href="graphiken.html#legende"><i class="fa fa-check"></i><b>12.10.2</b> Legende</a></li>
+<li class="chapter" data-level="12.10.3" data-path="graphiken.html"><a href="graphiken.html#vorgefertigte-themes"><i class="fa fa-check"></i><b>12.10.3</b> Vorgefertigte themes</a></li>
+</ul></li>
+<li class="chapter" data-level="12.11" data-path="graphiken.html"><a href="graphiken.html#abbildungen-kombinieren"><i class="fa fa-check"></i><b>12.11</b> Abbildungen kombinieren</a></li>
+<li class="chapter" data-level="12.12" data-path="graphiken.html"><a href="graphiken.html#abbildungen-exportieren"><i class="fa fa-check"></i><b>12.12</b> Abbildungen exportieren</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>13</b> Korrelation</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="korrelation.html"><a href="korrelation.html#hypothesen"><i class="fa fa-check"></i><b>13.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="13.2" data-path="korrelation.html"><a href="korrelation.html#berechnung-der-korrelation"><i class="fa fa-check"></i><b>13.2</b> Berechnung der Korrelation</a></li>
+<li class="chapter" data-level="13.3" data-path="korrelation.html"><a href="korrelation.html#unterschiedliche-korrelationsmethoden"><i class="fa fa-check"></i><b>13.3</b> Unterschiedliche Korrelationsmethoden</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>13.3.1</b> Pearson-Korrelation</a></li>
+<li class="chapter" data-level="13.3.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation-aka-rangkorrelation"><i class="fa fa-check"></i><b>13.3.2</b> Spearman-Korrelation (aka Rangkorrelation)</a></li>
+<li class="chapter" data-level="13.3.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>13.3.3</b> Kendall-Korrelation</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="korrelation.html"><a href="korrelation.html#korrelation-als-hypothesentest"><i class="fa fa-check"></i><b>13.4</b> Korrelation als Hypothesentest</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html"><i class="fa fa-check"></i><b>14</b> Einfache Hypothesentests</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>14.1</b> Ein-Stichproben t-Test</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-1"><i class="fa fa-check"></i><b>14.1.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.1.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>14.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="14.1.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen"><i class="fa fa-check"></i><b>14.1.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.1.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>14.1.4</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="14.1.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-berichten"><i class="fa fa-check"></i><b>14.1.5</b> Ergebnis berichten</a></li>
+<li class="chapter" data-level="14.1.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke"><i class="fa fa-check"></i><b>14.1.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="14.1.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>14.1.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>14.2</b> t-Test bei unabhängigen Stichproben</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-2"><i class="fa fa-check"></i><b>14.2.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.2.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>14.2.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="14.2.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-1"><i class="fa fa-check"></i><b>14.2.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.2.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>14.2.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="14.2.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>14.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="14.2.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-1"><i class="fa fa-check"></i><b>14.2.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="14.2.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>14.2.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>14.3</b> t-Test bei abhängigen Stichproben</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-3"><i class="fa fa-check"></i><b>14.3.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.3.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>14.3.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="14.3.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-2"><i class="fa fa-check"></i><b>14.3.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.3.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>14.3.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="14.3.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>14.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="14.3.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-2"><i class="fa fa-check"></i><b>14.3.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="14.3.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>14.3.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>14.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-4"><i class="fa fa-check"></i><b>14.4.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.4.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-3"><i class="fa fa-check"></i><b>14.4.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.4.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>14.4.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="14.4.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-3"><i class="fa fa-check"></i><b>14.4.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="14.4.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>14.4.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>14.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-5"><i class="fa fa-check"></i><b>14.5.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.5.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-4"><i class="fa fa-check"></i><b>14.5.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.5.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>14.5.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="14.5.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-4"><i class="fa fa-check"></i><b>14.5.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="14.5.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>14.5.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#chi2-test"><i class="fa fa-check"></i><b>14.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>14.6.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="14.6.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-5"><i class="fa fa-check"></i><b>14.6.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.6.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>14.6.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="14.6.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>14.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="14.6.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-5"><i class="fa fa-check"></i><b>14.6.5</b> Effektstärke</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#fishers-exakter-test"><i class="fa fa-check"></i><b>14.7</b> Fisher’s Exakter Test</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-6"><i class="fa fa-check"></i><b>14.7.1</b> Test durchführen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>15</b> ANOVA</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="anova.html"><a href="anova.html#einfaktorielle-anova"><i class="fa fa-check"></i><b>15.1</b> Einfaktorielle ANOVA</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="anova.html"><a href="anova.html#alpha-fehler-kumulierung"><i class="fa fa-check"></i><b>15.1.1</b> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung</a></li>
+<li class="chapter" data-level="15.1.2" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-4"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.1.3" data-path="anova.html"><a href="anova.html#berechnung-der-anova"><i class="fa fa-check"></i><b>15.1.3</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="15.1.4" data-path="anova.html"><a href="anova.html#interpretation"><i class="fa fa-check"></i><b>15.1.4</b> Interpretation</a></li>
+<li class="chapter" data-level="15.1.5" data-path="anova.html"><a href="anova.html#post-hoc-tests"><i class="fa fa-check"></i><b>15.1.5</b> Post-hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="anova.html"><a href="anova.html#mehrfaktorielle-anova"><i class="fa fa-check"></i><b>15.2</b> Mehrfaktorielle ANOVA</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-5"><i class="fa fa-check"></i><b>15.2.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.2.2" data-path="anova.html"><a href="anova.html#berechnung-der-anova-1"><i class="fa fa-check"></i><b>15.2.2</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="15.2.3" data-path="anova.html"><a href="anova.html#interpretation-1"><i class="fa fa-check"></i><b>15.2.3</b> Interpretation</a></li>
+<li class="chapter" data-level="15.2.4" data-path="anova.html"><a href="anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>15.2.4</b> Post-hoc Tests</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -356,13 +511,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="zufällig" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Zufällig<a href="daten-erstellen.html#zufällig" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In R haben Sie die möglichkeit Daten anhand einer Wahrscheinlichkeitsverteilung zu simulieren.</p>
-<p>Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten erstellen, können wir die <code>rnorm()</code> Funktion nutzen. Dafür müssen wir lediglich angeben, wie viele Werte wir haben wollen (<code>n</code>) und welchen Mittelwert (<code>mean</code>) und welche Standardabweichung (<code>sd</code>) die Verteilung haben soll:</p>
+<p>In R kann man Daten anhand einer Wahrscheinlichkeitsverteilung simulieren.</p>
+<p>Wollen wir z.B. eine normalverteilte Variable mit zufälligen Werten erstellen, können wir die <code>rnorm()</code> Funktion nutzen.</p>
+<p>Dafür müssen wir lediglich angeben, wie viele Werte wir haben wollen (<code>n</code>) und welchen Mittelwert (<code>mean</code>) und welche Standardabweichung (<code>sd</code>) die Verteilung haben soll:</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="daten-erstellen.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
-<pre><code>##  [1] -0.534831929 -1.776573777 -0.390732715  0.584950680 -0.107729302
-##  [6]  0.668497344 -0.002042482  0.929918141 -0.547512890  1.008724515
-## [11] -1.028934163 -0.272504819  0.459688010 -0.236521380 -0.549307011
-## [16] -0.528687593  1.996301474  0.529468240 -0.444266549  0.796083680</code></pre>
+<pre><code>##  [1] -2.07679340 -0.33022965  0.50383586 -1.40005030 -0.55686240 -0.14326092
+##  [7] -2.28668971  0.27378025 -0.23235696 -0.61899118  0.08506446  0.11070998
+## [13]  0.40452193  0.74716222  1.13901934  0.21551071 -2.03878596  0.26544602
+## [19] -0.13582347 -0.47771777</code></pre>
 
 </div>
 </div>

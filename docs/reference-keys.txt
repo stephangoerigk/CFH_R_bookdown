@@ -1,3 +1,0 @@
-installation
-installation-von-r
-installation-von-rstudio

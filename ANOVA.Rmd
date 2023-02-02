@@ -1,0 +1,272 @@
+# ANOVA
+
+Die ANOVA (Analysis of variance, dt. Varianzanalyse) ist ein weiiterer Signifikanztest. Mit der ANOVA können wir Prüfen, ob eine unabhängige Variable (UV) einen signifikanten Anteil Varianz der abhängigen Variable erklärt (AV). Die UVs nennen wir bei der ANOVA i.d.R. **Faktor**.
+
+Statistisch ist die ANOVA ein F-Test (Varianzquotient).
+
+## Einfaktorielle ANOVA
+
+Wir nutzen die ANOVA besonders gerne, wenn wir eine numerische AV und einen kategorialen Faktor mit $>2$ Stufen haben. 
+
+Ein Beispiel wäre der Vergleich der Stärke von Symptomen, die Patient:innen nach einer Therapie haben. Klinisch wäre es wünschenswert, dass die Symptomstärke nach der Therapie möglichst gering ausfällt.
+
+Laden wir uns einen fiktiven Datensatz herunter, der dieses Szenario wiederspiegelt:
+
+```{r}
+therapy = read.csv("https://raw.githubusercontent.com/stephangoerigk/WAF_Folien/master/therapy4groups.csv")[,2:5]
+
+summary(therapy)
+```
+
+In diesem Datensatz repräsentiert jede Zeile eine Patient:in mit einer Depression bzw. Angststörung, die mit einer von 4 Therapien behandelt wurde:
+
+* SSRI = ein Antidepressivum (Selektive Serotoninwiederaufnahmehemmer)
+* VT = Verhaltenstherapie
+* PA = Psychoanalyse
+* Control = Kontrollbedingung (keine Therapie)
+
+Die Therapie (UV) ist also ein Faktor mit 4 Stufen.
+
+Eine denkbare Forschungsfrage könnte wie folgt lauten: 
+
+*Nach welcher Therapie haben die Patient:innen die schwächsten Symptome?*
+
+### $\alpha$-Fehler Kumulierung
+
+In unserem Beispiel mit 4 Gruppen könnten wir den t-Test nicht verwenden, da dieser max. 2 Mittelwerte vergleicht. Intuitiv könnte man sich überlegen, statt eines t-Tests einfach insgesamt 6 t-Tests zu rechnen, um alle Vergleiche abzudecken (SSRI vs. VT, VT vs. PA, ...). Was uns daran hindert, ist die sogenannte $\alpha$-Fehler Kumulierung. 
+
+Unter Annahme eines Signifikanzniveaus von $\alpha=.05$ erlauben wir uns 5% Wahrscheinlichkeit einen Fehler 1. Art zu begehen (fälschlicherweise die $H_1$ anzunehmen). Diese 5% Fehlerwahrscheinlichkeit besteht jedoch bei jedem einzelnen t-Test $\rightarrow$ Viele Tests, viele mögliche Fehlerentscheidungen!
+
+Selbst bei 3 t-Tests steigt die Wahrscheinlichkeit für einen Fehler 1. Art mit $0.05^3=0.14$ rasant auf 14% statt 5% an.
+
+Um dieses Problem zu vermeiden rechenen wir die ANOVA, welche uns nicht alle Vergleiche einzeln, sondern die Signifikanz des gesamten Faktors auf einmal berechnet (Omnibus Test). Daraus folgt jedoch auch, dass die ANOVA als Signifikanztest Hypothesen **immer ungerichtet** testet.
+
+### Deskriptive Einordnung
+
+Zunächst können wir uns die Deskriptivstatistiken innerhalb der 4 Gruppen einmal anschauen:
+
+```{r}
+psych::describeBy(Symptoms ~ Therapy, data = therapy)
+```
+
+Rein deskriptiv lässt sich bereits feststellen, dass Patient:innen nach der VT die niedrigsten Symptome aufweisen (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "VT"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "VT"]), 2)`]), gefolgt von SSRI  (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "SSRI"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "SSRI"]), 2)`]), PA  (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "PA"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "PA"]), 2)`]) und Control  (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "Control"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "Control"]), 2)`]).
+
+Die Gruppenunterschiede lassen sich auch graphisch gut darstellen:
+
+```{r}
+ggplot(data = therapy, aes(x = Therapy, y = Symptoms)) +
+  stat_summary(fun.data = mean_se,  geom = "errorbar") +
+  stat_summary(geom = "point", fun = mean) 
+```
+
+Ob sich die numerischen Unterschiede sich auch als signifikant erweisen, prüfen wir mit der ANOVA.
+
+### Berechnung der ANOVA
+
+Die einfaktorielle ANOVA lässt sich in R auf zwei Arten berechnen, die beide zu dem exakt selben Ergebnissen kommen.
+
+* eingebaute `lm()` Funktion gefolgt von `anova()`
+* `aov_ez()` Funktion aus dem `afex` Paket
+
+#### Berechnung mittels `lm()`
+
+Die `lm()` Funktion ist eine der gebräuchlichsten in der Statistik überhaupt. Sie ist nach dem **Allgemeinen linearen Modell** benannt (**l**inear **m**odel) und wird beispielsweise auch zur Berechnung der Regression verwendet.
+
+Das lineare Modell wird wie folgt aufgestellt (Formelformat):
+
+```{r}
+mod = lm(Symptoms ~ Therapy, data = therapy)
+```
+
+In der Formel steht links immer die AV (Symptoms). Die `~` Symbol heißt soviel wie "wird vorhergesagt durch". Auf der rechten Seite steht die UV (Therapy).
+
+Um das Ergebnis der ANOVA (den F-Test) zu erhalten, müssen wir die Funktion `anova()` auf das erstellte Modell anwenden
+
+```{r}
+anova(mod)
+```
+
+Wir erhalten den Output der ANOVA mit allen relevanten Zahlen:
+
+* Df = Freiheitsgrade (VORSICHT der F-Test hat 2x df $\rightarrow$ Zähler-/ und Nennerfreiheitsgrade)
+* F-Wert = Teststatistik (könnte in F-Tabelle nachgesehen werden)
+* p-Wert $\rightarrow$ entscheidend dafür, ob ANOVA signifikant ist
+
+Die Entscheidungsregel ist uns bereits bekannt: Ist der p-Wert (hier $p=0.0005766$) kleiner als $\alpha=.05$ ist der Test signifikant. Das ist hier der Fall. Das ganze Ergebnis schreibt man i.d.R. wie folgt: $F_{3,26}=8.08, p<.001$.
+
+#### Berechnung mittels `aov_ez()`
+
+Die Berechnung mit der `aov_ez()` Funktion erfolgt analog, nur wird die Formel etwas anders geschrieben.
+
+Wir legen genau fest was unsere AV ist `dv`. Zudem brauchen wir eine Variable, die jede Zeile eindeutig einem Individuum zuordnet `id`.
+
+Die Faktoren (UVs) werden mit einem der beiden folgenden Argumente angegeben:
+
+* `between` (Zwischensubjektfaktoren)
+* `within` (Innersubjektfaktoren)
+
+Faktoren die unter `between` angegeben werden, sind unabhängige Messungen, also Variablen die einen Gruppenvergleich möglich machen. Faktoren die unter `within` angegeben werden, sind abhängige Messungen, also beispielsweise mehrere Messzeitpunkte der selben Person.
+
+In unserem Fall liegt ein Gruppenvergleich vor (jede Person hat jeweils nur eine der Therapien erhalten), daher nutzen wir `between`. Für `id` nutzen wir einfach die Variable `X`, die einen Patientencode für jede Person enthält.
+
+```{r message=FALSE, warning=FALSE}
+library(afex)
+mod = aov_ez(dv = "Symptoms", between = c("Therapy"), id = "X", data = therapy)
+mod
+```
+
+Wie wir sehen, wird der Schritt des Aufstellens des linearen Modells hier übersprungen und direkt die ANOVA (F-Test) gerechnet.
+Das Ergebnise ist jedoch identisch.
+
+### Interpretation
+
+Die ANOVA ist in unserem Beispiel signifikant geworden. Dies gibt uns die Information, dass der Faktor Therapie einen signifikanten Anteil der Varianz unserer AV (Symptoms) erklären kann. Anders gesagt: Es scheinen hinsichtlich der Symptomatik Unterschiede zwischen den Gruppen zu bestehen.
+
+Aus dem signifikanten Ergebnis der ANOVA können wir jedoch nicht erkennen, **zwischen welchen der Gruppen** die Unterschiede genau bestehen. Wir wissen es gibt einen Effekt, nur nicht wo er liegt.
+
+Aus diesem Grund folgt auf die Berechnung der ANOVA ein zweiter Schritt, um mittels **paarweisen Vergleichen** zu prüfen, wo die Unterschiede liegen. Diese paarweisen Vergleiche nennt man auch Post-hoc Tests
+
+### Post-hoc Tests
+
+Post-hoc Tests erlauben uns genau zu sehen, welche der Stufen unserer UV sich unterscheiden. In diesem Sinne sind sie nichts anderes als nachgeschaltete t-Tests, die 2 Gruppen miteinander vergleichen.
+
+Wir berechnen Post-hoc Tests mit der `emmeans()` Funktion aus dem gleichnamigen `emmeans` Paket. Die Abkürzung emmeans bedeuted "estimated marginal means", was soviel bedeutet wie die Mittelwerte des Modells innerhalb der Faktorstufen zu vergleichen.
+
+Die `emmeans()` Funktion kann man sowohl nach der ANOVA mit `lm()` als auch nach der ANOVA mit `aov_ez()` verwenden.
+
+```{r message=FALSE, warning=FALSE}
+library(emmeans)
+emmeans(mod, pairwise ~ Therapy)
+```
+
+Mit dem `pairwise` Argument sagen wir der `emmeans()` Funktion zwischen welchen Gruppen die Mittelwertsvergleiche durchgeführt werden sollen.
+
+Der Output der `emmeans()` Funktion hat 2 Teile
+
+* $emmeans (oberer Teil: hier werden praktischer die verglichenen Mittelwerte noch einmal ausgerechnet)
+* $contrasts (unterer Teil: hier werden die Ergebnisse der Post-hoc Tests gezeigt)
+
+Die Interpretation des Ergebnisses ist uns bereits bekannt. Jeder Vergleich erhält einen t-Wert und einen p-Wert, anhand dessen wir ablesen können, ob der Gruppenunterschied signifikant war. 
+
+Der Mittelwert der Gruppe VT war signifikant niedriger als der in der Kontrollgruppe $(t_{26}=4.77,p=.0003)$ und als der in der PA Gruppe $(t_{26}=3.49,p=.0088)$. Die anderen Vergleiche waren nicht signifikant.
+
+#### Korrektur für multiples Testen
+
+Nun haben wir im Abschnitt über die $\alpha$-Fehler Kumulierung bereits erfahren, dass das Durchführen vieler Vergleiche problematisch sein kann, da es die Wahrscheinlichkeit erhöht einen Fehler 1. Art zu begehen.
+
+Post-hoc Tests lösen dieses Problem durch eine Korrektur des p-Werts. Je mehr Vergleiche gemacht werden, desto mehr wird er nach oben korrigiert. Automatisch wendet `emmeans()` die sogenannte Tukey-Korrektur an (ganz unten im Output sichtbar).
+
+Zwei weitere Korrekturen sind gängig, die etwas strengere Bonferroni-Korrektur und die etwas weniger strenge Benjamini-Hochberg Korrektur (auch false-dicovery-rate Korrektur - FDR genannt). 
+
+Wollen wir die Korrekturmethode ändern, lässt sich das leicht über das `adjust` Argument erreichen:
+
+```{r message=FALSE, warning=FALSE}
+emmeans(mod, pairwise ~ Therapy, adjust = "bonferroni")
+```
+
+Wir sehen, dass die etwas strengere Bonferroni-Korrektur die p-Werte vergleichsweise höher werden lässt, als mit der Tukey-Korrektur. Es ist also für den p-Wert schwieriger, unter das Signifikanznivea $\alpha=.05$ zu kommen.
+
+Mit der Benjamini-Hochberg Korrektur sind die Anpassungen weniger streng:
+
+```{r message=FALSE, warning=FALSE}
+emmeans(mod, pairwise ~ Therapy, adjust = "fdr")
+```
+
+## Mehrfaktorielle ANOVA
+
+Mit der ANOVA haben wir die Möglichkeit, die Effekte mehrere UVs (Faktoren) auf die AV zu untersuchen.
+
+Wir prüfen dann letztlich 3 Hypothesen (bei 2 UVs)
+
+* Haupteffekt des 1. Faktors 
+* Haupteffekt des 2. Faktors
+* Interaktionseffekt beider Faktoren
+
+In unserem Beispiel könnte es interessant sein, zusätzlich zur erhaltenen Therapie zu berücksichtigen, welche Diagnose die Patienten hatten.
+
+Unsere Fragestellung würde sich um 2 weitere Aspekte erweitern:
+
+1. *Nach welcher Therapie haben die Patient:innen die schwächsten Symptome?* (hatten wir bereits - Haupteffekt Therapie)
+2. *Welche Diagnose hatte die schwächsten Symptome?* (Haupteffekt Diagnose)
+3. *Gibt es, je nachdem welche Diagnose die Patienten hatten, Unterschiede in der Wirksamkeit der Therapie?* (Interaktioniseffekt)
+
+### Deskriptive Einordnung
+
+Zunächst können wir uns die Deskriptivstatistiken innerhalb der Gruppen einmal anschauen:
+
+```{r}
+psych::describeBy(Symptoms ~ Therapy * Diagnosis, data = therapy)
+```
+
+Der `*` zwischen den Faktoren bedeutet "Interaktion" und führt dazu, dass alle Stufenkombinationen der beiden Variablen exploriert werden.
+
+Die Gruppenunterschiede lassen sich auch graphisch gut darstellen:
+
+```{r}
+ggplot(data = therapy, aes(x = Therapy, y = Symptoms, colour = Diagnosis)) +
+  stat_summary(fun.data = mean_se,  geom = "errorbar") +
+  stat_summary(geom = "point", fun = mean) 
+```
+
+### Berechnung der ANOVA
+
+#### Berechnung mittels `lm()`
+
+Die Vorgehensweise ist die selbe wie bei der einfaktoriellen ANOVA. Die Formel wird lediglich durch die Interaktion mit der 2. UV erweitert.
+
+```{r}
+mod = lm(Symptoms ~ Therapy * Diagnosis, data = therapy)
+anova(mod)
+```
+
+Der Output der ANOVA erweitert sich im Vergleich zur einfaktoriellen ANOVA um 2 Zeilen. Die mit `Therapy` und `Diagnosis` betitelten Zeilen sind die Haupteffekte. Die 3. Zeile `Therapy:Diagnosis` ist der Interaktionseffekt.
+
+Da wir mit der 2-faktoriellen ANOVA letztlich 3 Hypothesen prüfen, gibt es auch 3 p-Werte, die alle entweder signifikante oder nicht-signifikant sein können.
+
+#### Berechnung mittels `aov_ez()`
+
+Auch für die `aov_ez()` Funktion ähnelt das Vorgehen dem der einfaktoriellen ANOVA. Hier wird die Liste der UVs lediglich um den 2. Faktor erweitert, die Interaktion wird automatisch mitberechnet. Das Ergebnis ist analog zur `lm()` Funktion.
+
+```{r message=FALSE, warning=FALSE}
+library(afex)
+mod = aov_ez(dv = "Symptoms", between = c("Therapy", "Diagnosis"), id = "X", data = therapy)
+mod
+```
+
+### Interpretation
+
+Die beiden Haupteffekte und der Interaktionseffekt können einzeln Interpretiert werden. Wir gehen der Reihe nach:
+
+#### Haupteffekt 1
+
+Der Haupteffekt von `Therapy` spiegelt im Wesentlichen das Ergebnis wieder, welches wir bereits von der einfaktoriellen ANOVA kennen. Es handelt sich um den Effekt der Therapie, wenn man den Effekt der 2. UV (Diagnosis) außer Acht lässt.
+
+Der Haupteffekt ist signifikant bei $F_{(3,22)}=9.94, p<.001$. Wir können schlussfolgern, dass es einen Unterschied zwischen den Diagnosen gibt. Wo die Unterschiede genau liegenm, können wir mit den Post-hoc Tests bestimmen, wie oben bereits geschehen.
+
+#### Haupteffekt 2
+
+Der Haupteffekt von `Diagnosis` ist nichts anderes als ein unabhängiger t-Test. Es handelt sich um den Effekt der Diagnose, wenn man den Effekt der 1. UV (Therapy) außer Acht lässt. Dieser Haupteffekt ist nicht signifikant $F_{(1,22)}=0.004, p<.949$. Über alle Therapien hinweg scheint es keinen Unterschied in der Symptomatik der Patient:innen mit Depressionen und Angststörungen zu geben.
+
+#### Interaktionseffekt
+
+Der Interaktionseffekt von `Therapy * Diagnosis` prüft, ob der Effekt der Therapie in beiden Diagnosen unterschiedlich wirkt.
+Er ist somit eine Möglichkeit den "kombinierten Effekt" der beiden Variablen zu prüfen.
+
+Der Interaktionseffekt ist signifikant $F_{(3,22)}=3.33, p<.038$. Entsprechend scheinen die Patient:innen nach den Therapien unterschiedlich wenige Symptome, je ncahdem welche Diagnose sie hatten.
+
+Um diesen Effekt zu inhaltlich zu verstehen, empfiehlt sich ein Blick auf die Graphik, in Kombination mit Post-Hoc Tests.
+
+### Post-hoc Tests
+
+Zum Verständnis der Effekte führen wir Post-Hoc Tests durch. Allerdings wollen wir uns den Effekt der Therapie diesmal getrennt für die Diagnosen ansehen.
+
+```{r message=FALSE, warning=FALSE}
+library(emmeans)
+emmeans(mod, pairwise ~ Therapy|Diagnosis)
+```
+
+Wir sehen, dass die Symptome nach SSRI insbesondere in der Gruppe der depressiven Patient:innen reduziert sind. Zudem sind die Symtome nach VT besonders nach der VT heruntergegangen.
+
+Dies führt dazu, dass die VT (in dieser Stichprobe) in der Behandlung von Angststörungen der Kontrollgruppe $(t_{(22)}=4.68, p<.001)$, der Psychoanalyse $(t_{(22)}=4.02, p=.003)$ und den SSRI $(t_{(22)}=3.99, p=.003)$ überlegen war. In der Behandlung von Angststörungen waren sowohl SSRI $(t_{(22)}=3.29, p=.016)$ als auch VT $(t_{(22)}=3.38, p=.013)$ besser als die Kontrollgruppe, unterschieden sich jedoch nicht signifikant von der Psychoanalyse und auch nicht voneinander.
+
+

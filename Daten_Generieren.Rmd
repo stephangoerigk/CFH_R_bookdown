@@ -44,9 +44,11 @@ Lassen Sie uns mit dreien davon starten`a:b`, `seq()`, and `rep()`:
 
 ## Zufällig
 
-In R haben Sie die möglichkeit Daten anhand einer Wahrscheinlichkeitsverteilung zu simulieren.
+In R kann man Daten anhand einer Wahrscheinlichkeitsverteilung simulieren.
 
-Wollen wir beispielsweise eine normalverteilte Variable mit zufälligen Werten erstellen, können wir die `rnorm()` Funktion nutzen. Dafür müssen wir lediglich angeben, wie viele Werte wir haben wollen (`n`) und welchen Mittelwert  (`mean`) und welche Standardabweichung  (`sd`) die Verteilung haben soll:
+Wollen wir z.B. eine normalverteilte Variable mit zufälligen Werten erstellen, können wir die `rnorm()` Funktion nutzen. 
+
+Dafür müssen wir lediglich angeben, wie viele Werte wir haben wollen (`n`) und welchen Mittelwert  (`mean`) und welche Standardabweichung  (`sd`) die Verteilung haben soll:
 
 ```{r}
 rnorm(n = 20, mean = 0, sd = 1)

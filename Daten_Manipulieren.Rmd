@@ -1,6 +1,6 @@
 # Datenmanipulation
 
-## Hinzufügen
+## Daten hinzufügen
 
 ### Variablen hinzufügen
 
@@ -50,7 +50,7 @@ test = add_column(test, Haustier = c("Hund", "Katze", "Hund", "Hund", "Fische"),
 test
 ```
 
-## Löschen
+## Daten löschen
 
 ### Variablen löschen
 
@@ -113,7 +113,7 @@ test = test[-c(test$Geschlecht == "männlich"),]
 test
 ```
 
-## Umbenennen
+## Variablen umbenennen
 
 ### Variablennamen ändern
 
@@ -159,7 +159,7 @@ test = rename(test, c(D = A,
 test
 ```
 
-## Verändern
+## Daten verändern
 
 ```{r echo=F}
 test <- data.frame("ID" = c(1, 2, 3, 4, 5),
@@ -294,7 +294,7 @@ test$Diagnose = relevel(test$Diagnose, "Depr.")
 test$Diagnose
 ```
 
-## Sortieren
+## Daten sortieren
 
 Frisch gesammelte Daten können manchmal in ungeordneter Form bei uns ankommen. Eine Möglichkeit Ordnung in die Daten zu bekommen, ist das Sortieren der Daten, welches i.d.R. nach der Logik einer bestimmten Variable erfolgt. 
 
@@ -359,7 +359,7 @@ Sortieren mit `order()` anhand der Variable `Name` ergibt:
 test5 = test[order(test$Name),]
 ```
 
-## Aggreggieren
+## Datensätze Aggreggieren
 
 Oft kommt es vor, dass wir zwei dataframes zusammensetzen wollen. Dies könnte der Fall sein, wenn wir unsere Daten in 2 unterschiedlichen Tabellen gesammelt haben, wir aber nun mit den kombinierten Daten rechnen wollen. Damit beschäftigen wir uns in den nächsten Abschnitten.
 
@@ -462,7 +462,7 @@ test3 = merge(test1, test2, by = "ID")
 test3
 ```
 
-## Transformieren
+## Datensätze transformieren
 
 ### Von Long nach Wide
 

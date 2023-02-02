@@ -1,6 +1,10 @@
 # Graphiken
 
-Die Datenvisualisierung ist einer der wichtigsten Schritte im Prozess der Datenanalyse. Sie ist nicht nur Teil der Datenanalyse, sondern kann auch als Kunst betrachtet werden. Die Programmiersprache R stellt uns ein leistungsstarkes Visualisierungspaket zur Verfügung, `ggplot2`.
+```{r echo=F, message=FALSE, warning=FALSE}
+library(ggpubr)
+```
+
+Die Datenvisualisierung ist einer der wichtigsten Schritte in der Statistik. Sie ist nicht nur Teil der Datenanalyse, eine gute Darstellung komplizierter Ergebnisse kann beinahe als Kunst betrachtet werden. Die Programmiersprache R stellt uns ein leistungsstarkes Visualisierungspaket zur Verfügung, `ggplot2`.
 
 Dieses Kapitel soll zeigen, wie man mit `ggplot2` bekannte statistische Diagramme erstellen kann und wie man sie verbessern oder anpassen kann.
 
@@ -20,7 +24,7 @@ Warum ist ggplot2 gut?
 
 ## ggplot()
 
-Die ggplot2 impliziert die "Grammatik der Grafik", die auf dem Prinzip beruht, dass ein Plot in die folgenden grundlegenden Teile aufgeteilt werden kann -
+Die von ggplot2 implizierte "Grammatik der Grafik", beruht auf dem Prinzip, dass ein Plot in die folgenden grundlegenden Teile aufgeteilt werden kann:
 
 Plot = data + aesthetics + geometry
 
@@ -32,7 +36,7 @@ Plot = data + aesthetics + geometry
 
 Wir werden zum Üben den Datensatz `diamonds` aus dem `tidyverse` Paket nutzen. Er behandelt den Preis und die Charakteristika von Edelsteinen, also ein schönes Thema für schöne Graphen. Bevor wir also loslegen, installieren Sie die Pakete `ggplot2` und `tidyverse` und führen Sie aus:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(ggplot2)
 library(tidyverse)
 ```
@@ -70,7 +74,7 @@ head(diamonds)
 
 Stellen wir zunächst einmal unsere Grundfunktion auf:
 
-```{r}
+```{r eval=F, echo=T}
 ggplot(data = diamonds, aes(x = carat, y = price))
 ```
 
@@ -125,7 +129,7 @@ ggplot(data = diamonds, aes(x = carat, y = price, colour = cut)) +
 
 Es wären auch andere **aesthetics** zur Unterscheidung denkbar, z.B. die Form der Punkte (`shape`):
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ggplot(data = diamonds, aes(x = carat, y = price, shape = cut)) +
   geom_point()
 ```
@@ -182,7 +186,7 @@ ggplot(data = diamonds, aes(x = cut, y = carat)) +
 
 Oder theoretisch auch mit anderen `geoms`
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ggplot(data = diamonds, aes(x = cut, y = carat)) +
   stat_summary(geom = "point", fun = mean) 
 ```
@@ -191,7 +195,7 @@ Häufig möchte man zusätzlich eine Art von Streuung/Unschärfe darstellen, wen
 
 ```{r}
 ggplot(data = diamonds, aes(x = cut, y = carat)) +
-  stat_summary(fun.data = mean_cl_normal,  geom = "errorbar")
+  stat_summary(fun.data = mean_cl_normal,  geom = "errorbar") +
   stat_summary(geom = "point", fun = mean) 
 ```
 
@@ -305,7 +309,7 @@ Der Befehl `theme()` ist einer der mächtigsten in `ggplot2`, denn er verändert
 
 Er hat so viele Anpassungsmöglichkeiten, dass wir sie an dieser Stelle unmöglich auflisten könnten. Glücklicherweise ist eine Liste aller Optionen unter `?theme()` hinterlegt.
 
-### theme() Elemente
+### Elemente von theme() 
 
 Sehen wir uns dennoch einmal ein Beispiel an. Wie wäre es, wenn wir den gesamten Text in unserem Graphen etwas kleiner machen? Das geht so:
 
@@ -382,7 +386,7 @@ Dann kann es helfen mehrere Graphen zu einer zusammenzusetzen. Die Funktion daf�
 Also installieren Sie kurz das Paket `ggpubr`, laden es mittels `library()` und dann geht es gleich weiter:
 
 ```{r}
-install.packages("ggpubr")
+# install.packages("ggpubr")
 library(ggpubr)
 ```
 
@@ -441,8 +445,8 @@ Ein Beispiel:
 ```{r}
 png(file = "Figure1.png", width = 5, height = 5, units = "in", res = 300)
 
-ggplot(data = diamonds, aes(x = price)) +
-  geom_histogram()
+ggplot(data = diamonds, aes(x = price, colour = cut)) +
+  geom_histogram(binwidth = 39)
 
 dev.off()
 ```

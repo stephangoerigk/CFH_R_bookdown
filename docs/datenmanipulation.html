@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2022-11-03" />
+<meta name="date" content="2023-02-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="daten-explorieren.html"/>
-
+<link rel="next" href="schleifen-loops.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -92,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -119,6 +119,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -179,7 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="datenformate.html"><a href="datenformate.html#faktor-variablen"><i class="fa fa-check"></i><b>5.2.2</b> Faktor Variablen</a></li>
 <li class="chapter" data-level="5.2.3" data-path="datenformate.html"><a href="datenformate.html#vektor-indizierung"><i class="fa fa-check"></i><b>5.2.3</b> Vektor Indizierung</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-dataframes"><i class="fa fa-check"></i><b>5.3</b> Matrizen und Dataframes</a>
+<li class="chapter" data-level="5.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-data.frames"><i class="fa fa-check"></i><b>5.3</b> Matrizen und data.frames</a>
 <ul>
 <li class="chapter" data-level="5.3.1" data-path="datenformate.html"><a href="datenformate.html#erstellen-von-datenmatrizen"><i class="fa fa-check"></i><b>5.3.1</b> Erstellen von Datenmatrizen</a></li>
 <li class="chapter" data-level="5.3.2" data-path="datenformate.html"><a href="datenformate.html#indizierung"><i class="fa fa-check"></i><b>5.3.2</b> Indizierung</a></li>
@@ -237,36 +259,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10" data-path="datenmanipulation.html"><a href="datenmanipulation.html"><i class="fa fa-check"></i><b>10</b> Datenmanipulation</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#hinzufügen"><i class="fa fa-check"></i><b>10.1</b> Hinzufügen</a>
+<li class="chapter" data-level="10.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-hinzufügen"><i class="fa fa-check"></i><b>10.1</b> Daten hinzufügen</a>
 <ul>
 <li class="chapter" data-level="10.1.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-hinzufügen"><i class="fa fa-check"></i><b>10.1.1</b> Variablen hinzufügen</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#löschen"><i class="fa fa-check"></i><b>10.2</b> Löschen</a>
+<li class="chapter" data-level="10.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-löschen"><i class="fa fa-check"></i><b>10.2</b> Daten löschen</a>
 <ul>
 <li class="chapter" data-level="10.2.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-löschen"><i class="fa fa-check"></i><b>10.2.1</b> Variablen löschen</a></li>
 <li class="chapter" data-level="10.2.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#fälle-löschen"><i class="fa fa-check"></i><b>10.2.2</b> Fälle löschen</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#umbenennen"><i class="fa fa-check"></i><b>10.3</b> Umbenennen</a>
+<li class="chapter" data-level="10.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-umbenennen"><i class="fa fa-check"></i><b>10.3</b> Variablen umbenennen</a>
 <ul>
 <li class="chapter" data-level="10.3.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablennamen-ändern"><i class="fa fa-check"></i><b>10.3.1</b> Variablennamen ändern</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#verändern"><i class="fa fa-check"></i><b>10.4</b> Verändern</a>
+<li class="chapter" data-level="10.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-verändern"><i class="fa fa-check"></i><b>10.4</b> Daten verändern</a>
 <ul>
 <li class="chapter" data-level="10.4.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#werte-ändern"><i class="fa fa-check"></i><b>10.4.1</b> Werte ändern</a></li>
 <li class="chapter" data-level="10.4.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#recodieren"><i class="fa fa-check"></i><b>10.4.2</b> Recodieren</a></li>
 <li class="chapter" data-level="10.4.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#worte-ändern"><i class="fa fa-check"></i><b>10.4.3</b> Worte ändern</a></li>
 <li class="chapter" data-level="10.4.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#faktorstufen-ändern"><i class="fa fa-check"></i><b>10.4.4</b> Faktorstufen ändern</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="datenmanipulation.html"><a href="datenmanipulation.html#aggreggieren"><i class="fa fa-check"></i><b>10.5</b> Aggreggieren</a>
+<li class="chapter" data-level="10.5" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-sortieren"><i class="fa fa-check"></i><b>10.5</b> Daten sortieren</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#rbind-und-cbind"><i class="fa fa-check"></i><b>10.5.1</b> rbind und cbind</a></li>
-<li class="chapter" data-level="10.5.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#merge"><i class="fa fa-check"></i><b>10.5.2</b> merge</a></li>
+<li class="chapter" data-level="10.5.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#sortieren-nach-numerischen-variablen"><i class="fa fa-check"></i><b>10.5.1</b> Sortieren nach numerischen Variablen</a></li>
+<li class="chapter" data-level="10.5.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#sortieren-nach-variablen-mit-worten"><i class="fa fa-check"></i><b>10.5.2</b> Sortieren nach Variablen mit Worten</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="datenmanipulation.html"><a href="datenmanipulation.html#sortieren"><i class="fa fa-check"></i><b>10.6</b> Sortieren</a></li>
-<li class="chapter" data-level="10.7" data-path="datenmanipulation.html"><a href="datenmanipulation.html#transformieren"><i class="fa fa-check"></i><b>10.7</b> Transformieren</a>
+<li class="chapter" data-level="10.6" data-path="datenmanipulation.html"><a href="datenmanipulation.html#datensätze-aggreggieren"><i class="fa fa-check"></i><b>10.6</b> Datensätze Aggreggieren</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#cbind-und-rbind"><i class="fa fa-check"></i><b>10.6.1</b> cbind und rbind</a></li>
+<li class="chapter" data-level="10.6.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#merge"><i class="fa fa-check"></i><b>10.6.2</b> merge</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="datenmanipulation.html"><a href="datenmanipulation.html#datensätze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
 <ul>
 <li class="chapter" data-level="10.7.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#von-long-nach-wide"><i class="fa fa-check"></i><b>10.7.1</b> Von Long nach Wide</a></li>
 <li class="chapter" data-level="10.7.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#skalieren"><i class="fa fa-check"></i><b>10.7.2</b> Skalieren</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="schleifen-loops.html"><a href="schleifen-loops.html"><i class="fa fa-check"></i><b>11</b> Schleifen (Loops)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for"><i class="fa fa-check"></i><b>11.1</b> for()</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graphiken.html"><a href="graphiken.html"><i class="fa fa-check"></i><b>12</b> Graphiken</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="graphiken.html"><a href="graphiken.html#das-ggplot2-paket"><i class="fa fa-check"></i><b>12.1</b> Das ggplot2 Paket</a></li>
+<li class="chapter" data-level="12.2" data-path="graphiken.html"><a href="graphiken.html#ggplot"><i class="fa fa-check"></i><b>12.2</b> ggplot()</a></li>
+<li class="chapter" data-level="12.3" data-path="graphiken.html"><a href="graphiken.html#streu-punktdiagramm"><i class="fa fa-check"></i><b>12.3</b> Streu-/Punktdiagramm</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="graphiken.html"><a href="graphiken.html#streudiagramm-mit-2-variablen"><i class="fa fa-check"></i><b>12.3.1</b> Streudiagramm mit 2 Variablen</a></li>
+<li class="chapter" data-level="12.3.2" data-path="graphiken.html"><a href="graphiken.html#geom_point"><i class="fa fa-check"></i><b>12.3.2</b> geom_point()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="graphiken.html"><a href="graphiken.html#geom_smooth"><i class="fa fa-check"></i><b>12.3.3</b> geom_smooth()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="graphiken.html"><a href="graphiken.html#streudiagramm-mit-mehr-als-2-variablen"><i class="fa fa-check"></i><b>12.3.4</b> Streudiagramm mit mehr als 2 Variablen</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="graphiken.html"><a href="graphiken.html#histogramm"><i class="fa fa-check"></i><b>12.4</b> Histogramm</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-für-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm"><i class="fa fa-check"></i><b>12.5</b> Balkendiagramm</a></li>
+<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-3-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 3 Variablen</a></li>
+<li class="chapter" data-level="12.7" data-path="graphiken.html"><a href="graphiken.html#boxplot"><i class="fa fa-check"></i><b>12.7</b> Boxplot</a></li>
+<li class="chapter" data-level="12.8" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>12.8</b> Facetting</a></li>
+<li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#ästhetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
+<ul>
+<li class="chapter" data-level="12.9.1" data-path="graphiken.html"><a href="graphiken.html#ggtitle"><i class="fa fa-check"></i><b>12.9.1</b> ggtitle()</a></li>
+<li class="chapter" data-level="12.9.2" data-path="graphiken.html"><a href="graphiken.html#labs"><i class="fa fa-check"></i><b>12.9.2</b> labs()</a></li>
+<li class="chapter" data-level="12.9.3" data-path="graphiken.html"><a href="graphiken.html#achsen-verändern"><i class="fa fa-check"></i><b>12.9.3</b> Achsen verändern</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="graphiken.html"><a href="graphiken.html#theme"><i class="fa fa-check"></i><b>12.10</b> theme()</a>
+<ul>
+<li class="chapter" data-level="12.10.1" data-path="graphiken.html"><a href="graphiken.html#elemente-von-theme"><i class="fa fa-check"></i><b>12.10.1</b> Elemente von theme()</a></li>
+<li class="chapter" data-level="12.10.2" data-path="graphiken.html"><a href="graphiken.html#legende"><i class="fa fa-check"></i><b>12.10.2</b> Legende</a></li>
+<li class="chapter" data-level="12.10.3" data-path="graphiken.html"><a href="graphiken.html#vorgefertigte-themes"><i class="fa fa-check"></i><b>12.10.3</b> Vorgefertigte themes</a></li>
+</ul></li>
+<li class="chapter" data-level="12.11" data-path="graphiken.html"><a href="graphiken.html#abbildungen-kombinieren"><i class="fa fa-check"></i><b>12.11</b> Abbildungen kombinieren</a></li>
+<li class="chapter" data-level="12.12" data-path="graphiken.html"><a href="graphiken.html#abbildungen-exportieren"><i class="fa fa-check"></i><b>12.12</b> Abbildungen exportieren</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>13</b> Korrelation</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="korrelation.html"><a href="korrelation.html#hypothesen"><i class="fa fa-check"></i><b>13.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="13.2" data-path="korrelation.html"><a href="korrelation.html#berechnung-der-korrelation"><i class="fa fa-check"></i><b>13.2</b> Berechnung der Korrelation</a></li>
+<li class="chapter" data-level="13.3" data-path="korrelation.html"><a href="korrelation.html#unterschiedliche-korrelationsmethoden"><i class="fa fa-check"></i><b>13.3</b> Unterschiedliche Korrelationsmethoden</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>13.3.1</b> Pearson-Korrelation</a></li>
+<li class="chapter" data-level="13.3.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation-aka-rangkorrelation"><i class="fa fa-check"></i><b>13.3.2</b> Spearman-Korrelation (aka Rangkorrelation)</a></li>
+<li class="chapter" data-level="13.3.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>13.3.3</b> Kendall-Korrelation</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="korrelation.html"><a href="korrelation.html#korrelation-als-hypothesentest"><i class="fa fa-check"></i><b>13.4</b> Korrelation als Hypothesentest</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html"><i class="fa fa-check"></i><b>14</b> Einfache Hypothesentests</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>14.1</b> Ein-Stichproben t-Test</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-1"><i class="fa fa-check"></i><b>14.1.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.1.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>14.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="14.1.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen"><i class="fa fa-check"></i><b>14.1.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.1.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>14.1.4</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="14.1.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-berichten"><i class="fa fa-check"></i><b>14.1.5</b> Ergebnis berichten</a></li>
+<li class="chapter" data-level="14.1.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke"><i class="fa fa-check"></i><b>14.1.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="14.1.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>14.1.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>14.2</b> t-Test bei unabhängigen Stichproben</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-2"><i class="fa fa-check"></i><b>14.2.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.2.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>14.2.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="14.2.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-1"><i class="fa fa-check"></i><b>14.2.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.2.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>14.2.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="14.2.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>14.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="14.2.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-1"><i class="fa fa-check"></i><b>14.2.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="14.2.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>14.2.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>14.3</b> t-Test bei abhängigen Stichproben</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-3"><i class="fa fa-check"></i><b>14.3.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.3.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>14.3.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="14.3.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-2"><i class="fa fa-check"></i><b>14.3.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.3.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>14.3.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="14.3.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>14.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="14.3.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-2"><i class="fa fa-check"></i><b>14.3.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="14.3.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>14.3.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>14.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-4"><i class="fa fa-check"></i><b>14.4.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.4.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-3"><i class="fa fa-check"></i><b>14.4.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.4.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>14.4.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="14.4.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-3"><i class="fa fa-check"></i><b>14.4.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="14.4.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>14.4.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>14.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-5"><i class="fa fa-check"></i><b>14.5.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.5.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-4"><i class="fa fa-check"></i><b>14.5.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.5.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>14.5.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="14.5.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-4"><i class="fa fa-check"></i><b>14.5.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="14.5.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>14.5.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#chi2-test"><i class="fa fa-check"></i><b>14.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>14.6.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="14.6.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-5"><i class="fa fa-check"></i><b>14.6.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="14.6.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>14.6.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="14.6.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>14.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="14.6.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-5"><i class="fa fa-check"></i><b>14.6.5</b> Effektstärke</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#fishers-exakter-test"><i class="fa fa-check"></i><b>14.7</b> Fisher’s Exakter Test</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-6"><i class="fa fa-check"></i><b>14.7.1</b> Test durchführen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>15</b> ANOVA</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="anova.html"><a href="anova.html#einfaktorielle-anova"><i class="fa fa-check"></i><b>15.1</b> Einfaktorielle ANOVA</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="anova.html"><a href="anova.html#alpha-fehler-kumulierung"><i class="fa fa-check"></i><b>15.1.1</b> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung</a></li>
+<li class="chapter" data-level="15.1.2" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-4"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.1.3" data-path="anova.html"><a href="anova.html#berechnung-der-anova"><i class="fa fa-check"></i><b>15.1.3</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="15.1.4" data-path="anova.html"><a href="anova.html#interpretation"><i class="fa fa-check"></i><b>15.1.4</b> Interpretation</a></li>
+<li class="chapter" data-level="15.1.5" data-path="anova.html"><a href="anova.html#post-hoc-tests"><i class="fa fa-check"></i><b>15.1.5</b> Post-hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="anova.html"><a href="anova.html#mehrfaktorielle-anova"><i class="fa fa-check"></i><b>15.2</b> Mehrfaktorielle ANOVA</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-5"><i class="fa fa-check"></i><b>15.2.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.2.2" data-path="anova.html"><a href="anova.html#berechnung-der-anova-1"><i class="fa fa-check"></i><b>15.2.2</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="15.2.3" data-path="anova.html"><a href="anova.html#interpretation-1"><i class="fa fa-check"></i><b>15.2.3</b> Interpretation</a></li>
+<li class="chapter" data-level="15.2.4" data-path="anova.html"><a href="anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>15.2.4</b> Post-hoc Tests</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -291,8 +446,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="datenmanipulation" class="section level1 hasAnchor" number="10">
 <h1><span class="header-section-number">Kapitel 10</span> Datenmanipulation<a href="datenmanipulation.html#datenmanipulation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="hinzufügen" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> Hinzufügen<a href="datenmanipulation.html#hinzufügen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="daten-hinzufügen" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Daten hinzufügen<a href="datenmanipulation.html#daten-hinzufügen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="variablen-hinzufügen" class="section level3 hasAnchor" number="10.1.1">
 <h3><span class="header-section-number">10.1.1</span> Variablen hinzufügen<a href="datenmanipulation.html#variablen-hinzufügen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Mit den Operatoren <code>$</code> und Zuweisung <code>=</code> können Sie neue Spalten zu einem Datenrahmen hinzufügen. Dazu verwenden Sie einfach die Notation <code>df$Name</code> und weisen ihm einen neuen Datenvektor (Variable) zu.</p>
@@ -339,8 +494,8 @@ Wollen wir die neue Variable an einer bestimmten Position des data.frames einfü
 ## 5  5   Fische    22   weiblich         Matrix</code></pre>
 </div>
 </div>
-<div id="löschen" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> Löschen<a href="datenmanipulation.html#löschen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="daten-löschen" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Daten löschen<a href="datenmanipulation.html#daten-löschen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="variablen-löschen" class="section level3 hasAnchor" number="10.2.1">
 <h3><span class="header-section-number">10.2.1</span> Variablen löschen<a href="datenmanipulation.html#variablen-löschen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Wir möchten aus unserem <code>test</code> Datensatz die Variable <code>Lieblingsfilm</code> wieder löschen.</p>
@@ -410,8 +565,8 @@ Wollen wir die neue Variable an einer bestimmten Position des data.frames einfü
 ## 5  5   Fische    22   weiblich</code></pre>
 </div>
 </div>
-<div id="umbenennen" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> Umbenennen<a href="datenmanipulation.html#umbenennen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="variablen-umbenennen" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Variablen umbenennen<a href="datenmanipulation.html#variablen-umbenennen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="variablennamen-ändern" class="section level3 hasAnchor" number="10.3.1">
 <h3><span class="header-section-number">10.3.1</span> Variablennamen ändern<a href="datenmanipulation.html#variablennamen-ändern" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Um uns die Variablennamen anzeigen zu lassen benutzen wie <code>names()</code>:</p>
@@ -450,8 +605,8 @@ Wollen wir die neue Variable an einer bestimmten Position des data.frames einfü
 ## 5            5   Fische    22   weiblich NA NA NA</code></pre>
 </div>
 </div>
-<div id="verändern" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> Verändern<a href="datenmanipulation.html#verändern" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="daten-verändern" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Daten verändern<a href="datenmanipulation.html#daten-verändern" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="werte-ändern" class="section level3 hasAnchor" number="10.4.1">
 <h3><span class="header-section-number">10.4.1</span> Werte ändern<a href="datenmanipulation.html#werte-ändern" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die einfachste Art zum Ändern von Werten ist wie immer das selektieren und überspeichern.</p>
@@ -579,20 +734,192 @@ Wollen wir die neue Variable an einer bestimmten Position des data.frames einfü
 ## Levels: Depr. Angst Sucht</code></pre>
 </div>
 </div>
-<div id="aggreggieren" class="section level2 hasAnchor" number="10.5">
-<h2><span class="header-section-number">10.5</span> Aggreggieren<a href="datenmanipulation.html#aggreggieren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="rbind-und-cbind" class="section level3 hasAnchor" number="10.5.1">
-<h3><span class="header-section-number">10.5.1</span> rbind und cbind<a href="datenmanipulation.html#rbind-und-cbind" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="daten-sortieren" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Daten sortieren<a href="datenmanipulation.html#daten-sortieren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Frisch gesammelte Daten können manchmal in ungeordneter Form bei uns ankommen. Eine Möglichkeit Ordnung in die Daten zu bekommen, ist das Sortieren der Daten, welches i.d.R. nach der Logik einer bestimmten Variable erfolgt.</p>
+<div id="sortieren-nach-numerischen-variablen" class="section level3 hasAnchor" number="10.5.1">
+<h3><span class="header-section-number">10.5.1</span> Sortieren nach numerischen Variablen<a href="datenmanipulation.html#sortieren-nach-numerischen-variablen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Lassen Sie uns zur Demonstration einen <strong>ungeordneten</strong> Test dataframe erstellen:</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="datenmanipulation.html#cb170-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;ID&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>),</span>
+<span id="cb170-2"><a href="datenmanipulation.html#cb170-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;Alter&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">42</span>, <span class="dv">56</span>, <span class="dv">22</span>))</span>
+<span id="cb170-3"><a href="datenmanipulation.html#cb170-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-4"><a href="datenmanipulation.html#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="co"># dataframe ansehen:</span></span>
+<span id="cb170-5"><a href="datenmanipulation.html#cb170-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-6"><a href="datenmanipulation.html#cb170-6" aria-hidden="true" tabindex="-1"></a>test</span></code></pre></div>
+<pre><code>##   ID Alter
+## 1  3    24
+## 2  5    25
+## 3  1    42
+## 4  2    56
+## 5  4    22</code></pre>
+<p>Der dataframe ist weder nach der <code>ID</code> Variable, noch nach dem inhaltlichen Kriterium des Alters (jung nach alt vs. alt nach jung) geordnet.</p>
+<p>Für ein schnelles Sortieren nutzen wir die Funktion <code>order()</code>. Diese wenden wir auf die Variable an, nach der wir sortieren wollen und schreiben den Befehl links vom Komma in den eckigen Klammern (Erinnerung: links vom Komma bezieht sich immer auf Zeilen, rechts auf die Spalten). Den sortierten dataframe wollen wir <code>test2</code> nennen.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="datenmanipulation.html#cb172-1" aria-hidden="true" tabindex="-1"></a>test2 <span class="ot">=</span> test[<span class="fu">order</span>(test<span class="sc">$</span>ID),]</span>
+<span id="cb172-2"><a href="datenmanipulation.html#cb172-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-3"><a href="datenmanipulation.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sortierten dataframe ansehen:</span></span>
+<span id="cb172-4"><a href="datenmanipulation.html#cb172-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-5"><a href="datenmanipulation.html#cb172-5" aria-hidden="true" tabindex="-1"></a>test2</span></code></pre></div>
+<pre><code>##   ID Alter
+## 3  1    42
+## 4  2    56
+## 1  3    24
+## 5  4    22
+## 2  5    25</code></pre>
+<p>Das selbe funktioniert mit der Altervariable (von jung nach alt).</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="datenmanipulation.html#cb174-1" aria-hidden="true" tabindex="-1"></a>test3 <span class="ot">=</span> test[<span class="fu">order</span>(test<span class="sc">$</span>Alter),]</span>
+<span id="cb174-2"><a href="datenmanipulation.html#cb174-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-3"><a href="datenmanipulation.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sortierten dataframe ansehen:</span></span>
+<span id="cb174-4"><a href="datenmanipulation.html#cb174-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-5"><a href="datenmanipulation.html#cb174-5" aria-hidden="true" tabindex="-1"></a>test3</span></code></pre></div>
+<pre><code>##   ID Alter
+## 5  4    22
+## 1  3    24
+## 2  5    25
+## 3  1    42
+## 4  2    56</code></pre>
+<p>Wollten wir den dataframe anhand der Altervariable von alt nach jung sortieren, benutzen wir das Zusatzargument <code>decreasing = TRUE</code>:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="datenmanipulation.html#cb176-1" aria-hidden="true" tabindex="-1"></a>test4 <span class="ot">=</span> test[<span class="fu">order</span>(test<span class="sc">$</span>Alter, <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
+<span id="cb176-2"><a href="datenmanipulation.html#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="datenmanipulation.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sortierten dataframe ansehen:</span></span>
+<span id="cb176-4"><a href="datenmanipulation.html#cb176-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-5"><a href="datenmanipulation.html#cb176-5" aria-hidden="true" tabindex="-1"></a>test4</span></code></pre></div>
+<pre><code>##   ID Alter
+## 4  2    56
+## 3  1    42
+## 2  5    25
+## 1  3    24
+## 5  4    22</code></pre>
 </div>
-<div id="merge" class="section level3 hasAnchor" number="10.5.2">
-<h3><span class="header-section-number">10.5.2</span> merge<a href="datenmanipulation.html#merge" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="sortieren-nach-variablen-mit-worten" class="section level3 hasAnchor" number="10.5.2">
+<h3><span class="header-section-number">10.5.2</span> Sortieren nach Variablen mit Worten<a href="datenmanipulation.html#sortieren-nach-variablen-mit-worten" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Wollen wir unseren dataframe nach einer Variable sortieren, die Worte enthält, führt <code>order()</code> zu einer alphabetischen Sortierung. Wir hängen zum Ausprobieren eine character Variable an unseren <code>test</code> dataframe:</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="datenmanipulation.html#cb178-1" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>Name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Klaus&quot;</span>, <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Anna&quot;</span>, <span class="st">&quot;John&quot;</span>, <span class="st">&quot;Cleo&quot;</span>)</span>
+<span id="cb178-2"><a href="datenmanipulation.html#cb178-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-3"><a href="datenmanipulation.html#cb178-3" aria-hidden="true" tabindex="-1"></a>test</span></code></pre></div>
+<pre><code>##   ID Alter  Name
+## 1  3    24 Klaus
+## 2  5    25   Jan
+## 3  1    42  Anna
+## 4  2    56  John
+## 5  4    22  Cleo</code></pre>
+<p>Sortieren mit <code>order()</code> anhand der Variable <code>Name</code> ergibt:</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="datenmanipulation.html#cb180-1" aria-hidden="true" tabindex="-1"></a>test5 <span class="ot">=</span> test[<span class="fu">order</span>(test<span class="sc">$</span>Name),]</span></code></pre></div>
 </div>
 </div>
-<div id="sortieren" class="section level2 hasAnchor" number="10.6">
-<h2><span class="header-section-number">10.6</span> Sortieren<a href="datenmanipulation.html#sortieren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="datensätze-aggreggieren" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Datensätze Aggreggieren<a href="datenmanipulation.html#datensätze-aggreggieren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Oft kommt es vor, dass wir zwei dataframes zusammensetzen wollen. Dies könnte der Fall sein, wenn wir unsere Daten in 2 unterschiedlichen Tabellen gesammelt haben, wir aber nun mit den kombinierten Daten rechnen wollen. Damit beschäftigen wir uns in den nächsten Abschnitten.</p>
+<div id="cbind-und-rbind" class="section level3 hasAnchor" number="10.6.1">
+<h3><span class="header-section-number">10.6.1</span> cbind und rbind<a href="datenmanipulation.html#cbind-und-rbind" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Beim Zusammensetzen von dataframes sind 2 Szenarien denkbar:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Spalten</strong> des einen dataframes rechts an die Spalten des anderen dataframes (beide dataframes haben gleich viele Zeilen)</li>
+<li><strong>Zeilen</strong> des einen dataframes unten an die Zeilen des anderen dataframes (beide dataframes haben gleich viele Spalten)</li>
+</ol>
+<p>Dafür gibt es die Funktionen <code>cbind()</code> (colums aka Spalten verbinden) und <code>rbind()</code> (rows aka Zeilen verbinden).</p>
+<div id="cbind" class="section level4 hasAnchor" number="10.6.1.1">
+<h4><span class="header-section-number">10.6.1.1</span> cbind<a href="datenmanipulation.html#cbind" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Zur Demonstration der <code>cbind()</code> Funktion bauen wir uns 2 kleine Test-dataframes. Wichtig ist, dass diese die selbe Anzahl von Zeilen haben:</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="datenmanipulation.html#cb181-1" aria-hidden="true" tabindex="-1"></a>test1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;ID&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb181-2"><a href="datenmanipulation.html#cb181-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;Alter&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">42</span>, <span class="dv">56</span>, <span class="dv">22</span>))</span>
+<span id="cb181-3"><a href="datenmanipulation.html#cb181-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-4"><a href="datenmanipulation.html#cb181-4" aria-hidden="true" tabindex="-1"></a>test2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;IQ&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">102</span>, <span class="dv">98</span>, <span class="dv">90</span>, <span class="dv">121</span>),</span>
+<span id="cb181-5"><a href="datenmanipulation.html#cb181-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;Neurotizismus&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">42</span>, <span class="dv">31</span>, <span class="dv">22</span>, <span class="dv">13</span>))</span></code></pre></div>
+<p>Hier haben wir den dataframe test1:</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="datenmanipulation.html#cb182-1" aria-hidden="true" tabindex="-1"></a>test1</span></code></pre></div>
+<pre><code>##   ID Alter
+## 1  1    24
+## 2  2    25
+## 3  3    42
+## 4  4    56
+## 5  5    22</code></pre>
+<p>Und hier den dataframe test2:</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="datenmanipulation.html#cb184-1" aria-hidden="true" tabindex="-1"></a>test2</span></code></pre></div>
+<pre><code>##    IQ Neurotizismus
+## 1 100            11
+## 2 102            42
+## 3  98            31
+## 4  90            22
+## 5 121            13</code></pre>
+<p>Zum Zusammensetzen der beiden (test2 rechts an test 1 “dranhängen”) schreiben wir beide dataframes in die <code>cbind()</code> Funktion. Der kombinierte Datensatz soll test 3 heißen:</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="datenmanipulation.html#cb186-1" aria-hidden="true" tabindex="-1"></a>test3 <span class="ot">=</span> <span class="fu">cbind</span>(test1, test2)</span>
+<span id="cb186-2"><a href="datenmanipulation.html#cb186-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-3"><a href="datenmanipulation.html#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ergebnis ansehen:</span></span>
+<span id="cb186-4"><a href="datenmanipulation.html#cb186-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-5"><a href="datenmanipulation.html#cb186-5" aria-hidden="true" tabindex="-1"></a>test3</span></code></pre></div>
+<pre><code>##   ID Alter  IQ Neurotizismus
+## 1  1    24 100            11
+## 2  2    25 102            42
+## 3  3    42  98            31
+## 4  4    56  90            22
+## 5  5    22 121            13</code></pre>
 </div>
-<div id="transformieren" class="section level2 hasAnchor" number="10.7">
-<h2><span class="header-section-number">10.7</span> Transformieren<a href="datenmanipulation.html#transformieren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rbind" class="section level4 hasAnchor" number="10.6.1.2">
+<h4><span class="header-section-number">10.6.1.2</span> rbind<a href="datenmanipulation.html#rbind" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Zur Demonstration der <code>r</code>bind()` Funktion bauen wir uns 2 weitere kleine Test-dataframes. Wichtig ist, dass diese die selbe Anzahl von Spalten haben und dass diese die selben Variablennamen haben:</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="datenmanipulation.html#cb188-1" aria-hidden="true" tabindex="-1"></a>test1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;ID&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb188-2"><a href="datenmanipulation.html#cb188-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;Alter&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">42</span>, <span class="dv">56</span>, <span class="dv">22</span>))</span>
+<span id="cb188-3"><a href="datenmanipulation.html#cb188-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-4"><a href="datenmanipulation.html#cb188-4" aria-hidden="true" tabindex="-1"></a>test2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;ID&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>),</span>
+<span id="cb188-5"><a href="datenmanipulation.html#cb188-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;Alter&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">35</span>, <span class="dv">31</span>, <span class="dv">66</span>, <span class="dv">51</span>))</span></code></pre></div>
+<p>Hier haben wir den dataframe test1:</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="datenmanipulation.html#cb189-1" aria-hidden="true" tabindex="-1"></a>test1</span></code></pre></div>
+<pre><code>##   ID Alter
+## 1  1    24
+## 2  2    25
+## 3  3    42
+## 4  4    56
+## 5  5    22</code></pre>
+<p>Und hier den dataframe test2:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="datenmanipulation.html#cb191-1" aria-hidden="true" tabindex="-1"></a>test2</span></code></pre></div>
+<pre><code>##   ID Alter
+## 1  6    27
+## 2  7    35
+## 3  8    31
+## 4  9    66
+## 5 10    51</code></pre>
+<p>Zum Zusammensetzen der beiden (test2 unten an test 1 “dranhängen”) schreiben wir beide dataframes in die <code>r</code>bind()` Funktion. Der kombinierte Datensatz soll test 3 heißen:</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="datenmanipulation.html#cb193-1" aria-hidden="true" tabindex="-1"></a>test3 <span class="ot">=</span> <span class="fu">rbind</span>(test1, test2)</span>
+<span id="cb193-2"><a href="datenmanipulation.html#cb193-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-3"><a href="datenmanipulation.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ergebnis ansehen:</span></span>
+<span id="cb193-4"><a href="datenmanipulation.html#cb193-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-5"><a href="datenmanipulation.html#cb193-5" aria-hidden="true" tabindex="-1"></a>test3</span></code></pre></div>
+<pre><code>##    ID Alter
+## 1   1    24
+## 2   2    25
+## 3   3    42
+## 4   4    56
+## 5   5    22
+## 6   6    27
+## 7   7    35
+## 8   8    31
+## 9   9    66
+## 10 10    51</code></pre>
+</div>
+</div>
+<div id="merge" class="section level3 hasAnchor" number="10.6.2">
+<h3><span class="header-section-number">10.6.2</span> merge<a href="datenmanipulation.html#merge" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Haben wir 2 ungeordnete dataframe mit Daten der selben Personen, jedoch mit unterschiedlichen Variablen, die wir zusammensetzen wollen, haben wir das Problem, dass die Zeilenreihenfolge des einen dataframes ggf. nicht mit der Zeilenreihenfolge des anderen dataframes übereinstimmt:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="datenmanipulation.html#cb195-1" aria-hidden="true" tabindex="-1"></a>test1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;ID&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb195-2"><a href="datenmanipulation.html#cb195-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;Alter&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">42</span>, <span class="dv">56</span>, <span class="dv">22</span>))</span>
+<span id="cb195-3"><a href="datenmanipulation.html#cb195-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-4"><a href="datenmanipulation.html#cb195-4" aria-hidden="true" tabindex="-1"></a>test2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;ID&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb195-5"><a href="datenmanipulation.html#cb195-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;IQ&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">102</span>, <span class="dv">98</span>, <span class="dv">90</span>, <span class="dv">121</span>))</span></code></pre></div>
+<p>Setzen wir die dataframes einfach mit <code>cbind()</code> aneinander, bekommt z.B. Person mit der <code>ID == 1</code> den IQ Wert der Person mit <code>ID == 2</code>, da diese beide in der 1. Zeile der dataframes stehen.</p>
+<p>Wir könnten natürlich beide dataframes erst mit <code>order()</code> nach der <code>ID</code> Variable sortieren und sie anschließend mit <code>cbind()</code> kombinieren. Schneller geht es jedoch mit der Funktion <code>merge()</code>. Diese braucht als Information nur eine Variable, die R sagt welche Zeilen zusammengehören. Da <code>ID</code> eindeutige Werte aufweist und in beiden dataframes vorhanden ist, nutzen wir diese Variable für den merge:</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="datenmanipulation.html#cb196-1" aria-hidden="true" tabindex="-1"></a>test3 <span class="ot">=</span> <span class="fu">merge</span>(test1, test2, <span class="at">by =</span> <span class="st">&quot;ID&quot;</span>)</span>
+<span id="cb196-2"><a href="datenmanipulation.html#cb196-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-3"><a href="datenmanipulation.html#cb196-3" aria-hidden="true" tabindex="-1"></a>test3</span></code></pre></div>
+<pre><code>##   ID Alter  IQ
+## 1  1    24  90
+## 2  2    25 100
+## 3  3    42  98
+## 4  4    56 121
+## 5  5    22 102</code></pre>
+</div>
+</div>
+<div id="datensätze-transformieren" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> Datensätze transformieren<a href="datenmanipulation.html#datensätze-transformieren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="von-long-nach-wide" class="section level3 hasAnchor" number="10.7.1">
 <h3><span class="header-section-number">10.7.1</span> Von Long nach Wide<a href="datenmanipulation.html#von-long-nach-wide" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
@@ -607,8 +934,8 @@ Wollen wir die neue Variable an einer bestimmten Position des data.frames einfü
           </div>
         </div>
       </div>
-<a href="daten-explorieren.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="daten-explorieren.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="schleifen-loops.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -17,7 +17,7 @@ b <- 3 / 100
 c <- (a + b) / b
 ```
 
-Skalare müssen nicht numerisch sein, sondern auch Worte. Wortobjekte heißen in R **characters** (aka strings). In R schreibt man characters immer in Anführungszeichen `""`. Hier sind einige Beispiele für character Skalare:
+Skalare müssen nicht numerisch sein, sondern können auch beinhalten Worte. Wortobjekte heißen in R **characters** (engl. strings). In R schreibt man Worte immer in Anführungszeichen `""`. Hier sind einige Beispiele für character Skalare:
 
 ```{r}
 # Beispiele für character Skalare
@@ -46,8 +46,6 @@ Die einfachste Art einen Vektor zu erstellen ist mit der `c()` Funktion. Das c s
 Wenn man`c()` benutzt, muss man immer ein **Komma** zwischen die Objekte setzen (Skalare oder Vektoren), die man kombinieren möchte.
 
 Lassen Sie uns die `c()` Funktion nutzen um einen Vektor zu erstellen der `a` heißt und die Zahlen von 1 bis 7 enthält
-
-Let's use the `c()` function to create a vector called `a` containing the integers from 1 to 5.
 
 ```{r}
 a = c(1, 2, 3, 4, 5, 6, 7)
@@ -109,7 +107,7 @@ char.vec = c("Freud", "Wundt", "Bandura", "Watson", "Jung")
 char.vec[5]
 ```
 
-## Matrizen und Dataframes
+## Matrizen und data.frames
 
 In der Psychologie beobachten wir für unsere Studien fast immer mehr als eine Variable. Wir könnten diese alle in einzelnen Vektoren speichern und uns die Objektnamen merken. Z.B.
 

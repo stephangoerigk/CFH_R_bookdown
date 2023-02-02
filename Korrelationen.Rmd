@@ -37,7 +37,7 @@ ggpubr::ggarrange(ggplot(dat1, aes(A, B)) + geom_point() + geom_smooth(method = 
                   ncol = 3)
 ```
 
-### Hypothesen
+## Hypothesen
 
 ```{r include=FALSE}
 data <- rnorm_multi(n = 100, 
@@ -85,7 +85,7 @@ ggplot(data = data, aes(x = Schlaf, y = Konzentration)) +
   geom_smooth(method = "lm")
 ```
 
-### Berechnung der Korrelation
+## Berechnung der Korrelation
 
 Der Korrelationskoeffizient lässt sich mit der R-Basisfunktion `cor()` berechnen.
 
@@ -95,11 +95,11 @@ Dafür schreiben wir ganz einfach die beiden zu korrelierenden Variablen nebenei
 cor(data$Konzentration, data$Schlaf)
 ```
 
-Wie Sie sehen, erhalten wir einen Korrelationskoeffizienten von $r=$`r round(cor(data$Konzentration, data$Schlaf), 2)`. Also einen positiven Zusammenhang.
+Wie Sie sehen, erhalten wir einen Korrelationskoeffizienten von $r=`r round(cor(data$Konzentration, data$Schlaf), 2)`$. Also einen positiven Zusammenhang.
 
-### Unterschiedliche Korrelationsmethoden
+## Unterschiedliche Korrelationsmethoden
 
-#### Pearson-Korrelation
+### Pearson-Korrelation
 
 Nutzen wir die `cor()` Funktion ohne weitere Spezifikationen, wird der sogenannte **Pearson** Korrelationskoeffizient berechnet.
 
@@ -111,7 +111,7 @@ Dieser stellt jedoch gewisse Voraussetzungen an die Daten:
 
 Sollte eine (oder mehrere) der Voraussetzungen nicht erfüllt sein, berechnen wir einen der folgenden alternativen Korrelationskoeffizienten
 
-#### Spearman-Korrelation (aka Rangkorrelation)
+### Spearman-Korrelation (aka Rangkorrelation)
 
 Der **Spearman** Korrelationskoeffizient funktioniert im Wesentlichen wie der Pearson Korrelationskoeffizient, jedoch wird er auf Ordinalskalenniveau berechnet.
 
@@ -125,7 +125,7 @@ cor(data$Konzentration, data$Schlaf, method = "spearman")
 
 In der Regel ist die Abweichung der beiden Korrelationskoeffizienten voneinander nicht allzu hoch.
 
-#### Kendall-Korrelation 
+### Kendall-Korrelation 
 
 Die Rangkorrelationskoeffizienten von Spearman und Kendall sind beide Koeffizienten, die den Zusammenhang ordinalskalierter Merkmale beschreiben können.
 
@@ -135,18 +135,25 @@ Der Vorteil des Kendall $τ$ liegt darin, dass seine Verteilung bei kleineren St
 cor(data$Konzentration, data$Schlaf, method = "kendall")
 ```
 
-### Korrelation als Hypothesentest
+## Korrelation als Hypothesentest
 
 Wie Sie bereits bemerkt haben werden, liefert Ihnen die `cor()` Funktion lediglich den Korrelationskoeffizienten, jedoch keine Informationen über statistische Signifikanz.
 
+Ein Signifikanztest für den Korrelationskoeffizienten lässt sich jedoch einfach mit der Funktion `cor.test()` rechnen. Die Argumente der Funktion sind in der folgenden Tabelle zusammengefasst:
+
 | Argument| Description| 
 |:------------|:-------------------------------------------------|
-|`formula`|A formula in the form `~ x + y`, where x and y are the names of the two variables you are testing. These variables should be two separate columns in a dataframe.|
-|`data`|The dataframe containing the variables x and y |
-|`alternative`|A string specifying the alternative hypothesis. Can be `"two.sided"` indicating a two-tailed test, or `"greater"` or "`less"` for a one-tailed test.|
-|`method`|A string indicating which correlation coefficient to calculate and test. `"pearson"` (the default) stands for Pearson, while `"kendall"` and `"spearman"` stand for Kendall and Spearman correlations respectively. |
-|`subset`|A vector specifying a subset of observations to use. E.g.; `subset = sex == "female"`|
+|`formula`|Argument in Formelformat `~ x + y`, x und y sind die Namen der Variablen deren bivariater Zusammenhang getestet werden soll. Diese Variiablen sollten in getrennten Spalten eines dataframe stehen.|
+|`data`|Der data.frame, der x und y enthält|
+|`alternative`|Hier kann die Richtung der Alternativhypothese angegeben werden. Wählen Sie `"two.sided"` für eine ungerichtete Hypothese, oder `"greater"` bzw. "`less"` für eine gerichtete Hypothese.|
+|`method`|Gibt die Art des zu berechnenden Korrelationskoeffizienten an. `"pearson"` (default) steht für die Produkt-Moment Korrelatioin, `"kendall"` und `"spearman"` stehen für die Rangkorrelatioinen nach Kendall und Spearman. |
+|`subset`|Hier kann direkt ein Teildatensatz ausgewählt werden. Z.B.; `subset = sex == "female"`|
+
+Wenn wir zum Beispiel testen wollten, ob ein signifikanter negativer Zusammenhang zwischen Konzentration und Schlaf besteht könnten wir das mit folgendem Signifikanztest prüfen:
+
+```{r}
+cor.test(data$Konzentration, data$Schlaf, method = "pearson", alternative = "less")
+```
 
 
 
-## Korrelationsmatrix

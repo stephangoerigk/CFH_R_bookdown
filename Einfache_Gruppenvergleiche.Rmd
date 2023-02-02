@@ -1,7 +1,8 @@
 # Einfache Hypothesentests
 
-```{r echo = F}
+```{r echo=F, message=FALSE, warning=FALSE}
 options(scipen = 999)
+library(papaja)
 ```
 
 ## Ein-Stichproben t-Test
@@ -197,7 +198,7 @@ Zunächst können wir uns die Deskriptivstatistiken innerhalb der beiden Gruppen
 psych::describeBy(Weight.loss ~ Gender, data = data)
 ```
 
-Rein deskriptiv lässt sich bereits feststellen, dass Männer mit `round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg etwas weniger abgenommen zu haben scheinen, als Frauen mit `round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg. 
+Rein deskriptiv lässt sich bereits feststellen, dass Männer mit `r `round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg etwas weniger abgenommen zu haben scheinen, als Frauen mit `r `round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg. 
 
 Ob sich dieser numerische Unterschied auch als signifikant erweist, prüfen wir mit dem t-Test.
 
@@ -404,7 +405,7 @@ psych::describe(data$gewicht_prä)
 psych::describe(data$gewicht_post)
 ```
 
-Rein deskriptiv lässt sich bereits feststellen, dass das Gewicht zur 1. Messung mit `round(mean(data$gewicht_prä), 2)`kg etwas höher zu sein scheint, als zur 2. Messung mit `round(mean(data$gewicht_post), 2)`kg. 
+Rein deskriptiv lässt sich bereits feststellen, dass das Gewicht zur 1. Messung mit `r round(mean(data$gewicht_prä), 2)`kg etwas höher zu sein scheint, als zur 2. Messung mit `r round(mean(data$gewicht_post), 2)`kg. 
 
 Ob sich dieser numerische Unterschied auch als signifikant erweist, prüfen wir mit dem abhängigen t-Test.
 
@@ -808,7 +809,8 @@ chisq.test(table(data$Remission, data$Therapie))$p.value
 
 ### Voraussetzungsprüfung und Alternativen
 
-Folgende Vorraussetzungen gelten für den unabhängigen t-Test:
+Folgende Vorraussetzungen gelten für den $\chi$^2^-Test:
+
 * unabhängige Messungen
 * Nominalskala
 * Jede Zelle der Häufigkeitstabelle hat 5 oder mehr Beobachtungen.
@@ -817,25 +819,25 @@ Sollte die Vorraussetzung, dass jede Zelle der Häufigkeitstabelle 5 oder mehr B
 
 ### Effektstärke
 
-#### $\phi$
+#### $\phi$-Koeffizient
 
 Wenn wir eine 2x2 dimensionale Häufigkeitstabelle haben, wird als Effektstärke $\phi$ berechnet.
 
 Wir können die Funktion `phi()` aus dem `effectsize` R-Paket verwenden:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 effectsize::phi(chisq.test(table(data$Remission, data$Therapie)))
 ```
 
 Auch die Einzelparameter von $\phi$ lassen sich extrahieren:
 
 $\phi$:
-```{r}
+```{r message=FALSE, warning=FALSE}
 effectsize::phi(chisq.test(table(data$Remission, data$Therapie)))$phi_adjusted
 ```
 
 Grenzen des Konfidenzintervalls (unten & oben):
-```{r}
+```{r message=FALSE, warning=FALSE}
 effectsize::phi(chisq.test(table(data$Remission, data$Therapie)))$CI_low
 effectsize::phi(chisq.test(table(data$Remission, data$Therapie)))$CI_high
 ```
@@ -856,7 +858,7 @@ apa_table(d, caption = "Interpretation von φ")
 
 Wenn wir eine Häufigkeitstabelle mit mehr als 2x2 Dimensionen haben, wird als Effektstärke Cramer's $V$ berechnet.
 
-Nehmen wir dafür einmal an, unsere Therapieerfolg Varianzte hätte eine 3. Ausprägung "Rückfall". Das wären Personen, die zunächst eine Remission hatten, dann aber wieder erkranken.
+Nehmen wir dafür einmal an, unsere Therapieerfolg Variable hätte eine 3. Ausprägung "Rückfall". Das wären Personen, die zunächst eine Remission hatten, dann aber wieder erkranken.
 
 ```{r include=FALSE}
 data1 = data.frame(Erfolg = sample(0:2, 20, replace = T, prob = c(0.3, 0.3, 0.3)),
@@ -873,19 +875,19 @@ table(data$Erfolg, data$Therapie)
 
 Wir können die Funktion `cramers_v()` aus dem `effectsize` R-Paket verwenden:
 
-```{r}
+```{r warning=FALSE}
 effectsize::cramers_v(chisq.test(table(data$Erfolg, data$Therapie)))
 ```
 
 Auch die Einzelparameter von Cramer's $V$ lassen sich extrahieren:
 
 Cramer's $V$:
-```{r}
+```{r warning=FALSE}
 effectsize::cramers_v(chisq.test(table(data$Erfolg, data$Therapie)))$Cramers_v_adjusted
 ```
 
 Grenzen des Konfidenzintervalls (unten & oben):
-```{r}
+```{r warning=FALSE}
 effectsize::cramers_v(chisq.test(table(data$Erfolg, data$Therapie)))$CI_low
 effectsize::cramers_v(chisq.test(table(data$Erfolg, data$Therapie)))$CI_high
 ```
