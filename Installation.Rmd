@@ -1,6 +1,6 @@
 # Installation
 
-Um R benutzen zu können müssen wir zwei Softwarepakete herunterladen: 
+Um R benutzen zu können, müssen wir zwei Softwarepakete herunterladen: 
 
 * **R**
 * **RStudio**
@@ -9,7 +9,7 @@ R ist die Programmiersprache, mit der wir arbeiten. R-Studio ist eine Benutzerob
 
 ## Installation von R
 
-Um R zu installieren, klicken Sie auf den, Ihrem Betriebssystem entsprechenden, Link und befolgen Sie die Anleitungen:
+Um R zu installieren, klicken Sie auf den Ihrem Betriebssystem entsprechenden Link und befolgen Sie die Anleitungen.
 
 | Operating System| Link|
 |:------|:----|

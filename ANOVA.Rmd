@@ -1,6 +1,6 @@
 # ANOVA
 
-Die ANOVA (Analysis of variance, dt. Varianzanalyse) ist ein weiiterer Signifikanztest. Mit der ANOVA können wir Prüfen, ob eine unabhängige Variable (UV) einen signifikanten Anteil Varianz der abhängigen Variable erklärt (AV). Die UVs nennen wir bei der ANOVA i.d.R. **Faktor**.
+Die ANOVA (Analysis of variance, dt. Varianzanalyse) ist ein weiterer Signifikanztest. Mit der ANOVA können wir Prüfen, ob eine unabhängige Variable (UV) einen signifikanten Anteil Varianz der abhängigen Variable erklärt (AV). Die UVs nennen wir bei der ANOVA i.d.R. **Faktor**.
 
 Statistisch ist die ANOVA ein F-Test (Varianzquotient).
 
@@ -49,7 +49,7 @@ Zunächst können wir uns die Deskriptivstatistiken innerhalb der 4 Gruppen einm
 psych::describeBy(Symptoms ~ Therapy, data = therapy)
 ```
 
-Rein deskriptiv lässt sich bereits feststellen, dass Patient:innen nach der VT die niedrigsten Symptome aufweisen (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "VT"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "VT"]), 2)`]), gefolgt von SSRI  (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "SSRI"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "SSRI"]), 2)`]), PA  (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "PA"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "PA"]), 2)`]) und Control  (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "Control"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "Control"]), 2)`]).
+Rein deskriptiv lässt sich bereits feststellen, dass Patient:innen nach der VT die niedrigsten Symptome aufweisen (M [SD]=`r round(mean(therapy$Symptoms[therapy$Therapy == "VT"]), 2)` [`r round(sd(therapy$Symptoms[therapy$Therapy == "VT"]), 2)`]), gefolgt von SSRI  (M [SD]=`r round(mean(therapy$Symptoms[therapy$Therapy == "SSRI"]), 2)` [`r round(sd(therapy$Symptoms[therapy$Therapy == "SSRI"]), 2)`]), PA  (M [SD]=`r round(mean(therapy$Symptoms[therapy$Therapy == "PA"]), 2)` [`r round(sd(therapy$Symptoms[therapy$Therapy == "PA"]), 2)`]) und Control  (M [SD]=`r round(mean(therapy$Symptoms[therapy$Therapy == "Control"]), 2)` [`r round(sd(therapy$Symptoms[therapy$Therapy == "Control"]), 2)`]).
 
 Die Gruppenunterschiede lassen sich auch graphisch gut darstellen:
 
@@ -63,7 +63,7 @@ Ob sich die numerischen Unterschiede sich auch als signifikant erweisen, prüfen
 
 ### Berechnung der ANOVA
 
-Die einfaktorielle ANOVA lässt sich in R auf zwei Arten berechnen, die beide zu dem exakt selben Ergebnissen kommen.
+Die einfaktorielle ANOVA lässt sich in R auf zwei Arten berechnen, die beide zu dem exakt selben Ergebnis kommen.
 
 * eingebaute `lm()` Funktion gefolgt von `anova()`
 * `aov_ez()` Funktion aus dem `afex` Paket
@@ -98,14 +98,14 @@ Die Entscheidungsregel ist uns bereits bekannt: Ist der p-Wert (hier $p=0.000576
 
 Die Berechnung mit der `aov_ez()` Funktion erfolgt analog, nur wird die Formel etwas anders geschrieben.
 
-Wir legen genau fest was unsere AV ist `dv`. Zudem brauchen wir eine Variable, die jede Zeile eindeutig einem Individuum zuordnet `id`.
+Wir legen genau fest, was unsere AV ist `dv`. Zudem brauchen wir eine Variable, die jede Zeile eindeutig einem Individuum zuordnet `id`.
 
 Die Faktoren (UVs) werden mit einem der beiden folgenden Argumente angegeben:
 
 * `between` (Zwischensubjektfaktoren)
 * `within` (Innersubjektfaktoren)
 
-Faktoren die unter `between` angegeben werden, sind unabhängige Messungen, also Variablen die einen Gruppenvergleich möglich machen. Faktoren die unter `within` angegeben werden, sind abhängige Messungen, also beispielsweise mehrere Messzeitpunkte der selben Person.
+Faktoren, die unter `between` angegeben werden, sind unabhängige Messungen, also Variablen die einen Gruppenvergleich möglich machen. Faktoren, die unter `within` angegeben werden, sind abhängige Messungen, also beispielsweise mehrere Messzeitpunkte derselben Person.
 
 In unserem Fall liegt ein Gruppenvergleich vor (jede Person hat jeweils nur eine der Therapien erhalten), daher nutzen wir `between`. Für `id` nutzen wir einfach die Variable `X`, die einen Patientencode für jede Person enthält.
 
@@ -143,7 +143,7 @@ Mit dem `pairwise` Argument sagen wir der `emmeans()` Funktion zwischen welchen 
 
 Der Output der `emmeans()` Funktion hat 2 Teile
 
-* $emmeans (oberer Teil: hier werden praktischer die verglichenen Mittelwerte noch einmal ausgerechnet)
+* $emmeans (oberer Teil: hier werden praktischerweise die verglichenen Mittelwerte noch einmal ausgerechnet)
 * $contrasts (unterer Teil: hier werden die Ergebnisse der Post-hoc Tests gezeigt)
 
 Die Interpretation des Ergebnisses ist uns bereits bekannt. Jeder Vergleich erhält einen t-Wert und einen p-Wert, anhand dessen wir ablesen können, ob der Gruppenunterschied signifikant war. 
@@ -152,7 +152,7 @@ Der Mittelwert der Gruppe VT war signifikant niedriger als der in der Kontrollgr
 
 #### Korrektur für multiples Testen
 
-Nun haben wir im Abschnitt über die $\alpha$-Fehler Kumulierung bereits erfahren, dass das Durchführen vieler Vergleiche problematisch sein kann, da es die Wahrscheinlichkeit erhöht einen Fehler 1. Art zu begehen.
+Nun haben wir im Abschnitt über die $\alpha$-Fehler Kumulierung bereits erfahren, dass das Durchführen vieler Vergleiche problematisch sein kann, da es die Wahrscheinlichkeit erhöht, einen Fehler 1. Art zu begehen.
 
 Post-hoc Tests lösen dieses Problem durch eine Korrektur des p-Werts. Je mehr Vergleiche gemacht werden, desto mehr wird er nach oben korrigiert. Automatisch wendet `emmeans()` die sogenannte Tukey-Korrektur an (ganz unten im Output sichtbar).
 
@@ -212,7 +212,7 @@ ggplot(data = therapy, aes(x = Therapy, y = Symptoms, colour = Diagnosis)) +
 
 #### Berechnung mittels `lm()`
 
-Die Vorgehensweise ist die selbe wie bei der einfaktoriellen ANOVA. Die Formel wird lediglich durch die Interaktion mit der 2. UV erweitert.
+Die Vorgehensweise ist dieselbe wie bei der einfaktoriellen ANOVA. Die Formel wird lediglich durch die Interaktion mit der 2. UV erweitert.
 
 ```{r}
 mod = lm(Symptoms ~ Therapy * Diagnosis, data = therapy)
@@ -235,7 +235,7 @@ mod
 
 ### Interpretation
 
-Die beiden Haupteffekte und der Interaktionseffekt können einzeln Interpretiert werden. Wir gehen der Reihe nach:
+Die beiden Haupteffekte und der Interaktionseffekt können einzeln interpretiert werden. Wir gehen der Reihe nach:
 
 #### Haupteffekt 1
 
@@ -252,9 +252,9 @@ Der Haupteffekt von `Diagnosis` ist nichts anderes als ein unabhängiger t-Test.
 Der Interaktionseffekt von `Therapy * Diagnosis` prüft, ob der Effekt der Therapie in beiden Diagnosen unterschiedlich wirkt.
 Er ist somit eine Möglichkeit den "kombinierten Effekt" der beiden Variablen zu prüfen.
 
-Der Interaktionseffekt ist signifikant $F_{(3,22)}=3.33, p<.038$. Entsprechend scheinen die Patient:innen nach den Therapien unterschiedlich wenige Symptome, je ncahdem welche Diagnose sie hatten.
+Der Interaktionseffekt ist signifikant $F_{(3,22)}=3.33, p<.038$. Entsprechend scheinen die Patient:innen nach den Therapien unterschiedlich wenige Symptome zu haben, je nachdem welche Diagnose sie hatten.
 
-Um diesen Effekt zu inhaltlich zu verstehen, empfiehlt sich ein Blick auf die Graphik, in Kombination mit Post-Hoc Tests.
+Um diesen Effekt inhaltlich zu verstehen, empfiehlt sich ein Blick auf die Graphik, in Kombination mit Post-Hoc Tests.
 
 ### Post-hoc Tests
 
@@ -265,8 +265,151 @@ library(emmeans)
 emmeans(mod, pairwise ~ Therapy|Diagnosis)
 ```
 
-Wir sehen, dass die Symptome nach SSRI insbesondere in der Gruppe der depressiven Patient:innen reduziert sind. Zudem sind die Symtome nach VT besonders nach der VT heruntergegangen.
+Wir sehen, dass die Symptome nach SSRI insbesondere in der Gruppe der depressiven Patient:innen reduziert sind. Zudem sind die Symtome nach der VT deutlich reduziert (insbesondere bei Angststörungen).
 
 Dies führt dazu, dass die VT (in dieser Stichprobe) in der Behandlung von Angststörungen der Kontrollgruppe $(t_{(22)}=4.68, p<.001)$, der Psychoanalyse $(t_{(22)}=4.02, p=.003)$ und den SSRI $(t_{(22)}=3.99, p=.003)$ überlegen war. In der Behandlung von Angststörungen waren sowohl SSRI $(t_{(22)}=3.29, p=.016)$ als auch VT $(t_{(22)}=3.38, p=.013)$ besser als die Kontrollgruppe, unterschieden sich jedoch nicht signifikant von der Psychoanalyse und auch nicht voneinander.
 
+## Prüfen der Voraussetzungen von ANOVAs
+
+Wie alle statistischen Modelle haben ANOVAs eine Reihe von Annahmen, die für gültige Schlussfolgerungen gelten sollten. Diese Annahmen sind:
+
+1. **Beobachtungen sind i.i.d.:** i.i.d. steht für "unabhängig und identisch verteilt". Unabhängig bedeutet, dass die bedingten Beobachtungen (d.h. Residuen) unabhängig voneinander sind (d.h. das Wissen des Wertes eines Residuums erlaubt keine Rückschlüsse auf den Wert eines anderen Residuums). Identisch verteilt bedeutet, dass alle Beobachtungen durch denselben Daten-generierenden Prozess erzeugt werden.
+
+2. **Homogenität der Varianzen:** Die Varianzen über alle Gruppen (Zellen) der zwischen-Subjekt-Effekte sind gleich.
+
+3. **Sphärizität:** Bei innerhalb-Subjekt-Effekten ist die Sphärizität die Bedingung, dass die Varianzen der Unterschiede zwischen allen möglichen Paaren von innerhalb-Subjekt-Bedingungen (d.h. Levels der unabhängigen Variablen) gleich sind. Dies kann als eine innerhalb-Subjekt-Version der Homogenität der Varianzen-Annahme betrachtet werden.
+
+4. **Normalverteilung der Residuen:** Die Fehler, die für die Schätzung des Fehlerterms (MSE) verwendet werden, sind normalverteilt.
+
+Die wichtigste Annahme ist im Allgemeinen die i.i.d.-Annahme (d.h. wenn sie nicht erfüllt ist, sind die Schlussfolgerungen wahrscheinlich ungültig), insbesondere der unabhängige Teil. Diese Annahme kann nicht empirisch getestet werden, sondern muss auf konzeptuellen oder logischen Gründen beruhen. Zum Beispiel stammen in einem idealen vollständig zwischen den Probanden durchgeführten Design jede Beobachtung von einem anderen Probanden, der zufällig aus einer Population ausgewählt wird, so dass wir wissen, dass alle Beobachtungen unabhängig sind. Oft sammeln wir jedoch mehrere Beobachtungen von demselben Probanden in einem innerhalb der Probanden oder wiederholten Messungen-Design. Um sicherzustellen, dass die i.i.d.-Annahme in diesem Fall erfüllt ist, müssen wir eine ANOVA mit innerhalb der Probanden Faktoren angeben. Wenn wir jedoch einen Datensatz mit mehreren Quellen von Nicht-Unabhängigkeit haben - wie Teilnehmern und Items - können ANOVA-Modelle nicht verwendet werden, sondern wir müssen ein gemischtes Modell verwenden.
+
+Die anderen Annahmen können empirisch getestet werden, entweder graphisch oder mit statistischen Annahmetests. Es gibt jedoch unterschiedliche Meinungen darüber, wie nützlich statistische Annahmetests sind, wenn sie automatisch für jede ANOVA durchgeführt werden. Obwohl dies in einigen Statistikbüchern vertreten wird, besteht die Gefahr, dass die statistische Analyse auf ein "Kochbuch" oder "Flussdiagramm" reduziert wird. Die Datenanalyse in der Realität ist oft komplexer als solche einfachen Regeln. Es ist daher oft produktiver, die Daten mit Hilfe von deskriptiven Statistiken und grafischen Darstellungen zu erkunden. Diese Datenexploration sollte es ermöglichen, zu beurteilen, ob die anderen ANOVA-Annahmen in ausreichendem Maße erfüllt sind. Zum Beispiel ermöglicht es das Plotten der ANOVA-Ergebnisse mit afex_plot und einer vernünftigen Darstellung der einzelnen Datenpunkte oft, sowohl die Homogenität der Varianz als auch die Normalverteilung der Residuenannahme zu beurteilen.
+
+Lassen Sie uns nun alle drei empirisch testbaren Annahmen im Detail betrachten. ANOVAs sind oft robust gegen leichte Verletzungen der Annahme der Homogenität der Varianzen. Wenn diese Annahme jedoch deutlich verletzt ist, haben wir etwas Wichtiges über die Daten gelernt, nämlich Varianzheterogenität, die weitere Untersuchungen erfordert. Einige weitere statistische Lösungen werden unten diskutiert.
+
+Wenn das Hauptziel einer ANOVA darin besteht, zu sehen, ob bestimmte Effekte signifikant sind oder nicht, dann ist die Annahme der Normalverteilung der Residuen nur für kleine Stichproben erforderlich, dank des zentralen Grenzwertsatzes. Wie von Lumley et al. (2002) gezeigt, sind selbst extreme Verletzungen der Normalitätsannahmen bei Stichproben von ein paar hundert Probanden unproblematisch. Daher sind leichte Verletzungen dieser Annahme unproblematisch.
+
+Eine angemessene explorative Datenanalyse oft besser ist als die blindes Anwenden von statistischen Annahmetests. Dennoch sind Annahmetests natürlich ein wichtiges Werkzeug im statistischen Werkzeugkasten und können in vielen Situationen hilfreich sein.
+
+### Testen der empirisch testbaren Annahmen
+
+`afex`verfügt über eine Reihe von integrierten Funktionen, um bei der Überprüfung der Annahmen des ANOVA-Designs zu helfen. 
+
+* Die Varianzen über alle Gruppen (Zellen) der zwischen-subjektiven Effekte sind gleich. Dies kann mit performance::check_homogeneity() getestet werden.
+* Sphärizität: Für innerhalb-subjektive Effekte ist die Sphärizität die Bedingung, bei der die Varianzen der Unterschiede zwischen allen möglichen Paaren von innerhalb-subjektiven Bedingungen (d.h. Stufen der unabhängigen Variable) gleich sind. Dies kann als eine innerhalb-subjektive Version der Homogenität der Varianzen betrachtet werden und kann mit performance::check_sphericity() getestet werden.
+* Normalität der Residuen: Die für die Schätzung des Fehlerterms (MSE) verwendeten Fehler sind normal verteilt. Dies kann mit performance::check_normality() abgeleitet werden.
+
+```{r}
+library(afex)
+library(performance) # für die Voraussetzungsprüfung
+```
+
+### Homogenität der Varianzen:
+
+Diese Annahme besagt für Zwischen-Gruppen-Designs, dass die Fehler innerhalb der Gruppen eine gemeinsame Varianz um den Mittelwert der Gruppe aufweisen. 
+
+#### Test
+
+Dies kann mit dem Levene-Test getestet werden:
+
+```{r}
+data(obk.long, package = "afex")
+
+mod <- aov_ez("id", "value", obk.long, 
+             between = c("treatment", "gender"))
+
+check_homogeneity(mod)
+```
+
+Diese Ergebnisse deuten darauf hin, dass die Homogenität nicht signifikant verletzt ist.
+
+#### Maßnahmen wenn Vorraussetzung verletzt
+
+ANOVAs sind im Allgemeinen robust gegenüber "leichter" Heteroskedastizität, aber es gibt verschiedene andere Methoden (die in `afex` nicht verfügbar sind), um robuste Fehlerabschätzungen zu erhalten.
+
+Eine weitere Alternative besteht darin, diese Annahme ganz aufzugeben und Permutationstests (z.B. mit `permuco`) oder Bootstrap-Schätzungen (z.B. mit `boot`) zu verwenden.
+
+### Sphärizität:
+
+#### Test
+
+Wir können check_sphericity() verwenden, um den Mauchly-Test auf Sphärizität durchzuführen:
+
+```{r}
+data("fhch2010", package = "afex")
+
+mod <- aov_ez("id", "log_rt", fhch2010,
+             between = "task", 
+             within = c("density", "frequency", "length", "stimulus"))
+
+check_sphericity(mod)
+```
+
+Wir können sehen, dass beide Fehlerterme der Länge:Reiz und Aufgabe:Länge:Reiz-Interaktionen die Annahme der Sphärizität bei $p = 0.021$ signifikant verletzen. Beachten Sie, dass Aufgabe als Faktor zwischen den Probanden gilt und dass beide Interaktionsterme denselben Fehlerterm teilen!
+
+#### Maßnahmen wenn Vorraussetzung verletzt
+
+Für ANOVA-Tabellen kann eine Korrektur der Freiheitsgrade verwendet werden - afex bietet sowohl die Greenhouse-Geisser (die standardmäßig verwendet wird) als auch die Hyunh-Feldt-Korrekturen an.
+Für Nachfolgekontraste mit emmeans kann ein multivariates Modell verwendet werden, das keine Sphärizität annimmt (dies wird seit afex 1.0 standardmäßig verwendet).
+
+Beide können global festgelegt werden mit:
+
+```{r}
+afex_options(
+  correction_aov = "GG", # or "HF"
+  emmeans_model = "multivariate"
+)
+```
+
+### Normalverteilung der Residuen:
+
+Die Normalverteilungsannahme der Restfehler bezieht sich auf die Fehler, die die verschiedenen Fehlerterme in der ANOVA ausmachen. Obwohl der Shapiro-Wilk-Test verwendet werden kann, um von einer Normalverteilung abzuweichen, hat dieser Test tendenziell hohe Typ-I-Fehler-Raten. Stattdessen können die Restfehler visuell mit Quantil-Quantil-Plots (auch qq-Plots genannt) inspiziert werden. Zum Beispiel:
+
+#### Test
+
+```{r}
+data("stroop", package = "afex")
+
+stroop1 <- subset(stroop, study == 1)
+stroop1 <- na.omit(stroop1)
+
+mod <- aov_ez("pno", "rt", stroop1,
+             within = c("condition", "congruency"))
+```
+
+```{r}
+is_norm <- check_normality(mod)
+
+# plot(is_norm)
+```
+
+```{r}
+# plot(is_norm, type = "qq")
+```
+
+Wenn die Residuen normalverteilt wären, würden sie in der Nähe der diagonalen Linie liegen und innerhalb der 95%-Konfidenzbänder um die qq-Linie fallen.
+
+Wir können das Diagramm weiter verbessern, indem wir den Trend entfernen und nicht den erwarteten Quantilwert, sondern die Abweichung vom erwarteten Quantilwert anzeigen, was dazu beitragen kann, visuelle Verzerrungen zu reduzieren.
+
+```{r}
+# plot(is_norm, type = "qq", detrend = TRUE)
+```
+
+#### Maßnahmen wenn Vorraussetzung verletzt
+
+Wie bei der Annahme der Homogenität der Varianzen können wir auf Permutationstests für ANOVA-Tabellen und Bootstrap-Schätzungen / Kontraste zurückgreifen.
+
+Eine weitere beliebte Lösung besteht darin, eine monotone Transformation der abhängigen Variablen anzuwenden. Dies sollte nicht leichtfertig getan werden, da es die Interpretierbarkeit der Ergebnisse (von der beobachteten Skala zur transformierten Skala) verändert. Glücklicherweise ist es üblich, Reaktionszeiten zu logarithmieren, was wir leicht tun können:
+
+```{r}
+mod <- aov_ez("pno", "rt", stroop1,
+             transformation = "log",
+             within = c("condition", "congruency"))
+
+is_norm <- check_normality(mod)
+
+# plot(is_norm, type = "qq", detrend = TRUE)
+```
+
+Sehr gut - nach der Transformation weichen die Residuen (auf der logarithmischen Skala) nicht mehr als erwartet von Fehlern ab, die aus einer normalverteilten Verteilung gezogen wurden (sie sind größtenteils innerhalb der 95%-Konfidenzintervalle enthalten)!
 

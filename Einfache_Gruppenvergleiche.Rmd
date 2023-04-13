@@ -7,8 +7,7 @@ library(papaja)
 
 ## Ein-Stichproben t-Test
 
-```{r include=FALSE}
-# https://www.youtube.com/watch?v=KRO5y0M__BA
+```{r}
 data = read.csv("data/One sample t-test.csv")
 names(data) = c("gewicht", "groesse")
 ```
@@ -17,7 +16,7 @@ names(data) = c("gewicht", "groesse")
 
 Mit einem Ein-Stichproben t-Test vergleichen wir den Mittelwert einer Gruppe mit einem hypothetischen Mittelwert. 
 
-Der Test prüft also anhand des Mittelwerts einer Stichprobe ob der Erwartungswert in der entsprechenden Population gleich einem vorgegebenen Wert ist (dem unter $H_{0}$ erwarteten $μ_{0}$).
+Der Test prüft also anhand des Mittelwerts einer Stichprobe, ob der Erwartungswert in der entsprechenden Population gleich einem vorgegebenen Wert ist (dem unter $H_{0}$ erwarteten $μ_{0}$).
 
 Es sind folgende Hypothesen denkbar:
 
@@ -198,7 +197,7 @@ Zunächst können wir uns die Deskriptivstatistiken innerhalb der beiden Gruppen
 psych::describeBy(Weight.loss ~ Gender, data = data)
 ```
 
-Rein deskriptiv lässt sich bereits feststellen, dass Männer mit `r `round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg etwas weniger abgenommen zu haben scheinen, als Frauen mit `r `round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg. 
+Rein deskriptiv lässt sich bereits feststellen, dass Männer mit `r round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg etwas weniger abgenommen zu haben scheinen, als Frauen mit `r round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg. 
 
 Ob sich dieser numerische Unterschied auch als signifikant erweist, prüfen wir mit dem t-Test.
 
@@ -218,7 +217,7 @@ Alternative Schreibweise:
 t.test(data$Weight.loss[data$Gender == "Males"], data$Weight.loss[data$Gender == "Females"])
 ```
 
-Für eine gerichteten Test (z.B. Frauen nehmen mehr ab als Männer)
+Für einen gerichteten Test (z.B. Frauen nehmen mehr ab als Männer)
 
 ```{r}
 t.test(Weight.loss ~ Gender, data = data, alternative = "greater")
@@ -270,7 +269,6 @@ Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt
 Die Varianzhomogenität wird mittels Levene's Test (F-Test) geprüft @levene1960robust. Eine Funktion dafür ist im Patek `car` enthalten.
 
 ```{r}
-# https://www.youtube.com/watch?v=717UWGnyQGA&feature=youtu.be
 car::leveneTest(Weight.loss ~ Gender, data = data)
 ```
 
@@ -325,7 +323,7 @@ apa_table(d, caption = "Interpretation von Cohen's d.")
 
 Eine gelegentlich verwendete Alternative zu Cohen's d ist das Hedges' g. Hedges' g wird weitgehend analog zu Cohen's d verwendet, korrigiert dabei jedoch statistisch für besonders kleine Gruppengößen (N<20) @hedges2014statistical
 
-Es lässt sich mit der selben Funktion berechnen:
+Es lässt sich mit derselben Funktion berechnen:
 
 ```{r}
 effsize::cohen.d(Weight.loss ~ Gender, data = data, hedges.correction = TRUE)
@@ -365,7 +363,7 @@ names(data) = c("gewicht_prä", "gewicht_post")
 ```
 ### Hypothesen
 
-Mit einem abhängigen t-Test vergleichen wir die Mittelwerte zweier abhängiger Messungen. Ein klassisches Beispiel dafür ist der Vergleich von zwei Messzeitpunkten der selben Variable in der selben Gruppe von Personen.
+Mit einem abhängigen t-Test vergleichen wir die Mittelwerte zweier abhängiger Messungen. Ein klassisches Beispiel dafür ist der Vergleich von zwei Messzeitpunkten derselben Variable in derselben Gruppe von Personen.
 
 Im Datensatz muss eine numerische Variable mit Messungen zu zwei Zeiten vorliegen (AV). Die dichotome UV, so wie wir sie vom unabhängigen t-Test kennen ist der Zeitpunkt (z.B. Prä vs. Post).
 
@@ -531,9 +529,9 @@ Der Wilcoxon–Mann–Whitney-U Test ist eine **Alternative zum unabhängigen t-
 
 ### Hypothesen
 
-Er prüft im Wesentlichen die selben Hypothesen, funktioniert aber auf Rangskalenniveau anstelle des Intervallskalenniveaus.
+Er prüft im Wesentlichen dieselben Hypothesen, funktioniert aber auf Rangskalenniveau anstelle des Intervallskalenniveaus.
 
-Um beide Tests vergleichen zu können, verwenden wir noch einmal das selbe Beispiel, wie im Kapitel zum unabhängigen t-Test (Unterschied im Gewichtsverlust nach Diät: Männer vs. Frauen).
+Um beide Tests vergleichen zu können, verwenden wir noch einmal dasselbe Beispiel, wie im Kapitel zum unabhängigen t-Test (Unterschied im Gewichtsverlust nach Diät: Männer vs. Frauen).
 
 ```{r include=FALSE}
 data = read.csv("data/Independent t-test.csv")
@@ -541,22 +539,22 @@ data = read.csv("data/Independent t-test.csv")
 
 ### Test durchführen
 
-Der Test nimmt die selbe Form an wie der abhängige t-Test:
+Der Test nimmt dieselbe Form an wie der abhängige t-Test:
 
 ```{r warning=FALSE}
-wilcox.test(Weight.loss ~ Gender, data = data)
+wilcox.test(Weight.loss ~ Gender, data = data, exact = FALSE)
 ```
 
 Alternative Schreibweise:
 
 ```{r warning=FALSE}
-wilcox.test(data$Weight.loss[data$Gender == "Males"], data$Weight.loss[data$Gender == "Females"])
+wilcox.test(data$Weight.loss[data$Gender == "Males"], data$Weight.loss[data$Gender == "Females"], exact = FALSE)
 ```
 
-Für eine gerichteten Test (z.B. Frauen nehmen mehr ab als Männer)
+Für einen gerichteten Test (z.B. Frauen nehmen mehr ab als Männer)
 
 ```{r warning=FALSE}
-wilcox.test(Weight.loss ~ Gender, data = data, alternative = "greater")
+wilcox.test(Weight.loss ~ Gender, data = data, alternative = "greater", exact = FALSE)
 ```
 
 ### Relevante Parameter extrahieren
@@ -570,21 +568,21 @@ Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:
 
 Wilcoxon Statistik (W, Teststatistik):
 ```{r warning=FALSE}
-wilcox.test(Weight.loss ~ Gender, data = data)$statistic
+wilcox.test(Weight.loss ~ Gender, data = data, exact = FALSE)$statistic
 ```
 
 P-Wert:
 ```{r warning=FALSE}
-wilcox.test(Weight.loss ~ Gender, data = data)$p.value
+wilcox.test(Weight.loss ~ Gender, data = data, exact = FALSE)$p.value
 ```
 
 ### Effektstärke
 
 #### Rangsummenkoeffizient $(r)$
 
-Die am häufigsten verwendete Effektstärke für den non-parametrischen Vergleich zweier unabhängiger Gruppen ist der sogenannte Rangsummenkoeffizient @tomczak2014need.
+Die am häufigsten verwendete Effektstärke für den non-parametrischen Vergleich zweier unabhängiger Gruppen ist der sogenannte Rangsummenkoeffizient [@tomczak2014need].
 
-Der Rangsummenkoeffizient $(r)$ lässt sich mit dem Paket `rstatix` berechnen. Die Funktion lautet `wilcox_effsize()`.
+Der Rangsummenkoeffizient $(r)$ lässt sich mit dem Paket `rstatix` berechnen. Die Funktion lautet `wilcox_effsize()`. Zudem müssen wir vorher das Paket `coin` installieren.
 
 Die Funktion zur Berechnung des Rangsummenkoeffizienten wird wie folgt aufgestellt:
 
@@ -636,7 +634,7 @@ Der Wilcoxon–Mann–U Test ist eine **Alternative zum abhängigen t-Test**.
 
 Er prüft im Wesentlichen die selben Hypothesen, funktioniert aber auf Rangskalenniveau anstelle des Intervallskalenniveaus.
 
-Um beide Tests vergleichen zu können, verwenden wir noch einmal das selbe Beispiel, wie im Kapitel zum abhängigen t-Test (Unterschied im Gewicht: vor einer Diät vs. nach einer Diät).
+Um beide Tests vergleichen zu können, verwenden wir noch einmal dasselbe Beispiel, wie im Kapitel zum abhängigen t-Test (Unterschied im Gewicht: vor einer Diät vs. nach einer Diät).
 
 ```{r include=FALSE}
 data = read.csv("data/Paired t-test.csv")
@@ -651,7 +649,7 @@ Der Test nimmt die selbe Form an wie der abhängige t-Test:
 wilcox.test(data$gewicht_prä, data$gewicht_post, paired = T)
 ```
 
-Für eine gerichteten Test z.B. Prä-Gewicht höher als Post-Gewicht)
+Für einen gerichteten Test z.B. Prä-Gewicht höher als Post-Gewicht)
 
 ```{r warning=FALSE}
 wilcox.test(data$gewicht_prä, data$gewicht_post, paired = T, alternative = "greater")
@@ -740,7 +738,7 @@ Wir haben nun die t-Tests kennengelernt. Diese haben alle gemeinsam, dass Sie Mi
 
 Wie können wir aber Vergleiche rechnen, wenn unsere AV eine kategoriale (z.B. binäre) Variable ist?
 
-Die verglichene Statistik ist dann die Verteilung, bzw. die Häufigkeit der Ausprägungen der AV anstelle von Mittelwerte.
+Die verglichene Statistik ist dann die Verteilung, bzw. die Häufigkeit der Ausprägungen der AV anstelle von Mittelwerten.
 
 ```{r include=FALSE}
 data1 = data.frame(Remission = sample(0:1, 20, replace = T, prob = c(0.5, 0.5)),
@@ -758,7 +756,7 @@ Ein Beispiel für so ein Szenario könnte sein, dass wir ähnlich wie beim unabh
 
 Die AV könnte der Behandlungserfolg sein, also ob die Personen nach der Behandlung in Remission waren. 
 
-Wir haben also keine numerische AV mehr, für die wie einen Mittelwert bilden könnten, sondern eine Variable mit 2 Stufen (Remission: ja/nein).
+Wir haben also keine numerische AV mehr, für die wir einen Mittelwert bilden könnten, sondern eine Variable mit 2 Stufen (Remission: ja/nein).
 
 ### Deskriptive Einordnung
 

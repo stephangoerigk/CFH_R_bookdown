@@ -1,6 +1,6 @@
 # Daten Explorieren
 
-Im folgenden Abschnitt werden wir lernen wie wir uns schnell einen Überblick über große Mengen von Daten machen können.
+Im folgenden Abschnitt werden wir lernen, wie wir uns schnell einen Überblick über große Mengen von Daten machen können.
 
 Hierzu gehört natürlich, dass wir einzelne Variablen mit **Deskriptivstatistiken** (z.B. Mittelwert, Median, Standardabweichung...) zusammenfassen, so wie wir es im 1. Semester gelernt haben.
 
@@ -48,7 +48,7 @@ length(vektor)
 | Funktion| Beispiel | Ergebnis|Result |
 |:----------|:--------------------|:-------------------------|:--------------------|
 |     `unique(x)`|  Zeigt Vektor aller einzigartiger Werte an |   `unique(c(1, 1, 2, 10))` |`r unique(c(1, 1, 2, 10))`     |
-|     `table(x, exclude)`|  Gibt Tabelle aller einzigartiger Werte und deren absolute Häufigkeit an. Um auch fehlende Werte zu zählen wählen Sie `exclude = NULL` |  `table(c("a", "a", "b", "c"))`|` 2-"a", 1-"b", 1-"c"`    |
+|     `table(x)`|  Gibt Tabelle aller einzigartiger Werte und deren absolute Häufigkeit an. Um auch fehlende Werte zu zählen wählen Sie `exclude = NULL` |  `table(c("a", "a", "b", "c"))`|` 2-"a", 1-"b", 1-"c"`    |
 
 #### Absolute Häufigkeiten
 
@@ -67,6 +67,7 @@ length(vektor)
 |     `quantile(x, probs)`|    `quantile(1:10, probs = .2)`|`r quantile(1:10, probs = .2)`     |
 |     `summary(x)`|    `summary(1:10)`|`Min = 1.00. 1st Qu. = 3.25, Median = 5.50, Mean = 5.50, 3rd Qu. = 7.75, Max = 10.0`     |
 
+```{r eval=FALSE, include=FALSE}
 #### Lagemaße
 
 #### Streuungsmaße
@@ -74,3 +75,6 @@ length(vektor)
 ### Alles auf einen Blick
 
 ### Gruppenweise Deskriptivstatistiken
+
+```
+

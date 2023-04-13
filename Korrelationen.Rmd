@@ -1,6 +1,6 @@
 # Korrelation
 
-Als nächste Hypothesentests schauen wir uns die Korrelationen an: 
+Als möglichen Hypothesentest schauen wir uns die Korrelationen an: 
 
 Bei einem Korrelationstest wird die Beziehung zwischen zwei Variablen auf einer Verhältnis- oder Intervallskala untersucht: z. B. Größe und Gewicht oder Einkommen und Selbstvertrauen 
 
@@ -33,13 +33,13 @@ dat3 <- rnorm_multi(n = 100,
 ```{r echo=F, message=FALSE, warning=FALSE}
 ggpubr::ggarrange(ggplot(dat1, aes(A, B)) + geom_point() + geom_smooth(method = "lm") + ggtitle("r = -0.81") + theme_classic(),
                   ggplot(dat2, aes(A, B)) + geom_point() + geom_smooth(method = "lm") + ggtitle("r = -0.02") + theme_classic(),
-                  ggplot(dat3, aes(A, B)) + geom_point() + geom_smooth(method = "lm") + ggtitle("r = -0.79") + theme_classic(),
+                  ggplot(dat3, aes(A, B)) + geom_point() + geom_smooth(method = "lm") + ggtitle("r = 0.79") + theme_classic(),
                   ncol = 3)
 ```
 
 ## Hypothesen
 
-```{r include=FALSE}
+```{r}
 data <- rnorm_multi(n = 100, 
                   mu = c(100, 8),
                   sd = c(25, 2),
@@ -117,7 +117,7 @@ Der **Spearman** Korrelationskoeffizient funktioniert im Wesentlichen wie der Pe
 
 Das macht ihn unempfindlicher gegenüber Verteilungsverletzungen und Ausreißern.
 
-Die Berechnung des **Spearman** Korrelationskoeffizienten erfolgt nach der selben Methode, mit einer kleinen Spezifikation:
+Die Berechnung des **Spearman** Korrelationskoeffizienten erfolgt nach derselben Methode, mit einer kleinen Spezifikation:
 
 ```{r}
 cor(data$Konzentration, data$Schlaf, method = "spearman")
@@ -143,13 +143,13 @@ Ein Signifikanztest für den Korrelationskoeffizienten lässt sich jedoch einfac
 
 | Argument| Description| 
 |:------------|:-------------------------------------------------|
-|`formula`|Argument in Formelformat `~ x + y`, x und y sind die Namen der Variablen deren bivariater Zusammenhang getestet werden soll. Diese Variiablen sollten in getrennten Spalten eines dataframe stehen.|
+|`formula`|Argument in Formelformat `~ x + y`, x und y sind die Namen der Variablen deren bivariater Zusammenhang getestet werden soll. Diese Variablen sollten in getrennten Spalten eines dataframes stehen.|
 |`data`|Der data.frame, der x und y enthält|
 |`alternative`|Hier kann die Richtung der Alternativhypothese angegeben werden. Wählen Sie `"two.sided"` für eine ungerichtete Hypothese, oder `"greater"` bzw. "`less"` für eine gerichtete Hypothese.|
-|`method`|Gibt die Art des zu berechnenden Korrelationskoeffizienten an. `"pearson"` (default) steht für die Produkt-Moment Korrelatioin, `"kendall"` und `"spearman"` stehen für die Rangkorrelatioinen nach Kendall und Spearman. |
+|`method`|Gibt die Art des zu berechnenden Korrelationskoeffizienten an. `"pearson"` (default) steht für die Produkt-Moment Korrelation, `"kendall"` und `"spearman"` stehen für die Rangkorrelatioinen nach Kendall und Spearman. |
 |`subset`|Hier kann direkt ein Teildatensatz ausgewählt werden. Z.B.; `subset = sex == "female"`|
 
-Wenn wir zum Beispiel testen wollten, ob ein signifikanter negativer Zusammenhang zwischen Konzentration und Schlaf besteht könnten wir das mit folgendem Signifikanztest prüfen:
+Wenn wir zum Beispiel testen wollten, ob ein signifikanter negativer Zusammenhang zwischen Konzentration und Schlaf besteht, könnten wir das mit folgendem Signifikanztest prüfen:
 
 ```{r}
 cor.test(data$Konzentration, data$Schlaf, method = "pearson", alternative = "less")

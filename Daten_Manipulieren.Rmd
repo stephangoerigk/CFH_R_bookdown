@@ -9,8 +9,8 @@ Mit den Operatoren `$` und Zuweisung `=` können Sie neue Spalten zu einem Daten
 Erstellen wir zum Beispiel einen data.frame namens test mit zwei Spalten: `ID` und `Alter`:
 
 ```{r}
-test <- data.frame("ID" = c(1, 2, 3, 4, 5),
-                     "Alter" = c(24, 25, 42, 56, 22))
+test = data.frame("ID" = c(1, 2, 3, 4, 5),
+                  "Alter" = c(24, 25, 42, 56, 22))
 ```
 
 Lassen Sie uns nun eine neue Spalte namens `Geschlecht` aus einem Vektor mit Geschlechtsdaten hinzufügen:
@@ -34,7 +34,7 @@ test
 ```
 
 Diese Methoden hängen neue Spalten immer ganz hinten (ganz rechts) an den data.frame an. 
-Wollen wir die neue Variable an einer bestimmten Position des data.frames einfügen nutzen wir die `add_column()` Funktion aus dem `tibble` Paket.
+Wollen wir die neue Variable an einer bestimmten Position des data.frames einfügen, nutzen wir die `add_column()` Funktion aus dem `tibble` Paket.
 
 Wollen wir zum Beispiel eine Variable an die 2. Position des Datensatzes einfügen nutzen wir und spezifizieren das `.after` oder `.before` Argument mit dem Index oder dem Namen der vorherigen/folgenden Variable:
 
@@ -64,7 +64,7 @@ test$Lieblingsfilm = NULL
 test
 ```
 
-Wollen wir mehrere Variablen auf einmal löschen empfiehlt sich die wie bereits bei der Auswahl von Variablen die `select()` Funktion aus dem `dplyr` Paket. Um wieder etwas zum löschen zu haben erstellen wir zunächst 3 leere Dummy Variablen:
+Wollen wir mehrere Variablen auf einmal löschen, empfiehlt sich wie bereits bei der Auswahl von Variablen die `select()` Funktion aus dem `dplyr` Paket. Um wieder etwas zum Löschen zu haben, erstellen wir zunächst 3 leere Dummy Variablen:
 
 ```{r}
 test$ZumLoeschen1 = NA
@@ -89,7 +89,7 @@ test
 
 ### Fälle löschen
 
-Die einfachste Art Fälle zu löschen ist das Überspeichern des data.frames ohne die zu löschenden Fälle. Diese Selektion machen wir einfach mit den eckigen Klammern `[]` und einem `-`
+Die einfachste Art Fälle zu löschen, ist das Überspeichern des data.frames ohne die zu löschenden Fälle. Diese Selektion machen wir einfach mit den eckigen Klammern `[]` und einem `-`
 
 Wir wollen die 2. Person im test data.frame löschen:
 
@@ -117,15 +117,15 @@ test
 
 ### Variablennamen ändern
 
-Um uns die Variablennamen anzeigen zu lassen benutzen wie `names()`:
+Um uns die Variablennamen anzeigen zu lassen, benutzen wir `names()`:
 
 ```{r}
 names(test)
 ```
 
-Die selbe Funktion können wir auch nutzen um Variablen umzubenennen.
+Dieselbe Funktion können wir auch nutzen um Variablen umzubenennen.
 
-Wie wollen die 1. Variable anstelle von `ID` gerne `Idenfikation` nennen:
+Wir wollen die 1. Variable anstelle von `ID` gerne `Idenfikation` nennen:
 
 ```{r}
 names(test)[1] = "Idenfikation"
@@ -133,7 +133,7 @@ names(test)[1] = "Idenfikation"
 test
 ```
 
-Das selbe funktioniert auch mit logischen Argumenten (die Variable, die `ID` heisst...)
+Dasselbe funktioniert auch mit logischen Argumenten (die Variable, die `ID` heisst...)
 
 ```{r}
 names(test)[names(test) == "ID"] = "Idenfikation"
@@ -169,7 +169,7 @@ test$Geschlecht = c("männlich", "weiblich", "weiblich", "männlich", "weiblich"
 
 ### Werte ändern
 
-Die einfachste Art zum Ändern von Werten ist wie immer das selektieren und überspeichern.
+Die einfachste Art zum Ändern von Werten ist wie immer das Selektieren und Überspeichern.
 
 Schauen wir uns einmal die `Alter` Variable in unserem test data.frame an:
 
@@ -177,7 +177,7 @@ Schauen wir uns einmal die `Alter` Variable in unserem test data.frame an:
 test
 ```
 
-Wenn ich beispielsweise alle 25 Jahre alten Leute 35 werden lassen wollte, muss ich diese nur selektieren und überspeichern:
+Wenn ich beispielsweise alle 25 Jahre alten Leute 35 Jahre alt werden lassen wollte, muss ich diese nur selektieren und überspeichern:
 
 ```{r}
 test$Alter[test$Alter == 25] = 35
@@ -187,9 +187,9 @@ test
 
 ### Recodieren
 
-Manchmal ist es nützlich Werte nicht nacheinander zu überspeichern, sondern simultan (also alle parallel) zu ändern.
+Manchmal ist es nützlich, Werte nicht nacheinander zu überspeichern, sondern simultan (also alle parallel) zu ändern.
 
-Nehmen wir einmal an ich hätte ein Fragebogenitem zum Thema Introversion (Rating von 1-5). Die Frage lautet "Gehen Sie gerne auf Parties"?
+Nehmen wir einmal an, ich hätte ein Fragebogenitem zum Thema Introversion (Rating von 1-5). Die Frage lautet "Gehen Sie gerne auf Parties"?
 
 ```{r}
 test$Item = c(1, 3, 5, 4, 2)
@@ -197,7 +197,7 @@ test$Item = c(1, 3, 5, 4, 2)
 test
 ```
 
-Dieses Item gibt uns eine nützliche Information hinsichtlich der Introversion der Person, denn jemand sehr introvertiertes würde vermutlich mit eine niedrige Zahl ankreuzen (z.B. Person 1). Um sie ggf. mit anderen Items zu verrechnen müssen wir Items jedoch häufig umdrehen (umpolen), sodass hohe Werte auch eine hohe Ausprägung des Konstrukts reflektieren.
+Dieses Item gibt uns eine nützliche Information hinsichtlich der Introversion der Person, denn jemand sehr introvertiertes würde vermutlich eine niedrige Zahl ankreuzen (z.B. Person 1). Um sie ggf. mit anderen Items zu verrechnen müssen wir Items jedoch häufig umdrehen (umpolen), sodass hohe Werte auch eine hohe Ausprägung des Konstrukts reflektieren.
 
 Mein Ziel ist also folgendes:
 
@@ -213,7 +213,7 @@ Der 1. Impuls wäre folgendes:
 # test$Item[test$Item == 1] = 5
 ```
 
-Das Problem damit ist, dass alle ursprünglichen 1 Werte die ich zu 5 mache, sich wieder zu 1 verändern, sobald ich die ursprünglichen 5er in 1 verändere. Ich muss also alle Werte "auf einmal" ändern.
+Das Problem damit ist, dass alle ursprünglichen 1er Werte die ich zu 5er Werten mache, sich wieder zu 1er Werten verändern, sobald ich die ursprünglichen 5er in 1er verändere. Ich muss also alle Werte "auf einmal" ändern.
 
 Dafür nutzen wir die `recode()` Funktion aus dem Paket `dplyr`:
 
@@ -225,7 +225,7 @@ test
 
 ### Worte ändern
 
-Das selbe funktioniert natürlich für Worte. Lassen Sie uns `männlich` und `weiblich` doch einmal in `Mann` und `Frau` verändern:
+Dasselbe funktioniert natürlich für Worte. Lassen Sie uns `männlich` und `weiblich` doch einmal in `Mann` und `Frau` verändern:
 
 ```{r}
 test$Geschlecht[test$Geschlecht == "männlich"] = "Mann"
@@ -278,7 +278,7 @@ test$Diagnose = factor(c("Depression", "Angststörung", "Sucht", "Depression", "
 test$Diagnose
 ```
 
-Wir die Namen der Faktorstufen z.B. etwas abgekürzt haben. Wir gehen genauso vor wie bei der Umbenennung von Variablen, nur nutzen wir statt `names()` den Befehl `levels()`:
+Wir wollen die Namen der Faktorstufen z.B. etwas abgekürzt haben. Wir gehen genauso vor wie bei der Umbenennung von Variablen, nur nutzen wir statt `names()` den Befehl `levels()`:
 
 ```{r}
 levels(test$Diagnose) = c("Angst", "Depr.", "Sucht")
@@ -311,9 +311,9 @@ test <- data.frame("ID" = c(3, 5, 1, 2, 4),
 test
 ```
 
-Der dataframe ist weder nach der `ID` Variable, noch nach dem inhaltlichen Kriterium des Alters (jung nach alt vs. alt nach jung) geordnet.
+Der data.frame ist weder nach der `ID` Variable, noch nach dem inhaltlichen Kriterium des Alters (jung nach alt vs. alt nach jung) geordnet.
 
-Für ein schnelles Sortieren nutzen wir die Funktion `order()`. Diese wenden wir auf die Variable an, nach der wir sortieren wollen und schreiben den Befehl links vom Komma in den eckigen Klammern (Erinnerung: links vom Komma bezieht sich immer auf Zeilen, rechts auf die Spalten). Den sortierten dataframe wollen wir `test2` nennen.
+Für ein schnelles Sortieren nutzen wir die Funktion `order()`. Diese wenden wir auf die Variable an, nach der wir sortieren wollen und schreiben den Befehl links vom Komma in den eckigen Klammern (Erinnerung: links vom Komma bezieht sich immer auf Zeilen, rechts auf die Spalten). Den sortierten data.frame wollen wir `test2` nennen.
 
 ```{r}
 test2 = test[order(test$ID),]
@@ -323,7 +323,7 @@ test2 = test[order(test$ID),]
 test2
 ```
 
-Das selbe funktioniert mit der Altervariable (von jung nach alt).
+Dasselbe funktioniert mit der Altervariable (von jung nach alt).
 
 ```{r}
 test3 = test[order(test$Alter),]
@@ -345,7 +345,7 @@ test4
 
 ### Sortieren nach Variablen mit Worten
 
-Wollen wir unseren dataframe nach einer Variable sortieren, die Worte enthält, führt `order()` zu einer alphabetischen Sortierung. Wir hängen zum Ausprobieren eine character Variable an unseren `test` dataframe:
+Wollen wir unseren dataframe nach einer Variable sortieren, die Worte enthält, führt `order()` zu einer alphabetischen Sortierung. Wir hängen zum Ausprobieren eine character Variable an unseren `test` data.frame:
 
 ```{r}
 test$Name = c("Klaus", "Jan", "Anna", "John", "Cleo")
@@ -357,11 +357,13 @@ Sortieren mit `order()` anhand der Variable `Name` ergibt:
 
 ```{r}
 test5 = test[order(test$Name),]
+
+test5
 ```
 
-## Datensätze Aggreggieren
+## Datensätze zusammensetzen
 
-Oft kommt es vor, dass wir zwei dataframes zusammensetzen wollen. Dies könnte der Fall sein, wenn wir unsere Daten in 2 unterschiedlichen Tabellen gesammelt haben, wir aber nun mit den kombinierten Daten rechnen wollen. Damit beschäftigen wir uns in den nächsten Abschnitten.
+Oft kommt es vor, dass wir zwei data.frames zusammensetzen wollen. Dies könnte der Fall sein, wenn wir unsere Daten in 2 unterschiedlichen Tabellen gesammelt haben, wir aber nun mit den kombinierten Daten rechnen wollen. Damit beschäftigen wir uns in den nächsten Abschnitten.
 
 ### cbind und rbind  
 
@@ -408,7 +410,7 @@ test3
 
 #### rbind
 
-Zur Demonstration der `r`bind()` Funktion bauen wir uns 2 weitere kleine Test-dataframes. Wichtig ist, dass diese die selbe Anzahl von Spalten haben und dass diese die selben Variablennamen haben:
+Zur Demonstration der `rbind()` Funktion bauen wir uns 2 weitere kleine Test-dataframes. Wichtig ist, dass diese die selbe Anzahl von Spalten haben und dass diese die selben Variablennamen haben:
 
 ```{r}
 test1 <- data.frame("ID" = c(1, 2, 3, 4, 5),
@@ -430,7 +432,7 @@ Und hier den dataframe test2:
 test2
 ```
 
-Zum Zusammensetzen der beiden (test2 unten an test 1 "dranhängen") schreiben wir beide dataframes in die `r`bind()` Funktion. Der kombinierte Datensatz soll test 3 heißen:
+Zum Zusammensetzen der beiden (test2 unten an test 1 "dranhängen") schreiben wir beide dataframes in die `rbind()` Funktion. Der kombinierte Datensatz soll test 3 heißen:
 
 ```{r}
 test3 = rbind(test1, test2)
@@ -442,7 +444,7 @@ test3
 
 ### merge
 
-Haben wir 2 ungeordnete dataframe mit Daten der selben Personen, jedoch mit unterschiedlichen Variablen, die wir zusammensetzen wollen, haben wir das Problem, dass die Zeilenreihenfolge des einen dataframes ggf. nicht mit der Zeilenreihenfolge des anderen dataframes übereinstimmt:
+Haben wir 2 ungeordnete dataframes mit Daten derselben Personen, jedoch mit unterschiedlichen Variablen, die wir zusammensetzen wollen, haben wir das Problem, dass die Zeilenreihenfolge des einen dataframes ggf. nicht mit der Zeilenreihenfolge des anderen dataframes übereinstimmt:
 
 ```{r}
 test1 <- data.frame("ID" = c(1, 2, 3, 4, 5),
@@ -462,9 +464,12 @@ test3 = merge(test1, test2, by = "ID")
 test3
 ```
 
+```{r eval=FALSE, include=FALSE}
 ## Datensätze transformieren
 
 ### Von Long nach Wide
 
 ### Skalieren
+```
+
 

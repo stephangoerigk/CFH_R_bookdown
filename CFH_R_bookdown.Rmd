@@ -20,45 +20,45 @@ Wenn R Ihre erste Programmiersprache ist, ist das völlig in Ordnung. Wir gehen 
 
 Ich wünsche Ihnen Viel Erfolg und Spaß! 
 
-# Warum ist R so gut?
+# Warum ist R empfehlenswert?
 
 ## Open Source
 
-R ist zu 100 % kostenlos und verfügt daher über eine große Unterstützergemeinschaft. Im Gegensatz zu SPSS, Matlab, Excel und JMP ist R völlig kostenlos und wird es auch immer bleiben. Das spart nicht nur Geld - es bedeutet auch, dass eine riesige Gemeinschaft von R-Programmierern ständig neue R-Funktionen und -Pakete in einer Geschwindigkeit entwickelt und verbreitet, die alle anderen Pakete in den Schatten stellt. Die Größe der R-Programmiergemeinschaft ist atemberaubend. Wenn Sie jemals eine Frage dazu haben, wie man etwas in R implementiert, wird eine schnelle Google-Suche Sie praktisch jedes Mal zur Antwort führen.
+Im Gegensatz zu SPSS, Matlab, Excel und JMP ist R zu 100 % kostenlos und verfügt daher über eine große Unterstützergemeinschaft. Das spart nicht nur Geld - es bedeutet auch, dass eine große Gemeinschaft von R-Programmierer:innen ständig neue R-Funktionen und -Pakete in einer Geschwindigkeit entwickelt und verbreitet. Wenn Sie jemals eine Frage dazu haben, wie man etwas in R implementiert, wird eine schnelle Googlesuche Sie praktisch jedes Mal zur Antwort führen.
 
 ## Vielseitigkeit
 
-R ist unglaublich vielseitig. Sie können R für alles verwenden, von der Berechnung einfacher zusammenfassender Statistiken über die Durchführung komplexer Simulationen bis hin zur Erstellung großartiger Diagramme. Wenn Sie sich eine analytische Aufgabe vorstellen können, können Sie sie mit ziemlicher Sicherheit in R implementieren.
+R ist unheimlich vielseitig. Sie können R für alles verwenden, von der Berechnung einfacher zusammenfassender Statistiken über die Durchführung komplexer Simulationen bis hin zur Erstellung großartiger Diagramme. Wenn Sie sich eine analytische Aufgabe vorstellen können, können Sie sie mit ziemlicher Sicherheit in R implementieren.
 
-## R Markdown
+## RMarkdown
 
-Mit RStudio, einem Programm, das Sie beim Schreiben von R-Code unterstützt, können Sie mit RMarkdown einfach und nahtlos R-Code, Analysen, Diagramme und geschriebenen Text zu eleganten Dokumenten an einem Ort kombinieren. Tatsächlich habe ich dieses gesamte Skript (Text, Formatierung, Diagramme, Code... ja, alles) in RStudio mit R Markdown geschrieben Mit RStudio müssen Sie sich nicht mehr mit zwei oder drei Programmen herumschlagen, z. B. Excel, Word und SPSS, wo Sie die Hälfte Ihrer Zeit mit dem Kopieren, Einfügen und Formatieren von Daten, Bildern und Tests verbringen, sondern können alles an einem Ort erledigen, so dass nichts mehr falsch gelesen, getippt oder vergessen wird.
+Mit RStudio, einem Programm, das Sie beim Schreiben von R-Code unterstützt, können Sie mit RMarkdown einfach und nahtlos R-Code, Analysen, Diagramme und geschriebenen Text zu eleganten Dokumenten an einem Ort kombinieren. Tatsächlich wurde dieses gesamte Skript (Text, Formatierung, Diagramme, Code... ja, alles) in RStudio mit R Markdown geschrieben. Mit RStudio müssen Sie sich nicht mehr mit zwei oder drei Programmen herumschlagen, z. B. Excel, Word und SPSS, wo Sie die Hälfte Ihrer Zeit mit dem Kopieren, Einfügen und Formatieren von Daten, Bildern und Tests verbringen, sondern können alles an einem Ort erledigen, so dass nichts mehr falsch gelesen, getippt oder vergessen wird.
 
 ## Transparenz
 
-In R durchgeführte Analysen sind transparent, leicht weiterzugeben und reproduzierbar. Wenn Sie einen SPSS-Benutzer fragen, wie er eine bestimmte Analyse durchgeführt hat, wird er sich ggf. nicht daran erinnern, was er vor Monaten oder Jahren tatsächlich getan hat. Wenn Sie einen R-Anwender (der gute Programmiertechniken verwendet) fragen, wie er eine Analyse durchgeführt hat, sollte er Ihnen immer den genauen Code zeigen können, den er verwendet hat. Das bedeutet natürlich nicht, dass er die richtige Analyse verwendet oder sie korrekt interpretiert hat, aber mit dem gesamten Originalcode sollten etwaige Probleme völlig transparent sein! Dies ist eine Grundvoraussetzung für offene, replizierbare Forschung.
+In R durchgeführte Analysen sind transparent, leicht weiterzugeben und reproduzierbar. Wenn Sie einen SPSS-Benutzer fragen, wie er eine bestimmte Analyse durchgeführt hat, wird er sich ggf. nicht daran erinnern, was er vor Monaten oder Jahren tatsächlich getan hat. Wenn Sie eine R-Anwender:in (der/die gute Programmiertechniken verwendet) fragen, wie er/sie eine Analyse durchgeführt hat, sollte er/sie Ihnen immer den genauen Code zeigen können, den er/sie verwendet hat. Das bedeutet natürlich nicht, dass er/sie die richtige Analyse verwendet oder sie korrekt interpretiert hat, aber mit dem gesamten Originalcode sollten etwaige Probleme völlig transparent sein! Dies ist eine Grundvoraussetzung für offene, replizierbare Forschung.
 
 # R Materialien
 
 ## Cheat Sheets
 
-In diesem Skript werden Sie viele neue Funktionen kennenlernen. Wäre es nicht schön, wenn jemand ein Wörterbuch mit vielen gängigen R-Funktionen erstellen würde? Ja, das wäre es, und zum Glück haben einige freundliche R-Programmierer genau das getan. Im Folgenden finden Sie eine Tabelle mit einigen der Funktionen, die ich empfehle. Ich empfehle Ihnen dringend, diese auszudrucken und die Funktionen zu markieren, wenn Sie sie lernen!
+In diesem Skript werden Sie viele neue Funktionen kennenlernen. Wäre es nicht schön, wenn jemand ein Wörterbuch mit vielen gängigen R-Funktionen erstellen würde? Im Folgenden finden Sie eine Tabelle mit einigen der Funktionen, die ich empfehle. Ich empfehle Ihnen dringend, diese auszudrucken und die Funktionen zu markieren, wenn Sie sie lernen!
 
 [Link zum Base R  Cheat Sheet](https://cran.r-project.org/doc/contrib/Short-refcard.pdf)
 
 [Link zu den R Studio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
 
-Insbesondere die Cheat Sheets zu ggplot2 und dplyr kann ich Ihnen nur wärmstens ans Herz legen
+Insbesondere die Cheat Sheets zu ggplot2 und dplyr sind zu empfehlen (RStudio Cheat Sheets S.2).
 
 ## Hilfe und Inspiration online
 
-Eine Google Suche nach einem spezifischen R Problem bringt Sie (fast) immer an Ihr Ziel. Häufig findet man gute Antworten in den github Hilfsmatierialien einzelner Pakete, auf den Community Seiten von R Studio und in den Foren von stackoverflow.
+Eine Googlesuche nach einem spezifischen R Problem bringt Sie (fast) immer an Ihr Ziel. Häufig findet man gute Antworten in den github Hilfsmatierialien einzelner Pakete, auf den Community Seiten von R Studio und in den Foren von stackoverflow.
 
 ## Andere Bücher
 
 Die Inhalte dieser Bücher sind nicht prüfunsrelevant.
 
-Es gibt viele, viele ausgezeichnete Bücher über R. Hier sind zwei, die ich empfehlen kann (von denen eines sogar umsonst ist):
+Es gibt viele, viele gute Bücher über R. Hier sind zwei, die ich empfehlen kann (von denen eines sogar umsonst ist):
 
 [Discovering Statistics with R von Field, Miles and Field](https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469/ref=sr_1_2?ie=UTF8&qid=1487759316&sr=8-2&keywords=statistics+with+r)
 
@@ -70,7 +70,7 @@ Es gibt viele, viele ausgezeichnete Bücher über R. Hier sind zwei, die ich emp
 
 # Installation
 
-Um R benutzen zu können müssen wir zwei Softwarepakete herunterladen: 
+Um R benutzen zu können, müssen wir zwei Softwarepakete herunterladen: 
 
 * **R**
 * **RStudio**
@@ -79,7 +79,7 @@ R ist die Programmiersprache, mit der wir arbeiten. R-Studio ist eine Benutzerob
 
 ## Installation von R
 
-Um R zu installieren, klicken Sie auf den, Ihrem Betriebssystem entsprechenden, Link und befolgen Sie die Anleitungen:
+Um R zu installieren, klicken Sie auf den Ihrem Betriebssystem entsprechenden Link und befolgen Sie die Anleitungen.
 
 | Operating System| Link|
 |:------|:----|
@@ -112,6 +112,10 @@ Um RStudio zu installieren, klicken Sie auf diesen Link und befolgen Sie die Anl
 
 Wenn Sie RStudio öffnen, sehen Sie vier Fenster, wie in der folgenden Abbildung dargestellt: 
 
+```{r, fig.cap = "Die vier RStudio Fenster", echo = FALSE}
+knitr::include_graphics(c("images/windows.png"))
+```
+
 Wenn Sie mögen, können Sie die Reihenfolge der Fenster in den RStudio Einstellungen verändern. 
 Sie können die Fenster auch verstecken (Minimieren/Maximieren Symbol an der oberen rechten Ecke jedes Fensters) oder ihre Größe verändern, indem die sie ihre Grenzbalken anklicken und verschieben.
 
@@ -123,6 +127,10 @@ Im Source Fenster erstellen und bearbeiten Sie "R-Skripte" - Ihre Codesammlungen
 Wenn Sie RStudio öffnen, wird automatisch ein neues unbenanntes Skript gestartet. 
 Bevor Sie mit der Eingabe eines unbenannten R-Skripts beginnen, sollten Sie die Datei immer unter einem neuen Dateinamen speichern (z.B. "Mein_RScript.R"). 
 Wenn Ihr Computer während der Arbeit abstürzt, steht Ihr Code in R zur Verfügung, wenn Sie RStudio erneut öffnen.
+
+```{r, fig.cap = "Die vier RStudio Fenster", echo = FALSE}
+knitr::include_graphics(c("images/windows_source.png"))
+```
 
 Sie werden feststellen, dass R beim Schreiben des Skripts den Code während der Eingabe nicht tatsächlich ausführt. Damit R Ihren Code tatsächlich ausführt, müssen Sie den Code zunächst an die Konsole "senden" (wir werden im nächsten Abschnitt darüber sprechen).
 
@@ -139,16 +147,23 @@ Die Konsole ist das Herzstück von R. Hier führt R den Code aus. Am Anfang der 
 Versuchen Sie, 2+2 zu berechnen, indem Sie den Code direkt in die Konsole eingeben - und dann Enter drücken. 
 Sie sollten das Ergebnis `[1] 4` sehen. Machen Sie sich keine Gedanken über die `[1]`, dazu kommen wir später. 
 
+```{r, fig.cap = "Die vier RStudio Fenster", echo = FALSE}
+knitr::include_graphics(c("images/windows_console.png"))
+```
+
 Geben Sie denselben Code in das Skript ein und senden Sie ihn an die Konsole, indem Sie den Code markieren und auf die Schaltfläche "Run" in der oberen rechten Ecke des Quelltextfensters klicken. Alternativ können Sie auch die Tastenkombination "Command + Return" auf dem Mac oder "Control + Enter" unter Windows verwenden.
 
 **Tipp**: Wie Sie sehen, können Sie Code entweder über das Skript oder durch direkte Eingabe in die Konsole ausführen. In 99\% der Fälle sollten Sie jedoch das Skript und nicht die Konsole verwenden. Der Grund dafür ist ganz einfach: Wenn Sie den Code in die Konsole eingeben, wird er nicht gespeichert (obwohl Sie in Ihrem Befehlsverlauf nachsehen können). Und wenn Sie beim Eingeben von Code in die Konsole einen Fehler machen, müssen Sie alles noch einmal von vorne eingeben. Stattdessen ist es besser, den gesamten Code in das Skript zu schreiben. Wenn Sie bereit sind, einen Code auszuführen, können Sie ihn mit "Run" an die Konsole senden.
 
 ### Environment/History - Das Gedächtnis von R
 
-In dem Tab "Environment" dieses Bereichs werden die Namen aller Datenobjekte (wie Vektoren, Matrizen und Datenrahmen) angezeigt, die Sie in Ihrer aktuellen R-Session definiert haben. Sie können auch Informationen wie die Anzahl der Spalten und Zeilen in Datensätzen sehen. Der Tab enthält auch einige anklickbare Aktionen wie  
- Datensatz importieren", wodurch eine grafische Benutzeroberfläche (GUI) für wichtige Daten in R geöffnet wird.
+In dem Tab "Environment" dieses Bereichs werden die Namen aller Datenobjekte (wie Vektoren, Matrizen und Datenrahmen) angezeigt, die Sie in Ihrer aktuellen R-Session definiert haben. Sie können auch Informationen wie die Anzahl der Spalten und Zeilen in Datensätzen sehen. Der Tab enthält auch einige anklickbare Aktionen wie "Datensatz importieren", wodurch eine grafische Benutzeroberfläche (GUI) für wichtige Daten in R geöffnet wird.
 
-Der Tab "History" dieses Bereichs zeigt Ihnen einfach eine Sammlung aller Befehle an den Sie zuvor in der Konsole ausgewertet haben. Wenn man mit Skripten arbeitet, schaut man sich diese, allerdings relativ selten an.
+```{r, fig.cap = "Die vier RStudio Fenster", echo = FALSE}
+knitr::include_graphics(c("images/windows_env.png"))
+```
+
+Der Tab "History" dieses Bereichs zeigt Ihnen einfach eine Sammlung aller Befehle an, die Sie zuvor in der Konsole ausgewertet haben. Wenn man mit Skripten arbeitet, schaut man sich diese allerdings relativ selten an.
 
 Wenn Sie sich mit R besser auskennen, werden Sie das Fenster Environment/History vielleicht nützlich finden. Aber für den Moment können Sie es einfach ignorieren. Wenn Sie Ihren Bildschirm entrümpeln wollen, können Sie das Fenster auch einfach minimieren, indem Sie auf die Schaltfläche Minimieren oben rechts im Fenster klicken.
 
@@ -156,13 +171,17 @@ Wenn Sie sich mit R besser auskennen, werden Sie das Fenster Environment/History
 
 Die Tabs Files/Plots/Packages/Help/Viewer zeigen Ihnen viele hilfreiche Informationen. Schauen wir uns die einzelnen Registerkarten im Detail an:
 
-1. Files - Der Tab "Files" gibt Ihnen Zugriff auf das Dateiverzeichnis auf Ihrer Festplatte. Dateien, die Sie in Ihrem R Projekt benutzen liegen in der Regel in einem von Ihnen definierten Arbeitsverzeichnis. Wir werden in Kürze ausführlicher über Arbeitsverzeichnisse sprechen.
+```{r, fig.cap = "Die vier RStudio Fenster", echo = FALSE}
+knitr::include_graphics(c("images/windows_files.png"))
+```
 
-2. Plots - Das Plots-Panel zeigt (keine große Überraschung) alle Ihre Plots an. 
+1. Files - Der Tab "Files" gibt Ihnen Zugriff auf das Dateiverzeichnis Ihrer Festplatte. Dateien, die Sie in Ihrem R Projekt benutzen, liegen in der Regel in einem von Ihnen definierten Arbeitsverzeichnis. Wir werden in Kürze ausführlicher über Arbeitsverzeichnisse sprechen.
 
-3. Pakete - Zeigt eine Liste aller auf Ihrer Festplatte installierten R-Pakete an und gibt an, ob sie derzeit geladen sind oder nicht. Pakete, die in der aktuellen Sitzung geladen sind, sind markiert, während Pakete, die installiert, aber noch nicht geladen sind, nicht markiert sind. Auf die Pakete gehen wir im nächsten Abschnitt näher ein.
+2. Plots - Das Plots-Panel zeigt (keine große Überraschung) alle Ihre Plots an.
 
-4. Hilfe - Hilfemenü für R-Funktionen. Sie können entweder den Namen einer Funktion in das Suchfenster eingeben oder den Code \texttt{?function.name} verwenden, um nach einer Funktion mit dem Namen \texttt{function.name} zu suchen:
+3. Pakete - Zeigt eine Liste aller auf Ihrer Festplatte installierten R-Pakete und gibt an, ob sie derzeit geladen sind oder nicht. Pakete, die in der aktuellen Sitzung geladen sind, sind markiert, während Pakete, die installiert, aber noch nicht geladen sind, nicht markiert sind. Auf die Pakete gehen wir im nächsten Abschnitt näher ein.
+
+4. Hilfe - Hilfemenü für R-Funktionen. Sie können entweder den Namen einer Funktion in das Suchfenster eingeben oder den Code \texttt{?function.name} in der Konsole verwenden, um nach einer Funktion mit dem Namen \texttt{function.name} zu suchen:
 
 ```{r, eval = FALSE}
 ?hist   # Wie funktioniert die Histogrammfunktion?
@@ -193,7 +212,7 @@ Um zum Beispiel das Paket ggplot2 herunterzuladen, welches wir oft zum Erstellen
 
 ### R Packages laden
 
-Sobald Sie ein Paket installiert haben, befindet es sich auf Ihrem Computer. Aber nur weil es auf Ihrem Computer ist, bedeutet das nicht, dass R bereit ist, es zu benutzen. Wenn Sie etwas, wie eine Funktion oder einen Datensatz, aus einem Paket verwenden wollen, müssen Sie *immer* zuerst das Paket in Ihrer R-Sitzung *laden*. Genau wie bei einer Glühbirne müssen Sie sie einschalten, um sie zu benutzen!
+Sobald Sie ein Paket installiert haben, befindet es sich auf Ihrem Computer. Aber nur weil es auf Ihrem Computer ist, bedeutet das nicht, dass R bereit ist, es zu benutzen. Wenn Sie etwas wie eine Funktion oder einen Datensatz aus einem Paket verwenden wollen, müssen Sie *immer* zuerst das Paket in Ihrer R-Sitzung *laden*. Genau wie bei einer Glühbirne müssen Sie sie einschalten, um sie zu benutzen!
 
 Um ein Paket zu laden, verwenden Sie die Funktion `library()`. Nachdem wir zum Beispiel das Paket `ggplot2` installiert haben, können wir es mit `library("ggplot2")` laden:
 
@@ -203,7 +222,7 @@ Um ein Paket zu laden, verwenden Sie die Funktion `library()`. Nachdem wir zum B
 library("ggplot2")
 ```
 
-Jetzt, wo Sie das Paket `ggplot2` geladen haben, können Sie jede seiner Funktionen benutzen (hier die Funktion ggplot, um einen Graph zu erstellen)!
+Jetzt, wo Sie das Paket `ggplot2` geladen haben, können Sie jede seiner Funktionen benutzen (hier die Funktion `ggplot`, um einen Graph zu erstellen)!
 
 ```{r, message = FALSE}
 ggplot(data = iris, aes(x = Sepal.Length)) + 
@@ -243,7 +262,7 @@ b <- 3 / 100
 c <- (a + b) / b
 ```
 
-Skalare müssen nicht numerisch sein, sondern können auch beinhalten Worte. Wortobjekte heißen in R **characters** (engl. strings). In R schreibt man Worte immer in Anführungszeichen `""`. Hier sind einige Beispiele für character Skalare:
+Skalare müssen nicht numerisch sein, sondern können auch Worte beinhalten. Wortobjekte heißen in R **characters** (engl. strings). In R schreibt man Worte immer in Anführungszeichen `""`. Hier sind einige Beispiele für character Skalare:
 
 ```{r}
 # Beispiele für character Skalare
@@ -252,7 +271,7 @@ e <- "Zigarre"
 f <- "Haben Psychologen wirklich alle Bärte und rauchen Zigarre?"
 ```
 
-Wie Sie sich vermutlich vorstellen können, behandelt R numerische und character Skalare unterschiedlich. Zum Beispiel lassen sich mir numerischen Skalaren grundlegende arithmetische Operationen durchfühlen (Addition, Subtraktion, Multiplikation...) -- das funktioniert mit character Skalaren nicht.
+Wie Sie sich vermutlich vorstellen können, behandelt R numerische und character Skalare unterschiedlich. Zum Beispiel lassen sich mit numerischen Skalaren grundlegende arithmetische Operationen durchführen (Addition, Subtraktion, Multiplikation...) -- das funktioniert mit character Skalaren nicht.
 Wenn Sie dennoch probieren numerische Operationen auf character Skalare anzuwenden, bekommen Sie eine Fehlermeldung, so wie diese:
 
 ```{r, eval = FALSE}
@@ -291,7 +310,7 @@ char.vec
 
 Vektoren sind ein zentrales Element von R. Ein Vektor kann Zahlen, Buchstaben oder logische Werte enthalten, aber niemals eine Kombination
 
-Der Vektor ist die Entsprechung der **Variable** und die Skalare, aus denen der Vektor besteht sind die **Merkmalsausprägungen** der Variable.
+Der Vektor ist die Entsprechung der **Variable** und die Skalare, aus denen der Vektor besteht, sind die **Merkmalsausprägungen** der Variable.
 
 ### Faktor Variablen
 
@@ -373,7 +392,7 @@ df = data.frame("Name" = c("Max", "Maja", "Mia", "Moritz", "Markus"),
 df
 ```
 
-Wollen wir wieder eine einzelne Variable aus dem benutzen, können wir diese über das `$` Zeichen anwählen:
+Wollen wir wieder eine einzelne Variable aus dem Datensatz benutzen, können wir diese über das `$` Zeichen anwählen:
 
 ```{r}
 df$Alter
@@ -381,9 +400,9 @@ df$Alter
 
 ### Indizierung
 
-Wollen wir aus dem data.frame wieder einzelne Elemente benutzen, nutzen wir wieder die Indizierung. Auch hier brauchen wir die `[]`. Da wir im data.frame Zeilen und Spalten haben, brauchen wir eine Möglichkeit beides auszuwählen, wie ein Curser der von links nach rechts, bzw. von oben nach unten läuft. 
+Wollen wir aus dem data.frame wieder einzelne Elemente verwenden, nutzen wir wieder die Indizierung. Auch hier brauchen wir die `[]`. Da wir im data.frame Zeilen und Spalten haben, brauchen wir eine Möglichkeit, beides auszuwählen, wie ein Curser der von links nach rechts, bzw. von oben nach unten läuft. 
 
-Wir trennen dafür unsere `[]` mit einem Komma `[,]`. Alles was **links vom Komma** steht bezieht sich auf Zeilen alles **rechts vom Komma** bezieht sich auf Spalten.
+Wir trennen dafür unsere `[]` mit einem Komma `[,]`. Alles, was **links vom Komma** steht, bezieht sich auf Zeilen alles **rechts vom Komma** bezieht sich auf Spalten.
 
 Lassen Sie uns einmal die Zelle in der 1. Zeile (also die 1. Person) und der 3. Variable auswählen:
 
@@ -482,7 +501,7 @@ In diesem Kapitel werden wir einige hilfreiche Funktionen zur Verwaltung Ihres A
 |`getwd()`|Zeigt das aktuelle Arbeitsverzeichnis an |
 |`setwd(file = "dir)`|Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad |
 |`list.files()`|Zeigt die Namen aller Dateien im Arbeitsverzeichnis an |
-|`write.table(x, file = "mydata.txt", sep)`|writes the object `x` to a text file called `mydata.txt`. Define how the columns will be separated with `sep` (e.g.; `sep = ","` for a comma--separated file, and `sep = \t"` for a tab--separated file).|
+|`write.table(x, file = "mydata.txt", sep)`|speichert das Objekt `x` als Textdatei `mydata.txt`. Definiere die Trennung der Spalten mittels `sep` (z.B.; `sep = ","` für eine kommagetrennte Datei (csv) und `sep = \t"` für eine tab-getrennte Datei).|
 |`write_rds(x,"meineDaten.rds)`|Speichert Objekt x in das R Objekt  `meineDaten.rds` |
 |`save.image(file = "meineSession.RData")`|Speichert *alle* Objekte aus dem Arbeitsbereich nach `meineSession.RData`|
 |`read_rds`("Daten.rds")`|Läd das rds Objekt `Daten.rds`|
@@ -557,7 +576,7 @@ head(data)
 
 Das .xlsx Format ist das Format in welchem Excel Datensätze abgespeichert werden. Auch das kommt oft vor, da es viele Forscher:innen vorziehen Daten in Excel Tabellen einzutragen.
 
-Um einen .xlsx Datensatz einzulesen, speichern wir ihn mittel `read_xlsx()` in ein von uns benanntes Objekt. Dafür müssen wir das Paket `readxl` installiert und mittels `library` eingelesen haben. Da in Excel Tabellen manchmal mehrere Arbeitsblätter (engl. "sheets") vorliegen, geben wir den Namen des Arbeitsblatt, welches wir brauchen, zusätzlich an:
+Um einen .xlsx Datensatz einzulesen, speichern wir ihn mittels `read_xlsx()` in ein von uns benanntes Objekt. Dafür müssen wir das Paket `readxl` installiert und mittels `library` eingelesen haben. Da in Excel Tabellen manchmal mehrere Arbeitsblätter (engl. "sheets") vorliegen, geben wir den Namen des Arbeitsblatt, welches wir brauchen, zusätzlich an:
 
 ```{r}
 library(readxl)
@@ -647,7 +666,7 @@ Dies funktioniert auch, wenn wir mehrere Objekte auswählen wollen:
 a[c(1, 3)]
 ```
 
-Bei data.frames, die sowohl Zeilen als auch Spalten haben, trennen wir die eckigen Klammern mit einem Komma `[,]`. Alles vor dem Komma bezieht sich auf die Zeilen (Fälle), alles nach dem Komma auf die Spalen (Variablen):
+Bei data.frames, die sowohl Zeilen als auch Spalten haben, trennen wir die eckigen Klammern mit einem Komma `[,]`. Alles vor dem Komma bezieht sich auf die Zeilen (Fälle), alles nach dem Komma auf die Spalten (Variablen):
 
 ```{r}
 testdata = data.frame(IQ = c(101, 112, 97, 104),
@@ -667,7 +686,7 @@ testdata[3,]
 testdata[,2]
 ```
 
-Die Auswahl mittels eines numerischen Index ist unkompliziert, aber es kann manchmal aufwendig sein aus großen Datensätzen eine Vielzahl von Fällen bzw. Variablen auszuwählen. 
+Die Auswahl mittels eines numerischen Index ist unkompliziert, aber es kann manchmal aufwendig sein, aus großen Datensätzen eine Vielzahl von Fällen bzw. Variablen auszuwählen. 
 Zudem **verschieben** sich Indizes auch, wenn wir einzelne Fälle oder Variablen aus dem Datensatz löschen oder welche hinzufügen.
 
 Wir brauchen also auch Strategien, nach welchen wir Daten mit einer **Logik** auswählen können. 
@@ -839,7 +858,7 @@ select(starwars, starts_with("hair") & ends_with("color"))
 
 # Daten Explorieren
 
-Im folgenden Abschnitt werden wir lernen wie wir uns schnell einen Überblick über große Mengen von Daten machen können.
+Im folgenden Abschnitt werden wir lernen, wie wir uns schnell einen Überblick über große Mengen von Daten machen können.
 
 Hierzu gehört natürlich, dass wir einzelne Variablen mit **Deskriptivstatistiken** (z.B. Mittelwert, Median, Standardabweichung...) zusammenfassen, so wie wir es im 1. Semester gelernt haben.
 
@@ -887,7 +906,7 @@ length(vektor)
 | Funktion| Beispiel | Ergebnis|Result |
 |:----------|:--------------------|:-------------------------|:--------------------|
 |     `unique(x)`|  Zeigt Vektor aller einzigartiger Werte an |   `unique(c(1, 1, 2, 10))` |`r unique(c(1, 1, 2, 10))`     |
-|     `table(x, exclude)`|  Gibt Tabelle aller einzigartiger Werte und deren absolute Häufigkeit an. Um auch fehlende Werte zu zählen wählen Sie `exclude = NULL` |  `table(c("a", "a", "b", "c"))`|` 2-"a", 1-"b", 1-"c"`    |
+|     `table(x)`|  Gibt Tabelle aller einzigartiger Werte und deren absolute Häufigkeit an. Um auch fehlende Werte zu zählen wählen Sie `exclude = NULL` |  `table(c("a", "a", "b", "c"))`|` 2-"a", 1-"b", 1-"c"`    |
 
 #### Absolute Häufigkeiten
 
@@ -906,6 +925,7 @@ length(vektor)
 |     `quantile(x, probs)`|    `quantile(1:10, probs = .2)`|`r quantile(1:10, probs = .2)`     |
 |     `summary(x)`|    `summary(1:10)`|`Min = 1.00. 1st Qu. = 3.25, Median = 5.50, Mean = 5.50, 3rd Qu. = 7.75, Max = 10.0`     |
 
+```{r eval=FALSE, include=FALSE}
 #### Lagemaße
 
 #### Streuungsmaße
@@ -913,6 +933,9 @@ length(vektor)
 ### Alles auf einen Blick
 
 ### Gruppenweise Deskriptivstatistiken
+
+```
+
 
 <!--chapter:end:Daten_Beschreiben.Rmd-->
 
@@ -927,8 +950,8 @@ Mit den Operatoren `$` und Zuweisung `=` können Sie neue Spalten zu einem Daten
 Erstellen wir zum Beispiel einen data.frame namens test mit zwei Spalten: `ID` und `Alter`:
 
 ```{r}
-test <- data.frame("ID" = c(1, 2, 3, 4, 5),
-                     "Alter" = c(24, 25, 42, 56, 22))
+test = data.frame("ID" = c(1, 2, 3, 4, 5),
+                  "Alter" = c(24, 25, 42, 56, 22))
 ```
 
 Lassen Sie uns nun eine neue Spalte namens `Geschlecht` aus einem Vektor mit Geschlechtsdaten hinzufügen:
@@ -952,7 +975,7 @@ test
 ```
 
 Diese Methoden hängen neue Spalten immer ganz hinten (ganz rechts) an den data.frame an. 
-Wollen wir die neue Variable an einer bestimmten Position des data.frames einfügen nutzen wir die `add_column()` Funktion aus dem `tibble` Paket.
+Wollen wir die neue Variable an einer bestimmten Position des data.frames einfügen, nutzen wir die `add_column()` Funktion aus dem `tibble` Paket.
 
 Wollen wir zum Beispiel eine Variable an die 2. Position des Datensatzes einfügen nutzen wir und spezifizieren das `.after` oder `.before` Argument mit dem Index oder dem Namen der vorherigen/folgenden Variable:
 
@@ -982,7 +1005,7 @@ test$Lieblingsfilm = NULL
 test
 ```
 
-Wollen wir mehrere Variablen auf einmal löschen empfiehlt sich die wie bereits bei der Auswahl von Variablen die `select()` Funktion aus dem `dplyr` Paket. Um wieder etwas zum löschen zu haben erstellen wir zunächst 3 leere Dummy Variablen:
+Wollen wir mehrere Variablen auf einmal löschen, empfiehlt sich wie bereits bei der Auswahl von Variablen die `select()` Funktion aus dem `dplyr` Paket. Um wieder etwas zum Löschen zu haben, erstellen wir zunächst 3 leere Dummy Variablen:
 
 ```{r}
 test$ZumLoeschen1 = NA
@@ -1007,7 +1030,7 @@ test
 
 ### Fälle löschen
 
-Die einfachste Art Fälle zu löschen ist das Überspeichern des data.frames ohne die zu löschenden Fälle. Diese Selektion machen wir einfach mit den eckigen Klammern `[]` und einem `-`
+Die einfachste Art Fälle zu löschen, ist das Überspeichern des data.frames ohne die zu löschenden Fälle. Diese Selektion machen wir einfach mit den eckigen Klammern `[]` und einem `-`
 
 Wir wollen die 2. Person im test data.frame löschen:
 
@@ -1035,15 +1058,15 @@ test
 
 ### Variablennamen ändern
 
-Um uns die Variablennamen anzeigen zu lassen benutzen wie `names()`:
+Um uns die Variablennamen anzeigen zu lassen, benutzen wir `names()`:
 
 ```{r}
 names(test)
 ```
 
-Die selbe Funktion können wir auch nutzen um Variablen umzubenennen.
+Dieselbe Funktion können wir auch nutzen um Variablen umzubenennen.
 
-Wie wollen die 1. Variable anstelle von `ID` gerne `Idenfikation` nennen:
+Wir wollen die 1. Variable anstelle von `ID` gerne `Idenfikation` nennen:
 
 ```{r}
 names(test)[1] = "Idenfikation"
@@ -1051,7 +1074,7 @@ names(test)[1] = "Idenfikation"
 test
 ```
 
-Das selbe funktioniert auch mit logischen Argumenten (die Variable, die `ID` heisst...)
+Dasselbe funktioniert auch mit logischen Argumenten (die Variable, die `ID` heisst...)
 
 ```{r}
 names(test)[names(test) == "ID"] = "Idenfikation"
@@ -1087,7 +1110,7 @@ test$Geschlecht = c("männlich", "weiblich", "weiblich", "männlich", "weiblich"
 
 ### Werte ändern
 
-Die einfachste Art zum Ändern von Werten ist wie immer das selektieren und überspeichern.
+Die einfachste Art zum Ändern von Werten ist wie immer das Selektieren und Überspeichern.
 
 Schauen wir uns einmal die `Alter` Variable in unserem test data.frame an:
 
@@ -1095,7 +1118,7 @@ Schauen wir uns einmal die `Alter` Variable in unserem test data.frame an:
 test
 ```
 
-Wenn ich beispielsweise alle 25 Jahre alten Leute 35 werden lassen wollte, muss ich diese nur selektieren und überspeichern:
+Wenn ich beispielsweise alle 25 Jahre alten Leute 35 Jahre alt werden lassen wollte, muss ich diese nur selektieren und überspeichern:
 
 ```{r}
 test$Alter[test$Alter == 25] = 35
@@ -1105,9 +1128,9 @@ test
 
 ### Recodieren
 
-Manchmal ist es nützlich Werte nicht nacheinander zu überspeichern, sondern simultan (also alle parallel) zu ändern.
+Manchmal ist es nützlich, Werte nicht nacheinander zu überspeichern, sondern simultan (also alle parallel) zu ändern.
 
-Nehmen wir einmal an ich hätte ein Fragebogenitem zum Thema Introversion (Rating von 1-5). Die Frage lautet "Gehen Sie gerne auf Parties"?
+Nehmen wir einmal an, ich hätte ein Fragebogenitem zum Thema Introversion (Rating von 1-5). Die Frage lautet "Gehen Sie gerne auf Parties"?
 
 ```{r}
 test$Item = c(1, 3, 5, 4, 2)
@@ -1115,7 +1138,7 @@ test$Item = c(1, 3, 5, 4, 2)
 test
 ```
 
-Dieses Item gibt uns eine nützliche Information hinsichtlich der Introversion der Person, denn jemand sehr introvertiertes würde vermutlich mit eine niedrige Zahl ankreuzen (z.B. Person 1). Um sie ggf. mit anderen Items zu verrechnen müssen wir Items jedoch häufig umdrehen (umpolen), sodass hohe Werte auch eine hohe Ausprägung des Konstrukts reflektieren.
+Dieses Item gibt uns eine nützliche Information hinsichtlich der Introversion der Person, denn jemand sehr introvertiertes würde vermutlich eine niedrige Zahl ankreuzen (z.B. Person 1). Um sie ggf. mit anderen Items zu verrechnen müssen wir Items jedoch häufig umdrehen (umpolen), sodass hohe Werte auch eine hohe Ausprägung des Konstrukts reflektieren.
 
 Mein Ziel ist also folgendes:
 
@@ -1131,7 +1154,7 @@ Der 1. Impuls wäre folgendes:
 # test$Item[test$Item == 1] = 5
 ```
 
-Das Problem damit ist, dass alle ursprünglichen 1 Werte die ich zu 5 mache, sich wieder zu 1 verändern, sobald ich die ursprünglichen 5er in 1 verändere. Ich muss also alle Werte "auf einmal" ändern.
+Das Problem damit ist, dass alle ursprünglichen 1er Werte die ich zu 5er Werten mache, sich wieder zu 1er Werten verändern, sobald ich die ursprünglichen 5er in 1er verändere. Ich muss also alle Werte "auf einmal" ändern.
 
 Dafür nutzen wir die `recode()` Funktion aus dem Paket `dplyr`:
 
@@ -1143,7 +1166,7 @@ test
 
 ### Worte ändern
 
-Das selbe funktioniert natürlich für Worte. Lassen Sie uns `männlich` und `weiblich` doch einmal in `Mann` und `Frau` verändern:
+Dasselbe funktioniert natürlich für Worte. Lassen Sie uns `männlich` und `weiblich` doch einmal in `Mann` und `Frau` verändern:
 
 ```{r}
 test$Geschlecht[test$Geschlecht == "männlich"] = "Mann"
@@ -1196,7 +1219,7 @@ test$Diagnose = factor(c("Depression", "Angststörung", "Sucht", "Depression", "
 test$Diagnose
 ```
 
-Wir die Namen der Faktorstufen z.B. etwas abgekürzt haben. Wir gehen genauso vor wie bei der Umbenennung von Variablen, nur nutzen wir statt `names()` den Befehl `levels()`:
+Wir wollen die Namen der Faktorstufen z.B. etwas abgekürzt haben. Wir gehen genauso vor wie bei der Umbenennung von Variablen, nur nutzen wir statt `names()` den Befehl `levels()`:
 
 ```{r}
 levels(test$Diagnose) = c("Angst", "Depr.", "Sucht")
@@ -1229,9 +1252,9 @@ test <- data.frame("ID" = c(3, 5, 1, 2, 4),
 test
 ```
 
-Der dataframe ist weder nach der `ID` Variable, noch nach dem inhaltlichen Kriterium des Alters (jung nach alt vs. alt nach jung) geordnet.
+Der data.frame ist weder nach der `ID` Variable, noch nach dem inhaltlichen Kriterium des Alters (jung nach alt vs. alt nach jung) geordnet.
 
-Für ein schnelles Sortieren nutzen wir die Funktion `order()`. Diese wenden wir auf die Variable an, nach der wir sortieren wollen und schreiben den Befehl links vom Komma in den eckigen Klammern (Erinnerung: links vom Komma bezieht sich immer auf Zeilen, rechts auf die Spalten). Den sortierten dataframe wollen wir `test2` nennen.
+Für ein schnelles Sortieren nutzen wir die Funktion `order()`. Diese wenden wir auf die Variable an, nach der wir sortieren wollen und schreiben den Befehl links vom Komma in den eckigen Klammern (Erinnerung: links vom Komma bezieht sich immer auf Zeilen, rechts auf die Spalten). Den sortierten data.frame wollen wir `test2` nennen.
 
 ```{r}
 test2 = test[order(test$ID),]
@@ -1241,7 +1264,7 @@ test2 = test[order(test$ID),]
 test2
 ```
 
-Das selbe funktioniert mit der Altervariable (von jung nach alt).
+Dasselbe funktioniert mit der Altervariable (von jung nach alt).
 
 ```{r}
 test3 = test[order(test$Alter),]
@@ -1263,7 +1286,7 @@ test4
 
 ### Sortieren nach Variablen mit Worten
 
-Wollen wir unseren dataframe nach einer Variable sortieren, die Worte enthält, führt `order()` zu einer alphabetischen Sortierung. Wir hängen zum Ausprobieren eine character Variable an unseren `test` dataframe:
+Wollen wir unseren dataframe nach einer Variable sortieren, die Worte enthält, führt `order()` zu einer alphabetischen Sortierung. Wir hängen zum Ausprobieren eine character Variable an unseren `test` data.frame:
 
 ```{r}
 test$Name = c("Klaus", "Jan", "Anna", "John", "Cleo")
@@ -1275,11 +1298,13 @@ Sortieren mit `order()` anhand der Variable `Name` ergibt:
 
 ```{r}
 test5 = test[order(test$Name),]
+
+test5
 ```
 
-## Datensätze Aggreggieren
+## Datensätze zusammensetzen
 
-Oft kommt es vor, dass wir zwei dataframes zusammensetzen wollen. Dies könnte der Fall sein, wenn wir unsere Daten in 2 unterschiedlichen Tabellen gesammelt haben, wir aber nun mit den kombinierten Daten rechnen wollen. Damit beschäftigen wir uns in den nächsten Abschnitten.
+Oft kommt es vor, dass wir zwei data.frames zusammensetzen wollen. Dies könnte der Fall sein, wenn wir unsere Daten in 2 unterschiedlichen Tabellen gesammelt haben, wir aber nun mit den kombinierten Daten rechnen wollen. Damit beschäftigen wir uns in den nächsten Abschnitten.
 
 ### cbind und rbind  
 
@@ -1326,7 +1351,7 @@ test3
 
 #### rbind
 
-Zur Demonstration der `r`bind()` Funktion bauen wir uns 2 weitere kleine Test-dataframes. Wichtig ist, dass diese die selbe Anzahl von Spalten haben und dass diese die selben Variablennamen haben:
+Zur Demonstration der `rbind()` Funktion bauen wir uns 2 weitere kleine Test-dataframes. Wichtig ist, dass diese die selbe Anzahl von Spalten haben und dass diese die selben Variablennamen haben:
 
 ```{r}
 test1 <- data.frame("ID" = c(1, 2, 3, 4, 5),
@@ -1348,7 +1373,7 @@ Und hier den dataframe test2:
 test2
 ```
 
-Zum Zusammensetzen der beiden (test2 unten an test 1 "dranhängen") schreiben wir beide dataframes in die `r`bind()` Funktion. Der kombinierte Datensatz soll test 3 heißen:
+Zum Zusammensetzen der beiden (test2 unten an test 1 "dranhängen") schreiben wir beide dataframes in die `rbind()` Funktion. Der kombinierte Datensatz soll test 3 heißen:
 
 ```{r}
 test3 = rbind(test1, test2)
@@ -1360,7 +1385,7 @@ test3
 
 ### merge
 
-Haben wir 2 ungeordnete dataframe mit Daten der selben Personen, jedoch mit unterschiedlichen Variablen, die wir zusammensetzen wollen, haben wir das Problem, dass die Zeilenreihenfolge des einen dataframes ggf. nicht mit der Zeilenreihenfolge des anderen dataframes übereinstimmt:
+Haben wir 2 ungeordnete dataframes mit Daten derselben Personen, jedoch mit unterschiedlichen Variablen, die wir zusammensetzen wollen, haben wir das Problem, dass die Zeilenreihenfolge des einen dataframes ggf. nicht mit der Zeilenreihenfolge des anderen dataframes übereinstimmt:
 
 ```{r}
 test1 <- data.frame("ID" = c(1, 2, 3, 4, 5),
@@ -1380,11 +1405,14 @@ test3 = merge(test1, test2, by = "ID")
 test3
 ```
 
+```{r eval=FALSE, include=FALSE}
 ## Datensätze transformieren
 
 ### Von Long nach Wide
 
 ### Skalieren
+```
+
 
 
 <!--chapter:end:Daten_Manipulieren.Rmd-->
@@ -1425,17 +1453,21 @@ Wörtlich macht der Loop folgendes:
 2. i ist = 1
 3. Drucke i mit der Funktion print()
 4. Durchlauf der Schleife fertig
-5. Beginn die Schleife von Anfang solange 1 nicht = 10 ist
+5. Beginn der Schleife von Anfang solange i nicht = 10 ist
 6. i ist = 2
 7. Drucke i mit der Funktion print()
 8. Durchlauf der Schleife fertig
-9. Beginn die Schleife von Anfang solange 1 nicht = 10 ist
+9. Beginn der Schleife von Anfang solange i nicht = 10 ist
 10. i ist = 3
 ...
 40. i ist = 10
 41. Drucke i mit der Funktion print()
 42. Durchlauf der Schleife fertig
 43. i = 10, Ende des for() Loops
+
+```{r eval=FALSE, include=FALSE}
+##if
+```
 
 
 <!--chapter:end:Schleifen.Rmd-->
@@ -1489,7 +1521,7 @@ Mit `ggplot()` sagen wir R, dass jetzt eine Graphik erstellt wird. Wir können e
 
 Der Befehl `ggplot()` wird mit den ersten 2 Elementen der "Grammatik der Grafik" gefüllt, `data` und aesthetics, kurs `aes()`. Wir geben also an, wo unsere Daten herkommen und welche Variable auf die X-Achse und welche auf die Y-Achse gelegt werden soll. Dieses Vorgehen ist für jede Art von Graphen gleich.
 
-```{r include=FALSE}
+```{r}
 df = data.frame(Var1 = 1:10,
                 Var2 = 1:10)
 ```
@@ -1526,7 +1558,7 @@ Das Ergebnis ist ein leerer Graph, mit der Variable `carat` auf der X-Achse und 
 
 Nun fehlen uns nun noch die charakteristischen "Punkte", die den Graph zum Streudiagramm machen. Jeder Punkt repräsentiert einen Stein mit einer Karatzahl und einem Preis.
 
-Wir wollen also ein neues Element in unseren Graphen zeichnen, also sozusagen eine weiter Schicht auftragen. Dies funktioniert in `ggplot2` mit dem `+` Operator. Die Punkte sind eine Geometrie (das 3. Element unserer Grammatik). Geometrie wird i.d.R. mit `geom` geschrieben:
+Wir wollen also ein neues Element in unseren Graphen zeichnen,sozusagen eine weitere Schicht auftragen. Dies funktioniert in `ggplot2` mit dem `+` Operator. Die Punkte sind eine Geometrie (das 3. Element unserer Grammatik). Geometrie wird i.d.R. mit `geom` geschrieben:
 
 ```{r}
 ggplot(data = diamonds, aes(x = carat, y = price)) +
@@ -1561,7 +1593,7 @@ Ein weiteres wichtiges Merkmal eines Diamanten ist sein Schliff, im `diamonds` D
 table(diamonds$cut)
 ```
 
-Wollen wir diese 3. Variable auch in unserem Graphen darstellen, haben wir das Problem, dass wir neben X und Y keine weitere Achse haben. Oft behilft man sich in solchen Situationen durch die Hinzunahme einer weiteren **aesthetics** Kategorie, z.B. **Farben** (`colour`). Jede Scliffkategorie erhält also ihre eigene Farbe:
+Wollen wir diese 3. Variable auch in unserem Graphen darstellen, haben wir das Problem, dass wir neben X und Y keine weitere Achse haben. Oft behilft man sich in solchen Situationen durch die Hinzunahme einer weiteren **aesthetics** Kategorie, z.B. **Farben** (`colour`). Jede Schliffkategorie erhält also ihre eigene Farbe:
 
 ```{r message=FALSE, warning=FALSE}
 ggplot(data = diamonds, aes(x = carat, y = price, colour = cut)) +
@@ -1588,6 +1620,7 @@ Lassen Sie uns anhand der Variable `price` einmal ausprobieren ein Histogramm zu
 ggplot(data = diamonds, aes(x = price)) +
   geom_histogram()
 ```
+
 Wie wir sehen, kommen günstigere Diamanten häufiger vor als teure. In diesem Fall haben wir also nicht die beliebte **normalverteilte** Form der Verteilung, sondern eine rechtsschiefte Form.
 
 R gibt uns die Warnmeldung "Pick better value with `binwidth`". Dies ist ein Hinweis, dass die Standardanzahl von 30 Balken für die hohe Auflösung der Variable `price` nicht ausreicht. Es wird uns eine Auflösung von `binwidth = 39` vorgeschlagen:
@@ -1608,7 +1641,7 @@ ggplot(data = diamonds, aes(x = price, colour = cut)) +
 
 ## Balkendiagramm
 
-Das Balkendiagramm ist eine Möglichkeit die Höhe einer Deskriptivstatistik (aka summary statistics) mit der Höhe eines Balkens zu visualisieren. Es wird z.B. eingesetzt um Gruppenunterschiede, bzw. Unterschiede zwischen den Kategorien einer Variable darzustellen.
+Das Balkendiagramm ist eine Möglichkeit, die Höhe einer Deskriptivstatistik (aka summary statistics) mit der Höhe eines Balkens zu visualisieren. Es wird z.B. eingesetzt, um Gruppenunterschiede, bzw. Unterschiede zwischen den Kategorien einer Variable darzustellen.
 
 Probieren wir es doch gleich einmal mit der Variable `cut` (Schliff eines Diamanten) aus, die wir oben bereits kennengelernt haben. Wir wollen die durchschnittlichen Karat (Gewicht) der Steine für jede Kategorie von `cut` darstellen. Die höhe der Balken muss also jeweils den Mittelwert repräsentieren.
 
@@ -1633,9 +1666,11 @@ ggplot(data = diamonds, aes(x = cut, y = carat)) +
   stat_summary(geom = "point", fun = mean) 
 ```
 
-Häufig möchte man zusätzlich eine Art von Streuung/Unschärfe darstellen, wenn Mittelwerte dargestellt werden. Eine beliebte Variante ist es, das 95% Konfidenzintervall um den Mittelwert mit sogenannten **Fehlerbalken** (error bars) zu visualisieren:
+Häufig möchte man zusätzlich eine Art von Streuung/Unschärfe darstellen, wenn Mittelwerte dargestellt werden. Eine beliebte Variante ist es, das 95% Konfidenzintervall um den Mittelwert mit sogenannten **Fehlerbalken** (error bars) zu visualisieren. Vorher installieren und laden wir noch das Paket `Hmisc`, welches uns die Berechnung der Fehlerbalken ermöglicht:
 
 ```{r}
+library(Hmisc)
+
 ggplot(data = diamonds, aes(x = cut, y = carat)) +
   stat_summary(fun.data = mean_cl_normal,  geom = "errorbar") +
   stat_summary(geom = "point", fun = mean) 
@@ -1650,9 +1685,11 @@ ggplot(data = diamonds, aes(x = cut, y = carat, fill = clarity)) +
   stat_summary(geom = "bar", fun = mean, position = position_dodge2(.95))
 ```
 
+Das Argument `position_dodge2()` sorgt dafür, dass die Balken nebeneinander positioniert sind und nicht voreinander. Probieren Sie den Code gerne auch einmal ohne `position_dodge2()` aus.
+
 ## Boxplot
 
-Ähnlich wie das Balkendiagramm, lassen sich Gruppenunterschiede gut mit einem Boxplot darstellen. Dieses zeigt standardmäßig den Median (Mittelbalken), sowie die Streuung der Daten mittels der Box (Quartilabstand, IQR) und die sogenannten Whiskers (1.5 * Quartilabstand) dar. Punkte außerhalb der Whiskers werden als Ausreißer mit einem Punkt gekennzeichnet.
+Ähnlich wie das Balkendiagramm, lassen sich Gruppenunterschiede gut mit einem Boxplot darstellen. Dieses zeigt standardmäßig den Median (Mittelbalken), sowie die Streuung der Daten mittels der Box (Quartilabstand, IQR) und die sogenannten Whiskers (1.5 * Quartilabstand). Punkte außerhalb der Whiskers werden als Ausreißer mit einem Punkt gekennzeichnet.
 
 ```{r}
 ggplot(data = diamonds, aes(x = cut, y = carat)) +
@@ -1669,7 +1706,7 @@ ggplot(data = diamonds, aes(x = carat, y = price, colour = cut)) +
   geom_smooth(method = "lm")
 ```
 
-Es ist sichtbar, dass die Darstellung vieler Kategorien mit weitere aesthetics, wie Farben, Füllungen, Punktarten, etc. schnell unübersichtlich wird.
+Es ist sichtbar, dass die Darstellung vieler Kategorien mittels weiterer aesthetics, wie Farben, Füllungen, Punktarten, etc. schnell unübersichtlich wird.
 
 Oft ist es nützlich, durch die Darstellung einzelner Gruppen in Teilgraphen (Facetten) etwas mehr Klarheit in die Darstellung zu bringen. Der Befehl dafür ist `facet_grid()`:
 
@@ -1821,9 +1858,9 @@ Es gibt R-Pakete, die hunderte weitere Optionen bereitstellen, so zum Beispiel d
 
 ## Abbildungen kombinieren
 
-Gerade bei komplexeren Fragestellungen oder Studien mit mehreren abhängigen Variablen (AVs), kommt es vor dass die Anzahl der Graphen etwas zu groß wird. 
+Gerade bei komplexeren Fragestellungen oder Studien mit mehreren abhängigen Variablen (AVs) kommt es vor, dass die Anzahl der Graphen etwas zu groß wird. 
 
-Dann kann es helfen mehrere Graphen zu einer zusammenzusetzen. Die Funktion dafür heißt `ggarrange()` und kommt aus dem R-Paket `ggpubr`.
+Dann kann es helfen, mehrere Graphen zu einem kombinierte Graph zusammenzusetzen. Die Funktion dafür heißt `ggarrange()` und kommt aus dem R-Paket `ggpubr`.
 
 Also installieren Sie kurz das Paket `ggpubr`, laden es mittels `library()` und dann geht es gleich weiter:
 
@@ -1832,7 +1869,7 @@ Also installieren Sie kurz das Paket `ggpubr`, laden es mittels `library()` und 
 library(ggpubr)
 ```
 
-Damit es sich auch lohnt, nehmen wir uns gleich einmal 4 Graphen vor. Nehmen wir doch eines von jeder Art. Damit es nicht zu unübersichtlich wird, benennen wir die 4 Graphen mit `a`, `b`, `c` und `d`:
+Damit es sich auch lohnt, nehmen wir uns gleich einmal 4 Graphen vor. Nehmen wir doch einen von jeder Art. Damit es nicht zu unübersichtlich wird, benennen wir die 4 Graphen mit `a`, `b`, `c` und `d`:
 
 ```{r}
 a = ggplot(data = diamonds, aes(x = price)) +
@@ -1856,25 +1893,25 @@ ggarrange(a, b, c, d, labels = c("A", "B", "C", "D"))
 
 Wir können auch steuern, wie das Gitter der Graphen zusammengesetzt sein soll, zum Beispiel untereinander... 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ggarrange(a, b, nrow = 2)
 ```
 
 ... oder nebeneinander:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ggarrange(a, b, ncol = 2)
 ```
 
 ## Abbildungen exportieren
 
-Der Export der Graphen mein im Prinip folgendes: Speichere mir den Graphen in mein Arbeitsverzeichnis und das in einem gängigen Bildformat (.pdf, .png, .jpg, .tif...).
+Der Export der Graphen meint im Prinzip folgendes: Speichere mir den Graphen in mein Arbeitsverzeichnis und das in einem gängigen Bildformat (.pdf, .png, .jpg, .tif...).
 
-Das Vorgehen funktioniert für alle Format gleich:
+Das Vorgehen funktioniert für alle Formate gleich:
 
 1. Wenn noch nicht geschehen, mit `setwd()` das gewünschte Arbeitsverzeichnnis setzen
 
-2. Mittels Befehl angeben welche Art von Export gewünscht ist, z.B. `png()`
+2. Mittels Befehl angeben, welche Art von Export gewünscht ist, z.B. `png()`
 
 3. Den Code für den `ggplot()` Graphen ausführen
 
@@ -1902,7 +1939,7 @@ Ausführen des Befehls speichert Ihnen die Datei Figure1.png in das Arbeitsverze
 
 # Korrelation
 
-Als nächste Hypothesentests schauen wir uns die Korrelationen an: 
+Als möglichen Hypothesentest schauen wir uns die Korrelationen an: 
 
 Bei einem Korrelationstest wird die Beziehung zwischen zwei Variablen auf einer Verhältnis- oder Intervallskala untersucht: z. B. Größe und Gewicht oder Einkommen und Selbstvertrauen 
 
@@ -1935,13 +1972,13 @@ dat3 <- rnorm_multi(n = 100,
 ```{r echo=F, message=FALSE, warning=FALSE}
 ggpubr::ggarrange(ggplot(dat1, aes(A, B)) + geom_point() + geom_smooth(method = "lm") + ggtitle("r = -0.81") + theme_classic(),
                   ggplot(dat2, aes(A, B)) + geom_point() + geom_smooth(method = "lm") + ggtitle("r = -0.02") + theme_classic(),
-                  ggplot(dat3, aes(A, B)) + geom_point() + geom_smooth(method = "lm") + ggtitle("r = -0.79") + theme_classic(),
+                  ggplot(dat3, aes(A, B)) + geom_point() + geom_smooth(method = "lm") + ggtitle("r = 0.79") + theme_classic(),
                   ncol = 3)
 ```
 
 ## Hypothesen
 
-```{r include=FALSE}
+```{r}
 data <- rnorm_multi(n = 100, 
                   mu = c(100, 8),
                   sd = c(25, 2),
@@ -2019,7 +2056,7 @@ Der **Spearman** Korrelationskoeffizient funktioniert im Wesentlichen wie der Pe
 
 Das macht ihn unempfindlicher gegenüber Verteilungsverletzungen und Ausreißern.
 
-Die Berechnung des **Spearman** Korrelationskoeffizienten erfolgt nach der selben Methode, mit einer kleinen Spezifikation:
+Die Berechnung des **Spearman** Korrelationskoeffizienten erfolgt nach derselben Methode, mit einer kleinen Spezifikation:
 
 ```{r}
 cor(data$Konzentration, data$Schlaf, method = "spearman")
@@ -2045,13 +2082,13 @@ Ein Signifikanztest für den Korrelationskoeffizienten lässt sich jedoch einfac
 
 | Argument| Description| 
 |:------------|:-------------------------------------------------|
-|`formula`|Argument in Formelformat `~ x + y`, x und y sind die Namen der Variablen deren bivariater Zusammenhang getestet werden soll. Diese Variiablen sollten in getrennten Spalten eines dataframe stehen.|
+|`formula`|Argument in Formelformat `~ x + y`, x und y sind die Namen der Variablen deren bivariater Zusammenhang getestet werden soll. Diese Variablen sollten in getrennten Spalten eines dataframes stehen.|
 |`data`|Der data.frame, der x und y enthält|
 |`alternative`|Hier kann die Richtung der Alternativhypothese angegeben werden. Wählen Sie `"two.sided"` für eine ungerichtete Hypothese, oder `"greater"` bzw. "`less"` für eine gerichtete Hypothese.|
-|`method`|Gibt die Art des zu berechnenden Korrelationskoeffizienten an. `"pearson"` (default) steht für die Produkt-Moment Korrelatioin, `"kendall"` und `"spearman"` stehen für die Rangkorrelatioinen nach Kendall und Spearman. |
+|`method`|Gibt die Art des zu berechnenden Korrelationskoeffizienten an. `"pearson"` (default) steht für die Produkt-Moment Korrelation, `"kendall"` und `"spearman"` stehen für die Rangkorrelatioinen nach Kendall und Spearman. |
 |`subset`|Hier kann direkt ein Teildatensatz ausgewählt werden. Z.B.; `subset = sex == "female"`|
 
-Wenn wir zum Beispiel testen wollten, ob ein signifikanter negativer Zusammenhang zwischen Konzentration und Schlaf besteht könnten wir das mit folgendem Signifikanztest prüfen:
+Wenn wir zum Beispiel testen wollten, ob ein signifikanter negativer Zusammenhang zwischen Konzentration und Schlaf besteht, könnten wir das mit folgendem Signifikanztest prüfen:
 
 ```{r}
 cor.test(data$Konzentration, data$Schlaf, method = "pearson", alternative = "less")
@@ -2071,8 +2108,7 @@ library(papaja)
 
 ## Ein-Stichproben t-Test
 
-```{r include=FALSE}
-# https://www.youtube.com/watch?v=KRO5y0M__BA
+```{r}
 data = read.csv("data/One sample t-test.csv")
 names(data) = c("gewicht", "groesse")
 ```
@@ -2081,7 +2117,7 @@ names(data) = c("gewicht", "groesse")
 
 Mit einem Ein-Stichproben t-Test vergleichen wir den Mittelwert einer Gruppe mit einem hypothetischen Mittelwert. 
 
-Der Test prüft also anhand des Mittelwerts einer Stichprobe ob der Erwartungswert in der entsprechenden Population gleich einem vorgegebenen Wert ist (dem unter $H_{0}$ erwarteten $μ_{0}$).
+Der Test prüft also anhand des Mittelwerts einer Stichprobe, ob der Erwartungswert in der entsprechenden Population gleich einem vorgegebenen Wert ist (dem unter $H_{0}$ erwarteten $μ_{0}$).
 
 Es sind folgende Hypothesen denkbar:
 
@@ -2262,7 +2298,7 @@ Zunächst können wir uns die Deskriptivstatistiken innerhalb der beiden Gruppen
 psych::describeBy(Weight.loss ~ Gender, data = data)
 ```
 
-Rein deskriptiv lässt sich bereits feststellen, dass Männer mit `r `round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg etwas weniger abgenommen zu haben scheinen, als Frauen mit `r `round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg. 
+Rein deskriptiv lässt sich bereits feststellen, dass Männer mit `r round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg etwas weniger abgenommen zu haben scheinen, als Frauen mit `r round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg. 
 
 Ob sich dieser numerische Unterschied auch als signifikant erweist, prüfen wir mit dem t-Test.
 
@@ -2282,7 +2318,7 @@ Alternative Schreibweise:
 t.test(data$Weight.loss[data$Gender == "Males"], data$Weight.loss[data$Gender == "Females"])
 ```
 
-Für eine gerichteten Test (z.B. Frauen nehmen mehr ab als Männer)
+Für einen gerichteten Test (z.B. Frauen nehmen mehr ab als Männer)
 
 ```{r}
 t.test(Weight.loss ~ Gender, data = data, alternative = "greater")
@@ -2334,7 +2370,6 @@ Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt
 Die Varianzhomogenität wird mittels Levene's Test (F-Test) geprüft @levene1960robust. Eine Funktion dafür ist im Patek `car` enthalten.
 
 ```{r}
-# https://www.youtube.com/watch?v=717UWGnyQGA&feature=youtu.be
 car::leveneTest(Weight.loss ~ Gender, data = data)
 ```
 
@@ -2389,7 +2424,7 @@ apa_table(d, caption = "Interpretation von Cohen's d.")
 
 Eine gelegentlich verwendete Alternative zu Cohen's d ist das Hedges' g. Hedges' g wird weitgehend analog zu Cohen's d verwendet, korrigiert dabei jedoch statistisch für besonders kleine Gruppengößen (N<20) @hedges2014statistical
 
-Es lässt sich mit der selben Funktion berechnen:
+Es lässt sich mit derselben Funktion berechnen:
 
 ```{r}
 effsize::cohen.d(Weight.loss ~ Gender, data = data, hedges.correction = TRUE)
@@ -2429,7 +2464,7 @@ names(data) = c("gewicht_prä", "gewicht_post")
 ```
 ### Hypothesen
 
-Mit einem abhängigen t-Test vergleichen wir die Mittelwerte zweier abhängiger Messungen. Ein klassisches Beispiel dafür ist der Vergleich von zwei Messzeitpunkten der selben Variable in der selben Gruppe von Personen.
+Mit einem abhängigen t-Test vergleichen wir die Mittelwerte zweier abhängiger Messungen. Ein klassisches Beispiel dafür ist der Vergleich von zwei Messzeitpunkten derselben Variable in derselben Gruppe von Personen.
 
 Im Datensatz muss eine numerische Variable mit Messungen zu zwei Zeiten vorliegen (AV). Die dichotome UV, so wie wir sie vom unabhängigen t-Test kennen ist der Zeitpunkt (z.B. Prä vs. Post).
 
@@ -2595,9 +2630,9 @@ Der Wilcoxon–Mann–Whitney-U Test ist eine **Alternative zum unabhängigen t-
 
 ### Hypothesen
 
-Er prüft im Wesentlichen die selben Hypothesen, funktioniert aber auf Rangskalenniveau anstelle des Intervallskalenniveaus.
+Er prüft im Wesentlichen dieselben Hypothesen, funktioniert aber auf Rangskalenniveau anstelle des Intervallskalenniveaus.
 
-Um beide Tests vergleichen zu können, verwenden wir noch einmal das selbe Beispiel, wie im Kapitel zum unabhängigen t-Test (Unterschied im Gewichtsverlust nach Diät: Männer vs. Frauen).
+Um beide Tests vergleichen zu können, verwenden wir noch einmal dasselbe Beispiel, wie im Kapitel zum unabhängigen t-Test (Unterschied im Gewichtsverlust nach Diät: Männer vs. Frauen).
 
 ```{r include=FALSE}
 data = read.csv("data/Independent t-test.csv")
@@ -2605,22 +2640,22 @@ data = read.csv("data/Independent t-test.csv")
 
 ### Test durchführen
 
-Der Test nimmt die selbe Form an wie der abhängige t-Test:
+Der Test nimmt dieselbe Form an wie der abhängige t-Test:
 
 ```{r warning=FALSE}
-wilcox.test(Weight.loss ~ Gender, data = data)
+wilcox.test(Weight.loss ~ Gender, data = data, exact = FALSE)
 ```
 
 Alternative Schreibweise:
 
 ```{r warning=FALSE}
-wilcox.test(data$Weight.loss[data$Gender == "Males"], data$Weight.loss[data$Gender == "Females"])
+wilcox.test(data$Weight.loss[data$Gender == "Males"], data$Weight.loss[data$Gender == "Females"], exact = FALSE)
 ```
 
-Für eine gerichteten Test (z.B. Frauen nehmen mehr ab als Männer)
+Für einen gerichteten Test (z.B. Frauen nehmen mehr ab als Männer)
 
 ```{r warning=FALSE}
-wilcox.test(Weight.loss ~ Gender, data = data, alternative = "greater")
+wilcox.test(Weight.loss ~ Gender, data = data, alternative = "greater", exact = FALSE)
 ```
 
 ### Relevante Parameter extrahieren
@@ -2634,21 +2669,21 @@ Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:
 
 Wilcoxon Statistik (W, Teststatistik):
 ```{r warning=FALSE}
-wilcox.test(Weight.loss ~ Gender, data = data)$statistic
+wilcox.test(Weight.loss ~ Gender, data = data, exact = FALSE)$statistic
 ```
 
 P-Wert:
 ```{r warning=FALSE}
-wilcox.test(Weight.loss ~ Gender, data = data)$p.value
+wilcox.test(Weight.loss ~ Gender, data = data, exact = FALSE)$p.value
 ```
 
 ### Effektstärke
 
 #### Rangsummenkoeffizient $(r)$
 
-Die am häufigsten verwendete Effektstärke für den non-parametrischen Vergleich zweier unabhängiger Gruppen ist der sogenannte Rangsummenkoeffizient @tomczak2014need.
+Die am häufigsten verwendete Effektstärke für den non-parametrischen Vergleich zweier unabhängiger Gruppen ist der sogenannte Rangsummenkoeffizient [@tomczak2014need].
 
-Der Rangsummenkoeffizient $(r)$ lässt sich mit dem Paket `rstatix` berechnen. Die Funktion lautet `wilcox_effsize()`.
+Der Rangsummenkoeffizient $(r)$ lässt sich mit dem Paket `rstatix` berechnen. Die Funktion lautet `wilcox_effsize()`. Zudem müssen wir vorher das Paket `coin` installieren.
 
 Die Funktion zur Berechnung des Rangsummenkoeffizienten wird wie folgt aufgestellt:
 
@@ -2700,7 +2735,7 @@ Der Wilcoxon–Mann–U Test ist eine **Alternative zum abhängigen t-Test**.
 
 Er prüft im Wesentlichen die selben Hypothesen, funktioniert aber auf Rangskalenniveau anstelle des Intervallskalenniveaus.
 
-Um beide Tests vergleichen zu können, verwenden wir noch einmal das selbe Beispiel, wie im Kapitel zum abhängigen t-Test (Unterschied im Gewicht: vor einer Diät vs. nach einer Diät).
+Um beide Tests vergleichen zu können, verwenden wir noch einmal dasselbe Beispiel, wie im Kapitel zum abhängigen t-Test (Unterschied im Gewicht: vor einer Diät vs. nach einer Diät).
 
 ```{r include=FALSE}
 data = read.csv("data/Paired t-test.csv")
@@ -2715,7 +2750,7 @@ Der Test nimmt die selbe Form an wie der abhängige t-Test:
 wilcox.test(data$gewicht_prä, data$gewicht_post, paired = T)
 ```
 
-Für eine gerichteten Test z.B. Prä-Gewicht höher als Post-Gewicht)
+Für einen gerichteten Test z.B. Prä-Gewicht höher als Post-Gewicht)
 
 ```{r warning=FALSE}
 wilcox.test(data$gewicht_prä, data$gewicht_post, paired = T, alternative = "greater")
@@ -2804,7 +2839,7 @@ Wir haben nun die t-Tests kennengelernt. Diese haben alle gemeinsam, dass Sie Mi
 
 Wie können wir aber Vergleiche rechnen, wenn unsere AV eine kategoriale (z.B. binäre) Variable ist?
 
-Die verglichene Statistik ist dann die Verteilung, bzw. die Häufigkeit der Ausprägungen der AV anstelle von Mittelwerte.
+Die verglichene Statistik ist dann die Verteilung, bzw. die Häufigkeit der Ausprägungen der AV anstelle von Mittelwerten.
 
 ```{r include=FALSE}
 data1 = data.frame(Remission = sample(0:1, 20, replace = T, prob = c(0.5, 0.5)),
@@ -2822,7 +2857,7 @@ Ein Beispiel für so ein Szenario könnte sein, dass wir ähnlich wie beim unabh
 
 Die AV könnte der Behandlungserfolg sein, also ob die Personen nach der Behandlung in Remission waren. 
 
-Wir haben also keine numerische AV mehr, für die wie einen Mittelwert bilden könnten, sondern eine Variable mit 2 Stufen (Remission: ja/nein).
+Wir haben also keine numerische AV mehr, für die wir einen Mittelwert bilden könnten, sondern eine Variable mit 2 Stufen (Remission: ja/nein).
 
 ### Deskriptive Einordnung
 
@@ -3006,7 +3041,7 @@ fisher.test(table(data$Remission, data$Therapie))
 
 # ANOVA
 
-Die ANOVA (Analysis of variance, dt. Varianzanalyse) ist ein weiiterer Signifikanztest. Mit der ANOVA können wir Prüfen, ob eine unabhängige Variable (UV) einen signifikanten Anteil Varianz der abhängigen Variable erklärt (AV). Die UVs nennen wir bei der ANOVA i.d.R. **Faktor**.
+Die ANOVA (Analysis of variance, dt. Varianzanalyse) ist ein weiterer Signifikanztest. Mit der ANOVA können wir Prüfen, ob eine unabhängige Variable (UV) einen signifikanten Anteil Varianz der abhängigen Variable erklärt (AV). Die UVs nennen wir bei der ANOVA i.d.R. **Faktor**.
 
 Statistisch ist die ANOVA ein F-Test (Varianzquotient).
 
@@ -3055,7 +3090,7 @@ Zunächst können wir uns die Deskriptivstatistiken innerhalb der 4 Gruppen einm
 psych::describeBy(Symptoms ~ Therapy, data = therapy)
 ```
 
-Rein deskriptiv lässt sich bereits feststellen, dass Patient:innen nach der VT die niedrigsten Symptome aufweisen (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "VT"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "VT"]), 2)`]), gefolgt von SSRI  (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "SSRI"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "SSRI"]), 2)`]), PA  (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "PA"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "PA"]), 2)`]) und Control  (M [SD]=`r round(mean(therapy$Symptims[therapy$Therapy == "Control"]), 2)` [`r round(sd(therapy$Symptims[therapy$Therapy == "Control"]), 2)`]).
+Rein deskriptiv lässt sich bereits feststellen, dass Patient:innen nach der VT die niedrigsten Symptome aufweisen (M [SD]=`r round(mean(therapy$Symptoms[therapy$Therapy == "VT"]), 2)` [`r round(sd(therapy$Symptoms[therapy$Therapy == "VT"]), 2)`]), gefolgt von SSRI  (M [SD]=`r round(mean(therapy$Symptoms[therapy$Therapy == "SSRI"]), 2)` [`r round(sd(therapy$Symptoms[therapy$Therapy == "SSRI"]), 2)`]), PA  (M [SD]=`r round(mean(therapy$Symptoms[therapy$Therapy == "PA"]), 2)` [`r round(sd(therapy$Symptoms[therapy$Therapy == "PA"]), 2)`]) und Control  (M [SD]=`r round(mean(therapy$Symptoms[therapy$Therapy == "Control"]), 2)` [`r round(sd(therapy$Symptoms[therapy$Therapy == "Control"]), 2)`]).
 
 Die Gruppenunterschiede lassen sich auch graphisch gut darstellen:
 
@@ -3069,7 +3104,7 @@ Ob sich die numerischen Unterschiede sich auch als signifikant erweisen, prüfen
 
 ### Berechnung der ANOVA
 
-Die einfaktorielle ANOVA lässt sich in R auf zwei Arten berechnen, die beide zu dem exakt selben Ergebnissen kommen.
+Die einfaktorielle ANOVA lässt sich in R auf zwei Arten berechnen, die beide zu dem exakt selben Ergebnis kommen.
 
 * eingebaute `lm()` Funktion gefolgt von `anova()`
 * `aov_ez()` Funktion aus dem `afex` Paket
@@ -3104,14 +3139,14 @@ Die Entscheidungsregel ist uns bereits bekannt: Ist der p-Wert (hier $p=0.000576
 
 Die Berechnung mit der `aov_ez()` Funktion erfolgt analog, nur wird die Formel etwas anders geschrieben.
 
-Wir legen genau fest was unsere AV ist `dv`. Zudem brauchen wir eine Variable, die jede Zeile eindeutig einem Individuum zuordnet `id`.
+Wir legen genau fest, was unsere AV ist `dv`. Zudem brauchen wir eine Variable, die jede Zeile eindeutig einem Individuum zuordnet `id`.
 
 Die Faktoren (UVs) werden mit einem der beiden folgenden Argumente angegeben:
 
 * `between` (Zwischensubjektfaktoren)
 * `within` (Innersubjektfaktoren)
 
-Faktoren die unter `between` angegeben werden, sind unabhängige Messungen, also Variablen die einen Gruppenvergleich möglich machen. Faktoren die unter `within` angegeben werden, sind abhängige Messungen, also beispielsweise mehrere Messzeitpunkte der selben Person.
+Faktoren, die unter `between` angegeben werden, sind unabhängige Messungen, also Variablen die einen Gruppenvergleich möglich machen. Faktoren, die unter `within` angegeben werden, sind abhängige Messungen, also beispielsweise mehrere Messzeitpunkte derselben Person.
 
 In unserem Fall liegt ein Gruppenvergleich vor (jede Person hat jeweils nur eine der Therapien erhalten), daher nutzen wir `between`. Für `id` nutzen wir einfach die Variable `X`, die einen Patientencode für jede Person enthält.
 
@@ -3149,7 +3184,7 @@ Mit dem `pairwise` Argument sagen wir der `emmeans()` Funktion zwischen welchen 
 
 Der Output der `emmeans()` Funktion hat 2 Teile
 
-* $emmeans (oberer Teil: hier werden praktischer die verglichenen Mittelwerte noch einmal ausgerechnet)
+* $emmeans (oberer Teil: hier werden praktischerweise die verglichenen Mittelwerte noch einmal ausgerechnet)
 * $contrasts (unterer Teil: hier werden die Ergebnisse der Post-hoc Tests gezeigt)
 
 Die Interpretation des Ergebnisses ist uns bereits bekannt. Jeder Vergleich erhält einen t-Wert und einen p-Wert, anhand dessen wir ablesen können, ob der Gruppenunterschied signifikant war. 
@@ -3158,7 +3193,7 @@ Der Mittelwert der Gruppe VT war signifikant niedriger als der in der Kontrollgr
 
 #### Korrektur für multiples Testen
 
-Nun haben wir im Abschnitt über die $\alpha$-Fehler Kumulierung bereits erfahren, dass das Durchführen vieler Vergleiche problematisch sein kann, da es die Wahrscheinlichkeit erhöht einen Fehler 1. Art zu begehen.
+Nun haben wir im Abschnitt über die $\alpha$-Fehler Kumulierung bereits erfahren, dass das Durchführen vieler Vergleiche problematisch sein kann, da es die Wahrscheinlichkeit erhöht, einen Fehler 1. Art zu begehen.
 
 Post-hoc Tests lösen dieses Problem durch eine Korrektur des p-Werts. Je mehr Vergleiche gemacht werden, desto mehr wird er nach oben korrigiert. Automatisch wendet `emmeans()` die sogenannte Tukey-Korrektur an (ganz unten im Output sichtbar).
 
@@ -3218,7 +3253,7 @@ ggplot(data = therapy, aes(x = Therapy, y = Symptoms, colour = Diagnosis)) +
 
 #### Berechnung mittels `lm()`
 
-Die Vorgehensweise ist die selbe wie bei der einfaktoriellen ANOVA. Die Formel wird lediglich durch die Interaktion mit der 2. UV erweitert.
+Die Vorgehensweise ist dieselbe wie bei der einfaktoriellen ANOVA. Die Formel wird lediglich durch die Interaktion mit der 2. UV erweitert.
 
 ```{r}
 mod = lm(Symptoms ~ Therapy * Diagnosis, data = therapy)
@@ -3241,7 +3276,7 @@ mod
 
 ### Interpretation
 
-Die beiden Haupteffekte und der Interaktionseffekt können einzeln Interpretiert werden. Wir gehen der Reihe nach:
+Die beiden Haupteffekte und der Interaktionseffekt können einzeln interpretiert werden. Wir gehen der Reihe nach:
 
 #### Haupteffekt 1
 
@@ -3258,9 +3293,9 @@ Der Haupteffekt von `Diagnosis` ist nichts anderes als ein unabhängiger t-Test.
 Der Interaktionseffekt von `Therapy * Diagnosis` prüft, ob der Effekt der Therapie in beiden Diagnosen unterschiedlich wirkt.
 Er ist somit eine Möglichkeit den "kombinierten Effekt" der beiden Variablen zu prüfen.
 
-Der Interaktionseffekt ist signifikant $F_{(3,22)}=3.33, p<.038$. Entsprechend scheinen die Patient:innen nach den Therapien unterschiedlich wenige Symptome, je ncahdem welche Diagnose sie hatten.
+Der Interaktionseffekt ist signifikant $F_{(3,22)}=3.33, p<.038$. Entsprechend scheinen die Patient:innen nach den Therapien unterschiedlich wenige Symptome zu haben, je nachdem welche Diagnose sie hatten.
 
-Um diesen Effekt zu inhaltlich zu verstehen, empfiehlt sich ein Blick auf die Graphik, in Kombination mit Post-Hoc Tests.
+Um diesen Effekt inhaltlich zu verstehen, empfiehlt sich ein Blick auf die Graphik, in Kombination mit Post-Hoc Tests.
 
 ### Post-hoc Tests
 
@@ -3271,10 +3306,153 @@ library(emmeans)
 emmeans(mod, pairwise ~ Therapy|Diagnosis)
 ```
 
-Wir sehen, dass die Symptome nach SSRI insbesondere in der Gruppe der depressiven Patient:innen reduziert sind. Zudem sind die Symtome nach VT besonders nach der VT heruntergegangen.
+Wir sehen, dass die Symptome nach SSRI insbesondere in der Gruppe der depressiven Patient:innen reduziert sind. Zudem sind die Symtome nach der VT deutlich reduziert (insbesondere bei Angststörungen).
 
 Dies führt dazu, dass die VT (in dieser Stichprobe) in der Behandlung von Angststörungen der Kontrollgruppe $(t_{(22)}=4.68, p<.001)$, der Psychoanalyse $(t_{(22)}=4.02, p=.003)$ und den SSRI $(t_{(22)}=3.99, p=.003)$ überlegen war. In der Behandlung von Angststörungen waren sowohl SSRI $(t_{(22)}=3.29, p=.016)$ als auch VT $(t_{(22)}=3.38, p=.013)$ besser als die Kontrollgruppe, unterschieden sich jedoch nicht signifikant von der Psychoanalyse und auch nicht voneinander.
 
+## Prüfen der Voraussetzungen von ANOVAs
+
+Wie alle statistischen Modelle haben ANOVAs eine Reihe von Annahmen, die für gültige Schlussfolgerungen gelten sollten. Diese Annahmen sind:
+
+1. **Beobachtungen sind i.i.d.:** i.i.d. steht für "unabhängig und identisch verteilt". Unabhängig bedeutet, dass die bedingten Beobachtungen (d.h. Residuen) unabhängig voneinander sind (d.h. das Wissen des Wertes eines Residuums erlaubt keine Rückschlüsse auf den Wert eines anderen Residuums). Identisch verteilt bedeutet, dass alle Beobachtungen durch denselben Daten-generierenden Prozess erzeugt werden.
+
+2. **Homogenität der Varianzen:** Die Varianzen über alle Gruppen (Zellen) der zwischen-Subjekt-Effekte sind gleich.
+
+3. **Sphärizität:** Bei innerhalb-Subjekt-Effekten ist die Sphärizität die Bedingung, dass die Varianzen der Unterschiede zwischen allen möglichen Paaren von innerhalb-Subjekt-Bedingungen (d.h. Levels der unabhängigen Variablen) gleich sind. Dies kann als eine innerhalb-Subjekt-Version der Homogenität der Varianzen-Annahme betrachtet werden.
+
+4. **Normalverteilung der Residuen:** Die Fehler, die für die Schätzung des Fehlerterms (MSE) verwendet werden, sind normalverteilt.
+
+Die wichtigste Annahme ist im Allgemeinen die i.i.d.-Annahme (d.h. wenn sie nicht erfüllt ist, sind die Schlussfolgerungen wahrscheinlich ungültig), insbesondere der unabhängige Teil. Diese Annahme kann nicht empirisch getestet werden, sondern muss auf konzeptuellen oder logischen Gründen beruhen. Zum Beispiel stammen in einem idealen vollständig zwischen den Probanden durchgeführten Design jede Beobachtung von einem anderen Probanden, der zufällig aus einer Population ausgewählt wird, so dass wir wissen, dass alle Beobachtungen unabhängig sind. Oft sammeln wir jedoch mehrere Beobachtungen von demselben Probanden in einem innerhalb der Probanden oder wiederholten Messungen-Design. Um sicherzustellen, dass die i.i.d.-Annahme in diesem Fall erfüllt ist, müssen wir eine ANOVA mit innerhalb der Probanden Faktoren angeben. Wenn wir jedoch einen Datensatz mit mehreren Quellen von Nicht-Unabhängigkeit haben - wie Teilnehmern und Items - können ANOVA-Modelle nicht verwendet werden, sondern wir müssen ein gemischtes Modell verwenden.
+
+Die anderen Annahmen können empirisch getestet werden, entweder graphisch oder mit statistischen Annahmetests. Es gibt jedoch unterschiedliche Meinungen darüber, wie nützlich statistische Annahmetests sind, wenn sie automatisch für jede ANOVA durchgeführt werden. Obwohl dies in einigen Statistikbüchern vertreten wird, besteht die Gefahr, dass die statistische Analyse auf ein "Kochbuch" oder "Flussdiagramm" reduziert wird. Die Datenanalyse in der Realität ist oft komplexer als solche einfachen Regeln. Es ist daher oft produktiver, die Daten mit Hilfe von deskriptiven Statistiken und grafischen Darstellungen zu erkunden. Diese Datenexploration sollte es ermöglichen, zu beurteilen, ob die anderen ANOVA-Annahmen in ausreichendem Maße erfüllt sind. Zum Beispiel ermöglicht es das Plotten der ANOVA-Ergebnisse mit afex_plot und einer vernünftigen Darstellung der einzelnen Datenpunkte oft, sowohl die Homogenität der Varianz als auch die Normalverteilung der Residuenannahme zu beurteilen.
+
+Lassen Sie uns nun alle drei empirisch testbaren Annahmen im Detail betrachten. ANOVAs sind oft robust gegen leichte Verletzungen der Annahme der Homogenität der Varianzen. Wenn diese Annahme jedoch deutlich verletzt ist, haben wir etwas Wichtiges über die Daten gelernt, nämlich Varianzheterogenität, die weitere Untersuchungen erfordert. Einige weitere statistische Lösungen werden unten diskutiert.
+
+Wenn das Hauptziel einer ANOVA darin besteht, zu sehen, ob bestimmte Effekte signifikant sind oder nicht, dann ist die Annahme der Normalverteilung der Residuen nur für kleine Stichproben erforderlich, dank des zentralen Grenzwertsatzes. Wie von Lumley et al. (2002) gezeigt, sind selbst extreme Verletzungen der Normalitätsannahmen bei Stichproben von ein paar hundert Probanden unproblematisch. Daher sind leichte Verletzungen dieser Annahme unproblematisch.
+
+Eine angemessene explorative Datenanalyse oft besser ist als die blindes Anwenden von statistischen Annahmetests. Dennoch sind Annahmetests natürlich ein wichtiges Werkzeug im statistischen Werkzeugkasten und können in vielen Situationen hilfreich sein.
+
+### Testen der empirisch testbaren Annahmen
+
+`afex`verfügt über eine Reihe von integrierten Funktionen, um bei der Überprüfung der Annahmen des ANOVA-Designs zu helfen. 
+
+* Die Varianzen über alle Gruppen (Zellen) der zwischen-subjektiven Effekte sind gleich. Dies kann mit performance::check_homogeneity() getestet werden.
+* Sphärizität: Für innerhalb-subjektive Effekte ist die Sphärizität die Bedingung, bei der die Varianzen der Unterschiede zwischen allen möglichen Paaren von innerhalb-subjektiven Bedingungen (d.h. Stufen der unabhängigen Variable) gleich sind. Dies kann als eine innerhalb-subjektive Version der Homogenität der Varianzen betrachtet werden und kann mit performance::check_sphericity() getestet werden.
+* Normalität der Residuen: Die für die Schätzung des Fehlerterms (MSE) verwendeten Fehler sind normal verteilt. Dies kann mit performance::check_normality() abgeleitet werden.
+
+```{r}
+library(afex)
+library(performance) # für die Voraussetzungsprüfung
+```
+
+### Homogenität der Varianzen:
+
+Diese Annahme besagt für Zwischen-Gruppen-Designs, dass die Fehler innerhalb der Gruppen eine gemeinsame Varianz um den Mittelwert der Gruppe aufweisen. 
+
+#### Test
+
+Dies kann mit dem Levene-Test getestet werden:
+
+```{r}
+data(obk.long, package = "afex")
+
+mod <- aov_ez("id", "value", obk.long, 
+             between = c("treatment", "gender"))
+
+check_homogeneity(mod)
+```
+
+Diese Ergebnisse deuten darauf hin, dass die Homogenität nicht signifikant verletzt ist.
+
+#### Maßnahmen wenn Vorraussetzung verletzt
+
+ANOVAs sind im Allgemeinen robust gegenüber "leichter" Heteroskedastizität, aber es gibt verschiedene andere Methoden (die in `afex` nicht verfügbar sind), um robuste Fehlerabschätzungen zu erhalten.
+
+Eine weitere Alternative besteht darin, diese Annahme ganz aufzugeben und Permutationstests (z.B. mit `permuco`) oder Bootstrap-Schätzungen (z.B. mit `boot`) zu verwenden.
+
+### Sphärizität:
+
+#### Test
+
+Wir können check_sphericity() verwenden, um den Mauchly-Test auf Sphärizität durchzuführen:
+
+```{r}
+data("fhch2010", package = "afex")
+
+mod <- aov_ez("id", "log_rt", fhch2010,
+             between = "task", 
+             within = c("density", "frequency", "length", "stimulus"))
+
+check_sphericity(mod)
+```
+
+Wir können sehen, dass beide Fehlerterme der Länge:Reiz und Aufgabe:Länge:Reiz-Interaktionen die Annahme der Sphärizität bei $p = 0.021$ signifikant verletzen. Beachten Sie, dass Aufgabe als Faktor zwischen den Probanden gilt und dass beide Interaktionsterme denselben Fehlerterm teilen!
+
+#### Maßnahmen wenn Vorraussetzung verletzt
+
+Für ANOVA-Tabellen kann eine Korrektur der Freiheitsgrade verwendet werden - afex bietet sowohl die Greenhouse-Geisser (die standardmäßig verwendet wird) als auch die Hyunh-Feldt-Korrekturen an.
+Für Nachfolgekontraste mit emmeans kann ein multivariates Modell verwendet werden, das keine Sphärizität annimmt (dies wird seit afex 1.0 standardmäßig verwendet).
+
+Beide können global festgelegt werden mit:
+
+```{r}
+afex_options(
+  correction_aov = "GG", # or "HF"
+  emmeans_model = "multivariate"
+)
+```
+
+### Normalverteilung der Residuen:
+
+Die Normalverteilungsannahme der Restfehler bezieht sich auf die Fehler, die die verschiedenen Fehlerterme in der ANOVA ausmachen. Obwohl der Shapiro-Wilk-Test verwendet werden kann, um von einer Normalverteilung abzuweichen, hat dieser Test tendenziell hohe Typ-I-Fehler-Raten. Stattdessen können die Restfehler visuell mit Quantil-Quantil-Plots (auch qq-Plots genannt) inspiziert werden. Zum Beispiel:
+
+#### Test
+
+```{r}
+data("stroop", package = "afex")
+
+stroop1 <- subset(stroop, study == 1)
+stroop1 <- na.omit(stroop1)
+
+mod <- aov_ez("pno", "rt", stroop1,
+             within = c("condition", "congruency"))
+```
+
+```{r}
+is_norm <- check_normality(mod)
+
+# plot(is_norm)
+```
+
+```{r}
+# plot(is_norm, type = "qq")
+```
+
+Wenn die Residuen normalverteilt wären, würden sie in der Nähe der diagonalen Linie liegen und innerhalb der 95%-Konfidenzbänder um die qq-Linie fallen.
+
+Wir können das Diagramm weiter verbessern, indem wir den Trend entfernen und nicht den erwarteten Quantilwert, sondern die Abweichung vom erwarteten Quantilwert anzeigen, was dazu beitragen kann, visuelle Verzerrungen zu reduzieren.
+
+```{r}
+# plot(is_norm, type = "qq", detrend = TRUE)
+```
+
+#### Maßnahmen wenn Vorraussetzung verletzt
+
+Wie bei der Annahme der Homogenität der Varianzen können wir auf Permutationstests für ANOVA-Tabellen und Bootstrap-Schätzungen / Kontraste zurückgreifen.
+
+Eine weitere beliebte Lösung besteht darin, eine monotone Transformation der abhängigen Variablen anzuwenden. Dies sollte nicht leichtfertig getan werden, da es die Interpretierbarkeit der Ergebnisse (von der beobachteten Skala zur transformierten Skala) verändert. Glücklicherweise ist es üblich, Reaktionszeiten zu logarithmieren, was wir leicht tun können:
+
+```{r}
+mod <- aov_ez("pno", "rt", stroop1,
+             transformation = "log",
+             within = c("condition", "congruency"))
+
+is_norm <- check_normality(mod)
+
+# plot(is_norm, type = "qq", detrend = TRUE)
+```
+
+Sehr gut - nach der Transformation weichen die Residuen (auf der logarithmischen Skala) nicht mehr als erwartet von Fehlern ab, die aus einer normalverteilten Verteilung gezogen wurden (sie sind größtenteils innerhalb der 95%-Konfidenzintervalle enthalten)!
 
 
 <!--chapter:end:ANOVA.Rmd-->

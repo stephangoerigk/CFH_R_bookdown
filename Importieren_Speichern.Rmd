@@ -14,7 +14,7 @@ In diesem Kapitel werden wir einige hilfreiche Funktionen zur Verwaltung Ihres A
 |`getwd()`|Zeigt das aktuelle Arbeitsverzeichnis an |
 |`setwd(file = "dir)`|Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad |
 |`list.files()`|Zeigt die Namen aller Dateien im Arbeitsverzeichnis an |
-|`write.table(x, file = "mydata.txt", sep)`|writes the object `x` to a text file called `mydata.txt`. Define how the columns will be separated with `sep` (e.g.; `sep = ","` for a comma--separated file, and `sep = \t"` for a tab--separated file).|
+|`write.table(x, file = "mydata.txt", sep)`|speichert das Objekt `x` als Textdatei `mydata.txt`. Definiere die Trennung der Spalten mittels `sep` (z.B.; `sep = ","` für eine kommagetrennte Datei (csv) und `sep = \t"` für eine tab-getrennte Datei).|
 |`write_rds(x,"meineDaten.rds)`|Speichert Objekt x in das R Objekt  `meineDaten.rds` |
 |`save.image(file = "meineSession.RData")`|Speichert *alle* Objekte aus dem Arbeitsbereich nach `meineSession.RData`|
 |`read_rds`("Daten.rds")`|Läd das rds Objekt `Daten.rds`|
@@ -89,7 +89,7 @@ head(data)
 
 Das .xlsx Format ist das Format in welchem Excel Datensätze abgespeichert werden. Auch das kommt oft vor, da es viele Forscher:innen vorziehen Daten in Excel Tabellen einzutragen.
 
-Um einen .xlsx Datensatz einzulesen, speichern wir ihn mittel `read_xlsx()` in ein von uns benanntes Objekt. Dafür müssen wir das Paket `readxl` installiert und mittels `library` eingelesen haben. Da in Excel Tabellen manchmal mehrere Arbeitsblätter (engl. "sheets") vorliegen, geben wir den Namen des Arbeitsblatt, welches wir brauchen, zusätzlich an:
+Um einen .xlsx Datensatz einzulesen, speichern wir ihn mittels `read_xlsx()` in ein von uns benanntes Objekt. Dafür müssen wir das Paket `readxl` installiert und mittels `library` eingelesen haben. Da in Excel Tabellen manchmal mehrere Arbeitsblätter (engl. "sheets") vorliegen, geben wir den Namen des Arbeitsblatt, welches wir brauchen, zusätzlich an:
 
 ```{r}
 library(readxl)

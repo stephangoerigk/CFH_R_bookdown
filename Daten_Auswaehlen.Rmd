@@ -18,7 +18,7 @@ Dies funktioniert auch, wenn wir mehrere Objekte auswählen wollen:
 a[c(1, 3)]
 ```
 
-Bei data.frames, die sowohl Zeilen als auch Spalten haben, trennen wir die eckigen Klammern mit einem Komma `[,]`. Alles vor dem Komma bezieht sich auf die Zeilen (Fälle), alles nach dem Komma auf die Spalen (Variablen):
+Bei data.frames, die sowohl Zeilen als auch Spalten haben, trennen wir die eckigen Klammern mit einem Komma `[,]`. Alles vor dem Komma bezieht sich auf die Zeilen (Fälle), alles nach dem Komma auf die Spalten (Variablen):
 
 ```{r}
 testdata = data.frame(IQ = c(101, 112, 97, 104),
@@ -38,7 +38,7 @@ testdata[3,]
 testdata[,2]
 ```
 
-Die Auswahl mittels eines numerischen Index ist unkompliziert, aber es kann manchmal aufwendig sein aus großen Datensätzen eine Vielzahl von Fällen bzw. Variablen auszuwählen. 
+Die Auswahl mittels eines numerischen Index ist unkompliziert, aber es kann manchmal aufwendig sein, aus großen Datensätzen eine Vielzahl von Fällen bzw. Variablen auszuwählen. 
 Zudem **verschieben** sich Indizes auch, wenn wir einzelne Fälle oder Variablen aus dem Datensatz löschen oder welche hinzufügen.
 
 Wir brauchen also auch Strategien, nach welchen wir Daten mit einer **Logik** auswählen können. 

@@ -17,7 +17,7 @@ b <- 3 / 100
 c <- (a + b) / b
 ```
 
-Skalare müssen nicht numerisch sein, sondern können auch beinhalten Worte. Wortobjekte heißen in R **characters** (engl. strings). In R schreibt man Worte immer in Anführungszeichen `""`. Hier sind einige Beispiele für character Skalare:
+Skalare müssen nicht numerisch sein, sondern können auch Worte beinhalten. Wortobjekte heißen in R **characters** (engl. strings). In R schreibt man Worte immer in Anführungszeichen `""`. Hier sind einige Beispiele für character Skalare:
 
 ```{r}
 # Beispiele für character Skalare
@@ -26,7 +26,7 @@ e <- "Zigarre"
 f <- "Haben Psychologen wirklich alle Bärte und rauchen Zigarre?"
 ```
 
-Wie Sie sich vermutlich vorstellen können, behandelt R numerische und character Skalare unterschiedlich. Zum Beispiel lassen sich mir numerischen Skalaren grundlegende arithmetische Operationen durchfühlen (Addition, Subtraktion, Multiplikation...) -- das funktioniert mit character Skalaren nicht.
+Wie Sie sich vermutlich vorstellen können, behandelt R numerische und character Skalare unterschiedlich. Zum Beispiel lassen sich mit numerischen Skalaren grundlegende arithmetische Operationen durchführen (Addition, Subtraktion, Multiplikation...) -- das funktioniert mit character Skalaren nicht.
 Wenn Sie dennoch probieren numerische Operationen auf character Skalare anzuwenden, bekommen Sie eine Fehlermeldung, so wie diese:
 
 ```{r, eval = FALSE}
@@ -65,7 +65,7 @@ char.vec
 
 Vektoren sind ein zentrales Element von R. Ein Vektor kann Zahlen, Buchstaben oder logische Werte enthalten, aber niemals eine Kombination
 
-Der Vektor ist die Entsprechung der **Variable** und die Skalare, aus denen der Vektor besteht sind die **Merkmalsausprägungen** der Variable.
+Der Vektor ist die Entsprechung der **Variable** und die Skalare, aus denen der Vektor besteht, sind die **Merkmalsausprägungen** der Variable.
 
 ### Faktor Variablen
 
@@ -147,7 +147,7 @@ df = data.frame("Name" = c("Max", "Maja", "Mia", "Moritz", "Markus"),
 df
 ```
 
-Wollen wir wieder eine einzelne Variable aus dem benutzen, können wir diese über das `$` Zeichen anwählen:
+Wollen wir wieder eine einzelne Variable aus dem Datensatz benutzen, können wir diese über das `$` Zeichen anwählen:
 
 ```{r}
 df$Alter
@@ -155,9 +155,9 @@ df$Alter
 
 ### Indizierung
 
-Wollen wir aus dem data.frame wieder einzelne Elemente benutzen, nutzen wir wieder die Indizierung. Auch hier brauchen wir die `[]`. Da wir im data.frame Zeilen und Spalten haben, brauchen wir eine Möglichkeit beides auszuwählen, wie ein Curser der von links nach rechts, bzw. von oben nach unten läuft. 
+Wollen wir aus dem data.frame wieder einzelne Elemente verwenden, nutzen wir wieder die Indizierung. Auch hier brauchen wir die `[]`. Da wir im data.frame Zeilen und Spalten haben, brauchen wir eine Möglichkeit, beides auszuwählen, wie ein Curser der von links nach rechts, bzw. von oben nach unten läuft. 
 
-Wir trennen dafür unsere `[]` mit einem Komma `[,]`. Alles was **links vom Komma** steht bezieht sich auf Zeilen alles **rechts vom Komma** bezieht sich auf Spalten.
+Wir trennen dafür unsere `[]` mit einem Komma `[,]`. Alles, was **links vom Komma** steht, bezieht sich auf Zeilen alles **rechts vom Komma** bezieht sich auf Spalten.
 
 Lassen Sie uns einmal die Zelle in der 1. Zeile (also die 1. Person) und der 3. Variable auswählen:
 

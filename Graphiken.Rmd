@@ -47,7 +47,7 @@ Mit `ggplot()` sagen wir R, dass jetzt eine Graphik erstellt wird. Wir können e
 
 Der Befehl `ggplot()` wird mit den ersten 2 Elementen der "Grammatik der Grafik" gefüllt, `data` und aesthetics, kurs `aes()`. Wir geben also an, wo unsere Daten herkommen und welche Variable auf die X-Achse und welche auf die Y-Achse gelegt werden soll. Dieses Vorgehen ist für jede Art von Graphen gleich.
 
-```{r include=FALSE}
+```{r}
 df = data.frame(Var1 = 1:10,
                 Var2 = 1:10)
 ```
@@ -84,7 +84,7 @@ Das Ergebnis ist ein leerer Graph, mit der Variable `carat` auf der X-Achse und 
 
 Nun fehlen uns nun noch die charakteristischen "Punkte", die den Graph zum Streudiagramm machen. Jeder Punkt repräsentiert einen Stein mit einer Karatzahl und einem Preis.
 
-Wir wollen also ein neues Element in unseren Graphen zeichnen, also sozusagen eine weiter Schicht auftragen. Dies funktioniert in `ggplot2` mit dem `+` Operator. Die Punkte sind eine Geometrie (das 3. Element unserer Grammatik). Geometrie wird i.d.R. mit `geom` geschrieben:
+Wir wollen also ein neues Element in unseren Graphen zeichnen,sozusagen eine weitere Schicht auftragen. Dies funktioniert in `ggplot2` mit dem `+` Operator. Die Punkte sind eine Geometrie (das 3. Element unserer Grammatik). Geometrie wird i.d.R. mit `geom` geschrieben:
 
 ```{r}
 ggplot(data = diamonds, aes(x = carat, y = price)) +
@@ -119,7 +119,7 @@ Ein weiteres wichtiges Merkmal eines Diamanten ist sein Schliff, im `diamonds` D
 table(diamonds$cut)
 ```
 
-Wollen wir diese 3. Variable auch in unserem Graphen darstellen, haben wir das Problem, dass wir neben X und Y keine weitere Achse haben. Oft behilft man sich in solchen Situationen durch die Hinzunahme einer weiteren **aesthetics** Kategorie, z.B. **Farben** (`colour`). Jede Scliffkategorie erhält also ihre eigene Farbe:
+Wollen wir diese 3. Variable auch in unserem Graphen darstellen, haben wir das Problem, dass wir neben X und Y keine weitere Achse haben. Oft behilft man sich in solchen Situationen durch die Hinzunahme einer weiteren **aesthetics** Kategorie, z.B. **Farben** (`colour`). Jede Schliffkategorie erhält also ihre eigene Farbe:
 
 ```{r message=FALSE, warning=FALSE}
 ggplot(data = diamonds, aes(x = carat, y = price, colour = cut)) +
@@ -146,6 +146,7 @@ Lassen Sie uns anhand der Variable `price` einmal ausprobieren ein Histogramm zu
 ggplot(data = diamonds, aes(x = price)) +
   geom_histogram()
 ```
+
 Wie wir sehen, kommen günstigere Diamanten häufiger vor als teure. In diesem Fall haben wir also nicht die beliebte **normalverteilte** Form der Verteilung, sondern eine rechtsschiefte Form.
 
 R gibt uns die Warnmeldung "Pick better value with `binwidth`". Dies ist ein Hinweis, dass die Standardanzahl von 30 Balken für die hohe Auflösung der Variable `price` nicht ausreicht. Es wird uns eine Auflösung von `binwidth = 39` vorgeschlagen:
@@ -166,7 +167,7 @@ ggplot(data = diamonds, aes(x = price, colour = cut)) +
 
 ## Balkendiagramm
 
-Das Balkendiagramm ist eine Möglichkeit die Höhe einer Deskriptivstatistik (aka summary statistics) mit der Höhe eines Balkens zu visualisieren. Es wird z.B. eingesetzt um Gruppenunterschiede, bzw. Unterschiede zwischen den Kategorien einer Variable darzustellen.
+Das Balkendiagramm ist eine Möglichkeit, die Höhe einer Deskriptivstatistik (aka summary statistics) mit der Höhe eines Balkens zu visualisieren. Es wird z.B. eingesetzt, um Gruppenunterschiede, bzw. Unterschiede zwischen den Kategorien einer Variable darzustellen.
 
 Probieren wir es doch gleich einmal mit der Variable `cut` (Schliff eines Diamanten) aus, die wir oben bereits kennengelernt haben. Wir wollen die durchschnittlichen Karat (Gewicht) der Steine für jede Kategorie von `cut` darstellen. Die höhe der Balken muss also jeweils den Mittelwert repräsentieren.
 
@@ -191,9 +192,11 @@ ggplot(data = diamonds, aes(x = cut, y = carat)) +
   stat_summary(geom = "point", fun = mean) 
 ```
 
-Häufig möchte man zusätzlich eine Art von Streuung/Unschärfe darstellen, wenn Mittelwerte dargestellt werden. Eine beliebte Variante ist es, das 95% Konfidenzintervall um den Mittelwert mit sogenannten **Fehlerbalken** (error bars) zu visualisieren:
+Häufig möchte man zusätzlich eine Art von Streuung/Unschärfe darstellen, wenn Mittelwerte dargestellt werden. Eine beliebte Variante ist es, das 95% Konfidenzintervall um den Mittelwert mit sogenannten **Fehlerbalken** (error bars) zu visualisieren. Vorher installieren und laden wir noch das Paket `Hmisc`, welches uns die Berechnung der Fehlerbalken ermöglicht:
 
 ```{r}
+library(Hmisc)
+
 ggplot(data = diamonds, aes(x = cut, y = carat)) +
   stat_summary(fun.data = mean_cl_normal,  geom = "errorbar") +
   stat_summary(geom = "point", fun = mean) 
@@ -208,9 +211,11 @@ ggplot(data = diamonds, aes(x = cut, y = carat, fill = clarity)) +
   stat_summary(geom = "bar", fun = mean, position = position_dodge2(.95))
 ```
 
+Das Argument `position_dodge2()` sorgt dafür, dass die Balken nebeneinander positioniert sind und nicht voreinander. Probieren Sie den Code gerne auch einmal ohne `position_dodge2()` aus.
+
 ## Boxplot
 
-Ähnlich wie das Balkendiagramm, lassen sich Gruppenunterschiede gut mit einem Boxplot darstellen. Dieses zeigt standardmäßig den Median (Mittelbalken), sowie die Streuung der Daten mittels der Box (Quartilabstand, IQR) und die sogenannten Whiskers (1.5 * Quartilabstand) dar. Punkte außerhalb der Whiskers werden als Ausreißer mit einem Punkt gekennzeichnet.
+Ähnlich wie das Balkendiagramm, lassen sich Gruppenunterschiede gut mit einem Boxplot darstellen. Dieses zeigt standardmäßig den Median (Mittelbalken), sowie die Streuung der Daten mittels der Box (Quartilabstand, IQR) und die sogenannten Whiskers (1.5 * Quartilabstand). Punkte außerhalb der Whiskers werden als Ausreißer mit einem Punkt gekennzeichnet.
 
 ```{r}
 ggplot(data = diamonds, aes(x = cut, y = carat)) +
@@ -227,7 +232,7 @@ ggplot(data = diamonds, aes(x = carat, y = price, colour = cut)) +
   geom_smooth(method = "lm")
 ```
 
-Es ist sichtbar, dass die Darstellung vieler Kategorien mit weitere aesthetics, wie Farben, Füllungen, Punktarten, etc. schnell unübersichtlich wird.
+Es ist sichtbar, dass die Darstellung vieler Kategorien mittels weiterer aesthetics, wie Farben, Füllungen, Punktarten, etc. schnell unübersichtlich wird.
 
 Oft ist es nützlich, durch die Darstellung einzelner Gruppen in Teilgraphen (Facetten) etwas mehr Klarheit in die Darstellung zu bringen. Der Befehl dafür ist `facet_grid()`:
 
@@ -379,9 +384,9 @@ Es gibt R-Pakete, die hunderte weitere Optionen bereitstellen, so zum Beispiel d
 
 ## Abbildungen kombinieren
 
-Gerade bei komplexeren Fragestellungen oder Studien mit mehreren abhängigen Variablen (AVs), kommt es vor dass die Anzahl der Graphen etwas zu groß wird. 
+Gerade bei komplexeren Fragestellungen oder Studien mit mehreren abhängigen Variablen (AVs) kommt es vor, dass die Anzahl der Graphen etwas zu groß wird. 
 
-Dann kann es helfen mehrere Graphen zu einer zusammenzusetzen. Die Funktion dafür heißt `ggarrange()` und kommt aus dem R-Paket `ggpubr`.
+Dann kann es helfen, mehrere Graphen zu einem kombinierte Graph zusammenzusetzen. Die Funktion dafür heißt `ggarrange()` und kommt aus dem R-Paket `ggpubr`.
 
 Also installieren Sie kurz das Paket `ggpubr`, laden es mittels `library()` und dann geht es gleich weiter:
 
@@ -390,7 +395,7 @@ Also installieren Sie kurz das Paket `ggpubr`, laden es mittels `library()` und 
 library(ggpubr)
 ```
 
-Damit es sich auch lohnt, nehmen wir uns gleich einmal 4 Graphen vor. Nehmen wir doch eines von jeder Art. Damit es nicht zu unübersichtlich wird, benennen wir die 4 Graphen mit `a`, `b`, `c` und `d`:
+Damit es sich auch lohnt, nehmen wir uns gleich einmal 4 Graphen vor. Nehmen wir doch einen von jeder Art. Damit es nicht zu unübersichtlich wird, benennen wir die 4 Graphen mit `a`, `b`, `c` und `d`:
 
 ```{r}
 a = ggplot(data = diamonds, aes(x = price)) +
@@ -414,25 +419,25 @@ ggarrange(a, b, c, d, labels = c("A", "B", "C", "D"))
 
 Wir können auch steuern, wie das Gitter der Graphen zusammengesetzt sein soll, zum Beispiel untereinander... 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ggarrange(a, b, nrow = 2)
 ```
 
 ... oder nebeneinander:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ggarrange(a, b, ncol = 2)
 ```
 
 ## Abbildungen exportieren
 
-Der Export der Graphen mein im Prinip folgendes: Speichere mir den Graphen in mein Arbeitsverzeichnis und das in einem gängigen Bildformat (.pdf, .png, .jpg, .tif...).
+Der Export der Graphen meint im Prinzip folgendes: Speichere mir den Graphen in mein Arbeitsverzeichnis und das in einem gängigen Bildformat (.pdf, .png, .jpg, .tif...).
 
-Das Vorgehen funktioniert für alle Format gleich:
+Das Vorgehen funktioniert für alle Formate gleich:
 
 1. Wenn noch nicht geschehen, mit `setwd()` das gewünschte Arbeitsverzeichnnis setzen
 
-2. Mittels Befehl angeben welche Art von Export gewünscht ist, z.B. `png()`
+2. Mittels Befehl angeben, welche Art von Export gewünscht ist, z.B. `png()`
 
 3. Den Code für den `ggplot()` Graphen ausführen
 
