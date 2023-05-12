@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 11 Tabellen | Einführung in R</title>
+  <title>Kapitel 13 Tabellen | Einführung in R</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 11 Tabellen | Einführung in R" />
+  <meta property="og:title" content="Kapitel 13 Tabellen | Einführung in R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 11 Tabellen | Einführung in R" />
+  <meta name="twitter:title" content="Kapitel 13 Tabellen | Einführung in R" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2022-10-13" />
+<meta name="date" content="2023-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="graphiken.html"/>
-<link rel="next" href="preprocessing.html"/>
+<link rel="next" href="korrelation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -92,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -119,6 +121,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -137,12 +161,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="über-dieses-skript.html"><a href="über-dieses-skript.html"><i class="fa fa-check"></i>Über dieses Skript</a></li>
-<li class="chapter" data-level="1" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html"><i class="fa fa-check"></i><b>1</b> Warum ist R so gut?</a>
+<li class="chapter" data-level="1" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html"><i class="fa fa-check"></i><b>1</b> Warum ist R empfehlenswert?</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#open-source"><i class="fa fa-check"></i><b>1.1</b> Open Source</a></li>
-<li class="chapter" data-level="1.2" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#vielseitigkeit"><i class="fa fa-check"></i><b>1.2</b> Vielseitigkeit</a></li>
-<li class="chapter" data-level="1.3" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#r-markdown"><i class="fa fa-check"></i><b>1.3</b> R Markdown</a></li>
-<li class="chapter" data-level="1.4" data-path="warum-ist-r-so-gut.html"><a href="warum-ist-r-so-gut.html#transparenz"><i class="fa fa-check"></i><b>1.4</b> Transparenz</a></li>
+<li class="chapter" data-level="1.1" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#open-source"><i class="fa fa-check"></i><b>1.1</b> Open Source</a></li>
+<li class="chapter" data-level="1.2" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#vielseitigkeit"><i class="fa fa-check"></i><b>1.2</b> Vielseitigkeit</a></li>
+<li class="chapter" data-level="1.3" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#rmarkdown"><i class="fa fa-check"></i><b>1.3</b> RMarkdown</a></li>
+<li class="chapter" data-level="1.4" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#transparenz"><i class="fa fa-check"></i><b>1.4</b> Transparenz</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="r-materialien.html"><a href="r-materialien.html"><i class="fa fa-check"></i><b>2</b> R Materialien</a>
 <ul>
@@ -179,7 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.2" data-path="datenformate.html"><a href="datenformate.html#faktor-variablen"><i class="fa fa-check"></i><b>5.2.2</b> Faktor Variablen</a></li>
 <li class="chapter" data-level="5.2.3" data-path="datenformate.html"><a href="datenformate.html#vektor-indizierung"><i class="fa fa-check"></i><b>5.2.3</b> Vektor Indizierung</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-dataframes"><i class="fa fa-check"></i><b>5.3</b> Matrizen und Dataframes</a>
+<li class="chapter" data-level="5.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-data.frames"><i class="fa fa-check"></i><b>5.3</b> Matrizen und data.frames</a>
 <ul>
 <li class="chapter" data-level="5.3.1" data-path="datenformate.html"><a href="datenformate.html#erstellen-von-datenmatrizen"><i class="fa fa-check"></i><b>5.3.1</b> Erstellen von Datenmatrizen</a></li>
 <li class="chapter" data-level="5.3.2" data-path="datenformate.html"><a href="datenformate.html#indizierung"><i class="fa fa-check"></i><b>5.3.2</b> Indizierung</a></li>
@@ -193,84 +217,238 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html"><i class="fa fa-check"></i><b>7</b> Daten importieren und speichern</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-directory"><i class="fa fa-check"></i><b>7.1</b> Working Directory</a></li>
-<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.2</b> Working Environment</a></li>
-<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.3</b> Daten importieren</a></li>
-<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.4</b> Daten speichern</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="daten-explorieren.html"><a href="daten-explorieren.html"><i class="fa fa-check"></i><b>8</b> Daten Explorieren</a>
+<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#funktionen-zur-organisation-des-workspace"><i class="fa fa-check"></i><b>7.1</b> Funktionen zur Organisation des Workspace</a></li>
+<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#arbeitsverzeichnis-working-directory"><i class="fa fa-check"></i><b>7.2</b> Arbeitsverzeichnis (Working Directory)</a></li>
+<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.3</b> Working Environment</a></li>
+<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.4</b> Daten importieren</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-r-objekt"><i class="fa fa-check"></i><b>8.1</b> Informationen über R Objekt</a></li>
-<li class="chapter" data-level="8.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>8.2</b> Deskriptivstatistiken</a>
+<li class="chapter" data-level="7.4.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format"><i class="fa fa-check"></i><b>7.4.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.4.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format"><i class="fa fa-check"></i><b>7.4.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.4.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format"><i class="fa fa-check"></i><b>7.4.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.4.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format"><i class="fa fa-check"></i><b>7.4.4</b> xlsx-Format</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.5</b> Daten speichern</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#nominale-variablen"><i class="fa fa-check"></i><b>8.2.1</b> Nominale Variablen</a></li>
-<li class="chapter" data-level="8.2.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#numerische-variablen"><i class="fa fa-check"></i><b>8.2.2</b> Numerische Variablen</a></li>
-<li class="chapter" data-level="8.2.3" data-path="daten-explorieren.html"><a href="daten-explorieren.html#alles-auf-einen-blick"><i class="fa fa-check"></i><b>8.2.3</b> Alles auf einen Blick</a></li>
-<li class="chapter" data-level="8.2.4" data-path="daten-explorieren.html"><a href="daten-explorieren.html#gruppenweise-deskriptivstatistiken"><i class="fa fa-check"></i><b>8.2.4</b> Gruppenweise Deskriptivstatistiken</a></li>
+<li class="chapter" data-level="7.5.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format-1"><i class="fa fa-check"></i><b>7.5.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.5.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format-1"><i class="fa fa-check"></i><b>7.5.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.5.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format-1"><i class="fa fa-check"></i><b>7.5.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.5.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format-1"><i class="fa fa-check"></i><b>7.5.4</b> xlsx-Format</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="datenmanipulation.html"><a href="datenmanipulation.html"><i class="fa fa-check"></i><b>9</b> Datenmanipulation</a>
+<li class="chapter" data-level="8" data-path="daten-auswählen.html"><a href="daten-auswählen.html"><i class="fa fa-check"></i><b>8</b> Daten auswählen</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#löschen"><i class="fa fa-check"></i><b>9.1</b> Löschen</a></li>
-<li class="chapter" data-level="9.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#umbennen"><i class="fa fa-check"></i><b>9.2</b> Umbennen</a></li>
-<li class="chapter" data-level="9.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#verändern"><i class="fa fa-check"></i><b>9.3</b> Verändern</a></li>
-<li class="chapter" data-level="9.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#aggreggieren"><i class="fa fa-check"></i><b>9.4</b> Aggreggieren</a></li>
-<li class="chapter" data-level="9.5" data-path="datenmanipulation.html"><a href="datenmanipulation.html#transformieren"><i class="fa fa-check"></i><b>9.5</b> Transformieren</a>
+<li class="chapter" data-level="8.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#vektor-1"><i class="fa fa-check"></i><b>8.1</b> Vektor</a></li>
+<li class="chapter" data-level="8.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#dataframe"><i class="fa fa-check"></i><b>8.2</b> Dataframe</a>
 <ul>
-<li class="chapter" data-level="9.5.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#von-long-nach-wide"><i class="fa fa-check"></i><b>9.5.1</b> Von Long nach Wide</a></li>
-<li class="chapter" data-level="9.5.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#skalieren"><i class="fa fa-check"></i><b>9.5.2</b> Skalieren</a></li>
+<li class="chapter" data-level="8.2.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#zeilen-fälle-auswählen"><i class="fa fa-check"></i><b>8.2.1</b> Zeilen (Fälle) auswählen</a></li>
+<li class="chapter" data-level="8.2.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#spalten-variablen-auswählen"><i class="fa fa-check"></i><b>8.2.2</b> Spalten (Variablen) auswählen</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="graphiken.html"><a href="graphiken.html"><i class="fa fa-check"></i><b>10</b> Graphiken</a>
+<li class="chapter" data-level="9" data-path="daten-explorieren.html"><a href="daten-explorieren.html"><i class="fa fa-check"></i><b>9</b> Daten Explorieren</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="graphiken.html"><a href="graphiken.html#ggplot"><i class="fa fa-check"></i><b>10.1</b> ggplot()</a></li>
-<li class="chapter" data-level="10.2" data-path="graphiken.html"><a href="graphiken.html#geom_histogram"><i class="fa fa-check"></i><b>10.2</b> geom_histogram()</a></li>
-<li class="chapter" data-level="10.3" data-path="graphiken.html"><a href="graphiken.html#geom_point"><i class="fa fa-check"></i><b>10.3</b> geom_point()</a></li>
-<li class="chapter" data-level="10.4" data-path="graphiken.html"><a href="graphiken.html#geom_line-und-geom_smooth"><i class="fa fa-check"></i><b>10.4</b> geom_line() und geom_smooth()</a></li>
-<li class="chapter" data-level="10.5" data-path="graphiken.html"><a href="graphiken.html#geom_bar"><i class="fa fa-check"></i><b>10.5</b> geom_bar()</a></li>
-<li class="chapter" data-level="10.6" data-path="graphiken.html"><a href="graphiken.html#geom_boxplot"><i class="fa fa-check"></i><b>10.6</b> geom_boxplot()</a></li>
-<li class="chapter" data-level="10.7" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>10.7</b> Facetting</a></li>
-<li class="chapter" data-level="10.8" data-path="graphiken.html"><a href="graphiken.html#ästhetische-anpassungen"><i class="fa fa-check"></i><b>10.8</b> Ästhetische Anpassungen</a>
+<li class="chapter" data-level="9.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-r-objekte"><i class="fa fa-check"></i><b>9.1</b> Informationen über R Objekte</a>
 <ul>
-<li class="chapter" data-level="10.8.1" data-path="graphiken.html"><a href="graphiken.html#ggtitle"><i class="fa fa-check"></i><b>10.8.1</b> ggtitle()</a></li>
-<li class="chapter" data-level="10.8.2" data-path="graphiken.html"><a href="graphiken.html#labs"><i class="fa fa-check"></i><b>10.8.2</b> labs()</a></li>
-<li class="chapter" data-level="10.8.3" data-path="graphiken.html"><a href="graphiken.html#farben-formen-füllungen"><i class="fa fa-check"></i><b>10.8.3</b> Farben, Formen, Füllungen</a></li>
-<li class="chapter" data-level="10.8.4" data-path="graphiken.html"><a href="graphiken.html#achsen-verändern"><i class="fa fa-check"></i><b>10.8.4</b> Achsen verändern</a></li>
+<li class="chapter" data-level="9.1.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#str"><i class="fa fa-check"></i><b>9.1.1</b> str()</a></li>
+<li class="chapter" data-level="9.1.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-vektoren"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Vektoren</a></li>
+<li class="chapter" data-level="9.1.3" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-dataframes"><i class="fa fa-check"></i><b>9.1.3</b> Informationen über Dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.9" data-path="graphiken.html"><a href="graphiken.html#theme"><i class="fa fa-check"></i><b>10.9</b> theme()</a></li>
-<li class="chapter" data-level="10.10" data-path="graphiken.html"><a href="graphiken.html#abbildungen-kombinieren"><i class="fa fa-check"></i><b>10.10</b> Abbildungen kombinieren</a></li>
-<li class="chapter" data-level="10.11" data-path="graphiken.html"><a href="graphiken.html#abbildungen-exportieren"><i class="fa fa-check"></i><b>10.11</b> Abbildungen exportieren</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="tabellen.html"><a href="tabellen.html"><i class="fa fa-check"></i><b>11</b> Tabellen</a></li>
-<li class="chapter" data-level="12" data-path="preprocessing.html"><a href="preprocessing.html"><i class="fa fa-check"></i><b>12</b> Preprocessing</a>
+<li class="chapter" data-level="9.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>9.2</b> Deskriptivstatistiken</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="preprocessing.html"><a href="preprocessing.html#fehlende-werte"><i class="fa fa-check"></i><b>12.1</b> Fehlende Werte</a></li>
-<li class="chapter" data-level="12.2" data-path="preprocessing.html"><a href="preprocessing.html#ausreißer"><i class="fa fa-check"></i><b>12.2</b> Ausreißer</a></li>
-<li class="chapter" data-level="12.3" data-path="preprocessing.html"><a href="preprocessing.html#schiefe-daten"><i class="fa fa-check"></i><b>12.3</b> Schiefe Daten</a></li>
+<li class="chapter" data-level="9.2.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#kategorische-variablen"><i class="fa fa-check"></i><b>9.2.1</b> Kategorische Variablen</a></li>
+<li class="chapter" data-level="9.2.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#numerische-variablen"><i class="fa fa-check"></i><b>9.2.2</b> Numerische Variablen</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>13</b> Korrelation</a>
+</ul></li>
+<li class="chapter" data-level="10" data-path="datenmanipulation.html"><a href="datenmanipulation.html"><i class="fa fa-check"></i><b>10</b> Datenmanipulation</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>13.1</b> Pearson Korrelation</a></li>
-<li class="chapter" data-level="13.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation"><i class="fa fa-check"></i><b>13.2</b> Spearman Korrelation</a></li>
-<li class="chapter" data-level="13.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>13.3</b> Kendall Korrelation</a></li>
-<li class="chapter" data-level="13.4" data-path="korrelation.html"><a href="korrelation.html#korrelationmatrix"><i class="fa fa-check"></i><b>13.4</b> Korrelationmatrix</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>14</b> Regression</a>
+<li class="chapter" data-level="10.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-hinzufügen"><i class="fa fa-check"></i><b>10.1</b> Daten hinzufügen</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="regression.html"><a href="regression.html#lineare-regression"><i class="fa fa-check"></i><b>14.1</b> Lineare Regression</a></li>
-<li class="chapter" data-level="14.2" data-path="regression.html"><a href="regression.html#logistische-regression"><i class="fa fa-check"></i><b>14.2</b> Logistische Regression</a></li>
+<li class="chapter" data-level="10.1.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-hinzufügen"><i class="fa fa-check"></i><b>10.1.1</b> Variablen hinzufügen</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="mehrstufige-uvs.html"><a href="mehrstufige-uvs.html"><i class="fa fa-check"></i><b>15</b> Mehrstufige UVs</a>
+<li class="chapter" data-level="10.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-löschen"><i class="fa fa-check"></i><b>10.2</b> Daten löschen</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="mehrstufige-uvs.html"><a href="mehrstufige-uvs.html#omnibus-test"><i class="fa fa-check"></i><b>15.1</b> Omnibus Test</a></li>
-<li class="chapter" data-level="15.2" data-path="mehrstufige-uvs.html"><a href="mehrstufige-uvs.html#paarweise-vergleiche"><i class="fa fa-check"></i><b>15.2</b> Paarweise Vergleiche</a></li>
+<li class="chapter" data-level="10.2.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-löschen"><i class="fa fa-check"></i><b>10.2.1</b> Variablen löschen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#fälle-löschen"><i class="fa fa-check"></i><b>10.2.2</b> Fälle löschen</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="mehrere-uvs.html"><a href="mehrere-uvs.html"><i class="fa fa-check"></i><b>16</b> Mehrere UVs</a>
+<li class="chapter" data-level="10.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablen-umbenennen"><i class="fa fa-check"></i><b>10.3</b> Variablen umbenennen</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="mehrere-uvs.html"><a href="mehrere-uvs.html#multiple-regression"><i class="fa fa-check"></i><b>16.1</b> Multiple Regression</a></li>
-<li class="chapter" data-level="16.2" data-path="mehrere-uvs.html"><a href="mehrere-uvs.html#interaktionsterme"><i class="fa fa-check"></i><b>16.2</b> Interaktionsterme</a></li>
+<li class="chapter" data-level="10.3.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#variablennamen-ändern"><i class="fa fa-check"></i><b>10.3.1</b> Variablennamen ändern</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="manuskripterstellung.html"><a href="manuskripterstellung.html"><i class="fa fa-check"></i><b>17</b> Manuskripterstellung</a></li>
+<li class="chapter" data-level="10.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-verändern"><i class="fa fa-check"></i><b>10.4</b> Daten verändern</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#werte-ändern"><i class="fa fa-check"></i><b>10.4.1</b> Werte ändern</a></li>
+<li class="chapter" data-level="10.4.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#recodieren"><i class="fa fa-check"></i><b>10.4.2</b> Recodieren</a></li>
+<li class="chapter" data-level="10.4.3" data-path="datenmanipulation.html"><a href="datenmanipulation.html#worte-ändern"><i class="fa fa-check"></i><b>10.4.3</b> Worte ändern</a></li>
+<li class="chapter" data-level="10.4.4" data-path="datenmanipulation.html"><a href="datenmanipulation.html#faktorstufen-ändern"><i class="fa fa-check"></i><b>10.4.4</b> Faktorstufen ändern</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="datenmanipulation.html"><a href="datenmanipulation.html#daten-sortieren"><i class="fa fa-check"></i><b>10.5</b> Daten sortieren</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#sortieren-nach-numerischen-variablen"><i class="fa fa-check"></i><b>10.5.1</b> Sortieren nach numerischen Variablen</a></li>
+<li class="chapter" data-level="10.5.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#sortieren-nach-variablen-mit-worten"><i class="fa fa-check"></i><b>10.5.2</b> Sortieren nach Variablen mit Worten</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="datenmanipulation.html"><a href="datenmanipulation.html#datensätze-zusammensetzen"><i class="fa fa-check"></i><b>10.6</b> Datensätze zusammensetzen</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#cbind-und-rbind"><i class="fa fa-check"></i><b>10.6.1</b> cbind und rbind</a></li>
+<li class="chapter" data-level="10.6.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#merge"><i class="fa fa-check"></i><b>10.6.2</b> merge</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="datenmanipulation.html"><a href="datenmanipulation.html#datensätze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#von-wide--und-long-format"><i class="fa fa-check"></i><b>10.7.1</b> Von Wide- und Long-Format</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="schleifen-loops.html"><a href="schleifen-loops.html"><i class="fa fa-check"></i><b>11</b> Schleifen (Loops)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for"><i class="fa fa-check"></i><b>11.1</b> for()</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for-im-datensatz"><i class="fa fa-check"></i><b>11.1.1</b> for() im Datensatz</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="schleifen-loops.html"><a href="schleifen-loops.html#if"><i class="fa fa-check"></i><b>11.2</b> if()</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graphiken.html"><a href="graphiken.html"><i class="fa fa-check"></i><b>12</b> Graphiken</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="graphiken.html"><a href="graphiken.html#das-ggplot2-paket"><i class="fa fa-check"></i><b>12.1</b> Das ggplot2 Paket</a></li>
+<li class="chapter" data-level="12.2" data-path="graphiken.html"><a href="graphiken.html#ggplot"><i class="fa fa-check"></i><b>12.2</b> ggplot()</a></li>
+<li class="chapter" data-level="12.3" data-path="graphiken.html"><a href="graphiken.html#streu-punktdiagramm"><i class="fa fa-check"></i><b>12.3</b> Streu-/Punktdiagramm</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="graphiken.html"><a href="graphiken.html#streudiagramm-mit-2-variablen"><i class="fa fa-check"></i><b>12.3.1</b> Streudiagramm mit 2 Variablen</a></li>
+<li class="chapter" data-level="12.3.2" data-path="graphiken.html"><a href="graphiken.html#geom_point"><i class="fa fa-check"></i><b>12.3.2</b> geom_point()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="graphiken.html"><a href="graphiken.html#geom_smooth"><i class="fa fa-check"></i><b>12.3.3</b> geom_smooth()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="graphiken.html"><a href="graphiken.html#streudiagramm-mit-mehr-als-2-variablen"><i class="fa fa-check"></i><b>12.3.4</b> Streudiagramm mit mehr als 2 Variablen</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="graphiken.html"><a href="graphiken.html#histogramm"><i class="fa fa-check"></i><b>12.4</b> Histogramm</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-für-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm"><i class="fa fa-check"></i><b>12.5</b> Balkendiagramm</a></li>
+<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-3-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 3 Variablen</a></li>
+<li class="chapter" data-level="12.7" data-path="graphiken.html"><a href="graphiken.html#boxplot"><i class="fa fa-check"></i><b>12.7</b> Boxplot</a></li>
+<li class="chapter" data-level="12.8" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>12.8</b> Facetting</a></li>
+<li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#ästhetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
+<ul>
+<li class="chapter" data-level="12.9.1" data-path="graphiken.html"><a href="graphiken.html#ggtitle"><i class="fa fa-check"></i><b>12.9.1</b> ggtitle()</a></li>
+<li class="chapter" data-level="12.9.2" data-path="graphiken.html"><a href="graphiken.html#labs"><i class="fa fa-check"></i><b>12.9.2</b> labs()</a></li>
+<li class="chapter" data-level="12.9.3" data-path="graphiken.html"><a href="graphiken.html#achsen-verändern"><i class="fa fa-check"></i><b>12.9.3</b> Achsen verändern</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="graphiken.html"><a href="graphiken.html#theme"><i class="fa fa-check"></i><b>12.10</b> theme()</a>
+<ul>
+<li class="chapter" data-level="12.10.1" data-path="graphiken.html"><a href="graphiken.html#elemente-von-theme"><i class="fa fa-check"></i><b>12.10.1</b> Elemente von theme()</a></li>
+<li class="chapter" data-level="12.10.2" data-path="graphiken.html"><a href="graphiken.html#legende"><i class="fa fa-check"></i><b>12.10.2</b> Legende</a></li>
+<li class="chapter" data-level="12.10.3" data-path="graphiken.html"><a href="graphiken.html#vorgefertigte-themes"><i class="fa fa-check"></i><b>12.10.3</b> Vorgefertigte themes</a></li>
+</ul></li>
+<li class="chapter" data-level="12.11" data-path="graphiken.html"><a href="graphiken.html#abbildungen-kombinieren"><i class="fa fa-check"></i><b>12.11</b> Abbildungen kombinieren</a></li>
+<li class="chapter" data-level="12.12" data-path="graphiken.html"><a href="graphiken.html#abbildungen-exportieren"><i class="fa fa-check"></i><b>12.12</b> Abbildungen exportieren</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="tabellen.html"><a href="tabellen.html"><i class="fa fa-check"></i><b>13</b> Tabellen</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="tabellen.html"><a href="tabellen.html#data.frames"><i class="fa fa-check"></i><b>13.1</b> data.frames</a></li>
+<li class="chapter" data-level="13.2" data-path="tabellen.html"><a href="tabellen.html#format"><i class="fa fa-check"></i><b>13.2</b> Format</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="tabellen.html"><a href="tabellen.html#text"><i class="fa fa-check"></i><b>13.2.1</b> Text</a></li>
+<li class="chapter" data-level="13.2.2" data-path="tabellen.html"><a href="tabellen.html#zellen"><i class="fa fa-check"></i><b>13.2.2</b> Zellen</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="tabellen.html"><a href="tabellen.html#layout"><i class="fa fa-check"></i><b>13.3</b> Layout</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einfügen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="tabellen.html"><a href="tabellen.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>14</b> Korrelation</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="korrelation.html"><a href="korrelation.html#hypothesen"><i class="fa fa-check"></i><b>14.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.2" data-path="korrelation.html"><a href="korrelation.html#berechnung-der-korrelation"><i class="fa fa-check"></i><b>14.2</b> Berechnung der Korrelation</a></li>
+<li class="chapter" data-level="14.3" data-path="korrelation.html"><a href="korrelation.html#unterschiedliche-korrelationsmethoden"><i class="fa fa-check"></i><b>14.3</b> Unterschiedliche Korrelationsmethoden</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>14.3.1</b> Pearson-Korrelation</a></li>
+<li class="chapter" data-level="14.3.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation-aka-rangkorrelation"><i class="fa fa-check"></i><b>14.3.2</b> Spearman-Korrelation (aka Rangkorrelation)</a></li>
+<li class="chapter" data-level="14.3.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>14.3.3</b> Kendall-Korrelation</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="korrelation.html"><a href="korrelation.html#korrelation-als-hypothesentest"><i class="fa fa-check"></i><b>14.4</b> Korrelation als Hypothesentest</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html"><i class="fa fa-check"></i><b>15</b> Einfache Hypothesentests</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>15.1</b> Ein-Stichproben t-Test</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-1"><i class="fa fa-check"></i><b>15.1.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.1.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.1.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen"><i class="fa fa-check"></i><b>15.1.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.1.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>15.1.4</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="15.1.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-berichten"><i class="fa fa-check"></i><b>15.1.5</b> Ergebnis berichten</a></li>
+<li class="chapter" data-level="15.1.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke"><i class="fa fa-check"></i><b>15.1.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.1.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>15.1.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>15.2</b> t-Test bei unabhängigen Stichproben</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-2"><i class="fa fa-check"></i><b>15.2.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.2.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>15.2.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.2.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-1"><i class="fa fa-check"></i><b>15.2.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.2.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>15.2.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.2.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>15.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.2.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-1"><i class="fa fa-check"></i><b>15.2.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.2.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>15.2.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>15.3</b> t-Test bei abhängigen Stichproben</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-3"><i class="fa fa-check"></i><b>15.3.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.3.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>15.3.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.3.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-2"><i class="fa fa-check"></i><b>15.3.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.3.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>15.3.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.3.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>15.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.3.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-2"><i class="fa fa-check"></i><b>15.3.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.3.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>15.3.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>15.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-4"><i class="fa fa-check"></i><b>15.4.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.4.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-3"><i class="fa fa-check"></i><b>15.4.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.4.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>15.4.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.4.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-3"><i class="fa fa-check"></i><b>15.4.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.4.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>15.4.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>15.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-5"><i class="fa fa-check"></i><b>15.5.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.5.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-4"><i class="fa fa-check"></i><b>15.5.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.5.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>15.5.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.5.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-4"><i class="fa fa-check"></i><b>15.5.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.5.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>15.5.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#chi2-test"><i class="fa fa-check"></i><b>15.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>15.6.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.6.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-5"><i class="fa fa-check"></i><b>15.6.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.6.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>15.6.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.6.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>15.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.6.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-5"><i class="fa fa-check"></i><b>15.6.5</b> Effektstärke</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#fishers-exakter-test"><i class="fa fa-check"></i><b>15.7</b> Fisher’s Exakter Test</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-6"><i class="fa fa-check"></i><b>15.7.1</b> Test durchführen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>16</b> ANOVA</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="anova.html"><a href="anova.html#einfaktorielle-anova"><i class="fa fa-check"></i><b>16.1</b> Einfaktorielle ANOVA</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="anova.html"><a href="anova.html#alpha-fehler-kumulierung"><i class="fa fa-check"></i><b>16.1.1</b> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung</a></li>
+<li class="chapter" data-level="16.1.2" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-4"><i class="fa fa-check"></i><b>16.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.1.3" data-path="anova.html"><a href="anova.html#berechnung-der-anova"><i class="fa fa-check"></i><b>16.1.3</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.1.4" data-path="anova.html"><a href="anova.html#interpretation"><i class="fa fa-check"></i><b>16.1.4</b> Interpretation</a></li>
+<li class="chapter" data-level="16.1.5" data-path="anova.html"><a href="anova.html#post-hoc-tests"><i class="fa fa-check"></i><b>16.1.5</b> Post-hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="anova.html"><a href="anova.html#mehrfaktorielle-anova"><i class="fa fa-check"></i><b>16.2</b> Mehrfaktorielle ANOVA</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-5"><i class="fa fa-check"></i><b>16.2.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.2.2" data-path="anova.html"><a href="anova.html#berechnung-der-anova-1"><i class="fa fa-check"></i><b>16.2.2</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.2.3" data-path="anova.html"><a href="anova.html#interpretation-1"><i class="fa fa-check"></i><b>16.2.3</b> Interpretation</a></li>
+<li class="chapter" data-level="16.2.4" data-path="anova.html"><a href="anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>16.2.4</b> Post-hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="anova.html"><a href="anova.html#prüfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>16.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="anova.html"><a href="anova.html#testen-der-empirisch-testbaren-annahmen"><i class="fa fa-check"></i><b>16.3.1</b> Testen der empirisch testbaren Annahmen</a></li>
+<li class="chapter" data-level="16.3.2" data-path="anova.html"><a href="anova.html#homogenität-der-varianzen"><i class="fa fa-check"></i><b>16.3.2</b> Homogenität der Varianzen:</a></li>
+<li class="chapter" data-level="16.3.3" data-path="anova.html"><a href="anova.html#sphärizität"><i class="fa fa-check"></i><b>16.3.3</b> Sphärizität:</a></li>
+<li class="chapter" data-level="16.3.4" data-path="anova.html"><a href="anova.html#normalverteilung-der-residuen"><i class="fa fa-check"></i><b>16.3.4</b> Normalverteilung der Residuen:</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -291,9 +469,709 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tabellen" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">Kapitel 11</span> Tabellen<a href="tabellen.html#tabellen" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="tabellen" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Kapitel 13</span> Tabellen<a href="tabellen.html#tabellen" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Das automatische Erstellen von Tabellen in R bietet eine Reihe von praktischen Vorteilen:</p>
+<p><strong>1. Effizienz:</strong> Es spart Zeit und reduziert potenzielle Fehlerquellen. Anstatt Tabellen manuell zu erstellen und Daten händisch einzugeben, können Tabellen in R mithilfe von Funktionen und Skripten automatisch generiert werden.</p>
+<p><strong>2. Transparenz:</strong> Es ermöglicht eine hohe Reproduzierbarkeit. Durch die Verwendung von Skripten kann die Tabellenerstellung dokumentiert und leicht wiederholt werden, was die Transparenz und Nachvollziehbarkeit der Datenanalyse verbessert.</p>
+<p><strong>3. Dynamische Veränderbarkeit:</strong> Automatisch erstellte Tabellen können einfach aktualisiert werden, wenn neue Daten verfügbar sind, was die Aktualität der Ergebnisse gewährleistet.</p>
+<p>Unser Ziel ist es, einen in R verfügbaren Inhalt (z.B. einen <code>data.frame</code>) in eine publikationsfertige Tabelle zu transformieren. Die Tabelle können wir dann z.B. in Word oder Powerpoint Dokumenten weiterverwenden, oder in einem RMarkdown-Skript nutzen, welches uns das Paper automatisch formatiert.</p>
+<div id="data.frames" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> data.frames<a href="tabellen.html#data.frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Der einfachste Fall ist es, wenn die zu formatierende Tabelle bereits als <code>data.frame</code> vorliegt. Dieser hat bereits die Struktur einer Tabelle mit Zeilen und Spalten. Das “Verwandeln” eines <code>data.frame</code> in eine Tabelle ist z.B. mit dem Paket <code>flextable</code> möglich.</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="tabellen.html#cb294-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Geschlecht =</span> <span class="fu">c</span>(<span class="st">&quot;männlich&quot;</span>, <span class="st">&quot;männlich&quot;</span>, <span class="st">&quot;weiblich&quot;</span>, <span class="st">&quot;weiblich&quot;</span>),</span>
+<span id="cb294-2"><a href="tabellen.html#cb294-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">Konzentration =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">7</span>),</span>
+<span id="cb294-3"><a href="tabellen.html#cb294-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">Schlafdauer =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">14</span>, <span class="dv">7</span>, <span class="dv">12</span>),</span>
+<span id="cb294-4"><a href="tabellen.html#cb294-4" aria-hidden="true" tabindex="-1"></a>                Schlafqualität <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb294-5"><a href="tabellen.html#cb294-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb294-6"><a href="tabellen.html#cb294-6" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##   Geschlecht Konzentration Schlafdauer Schlafqualität
+## 1   männlich             3           6              5
+## 2   männlich             7          14              8
+## 3   weiblich             4           7              2
+## 4   weiblich             7          12              1</code></pre>
+<p>Um den <code>data.frame</code> in eine Tabelle umzubauen, nutzen wir den <code>flextable()</code> Befehl:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-178"></span>
+<img src="images/flextab.png" alt="Von data.frame zur Tabelle" width="348" />
+<p class="caption">
+Figure 13.1: Von data.frame zur Tabelle
+</p>
+</div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="tabellen.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;flextable&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:ggpubr&#39;:
+## 
+##     border, font, rotate</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     compose</code></pre>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="tabellen.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flextable</span>(df)</span></code></pre></div>
+<template id="0636e78c-78c3-4319-b2da-97eb817b2e8a"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-88f02d06{}.cl-88e5654c{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-88e58220{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-88e5822a{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-88e5c2f8{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88e5c30c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88e5c30d{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88e5c316{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88e5c317{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-88e5c318{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-88f02d06'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-88e5c317"><p class="cl-88e58220"><span class="cl-88e5654c">Geschlecht</span></p></td><td class="cl-88e5c318"><p class="cl-88e5822a"><span class="cl-88e5654c">Konzentration</span></p></td><td class="cl-88e5c318"><p class="cl-88e5822a"><span class="cl-88e5654c">Schlafdauer</span></p></td><td class="cl-88e5c318"><p class="cl-88e5822a"><span class="cl-88e5654c">Schlafqualität</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-88e5c30c"><p class="cl-88e58220"><span class="cl-88e5654c">männlich</span></p></td><td class="cl-88e5c2f8"><p class="cl-88e5822a"><span class="cl-88e5654c">3</span></p></td><td class="cl-88e5c2f8"><p class="cl-88e5822a"><span class="cl-88e5654c">6</span></p></td><td class="cl-88e5c2f8"><p class="cl-88e5822a"><span class="cl-88e5654c">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-88e5c30c"><p class="cl-88e58220"><span class="cl-88e5654c">männlich</span></p></td><td class="cl-88e5c2f8"><p class="cl-88e5822a"><span class="cl-88e5654c">7</span></p></td><td class="cl-88e5c2f8"><p class="cl-88e5822a"><span class="cl-88e5654c">14</span></p></td><td class="cl-88e5c2f8"><p class="cl-88e5822a"><span class="cl-88e5654c">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-88e5c30c"><p class="cl-88e58220"><span class="cl-88e5654c">weiblich</span></p></td><td class="cl-88e5c2f8"><p class="cl-88e5822a"><span class="cl-88e5654c">4</span></p></td><td class="cl-88e5c2f8"><p class="cl-88e5822a"><span class="cl-88e5654c">7</span></p></td><td class="cl-88e5c2f8"><p class="cl-88e5822a"><span class="cl-88e5654c">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-88e5c30d"><p class="cl-88e58220"><span class="cl-88e5654c">weiblich</span></p></td><td class="cl-88e5c316"><p class="cl-88e5822a"><span class="cl-88e5654c">7</span></p></td><td class="cl-88e5c316"><p class="cl-88e5822a"><span class="cl-88e5654c">12</span></p></td><td class="cl-88e5c316"><p class="cl-88e5822a"><span class="cl-88e5654c">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="99e1dab8-ac0e-4128-af7d-c1a382d1de55"></div>
+<script>
+var dest = document.getElementById("99e1dab8-ac0e-4128-af7d-c1a382d1de55");
+var template = document.getElementById("0636e78c-78c3-4319-b2da-97eb817b2e8a");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
 
+<p>Die Bestandteile der Tabelle sind wie folgt:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-180"></span>
+<img src="images/flextab2.png" alt="Bestandteile der Tabelle" width="314" />
+<p class="caption">
+Figure 13.2: Bestandteile der Tabelle
+</p>
+</div>
+<p>Der allgemeine Aufbau einer <code>flextable</code> Funktion lautet:</p>
+<p><code>function(x, i, j, part, args)</code></p>
+<ul>
+<li>x = flextable Objekt (Ergebnis von <code>flextable()</code>)</li>
+<li>i = Zeilenindex</li>
+<li>j = Spaltenindex,</li>
+<li>part = Tabellenteil (header, body, footer)</li>
+<li>args = spezielle weitere Anpassungen</li>
+</ul>
+</div>
+<div id="format" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Format<a href="tabellen.html#format" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Es können diverse Aspekte der Tabelle angepasst werden.</p>
+<div id="text" class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Text<a href="tabellen.html#text" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="fett-schreiben" class="section level4 hasAnchor" number="13.2.1.1">
+<h4><span class="header-section-number">13.2.1.1</span> Fett schreiben<a href="tabellen.html#fett-schreiben" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Zum Verwenden einer fetten Schriftart nutzen wir die <code>bold()</code> Funktion:</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="tabellen.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bold</span>(<span class="fu">flextable</span>(df), <span class="at">j =</span> <span class="dv">1</span>, <span class="at">bold =</span> T)</span></code></pre></div>
+<template id="1f631abc-59c2-44c8-a626-bfae1a60cd50"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-8912d342{}.cl-890ab4c8{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-890ab4d2{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-890ac792{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-890ac79c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-890afa14{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-890afa1e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-890afa1f{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-890afa28{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-890afa32{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-890afa33{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-8912d342'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-890afa32"><p class="cl-890ac792"><span class="cl-890ab4c8">Geschlecht</span></p></td><td class="cl-890afa33"><p class="cl-890ac79c"><span class="cl-890ab4c8">Konzentration</span></p></td><td class="cl-890afa33"><p class="cl-890ac79c"><span class="cl-890ab4c8">Schlafdauer</span></p></td><td class="cl-890afa33"><p class="cl-890ac79c"><span class="cl-890ab4c8">Schlafqualität</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-890afa1e"><p class="cl-890ac792"><span class="cl-890ab4d2">männlich</span></p></td><td class="cl-890afa14"><p class="cl-890ac79c"><span class="cl-890ab4c8">3</span></p></td><td class="cl-890afa14"><p class="cl-890ac79c"><span class="cl-890ab4c8">6</span></p></td><td class="cl-890afa14"><p class="cl-890ac79c"><span class="cl-890ab4c8">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-890afa1e"><p class="cl-890ac792"><span class="cl-890ab4d2">männlich</span></p></td><td class="cl-890afa14"><p class="cl-890ac79c"><span class="cl-890ab4c8">7</span></p></td><td class="cl-890afa14"><p class="cl-890ac79c"><span class="cl-890ab4c8">14</span></p></td><td class="cl-890afa14"><p class="cl-890ac79c"><span class="cl-890ab4c8">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-890afa1e"><p class="cl-890ac792"><span class="cl-890ab4d2">weiblich</span></p></td><td class="cl-890afa14"><p class="cl-890ac79c"><span class="cl-890ab4c8">4</span></p></td><td class="cl-890afa14"><p class="cl-890ac79c"><span class="cl-890ab4c8">7</span></p></td><td class="cl-890afa14"><p class="cl-890ac79c"><span class="cl-890ab4c8">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-890afa1f"><p class="cl-890ac792"><span class="cl-890ab4d2">weiblich</span></p></td><td class="cl-890afa28"><p class="cl-890ac79c"><span class="cl-890ab4c8">7</span></p></td><td class="cl-890afa28"><p class="cl-890ac79c"><span class="cl-890ab4c8">12</span></p></td><td class="cl-890afa28"><p class="cl-890ac79c"><span class="cl-890ab4c8">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="d5a72a6e-ce74-4d71-8f47-726b0466e421"></div>
+<script>
+var dest = document.getElementById("d5a72a6e-ce74-4d71-8f47-726b0466e421");
+var template = document.getElementById("1f631abc-59c2-44c8-a626-bfae1a60cd50");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+<div id="kursiv-schreiben" class="section level4 hasAnchor" number="13.2.1.2">
+<h4><span class="header-section-number">13.2.1.2</span> Kursiv schreiben<a href="tabellen.html#kursiv-schreiben" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Zum Verwenden einer kursiven Schriftart nutzen wir die <code>italic()</code> Funktion:</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="tabellen.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="fu">italic</span>(<span class="fu">flextable</span>(df), <span class="at">j =</span> <span class="dv">1</span>, <span class="at">italic =</span> T)</span></code></pre></div>
+<template id="af15b461-538d-4fca-8195-69c85e34908d"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-892a80e6{}.cl-8923816a{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8923817e{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8923915a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-89239164{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8923d4c6{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8923d4d0{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8923d4da{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8923d4db{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8923d4e4{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8923d4e5{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-892a80e6'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-8923d4e4"><p class="cl-8923915a"><span class="cl-8923816a">Geschlecht</span></p></td><td class="cl-8923d4e5"><p class="cl-89239164"><span class="cl-8923816a">Konzentration</span></p></td><td class="cl-8923d4e5"><p class="cl-89239164"><span class="cl-8923816a">Schlafdauer</span></p></td><td class="cl-8923d4e5"><p class="cl-89239164"><span class="cl-8923816a">Schlafqualität</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-8923d4d0"><p class="cl-8923915a"><span class="cl-8923817e">männlich</span></p></td><td class="cl-8923d4c6"><p class="cl-89239164"><span class="cl-8923816a">3</span></p></td><td class="cl-8923d4c6"><p class="cl-89239164"><span class="cl-8923816a">6</span></p></td><td class="cl-8923d4c6"><p class="cl-89239164"><span class="cl-8923816a">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8923d4d0"><p class="cl-8923915a"><span class="cl-8923817e">männlich</span></p></td><td class="cl-8923d4c6"><p class="cl-89239164"><span class="cl-8923816a">7</span></p></td><td class="cl-8923d4c6"><p class="cl-89239164"><span class="cl-8923816a">14</span></p></td><td class="cl-8923d4c6"><p class="cl-89239164"><span class="cl-8923816a">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8923d4d0"><p class="cl-8923915a"><span class="cl-8923817e">weiblich</span></p></td><td class="cl-8923d4c6"><p class="cl-89239164"><span class="cl-8923816a">4</span></p></td><td class="cl-8923d4c6"><p class="cl-89239164"><span class="cl-8923816a">7</span></p></td><td class="cl-8923d4c6"><p class="cl-89239164"><span class="cl-8923816a">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8923d4da"><p class="cl-8923915a"><span class="cl-8923817e">weiblich</span></p></td><td class="cl-8923d4db"><p class="cl-89239164"><span class="cl-8923816a">7</span></p></td><td class="cl-8923d4db"><p class="cl-89239164"><span class="cl-8923816a">12</span></p></td><td class="cl-8923d4db"><p class="cl-89239164"><span class="cl-8923816a">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="bd92083d-12f7-4b54-8529-9ee216339bea"></div>
+<script>
+var dest = document.getElementById("bd92083d-12f7-4b54-8529-9ee216339bea");
+var template = document.getElementById("af15b461-538d-4fca-8195-69c85e34908d");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+<div id="textgröße-anpassen" class="section level4 hasAnchor" number="13.2.1.3">
+<h4><span class="header-section-number">13.2.1.3</span> Textgröße anpassen<a href="tabellen.html#textgröße-anpassen" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Zur Veränderung der Textgröße nutzen wir die <code>fontsize()</code> Funktion:</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="tabellen.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fontsize</span>(<span class="fu">flextable</span>(df), <span class="at">j =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">6</span>)</span></code></pre></div>
+<template id="a2be05fd-b895-4193-a0cd-770c922bc49c"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-893dd092{}.cl-8936bdca{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8936bdde{font-family:'Helvetica';font-size:6pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8936ceb4{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8936cebe{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8936fd4e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8936fd58{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8936fd59{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8936fd5a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8936fd62{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8936fd63{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-893dd092'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-8936fd62"><p class="cl-8936ceb4"><span class="cl-8936bdca">Geschlecht</span></p></td><td class="cl-8936fd63"><p class="cl-8936cebe"><span class="cl-8936bdca">Konzentration</span></p></td><td class="cl-8936fd63"><p class="cl-8936cebe"><span class="cl-8936bdca">Schlafdauer</span></p></td><td class="cl-8936fd63"><p class="cl-8936cebe"><span class="cl-8936bdca">Schlafqualität</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-8936fd58"><p class="cl-8936ceb4"><span class="cl-8936bdde">männlich</span></p></td><td class="cl-8936fd4e"><p class="cl-8936cebe"><span class="cl-8936bdca">3</span></p></td><td class="cl-8936fd4e"><p class="cl-8936cebe"><span class="cl-8936bdca">6</span></p></td><td class="cl-8936fd4e"><p class="cl-8936cebe"><span class="cl-8936bdca">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8936fd58"><p class="cl-8936ceb4"><span class="cl-8936bdde">männlich</span></p></td><td class="cl-8936fd4e"><p class="cl-8936cebe"><span class="cl-8936bdca">7</span></p></td><td class="cl-8936fd4e"><p class="cl-8936cebe"><span class="cl-8936bdca">14</span></p></td><td class="cl-8936fd4e"><p class="cl-8936cebe"><span class="cl-8936bdca">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8936fd58"><p class="cl-8936ceb4"><span class="cl-8936bdde">weiblich</span></p></td><td class="cl-8936fd4e"><p class="cl-8936cebe"><span class="cl-8936bdca">4</span></p></td><td class="cl-8936fd4e"><p class="cl-8936cebe"><span class="cl-8936bdca">7</span></p></td><td class="cl-8936fd4e"><p class="cl-8936cebe"><span class="cl-8936bdca">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8936fd59"><p class="cl-8936ceb4"><span class="cl-8936bdde">weiblich</span></p></td><td class="cl-8936fd5a"><p class="cl-8936cebe"><span class="cl-8936bdca">7</span></p></td><td class="cl-8936fd5a"><p class="cl-8936cebe"><span class="cl-8936bdca">12</span></p></td><td class="cl-8936fd5a"><p class="cl-8936cebe"><span class="cl-8936bdca">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="b086f967-e753-46df-921f-d9f1877ecd75"></div>
+<script>
+var dest = document.getElementById("b086f967-e753-46df-921f-d9f1877ecd75");
+var template = document.getElementById("a2be05fd-b895-4193-a0cd-770c922bc49c");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+<div id="textfarbe-anpassen" class="section level4 hasAnchor" number="13.2.1.4">
+<h4><span class="header-section-number">13.2.1.4</span> Textfarbe anpassen<a href="tabellen.html#textfarbe-anpassen" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Zur Veränderung der Textfarbe nutzen wir die <code>color()</code> Funktion:</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="tabellen.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="fu">color</span>(<span class="fu">flextable</span>(df), <span class="at">j =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<template id="ac42bd15-b2f4-4ebc-8cc1-233783bbc926"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-895073be{}.cl-894a2752{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-894a2766{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-894a38e6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-894a38f0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-894a6e92{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-894a6e9c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-894a6ea6{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-894a6ea7{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-894a6eb0{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-894a6eb1{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-895073be'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-894a6eb0"><p class="cl-894a38e6"><span class="cl-894a2752">Geschlecht</span></p></td><td class="cl-894a6eb1"><p class="cl-894a38f0"><span class="cl-894a2752">Konzentration</span></p></td><td class="cl-894a6eb1"><p class="cl-894a38f0"><span class="cl-894a2752">Schlafdauer</span></p></td><td class="cl-894a6eb1"><p class="cl-894a38f0"><span class="cl-894a2752">Schlafqualität</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-894a6e9c"><p class="cl-894a38e6"><span class="cl-894a2766">männlich</span></p></td><td class="cl-894a6e92"><p class="cl-894a38f0"><span class="cl-894a2752">3</span></p></td><td class="cl-894a6e92"><p class="cl-894a38f0"><span class="cl-894a2752">6</span></p></td><td class="cl-894a6e92"><p class="cl-894a38f0"><span class="cl-894a2752">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-894a6e9c"><p class="cl-894a38e6"><span class="cl-894a2766">männlich</span></p></td><td class="cl-894a6e92"><p class="cl-894a38f0"><span class="cl-894a2752">7</span></p></td><td class="cl-894a6e92"><p class="cl-894a38f0"><span class="cl-894a2752">14</span></p></td><td class="cl-894a6e92"><p class="cl-894a38f0"><span class="cl-894a2752">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-894a6e9c"><p class="cl-894a38e6"><span class="cl-894a2766">weiblich</span></p></td><td class="cl-894a6e92"><p class="cl-894a38f0"><span class="cl-894a2752">4</span></p></td><td class="cl-894a6e92"><p class="cl-894a38f0"><span class="cl-894a2752">7</span></p></td><td class="cl-894a6e92"><p class="cl-894a38f0"><span class="cl-894a2752">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-894a6ea6"><p class="cl-894a38e6"><span class="cl-894a2766">weiblich</span></p></td><td class="cl-894a6ea7"><p class="cl-894a38f0"><span class="cl-894a2752">7</span></p></td><td class="cl-894a6ea7"><p class="cl-894a38f0"><span class="cl-894a2752">12</span></p></td><td class="cl-894a6ea7"><p class="cl-894a38f0"><span class="cl-894a2752">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="fe85d861-0b3f-4605-a0ce-a54a85a2161e"></div>
+<script>
+var dest = document.getElementById("fe85d861-0b3f-4605-a0ce-a54a85a2161e");
+var template = document.getElementById("ac42bd15-b2f4-4ebc-8cc1-233783bbc926");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+<div id="text-hervorheben" class="section level4 hasAnchor" number="13.2.1.5">
+<h4><span class="header-section-number">13.2.1.5</span> Text hervorheben<a href="tabellen.html#text-hervorheben" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Zum Hervorheben von Text nutzen wir die <code>highlight()</code> Funktion:</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="tabellen.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="fu">highlight</span>(<span class="fu">flextable</span>(df), <span class="at">j =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">&quot;yellow&quot;</span>)</span></code></pre></div>
+<template id="b246d2d3-6bb1-42b9-8809-57670cbbcb6a"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-89656a8a{}.cl-895f34f8{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-895f3516{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:rgba(255, 255, 0, 1.00);}.cl-895f43e4{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-895f43ee{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-895f7102{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-895f710c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-895f7116{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-895f7117{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-895f7118{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-895f7120{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-89656a8a'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-895f7118"><p class="cl-895f43e4"><span class="cl-895f34f8">Geschlecht</span></p></td><td class="cl-895f7120"><p class="cl-895f43ee"><span class="cl-895f34f8">Konzentration</span></p></td><td class="cl-895f7120"><p class="cl-895f43ee"><span class="cl-895f34f8">Schlafdauer</span></p></td><td class="cl-895f7120"><p class="cl-895f43ee"><span class="cl-895f34f8">Schlafqualität</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-895f710c"><p class="cl-895f43e4"><span class="cl-895f3516">männlich</span></p></td><td class="cl-895f7102"><p class="cl-895f43ee"><span class="cl-895f34f8">3</span></p></td><td class="cl-895f7102"><p class="cl-895f43ee"><span class="cl-895f34f8">6</span></p></td><td class="cl-895f7102"><p class="cl-895f43ee"><span class="cl-895f34f8">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-895f710c"><p class="cl-895f43e4"><span class="cl-895f3516">männlich</span></p></td><td class="cl-895f7102"><p class="cl-895f43ee"><span class="cl-895f34f8">7</span></p></td><td class="cl-895f7102"><p class="cl-895f43ee"><span class="cl-895f34f8">14</span></p></td><td class="cl-895f7102"><p class="cl-895f43ee"><span class="cl-895f34f8">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-895f710c"><p class="cl-895f43e4"><span class="cl-895f3516">weiblich</span></p></td><td class="cl-895f7102"><p class="cl-895f43ee"><span class="cl-895f34f8">4</span></p></td><td class="cl-895f7102"><p class="cl-895f43ee"><span class="cl-895f34f8">7</span></p></td><td class="cl-895f7102"><p class="cl-895f43ee"><span class="cl-895f34f8">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-895f7116"><p class="cl-895f43e4"><span class="cl-895f3516">weiblich</span></p></td><td class="cl-895f7117"><p class="cl-895f43ee"><span class="cl-895f34f8">7</span></p></td><td class="cl-895f7117"><p class="cl-895f43ee"><span class="cl-895f34f8">12</span></p></td><td class="cl-895f7117"><p class="cl-895f43ee"><span class="cl-895f34f8">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="6ca809d9-c69a-4a5d-be4a-d5c982431566"></div>
+<script>
+var dest = document.getElementById("6ca809d9-c69a-4a5d-be4a-d5c982431566");
+var template = document.getElementById("b246d2d3-6bb1-42b9-8809-57670cbbcb6a");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+<div id="text-rotieren" class="section level4 hasAnchor" number="13.2.1.6">
+<h4><span class="header-section-number">13.2.1.6</span> Text rotieren<a href="tabellen.html#text-rotieren" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Zum Totieren von Text nutzen wir die <code>rotate()</code> Funktion:</p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="tabellen.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rotate</span>(<span class="fu">flextable</span>(df), <span class="at">j =</span> <span class="dv">2</span>, <span class="at">rotation =</span> <span class="st">&quot;tbrl&quot;</span>)</span></code></pre></div>
+<template id="105a979f-1050-41b7-8e3a-ceb49c2ffd0b"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-8978556e{}.cl-897244f8{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-89725416{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-89725420{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8972542a{margin:0;text-align:right;margin-left:auto;writing-mode: vertical-rl;-ms-writing-mode:tb-rl;-webkit-writing-mode:vertical-rl;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-897286c0{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-897286ca{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-897286d4{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-897286de{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-897286df{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-897286e0{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-897286e8{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-897286e9{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-8978556e'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-897286e8"><p class="cl-89725416"><span class="cl-897244f8">Geschlecht</span></p></td><td class="cl-897286e9"><p class="cl-89725420"><span class="cl-897244f8">Konzentration</span></p></td><td class="cl-897286e9"><p class="cl-89725420"><span class="cl-897244f8">Schlafdauer</span></p></td><td class="cl-897286e9"><p class="cl-89725420"><span class="cl-897244f8">Schlafqualität</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-897286ca"><p class="cl-89725416"><span class="cl-897244f8">männlich</span></p></td><td class="cl-897286d4"><p class="cl-8972542a"><span class="cl-897244f8">3</span></p></td><td class="cl-897286c0"><p class="cl-89725420"><span class="cl-897244f8">6</span></p></td><td class="cl-897286c0"><p class="cl-89725420"><span class="cl-897244f8">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-897286ca"><p class="cl-89725416"><span class="cl-897244f8">männlich</span></p></td><td class="cl-897286d4"><p class="cl-8972542a"><span class="cl-897244f8">7</span></p></td><td class="cl-897286c0"><p class="cl-89725420"><span class="cl-897244f8">14</span></p></td><td class="cl-897286c0"><p class="cl-89725420"><span class="cl-897244f8">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-897286ca"><p class="cl-89725416"><span class="cl-897244f8">weiblich</span></p></td><td class="cl-897286d4"><p class="cl-8972542a"><span class="cl-897244f8">4</span></p></td><td class="cl-897286c0"><p class="cl-89725420"><span class="cl-897244f8">7</span></p></td><td class="cl-897286c0"><p class="cl-89725420"><span class="cl-897244f8">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-897286de"><p class="cl-89725416"><span class="cl-897244f8">weiblich</span></p></td><td class="cl-897286df"><p class="cl-8972542a"><span class="cl-897244f8">7</span></p></td><td class="cl-897286e0"><p class="cl-89725420"><span class="cl-897244f8">12</span></p></td><td class="cl-897286e0"><p class="cl-89725420"><span class="cl-897244f8">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="7febc567-b7fd-48d6-ae79-0b1807d8ff87"></div>
+<script>
+var dest = document.getElementById("7febc567-b7fd-48d6-ae79-0b1807d8ff87");
+var template = document.getElementById("105a979f-1050-41b7-8e3a-ceb49c2ffd0b");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+</div>
+<div id="zellen" class="section level3 hasAnchor" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Zellen<a href="tabellen.html#zellen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="alignment" class="section level4 hasAnchor" number="13.2.2.1">
+<h4><span class="header-section-number">13.2.2.1</span> Alignment<a href="tabellen.html#alignment" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Um den Text in der Zelle auszurichten nutzen wir die <code>align()</code> Funktion. Die Argumente sind “left”, “right” und “center”.</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="tabellen.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="fu">align</span>(<span class="fu">flextable</span>(df), <span class="at">j =</span> <span class="dv">2</span>, <span class="at">align =</span> <span class="st">&quot;left&quot;</span>)</span></code></pre></div>
+<template id="6bdad5c4-a5d4-49d8-9275-984d069951c9"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-898bfc90{}.cl-8986275c{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8986362a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-89863634{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-898665fa{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89866604{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8986660e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89866618{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89866619{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8986661a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-898bfc90'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-89866619"><p class="cl-8986362a"><span class="cl-8986275c">Geschlecht</span></p></td><td class="cl-8986661a"><p class="cl-89863634"><span class="cl-8986275c">Konzentration</span></p></td><td class="cl-8986661a"><p class="cl-89863634"><span class="cl-8986275c">Schlafdauer</span></p></td><td class="cl-8986661a"><p class="cl-89863634"><span class="cl-8986275c">Schlafqualität</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-89866604"><p class="cl-8986362a"><span class="cl-8986275c">männlich</span></p></td><td class="cl-89866604"><p class="cl-8986362a"><span class="cl-8986275c">3</span></p></td><td class="cl-898665fa"><p class="cl-89863634"><span class="cl-8986275c">6</span></p></td><td class="cl-898665fa"><p class="cl-89863634"><span class="cl-8986275c">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89866604"><p class="cl-8986362a"><span class="cl-8986275c">männlich</span></p></td><td class="cl-89866604"><p class="cl-8986362a"><span class="cl-8986275c">7</span></p></td><td class="cl-898665fa"><p class="cl-89863634"><span class="cl-8986275c">14</span></p></td><td class="cl-898665fa"><p class="cl-89863634"><span class="cl-8986275c">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89866604"><p class="cl-8986362a"><span class="cl-8986275c">weiblich</span></p></td><td class="cl-89866604"><p class="cl-8986362a"><span class="cl-8986275c">4</span></p></td><td class="cl-898665fa"><p class="cl-89863634"><span class="cl-8986275c">7</span></p></td><td class="cl-898665fa"><p class="cl-89863634"><span class="cl-8986275c">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8986660e"><p class="cl-8986362a"><span class="cl-8986275c">weiblich</span></p></td><td class="cl-8986660e"><p class="cl-8986362a"><span class="cl-8986275c">7</span></p></td><td class="cl-89866618"><p class="cl-89863634"><span class="cl-8986275c">12</span></p></td><td class="cl-89866618"><p class="cl-89863634"><span class="cl-8986275c">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="dc4ddb68-504b-40e1-ac2a-df9893c72649"></div>
+<script>
+var dest = document.getElementById("dc4ddb68-504b-40e1-ac2a-df9893c72649");
+var template = document.getElementById("6bdad5c4-a5d4-49d8-9275-984d069951c9");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>Um den Text in der Zelle vertikal auszurichten nutzen wir die <code>valign()</code> Funktion. Die Argumente sind “top” und “bottom”.</p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="tabellen.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">valign</span>(<span class="fu">flextable</span>(df), <span class="at">j =</span> <span class="dv">2</span>, <span class="at">valign =</span> <span class="st">&quot;top&quot;</span>)</span></code></pre></div>
+<template id="d16c63c4-93f9-404e-9f76-7f6652982fb6"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-899f95ac{}.cl-8998c8ee{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8998d820{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8998d82a{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8998d82b{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-899a0268{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-899a027c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-899a027d{width:54pt;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-899a027e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-899a0286{width:54pt;background-color:transparent;vertical-align: top;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-899a0287{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-899a0288{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-899a0290{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-899f95ac'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-899a0288"><p class="cl-8998d820"><span class="cl-8998c8ee">Geschlecht</span></p></td><td class="cl-899a0290"><p class="cl-8998d82a"><span class="cl-8998c8ee">Konzentration</span></p></td><td class="cl-899a0290"><p class="cl-8998d82a"><span class="cl-8998c8ee">Schlafdauer</span></p></td><td class="cl-899a0290"><p class="cl-8998d82a"><span class="cl-8998c8ee">Schlafqualität</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-899a027c"><p class="cl-8998d820"><span class="cl-8998c8ee">männlich</span></p></td><td class="cl-899a027d"><p class="cl-8998d82b"><span class="cl-8998c8ee">3</span></p></td><td class="cl-899a0268"><p class="cl-8998d82a"><span class="cl-8998c8ee">6</span></p></td><td class="cl-899a0268"><p class="cl-8998d82a"><span class="cl-8998c8ee">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-899a027c"><p class="cl-8998d820"><span class="cl-8998c8ee">männlich</span></p></td><td class="cl-899a027d"><p class="cl-8998d82b"><span class="cl-8998c8ee">7</span></p></td><td class="cl-899a0268"><p class="cl-8998d82a"><span class="cl-8998c8ee">14</span></p></td><td class="cl-899a0268"><p class="cl-8998d82a"><span class="cl-8998c8ee">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-899a027c"><p class="cl-8998d820"><span class="cl-8998c8ee">weiblich</span></p></td><td class="cl-899a027d"><p class="cl-8998d82b"><span class="cl-8998c8ee">4</span></p></td><td class="cl-899a0268"><p class="cl-8998d82a"><span class="cl-8998c8ee">7</span></p></td><td class="cl-899a0268"><p class="cl-8998d82a"><span class="cl-8998c8ee">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-899a027e"><p class="cl-8998d820"><span class="cl-8998c8ee">weiblich</span></p></td><td class="cl-899a0286"><p class="cl-8998d82b"><span class="cl-8998c8ee">7</span></p></td><td class="cl-899a0287"><p class="cl-8998d82a"><span class="cl-8998c8ee">12</span></p></td><td class="cl-899a0287"><p class="cl-8998d82a"><span class="cl-8998c8ee">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="430c162f-cc4f-4d8a-b0fe-42854a89a4d8"></div>
+<script>
+var dest = document.getElementById("430c162f-cc4f-4d8a-b0fe-42854a89a4d8");
+var template = document.getElementById("d16c63c4-93f9-404e-9f76-7f6652982fb6");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+<div id="abstände" class="section level4 hasAnchor" number="13.2.2.2">
+<h4><span class="header-section-number">13.2.2.2</span> Abstände<a href="tabellen.html#abstände" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="tabellen.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu">padding</span>(<span class="fu">flextable</span>(df), <span class="at">i =</span> <span class="dv">1</span>, <span class="at">padding =</span> <span class="dv">15</span>)</span></code></pre></div>
+<template id="bf5c5e8c-a6f6-436b-a828-c18bdca2a72f"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-89b2818a{}.cl-89ab3dd0{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-89ab4f3c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-89ab4f46{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-89ab4f47{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:15pt;padding-top:15pt;padding-left:15pt;padding-right:15pt;line-height: 1;background-color:transparent;}.cl-89ab4f48{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:15pt;padding-top:15pt;padding-left:15pt;padding-right:15pt;line-height: 1;background-color:transparent;}.cl-89ab8b0a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89ab8b14{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89ab8b1e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89ab8b1f{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89ab8b28{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89ab8b32{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-89b2818a'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-89ab8b28"><p class="cl-89ab4f3c"><span class="cl-89ab3dd0">Geschlecht</span></p></td><td class="cl-89ab8b32"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">Konzentration</span></p></td><td class="cl-89ab8b32"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">Schlafdauer</span></p></td><td class="cl-89ab8b32"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">Schlafqualität</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-89ab8b14"><p class="cl-89ab4f47"><span class="cl-89ab3dd0">männlich</span></p></td><td class="cl-89ab8b0a"><p class="cl-89ab4f48"><span class="cl-89ab3dd0">3</span></p></td><td class="cl-89ab8b0a"><p class="cl-89ab4f48"><span class="cl-89ab3dd0">6</span></p></td><td class="cl-89ab8b0a"><p class="cl-89ab4f48"><span class="cl-89ab3dd0">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89ab8b14"><p class="cl-89ab4f3c"><span class="cl-89ab3dd0">männlich</span></p></td><td class="cl-89ab8b0a"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">7</span></p></td><td class="cl-89ab8b0a"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">14</span></p></td><td class="cl-89ab8b0a"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89ab8b14"><p class="cl-89ab4f3c"><span class="cl-89ab3dd0">weiblich</span></p></td><td class="cl-89ab8b0a"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">4</span></p></td><td class="cl-89ab8b0a"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">7</span></p></td><td class="cl-89ab8b0a"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89ab8b1e"><p class="cl-89ab4f3c"><span class="cl-89ab3dd0">weiblich</span></p></td><td class="cl-89ab8b1f"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">7</span></p></td><td class="cl-89ab8b1f"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">12</span></p></td><td class="cl-89ab8b1f"><p class="cl-89ab4f46"><span class="cl-89ab3dd0">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="a64232a2-78e6-48a9-b3f2-4c24705ca324"></div>
+<script>
+var dest = document.getElementById("a64232a2-78e6-48a9-b3f2-4c24705ca324");
+var template = document.getElementById("bf5c5e8c-a6f6-436b-a828-c18bdca2a72f");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+<div id="hintergrundfarbe" class="section level4 hasAnchor" number="13.2.2.3">
+<h4><span class="header-section-number">13.2.2.3</span> Hintergrundfarbe<a href="tabellen.html#hintergrundfarbe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="tabellen.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bg</span>(<span class="fu">flextable</span>(df), <span class="at">i =</span> <span class="dv">1</span>, <span class="at">bg =</span> <span class="st">&quot;grey&quot;</span>)</span></code></pre></div>
+<template id="f5a45f21-5c82-410b-991f-11d144caa01e"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-89d8055e{}.cl-89ca8bc2{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-89cab174{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-89cab17e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-89cb07dc{width:54pt;background-color:rgba(190, 190, 190, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89cb07e6{width:54pt;background-color:rgba(190, 190, 190, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89cb07e7{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89cb07f0{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89cb07f1{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89cb07fa{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89cb07fb{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-89cb0804{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-89d8055e'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-89cb07fb"><p class="cl-89cab174"><span class="cl-89ca8bc2">Geschlecht</span></p></td><td class="cl-89cb0804"><p class="cl-89cab17e"><span class="cl-89ca8bc2">Konzentration</span></p></td><td class="cl-89cb0804"><p class="cl-89cab17e"><span class="cl-89ca8bc2">Schlafdauer</span></p></td><td class="cl-89cb0804"><p class="cl-89cab17e"><span class="cl-89ca8bc2">Schlafqualität</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-89cb07e6"><p class="cl-89cab174"><span class="cl-89ca8bc2">männlich</span></p></td><td class="cl-89cb07dc"><p class="cl-89cab17e"><span class="cl-89ca8bc2">3</span></p></td><td class="cl-89cb07dc"><p class="cl-89cab17e"><span class="cl-89ca8bc2">6</span></p></td><td class="cl-89cb07dc"><p class="cl-89cab17e"><span class="cl-89ca8bc2">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89cb07f0"><p class="cl-89cab174"><span class="cl-89ca8bc2">männlich</span></p></td><td class="cl-89cb07e7"><p class="cl-89cab17e"><span class="cl-89ca8bc2">7</span></p></td><td class="cl-89cb07e7"><p class="cl-89cab17e"><span class="cl-89ca8bc2">14</span></p></td><td class="cl-89cb07e7"><p class="cl-89cab17e"><span class="cl-89ca8bc2">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89cb07f0"><p class="cl-89cab174"><span class="cl-89ca8bc2">weiblich</span></p></td><td class="cl-89cb07e7"><p class="cl-89cab17e"><span class="cl-89ca8bc2">4</span></p></td><td class="cl-89cb07e7"><p class="cl-89cab17e"><span class="cl-89ca8bc2">7</span></p></td><td class="cl-89cb07e7"><p class="cl-89cab17e"><span class="cl-89ca8bc2">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-89cb07f1"><p class="cl-89cab174"><span class="cl-89ca8bc2">weiblich</span></p></td><td class="cl-89cb07fa"><p class="cl-89cab17e"><span class="cl-89ca8bc2">7</span></p></td><td class="cl-89cb07fa"><p class="cl-89cab17e"><span class="cl-89ca8bc2">12</span></p></td><td class="cl-89cb07fa"><p class="cl-89cab17e"><span class="cl-89ca8bc2">1</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="90cda07c-dd88-4ba5-acf5-06e81931e28d"></div>
+<script>
+var dest = document.getElementById("90cda07c-dd88-4ba5-acf5-06e81931e28d");
+var template = document.getElementById("f5a45f21-5c82-410b-991f-11d144caa01e");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+</div>
+</div>
+<div id="layout" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Layout<a href="tabellen.html#layout" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="titelzeilen-einfügen" class="section level3 hasAnchor" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Titelzeilen einfügen<a href="tabellen.html#titelzeilen-einfügen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="tabelle-speichern" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Tabelle speichern<a href="tabellen.html#tabelle-speichern" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ein Export der Tabelle in ein weiterverwendbares Format ist für folgende Dateitypen möglich:</p>
+<ul>
+<li>.html (Web)</li>
+<li>.docx (Word)</li>
+<li>.pptx (Powerpoint)</li>
+<li>.png (Bild)</li>
+</ul>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="tabellen.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save_as_html(df, &quot;meine_tabelle.html&quot;) </span></span>
+<span id="cb311-2"><a href="tabellen.html#cb311-2" aria-hidden="true" tabindex="-1"></a><span class="co"># save_as_docx(df, &quot;meine_tabelle.docx&quot;) </span></span>
+<span id="cb311-3"><a href="tabellen.html#cb311-3" aria-hidden="true" tabindex="-1"></a><span class="co"># save_as_pptx(df, &quot;meine_tabelle.pptx&quot;) </span></span>
+<span id="cb311-4"><a href="tabellen.html#cb311-4" aria-hidden="true" tabindex="-1"></a><span class="co"># save_as_image(df, &quot;meine_tabelle.png&quot;)</span></span></code></pre></div>
+
+</div>
 </div>
             </section>
 
@@ -301,7 +1179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="graphiken.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="preprocessing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="korrelation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -355,6 +1233,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

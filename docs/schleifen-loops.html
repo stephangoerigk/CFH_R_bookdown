@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2023-04-13" />
+<meta name="date" content="2023-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -246,8 +248,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="9.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-r-objekte"><i class="fa fa-check"></i><b>9.1</b> Informationen über R Objekte</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-vektoren"><i class="fa fa-check"></i><b>9.1.1</b> Informationen über Vektoren</a></li>
-<li class="chapter" data-level="9.1.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-dataframes"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Dataframes</a></li>
+<li class="chapter" data-level="9.1.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#str"><i class="fa fa-check"></i><b>9.1.1</b> str()</a></li>
+<li class="chapter" data-level="9.1.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-vektoren"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Vektoren</a></li>
+<li class="chapter" data-level="9.1.3" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-dataframes"><i class="fa fa-check"></i><b>9.1.3</b> Informationen über Dataframes</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>9.2</b> Deskriptivstatistiken</a>
 <ul>
@@ -287,10 +290,18 @@ div.csl-indent {
 <li class="chapter" data-level="10.6.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#cbind-und-rbind"><i class="fa fa-check"></i><b>10.6.1</b> cbind und rbind</a></li>
 <li class="chapter" data-level="10.6.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#merge"><i class="fa fa-check"></i><b>10.6.2</b> merge</a></li>
 </ul></li>
+<li class="chapter" data-level="10.7" data-path="datenmanipulation.html"><a href="datenmanipulation.html#datensätze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#von-wide--und-long-format"><i class="fa fa-check"></i><b>10.7.1</b> Von Wide- und Long-Format</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="schleifen-loops.html"><a href="schleifen-loops.html"><i class="fa fa-check"></i><b>11</b> Schleifen (Loops)</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for"><i class="fa fa-check"></i><b>11.1</b> for()</a></li>
+<li class="chapter" data-level="11.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for"><i class="fa fa-check"></i><b>11.1</b> for()</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for-im-datensatz"><i class="fa fa-check"></i><b>11.1.1</b> for() im Datensatz</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="schleifen-loops.html"><a href="schleifen-loops.html#if"><i class="fa fa-check"></i><b>11.2</b> if()</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="graphiken.html"><a href="graphiken.html"><i class="fa fa-check"></i><b>12</b> Graphiken</a>
 <ul>
@@ -326,102 +337,116 @@ div.csl-indent {
 <li class="chapter" data-level="12.11" data-path="graphiken.html"><a href="graphiken.html#abbildungen-kombinieren"><i class="fa fa-check"></i><b>12.11</b> Abbildungen kombinieren</a></li>
 <li class="chapter" data-level="12.12" data-path="graphiken.html"><a href="graphiken.html#abbildungen-exportieren"><i class="fa fa-check"></i><b>12.12</b> Abbildungen exportieren</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>13</b> Korrelation</a>
+<li class="chapter" data-level="13" data-path="tabellen.html"><a href="tabellen.html"><i class="fa fa-check"></i><b>13</b> Tabellen</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="korrelation.html"><a href="korrelation.html#hypothesen"><i class="fa fa-check"></i><b>13.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="13.2" data-path="korrelation.html"><a href="korrelation.html#berechnung-der-korrelation"><i class="fa fa-check"></i><b>13.2</b> Berechnung der Korrelation</a></li>
-<li class="chapter" data-level="13.3" data-path="korrelation.html"><a href="korrelation.html#unterschiedliche-korrelationsmethoden"><i class="fa fa-check"></i><b>13.3</b> Unterschiedliche Korrelationsmethoden</a>
+<li class="chapter" data-level="13.1" data-path="tabellen.html"><a href="tabellen.html#data.frames"><i class="fa fa-check"></i><b>13.1</b> data.frames</a></li>
+<li class="chapter" data-level="13.2" data-path="tabellen.html"><a href="tabellen.html#format"><i class="fa fa-check"></i><b>13.2</b> Format</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>13.3.1</b> Pearson-Korrelation</a></li>
-<li class="chapter" data-level="13.3.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation-aka-rangkorrelation"><i class="fa fa-check"></i><b>13.3.2</b> Spearman-Korrelation (aka Rangkorrelation)</a></li>
-<li class="chapter" data-level="13.3.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>13.3.3</b> Kendall-Korrelation</a></li>
+<li class="chapter" data-level="13.2.1" data-path="tabellen.html"><a href="tabellen.html#text"><i class="fa fa-check"></i><b>13.2.1</b> Text</a></li>
+<li class="chapter" data-level="13.2.2" data-path="tabellen.html"><a href="tabellen.html#zellen"><i class="fa fa-check"></i><b>13.2.2</b> Zellen</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="korrelation.html"><a href="korrelation.html#korrelation-als-hypothesentest"><i class="fa fa-check"></i><b>13.4</b> Korrelation als Hypothesentest</a></li>
+<li class="chapter" data-level="13.3" data-path="tabellen.html"><a href="tabellen.html#layout"><i class="fa fa-check"></i><b>13.3</b> Layout</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einfügen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html"><i class="fa fa-check"></i><b>14</b> Einfache Hypothesentests</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>14.1</b> Ein-Stichproben t-Test</a>
-<ul>
-<li class="chapter" data-level="14.1.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-1"><i class="fa fa-check"></i><b>14.1.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.1.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>14.1.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.1.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen"><i class="fa fa-check"></i><b>14.1.3</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.1.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>14.1.4</b> Ergebnis interpretieren</a></li>
-<li class="chapter" data-level="14.1.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-berichten"><i class="fa fa-check"></i><b>14.1.5</b> Ergebnis berichten</a></li>
-<li class="chapter" data-level="14.1.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke"><i class="fa fa-check"></i><b>14.1.6</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.1.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>14.1.7</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="13.4" data-path="tabellen.html"><a href="tabellen.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>14.2</b> t-Test bei unabhängigen Stichproben</a>
+<li class="chapter" data-level="14" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>14</b> Korrelation</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-2"><i class="fa fa-check"></i><b>14.2.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.2.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>14.2.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.2.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-1"><i class="fa fa-check"></i><b>14.2.3</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.2.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>14.2.4</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.2.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>14.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="14.2.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-1"><i class="fa fa-check"></i><b>14.2.6</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.2.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>14.2.7</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="14.1" data-path="korrelation.html"><a href="korrelation.html#hypothesen"><i class="fa fa-check"></i><b>14.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.2" data-path="korrelation.html"><a href="korrelation.html#berechnung-der-korrelation"><i class="fa fa-check"></i><b>14.2</b> Berechnung der Korrelation</a></li>
+<li class="chapter" data-level="14.3" data-path="korrelation.html"><a href="korrelation.html#unterschiedliche-korrelationsmethoden"><i class="fa fa-check"></i><b>14.3</b> Unterschiedliche Korrelationsmethoden</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>14.3.1</b> Pearson-Korrelation</a></li>
+<li class="chapter" data-level="14.3.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation-aka-rangkorrelation"><i class="fa fa-check"></i><b>14.3.2</b> Spearman-Korrelation (aka Rangkorrelation)</a></li>
+<li class="chapter" data-level="14.3.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>14.3.3</b> Kendall-Korrelation</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>14.3</b> t-Test bei abhängigen Stichproben</a>
-<ul>
-<li class="chapter" data-level="14.3.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-3"><i class="fa fa-check"></i><b>14.3.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.3.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>14.3.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.3.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-2"><i class="fa fa-check"></i><b>14.3.3</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.3.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>14.3.4</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.3.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>14.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="14.3.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-2"><i class="fa fa-check"></i><b>14.3.6</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.3.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>14.3.7</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="14.4" data-path="korrelation.html"><a href="korrelation.html#korrelation-als-hypothesentest"><i class="fa fa-check"></i><b>14.4</b> Korrelation als Hypothesentest</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>14.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
+<li class="chapter" data-level="15" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html"><i class="fa fa-check"></i><b>15</b> Einfache Hypothesentests</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-4"><i class="fa fa-check"></i><b>14.4.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.4.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-3"><i class="fa fa-check"></i><b>14.4.2</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.4.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>14.4.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.4.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-3"><i class="fa fa-check"></i><b>14.4.4</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.4.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>14.4.5</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="15.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>15.1</b> Ein-Stichproben t-Test</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-1"><i class="fa fa-check"></i><b>15.1.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.1.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.1.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen"><i class="fa fa-check"></i><b>15.1.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.1.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>15.1.4</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="15.1.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-berichten"><i class="fa fa-check"></i><b>15.1.5</b> Ergebnis berichten</a></li>
+<li class="chapter" data-level="15.1.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke"><i class="fa fa-check"></i><b>15.1.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.1.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>15.1.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="14.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>14.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
+<li class="chapter" data-level="15.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>15.2</b> t-Test bei unabhängigen Stichproben</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-5"><i class="fa fa-check"></i><b>14.5.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.5.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-4"><i class="fa fa-check"></i><b>14.5.2</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.5.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>14.5.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.5.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-4"><i class="fa fa-check"></i><b>14.5.4</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.5.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>14.5.5</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="15.2.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-2"><i class="fa fa-check"></i><b>15.2.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.2.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>15.2.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.2.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-1"><i class="fa fa-check"></i><b>15.2.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.2.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>15.2.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.2.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>15.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.2.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-1"><i class="fa fa-check"></i><b>15.2.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.2.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>15.2.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#chi2-test"><i class="fa fa-check"></i><b>14.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
+<li class="chapter" data-level="15.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>15.3</b> t-Test bei abhängigen Stichproben</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>14.6.1</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.6.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-5"><i class="fa fa-check"></i><b>14.6.2</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.6.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>14.6.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.6.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>14.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="14.6.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-5"><i class="fa fa-check"></i><b>14.6.5</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.3.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-3"><i class="fa fa-check"></i><b>15.3.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.3.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>15.3.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.3.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-2"><i class="fa fa-check"></i><b>15.3.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.3.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>15.3.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.3.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>15.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.3.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-2"><i class="fa fa-check"></i><b>15.3.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.3.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>15.3.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="14.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#fishers-exakter-test"><i class="fa fa-check"></i><b>14.7</b> Fisher’s Exakter Test</a>
+<li class="chapter" data-level="15.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>15.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
 <ul>
-<li class="chapter" data-level="14.7.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-6"><i class="fa fa-check"></i><b>14.7.1</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.4.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-4"><i class="fa fa-check"></i><b>15.4.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.4.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-3"><i class="fa fa-check"></i><b>15.4.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.4.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>15.4.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.4.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-3"><i class="fa fa-check"></i><b>15.4.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.4.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>15.4.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>15.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-5"><i class="fa fa-check"></i><b>15.5.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.5.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-4"><i class="fa fa-check"></i><b>15.5.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.5.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>15.5.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.5.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-4"><i class="fa fa-check"></i><b>15.5.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.5.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>15.5.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#chi2-test"><i class="fa fa-check"></i><b>15.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>15.6.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.6.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-5"><i class="fa fa-check"></i><b>15.6.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.6.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>15.6.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.6.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>15.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.6.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-5"><i class="fa fa-check"></i><b>15.6.5</b> Effektstärke</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#fishers-exakter-test"><i class="fa fa-check"></i><b>15.7</b> Fisher’s Exakter Test</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-6"><i class="fa fa-check"></i><b>15.7.1</b> Test durchführen</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>15</b> ANOVA</a>
+<li class="chapter" data-level="16" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>16</b> ANOVA</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="anova.html"><a href="anova.html#einfaktorielle-anova"><i class="fa fa-check"></i><b>15.1</b> Einfaktorielle ANOVA</a>
+<li class="chapter" data-level="16.1" data-path="anova.html"><a href="anova.html#einfaktorielle-anova"><i class="fa fa-check"></i><b>16.1</b> Einfaktorielle ANOVA</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="anova.html"><a href="anova.html#alpha-fehler-kumulierung"><i class="fa fa-check"></i><b>15.1.1</b> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung</a></li>
-<li class="chapter" data-level="15.1.2" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-4"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.1.3" data-path="anova.html"><a href="anova.html#berechnung-der-anova"><i class="fa fa-check"></i><b>15.1.3</b> Berechnung der ANOVA</a></li>
-<li class="chapter" data-level="15.1.4" data-path="anova.html"><a href="anova.html#interpretation"><i class="fa fa-check"></i><b>15.1.4</b> Interpretation</a></li>
-<li class="chapter" data-level="15.1.5" data-path="anova.html"><a href="anova.html#post-hoc-tests"><i class="fa fa-check"></i><b>15.1.5</b> Post-hoc Tests</a></li>
+<li class="chapter" data-level="16.1.1" data-path="anova.html"><a href="anova.html#alpha-fehler-kumulierung"><i class="fa fa-check"></i><b>16.1.1</b> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung</a></li>
+<li class="chapter" data-level="16.1.2" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-4"><i class="fa fa-check"></i><b>16.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.1.3" data-path="anova.html"><a href="anova.html#berechnung-der-anova"><i class="fa fa-check"></i><b>16.1.3</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.1.4" data-path="anova.html"><a href="anova.html#interpretation"><i class="fa fa-check"></i><b>16.1.4</b> Interpretation</a></li>
+<li class="chapter" data-level="16.1.5" data-path="anova.html"><a href="anova.html#post-hoc-tests"><i class="fa fa-check"></i><b>16.1.5</b> Post-hoc Tests</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="anova.html"><a href="anova.html#mehrfaktorielle-anova"><i class="fa fa-check"></i><b>15.2</b> Mehrfaktorielle ANOVA</a>
+<li class="chapter" data-level="16.2" data-path="anova.html"><a href="anova.html#mehrfaktorielle-anova"><i class="fa fa-check"></i><b>16.2</b> Mehrfaktorielle ANOVA</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-5"><i class="fa fa-check"></i><b>15.2.1</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.2.2" data-path="anova.html"><a href="anova.html#berechnung-der-anova-1"><i class="fa fa-check"></i><b>15.2.2</b> Berechnung der ANOVA</a></li>
-<li class="chapter" data-level="15.2.3" data-path="anova.html"><a href="anova.html#interpretation-1"><i class="fa fa-check"></i><b>15.2.3</b> Interpretation</a></li>
-<li class="chapter" data-level="15.2.4" data-path="anova.html"><a href="anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>15.2.4</b> Post-hoc Tests</a></li>
+<li class="chapter" data-level="16.2.1" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-5"><i class="fa fa-check"></i><b>16.2.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.2.2" data-path="anova.html"><a href="anova.html#berechnung-der-anova-1"><i class="fa fa-check"></i><b>16.2.2</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.2.3" data-path="anova.html"><a href="anova.html#interpretation-1"><i class="fa fa-check"></i><b>16.2.3</b> Interpretation</a></li>
+<li class="chapter" data-level="16.2.4" data-path="anova.html"><a href="anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>16.2.4</b> Post-hoc Tests</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="anova.html"><a href="anova.html#prüfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>15.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
+<li class="chapter" data-level="16.3" data-path="anova.html"><a href="anova.html#prüfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>16.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="anova.html"><a href="anova.html#testen-der-empirisch-testbaren-annahmen"><i class="fa fa-check"></i><b>15.3.1</b> Testen der empirisch testbaren Annahmen</a></li>
-<li class="chapter" data-level="15.3.2" data-path="anova.html"><a href="anova.html#homogenität-der-varianzen"><i class="fa fa-check"></i><b>15.3.2</b> Homogenität der Varianzen:</a></li>
-<li class="chapter" data-level="15.3.3" data-path="anova.html"><a href="anova.html#sphärizität"><i class="fa fa-check"></i><b>15.3.3</b> Sphärizität:</a></li>
-<li class="chapter" data-level="15.3.4" data-path="anova.html"><a href="anova.html#normalverteilung-der-residuen"><i class="fa fa-check"></i><b>15.3.4</b> Normalverteilung der Residuen:</a></li>
+<li class="chapter" data-level="16.3.1" data-path="anova.html"><a href="anova.html#testen-der-empirisch-testbaren-annahmen"><i class="fa fa-check"></i><b>16.3.1</b> Testen der empirisch testbaren Annahmen</a></li>
+<li class="chapter" data-level="16.3.2" data-path="anova.html"><a href="anova.html#homogenität-der-varianzen"><i class="fa fa-check"></i><b>16.3.2</b> Homogenität der Varianzen:</a></li>
+<li class="chapter" data-level="16.3.3" data-path="anova.html"><a href="anova.html#sphärizität"><i class="fa fa-check"></i><b>16.3.3</b> Sphärizität:</a></li>
+<li class="chapter" data-level="16.3.4" data-path="anova.html"><a href="anova.html#normalverteilung-der-residuen"><i class="fa fa-check"></i><b>16.3.4</b> Normalverteilung der Residuen:</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -446,24 +471,24 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="schleifen-loops" class="section level1 hasAnchor" number="11">
 <h1><span class="header-section-number">Kapitel 11</span> Schleifen (Loops)<a href="schleifen-loops.html#schleifen-loops" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Schleifen (engl. Loops) sind eine der mächtigsten Funktionen in R. Sie erlauben uns die Power des Computers voll auszunutzen, da wir mit ihnen die Möglichkeit haben Vorgänge zu automatisieren.</p>
-<p>Dies ist insbesondere nützlich, wenn wir eine Aktion häufig wiederholen müssen.</p>
 <div id="for" class="section level2 hasAnchor" number="11.1">
 <h2><span class="header-section-number">11.1</span> for()<a href="schleifen-loops.html#for" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Die <code>for()</code> Schleife wiederholt alles was wir wollen, so oft wir wollen, für einen bestimmten Vektor. Man arbeitet hier mit einem so genannten Index (häufig nutzt man die Abkürzung i), der die Position innerhalb des Vektors anzeigt.</p>
+<p>Der for()-Loop ist eine gängige Schleifenstruktur in R. Mit dem for()-Loop können wiederholte Aufgaben automatisiert und effizient ausgeführt werden.
+Während jeder Iteration des Loops wird der Codeblock innerhalb des Loops ausgeführt. Dabei kann auf den aktuellen Iterationsschritt zugegriffen werden, um den Code entsprechend anzupassen. Der for()-Loop ist besonders nützlich, um über eine vordefinierte Sequenz von Elementen zu iterieren, wie zum Beispiel eine Vektor oder eine Liste. Durch die effektive Nutzung des for()-Loops können wiederholte Aufgaben in R effizient gelöst werden.</p>
+<p>Die <code>for()</code> Schleife wiederholt alles was wir wollen, so oft wir wollen. Man arbeitet hier mit einem so genannten Index (häufig nutzt man die Abkürzung i), der z.B. die Position innerhalb des Vektors anzeigt.</p>
 <p>Nehmen wir als Beispiel einen Vektor von Zahlen 1 bis 10</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="schleifen-loops.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="schleifen-loops.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 <p>Der Index nimmt nacheinander die Form des 1. bis letzten Objekts des Vektors an. Probieren wir einmal mit der <code>print()</code> Funktion <strong>nacheinander</strong> die Zahl i für 1:10 anzeigen zu lassen. Der <code>for()</code> Loop hat immer folgende Form:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="schleifen-loops.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for (i in vector) {</span></span>
-<span id="cb201-2"><a href="schleifen-loops.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   ...</span></span>
-<span id="cb201-3"><a href="schleifen-loops.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
-<span id="cb201-4"><a href="schleifen-loops.html#cb201-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb201-5"><a href="schleifen-loops.html#cb201-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Für unser Vorhaben:</span></span>
-<span id="cb201-6"><a href="schleifen-loops.html#cb201-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb201-7"><a href="schleifen-loops.html#cb201-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb201-8"><a href="schleifen-loops.html#cb201-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb201-9"><a href="schleifen-loops.html#cb201-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="schleifen-loops.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for (i in vector) {</span></span>
+<span id="cb220-2"><a href="schleifen-loops.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   ...</span></span>
+<span id="cb220-3"><a href="schleifen-loops.html#cb220-3" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb220-4"><a href="schleifen-loops.html#cb220-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-5"><a href="schleifen-loops.html#cb220-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Für unser Vorhaben:</span></span>
+<span id="cb220-6"><a href="schleifen-loops.html#cb220-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-7"><a href="schleifen-loops.html#cb220-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb220-8"><a href="schleifen-loops.html#cb220-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb220-9"><a href="schleifen-loops.html#cb220-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -474,6 +499,7 @@ div.csl-indent {
 ## [1] 8
 ## [1] 9
 ## [1] 10</code></pre>
+<p>Alles was zwischen den <code>{}</code> steht, ist der auszuführende Teil des Programms.</p>
 <p>Wörtlich macht der Loop folgendes:</p>
 <ol style="list-style-type: decimal">
 <li>Start</li>
@@ -485,13 +511,147 @@ div.csl-indent {
 <li>Drucke i mit der Funktion print()</li>
 <li>Durchlauf der Schleife fertig</li>
 <li>Beginn der Schleife von Anfang solange i nicht = 10 ist</li>
-<li>i ist = 3
-…</li>
+<li>i ist = 3 …</li>
 <li>i ist = 10</li>
 <li>Drucke i mit der Funktion print()</li>
 <li>Durchlauf der Schleife fertig</li>
-<li>i = 10, Ende des for() Loops</li>
+<li>i = 10, Ende des <code>for()</code> Loops</li>
 </ol>
+<p>Da der Computer sehr schnell ist, werden alle Zahlen von 1 bis 10 scheinbar simultan ausgegeben. Wollen wir die einzelnen Schritte der Schleife beobachten, können wir die Funktion <code>Sys.sleep()</code> einfügen, um nach jedem Durchlauf eine kleine Pause einzulegen:</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="schleifen-loops.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb222-2"><a href="schleifen-loops.html#cb222-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb222-3"><a href="schleifen-loops.html#cb222-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="at">time =</span> <span class="dv">1</span>) <span class="co"># macht 1 Sekunde Pause</span></span>
+<span id="cb222-4"><a href="schleifen-loops.html#cb222-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10</code></pre>
+<p>Das ganze funktioniert auch in Kobination mit den eckigen Klammern.</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="schleifen-loops.html#cb224-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;J&quot;</span>)</span>
+<span id="cb224-2"><a href="schleifen-loops.html#cb224-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb224-3"><a href="schleifen-loops.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb224-4"><a href="schleifen-loops.html#cb224-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(vector[i])</span>
+<span id="cb224-5"><a href="schleifen-loops.html#cb224-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="at">time =</span> <span class="dv">1</span>) <span class="co"># macht 1 Sekunde Pause</span></span>
+<span id="cb224-6"><a href="schleifen-loops.html#cb224-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot;
+## [1] &quot;B&quot;
+## [1] &quot;C&quot;
+## [1] &quot;D&quot;
+## [1] &quot;E&quot;
+## [1] &quot;F&quot;
+## [1] &quot;G&quot;
+## [1] &quot;H&quot;
+## [1] &quot;I&quot;
+## [1] &quot;J&quot;</code></pre>
+<p>Nun druckt die <code>print()</code> Funktion das i-te Element aus unserem Vektor</p>
+<div id="for-im-datensatz" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> for() im Datensatz<a href="schleifen-loops.html#for-im-datensatz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Das Prinzip des <code>for()</code>-Loops lässt sich nutzen, wenn wir mit Datensätzen arbeiten. Wir lassen einfach die Schleife über die Zeilen bzw. Spalten des Datensatzes laufen.</p>
+<p>Erstellen wir einen kleinen Beispieldatensatz für einen Fragebogen, der 5 Depressionssymtome erfasst (Skala von 1-5):</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="schleifen-loops.html#cb226-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb226-2"><a href="schleifen-loops.html#cb226-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb226-3"><a href="schleifen-loops.html#cb226-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Stimmung =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>),</span>
+<span id="cb226-4"><a href="schleifen-loops.html#cb226-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Antriebslosigkeit =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb226-5"><a href="schleifen-loops.html#cb226-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Interessensverlust =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>),</span>
+<span id="cb226-6"><a href="schleifen-loops.html#cb226-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Schlafprobleme =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
+<span id="cb226-7"><a href="schleifen-loops.html#cb226-7" aria-hidden="true" tabindex="-1"></a>  Suizidalität <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb226-8"><a href="schleifen-loops.html#cb226-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb226-9"><a href="schleifen-loops.html#cb226-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb226-10"><a href="schleifen-loops.html#cb226-10" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##   ID Stimmung Antriebslosigkeit Interessensverlust Schlafprobleme Suizidalität
+## 1  1        2                 3                  1              3            2
+## 2  2        4                 1                  3              1            1
+## 3  3        5                 2                  5              5            5
+## 4  4        1                 1                  5              2            4
+## 5  5        3                 4                  5              2            3</code></pre>
+<p>Wir könnten uns z.B. automatisch nacheinander die Werte der Variable <code>Stimmung</code> anzeigen lassen. Dafür lassen wir die Schleife von der 1. bis zur letzten Zeile (<code>ncol(df)</code>) laufen:</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="schleifen-loops.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)) {</span>
+<span id="cb228-2"><a href="schleifen-loops.html#cb228-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(df<span class="sc">$</span>Stimmung[i])</span>
+<span id="cb228-3"><a href="schleifen-loops.html#cb228-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="at">time =</span> <span class="dv">1</span>) <span class="co"># macht 1 Sekunde Pause</span></span>
+<span id="cb228-4"><a href="schleifen-loops.html#cb228-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 2
+## [1] 4
+## [1] 5
+## [1] 1
+## [1] 3</code></pre>
+<p>Alles zwischen den geschwungenen Klammern wird dabei vom Programm ausgeführt. Hier könnten wir alles reinschreiben was wir wollen. Lassen wir uns automatisch die Mittelwerte aller Depressionssymptomvariablen anzeigen:</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="schleifen-loops.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(df)) {</span>
+<span id="cb230-2"><a href="schleifen-loops.html#cb230-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">mean</span>(df[,i]))</span>
+<span id="cb230-3"><a href="schleifen-loops.html#cb230-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="at">time =</span> <span class="dv">1</span>) <span class="co"># macht 1 Sekunde Pause</span></span>
+<span id="cb230-4"><a href="schleifen-loops.html#cb230-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 3
+## [1] 2.2
+## [1] 3.8
+## [1] 2.6
+## [1] 3</code></pre>
+<p>Dafür lassen wir die Variable über Spalten laufen. Da die erste Spalte keine Depressionssymptomvariable ist (<code>ID</code>), beginnen wir bei der 2. loszulaufen und laufen bis zur letzten Spalte.</p>
+</div>
+</div>
+<div id="if" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> if()<a href="schleifen-loops.html#if" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Wie wir sehen, läuft der <code>for()</code>-Loop stur über alle Elemente hinweg, die im Index angegeben sind.</p>
+<p>In R wird der <code>if()</code>-Loop verwendet, um bedingte Anweisungen auszuführen. Mit dem <code>if()</code>-Loop können Programmierer:innen festlegen, ob ein Codeblock ausgeführt wird oder nicht, basierend auf einer angegebenen Bedingung. Die Bedingung wird in runden Klammern angegeben und kann eine logische Aussage oder ein Vergleich sein. Wenn die Bedingung als wahr ausgewertet wird, wird der Codeblock innerhalb des if()-Loops (geschwungene Klammern) ausgeführt. Andernfalls wird der Code übersprungen. Bei Bedarf kann der <code>if()</code>-Loop mit zusätzlichen else <code>if()</code>- oder else-Statements erweitert werden, um verschiedene Bedingungen abzudecken.</p>
+<p>Nehmen wir einmal an, wir haben in unserem Datensatz zusätzlich die Variable <code>Geschlecht</code>.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="schleifen-loops.html#cb232-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb232-2"><a href="schleifen-loops.html#cb232-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb232-3"><a href="schleifen-loops.html#cb232-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Geschlecht =</span> <span class="fu">c</span>(<span class="st">&quot;männlich&quot;</span>, <span class="st">&quot;weiblich&quot;</span>, <span class="st">&quot;männlich&quot;</span>, <span class="st">&quot;weiblich&quot;</span>, <span class="st">&quot;weiblich&quot;</span>),</span>
+<span id="cb232-4"><a href="schleifen-loops.html#cb232-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Stimmung =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>),</span>
+<span id="cb232-5"><a href="schleifen-loops.html#cb232-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Antriebslosigkeit =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb232-6"><a href="schleifen-loops.html#cb232-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Interessensverlust =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>),</span>
+<span id="cb232-7"><a href="schleifen-loops.html#cb232-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Schlafprobleme =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
+<span id="cb232-8"><a href="schleifen-loops.html#cb232-8" aria-hidden="true" tabindex="-1"></a>  Suizidalität <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb232-9"><a href="schleifen-loops.html#cb232-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb232-10"><a href="schleifen-loops.html#cb232-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb232-11"><a href="schleifen-loops.html#cb232-11" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##   ID Geschlecht Stimmung Antriebslosigkeit Interessensverlust Schlafprobleme
+## 1  1   männlich        2                 3                  1              3
+## 2  2   weiblich        4                 1                  3              1
+## 3  3   männlich        5                 2                  5              5
+## 4  4   weiblich        1                 1                  5              2
+## 5  5   weiblich        3                 4                  5              2
+##   Suizidalität
+## 1            2
+## 2            1
+## 3            5
+## 4            4
+## 5            3</code></pre>
+<p>Wir wollen uns nun durch unseren <code>for()</code>-Loop nur die Stimmungswerte der Frauen anzeigen lassen:</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="schleifen-loops.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)) {</span>
+<span id="cb234-2"><a href="schleifen-loops.html#cb234-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb234-3"><a href="schleifen-loops.html#cb234-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(df<span class="sc">$</span>Geschlecht[i] <span class="sc">==</span> <span class="st">&quot;weiblich&quot;</span>){</span>
+<span id="cb234-4"><a href="schleifen-loops.html#cb234-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb234-5"><a href="schleifen-loops.html#cb234-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(df<span class="sc">$</span>Stimmung[i])</span>
+<span id="cb234-6"><a href="schleifen-loops.html#cb234-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb234-7"><a href="schleifen-loops.html#cb234-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb234-8"><a href="schleifen-loops.html#cb234-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="at">time =</span> <span class="dv">1</span>) </span>
+<span id="cb234-9"><a href="schleifen-loops.html#cb234-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 4
+## [1] 1
+## [1] 3</code></pre>
+<p>Wenn die Bedingung nicht erfüllt ist (in diesem Fall Geschlecht == “männlich”), können wir mittels <code>else{}</code> eine alternative Verhaltensweise der Schleife definieren.</p>
+<p>Lassen Sie uns dem Nutzer eine kleine Nachricht schreiben, die erscheinen soll, wenn die Bedingung nicht zutrifft.</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="schleifen-loops.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)) {</span>
+<span id="cb236-2"><a href="schleifen-loops.html#cb236-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb236-3"><a href="schleifen-loops.html#cb236-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(df<span class="sc">$</span>Geschlecht[i] <span class="sc">==</span> <span class="st">&quot;weiblich&quot;</span>){</span>
+<span id="cb236-4"><a href="schleifen-loops.html#cb236-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb236-5"><a href="schleifen-loops.html#cb236-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(df<span class="sc">$</span>Stimmung[i])</span>
+<span id="cb236-6"><a href="schleifen-loops.html#cb236-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb236-7"><a href="schleifen-loops.html#cb236-7" aria-hidden="true" tabindex="-1"></a>  }<span class="cf">else</span>{</span>
+<span id="cb236-8"><a href="schleifen-loops.html#cb236-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;Die Person ist ein Mann.&quot;</span>)</span>
+<span id="cb236-9"><a href="schleifen-loops.html#cb236-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb236-10"><a href="schleifen-loops.html#cb236-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="at">time =</span> <span class="dv">1</span>)</span>
+<span id="cb236-11"><a href="schleifen-loops.html#cb236-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Die Person ist ein Mann.&quot;
+## [1] 4
+## [1] &quot;Die Person ist ein Mann.&quot;
+## [1] 1
+## [1] 3</code></pre>
 
 </div>
 </div>

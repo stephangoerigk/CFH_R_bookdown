@@ -16,7 +16,7 @@ rmd_files: [
   "Daten_Manipulieren.Rmd",
   "Schleifen.Rmd",
   "Graphiken.Rmd",
-  # "Tabellen.Rmd",
+  "Tabellen.Rmd",
   # "Preprocessing.Rmd",
   "Korrelationen.Rmd",
   "Einfache_Gruppenvergleiche.Rmd",

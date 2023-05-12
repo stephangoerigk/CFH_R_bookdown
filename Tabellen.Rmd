@@ -1,2 +1,156 @@
 # Tabellen
 
+Das automatische Erstellen von Tabellen in R bietet eine Reihe von praktischen Vorteilen:
+
+**1. Effizienz:** Es spart Zeit und reduziert potenzielle Fehlerquellen. Anstatt Tabellen manuell zu erstellen und Daten händisch einzugeben, können Tabellen in R mithilfe von Funktionen und Skripten automatisch generiert werden.
+
+**2. Transparenz:** Es ermöglicht eine hohe Reproduzierbarkeit. Durch die Verwendung von Skripten kann die Tabellenerstellung dokumentiert und leicht wiederholt werden, was die Transparenz und Nachvollziehbarkeit der Datenanalyse verbessert.
+
+**3. Dynamische Veränderbarkeit:** Automatisch erstellte Tabellen können einfach aktualisiert werden, wenn neue Daten verfügbar sind, was die Aktualität der Ergebnisse gewährleistet.
+
+Unser Ziel ist es, einen in R verfügbaren Inhalt (z.B. einen `data.frame`) in eine publikationsfertige Tabelle zu transformieren. Die Tabelle können wir dann z.B. in Word oder Powerpoint Dokumenten weiterverwenden, oder in einem RMarkdown-Skript nutzen, welches uns das Paper automatisch formatiert.
+
+## data.frames
+
+Der einfachste Fall ist es, wenn die zu formatierende Tabelle bereits als `data.frame` vorliegt. Dieser hat bereits die Struktur einer Tabelle mit Zeilen und Spalten. Das "Verwandeln" eines `data.frame` in eine Tabelle ist z.B. mit dem Paket `flextable` möglich.
+
+```{r}
+df = data.frame(Geschlecht = c("männlich", "männlich", "weiblich", "weiblich"),
+                Konzentration = c(3, 7, 4, 7),
+                Schlafdauer = c(6, 14, 7, 12),
+                Schlafqualität = c(5, 8, 2, 1))
+
+df
+```
+
+Um den `data.frame` in eine Tabelle umzubauen, nutzen wir den `flextable()` Befehl:
+
+```{r, fig.cap = "Von data.frame zur Tabelle", echo = FALSE}
+knitr::include_graphics(c("images/flextab.png"))
+```
+
+```{r}
+library(flextable)
+
+flextable(df)
+```
+
+Die Bestandteile der Tabelle sind wie folgt:
+
+```{r, fig.cap = "Bestandteile der Tabelle", echo = FALSE}
+knitr::include_graphics(c("images/flextab2.png"))
+```
+
+Der allgemeine Aufbau einer `flextable` Funktion lautet:
+
+`function(x, i, j, part, args)`
+
+-   x = flextable Objekt (Ergebnis von `flextable()`)
+-   i = Zeilenindex
+-   j = Spaltenindex,
+-   part = Tabellenteil (header, body, footer)
+-   args = spezielle weitere Anpassungen
+
+## Format
+
+Es können diverse Aspekte der Tabelle angepasst werden.
+
+### Text
+
+#### Fett schreiben
+
+Zum Verwenden einer fetten Schriftart nutzen wir die `bold()` Funktion:
+
+```{r}
+bold(flextable(df), j = 1, bold = T)
+```
+
+#### Kursiv schreiben
+
+Zum Verwenden einer kursiven Schriftart nutzen wir die `italic()` Funktion:
+
+```{r}
+italic(flextable(df), j = 1, italic = T)
+```
+
+#### Textgröße anpassen
+
+Zur Veränderung der Textgröße nutzen wir die `fontsize()` Funktion:
+
+```{r}
+fontsize(flextable(df), j = 1, size = 6)
+```
+
+#### Textfarbe anpassen
+
+Zur Veränderung der Textfarbe nutzen wir die `color()` Funktion:
+
+```{r}
+color(flextable(df), j = 1, color = "red")
+```
+
+#### Text hervorheben
+
+Zum Hervorheben von Text nutzen wir die `highlight()` Funktion:
+
+```{r}
+highlight(flextable(df), j = 1, color = "yellow")
+```
+
+#### Text rotieren
+
+Zum Totieren von Text nutzen wir die `rotate()` Funktion:
+
+```{r}
+rotate(flextable(df), j = 2, rotation = "tbrl")
+```
+
+### Zellen
+
+#### Alignment
+
+Um den Text in der Zelle auszurichten nutzen wir die `align()` Funktion. Die Argumente sind "left", "right" und "center".
+
+```{r}
+align(flextable(df), j = 2, align = "left")
+```
+
+Um den Text in der Zelle vertikal auszurichten nutzen wir die `valign()` Funktion. Die Argumente sind "top" und "bottom".
+
+```{r}
+valign(flextable(df), j = 2, valign = "top")
+```
+
+#### Abstände
+
+```{r}
+padding(flextable(df), i = 1, padding = 15)
+```
+
+#### Hintergrundfarbe
+
+```{r}
+bg(flextable(df), i = 1, bg = "grey")
+```
+
+## Layout
+
+### Titelzeilen einfügen
+
+
+## Tabelle speichern
+
+Ein Export der Tabelle in ein weiterverwendbares Format ist für folgende Dateitypen möglich:
+
+* .html (Web)
+* .docx (Word)
+* .pptx (Powerpoint)
+* .png (Bild)
+
+```{r}
+# save_as_html(df, "meine_tabelle.html") 
+# save_as_docx(df, "meine_tabelle.docx") 
+# save_as_pptx(df, "meine_tabelle.pptx") 
+# save_as_image(df, "meine_tabelle.png")
+```
+

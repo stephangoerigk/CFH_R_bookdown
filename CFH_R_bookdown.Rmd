@@ -866,14 +866,21 @@ Wir werden jedoch auch lernen, wie wir uns effizient Informationen über Datens�
 
 ## Informationen über R Objekte
 
+### str()
+
 Um schnell Informationen über ein R Objekt (Vektor, data.frame, Bild o.ä.) zu erhalten, nutzen wir den `str()` Befehl.
 
 So können wir einen schnellen Überblick erhalten, um was für ein Objekt es sich handelt und "was in dem Objekt drin steckt".
 
-```{r}
+Als Beispiel benutzen wir den `iris` Datensatz, der in der Basisversion von R enthalten ist. Dieser enthält Informationen über 3 Spezies der Blumenart Iris.
 
+```{r}
+head(iris) # erste 6 Zeilen ansehen
+
+str(iris)
 ```
 
+Der Befehl zeigt uns eine Übersicht, welche Variablen in dem `iris` Datensatz enthalten sind. zusätzlich sehen wir die Dimensionen (150 Zeilen, 5 Spalten) des dataframes. Für die einzelnen Variablen wird uns jeweils die Variablenart (z.B. `Petal.Length`, engl Blütenblattlänge = numerisch; `Species` = factor) sowie einzelne in dem Variablen enthaltene Werte.
 
 ### Informationen über Vektoren
 
@@ -885,6 +892,34 @@ Um herauszufinden, wie viele Stellen ein Vektor hat, nutzen wir die Funktion `le
 vektor = c("A", "B", "C", "D")
 
 length(vektor)
+```
+
+#### is...
+
+Wir können zudem die Variablenart des Vektors abfragen. Dies funktioniert mit dem `is.()` Befehl, ergänzt durch die Variablenart, nach der wir fragen wollen. Z.B. enthält die Variable `Petal.Length` des `iris` Datensatzes ausschließlich Zahlen:
+
+```{r}
+is.character(iris$Petal.Length)
+```
+
+```{r}
+is.numeric(iris$Petal.Length)
+```
+
+#### is.na()
+
+Wir können auch spezifisch nach fehlenden Werten Fragen. Erstellen wir uns schnell einen Beispielvektor:
+
+```{r}
+a = c(1, 2, 3, NA, 5, NA)
+
+is.na(a)
+```
+
+Auf diese Art, können wir auch leicht zählen, wie viele Elemente eines Vektors als "fehlende Werte" berücksichtigt werden müssen:
+
+```{r}
+sum(is.na(a))
 ```
 
 ### Informationen über Dataframes
@@ -909,6 +944,15 @@ length(vektor)
 |     `table(x)`|  Gibt Tabelle aller einzigartiger Werte und deren absolute Häufigkeit an. Um auch fehlende Werte zu zählen wählen Sie `exclude = NULL` |  `table(c("a", "a", "b", "c"))`|` 2-"a", 1-"b", 1-"c"`    |
 
 #### Absolute Häufigkeiten
+
+Leider gibt es zum Zusammenfassen kategorialer (nominalskalierter) Variablen nicht so viele Möglichkeiten wie für die numerischen Variablen (die Mittelwert, Median, Standardabweichung... ermöglichen).
+
+Die gängigste Deskription einer kategorialen Variable ist die Erstellung einer Häufigkeitstabelle. Eine Häufigkeitstabelle mit absoluten Häufigkeiten lässt sich mit dem `table()` Befehl erstellen.
+
+```{r}
+kat = c("")
+```
+
 
 #### Relative Häufigkeiten
 
@@ -1405,13 +1449,104 @@ test3 = merge(test1, test2, by = "ID")
 test3
 ```
 
-```{r eval=FALSE, include=FALSE}
 ## Datensätze transformieren
 
-### Von Long nach Wide
+### Von Wide- und Long-Format
 
-### Skalieren
+Datensätze können entweder im Wide- oder Long-Format vorliegen, wobei jede Formatierung ihre eigenen Vor- und Nachteile aufweist. 
+
+#### Wide-Format
+
+Im Wide-Format werden Daten normalerweise in einer breiten Tabelle dargestellt, wobei jede Variable eine eigene Spalte hat. Diese Darstellung eignet sich gut, wenn der Fokus auf einer schnellen Datenexploration und einer einfachen Zusammenfassung liegt. Es ermöglicht eine übersichtliche Sicht auf die Daten, insbesondere wenn es viele Variablen gibt. 
+
+Ein Großteil der Daten, die wir direkt nach einer Datenerhebung haben, liegen im Wide-Format vor.
+
+Schauen wir uns ein kleines Datenbeispiel für $N=5$ Personen an:
+
+```{r}
+ID = c(1, 2, 3, 4, 5)
+Geschlecht = c("männlich", "weiblich", "männlich", "männlich", "weiblich")
+Depression_T1 = c(12, 16, 21, 8, 13)
+Depression_T2 = c(7, 4, 12, 7, 11)
+Depression_T3 = c(7, 4, 12, 7, 11)
+df_wide = data.frame(ID, Geschlecht, Depression_T1, Depression_T2, Depression_T3)
+
+df_wide
 ```
+
+Wichtig: Jede Person hat eine Zeile. Gibt es Messwiederholungen (hier T1, T2 und T3 des Depressionswerte; T = Time), erhält jede Messung seine eigene Spalte.
+
+Mit jeder zusätzlichen Spalte (bzw. Messung) wird der Datensatz breiter, daher der Name "Wide-Format".
+
+#### Long-Format
+
+Im Gegensatz dazu wird das Long-Format verwendet, um Daten in einer schmaleren Tabelle darzustellen, in der mehrere Variablen in einer Spalte zusammengefasst werden. Jede Beobachtung erstreckt sich über mehrere Zeilen, wodurch eine längere Tabelle entsteht. Das Long-Format eignet sich besonders für die Analyse von Panel- oder Zeitreihendaten, da es die Verarbeitung von wiederholten Messungen erleichtert und die Durchführung statistischer Analysen auf individueller Ebene ermöglicht.
+
+Wichtig:
+
+* Jede Zeile muss mittels einer `ID` Variable eindeutig den Personen zugeordnet werden
+* Eine weitere Variable (bei Messwiederholungen z.B. `Zeit`) muss angeben, weshalb es mehrere Werte pro Fall gibt
+
+Schauen wir uns das Datenbeispiel der von eben nun noch einmal $N=5$ Personen von eben nun im Long-Format an:
+
+```{r}
+ID = c(1, 2, 3, 4, 5, 
+       1, 2, 3, 4, 5, 
+       1, 2, 3, 4, 5)
+Geschlecht = c("männlich", "weiblich", "männlich", "männlich", "weiblich",
+               "männlich", "weiblich", "männlich", "männlich", "weiblich",
+               "männlich", "weiblich", "männlich", "männlich", "weiblich")
+Depression = c(12, 16, 21, 8, 13,
+               7, 4, 12, 7, 11,
+               7, 4, 12, 7, 11)
+Time = c(1, 1, 1, 1, 1,
+         2, 2, 2, 2, 2,
+         3, 3, 3, 3, 3)
+
+df_long = data.frame(ID, Geschlecht, Depression, Time)
+
+df_long
+```
+
+Nun hat jede Person so viele Zeilen, wie sie Messwerte hat. Einträge konstanter Variablen (z.B. Geschlecht) werden wiederholt.
+
+Mit jeder zusätzlichen Zeile (bzw. Messung) wird der Datensatz länger, daher der Name "Long-Format".
+
+#### Wide-Format nach Long-Format
+
+Wollen wir einen Datensatz, der im Wide-Format vorliegt in das Long-Format überführen, nutzen wir die `pivot_longer()` Funktion aus dem `tidyverse` Paket:
+
+```{r}
+library(tidyverse)
+
+df_wide_to_long = pivot_longer(data = df_wide, 
+                               cols = c("Depression_T1", "Depression_T2", "Depression_T3"), 
+                               names_to = "Time", 
+                               values_to = "Depression")
+
+df_wide_to_long
+```
+
+#### Long-Format nach Wide-Format
+
+Wollen wir einen Datensatz, der im Long-Format vorliegt in das Wide-Format überführen, nutzen wir die `pivot_wider()` Funktion aus dem `tidyverse` Paket:
+
+```{r}
+library(tidyverse)
+
+df_long_to_wide = pivot_wider(data = df_long, 
+                              names_from = "Time",
+                              names_prefix = "Depression_",
+                              values_from = "Depression")
+
+df_long_to_wide
+```
+
+#### Fazit: Wann welches Format?
+
+Der Unterschied zwischen Wide- und Long-Format hängt also von den spezifischen Anforderungen der Datenanalyse ab. Das Wide-Format bietet eine übersichtliche und schnelle Datenexploration, während das Long-Format eine detaillierte Analyse auf individueller Ebene ermöglicht. Die Wahl des richtigen Formats hängt von der Art der Daten, den Analysezielen und den verwendeten statistischen Verfahren ab.
+
+
 
 
 
@@ -1419,13 +1554,12 @@ test3
 
 # Schleifen (Loops)
 
-Schleifen (engl. Loops) sind eine der mächtigsten Funktionen in R. Sie erlauben uns die Power des Computers voll auszunutzen, da wir mit ihnen die Möglichkeit haben Vorgänge zu automatisieren. 
+## for()
 
-Dies ist insbesondere nützlich, wenn wir eine Aktion häufig wiederholen müssen.
+Der for()-Loop ist eine gängige Schleifenstruktur in R. Mit dem for()-Loop können wiederholte Aufgaben automatisiert und effizient ausgeführt werden. 
+Während jeder Iteration des Loops wird der Codeblock innerhalb des Loops ausgeführt. Dabei kann auf den aktuellen Iterationsschritt zugegriffen werden, um den Code entsprechend anzupassen. Der for()-Loop ist besonders nützlich, um über eine vordefinierte Sequenz von Elementen zu iterieren, wie zum Beispiel eine Vektor oder eine Liste. Durch die effektive Nutzung des for()-Loops können wiederholte Aufgaben in R effizient gelöst werden.
 
-## for() 
-
-Die `for()` Schleife wiederholt alles was wir wollen, so oft wir wollen, für einen bestimmten Vektor. Man arbeitet hier mit einem so genannten Index (häufig nutzt man die Abkürzung i), der die Position innerhalb des Vektors anzeigt.
+Die `for()` Schleife wiederholt alles was wir wollen, so oft wir wollen. Man arbeitet hier mit einem so genannten Index (häufig nutzt man die Abkürzung i), der z.B. die Position innerhalb des Vektors anzeigt.
 
 Nehmen wir als Beispiel einen Vektor von Zahlen 1 bis 10
 
@@ -1447,26 +1581,139 @@ for (i in 1:10) {
 }
 ```
 
+Alles was zwischen den `{}` steht, ist der auszuführende Teil des Programms. 
+
 Wörtlich macht der Loop folgendes:
 
-1. Start
-2. i ist = 1
-3. Drucke i mit der Funktion print()
-4. Durchlauf der Schleife fertig
-5. Beginn der Schleife von Anfang solange i nicht = 10 ist
-6. i ist = 2
-7. Drucke i mit der Funktion print()
-8. Durchlauf der Schleife fertig
-9. Beginn der Schleife von Anfang solange i nicht = 10 ist
-10. i ist = 3
-...
-40. i ist = 10
-41. Drucke i mit der Funktion print()
-42. Durchlauf der Schleife fertig
-43. i = 10, Ende des for() Loops
+1.  Start
+2.  i ist = 1
+3.  Drucke i mit der Funktion print()
+4.  Durchlauf der Schleife fertig
+5.  Beginn der Schleife von Anfang solange i nicht = 10 ist
+6.  i ist = 2
+7.  Drucke i mit der Funktion print()
+8.  Durchlauf der Schleife fertig
+9.  Beginn der Schleife von Anfang solange i nicht = 10 ist
+10. i ist = 3 ...
+11. i ist = 10
+12. Drucke i mit der Funktion print()
+13. Durchlauf der Schleife fertig
+14. i = 10, Ende des `for()` Loops
 
-```{r eval=FALSE, include=FALSE}
-##if
+Da der Computer sehr schnell ist, werden alle Zahlen von 1 bis 10 scheinbar simultan ausgegeben. Wollen wir die einzelnen Schritte der Schleife beobachten, können wir die Funktion `Sys.sleep()` einfügen, um nach jedem Durchlauf eine kleine Pause einzulegen:
+
+```{r}
+for (i in 1:10) {
+  print(i)
+  Sys.sleep(time = 1) # macht 1 Sekunde Pause
+}
+```
+
+Das ganze funktioniert auch in Kobination mit den eckigen Klammern.
+
+```{r}
+vector = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J")
+
+for (i in 1:10) {
+  print(vector[i])
+  Sys.sleep(time = 1) # macht 1 Sekunde Pause
+}
+```
+
+Nun druckt die `print()` Funktion das i-te Element aus unserem Vektor
+
+### for() im Datensatz
+
+Das Prinzip des `for()`-Loops lässt sich nutzen, wenn wir mit Datensätzen arbeiten. Wir lassen einfach die Schleife über die Zeilen bzw. Spalten des Datensatzes laufen.
+
+Erstellen wir einen kleinen Beispieldatensatz für einen Fragebogen, der 5 Depressionssymtome erfasst (Skala von 1-5):
+
+```{r}
+df = data.frame(
+  ID = 1:5,
+  Stimmung = c(2, 4, 5, 1, 3),
+  Antriebslosigkeit = c(3, 1, 2, 1, 4),
+  Interessensverlust = c(1, 3, 5, 5, 5),
+  Schlafprobleme = c(3, 1, 5, 2, 2),
+  Suizidalität = c(2, 1, 5, 4, 3)
+)
+
+df
+```
+
+Wir könnten uns z.B. automatisch nacheinander die Werte der Variable `Stimmung` anzeigen lassen. Dafür lassen wir die Schleife von der 1. bis zur letzten Zeile (`ncol(df)`) laufen:
+
+```{r}
+for (i in 1:nrow(df)) {
+  print(df$Stimmung[i])
+  Sys.sleep(time = 1) # macht 1 Sekunde Pause
+}
+```
+
+Alles zwischen den geschwungenen Klammern wird dabei vom Programm ausgeführt. Hier könnten wir alles reinschreiben was wir wollen. Lassen wir uns automatisch die Mittelwerte aller Depressionssymptomvariablen anzeigen:
+
+```{r}
+for (i in 2:ncol(df)) {
+  print(mean(df[,i]))
+  Sys.sleep(time = 1) # macht 1 Sekunde Pause
+}
+```
+
+Dafür lassen wir die Variable über Spalten laufen. Da die erste Spalte keine Depressionssymptomvariable ist (`ID`), beginnen wir bei der 2. loszulaufen und laufen bis zur letzten Spalte.
+
+
+## if()
+
+Wie wir sehen, läuft der `for()`-Loop stur über alle Elemente hinweg, die im Index angegeben sind.
+
+In R wird der `if()`-Loop verwendet, um bedingte Anweisungen auszuführen. Mit dem `if()`-Loop können Programmierer:innen festlegen, ob ein Codeblock ausgeführt wird oder nicht, basierend auf einer angegebenen Bedingung. Die Bedingung wird in runden Klammern angegeben und kann eine logische Aussage oder ein Vergleich sein. Wenn die Bedingung als wahr ausgewertet wird, wird der Codeblock innerhalb des if()-Loops (geschwungene Klammern) ausgeführt. Andernfalls wird der Code übersprungen. Bei Bedarf kann der `if()`-Loop mit zusätzlichen else `if()`- oder else-Statements erweitert werden, um verschiedene Bedingungen abzudecken. 
+
+Nehmen wir einmal an, wir haben in unserem Datensatz zusätzlich die Variable `Geschlecht`. 
+
+```{r}
+df = data.frame(
+  ID = 1:5,
+  Geschlecht = c("männlich", "weiblich", "männlich", "weiblich", "weiblich"),
+  Stimmung = c(2, 4, 5, 1, 3),
+  Antriebslosigkeit = c(3, 1, 2, 1, 4),
+  Interessensverlust = c(1, 3, 5, 5, 5),
+  Schlafprobleme = c(3, 1, 5, 2, 2),
+  Suizidalität = c(2, 1, 5, 4, 3)
+)
+
+df
+```
+
+Wir wollen uns nun durch unseren `for()`-Loop nur die Stimmungswerte der Frauen anzeigen lassen:
+
+```{r}
+for (i in 1:nrow(df)) {
+  
+  if(df$Geschlecht[i] == "weiblich"){
+    
+    print(df$Stimmung[i])
+    
+  }
+  Sys.sleep(time = 1) 
+}
+```
+
+Wenn die Bedingung nicht erfüllt ist (in diesem Fall Geschlecht == "männlich"), können wir mittels `else{}` eine alternative Verhaltensweise der Schleife definieren. 
+
+Lassen Sie uns dem Nutzer eine kleine Nachricht schreiben, die erscheinen soll, wenn die Bedingung nicht zutrifft.
+
+```{r}
+for (i in 1:nrow(df)) {
+  
+  if(df$Geschlecht[i] == "weiblich"){
+    
+    print(df$Stimmung[i])
+    
+  }else{
+    print("Die Person ist ein Mann.")
+  }
+  Sys.sleep(time = 1)
+}
 ```
 
 
@@ -1936,6 +2183,165 @@ Ausführen des Befehls speichert Ihnen die Datei Figure1.png in das Arbeitsverze
 
 
 <!--chapter:end:Graphiken.Rmd-->
+
+# Tabellen
+
+Das automatische Erstellen von Tabellen in R bietet eine Reihe von praktischen Vorteilen:
+
+**1. Effizienz:** Es spart Zeit und reduziert potenzielle Fehlerquellen. Anstatt Tabellen manuell zu erstellen und Daten händisch einzugeben, können Tabellen in R mithilfe von Funktionen und Skripten automatisch generiert werden.
+
+**2. Transparenz:** Es ermöglicht eine hohe Reproduzierbarkeit. Durch die Verwendung von Skripten kann die Tabellenerstellung dokumentiert und leicht wiederholt werden, was die Transparenz und Nachvollziehbarkeit der Datenanalyse verbessert.
+
+**3. Dynamische Veränderbarkeit:** Automatisch erstellte Tabellen können einfach aktualisiert werden, wenn neue Daten verfügbar sind, was die Aktualität der Ergebnisse gewährleistet.
+
+Unser Ziel ist es, einen in R verfügbaren Inhalt (z.B. einen `data.frame`) in eine publikationsfertige Tabelle zu transformieren. Die Tabelle können wir dann z.B. in Word oder Powerpoint Dokumenten weiterverwenden, oder in einem RMarkdown-Skript nutzen, welches uns das Paper automatisch formatiert.
+
+## data.frames
+
+Der einfachste Fall ist es, wenn die zu formatierende Tabelle bereits als `data.frame` vorliegt. Dieser hat bereits die Struktur einer Tabelle mit Zeilen und Spalten. Das "Verwandeln" eines `data.frame` in eine Tabelle ist z.B. mit dem Paket `flextable` möglich.
+
+```{r}
+df = data.frame(Geschlecht = c("männlich", "männlich", "weiblich", "weiblich"),
+                Konzentration = c(3, 7, 4, 7),
+                Schlafdauer = c(6, 14, 7, 12),
+                Schlafqualität = c(5, 8, 2, 1))
+
+df
+```
+
+Um den `data.frame` in eine Tabelle umzubauen, nutzen wir den `flextable()` Befehl:
+
+```{r, fig.cap = "Von data.frame zur Tabelle", echo = FALSE}
+knitr::include_graphics(c("images/flextab.png"))
+```
+
+```{r}
+library(flextable)
+
+flextable(df)
+```
+
+Die Bestandteile der Tabelle sind wie folgt:
+
+```{r, fig.cap = "Bestandteile der Tabelle", echo = FALSE}
+knitr::include_graphics(c("images/flextab2.png"))
+```
+
+Der allgemeine Aufbau einer `flextable` Funktion lautet:
+
+`function(x, i, j, part, args)`
+
+-   x = flextable Objekt (Ergebnis von `flextable()`)
+-   i = Zeilenindex
+-   j = Spaltenindex,
+-   part = Tabellenteil (header, body, footer)
+-   args = spezielle weitere Anpassungen
+
+## Format
+
+Es können diverse Aspekte der Tabelle angepasst werden.
+
+### Text
+
+#### Fett schreiben
+
+Zum Verwenden einer fetten Schriftart nutzen wir die `bold()` Funktion:
+
+```{r}
+bold(flextable(df), j = 1, bold = T)
+```
+
+#### Kursiv schreiben
+
+Zum Verwenden einer kursiven Schriftart nutzen wir die `italic()` Funktion:
+
+```{r}
+italic(flextable(df), j = 1, italic = T)
+```
+
+#### Textgröße anpassen
+
+Zur Veränderung der Textgröße nutzen wir die `fontsize()` Funktion:
+
+```{r}
+fontsize(flextable(df), j = 1, size = 6)
+```
+
+#### Textfarbe anpassen
+
+Zur Veränderung der Textfarbe nutzen wir die `color()` Funktion:
+
+```{r}
+color(flextable(df), j = 1, color = "red")
+```
+
+#### Text hervorheben
+
+Zum Hervorheben von Text nutzen wir die `highlight()` Funktion:
+
+```{r}
+highlight(flextable(df), j = 1, color = "yellow")
+```
+
+#### Text rotieren
+
+Zum Totieren von Text nutzen wir die `rotate()` Funktion:
+
+```{r}
+rotate(flextable(df), j = 2, rotation = "tbrl")
+```
+
+### Zellen
+
+#### Alignment
+
+Um den Text in der Zelle auszurichten nutzen wir die `align()` Funktion. Die Argumente sind "left", "right" und "center".
+
+```{r}
+align(flextable(df), j = 2, align = "left")
+```
+
+Um den Text in der Zelle vertikal auszurichten nutzen wir die `valign()` Funktion. Die Argumente sind "top" und "bottom".
+
+```{r}
+valign(flextable(df), j = 2, valign = "top")
+```
+
+#### Abstände
+
+```{r}
+padding(flextable(df), i = 1, padding = 15)
+```
+
+#### Hintergrundfarbe
+
+```{r}
+bg(flextable(df), i = 1, bg = "grey")
+```
+
+## Layout
+
+### Titelzeilen einfügen
+
+
+## Tabelle speichern
+
+Ein Export der Tabelle in ein weiterverwendbares Format ist für folgende Dateitypen möglich:
+
+* .html (Web)
+* .docx (Word)
+* .pptx (Powerpoint)
+* .png (Bild)
+
+```{r}
+# save_as_html(df, "meine_tabelle.html") 
+# save_as_docx(df, "meine_tabelle.docx") 
+# save_as_pptx(df, "meine_tabelle.pptx") 
+# save_as_image(df, "meine_tabelle.png")
+```
+
+
+<!--chapter:end:Tabellen.Rmd-->
 
 # Korrelation
 
@@ -3148,16 +3554,25 @@ Die Faktoren (UVs) werden mit einem der beiden folgenden Argumente angegeben:
 
 Faktoren, die unter `between` angegeben werden, sind unabhängige Messungen, also Variablen die einen Gruppenvergleich möglich machen. Faktoren, die unter `within` angegeben werden, sind abhängige Messungen, also beispielsweise mehrere Messzeitpunkte derselben Person.
 
-In unserem Fall liegt ein Gruppenvergleich vor (jede Person hat jeweils nur eine der Therapien erhalten), daher nutzen wir `between`. Für `id` nutzen wir einfach die Variable `X`, die einen Patientencode für jede Person enthält.
+In unserem Fall liegt ein Gruppenvergleich vor (jede Person hat jeweils nur eine der Therapien erhalten), daher nutzen wir `between`. Für `id` nutzen wir einfach die Variable `ID`, die einen Patientencode für jede Person enthält.
 
 ```{r message=FALSE, warning=FALSE}
 library(afex)
-mod = aov_ez(dv = "Symptoms", between = c("Therapy"), id = "X", data = therapy)
+mod = aov_ez(dv = "Symptoms", between = c("Therapy"), id = "ID", data = therapy)
 mod
 ```
 
 Wie wir sehen, wird der Schritt des Aufstellens des linearen Modells hier übersprungen und direkt die ANOVA (F-Test) gerechnet.
 Das Ergebnise ist jedoch identisch.
+
+Falls im Datensatz keine `id` Variable enthalten ist, lässt sich diese leicht erstellen, indem wir einfach jeder Person Ihre Position im Datensatz als Namen geben:
+
+```{r}
+therapy$id = rownames(therapy)
+
+head(therapy)
+```
+
 
 ### Interpretation
 
@@ -3270,7 +3685,7 @@ Auch für die `aov_ez()` Funktion ähnelt das Vorgehen dem der einfaktoriellen A
 
 ```{r message=FALSE, warning=FALSE}
 library(afex)
-mod = aov_ez(dv = "Symptoms", between = c("Therapy", "Diagnosis"), id = "X", data = therapy)
+mod = aov_ez(dv = "Symptoms", between = c("Therapy", "Diagnosis"), id = "ID", data = therapy)
 mod
 ```
 

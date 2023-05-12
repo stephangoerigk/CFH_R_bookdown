@@ -8,14 +8,21 @@ Wir werden jedoch auch lernen, wie wir uns effizient Informationen über Datens�
 
 ## Informationen über R Objekte
 
+### str()
+
 Um schnell Informationen über ein R Objekt (Vektor, data.frame, Bild o.ä.) zu erhalten, nutzen wir den `str()` Befehl.
 
 So können wir einen schnellen Überblick erhalten, um was für ein Objekt es sich handelt und "was in dem Objekt drin steckt".
 
-```{r}
+Als Beispiel benutzen wir den `iris` Datensatz, der in der Basisversion von R enthalten ist. Dieser enthält Informationen über 3 Spezies der Blumenart Iris.
 
+```{r}
+head(iris) # erste 6 Zeilen ansehen
+
+str(iris)
 ```
 
+Der Befehl zeigt uns eine Übersicht, welche Variablen in dem `iris` Datensatz enthalten sind. zusätzlich sehen wir die Dimensionen (150 Zeilen, 5 Spalten) des dataframes. Für die einzelnen Variablen wird uns jeweils die Variablenart (z.B. `Petal.Length`, engl Blütenblattlänge = numerisch; `Species` = factor) sowie einzelne in dem Variablen enthaltene Werte.
 
 ### Informationen über Vektoren
 
@@ -27,6 +34,34 @@ Um herauszufinden, wie viele Stellen ein Vektor hat, nutzen wir die Funktion `le
 vektor = c("A", "B", "C", "D")
 
 length(vektor)
+```
+
+#### is...
+
+Wir können zudem die Variablenart des Vektors abfragen. Dies funktioniert mit dem `is.()` Befehl, ergänzt durch die Variablenart, nach der wir fragen wollen. Z.B. enthält die Variable `Petal.Length` des `iris` Datensatzes ausschließlich Zahlen:
+
+```{r}
+is.character(iris$Petal.Length)
+```
+
+```{r}
+is.numeric(iris$Petal.Length)
+```
+
+#### is.na()
+
+Wir können auch spezifisch nach fehlenden Werten Fragen. Erstellen wir uns schnell einen Beispielvektor:
+
+```{r}
+a = c(1, 2, 3, NA, 5, NA)
+
+is.na(a)
+```
+
+Auf diese Art, können wir auch leicht zählen, wie viele Elemente eines Vektors als "fehlende Werte" berücksichtigt werden müssen:
+
+```{r}
+sum(is.na(a))
 ```
 
 ### Informationen über Dataframes
@@ -51,6 +86,15 @@ length(vektor)
 |     `table(x)`|  Gibt Tabelle aller einzigartiger Werte und deren absolute Häufigkeit an. Um auch fehlende Werte zu zählen wählen Sie `exclude = NULL` |  `table(c("a", "a", "b", "c"))`|` 2-"a", 1-"b", 1-"c"`    |
 
 #### Absolute Häufigkeiten
+
+Leider gibt es zum Zusammenfassen kategorialer (nominalskalierter) Variablen nicht so viele Möglichkeiten wie für die numerischen Variablen (die Mittelwert, Median, Standardabweichung... ermöglichen).
+
+Die gängigste Deskription einer kategorialen Variable ist die Erstellung einer Häufigkeitstabelle. Eine Häufigkeitstabelle mit absoluten Häufigkeiten lässt sich mit dem `table()` Befehl erstellen.
+
+```{r}
+kat = c("")
+```
+
 
 #### Relative Häufigkeiten
 

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 15 ANOVA | Einführung in R</title>
+  <title>Kapitel 16 ANOVA | Einführung in R</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 15 ANOVA | Einführung in R" />
+  <meta property="og:title" content="Kapitel 16 ANOVA | Einführung in R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 15 ANOVA | Einführung in R" />
+  <meta name="twitter:title" content="Kapitel 16 ANOVA | Einführung in R" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2023-04-13" />
+<meta name="date" content="2023-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -246,8 +248,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="9.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-r-objekte"><i class="fa fa-check"></i><b>9.1</b> Informationen über R Objekte</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-vektoren"><i class="fa fa-check"></i><b>9.1.1</b> Informationen über Vektoren</a></li>
-<li class="chapter" data-level="9.1.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-dataframes"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Dataframes</a></li>
+<li class="chapter" data-level="9.1.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#str"><i class="fa fa-check"></i><b>9.1.1</b> str()</a></li>
+<li class="chapter" data-level="9.1.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-vektoren"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Vektoren</a></li>
+<li class="chapter" data-level="9.1.3" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-dataframes"><i class="fa fa-check"></i><b>9.1.3</b> Informationen über Dataframes</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>9.2</b> Deskriptivstatistiken</a>
 <ul>
@@ -287,10 +290,18 @@ div.csl-indent {
 <li class="chapter" data-level="10.6.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#cbind-und-rbind"><i class="fa fa-check"></i><b>10.6.1</b> cbind und rbind</a></li>
 <li class="chapter" data-level="10.6.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#merge"><i class="fa fa-check"></i><b>10.6.2</b> merge</a></li>
 </ul></li>
+<li class="chapter" data-level="10.7" data-path="datenmanipulation.html"><a href="datenmanipulation.html#datensätze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#von-wide--und-long-format"><i class="fa fa-check"></i><b>10.7.1</b> Von Wide- und Long-Format</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="schleifen-loops.html"><a href="schleifen-loops.html"><i class="fa fa-check"></i><b>11</b> Schleifen (Loops)</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for"><i class="fa fa-check"></i><b>11.1</b> for()</a></li>
+<li class="chapter" data-level="11.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for"><i class="fa fa-check"></i><b>11.1</b> for()</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for-im-datensatz"><i class="fa fa-check"></i><b>11.1.1</b> for() im Datensatz</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="schleifen-loops.html"><a href="schleifen-loops.html#if"><i class="fa fa-check"></i><b>11.2</b> if()</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="graphiken.html"><a href="graphiken.html"><i class="fa fa-check"></i><b>12</b> Graphiken</a>
 <ul>
@@ -326,102 +337,116 @@ div.csl-indent {
 <li class="chapter" data-level="12.11" data-path="graphiken.html"><a href="graphiken.html#abbildungen-kombinieren"><i class="fa fa-check"></i><b>12.11</b> Abbildungen kombinieren</a></li>
 <li class="chapter" data-level="12.12" data-path="graphiken.html"><a href="graphiken.html#abbildungen-exportieren"><i class="fa fa-check"></i><b>12.12</b> Abbildungen exportieren</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>13</b> Korrelation</a>
+<li class="chapter" data-level="13" data-path="tabellen.html"><a href="tabellen.html"><i class="fa fa-check"></i><b>13</b> Tabellen</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="korrelation.html"><a href="korrelation.html#hypothesen"><i class="fa fa-check"></i><b>13.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="13.2" data-path="korrelation.html"><a href="korrelation.html#berechnung-der-korrelation"><i class="fa fa-check"></i><b>13.2</b> Berechnung der Korrelation</a></li>
-<li class="chapter" data-level="13.3" data-path="korrelation.html"><a href="korrelation.html#unterschiedliche-korrelationsmethoden"><i class="fa fa-check"></i><b>13.3</b> Unterschiedliche Korrelationsmethoden</a>
+<li class="chapter" data-level="13.1" data-path="tabellen.html"><a href="tabellen.html#data.frames"><i class="fa fa-check"></i><b>13.1</b> data.frames</a></li>
+<li class="chapter" data-level="13.2" data-path="tabellen.html"><a href="tabellen.html#format"><i class="fa fa-check"></i><b>13.2</b> Format</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>13.3.1</b> Pearson-Korrelation</a></li>
-<li class="chapter" data-level="13.3.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation-aka-rangkorrelation"><i class="fa fa-check"></i><b>13.3.2</b> Spearman-Korrelation (aka Rangkorrelation)</a></li>
-<li class="chapter" data-level="13.3.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>13.3.3</b> Kendall-Korrelation</a></li>
+<li class="chapter" data-level="13.2.1" data-path="tabellen.html"><a href="tabellen.html#text"><i class="fa fa-check"></i><b>13.2.1</b> Text</a></li>
+<li class="chapter" data-level="13.2.2" data-path="tabellen.html"><a href="tabellen.html#zellen"><i class="fa fa-check"></i><b>13.2.2</b> Zellen</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="korrelation.html"><a href="korrelation.html#korrelation-als-hypothesentest"><i class="fa fa-check"></i><b>13.4</b> Korrelation als Hypothesentest</a></li>
+<li class="chapter" data-level="13.3" data-path="tabellen.html"><a href="tabellen.html#layout"><i class="fa fa-check"></i><b>13.3</b> Layout</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einfügen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html"><i class="fa fa-check"></i><b>14</b> Einfache Hypothesentests</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>14.1</b> Ein-Stichproben t-Test</a>
-<ul>
-<li class="chapter" data-level="14.1.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-1"><i class="fa fa-check"></i><b>14.1.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.1.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>14.1.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.1.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen"><i class="fa fa-check"></i><b>14.1.3</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.1.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>14.1.4</b> Ergebnis interpretieren</a></li>
-<li class="chapter" data-level="14.1.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-berichten"><i class="fa fa-check"></i><b>14.1.5</b> Ergebnis berichten</a></li>
-<li class="chapter" data-level="14.1.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke"><i class="fa fa-check"></i><b>14.1.6</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.1.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>14.1.7</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="13.4" data-path="tabellen.html"><a href="tabellen.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>14.2</b> t-Test bei unabhängigen Stichproben</a>
+<li class="chapter" data-level="14" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>14</b> Korrelation</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-2"><i class="fa fa-check"></i><b>14.2.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.2.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>14.2.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.2.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-1"><i class="fa fa-check"></i><b>14.2.3</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.2.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>14.2.4</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.2.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>14.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="14.2.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-1"><i class="fa fa-check"></i><b>14.2.6</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.2.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>14.2.7</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="14.1" data-path="korrelation.html"><a href="korrelation.html#hypothesen"><i class="fa fa-check"></i><b>14.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.2" data-path="korrelation.html"><a href="korrelation.html#berechnung-der-korrelation"><i class="fa fa-check"></i><b>14.2</b> Berechnung der Korrelation</a></li>
+<li class="chapter" data-level="14.3" data-path="korrelation.html"><a href="korrelation.html#unterschiedliche-korrelationsmethoden"><i class="fa fa-check"></i><b>14.3</b> Unterschiedliche Korrelationsmethoden</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>14.3.1</b> Pearson-Korrelation</a></li>
+<li class="chapter" data-level="14.3.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation-aka-rangkorrelation"><i class="fa fa-check"></i><b>14.3.2</b> Spearman-Korrelation (aka Rangkorrelation)</a></li>
+<li class="chapter" data-level="14.3.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>14.3.3</b> Kendall-Korrelation</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>14.3</b> t-Test bei abhängigen Stichproben</a>
-<ul>
-<li class="chapter" data-level="14.3.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-3"><i class="fa fa-check"></i><b>14.3.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.3.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>14.3.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.3.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-2"><i class="fa fa-check"></i><b>14.3.3</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.3.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>14.3.4</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.3.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>14.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="14.3.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-2"><i class="fa fa-check"></i><b>14.3.6</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.3.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>14.3.7</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="14.4" data-path="korrelation.html"><a href="korrelation.html#korrelation-als-hypothesentest"><i class="fa fa-check"></i><b>14.4</b> Korrelation als Hypothesentest</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>14.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
+<li class="chapter" data-level="15" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html"><i class="fa fa-check"></i><b>15</b> Einfache Hypothesentests</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-4"><i class="fa fa-check"></i><b>14.4.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.4.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-3"><i class="fa fa-check"></i><b>14.4.2</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.4.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>14.4.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.4.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-3"><i class="fa fa-check"></i><b>14.4.4</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.4.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>14.4.5</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="15.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>15.1</b> Ein-Stichproben t-Test</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-1"><i class="fa fa-check"></i><b>15.1.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.1.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.1.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen"><i class="fa fa-check"></i><b>15.1.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.1.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>15.1.4</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="15.1.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-berichten"><i class="fa fa-check"></i><b>15.1.5</b> Ergebnis berichten</a></li>
+<li class="chapter" data-level="15.1.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke"><i class="fa fa-check"></i><b>15.1.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.1.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>15.1.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="14.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>14.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
+<li class="chapter" data-level="15.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>15.2</b> t-Test bei unabhängigen Stichproben</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-5"><i class="fa fa-check"></i><b>14.5.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.5.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-4"><i class="fa fa-check"></i><b>14.5.2</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.5.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>14.5.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.5.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-4"><i class="fa fa-check"></i><b>14.5.4</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.5.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>14.5.5</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="15.2.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-2"><i class="fa fa-check"></i><b>15.2.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.2.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>15.2.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.2.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-1"><i class="fa fa-check"></i><b>15.2.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.2.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>15.2.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.2.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>15.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.2.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-1"><i class="fa fa-check"></i><b>15.2.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.2.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>15.2.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#chi2-test"><i class="fa fa-check"></i><b>14.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
+<li class="chapter" data-level="15.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>15.3</b> t-Test bei abhängigen Stichproben</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>14.6.1</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.6.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-5"><i class="fa fa-check"></i><b>14.6.2</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.6.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>14.6.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.6.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>14.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="14.6.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-5"><i class="fa fa-check"></i><b>14.6.5</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.3.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-3"><i class="fa fa-check"></i><b>15.3.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.3.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>15.3.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.3.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-2"><i class="fa fa-check"></i><b>15.3.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.3.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>15.3.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.3.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>15.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.3.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-2"><i class="fa fa-check"></i><b>15.3.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.3.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>15.3.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="14.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#fishers-exakter-test"><i class="fa fa-check"></i><b>14.7</b> Fisher’s Exakter Test</a>
+<li class="chapter" data-level="15.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>15.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
 <ul>
-<li class="chapter" data-level="14.7.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-6"><i class="fa fa-check"></i><b>14.7.1</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.4.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-4"><i class="fa fa-check"></i><b>15.4.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.4.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-3"><i class="fa fa-check"></i><b>15.4.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.4.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>15.4.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.4.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-3"><i class="fa fa-check"></i><b>15.4.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.4.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>15.4.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>15.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-5"><i class="fa fa-check"></i><b>15.5.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.5.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-4"><i class="fa fa-check"></i><b>15.5.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.5.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>15.5.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.5.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-4"><i class="fa fa-check"></i><b>15.5.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.5.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>15.5.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#chi2-test"><i class="fa fa-check"></i><b>15.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>15.6.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.6.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-5"><i class="fa fa-check"></i><b>15.6.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.6.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>15.6.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.6.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>15.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.6.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-5"><i class="fa fa-check"></i><b>15.6.5</b> Effektstärke</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#fishers-exakter-test"><i class="fa fa-check"></i><b>15.7</b> Fisher’s Exakter Test</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-6"><i class="fa fa-check"></i><b>15.7.1</b> Test durchführen</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>15</b> ANOVA</a>
+<li class="chapter" data-level="16" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>16</b> ANOVA</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="anova.html"><a href="anova.html#einfaktorielle-anova"><i class="fa fa-check"></i><b>15.1</b> Einfaktorielle ANOVA</a>
+<li class="chapter" data-level="16.1" data-path="anova.html"><a href="anova.html#einfaktorielle-anova"><i class="fa fa-check"></i><b>16.1</b> Einfaktorielle ANOVA</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="anova.html"><a href="anova.html#alpha-fehler-kumulierung"><i class="fa fa-check"></i><b>15.1.1</b> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung</a></li>
-<li class="chapter" data-level="15.1.2" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-4"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.1.3" data-path="anova.html"><a href="anova.html#berechnung-der-anova"><i class="fa fa-check"></i><b>15.1.3</b> Berechnung der ANOVA</a></li>
-<li class="chapter" data-level="15.1.4" data-path="anova.html"><a href="anova.html#interpretation"><i class="fa fa-check"></i><b>15.1.4</b> Interpretation</a></li>
-<li class="chapter" data-level="15.1.5" data-path="anova.html"><a href="anova.html#post-hoc-tests"><i class="fa fa-check"></i><b>15.1.5</b> Post-hoc Tests</a></li>
+<li class="chapter" data-level="16.1.1" data-path="anova.html"><a href="anova.html#alpha-fehler-kumulierung"><i class="fa fa-check"></i><b>16.1.1</b> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung</a></li>
+<li class="chapter" data-level="16.1.2" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-4"><i class="fa fa-check"></i><b>16.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.1.3" data-path="anova.html"><a href="anova.html#berechnung-der-anova"><i class="fa fa-check"></i><b>16.1.3</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.1.4" data-path="anova.html"><a href="anova.html#interpretation"><i class="fa fa-check"></i><b>16.1.4</b> Interpretation</a></li>
+<li class="chapter" data-level="16.1.5" data-path="anova.html"><a href="anova.html#post-hoc-tests"><i class="fa fa-check"></i><b>16.1.5</b> Post-hoc Tests</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="anova.html"><a href="anova.html#mehrfaktorielle-anova"><i class="fa fa-check"></i><b>15.2</b> Mehrfaktorielle ANOVA</a>
+<li class="chapter" data-level="16.2" data-path="anova.html"><a href="anova.html#mehrfaktorielle-anova"><i class="fa fa-check"></i><b>16.2</b> Mehrfaktorielle ANOVA</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-5"><i class="fa fa-check"></i><b>15.2.1</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.2.2" data-path="anova.html"><a href="anova.html#berechnung-der-anova-1"><i class="fa fa-check"></i><b>15.2.2</b> Berechnung der ANOVA</a></li>
-<li class="chapter" data-level="15.2.3" data-path="anova.html"><a href="anova.html#interpretation-1"><i class="fa fa-check"></i><b>15.2.3</b> Interpretation</a></li>
-<li class="chapter" data-level="15.2.4" data-path="anova.html"><a href="anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>15.2.4</b> Post-hoc Tests</a></li>
+<li class="chapter" data-level="16.2.1" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-5"><i class="fa fa-check"></i><b>16.2.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.2.2" data-path="anova.html"><a href="anova.html#berechnung-der-anova-1"><i class="fa fa-check"></i><b>16.2.2</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.2.3" data-path="anova.html"><a href="anova.html#interpretation-1"><i class="fa fa-check"></i><b>16.2.3</b> Interpretation</a></li>
+<li class="chapter" data-level="16.2.4" data-path="anova.html"><a href="anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>16.2.4</b> Post-hoc Tests</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="anova.html"><a href="anova.html#prüfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>15.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
+<li class="chapter" data-level="16.3" data-path="anova.html"><a href="anova.html#prüfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>16.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="anova.html"><a href="anova.html#testen-der-empirisch-testbaren-annahmen"><i class="fa fa-check"></i><b>15.3.1</b> Testen der empirisch testbaren Annahmen</a></li>
-<li class="chapter" data-level="15.3.2" data-path="anova.html"><a href="anova.html#homogenität-der-varianzen"><i class="fa fa-check"></i><b>15.3.2</b> Homogenität der Varianzen:</a></li>
-<li class="chapter" data-level="15.3.3" data-path="anova.html"><a href="anova.html#sphärizität"><i class="fa fa-check"></i><b>15.3.3</b> Sphärizität:</a></li>
-<li class="chapter" data-level="15.3.4" data-path="anova.html"><a href="anova.html#normalverteilung-der-residuen"><i class="fa fa-check"></i><b>15.3.4</b> Normalverteilung der Residuen:</a></li>
+<li class="chapter" data-level="16.3.1" data-path="anova.html"><a href="anova.html#testen-der-empirisch-testbaren-annahmen"><i class="fa fa-check"></i><b>16.3.1</b> Testen der empirisch testbaren Annahmen</a></li>
+<li class="chapter" data-level="16.3.2" data-path="anova.html"><a href="anova.html#homogenität-der-varianzen"><i class="fa fa-check"></i><b>16.3.2</b> Homogenität der Varianzen:</a></li>
+<li class="chapter" data-level="16.3.3" data-path="anova.html"><a href="anova.html#sphärizität"><i class="fa fa-check"></i><b>16.3.3</b> Sphärizität:</a></li>
+<li class="chapter" data-level="16.3.4" data-path="anova.html"><a href="anova.html#normalverteilung-der-residuen"><i class="fa fa-check"></i><b>16.3.4</b> Normalverteilung der Residuen:</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -444,19 +469,19 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="anova" class="section level1 hasAnchor" number="15">
-<h1><span class="header-section-number">Kapitel 15</span> ANOVA<a href="anova.html#anova" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="anova" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">Kapitel 16</span> ANOVA<a href="anova.html#anova" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Die ANOVA (Analysis of variance, dt. Varianzanalyse) ist ein weiterer Signifikanztest. Mit der ANOVA können wir Prüfen, ob eine unabhängige Variable (UV) einen signifikanten Anteil Varianz der abhängigen Variable erklärt (AV). Die UVs nennen wir bei der ANOVA i.d.R. <strong>Faktor</strong>.</p>
 <p>Statistisch ist die ANOVA ein F-Test (Varianzquotient).</p>
-<div id="einfaktorielle-anova" class="section level2 hasAnchor" number="15.1">
-<h2><span class="header-section-number">15.1</span> Einfaktorielle ANOVA<a href="anova.html#einfaktorielle-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="einfaktorielle-anova" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> Einfaktorielle ANOVA<a href="anova.html#einfaktorielle-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Wir nutzen die ANOVA besonders gerne, wenn wir eine numerische AV und einen kategorialen Faktor mit <span class="math inline">\(&gt;2\)</span> Stufen haben.</p>
 <p>Ein Beispiel wäre der Vergleich der Stärke von Symptomen, die Patient:innen nach einer Therapie haben. Klinisch wäre es wünschenswert, dass die Symptomstärke nach der Therapie möglichst gering ausfällt.</p>
 <p>Laden wir uns einen fiktiven Datensatz herunter, der dieses Szenario wiederspiegelt:</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="anova.html#cb425-1" aria-hidden="true" tabindex="-1"></a>therapy <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/stephangoerigk/WAF_Folien/master/therapy4groups.csv&quot;</span>)[,<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb425-2"><a href="anova.html#cb425-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb425-3"><a href="anova.html#cb425-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(therapy)</span></code></pre></div>
-<pre><code>##        X            Therapy     Symptoms         Diagnosis 
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="anova.html#cb478-1" aria-hidden="true" tabindex="-1"></a>therapy <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/stephangoerigk/WAF_Folien/master/therapy4groups.csv&quot;</span>)[,<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb478-2"><a href="anova.html#cb478-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb478-3"><a href="anova.html#cb478-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(therapy)</span></code></pre></div>
+<pre><code>##        ID           Therapy     Symptoms         Diagnosis 
 ##  Min.   : 1.00   Control:8   Min.   :15.0   Angst     :15  
 ##  1st Qu.: 8.25   PA     :8   1st Qu.:48.5   Depression:15  
 ##  Median :15.50   SSRI   :8   Median :61.0                  
@@ -473,17 +498,17 @@ div.csl-indent {
 <p>Die Therapie (UV) ist also ein Faktor mit 4 Stufen.</p>
 <p>Eine denkbare Forschungsfrage könnte wie folgt lauten:</p>
 <p><em>Nach welcher Therapie haben die Patient:innen die schwächsten Symptome?</em></p>
-<div id="alpha-fehler-kumulierung" class="section level3 hasAnchor" number="15.1.1">
-<h3><span class="header-section-number">15.1.1</span> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung<a href="anova.html#alpha-fehler-kumulierung" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="alpha-fehler-kumulierung" class="section level3 hasAnchor" number="16.1.1">
+<h3><span class="header-section-number">16.1.1</span> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung<a href="anova.html#alpha-fehler-kumulierung" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In unserem Beispiel mit 4 Gruppen könnten wir den t-Test nicht verwenden, da dieser max. 2 Mittelwerte vergleicht. Intuitiv könnte man sich überlegen, statt eines t-Tests einfach insgesamt 6 t-Tests zu rechnen, um alle Vergleiche abzudecken (SSRI vs. VT, VT vs. PA, …). Was uns daran hindert, ist die sogenannte <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung.</p>
 <p>Unter Annahme eines Signifikanzniveaus von <span class="math inline">\(\alpha=.05\)</span> erlauben wir uns 5% Wahrscheinlichkeit einen Fehler 1. Art zu begehen (fälschlicherweise die <span class="math inline">\(H_1\)</span> anzunehmen). Diese 5% Fehlerwahrscheinlichkeit besteht jedoch bei jedem einzelnen t-Test <span class="math inline">\(\rightarrow\)</span> Viele Tests, viele mögliche Fehlerentscheidungen!</p>
 <p>Selbst bei 3 t-Tests steigt die Wahrscheinlichkeit für einen Fehler 1. Art mit <span class="math inline">\(0.05^3=0.14\)</span> rasant auf 14% statt 5% an.</p>
 <p>Um dieses Problem zu vermeiden rechenen wir die ANOVA, welche uns nicht alle Vergleiche einzeln, sondern die Signifikanz des gesamten Faktors auf einmal berechnet (Omnibus Test). Daraus folgt jedoch auch, dass die ANOVA als Signifikanztest Hypothesen <strong>immer ungerichtet</strong> testet.</p>
 </div>
-<div id="deskriptive-einordnung-4" class="section level3 hasAnchor" number="15.1.2">
-<h3><span class="header-section-number">15.1.2</span> Deskriptive Einordnung<a href="anova.html#deskriptive-einordnung-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="deskriptive-einordnung-4" class="section level3 hasAnchor" number="16.1.2">
+<h3><span class="header-section-number">16.1.2</span> Deskriptive Einordnung<a href="anova.html#deskriptive-einordnung-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Zunächst können wir uns die Deskriptivstatistiken innerhalb der 4 Gruppen einmal anschauen:</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="anova.html#cb427-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describeBy</span>(Symptoms <span class="sc">~</span> Therapy, <span class="at">data =</span> therapy)</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="anova.html#cb480-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describeBy</span>(Symptoms <span class="sc">~</span> Therapy, <span class="at">data =</span> therapy)</span></code></pre></div>
 <pre><code>## 
 ##  Descriptive statistics by group 
 ## Therapy: Control
@@ -507,27 +532,27 @@ div.csl-indent {
 ## Symptoms 7.29</code></pre>
 <p>Rein deskriptiv lässt sich bereits feststellen, dass Patient:innen nach der VT die niedrigsten Symptome aufweisen (M [SD]=39.67 [17.85]), gefolgt von SSRI (M [SD]=56.88 [13.3]), PA (M [SD]=64.62 [13.38]) und Control (M [SD]=73.75 [8.15]).</p>
 <p>Die Gruppenunterschiede lassen sich auch graphisch gut darstellen:</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="anova.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> therapy, <span class="fu">aes</span>(<span class="at">x =</span> Therapy, <span class="at">y =</span> Symptoms)) <span class="sc">+</span></span>
-<span id="cb429-2"><a href="anova.html#cb429-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se,  <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="sc">+</span></span>
-<span id="cb429-3"><a href="anova.html#cb429-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">fun =</span> mean) </span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-261-1.png" width="672" /></p>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="anova.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> therapy, <span class="fu">aes</span>(<span class="at">x =</span> Therapy, <span class="at">y =</span> Symptoms)) <span class="sc">+</span></span>
+<span id="cb482-2"><a href="anova.html#cb482-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se,  <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="sc">+</span></span>
+<span id="cb482-3"><a href="anova.html#cb482-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">fun =</span> mean) </span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
 <p>Ob sich die numerischen Unterschiede sich auch als signifikant erweisen, prüfen wir mit der ANOVA.</p>
 </div>
-<div id="berechnung-der-anova" class="section level3 hasAnchor" number="15.1.3">
-<h3><span class="header-section-number">15.1.3</span> Berechnung der ANOVA<a href="anova.html#berechnung-der-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="berechnung-der-anova" class="section level3 hasAnchor" number="16.1.3">
+<h3><span class="header-section-number">16.1.3</span> Berechnung der ANOVA<a href="anova.html#berechnung-der-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die einfaktorielle ANOVA lässt sich in R auf zwei Arten berechnen, die beide zu dem exakt selben Ergebnis kommen.</p>
 <ul>
 <li>eingebaute <code>lm()</code> Funktion gefolgt von <code>anova()</code></li>
 <li><code>aov_ez()</code> Funktion aus dem <code>afex</code> Paket</li>
 </ul>
-<div id="berechnung-mittels-lm" class="section level4 hasAnchor" number="15.1.3.1">
-<h4><span class="header-section-number">15.1.3.1</span> Berechnung mittels <code>lm()</code><a href="anova.html#berechnung-mittels-lm" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="berechnung-mittels-lm" class="section level4 hasAnchor" number="16.1.3.1">
+<h4><span class="header-section-number">16.1.3.1</span> Berechnung mittels <code>lm()</code><a href="anova.html#berechnung-mittels-lm" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Die <code>lm()</code> Funktion ist eine der gebräuchlichsten in der Statistik überhaupt. Sie ist nach dem <strong>Allgemeinen linearen Modell</strong> benannt (<strong>l</strong>inear <strong>m</strong>odel) und wird beispielsweise auch zur Berechnung der Regression verwendet.</p>
 <p>Das lineare Modell wird wie folgt aufgestellt (Formelformat):</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="anova.html#cb430-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Therapy, <span class="at">data =</span> therapy)</span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="anova.html#cb483-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Therapy, <span class="at">data =</span> therapy)</span></code></pre></div>
 <p>In der Formel steht links immer die AV (Symptoms). Die <code>~</code> Symbol heißt soviel wie “wird vorhergesagt durch”. Auf der rechten Seite steht die UV (Therapy).</p>
 <p>Um das Ergebnis der ANOVA (den F-Test) zu erhalten, müssen wir die Funktion <code>anova()</code> auf das erstellte Modell anwenden</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="anova.html#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="anova.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: Symptoms
@@ -544,8 +569,8 @@ div.csl-indent {
 </ul>
 <p>Die Entscheidungsregel ist uns bereits bekannt: Ist der p-Wert (hier <span class="math inline">\(p=0.0005766\)</span>) kleiner als <span class="math inline">\(\alpha=.05\)</span> ist der Test signifikant. Das ist hier der Fall. Das ganze Ergebnis schreibt man i.d.R. wie folgt: <span class="math inline">\(F_{3,26}=8.08, p&lt;.001\)</span>.</p>
 </div>
-<div id="berechnung-mittels-aov_ez" class="section level4 hasAnchor" number="15.1.3.2">
-<h4><span class="header-section-number">15.1.3.2</span> Berechnung mittels <code>aov_ez()</code><a href="anova.html#berechnung-mittels-aov_ez" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="berechnung-mittels-aov_ez" class="section level4 hasAnchor" number="16.1.3.2">
+<h4><span class="header-section-number">16.1.3.2</span> Berechnung mittels <code>aov_ez()</code><a href="anova.html#berechnung-mittels-aov_ez" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Die Berechnung mit der <code>aov_ez()</code> Funktion erfolgt analog, nur wird die Formel etwas anders geschrieben.</p>
 <p>Wir legen genau fest, was unsere AV ist <code>dv</code>. Zudem brauchen wir eine Variable, die jede Zeile eindeutig einem Individuum zuordnet <code>id</code>.</p>
 <p>Die Faktoren (UVs) werden mit einem der beiden folgenden Argumente angegeben:</p>
@@ -554,10 +579,10 @@ div.csl-indent {
 <li><code>within</code> (Innersubjektfaktoren)</li>
 </ul>
 <p>Faktoren, die unter <code>between</code> angegeben werden, sind unabhängige Messungen, also Variablen die einen Gruppenvergleich möglich machen. Faktoren, die unter <code>within</code> angegeben werden, sind abhängige Messungen, also beispielsweise mehrere Messzeitpunkte derselben Person.</p>
-<p>In unserem Fall liegt ein Gruppenvergleich vor (jede Person hat jeweils nur eine der Therapien erhalten), daher nutzen wir <code>between</code>. Für <code>id</code> nutzen wir einfach die Variable <code>X</code>, die einen Patientencode für jede Person enthält.</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="anova.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
-<span id="cb433-2"><a href="anova.html#cb433-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">aov_ez</span>(<span class="at">dv =</span> <span class="st">&quot;Symptoms&quot;</span>, <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;Therapy&quot;</span>), <span class="at">id =</span> <span class="st">&quot;X&quot;</span>, <span class="at">data =</span> therapy)</span>
-<span id="cb433-3"><a href="anova.html#cb433-3" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
+<p>In unserem Fall liegt ein Gruppenvergleich vor (jede Person hat jeweils nur eine der Therapien erhalten), daher nutzen wir <code>between</code>. Für <code>id</code> nutzen wir einfach die Variable <code>ID</code>, die einen Patientencode für jede Person enthält.</p>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="anova.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
+<span id="cb486-2"><a href="anova.html#cb486-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">aov_ez</span>(<span class="at">dv =</span> <span class="st">&quot;Symptoms&quot;</span>, <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;Therapy&quot;</span>), <span class="at">id =</span> <span class="st">&quot;ID&quot;</span>, <span class="at">data =</span> therapy)</span>
+<span id="cb486-3"><a href="anova.html#cb486-3" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
 ## 
 ## Response: Symptoms
@@ -567,21 +592,32 @@ div.csl-indent {
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Wie wir sehen, wird der Schritt des Aufstellens des linearen Modells hier übersprungen und direkt die ANOVA (F-Test) gerechnet.
 Das Ergebnise ist jedoch identisch.</p>
+<p>Falls im Datensatz keine <code>id</code> Variable enthalten ist, lässt sich diese leicht erstellen, indem wir einfach jeder Person Ihre Position im Datensatz als Namen geben:</p>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="anova.html#cb488-1" aria-hidden="true" tabindex="-1"></a>therapy<span class="sc">$</span>id <span class="ot">=</span> <span class="fu">rownames</span>(therapy)</span>
+<span id="cb488-2"><a href="anova.html#cb488-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb488-3"><a href="anova.html#cb488-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(therapy)</span></code></pre></div>
+<pre><code>##   ID Therapy Symptoms  Diagnosis id
+## 1  1    SSRI       46 Depression  1
+## 2  2    SSRI       69      Angst  2
+## 3  3    SSRI       39 Depression  3
+## 4  4    SSRI       80      Angst  4
+## 5  5    SSRI       50 Depression  5
+## 6  6    SSRI       63      Angst  6</code></pre>
 </div>
 </div>
-<div id="interpretation" class="section level3 hasAnchor" number="15.1.4">
-<h3><span class="header-section-number">15.1.4</span> Interpretation<a href="anova.html#interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interpretation" class="section level3 hasAnchor" number="16.1.4">
+<h3><span class="header-section-number">16.1.4</span> Interpretation<a href="anova.html#interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die ANOVA ist in unserem Beispiel signifikant geworden. Dies gibt uns die Information, dass der Faktor Therapie einen signifikanten Anteil der Varianz unserer AV (Symptoms) erklären kann. Anders gesagt: Es scheinen hinsichtlich der Symptomatik Unterschiede zwischen den Gruppen zu bestehen.</p>
 <p>Aus dem signifikanten Ergebnis der ANOVA können wir jedoch nicht erkennen, <strong>zwischen welchen der Gruppen</strong> die Unterschiede genau bestehen. Wir wissen es gibt einen Effekt, nur nicht wo er liegt.</p>
 <p>Aus diesem Grund folgt auf die Berechnung der ANOVA ein zweiter Schritt, um mittels <strong>paarweisen Vergleichen</strong> zu prüfen, wo die Unterschiede liegen. Diese paarweisen Vergleiche nennt man auch Post-hoc Tests</p>
 </div>
-<div id="post-hoc-tests" class="section level3 hasAnchor" number="15.1.5">
-<h3><span class="header-section-number">15.1.5</span> Post-hoc Tests<a href="anova.html#post-hoc-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="post-hoc-tests" class="section level3 hasAnchor" number="16.1.5">
+<h3><span class="header-section-number">16.1.5</span> Post-hoc Tests<a href="anova.html#post-hoc-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Post-hoc Tests erlauben uns genau zu sehen, welche der Stufen unserer UV sich unterscheiden. In diesem Sinne sind sie nichts anderes als nachgeschaltete t-Tests, die 2 Gruppen miteinander vergleichen.</p>
 <p>Wir berechnen Post-hoc Tests mit der <code>emmeans()</code> Funktion aus dem gleichnamigen <code>emmeans</code> Paket. Die Abkürzung emmeans bedeuted “estimated marginal means”, was soviel bedeutet wie die Mittelwerte des Modells innerhalb der Faktorstufen zu vergleichen.</p>
 <p>Die <code>emmeans()</code> Funktion kann man sowohl nach der ANOVA mit <code>lm()</code> als auch nach der ANOVA mit <code>aov_ez()</code> verwenden.</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="anova.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
-<span id="cb435-2"><a href="anova.html#cb435-2" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(mod, pairwise <span class="sc">~</span> Therapy)</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="anova.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb490-2"><a href="anova.html#cb490-2" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(mod, pairwise <span class="sc">~</span> Therapy)</span></code></pre></div>
 <pre><code>## $emmeans
 ##  Therapy emmean   SE df lower.CL upper.CL
 ##  Control   73.8 4.68 26     64.1     83.4
@@ -609,13 +645,13 @@ Das Ergebnise ist jedoch identisch.</p>
 </ul>
 <p>Die Interpretation des Ergebnisses ist uns bereits bekannt. Jeder Vergleich erhält einen t-Wert und einen p-Wert, anhand dessen wir ablesen können, ob der Gruppenunterschied signifikant war.</p>
 <p>Der Mittelwert der Gruppe VT war signifikant niedriger als der in der Kontrollgruppe <span class="math inline">\((t_{26}=4.77,p=.0003)\)</span> und als der in der PA Gruppe <span class="math inline">\((t_{26}=3.49,p=.0088)\)</span>. Die anderen Vergleiche waren nicht signifikant.</p>
-<div id="korrektur-für-multiples-testen" class="section level4 hasAnchor" number="15.1.5.1">
-<h4><span class="header-section-number">15.1.5.1</span> Korrektur für multiples Testen<a href="anova.html#korrektur-für-multiples-testen" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="korrektur-für-multiples-testen" class="section level4 hasAnchor" number="16.1.5.1">
+<h4><span class="header-section-number">16.1.5.1</span> Korrektur für multiples Testen<a href="anova.html#korrektur-für-multiples-testen" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Nun haben wir im Abschnitt über die <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung bereits erfahren, dass das Durchführen vieler Vergleiche problematisch sein kann, da es die Wahrscheinlichkeit erhöht, einen Fehler 1. Art zu begehen.</p>
 <p>Post-hoc Tests lösen dieses Problem durch eine Korrektur des p-Werts. Je mehr Vergleiche gemacht werden, desto mehr wird er nach oben korrigiert. Automatisch wendet <code>emmeans()</code> die sogenannte Tukey-Korrektur an (ganz unten im Output sichtbar).</p>
 <p>Zwei weitere Korrekturen sind gängig, die etwas strengere Bonferroni-Korrektur und die etwas weniger strenge Benjamini-Hochberg Korrektur (auch false-dicovery-rate Korrektur - FDR genannt).</p>
 <p>Wollen wir die Korrekturmethode ändern, lässt sich das leicht über das <code>adjust</code> Argument erreichen:</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="anova.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(mod, pairwise <span class="sc">~</span> Therapy, <span class="at">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="anova.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(mod, pairwise <span class="sc">~</span> Therapy, <span class="at">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <pre><code>## $emmeans
 ##  Therapy emmean   SE df lower.CL upper.CL
 ##  Control   73.8 4.68 26     64.1     83.4
@@ -637,7 +673,7 @@ Das Ergebnise ist jedoch identisch.</p>
 ## P value adjustment: bonferroni method for 6 tests</code></pre>
 <p>Wir sehen, dass die etwas strengere Bonferroni-Korrektur die p-Werte vergleichsweise höher werden lässt, als mit der Tukey-Korrektur. Es ist also für den p-Wert schwieriger, unter das Signifikanznivea <span class="math inline">\(\alpha=.05\)</span> zu kommen.</p>
 <p>Mit der Benjamini-Hochberg Korrektur sind die Anpassungen weniger streng:</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="anova.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(mod, pairwise <span class="sc">~</span> Therapy, <span class="at">adjust =</span> <span class="st">&quot;fdr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="anova.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(mod, pairwise <span class="sc">~</span> Therapy, <span class="at">adjust =</span> <span class="st">&quot;fdr&quot;</span>)</span></code></pre></div>
 <pre><code>## $emmeans
 ##  Therapy emmean   SE df lower.CL upper.CL
 ##  Control   73.8 4.68 26     64.1     83.4
@@ -660,8 +696,8 @@ Das Ergebnise ist jedoch identisch.</p>
 </div>
 </div>
 </div>
-<div id="mehrfaktorielle-anova" class="section level2 hasAnchor" number="15.2">
-<h2><span class="header-section-number">15.2</span> Mehrfaktorielle ANOVA<a href="anova.html#mehrfaktorielle-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mehrfaktorielle-anova" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> Mehrfaktorielle ANOVA<a href="anova.html#mehrfaktorielle-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Mit der ANOVA haben wir die Möglichkeit, die Effekte mehrere UVs (Faktoren) auf die AV zu untersuchen.</p>
 <p>Wir prüfen dann letztlich 3 Hypothesen (bei 2 UVs)</p>
 <ul>
@@ -676,10 +712,10 @@ Das Ergebnise ist jedoch identisch.</p>
 <li><em>Welche Diagnose hatte die schwächsten Symptome?</em> (Haupteffekt Diagnose)</li>
 <li><em>Gibt es, je nachdem welche Diagnose die Patienten hatten, Unterschiede in der Wirksamkeit der Therapie?</em> (Interaktioniseffekt)</li>
 </ol>
-<div id="deskriptive-einordnung-5" class="section level3 hasAnchor" number="15.2.1">
-<h3><span class="header-section-number">15.2.1</span> Deskriptive Einordnung<a href="anova.html#deskriptive-einordnung-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="deskriptive-einordnung-5" class="section level3 hasAnchor" number="16.2.1">
+<h3><span class="header-section-number">16.2.1</span> Deskriptive Einordnung<a href="anova.html#deskriptive-einordnung-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Zunächst können wir uns die Deskriptivstatistiken innerhalb der Gruppen einmal anschauen:</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="anova.html#cb441-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describeBy</span>(Symptoms <span class="sc">~</span> Therapy <span class="sc">*</span> Diagnosis, <span class="at">data =</span> therapy)</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="anova.html#cb496-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describeBy</span>(Symptoms <span class="sc">~</span> Therapy <span class="sc">*</span> Diagnosis, <span class="at">data =</span> therapy)</span></code></pre></div>
 <pre><code>## 
 ##  Descriptive statistics by group 
 ## Therapy: Control
@@ -729,18 +765,18 @@ Das Ergebnise ist jedoch identisch.</p>
 ## Symptoms 7.76</code></pre>
 <p>Der <code>*</code> zwischen den Faktoren bedeutet “Interaktion” und führt dazu, dass alle Stufenkombinationen der beiden Variablen exploriert werden.</p>
 <p>Die Gruppenunterschiede lassen sich auch graphisch gut darstellen:</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="anova.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> therapy, <span class="fu">aes</span>(<span class="at">x =</span> Therapy, <span class="at">y =</span> Symptoms, <span class="at">colour =</span> Diagnosis)) <span class="sc">+</span></span>
-<span id="cb443-2"><a href="anova.html#cb443-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se,  <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="sc">+</span></span>
-<span id="cb443-3"><a href="anova.html#cb443-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">fun =</span> mean) </span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-269-1.png" width="672" /></p>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="anova.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> therapy, <span class="fu">aes</span>(<span class="at">x =</span> Therapy, <span class="at">y =</span> Symptoms, <span class="at">colour =</span> Diagnosis)) <span class="sc">+</span></span>
+<span id="cb498-2"><a href="anova.html#cb498-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se,  <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="sc">+</span></span>
+<span id="cb498-3"><a href="anova.html#cb498-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">fun =</span> mean) </span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-300-1.png" width="672" /></p>
 </div>
-<div id="berechnung-der-anova-1" class="section level3 hasAnchor" number="15.2.2">
-<h3><span class="header-section-number">15.2.2</span> Berechnung der ANOVA<a href="anova.html#berechnung-der-anova-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="berechnung-mittels-lm-1" class="section level4 hasAnchor" number="15.2.2.1">
-<h4><span class="header-section-number">15.2.2.1</span> Berechnung mittels <code>lm()</code><a href="anova.html#berechnung-mittels-lm-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="berechnung-der-anova-1" class="section level3 hasAnchor" number="16.2.2">
+<h3><span class="header-section-number">16.2.2</span> Berechnung der ANOVA<a href="anova.html#berechnung-der-anova-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="berechnung-mittels-lm-1" class="section level4 hasAnchor" number="16.2.2.1">
+<h4><span class="header-section-number">16.2.2.1</span> Berechnung mittels <code>lm()</code><a href="anova.html#berechnung-mittels-lm-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Die Vorgehensweise ist dieselbe wie bei der einfaktoriellen ANOVA. Die Formel wird lediglich durch die Interaktion mit der 2. UV erweitert.</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="anova.html#cb444-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Therapy <span class="sc">*</span> Diagnosis, <span class="at">data =</span> therapy)</span>
-<span id="cb444-2"><a href="anova.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="anova.html#cb499-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Therapy <span class="sc">*</span> Diagnosis, <span class="at">data =</span> therapy)</span>
+<span id="cb499-2"><a href="anova.html#cb499-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: Symptoms
@@ -754,12 +790,12 @@ Das Ergebnise ist jedoch identisch.</p>
 <p>Der Output der ANOVA erweitert sich im Vergleich zur einfaktoriellen ANOVA um 2 Zeilen. Die mit <code>Therapy</code> und <code>Diagnosis</code> betitelten Zeilen sind die Haupteffekte. Die 3. Zeile <code>Therapy:Diagnosis</code> ist der Interaktionseffekt.</p>
 <p>Da wir mit der 2-faktoriellen ANOVA letztlich 3 Hypothesen prüfen, gibt es auch 3 p-Werte, die alle entweder signifikante oder nicht-signifikant sein können.</p>
 </div>
-<div id="berechnung-mittels-aov_ez-1" class="section level4 hasAnchor" number="15.2.2.2">
-<h4><span class="header-section-number">15.2.2.2</span> Berechnung mittels <code>aov_ez()</code><a href="anova.html#berechnung-mittels-aov_ez-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="berechnung-mittels-aov_ez-1" class="section level4 hasAnchor" number="16.2.2.2">
+<h4><span class="header-section-number">16.2.2.2</span> Berechnung mittels <code>aov_ez()</code><a href="anova.html#berechnung-mittels-aov_ez-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Auch für die <code>aov_ez()</code> Funktion ähnelt das Vorgehen dem der einfaktoriellen ANOVA. Hier wird die Liste der UVs lediglich um den 2. Faktor erweitert, die Interaktion wird automatisch mitberechnet. Das Ergebnis ist analog zur <code>lm()</code> Funktion.</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="anova.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
-<span id="cb446-2"><a href="anova.html#cb446-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">aov_ez</span>(<span class="at">dv =</span> <span class="st">&quot;Symptoms&quot;</span>, <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;Therapy&quot;</span>, <span class="st">&quot;Diagnosis&quot;</span>), <span class="at">id =</span> <span class="st">&quot;X&quot;</span>, <span class="at">data =</span> therapy)</span>
-<span id="cb446-3"><a href="anova.html#cb446-3" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="anova.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
+<span id="cb501-2"><a href="anova.html#cb501-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">aov_ez</span>(<span class="at">dv =</span> <span class="st">&quot;Symptoms&quot;</span>, <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;Therapy&quot;</span>, <span class="st">&quot;Diagnosis&quot;</span>), <span class="at">id =</span> <span class="st">&quot;ID&quot;</span>, <span class="at">data =</span> therapy)</span>
+<span id="cb501-3"><a href="anova.html#cb501-3" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
 ## 
 ## Response: Symptoms
@@ -771,31 +807,31 @@ Das Ergebnise ist jedoch identisch.</p>
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 </div>
-<div id="interpretation-1" class="section level3 hasAnchor" number="15.2.3">
-<h3><span class="header-section-number">15.2.3</span> Interpretation<a href="anova.html#interpretation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interpretation-1" class="section level3 hasAnchor" number="16.2.3">
+<h3><span class="header-section-number">16.2.3</span> Interpretation<a href="anova.html#interpretation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die beiden Haupteffekte und der Interaktionseffekt können einzeln interpretiert werden. Wir gehen der Reihe nach:</p>
-<div id="haupteffekt-1" class="section level4 hasAnchor" number="15.2.3.1">
-<h4><span class="header-section-number">15.2.3.1</span> Haupteffekt 1<a href="anova.html#haupteffekt-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="haupteffekt-1" class="section level4 hasAnchor" number="16.2.3.1">
+<h4><span class="header-section-number">16.2.3.1</span> Haupteffekt 1<a href="anova.html#haupteffekt-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Der Haupteffekt von <code>Therapy</code> spiegelt im Wesentlichen das Ergebnis wieder, welches wir bereits von der einfaktoriellen ANOVA kennen. Es handelt sich um den Effekt der Therapie, wenn man den Effekt der 2. UV (Diagnosis) außer Acht lässt.</p>
 <p>Der Haupteffekt ist signifikant bei <span class="math inline">\(F_{(3,22)}=9.94, p&lt;.001\)</span>. Wir können schlussfolgern, dass es einen Unterschied zwischen den Diagnosen gibt. Wo die Unterschiede genau liegenm, können wir mit den Post-hoc Tests bestimmen, wie oben bereits geschehen.</p>
 </div>
-<div id="haupteffekt-2" class="section level4 hasAnchor" number="15.2.3.2">
-<h4><span class="header-section-number">15.2.3.2</span> Haupteffekt 2<a href="anova.html#haupteffekt-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="haupteffekt-2" class="section level4 hasAnchor" number="16.2.3.2">
+<h4><span class="header-section-number">16.2.3.2</span> Haupteffekt 2<a href="anova.html#haupteffekt-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Der Haupteffekt von <code>Diagnosis</code> ist nichts anderes als ein unabhängiger t-Test. Es handelt sich um den Effekt der Diagnose, wenn man den Effekt der 1. UV (Therapy) außer Acht lässt. Dieser Haupteffekt ist nicht signifikant <span class="math inline">\(F_{(1,22)}=0.004, p&lt;.949\)</span>. Über alle Therapien hinweg scheint es keinen Unterschied in der Symptomatik der Patient:innen mit Depressionen und Angststörungen zu geben.</p>
 </div>
-<div id="interaktionseffekt" class="section level4 hasAnchor" number="15.2.3.3">
-<h4><span class="header-section-number">15.2.3.3</span> Interaktionseffekt<a href="anova.html#interaktionseffekt" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="interaktionseffekt" class="section level4 hasAnchor" number="16.2.3.3">
+<h4><span class="header-section-number">16.2.3.3</span> Interaktionseffekt<a href="anova.html#interaktionseffekt" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Der Interaktionseffekt von <code>Therapy * Diagnosis</code> prüft, ob der Effekt der Therapie in beiden Diagnosen unterschiedlich wirkt.
 Er ist somit eine Möglichkeit den “kombinierten Effekt” der beiden Variablen zu prüfen.</p>
 <p>Der Interaktionseffekt ist signifikant <span class="math inline">\(F_{(3,22)}=3.33, p&lt;.038\)</span>. Entsprechend scheinen die Patient:innen nach den Therapien unterschiedlich wenige Symptome zu haben, je nachdem welche Diagnose sie hatten.</p>
 <p>Um diesen Effekt inhaltlich zu verstehen, empfiehlt sich ein Blick auf die Graphik, in Kombination mit Post-Hoc Tests.</p>
 </div>
 </div>
-<div id="post-hoc-tests-1" class="section level3 hasAnchor" number="15.2.4">
-<h3><span class="header-section-number">15.2.4</span> Post-hoc Tests<a href="anova.html#post-hoc-tests-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="post-hoc-tests-1" class="section level3 hasAnchor" number="16.2.4">
+<h3><span class="header-section-number">16.2.4</span> Post-hoc Tests<a href="anova.html#post-hoc-tests-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Zum Verständnis der Effekte führen wir Post-Hoc Tests durch. Allerdings wollen wir uns den Effekt der Therapie diesmal getrennt für die Diagnosen ansehen.</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="anova.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
-<span id="cb448-2"><a href="anova.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(mod, pairwise <span class="sc">~</span> Therapy<span class="sc">|</span>Diagnosis)</span></code></pre></div>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="anova.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb503-2"><a href="anova.html#cb503-2" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(mod, pairwise <span class="sc">~</span> Therapy<span class="sc">|</span>Diagnosis)</span></code></pre></div>
 <pre><code>## $emmeans
 ## Diagnosis = Angst:
 ##  Therapy emmean   SE df lower.CL upper.CL
@@ -837,8 +873,8 @@ Er ist somit eine Möglichkeit den “kombinierten Effekt” der beiden Variable
 <p>Dies führt dazu, dass die VT (in dieser Stichprobe) in der Behandlung von Angststörungen der Kontrollgruppe <span class="math inline">\((t_{(22)}=4.68, p&lt;.001)\)</span>, der Psychoanalyse <span class="math inline">\((t_{(22)}=4.02, p=.003)\)</span> und den SSRI <span class="math inline">\((t_{(22)}=3.99, p=.003)\)</span> überlegen war. In der Behandlung von Angststörungen waren sowohl SSRI <span class="math inline">\((t_{(22)}=3.29, p=.016)\)</span> als auch VT <span class="math inline">\((t_{(22)}=3.38, p=.013)\)</span> besser als die Kontrollgruppe, unterschieden sich jedoch nicht signifikant von der Psychoanalyse und auch nicht voneinander.</p>
 </div>
 </div>
-<div id="prüfen-der-voraussetzungen-von-anovas" class="section level2 hasAnchor" number="15.3">
-<h2><span class="header-section-number">15.3</span> Prüfen der Voraussetzungen von ANOVAs<a href="anova.html#prüfen-der-voraussetzungen-von-anovas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="prüfen-der-voraussetzungen-von-anovas" class="section level2 hasAnchor" number="16.3">
+<h2><span class="header-section-number">16.3</span> Prüfen der Voraussetzungen von ANOVAs<a href="anova.html#prüfen-der-voraussetzungen-von-anovas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Wie alle statistischen Modelle haben ANOVAs eine Reihe von Annahmen, die für gültige Schlussfolgerungen gelten sollten. Diese Annahmen sind:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Beobachtungen sind i.i.d.:</strong> i.i.d. steht für “unabhängig und identisch verteilt”. Unabhängig bedeutet, dass die bedingten Beobachtungen (d.h. Residuen) unabhängig voneinander sind (d.h. das Wissen des Wertes eines Residuums erlaubt keine Rückschlüsse auf den Wert eines anderen Residuums). Identisch verteilt bedeutet, dass alle Beobachtungen durch denselben Daten-generierenden Prozess erzeugt werden.</p></li>
@@ -851,54 +887,54 @@ Er ist somit eine Möglichkeit den “kombinierten Effekt” der beiden Variable
 <p>Lassen Sie uns nun alle drei empirisch testbaren Annahmen im Detail betrachten. ANOVAs sind oft robust gegen leichte Verletzungen der Annahme der Homogenität der Varianzen. Wenn diese Annahme jedoch deutlich verletzt ist, haben wir etwas Wichtiges über die Daten gelernt, nämlich Varianzheterogenität, die weitere Untersuchungen erfordert. Einige weitere statistische Lösungen werden unten diskutiert.</p>
 <p>Wenn das Hauptziel einer ANOVA darin besteht, zu sehen, ob bestimmte Effekte signifikant sind oder nicht, dann ist die Annahme der Normalverteilung der Residuen nur für kleine Stichproben erforderlich, dank des zentralen Grenzwertsatzes. Wie von Lumley et al. (2002) gezeigt, sind selbst extreme Verletzungen der Normalitätsannahmen bei Stichproben von ein paar hundert Probanden unproblematisch. Daher sind leichte Verletzungen dieser Annahme unproblematisch.</p>
 <p>Eine angemessene explorative Datenanalyse oft besser ist als die blindes Anwenden von statistischen Annahmetests. Dennoch sind Annahmetests natürlich ein wichtiges Werkzeug im statistischen Werkzeugkasten und können in vielen Situationen hilfreich sein.</p>
-<div id="testen-der-empirisch-testbaren-annahmen" class="section level3 hasAnchor" number="15.3.1">
-<h3><span class="header-section-number">15.3.1</span> Testen der empirisch testbaren Annahmen<a href="anova.html#testen-der-empirisch-testbaren-annahmen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="testen-der-empirisch-testbaren-annahmen" class="section level3 hasAnchor" number="16.3.1">
+<h3><span class="header-section-number">16.3.1</span> Testen der empirisch testbaren Annahmen<a href="anova.html#testen-der-empirisch-testbaren-annahmen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>afex</code>verfügt über eine Reihe von integrierten Funktionen, um bei der Überprüfung der Annahmen des ANOVA-Designs zu helfen.</p>
 <ul>
 <li>Die Varianzen über alle Gruppen (Zellen) der zwischen-subjektiven Effekte sind gleich. Dies kann mit performance::check_homogeneity() getestet werden.</li>
 <li>Sphärizität: Für innerhalb-subjektive Effekte ist die Sphärizität die Bedingung, bei der die Varianzen der Unterschiede zwischen allen möglichen Paaren von innerhalb-subjektiven Bedingungen (d.h. Stufen der unabhängigen Variable) gleich sind. Dies kann als eine innerhalb-subjektive Version der Homogenität der Varianzen betrachtet werden und kann mit performance::check_sphericity() getestet werden.</li>
 <li>Normalität der Residuen: Die für die Schätzung des Fehlerterms (MSE) verwendeten Fehler sind normal verteilt. Dies kann mit performance::check_normality() abgeleitet werden.</li>
 </ul>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="anova.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
-<span id="cb450-2"><a href="anova.html#cb450-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance) <span class="co"># für die Voraussetzungsprüfung</span></span></code></pre></div>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="anova.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
+<span id="cb505-2"><a href="anova.html#cb505-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance) <span class="co"># für die Voraussetzungsprüfung</span></span></code></pre></div>
 </div>
-<div id="homogenität-der-varianzen" class="section level3 hasAnchor" number="15.3.2">
-<h3><span class="header-section-number">15.3.2</span> Homogenität der Varianzen:<a href="anova.html#homogenität-der-varianzen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="homogenität-der-varianzen" class="section level3 hasAnchor" number="16.3.2">
+<h3><span class="header-section-number">16.3.2</span> Homogenität der Varianzen:<a href="anova.html#homogenität-der-varianzen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Diese Annahme besagt für Zwischen-Gruppen-Designs, dass die Fehler innerhalb der Gruppen eine gemeinsame Varianz um den Mittelwert der Gruppe aufweisen.</p>
-<div id="test" class="section level4 hasAnchor" number="15.3.2.1">
-<h4><span class="header-section-number">15.3.2.1</span> Test<a href="anova.html#test" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="test" class="section level4 hasAnchor" number="16.3.2.1">
+<h4><span class="header-section-number">16.3.2.1</span> Test<a href="anova.html#test" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Dies kann mit dem Levene-Test getestet werden:</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="anova.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(obk.long, <span class="at">package =</span> <span class="st">&quot;afex&quot;</span>)</span>
-<span id="cb451-2"><a href="anova.html#cb451-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb451-3"><a href="anova.html#cb451-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;value&quot;</span>, obk.long, </span>
-<span id="cb451-4"><a href="anova.html#cb451-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;treatment&quot;</span>, <span class="st">&quot;gender&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="anova.html#cb506-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(obk.long, <span class="at">package =</span> <span class="st">&quot;afex&quot;</span>)</span>
+<span id="cb506-2"><a href="anova.html#cb506-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb506-3"><a href="anova.html#cb506-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;value&quot;</span>, obk.long, </span>
+<span id="cb506-4"><a href="anova.html#cb506-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">between =</span> <span class="fu">c</span>(<span class="st">&quot;treatment&quot;</span>, <span class="st">&quot;gender&quot;</span>))</span></code></pre></div>
 <pre><code>## Warning: More than one observation per design cell, aggregating data using `fun_aggregate = mean`.
 ## To turn off this warning, pass `fun_aggregate = mean` explicitly.</code></pre>
 <pre><code>## Contrasts set to contr.sum for the following variables: treatment, gender</code></pre>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="anova.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_homogeneity</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="anova.html#cb509-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_homogeneity</span>(mod)</span></code></pre></div>
 <pre><code>## OK: There is not clear evidence for different variances across groups (Levene&#39;s Test, p = 0.350).</code></pre>
 <p>Diese Ergebnisse deuten darauf hin, dass die Homogenität nicht signifikant verletzt ist.</p>
 </div>
-<div id="maßnahmen-wenn-vorraussetzung-verletzt" class="section level4 hasAnchor" number="15.3.2.2">
-<h4><span class="header-section-number">15.3.2.2</span> Maßnahmen wenn Vorraussetzung verletzt<a href="anova.html#maßnahmen-wenn-vorraussetzung-verletzt" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="maßnahmen-wenn-vorraussetzung-verletzt" class="section level4 hasAnchor" number="16.3.2.2">
+<h4><span class="header-section-number">16.3.2.2</span> Maßnahmen wenn Vorraussetzung verletzt<a href="anova.html#maßnahmen-wenn-vorraussetzung-verletzt" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>ANOVAs sind im Allgemeinen robust gegenüber “leichter” Heteroskedastizität, aber es gibt verschiedene andere Methoden (die in <code>afex</code> nicht verfügbar sind), um robuste Fehlerabschätzungen zu erhalten.</p>
 <p>Eine weitere Alternative besteht darin, diese Annahme ganz aufzugeben und Permutationstests (z.B. mit <code>permuco</code>) oder Bootstrap-Schätzungen (z.B. mit <code>boot</code>) zu verwenden.</p>
 </div>
 </div>
-<div id="sphärizität" class="section level3 hasAnchor" number="15.3.3">
-<h3><span class="header-section-number">15.3.3</span> Sphärizität:<a href="anova.html#sphärizität" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="test-1" class="section level4 hasAnchor" number="15.3.3.1">
-<h4><span class="header-section-number">15.3.3.1</span> Test<a href="anova.html#test-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="sphärizität" class="section level3 hasAnchor" number="16.3.3">
+<h3><span class="header-section-number">16.3.3</span> Sphärizität:<a href="anova.html#sphärizität" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="test-1" class="section level4 hasAnchor" number="16.3.3.1">
+<h4><span class="header-section-number">16.3.3.1</span> Test<a href="anova.html#test-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Wir können check_sphericity() verwenden, um den Mauchly-Test auf Sphärizität durchzuführen:</p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="anova.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;fhch2010&quot;</span>, <span class="at">package =</span> <span class="st">&quot;afex&quot;</span>)</span>
-<span id="cb456-2"><a href="anova.html#cb456-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb456-3"><a href="anova.html#cb456-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;log_rt&quot;</span>, fhch2010,</span>
-<span id="cb456-4"><a href="anova.html#cb456-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">between =</span> <span class="st">&quot;task&quot;</span>, </span>
-<span id="cb456-5"><a href="anova.html#cb456-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;density&quot;</span>, <span class="st">&quot;frequency&quot;</span>, <span class="st">&quot;length&quot;</span>, <span class="st">&quot;stimulus&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="anova.html#cb511-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;fhch2010&quot;</span>, <span class="at">package =</span> <span class="st">&quot;afex&quot;</span>)</span>
+<span id="cb511-2"><a href="anova.html#cb511-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb511-3"><a href="anova.html#cb511-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;log_rt&quot;</span>, fhch2010,</span>
+<span id="cb511-4"><a href="anova.html#cb511-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">between =</span> <span class="st">&quot;task&quot;</span>, </span>
+<span id="cb511-5"><a href="anova.html#cb511-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;density&quot;</span>, <span class="st">&quot;frequency&quot;</span>, <span class="st">&quot;length&quot;</span>, <span class="st">&quot;stimulus&quot;</span>))</span></code></pre></div>
 <pre><code>## Warning: More than one observation per design cell, aggregating data using `fun_aggregate = mean`.
 ## To turn off this warning, pass `fun_aggregate = mean` explicitly.</code></pre>
 <pre><code>## Contrasts set to contr.sum for the following variables: task</code></pre>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="anova.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_sphericity</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="anova.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_sphericity</span>(mod)</span></code></pre></div>
 <pre><code>## Warning in summary.Anova.mlm(object$Anova, multivariate = FALSE): HF eps &gt; 1
 ## treated as 1</code></pre>
 <pre><code>## Warning: Sphericity violated for: 
@@ -906,51 +942,51 @@ Er ist somit eine Möglichkeit den “kombinierten Effekt” der beiden Variable
 ##  - task:length:stimulus (p = 0.021).</code></pre>
 <p>Wir können sehen, dass beide Fehlerterme der Länge:Reiz und Aufgabe:Länge:Reiz-Interaktionen die Annahme der Sphärizität bei <span class="math inline">\(p = 0.021\)</span> signifikant verletzen. Beachten Sie, dass Aufgabe als Faktor zwischen den Probanden gilt und dass beide Interaktionsterme denselben Fehlerterm teilen!</p>
 </div>
-<div id="maßnahmen-wenn-vorraussetzung-verletzt-1" class="section level4 hasAnchor" number="15.3.3.2">
-<h4><span class="header-section-number">15.3.3.2</span> Maßnahmen wenn Vorraussetzung verletzt<a href="anova.html#maßnahmen-wenn-vorraussetzung-verletzt-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="maßnahmen-wenn-vorraussetzung-verletzt-1" class="section level4 hasAnchor" number="16.3.3.2">
+<h4><span class="header-section-number">16.3.3.2</span> Maßnahmen wenn Vorraussetzung verletzt<a href="anova.html#maßnahmen-wenn-vorraussetzung-verletzt-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Für ANOVA-Tabellen kann eine Korrektur der Freiheitsgrade verwendet werden - afex bietet sowohl die Greenhouse-Geisser (die standardmäßig verwendet wird) als auch die Hyunh-Feldt-Korrekturen an.
 Für Nachfolgekontraste mit emmeans kann ein multivariates Modell verwendet werden, das keine Sphärizität annimmt (dies wird seit afex 1.0 standardmäßig verwendet).</p>
 <p>Beide können global festgelegt werden mit:</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="anova.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">afex_options</span>(</span>
-<span id="cb462-2"><a href="anova.html#cb462-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">correction_aov =</span> <span class="st">&quot;GG&quot;</span>, <span class="co"># or &quot;HF&quot;</span></span>
-<span id="cb462-3"><a href="anova.html#cb462-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">emmeans_model =</span> <span class="st">&quot;multivariate&quot;</span></span>
-<span id="cb462-4"><a href="anova.html#cb462-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="anova.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">afex_options</span>(</span>
+<span id="cb517-2"><a href="anova.html#cb517-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">correction_aov =</span> <span class="st">&quot;GG&quot;</span>, <span class="co"># or &quot;HF&quot;</span></span>
+<span id="cb517-3"><a href="anova.html#cb517-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">emmeans_model =</span> <span class="st">&quot;multivariate&quot;</span></span>
+<span id="cb517-4"><a href="anova.html#cb517-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 </div>
-<div id="normalverteilung-der-residuen" class="section level3 hasAnchor" number="15.3.4">
-<h3><span class="header-section-number">15.3.4</span> Normalverteilung der Residuen:<a href="anova.html#normalverteilung-der-residuen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="normalverteilung-der-residuen" class="section level3 hasAnchor" number="16.3.4">
+<h3><span class="header-section-number">16.3.4</span> Normalverteilung der Residuen:<a href="anova.html#normalverteilung-der-residuen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Normalverteilungsannahme der Restfehler bezieht sich auf die Fehler, die die verschiedenen Fehlerterme in der ANOVA ausmachen. Obwohl der Shapiro-Wilk-Test verwendet werden kann, um von einer Normalverteilung abzuweichen, hat dieser Test tendenziell hohe Typ-I-Fehler-Raten. Stattdessen können die Restfehler visuell mit Quantil-Quantil-Plots (auch qq-Plots genannt) inspiziert werden. Zum Beispiel:</p>
-<div id="test-2" class="section level4 hasAnchor" number="15.3.4.1">
-<h4><span class="header-section-number">15.3.4.1</span> Test<a href="anova.html#test-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="anova.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;stroop&quot;</span>, <span class="at">package =</span> <span class="st">&quot;afex&quot;</span>)</span>
-<span id="cb463-2"><a href="anova.html#cb463-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb463-3"><a href="anova.html#cb463-3" aria-hidden="true" tabindex="-1"></a>stroop1 <span class="ot">&lt;-</span> <span class="fu">subset</span>(stroop, study <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb463-4"><a href="anova.html#cb463-4" aria-hidden="true" tabindex="-1"></a>stroop1 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(stroop1)</span>
-<span id="cb463-5"><a href="anova.html#cb463-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb463-6"><a href="anova.html#cb463-6" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(<span class="st">&quot;pno&quot;</span>, <span class="st">&quot;rt&quot;</span>, stroop1,</span>
-<span id="cb463-7"><a href="anova.html#cb463-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;condition&quot;</span>, <span class="st">&quot;congruency&quot;</span>))</span></code></pre></div>
+<div id="test-2" class="section level4 hasAnchor" number="16.3.4.1">
+<h4><span class="header-section-number">16.3.4.1</span> Test<a href="anova.html#test-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="anova.html#cb518-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;stroop&quot;</span>, <span class="at">package =</span> <span class="st">&quot;afex&quot;</span>)</span>
+<span id="cb518-2"><a href="anova.html#cb518-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb518-3"><a href="anova.html#cb518-3" aria-hidden="true" tabindex="-1"></a>stroop1 <span class="ot">&lt;-</span> <span class="fu">subset</span>(stroop, study <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb518-4"><a href="anova.html#cb518-4" aria-hidden="true" tabindex="-1"></a>stroop1 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(stroop1)</span>
+<span id="cb518-5"><a href="anova.html#cb518-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb518-6"><a href="anova.html#cb518-6" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(<span class="st">&quot;pno&quot;</span>, <span class="st">&quot;rt&quot;</span>, stroop1,</span>
+<span id="cb518-7"><a href="anova.html#cb518-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;condition&quot;</span>, <span class="st">&quot;congruency&quot;</span>))</span></code></pre></div>
 <pre><code>## Warning: More than one observation per design cell, aggregating data using `fun_aggregate = mean`.
 ## To turn off this warning, pass `fun_aggregate = mean` explicitly.</code></pre>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="anova.html#cb465-1" aria-hidden="true" tabindex="-1"></a>is_norm <span class="ot">&lt;-</span> <span class="fu">check_normality</span>(mod)</span>
-<span id="cb465-2"><a href="anova.html#cb465-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb465-3"><a href="anova.html#cb465-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(is_norm)</span></span></code></pre></div>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="anova.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(is_norm, type = &quot;qq&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="anova.html#cb520-1" aria-hidden="true" tabindex="-1"></a>is_norm <span class="ot">&lt;-</span> <span class="fu">check_normality</span>(mod)</span>
+<span id="cb520-2"><a href="anova.html#cb520-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb520-3"><a href="anova.html#cb520-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(is_norm)</span></span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="anova.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(is_norm, type = &quot;qq&quot;)</span></span></code></pre></div>
 <p>Wenn die Residuen normalverteilt wären, würden sie in der Nähe der diagonalen Linie liegen und innerhalb der 95%-Konfidenzbänder um die qq-Linie fallen.</p>
 <p>Wir können das Diagramm weiter verbessern, indem wir den Trend entfernen und nicht den erwarteten Quantilwert, sondern die Abweichung vom erwarteten Quantilwert anzeigen, was dazu beitragen kann, visuelle Verzerrungen zu reduzieren.</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="anova.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(is_norm, type = &quot;qq&quot;, detrend = TRUE)</span></span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="anova.html#cb522-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(is_norm, type = &quot;qq&quot;, detrend = TRUE)</span></span></code></pre></div>
 </div>
-<div id="maßnahmen-wenn-vorraussetzung-verletzt-2" class="section level4 hasAnchor" number="15.3.4.2">
-<h4><span class="header-section-number">15.3.4.2</span> Maßnahmen wenn Vorraussetzung verletzt<a href="anova.html#maßnahmen-wenn-vorraussetzung-verletzt-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="maßnahmen-wenn-vorraussetzung-verletzt-2" class="section level4 hasAnchor" number="16.3.4.2">
+<h4><span class="header-section-number">16.3.4.2</span> Maßnahmen wenn Vorraussetzung verletzt<a href="anova.html#maßnahmen-wenn-vorraussetzung-verletzt-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Wie bei der Annahme der Homogenität der Varianzen können wir auf Permutationstests für ANOVA-Tabellen und Bootstrap-Schätzungen / Kontraste zurückgreifen.</p>
 <p>Eine weitere beliebte Lösung besteht darin, eine monotone Transformation der abhängigen Variablen anzuwenden. Dies sollte nicht leichtfertig getan werden, da es die Interpretierbarkeit der Ergebnisse (von der beobachteten Skala zur transformierten Skala) verändert. Glücklicherweise ist es üblich, Reaktionszeiten zu logarithmieren, was wir leicht tun können:</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="anova.html#cb468-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(<span class="st">&quot;pno&quot;</span>, <span class="st">&quot;rt&quot;</span>, stroop1,</span>
-<span id="cb468-2"><a href="anova.html#cb468-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">transformation =</span> <span class="st">&quot;log&quot;</span>,</span>
-<span id="cb468-3"><a href="anova.html#cb468-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;condition&quot;</span>, <span class="st">&quot;congruency&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="anova.html#cb523-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(<span class="st">&quot;pno&quot;</span>, <span class="st">&quot;rt&quot;</span>, stroop1,</span>
+<span id="cb523-2"><a href="anova.html#cb523-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">transformation =</span> <span class="st">&quot;log&quot;</span>,</span>
+<span id="cb523-3"><a href="anova.html#cb523-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">within =</span> <span class="fu">c</span>(<span class="st">&quot;condition&quot;</span>, <span class="st">&quot;congruency&quot;</span>))</span></code></pre></div>
 <pre><code>## Warning: More than one observation per design cell, aggregating data using `fun_aggregate = mean`.
 ## To turn off this warning, pass `fun_aggregate = mean` explicitly.</code></pre>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="anova.html#cb470-1" aria-hidden="true" tabindex="-1"></a>is_norm <span class="ot">&lt;-</span> <span class="fu">check_normality</span>(mod)</span>
-<span id="cb470-2"><a href="anova.html#cb470-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb470-3"><a href="anova.html#cb470-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(is_norm, type = &quot;qq&quot;, detrend = TRUE)</span></span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="anova.html#cb525-1" aria-hidden="true" tabindex="-1"></a>is_norm <span class="ot">&lt;-</span> <span class="fu">check_normality</span>(mod)</span>
+<span id="cb525-2"><a href="anova.html#cb525-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb525-3"><a href="anova.html#cb525-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(is_norm, type = &quot;qq&quot;, detrend = TRUE)</span></span></code></pre></div>
 <p>Sehr gut - nach der Transformation weichen die Residuen (auf der logarithmischen Skala) nicht mehr als erwartet von Fehlern ab, die aus einer normalverteilten Verteilung gezogen wurden (sie sind größtenteils innerhalb der 95%-Konfidenzintervalle enthalten)!</p>
 
 <div id="refs" class="references csl-bib-body hanging-indent">

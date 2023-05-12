@@ -1,0 +1,126 @@
+---
+title: "Aufgaben Einheit 1"
+author: "Stephan Goerigk"
+date: "2023-04-20"
+output: html_document
+---
+
+## Aufgabe 1
+
+Erstellen Sie ein neues R-Skript. Schreiben Sie mit Hilfe von Kommentaren Ihren Namen, das Datum und "R Aufgaben Einheit 1" an den Anfang des Skripts. Schreiben Sie Ihre Antworten auf die restlichen Aufgaben in dieses Skript und fügen Sie die Originalfragen mit Kommentaren ein! Ihr Skript sollte nur gültigen R-Code und Kommentare enthalten.
+
+## Aufgabe 2
+
+Speichern Sie das Skript unter dem Namen R_Aufgaben_Einheit1.R ab.
+
+## Aufgabe 3
+
+Installieren Sie das Paket „tidyverse“ und laden Sie es am Anfang Ihres Skripts.
+
+```{r}
+# install.packages("tidyverse")
+
+library(tidyverse)
+```
+
+## Aufgabe 4
+
+2021 war ein gutes Jahr für unsere Klinik – wir haben 451 Patient:innen helfen können. Erstelle ein Objekt namens patienten2021 und weisen Sie ihm den richtigen Wert zu.
+
+```{r}
+patienten2021 = 451
+```
+
+## Aufgabe 5
+
+Hoppla, bei der Patient:innenzählung für 2021 haben wir die Depressionsstation „A6“ vergessen, die weitere 55 Patient:innen behandelt hat. Fügen Sie diese Patient:innen dem Objekt patienten2021 hinzu. Als nächstes erstellen Sie ein Objekt namens lost_station mit dem Namen der Station.
+
+```{r}
+patienten2021 = patienten2021 + 55
+
+lost_station = "A6"
+```
+
+## Aufgabe 6
+
+Sehen Sie sich den Code unten an. Was wird R nach der dritten Zeile zurückgeben? Treffen Sie eine Vorhersage und testen Sie den Code dann selbst.
+
+a <- 25
+a + 25
+a
+
+```{r}
+a <- 25
+a + 25
+
+# Das Ergebnis ist 50.
+```
+
+## Aufgabe 7
+
+Erstellen Sie einen data.frame mit dem Namen „psychologen“ mit den Variablen „Vorname“, „Alter“, „Lieblingspsychologe“, „Haarfarbe“. Haarfarbe soll eine Faktorvariable mit den Stufen [„schwarz“, „brunette“, „blond“, „rot“] sein. Ihre Stichprobe sind die Kolleg:innen in Ihrer Reihe.
+
+
+```{r}
+psychologen = data.frame()
+```
+
+## Aufgabe 8
+
+Lass Sie sich das Alter der 2. Person anzeigen.
+
+## Aufgabe 9
+
+Lassen Sie sich alle Variablen für die 1. Person im data.frame „psychologen“ anzeigen.
+
+## Aufgabe 10
+
+Erzeugen Sie den Vektor [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] auf drei Arten: einmal mit c(), einmal mit a:b und einmal mit seq().
+
+```{r}
+c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+1:10
+
+seq(1,10,1)
+```
+
+## Aufgabe 11
+
+Erzeugen Sie den Vektor [101, 102, 103, 200, 205, 210, 1000, 1100, 1200] mit einer Kombination aus den Funktionen c() und seq()
+
+```{r}
+c(
+  seq(101,103, 1),
+  seq(200, 210, 5),
+  seq(1000, 1200, 100)
+)
+```
+
+## Aufgabe 12
+
+Eine neue Gruppe von 100 Patient:innen wird in die Klinik aufgenommen. Es handelt sich um 10 Patienten mit Schizophrenie, 40 mit Angststörungen und 50 Depressive Patient:innen. Erstellen Sie einen einen Vektor (Faktor), der die entsprechenden Diagnosen enthält
+
+```{r}
+Diagnosen = c(
+  rep("Schizophrenie", 10),
+  rep("Angststörung", 40),
+  rep("Depression", 50)
+)
+
+is.factor(Diagnosen)
+
+Diagnosen = factor(Diagnosen)
+
+is.factor(Diagnosen)
+```
+
+## Aufgabe 13
+
+Erstelle einen Vektor, der die ganzen Zahlen von 1 bis 5 10-mal wiederholt. Das ist [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ...]. Die Länge des Vektors sollte 50 sein!
+
+```{r}
+vector = rep(1:5, 10)
+```
+
+

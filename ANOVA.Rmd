@@ -107,16 +107,25 @@ Die Faktoren (UVs) werden mit einem der beiden folgenden Argumente angegeben:
 
 Faktoren, die unter `between` angegeben werden, sind unabhängige Messungen, also Variablen die einen Gruppenvergleich möglich machen. Faktoren, die unter `within` angegeben werden, sind abhängige Messungen, also beispielsweise mehrere Messzeitpunkte derselben Person.
 
-In unserem Fall liegt ein Gruppenvergleich vor (jede Person hat jeweils nur eine der Therapien erhalten), daher nutzen wir `between`. Für `id` nutzen wir einfach die Variable `X`, die einen Patientencode für jede Person enthält.
+In unserem Fall liegt ein Gruppenvergleich vor (jede Person hat jeweils nur eine der Therapien erhalten), daher nutzen wir `between`. Für `id` nutzen wir einfach die Variable `ID`, die einen Patientencode für jede Person enthält.
 
 ```{r message=FALSE, warning=FALSE}
 library(afex)
-mod = aov_ez(dv = "Symptoms", between = c("Therapy"), id = "X", data = therapy)
+mod = aov_ez(dv = "Symptoms", between = c("Therapy"), id = "ID", data = therapy)
 mod
 ```
 
 Wie wir sehen, wird der Schritt des Aufstellens des linearen Modells hier übersprungen und direkt die ANOVA (F-Test) gerechnet.
 Das Ergebnise ist jedoch identisch.
+
+Falls im Datensatz keine `id` Variable enthalten ist, lässt sich diese leicht erstellen, indem wir einfach jeder Person Ihre Position im Datensatz als Namen geben:
+
+```{r}
+therapy$id = rownames(therapy)
+
+head(therapy)
+```
+
 
 ### Interpretation
 
@@ -229,7 +238,7 @@ Auch für die `aov_ez()` Funktion ähnelt das Vorgehen dem der einfaktoriellen A
 
 ```{r message=FALSE, warning=FALSE}
 library(afex)
-mod = aov_ez(dv = "Symptoms", between = c("Therapy", "Diagnosis"), id = "X", data = therapy)
+mod = aov_ez(dv = "Symptoms", between = c("Therapy", "Diagnosis"), id = "ID", data = therapy)
 mod
 ```
 

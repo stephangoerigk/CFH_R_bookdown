@@ -464,12 +464,103 @@ test3 = merge(test1, test2, by = "ID")
 test3
 ```
 
-```{r eval=FALSE, include=FALSE}
 ## Datensätze transformieren
 
-### Von Long nach Wide
+### Von Wide- und Long-Format
 
-### Skalieren
+Datensätze können entweder im Wide- oder Long-Format vorliegen, wobei jede Formatierung ihre eigenen Vor- und Nachteile aufweist. 
+
+#### Wide-Format
+
+Im Wide-Format werden Daten normalerweise in einer breiten Tabelle dargestellt, wobei jede Variable eine eigene Spalte hat. Diese Darstellung eignet sich gut, wenn der Fokus auf einer schnellen Datenexploration und einer einfachen Zusammenfassung liegt. Es ermöglicht eine übersichtliche Sicht auf die Daten, insbesondere wenn es viele Variablen gibt. 
+
+Ein Großteil der Daten, die wir direkt nach einer Datenerhebung haben, liegen im Wide-Format vor.
+
+Schauen wir uns ein kleines Datenbeispiel für $N=5$ Personen an:
+
+```{r}
+ID = c(1, 2, 3, 4, 5)
+Geschlecht = c("männlich", "weiblich", "männlich", "männlich", "weiblich")
+Depression_T1 = c(12, 16, 21, 8, 13)
+Depression_T2 = c(7, 4, 12, 7, 11)
+Depression_T3 = c(7, 4, 12, 7, 11)
+df_wide = data.frame(ID, Geschlecht, Depression_T1, Depression_T2, Depression_T3)
+
+df_wide
 ```
+
+Wichtig: Jede Person hat eine Zeile. Gibt es Messwiederholungen (hier T1, T2 und T3 des Depressionswerte; T = Time), erhält jede Messung seine eigene Spalte.
+
+Mit jeder zusätzlichen Spalte (bzw. Messung) wird der Datensatz breiter, daher der Name "Wide-Format".
+
+#### Long-Format
+
+Im Gegensatz dazu wird das Long-Format verwendet, um Daten in einer schmaleren Tabelle darzustellen, in der mehrere Variablen in einer Spalte zusammengefasst werden. Jede Beobachtung erstreckt sich über mehrere Zeilen, wodurch eine längere Tabelle entsteht. Das Long-Format eignet sich besonders für die Analyse von Panel- oder Zeitreihendaten, da es die Verarbeitung von wiederholten Messungen erleichtert und die Durchführung statistischer Analysen auf individueller Ebene ermöglicht.
+
+Wichtig:
+
+* Jede Zeile muss mittels einer `ID` Variable eindeutig den Personen zugeordnet werden
+* Eine weitere Variable (bei Messwiederholungen z.B. `Zeit`) muss angeben, weshalb es mehrere Werte pro Fall gibt
+
+Schauen wir uns das Datenbeispiel der von eben nun noch einmal $N=5$ Personen von eben nun im Long-Format an:
+
+```{r}
+ID = c(1, 2, 3, 4, 5, 
+       1, 2, 3, 4, 5, 
+       1, 2, 3, 4, 5)
+Geschlecht = c("männlich", "weiblich", "männlich", "männlich", "weiblich",
+               "männlich", "weiblich", "männlich", "männlich", "weiblich",
+               "männlich", "weiblich", "männlich", "männlich", "weiblich")
+Depression = c(12, 16, 21, 8, 13,
+               7, 4, 12, 7, 11,
+               7, 4, 12, 7, 11)
+Time = c(1, 1, 1, 1, 1,
+         2, 2, 2, 2, 2,
+         3, 3, 3, 3, 3)
+
+df_long = data.frame(ID, Geschlecht, Depression, Time)
+
+df_long
+```
+
+Nun hat jede Person so viele Zeilen, wie sie Messwerte hat. Einträge konstanter Variablen (z.B. Geschlecht) werden wiederholt.
+
+Mit jeder zusätzlichen Zeile (bzw. Messung) wird der Datensatz länger, daher der Name "Long-Format".
+
+#### Wide-Format nach Long-Format
+
+Wollen wir einen Datensatz, der im Wide-Format vorliegt in das Long-Format überführen, nutzen wir die `pivot_longer()` Funktion aus dem `tidyverse` Paket:
+
+```{r}
+library(tidyverse)
+
+df_wide_to_long = pivot_longer(data = df_wide, 
+                               cols = c("Depression_T1", "Depression_T2", "Depression_T3"), 
+                               names_to = "Time", 
+                               values_to = "Depression")
+
+df_wide_to_long
+```
+
+#### Long-Format nach Wide-Format
+
+Wollen wir einen Datensatz, der im Long-Format vorliegt in das Wide-Format überführen, nutzen wir die `pivot_wider()` Funktion aus dem `tidyverse` Paket:
+
+```{r}
+library(tidyverse)
+
+df_long_to_wide = pivot_wider(data = df_long, 
+                              names_from = "Time",
+                              names_prefix = "Depression_",
+                              values_from = "Depression")
+
+df_long_to_wide
+```
+
+#### Fazit: Wann welches Format?
+
+Der Unterschied zwischen Wide- und Long-Format hängt also von den spezifischen Anforderungen der Datenanalyse ab. Das Wide-Format bietet eine übersichtliche und schnelle Datenexploration, während das Long-Format eine detaillierte Analyse auf individueller Ebene ermöglicht. Die Wahl des richtigen Formats hängt von der Art der Daten, den Analysezielen und den verwendeten statistischen Verfahren ab.
+
+
 
 

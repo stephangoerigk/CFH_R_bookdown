@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 13 Korrelation | Einführung in R</title>
+  <title>Kapitel 14 Korrelation | Einführung in R</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 13 Korrelation | Einführung in R" />
+  <meta property="og:title" content="Kapitel 14 Korrelation | Einführung in R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 13 Korrelation | Einführung in R" />
+  <meta name="twitter:title" content="Kapitel 14 Korrelation | Einführung in R" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2023-04-13" />
+<meta name="date" content="2023-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="graphiken.html"/>
+<link rel="prev" href="tabellen.html"/>
 <link rel="next" href="einfache-hypothesentests.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -246,8 +248,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="9.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-r-objekte"><i class="fa fa-check"></i><b>9.1</b> Informationen über R Objekte</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-vektoren"><i class="fa fa-check"></i><b>9.1.1</b> Informationen über Vektoren</a></li>
-<li class="chapter" data-level="9.1.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-dataframes"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Dataframes</a></li>
+<li class="chapter" data-level="9.1.1" data-path="daten-explorieren.html"><a href="daten-explorieren.html#str"><i class="fa fa-check"></i><b>9.1.1</b> str()</a></li>
+<li class="chapter" data-level="9.1.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-vektoren"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Vektoren</a></li>
+<li class="chapter" data-level="9.1.3" data-path="daten-explorieren.html"><a href="daten-explorieren.html#informationen-über-dataframes"><i class="fa fa-check"></i><b>9.1.3</b> Informationen über Dataframes</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="daten-explorieren.html"><a href="daten-explorieren.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>9.2</b> Deskriptivstatistiken</a>
 <ul>
@@ -287,10 +290,18 @@ div.csl-indent {
 <li class="chapter" data-level="10.6.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#cbind-und-rbind"><i class="fa fa-check"></i><b>10.6.1</b> cbind und rbind</a></li>
 <li class="chapter" data-level="10.6.2" data-path="datenmanipulation.html"><a href="datenmanipulation.html#merge"><i class="fa fa-check"></i><b>10.6.2</b> merge</a></li>
 </ul></li>
+<li class="chapter" data-level="10.7" data-path="datenmanipulation.html"><a href="datenmanipulation.html#datensätze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="datenmanipulation.html"><a href="datenmanipulation.html#von-wide--und-long-format"><i class="fa fa-check"></i><b>10.7.1</b> Von Wide- und Long-Format</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="schleifen-loops.html"><a href="schleifen-loops.html"><i class="fa fa-check"></i><b>11</b> Schleifen (Loops)</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for"><i class="fa fa-check"></i><b>11.1</b> for()</a></li>
+<li class="chapter" data-level="11.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for"><i class="fa fa-check"></i><b>11.1</b> for()</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for-im-datensatz"><i class="fa fa-check"></i><b>11.1.1</b> for() im Datensatz</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="schleifen-loops.html"><a href="schleifen-loops.html#if"><i class="fa fa-check"></i><b>11.2</b> if()</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="graphiken.html"><a href="graphiken.html"><i class="fa fa-check"></i><b>12</b> Graphiken</a>
 <ul>
@@ -326,102 +337,116 @@ div.csl-indent {
 <li class="chapter" data-level="12.11" data-path="graphiken.html"><a href="graphiken.html#abbildungen-kombinieren"><i class="fa fa-check"></i><b>12.11</b> Abbildungen kombinieren</a></li>
 <li class="chapter" data-level="12.12" data-path="graphiken.html"><a href="graphiken.html#abbildungen-exportieren"><i class="fa fa-check"></i><b>12.12</b> Abbildungen exportieren</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>13</b> Korrelation</a>
+<li class="chapter" data-level="13" data-path="tabellen.html"><a href="tabellen.html"><i class="fa fa-check"></i><b>13</b> Tabellen</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="korrelation.html"><a href="korrelation.html#hypothesen"><i class="fa fa-check"></i><b>13.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="13.2" data-path="korrelation.html"><a href="korrelation.html#berechnung-der-korrelation"><i class="fa fa-check"></i><b>13.2</b> Berechnung der Korrelation</a></li>
-<li class="chapter" data-level="13.3" data-path="korrelation.html"><a href="korrelation.html#unterschiedliche-korrelationsmethoden"><i class="fa fa-check"></i><b>13.3</b> Unterschiedliche Korrelationsmethoden</a>
+<li class="chapter" data-level="13.1" data-path="tabellen.html"><a href="tabellen.html#data.frames"><i class="fa fa-check"></i><b>13.1</b> data.frames</a></li>
+<li class="chapter" data-level="13.2" data-path="tabellen.html"><a href="tabellen.html#format"><i class="fa fa-check"></i><b>13.2</b> Format</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>13.3.1</b> Pearson-Korrelation</a></li>
-<li class="chapter" data-level="13.3.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation-aka-rangkorrelation"><i class="fa fa-check"></i><b>13.3.2</b> Spearman-Korrelation (aka Rangkorrelation)</a></li>
-<li class="chapter" data-level="13.3.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>13.3.3</b> Kendall-Korrelation</a></li>
+<li class="chapter" data-level="13.2.1" data-path="tabellen.html"><a href="tabellen.html#text"><i class="fa fa-check"></i><b>13.2.1</b> Text</a></li>
+<li class="chapter" data-level="13.2.2" data-path="tabellen.html"><a href="tabellen.html#zellen"><i class="fa fa-check"></i><b>13.2.2</b> Zellen</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="korrelation.html"><a href="korrelation.html#korrelation-als-hypothesentest"><i class="fa fa-check"></i><b>13.4</b> Korrelation als Hypothesentest</a></li>
+<li class="chapter" data-level="13.3" data-path="tabellen.html"><a href="tabellen.html#layout"><i class="fa fa-check"></i><b>13.3</b> Layout</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einfügen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html"><i class="fa fa-check"></i><b>14</b> Einfache Hypothesentests</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>14.1</b> Ein-Stichproben t-Test</a>
-<ul>
-<li class="chapter" data-level="14.1.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-1"><i class="fa fa-check"></i><b>14.1.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.1.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>14.1.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.1.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen"><i class="fa fa-check"></i><b>14.1.3</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.1.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>14.1.4</b> Ergebnis interpretieren</a></li>
-<li class="chapter" data-level="14.1.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-berichten"><i class="fa fa-check"></i><b>14.1.5</b> Ergebnis berichten</a></li>
-<li class="chapter" data-level="14.1.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke"><i class="fa fa-check"></i><b>14.1.6</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.1.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>14.1.7</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="13.4" data-path="tabellen.html"><a href="tabellen.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>14.2</b> t-Test bei unabhängigen Stichproben</a>
+<li class="chapter" data-level="14" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>14</b> Korrelation</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-2"><i class="fa fa-check"></i><b>14.2.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.2.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>14.2.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.2.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-1"><i class="fa fa-check"></i><b>14.2.3</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.2.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>14.2.4</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.2.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>14.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="14.2.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-1"><i class="fa fa-check"></i><b>14.2.6</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.2.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>14.2.7</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="14.1" data-path="korrelation.html"><a href="korrelation.html#hypothesen"><i class="fa fa-check"></i><b>14.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.2" data-path="korrelation.html"><a href="korrelation.html#berechnung-der-korrelation"><i class="fa fa-check"></i><b>14.2</b> Berechnung der Korrelation</a></li>
+<li class="chapter" data-level="14.3" data-path="korrelation.html"><a href="korrelation.html#unterschiedliche-korrelationsmethoden"><i class="fa fa-check"></i><b>14.3</b> Unterschiedliche Korrelationsmethoden</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>14.3.1</b> Pearson-Korrelation</a></li>
+<li class="chapter" data-level="14.3.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation-aka-rangkorrelation"><i class="fa fa-check"></i><b>14.3.2</b> Spearman-Korrelation (aka Rangkorrelation)</a></li>
+<li class="chapter" data-level="14.3.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>14.3.3</b> Kendall-Korrelation</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>14.3</b> t-Test bei abhängigen Stichproben</a>
-<ul>
-<li class="chapter" data-level="14.3.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-3"><i class="fa fa-check"></i><b>14.3.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.3.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>14.3.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.3.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-2"><i class="fa fa-check"></i><b>14.3.3</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.3.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>14.3.4</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.3.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>14.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="14.3.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-2"><i class="fa fa-check"></i><b>14.3.6</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.3.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>14.3.7</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="14.4" data-path="korrelation.html"><a href="korrelation.html#korrelation-als-hypothesentest"><i class="fa fa-check"></i><b>14.4</b> Korrelation als Hypothesentest</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>14.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
+<li class="chapter" data-level="15" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html"><i class="fa fa-check"></i><b>15</b> Einfache Hypothesentests</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-4"><i class="fa fa-check"></i><b>14.4.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.4.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-3"><i class="fa fa-check"></i><b>14.4.2</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.4.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>14.4.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.4.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-3"><i class="fa fa-check"></i><b>14.4.4</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.4.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>14.4.5</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="15.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>15.1</b> Ein-Stichproben t-Test</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-1"><i class="fa fa-check"></i><b>15.1.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.1.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.1.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen"><i class="fa fa-check"></i><b>15.1.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.1.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>15.1.4</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="15.1.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#ergebnis-berichten"><i class="fa fa-check"></i><b>15.1.5</b> Ergebnis berichten</a></li>
+<li class="chapter" data-level="15.1.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke"><i class="fa fa-check"></i><b>15.1.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.1.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>15.1.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="14.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>14.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
+<li class="chapter" data-level="15.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>15.2</b> t-Test bei unabhängigen Stichproben</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-5"><i class="fa fa-check"></i><b>14.5.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="14.5.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-4"><i class="fa fa-check"></i><b>14.5.2</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.5.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>14.5.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.5.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-4"><i class="fa fa-check"></i><b>14.5.4</b> Effektstärke</a></li>
-<li class="chapter" data-level="14.5.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>14.5.5</b> Darstellung in Tabellenform</a></li>
+<li class="chapter" data-level="15.2.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-2"><i class="fa fa-check"></i><b>15.2.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.2.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>15.2.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.2.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-1"><i class="fa fa-check"></i><b>15.2.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.2.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>15.2.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.2.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>15.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.2.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-1"><i class="fa fa-check"></i><b>15.2.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.2.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>15.2.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#chi2-test"><i class="fa fa-check"></i><b>14.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
+<li class="chapter" data-level="15.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>15.3</b> t-Test bei abhängigen Stichproben</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>14.6.1</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="14.6.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-5"><i class="fa fa-check"></i><b>14.6.2</b> Test durchführen</a></li>
-<li class="chapter" data-level="14.6.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>14.6.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="14.6.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>14.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="14.6.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-5"><i class="fa fa-check"></i><b>14.6.5</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.3.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-3"><i class="fa fa-check"></i><b>15.3.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.3.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>15.3.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.3.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-2"><i class="fa fa-check"></i><b>15.3.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.3.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>15.3.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.3.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>15.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.3.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-2"><i class="fa fa-check"></i><b>15.3.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.3.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>15.3.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="14.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#fishers-exakter-test"><i class="fa fa-check"></i><b>14.7</b> Fisher’s Exakter Test</a>
+<li class="chapter" data-level="15.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>15.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
 <ul>
-<li class="chapter" data-level="14.7.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-6"><i class="fa fa-check"></i><b>14.7.1</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.4.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-4"><i class="fa fa-check"></i><b>15.4.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.4.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-3"><i class="fa fa-check"></i><b>15.4.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.4.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>15.4.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.4.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-3"><i class="fa fa-check"></i><b>15.4.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.4.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>15.4.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>15.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#hypothesen-5"><i class="fa fa-check"></i><b>15.5.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.5.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-4"><i class="fa fa-check"></i><b>15.5.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.5.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>15.5.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.5.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-4"><i class="fa fa-check"></i><b>15.5.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.5.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>15.5.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#chi2-test"><i class="fa fa-check"></i><b>15.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>15.6.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.6.2" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-5"><i class="fa fa-check"></i><b>15.6.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.6.3" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>15.6.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.6.4" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>15.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.6.5" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#effektstärke-5"><i class="fa fa-check"></i><b>15.6.5</b> Effektstärke</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#fishers-exakter-test"><i class="fa fa-check"></i><b>15.7</b> Fisher’s Exakter Test</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="einfache-hypothesentests.html"><a href="einfache-hypothesentests.html#test-durchführen-6"><i class="fa fa-check"></i><b>15.7.1</b> Test durchführen</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>15</b> ANOVA</a>
+<li class="chapter" data-level="16" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>16</b> ANOVA</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="anova.html"><a href="anova.html#einfaktorielle-anova"><i class="fa fa-check"></i><b>15.1</b> Einfaktorielle ANOVA</a>
+<li class="chapter" data-level="16.1" data-path="anova.html"><a href="anova.html#einfaktorielle-anova"><i class="fa fa-check"></i><b>16.1</b> Einfaktorielle ANOVA</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="anova.html"><a href="anova.html#alpha-fehler-kumulierung"><i class="fa fa-check"></i><b>15.1.1</b> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung</a></li>
-<li class="chapter" data-level="15.1.2" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-4"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.1.3" data-path="anova.html"><a href="anova.html#berechnung-der-anova"><i class="fa fa-check"></i><b>15.1.3</b> Berechnung der ANOVA</a></li>
-<li class="chapter" data-level="15.1.4" data-path="anova.html"><a href="anova.html#interpretation"><i class="fa fa-check"></i><b>15.1.4</b> Interpretation</a></li>
-<li class="chapter" data-level="15.1.5" data-path="anova.html"><a href="anova.html#post-hoc-tests"><i class="fa fa-check"></i><b>15.1.5</b> Post-hoc Tests</a></li>
+<li class="chapter" data-level="16.1.1" data-path="anova.html"><a href="anova.html#alpha-fehler-kumulierung"><i class="fa fa-check"></i><b>16.1.1</b> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung</a></li>
+<li class="chapter" data-level="16.1.2" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-4"><i class="fa fa-check"></i><b>16.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.1.3" data-path="anova.html"><a href="anova.html#berechnung-der-anova"><i class="fa fa-check"></i><b>16.1.3</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.1.4" data-path="anova.html"><a href="anova.html#interpretation"><i class="fa fa-check"></i><b>16.1.4</b> Interpretation</a></li>
+<li class="chapter" data-level="16.1.5" data-path="anova.html"><a href="anova.html#post-hoc-tests"><i class="fa fa-check"></i><b>16.1.5</b> Post-hoc Tests</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="anova.html"><a href="anova.html#mehrfaktorielle-anova"><i class="fa fa-check"></i><b>15.2</b> Mehrfaktorielle ANOVA</a>
+<li class="chapter" data-level="16.2" data-path="anova.html"><a href="anova.html#mehrfaktorielle-anova"><i class="fa fa-check"></i><b>16.2</b> Mehrfaktorielle ANOVA</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-5"><i class="fa fa-check"></i><b>15.2.1</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.2.2" data-path="anova.html"><a href="anova.html#berechnung-der-anova-1"><i class="fa fa-check"></i><b>15.2.2</b> Berechnung der ANOVA</a></li>
-<li class="chapter" data-level="15.2.3" data-path="anova.html"><a href="anova.html#interpretation-1"><i class="fa fa-check"></i><b>15.2.3</b> Interpretation</a></li>
-<li class="chapter" data-level="15.2.4" data-path="anova.html"><a href="anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>15.2.4</b> Post-hoc Tests</a></li>
+<li class="chapter" data-level="16.2.1" data-path="anova.html"><a href="anova.html#deskriptive-einordnung-5"><i class="fa fa-check"></i><b>16.2.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.2.2" data-path="anova.html"><a href="anova.html#berechnung-der-anova-1"><i class="fa fa-check"></i><b>16.2.2</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.2.3" data-path="anova.html"><a href="anova.html#interpretation-1"><i class="fa fa-check"></i><b>16.2.3</b> Interpretation</a></li>
+<li class="chapter" data-level="16.2.4" data-path="anova.html"><a href="anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>16.2.4</b> Post-hoc Tests</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="anova.html"><a href="anova.html#prüfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>15.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
+<li class="chapter" data-level="16.3" data-path="anova.html"><a href="anova.html#prüfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>16.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="anova.html"><a href="anova.html#testen-der-empirisch-testbaren-annahmen"><i class="fa fa-check"></i><b>15.3.1</b> Testen der empirisch testbaren Annahmen</a></li>
-<li class="chapter" data-level="15.3.2" data-path="anova.html"><a href="anova.html#homogenität-der-varianzen"><i class="fa fa-check"></i><b>15.3.2</b> Homogenität der Varianzen:</a></li>
-<li class="chapter" data-level="15.3.3" data-path="anova.html"><a href="anova.html#sphärizität"><i class="fa fa-check"></i><b>15.3.3</b> Sphärizität:</a></li>
-<li class="chapter" data-level="15.3.4" data-path="anova.html"><a href="anova.html#normalverteilung-der-residuen"><i class="fa fa-check"></i><b>15.3.4</b> Normalverteilung der Residuen:</a></li>
+<li class="chapter" data-level="16.3.1" data-path="anova.html"><a href="anova.html#testen-der-empirisch-testbaren-annahmen"><i class="fa fa-check"></i><b>16.3.1</b> Testen der empirisch testbaren Annahmen</a></li>
+<li class="chapter" data-level="16.3.2" data-path="anova.html"><a href="anova.html#homogenität-der-varianzen"><i class="fa fa-check"></i><b>16.3.2</b> Homogenität der Varianzen:</a></li>
+<li class="chapter" data-level="16.3.3" data-path="anova.html"><a href="anova.html#sphärizität"><i class="fa fa-check"></i><b>16.3.3</b> Sphärizität:</a></li>
+<li class="chapter" data-level="16.3.4" data-path="anova.html"><a href="anova.html#normalverteilung-der-residuen"><i class="fa fa-check"></i><b>16.3.4</b> Normalverteilung der Residuen:</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -444,21 +469,21 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="korrelation" class="section level1 hasAnchor" number="13">
-<h1><span class="header-section-number">Kapitel 13</span> Korrelation<a href="korrelation.html#korrelation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="korrelation" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">Kapitel 14</span> Korrelation<a href="korrelation.html#korrelation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Als möglichen Hypothesentest schauen wir uns die Korrelationen an:</p>
 <p>Bei einem Korrelationstest wird die Beziehung zwischen zwei Variablen auf einer Verhältnis- oder Intervallskala untersucht: z. B. Größe und Gewicht oder Einkommen und Selbstvertrauen</p>
 <p>Die Teststatistik bei einem Korrelationstest wird als Korrelationskoeffizient bezeichnet und durch den Buchstaben <span class="math inline">\(r\)</span> dargestellt.</p>
 <p>Der Koeffizient kann zwischen -1 und +1 liegen, wobei -1 für eine starke negative Beziehung und +1 für eine starke positive Beziehung steht.</p>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
-<div id="hypothesen" class="section level2 hasAnchor" number="13.1">
-<h2><span class="header-section-number">13.1</span> Hypothesen<a href="korrelation.html#hypothesen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="korrelation.html#cb259-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">rnorm_multi</span>(<span class="at">n =</span> <span class="dv">100</span>, </span>
-<span id="cb259-2"><a href="korrelation.html#cb259-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">8</span>),</span>
-<span id="cb259-3"><a href="korrelation.html#cb259-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">2</span>),</span>
-<span id="cb259-4"><a href="korrelation.html#cb259-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">r =</span> <span class="fu">c</span>(<span class="fl">0.69</span>), </span>
-<span id="cb259-5"><a href="korrelation.html#cb259-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">varnames =</span> <span class="fu">c</span>(<span class="st">&quot;Konzentration&quot;</span>, <span class="st">&quot;Schlaf&quot;</span>),</span>
-<span id="cb259-6"><a href="korrelation.html#cb259-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">empirical =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-193-1.png" width="672" /></p>
+<div id="hypothesen" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> Hypothesen<a href="korrelation.html#hypothesen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="korrelation.html#cb312-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">rnorm_multi</span>(<span class="at">n =</span> <span class="dv">100</span>, </span>
+<span id="cb312-2"><a href="korrelation.html#cb312-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">8</span>),</span>
+<span id="cb312-3"><a href="korrelation.html#cb312-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">2</span>),</span>
+<span id="cb312-4"><a href="korrelation.html#cb312-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">r =</span> <span class="fu">c</span>(<span class="fl">0.69</span>), </span>
+<span id="cb312-5"><a href="korrelation.html#cb312-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">varnames =</span> <span class="fu">c</span>(<span class="st">&quot;Konzentration&quot;</span>, <span class="st">&quot;Schlaf&quot;</span>),</span>
+<span id="cb312-6"><a href="korrelation.html#cb312-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">empirical =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>Die Korrelation prüft als Signifikanztest, ob ein Zusammenhang zwischen 2 Variablen besteht.</p>
 <p>Da Korrelationskoeffizient von 0 bedeutet, dass kein Zusammenhang zwischen den Variablen besteht, wird im Signifikanztest i.d.R. <span class="math inline">\(r\)</span> gegen 0 getestet (daher Nullhypothese).</p>
 <p>Folgende Hypothesen sind denkbar:</p>
@@ -479,32 +504,32 @@ div.csl-indent {
 </ul>
 <p>Eine typische psychologische Fragestellung für eine Zusammenhangshypothese könnte sein, ob die Anzahl der in der Nacht geschlafenen Stunden (<code>Schlaf</code>) mit der Leistung in einem Konzentrationstest zusammenhängt (<code>Konzentration</code>).</p>
 <p>Ein entsprechender Datensatz könnte wie folgt aussehen (die ersten 6 Zeilen von <span class="math inline">\(N=100)\)</span>:</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="korrelation.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##   Konzentration   Schlaf
-## 1      92.88510 6.625286
-## 2     105.33156 8.905657
-## 3      99.79990 7.933711
-## 4      87.91431 6.556111
-## 5      93.89385 7.851164
-## 6     127.86616 9.552370</code></pre>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="korrelation.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   Konzentration    Schlaf
+## 1     107.73434  7.917834
+## 2      82.51508  7.089755
+## 3     146.56725 11.096897
+## 4      45.17615  6.051697
+## 5      87.69441  5.875177
+## 6     110.73274  8.313137</code></pre>
 <p>Um einen ersten Eindruck vom Zusammenhang zu gewinnen, können wir uns die Daten in einem Streudiagramm darstellen:</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="korrelation.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> Schlaf, <span class="at">y =</span> Konzentration)) <span class="sc">+</span></span>
-<span id="cb262-2"><a href="korrelation.html#cb262-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb262-3"><a href="korrelation.html#cb262-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="korrelation.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> Schlaf, <span class="at">y =</span> Konzentration)) <span class="sc">+</span></span>
+<span id="cb315-2"><a href="korrelation.html#cb315-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb315-3"><a href="korrelation.html#cb315-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-196-1.png" width="672" /></p>
 </div>
-<div id="berechnung-der-korrelation" class="section level2 hasAnchor" number="13.2">
-<h2><span class="header-section-number">13.2</span> Berechnung der Korrelation<a href="korrelation.html#berechnung-der-korrelation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="berechnung-der-korrelation" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> Berechnung der Korrelation<a href="korrelation.html#berechnung-der-korrelation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Der Korrelationskoeffizient lässt sich mit der R-Basisfunktion <code>cor()</code> berechnen.</p>
 <p>Dafür schreiben wir ganz einfach die beiden zu korrelierenden Variablen nebeneinander in die Funktion:</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="korrelation.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf)</span></code></pre></div>
-<pre><code>## [1] 0.6871878</code></pre>
-<p>Wie Sie sehen, erhalten wir einen Korrelationskoeffizienten von <span class="math inline">\(r=0.69\)</span>. Also einen positiven Zusammenhang.</p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="korrelation.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf)</span></code></pre></div>
+<pre><code>## [1] 0.6803418</code></pre>
+<p>Wie Sie sehen, erhalten wir einen Korrelationskoeffizienten von <span class="math inline">\(r=0.68\)</span>. Also einen positiven Zusammenhang.</p>
 </div>
-<div id="unterschiedliche-korrelationsmethoden" class="section level2 hasAnchor" number="13.3">
-<h2><span class="header-section-number">13.3</span> Unterschiedliche Korrelationsmethoden<a href="korrelation.html#unterschiedliche-korrelationsmethoden" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="pearson-korrelation" class="section level3 hasAnchor" number="13.3.1">
-<h3><span class="header-section-number">13.3.1</span> Pearson-Korrelation<a href="korrelation.html#pearson-korrelation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="unterschiedliche-korrelationsmethoden" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> Unterschiedliche Korrelationsmethoden<a href="korrelation.html#unterschiedliche-korrelationsmethoden" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pearson-korrelation" class="section level3 hasAnchor" number="14.3.1">
+<h3><span class="header-section-number">14.3.1</span> Pearson-Korrelation<a href="korrelation.html#pearson-korrelation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Nutzen wir die <code>cor()</code> Funktion ohne weitere Spezifikationen, wird der sogenannte <strong>Pearson</strong> Korrelationskoeffizient berechnet.</p>
 <p>Dieser stellt jedoch gewisse Voraussetzungen an die Daten:</p>
 <ul>
@@ -514,25 +539,25 @@ div.csl-indent {
 </ul>
 <p>Sollte eine (oder mehrere) der Voraussetzungen nicht erfüllt sein, berechnen wir einen der folgenden alternativen Korrelationskoeffizienten</p>
 </div>
-<div id="spearman-korrelation-aka-rangkorrelation" class="section level3 hasAnchor" number="13.3.2">
-<h3><span class="header-section-number">13.3.2</span> Spearman-Korrelation (aka Rangkorrelation)<a href="korrelation.html#spearman-korrelation-aka-rangkorrelation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="spearman-korrelation-aka-rangkorrelation" class="section level3 hasAnchor" number="14.3.2">
+<h3><span class="header-section-number">14.3.2</span> Spearman-Korrelation (aka Rangkorrelation)<a href="korrelation.html#spearman-korrelation-aka-rangkorrelation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Der <strong>Spearman</strong> Korrelationskoeffizient funktioniert im Wesentlichen wie der Pearson Korrelationskoeffizient, jedoch wird er auf Ordinalskalenniveau berechnet.</p>
 <p>Das macht ihn unempfindlicher gegenüber Verteilungsverletzungen und Ausreißern.</p>
 <p>Die Berechnung des <strong>Spearman</strong> Korrelationskoeffizienten erfolgt nach derselben Methode, mit einer kleinen Spezifikation:</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="korrelation.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] 0.690105</code></pre>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="korrelation.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0.6872007</code></pre>
 <p>In der Regel ist die Abweichung der beiden Korrelationskoeffizienten voneinander nicht allzu hoch.</p>
 </div>
-<div id="kendall-korrelation" class="section level3 hasAnchor" number="13.3.3">
-<h3><span class="header-section-number">13.3.3</span> Kendall-Korrelation<a href="korrelation.html#kendall-korrelation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="kendall-korrelation" class="section level3 hasAnchor" number="14.3.3">
+<h3><span class="header-section-number">14.3.3</span> Kendall-Korrelation<a href="korrelation.html#kendall-korrelation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Rangkorrelationskoeffizienten von Spearman und Kendall sind beide Koeffizienten, die den Zusammenhang ordinalskalierter Merkmale beschreiben können.</p>
 <p>Der Vorteil des Kendall <span class="math inline">\(τ\)</span> liegt darin, dass seine Verteilung bei kleineren Stichprobenumfängen bessere statistische Eigenschaften bietet und er weniger empfindlich gegen Ausreißer-Rangpaare ist.</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="korrelation.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] 0.5078788</code></pre>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="korrelation.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0.5022222</code></pre>
 </div>
 </div>
-<div id="korrelation-als-hypothesentest" class="section level2 hasAnchor" number="13.4">
-<h2><span class="header-section-number">13.4</span> Korrelation als Hypothesentest<a href="korrelation.html#korrelation-als-hypothesentest" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="korrelation-als-hypothesentest" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> Korrelation als Hypothesentest<a href="korrelation.html#korrelation-als-hypothesentest" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Wie Sie bereits bemerkt haben werden, liefert Ihnen die <code>cor()</code> Funktion lediglich den Korrelationskoeffizienten, jedoch keine Informationen über statistische Signifikanz.</p>
 <p>Ein Signifikanztest für den Korrelationskoeffizienten lässt sich jedoch einfach mit der Funktion <code>cor.test()</code> rechnen. Die Argumente der Funktion sind in der folgenden Tabelle zusammengefasst:</p>
 <table>
@@ -570,18 +595,18 @@ div.csl-indent {
 </tbody>
 </table>
 <p>Wenn wir zum Beispiel testen wollten, ob ein signifikanter negativer Zusammenhang zwischen Konzentration und Schlaf besteht, könnten wir das mit folgendem Signifikanztest prüfen:</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="korrelation.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="korrelation.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  data$Konzentration and data$Schlaf
-## t = 9.3641, df = 98, p-value = 1
+## t = 9.1896, df = 98, p-value = 1
 ## alternative hypothesis: true correlation is less than 0
 ## 95 percent confidence interval:
-##  -1.0000000  0.7656037
+##  -1.00000  0.76023
 ## sample estimates:
 ##       cor 
-## 0.6871878</code></pre>
+## 0.6803418</code></pre>
 
 </div>
 </div>
@@ -590,7 +615,7 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="graphiken.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tabellen.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="einfache-hypothesentests.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
