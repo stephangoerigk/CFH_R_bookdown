@@ -1,4 +1,4 @@
-# Daten Explorieren
+# Daten beschreiben
 
 Im folgenden Abschnitt werden wir lernen, wie wir uns schnell einen Überblick über große Mengen von Daten machen können.
 
@@ -36,7 +36,7 @@ vektor = c("A", "B", "C", "D")
 length(vektor)
 ```
 
-#### is...
+#### is... Funktionen
 
 Wir können zudem die Variablenart des Vektors abfragen. Dies funktioniert mit dem `is.()` Befehl, ergänzt durch die Variablenart, nach der wir fragen wollen. Z.B. enthält die Variable `Petal.Length` des `iris` Datensatzes ausschließlich Zahlen:
 
@@ -64,7 +64,7 @@ Auf diese Art, können wir auch leicht zählen, wie viele Elemente eines Vektors
 sum(is.na(a))
 ```
 
-### Informationen über Dataframes
+### Informationen über dataframes
 
 ```{r}
 #length()
@@ -92,15 +92,39 @@ Leider gibt es zum Zusammenfassen kategorialer (nominalskalierter) Variablen nic
 Die gängigste Deskription einer kategorialen Variable ist die Erstellung einer Häufigkeitstabelle. Eine Häufigkeitstabelle mit absoluten Häufigkeiten lässt sich mit dem `table()` Befehl erstellen.
 
 ```{r}
-kat = c("")
+df = data.frame(Geschlecht = c("männlich", "männlich", "männlich", "weiblich", "weiblich"),
+                Diagnose = c("Depression", "Depression", "Angst", "Depression", "Angst"))
+
+table(df$Diagnose)
 ```
 
+Wollen wir die Häufigkeit einer bestimmten Kategorie (z.B. nur der Diagnose Depression) auswählen, dann geht dies so:
+
+```{r}
+table(df$Diagnose)["Depression"]
+```
+
+Wollen wir die Häufigkeit einer Kategorie innerhalb von unterschiedlichen Gruppen darstellen, geht dies ebenfalls mit `table()`.
+
+Wir schreiben lediglich die beide relevanten Variablen in die Klammer:
+
+```{r}
+table(df$Diagnose, df$Geschlecht)
+```
+
+Das Ergebnis ist eine sogenannte **4-Felder Tafel**.
 
 #### Relative Häufigkeiten
 
-### Numerische Variablen
+#### unique() Funktion
 
-#### Deskription numerische Variablen
+Wollen wir in einem Vektor, der viele Wiederholungen der selben Merkmalsausprägungen enthält, jede Ausprägung nur einmal anzeigen lassen, nutzen wir `unique()`:
+
+```{r}
+unique(df$Diagnose)
+```
+
+### Numerische Variablen
 
 | Funktion| Beispiel|Ergebnis |
 |:-------------------|:----------------------|:-----------------------|
@@ -111,14 +135,158 @@ kat = c("")
 |     `quantile(x, probs)`|    `quantile(1:10, probs = .2)`|`r quantile(1:10, probs = .2)`     |
 |     `summary(x)`|    `summary(1:10)`|`Min = 1.00. 1st Qu. = 3.25, Median = 5.50, Mean = 5.50, 3rd Qu. = 7.75, Max = 10.0`     |
 
-```{r eval=FALSE, include=FALSE}
 #### Lagemaße
+
+Lagemaße, auch bekannt als Maße der zentralen Tendenz, sind statistische Kennzahlen, die uns Informationen über die typische oder durchschnittliche Lage einer Verteilung geben. Sie helfen dabei, den Mittelpunkt oder die Mitte eines Datensatzes zu bestimmen. 
+
+Die gängigsten Lagemaße sind: 
+
+* Mittelwert (arithmetisches Mittel, engl. *mean*)
+* Median 
+* Modus (Modalwert).
+
+Lagemaße sind nützliche Werkzeuge, um einen Überblick über Daten zu gewinnen und Vergleiche zwischen verschiedenen Verteilungen anzustellen (z.B. bei Gruppenvergleichen).
+
+Schauen wir uns die Funktionen einmal in Aktion an:
+
+```{r}
+vektor = c(2, 4, 2, 1, 5, 2, 5, 6)
+
+mean(vektor)
+median(vektor)
+```
+
+Diese Funktionen funktionieren nur für Vektoren, nicht für `data.frames()`.
+
+**Vorsicht:** Es kann vorkommen, dass wir in unseren Daten fehlende Werte (missings) haben. Dann funktionieren die Funktionen nicht mehr:
+
+```{r}
+vektor = c(2, 4, NA, 1, 5, 2, 5, NA)
+
+mean(vektor)
+```
+
+Wir können das Problem jedoch mit einem kleinen Extra-Argument (`na.rm = T`) lösen. Die Statistik wird dann auf Basis aller verfügbaren Werte berechnet und die fehlenden Werte werden ignoriert:
+
+```{r}
+mean(vektor, na.rm = T)
+```
 
 #### Streuungsmaße
 
-### Alles auf einen Blick
+Streuungsmaße sind statistische Kennzahlen, die uns Auskunft über die Verteilung oder Streuung von Daten um die zentrale Tendenz geben. Sie helfen dabei, die Variabilität oder die Ausdehnung eines Datensatzes zu quantifizieren. 
 
-### Gruppenweise Deskriptivstatistiken
+Die gängigsten Streuungsmaße sind: 
 
+* Spannweite (engl. *range*)
+* Varianz 
+* Standardabweichung (engl. *standard deviation*, SD)
+* Quartilabstand (engl. *inter-quartile-range*, IQR)
+
+Streuungsmaße helfen dabei, die Homogenität oder Heterogenität von Daten zu analysieren und den Grad der Variation zu verstehen.
+
+Nun probieren wir die Funktionen zur Berechnung der Streuungsmaße aus:
+
+```{r}
+vektor = c(2, 4, 2, 1, 5, 2, 5, 6)
+
+var(vektor)
+sd(vektor)
 ```
 
+Wie wir wissen, ist die Standardabweichung die Wurzel aus der Varianz:
+
+```{r}
+sqrt(var(vektor))
+```
+
+Zur Berechnung des Quartilabstands (IQR) benutzen wir die `IQR()` Funktion aus dem `stats` Paket:
+
+```{r}
+# install.packages("stats")
+
+library(stats)
+
+IQR(vektor)
+```
+
+## Deskriptivstatistiken berichten
+
+Berichtet man Deskriptivstatistiken im Ergebnisteil eines Papers oder in Tabellen, gibt man diese Häufig in Kombination an.
+
+Ein Streuungsmaß ist z.B. wenig informativ, ohne zu wissen um welches Lagemaß es herum streut.
+
+Ein Lagemaß alleine gibt der Leserschaft zwar eine Information über die Mitte der Verteilung, jedoch hat man dann keine Vorstellung über die Variabilität der Werte.
+
+Die gängigsten Kombinationen sind wie folgt:
+
+| | Statistik 1|Statistik 2 | Bericht | Beispiel
+|:-------------------|:----------------------|:-----------------------|:-----------------------|
+|     Absolute Häufigkeit|    Relative Häufigkeit |n (%)     | 23 (34%)
+|     Mittelwert|    Standardabweichung|m (SD)    | 42.11 (8.51)
+|     Median|    Quartilsabstand     | med (IQR) | 11 (3)
+
+Man würde zum Beispiel schreiben:
+
+*Für unsere Studie wurden $N=200$ Personen rekrutiert. Diese waren m (SD) = 31.23 (11.31) Jahre alt. Die Geschlechterverteilung umfasste 120 (60%) weibliche und 80 (40%) männliche Personen.*
+
+## Alles auf einen Blick
+
+Manchmal uns nicht die Mühe machen, die Deskriptivstatistiken alle einzeln und nacheinander zu berechnen. Schöner wäre es, mit einer Funktion alle relevanten Kennwerte auf einmal zu erhalten.
+
+Eine solche Funktion ist `describe()` aus dem `psych` Paket:
+
+```{r}
+# install.packages("psych")
+
+library(psych)
+
+vektor = c(2, 4, 2, 1, 5, 2, 5, 6)
+
+describe(vektor)
+```
+
+Diese Funktion funktioniert sogar, wenn wir sie auf einen `data.frame` anwenden. Nehmen wir hierfür noch einmal den `iris` Datensatz vom Anfang dieses Kapitels:
+
+```{r}
+describe(iris)
+```
+
+## Deskriptivstatistiken für Subgruppen
+
+Häufig müssen Stichproben nicht als Ganzes, sondern unterteilt in Teilgruppen beschrieben werden.
+
+Ein klassisches Beispiel ist der Aufbau einer experimentellen Studie mit Versuchs- und Kontrollgruppe (klin. Kontext: Verum vs. Placebo).
+
+```{r}
+df = data.frame(Gruppe = c("Experiment", "Kontrolle", "Experiment", "Kontrolle", "Kontrolle", "Experiment"),
+                Alter = c(22, 41, 51, 39, 71, 25),
+                Konzentration = c(3, 7, 4, 7, 5, 2),
+                Schlafdauer = c(6, 14, 7, 12, 15, 11),
+                Schlafqualität = c(5, 8, 2, 1, 8 , 5))
+df
+```
+
+Der manuelle Weg würde eine Datenselektion erfordern (z.B. für das durchschnittsalter der Kontrollgruppe):
+
+```{r}
+mean(df$Alter[df$Gruppe == "Kontrolle"])
+```
+
+Wollte man die gesamte Tabelle so zusammenfassen, z.B. für die tabellarische Stichprobenbeschreibung in einem Paper, würde einem dies jedoch einige Mühe bereiten. 
+
+Glücklicherweise können wir eine Variante der `describe()` Funktion nutzen, nähmlich `describeBy()`
+
+```{r}
+describeBy(df, group = "Gruppe")
+```
+
+Eine weitere, sogar noch etwas besser für Paper nutzbare Option, ist die `report_sample()` Funktion aus dem `report` Paket:
+
+```{r}
+library(report)
+
+report_sample(df, group_by = "Gruppe")
+```
+
+So eine tabellarische Stichprobenbeschreibung könnte man direkt für ein Paper verwenden.

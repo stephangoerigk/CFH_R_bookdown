@@ -1,6 +1,6 @@
 # Schleifen (Loops)
 
-## for()
+## for()-Loop
 
 Der for()-Loop ist eine gängige Schleifenstruktur in R. Mit dem for()-Loop können wiederholte Aufgaben automatisiert und effizient ausgeführt werden. 
 Während jeder Iteration des Loops wird der Codeblock innerhalb des Loops ausgeführt. Dabei kann auf den aktuellen Iterationsschritt zugegriffen werden, um den Code entsprechend anzupassen. Der for()-Loop ist besonders nützlich, um über eine vordefinierte Sequenz von Elementen zu iterieren, wie zum Beispiel eine Vektor oder eine Liste. Durch die effektive Nutzung des for()-Loops können wiederholte Aufgaben in R effizient gelöst werden.
@@ -108,7 +108,7 @@ for (i in 2:ncol(df)) {
 Dafür lassen wir die Variable über Spalten laufen. Da die erste Spalte keine Depressionssymptomvariable ist (`ID`), beginnen wir bei der 2. loszulaufen und laufen bis zur letzten Spalte.
 
 
-## if()
+## if()-Loop
 
 Wie wir sehen, läuft der `for()`-Loop stur über alle Elemente hinweg, die im Index angegeben sind.
 

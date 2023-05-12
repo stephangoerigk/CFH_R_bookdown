@@ -24,15 +24,15 @@ Ich wünsche Ihnen Viel Erfolg und Spaß!
 
 ## Open Source
 
-Im Gegensatz zu SPSS, Matlab, Excel und JMP ist R zu 100 % kostenlos und verfügt daher über eine große Unterstützergemeinschaft. Das spart nicht nur Geld - es bedeutet auch, dass eine große Gemeinschaft von R-Programmierer:innen ständig neue R-Funktionen und -Pakete in einer Geschwindigkeit entwickelt und verbreitet. Wenn Sie jemals eine Frage dazu haben, wie man etwas in R implementiert, wird eine schnelle Googlesuche Sie praktisch jedes Mal zur Antwort führen.
+Im Gegensatz zu SPSS, Matlab, Excel und JMP ist R kostenlos und verfügt über eine große Unterstützergemeinschaft. Das bedeutet, dass eine große Gemeinschaft von R-Programmierer:innen ständig neue R-Funktionen und -Pakete entwickelt und verbreitet. Wenn Sie jemals eine Frage dazu haben, wie man etwas in R implementiert, wird eine schnelle Suche im Internet Sie praktisch jedes Mal zur Antwort führen.
 
 ## Vielseitigkeit
 
-R ist unheimlich vielseitig. Sie können R für alles verwenden, von der Berechnung einfacher zusammenfassender Statistiken über die Durchführung komplexer Simulationen bis hin zur Erstellung großartiger Diagramme. Wenn Sie sich eine analytische Aufgabe vorstellen können, können Sie sie mit ziemlicher Sicherheit in R implementieren.
+R ist sehr vielseitig. Sie können R für alles verwenden, von der Berechnung einfacher zusammenfassender Statistiken über die Durchführung komplexer Simulationen bis hin zur Erstellung von Diagrammen. Wenn Sie sich eine statistische Aufgabe vorstellen können, können Sie sie mit ziemlicher Sicherheit in R implementieren.
 
 ## RMarkdown
 
-Mit RStudio, einem Programm, das Sie beim Schreiben von R-Code unterstützt, können Sie mit RMarkdown einfach und nahtlos R-Code, Analysen, Diagramme und geschriebenen Text zu eleganten Dokumenten an einem Ort kombinieren. Tatsächlich wurde dieses gesamte Skript (Text, Formatierung, Diagramme, Code... ja, alles) in RStudio mit R Markdown geschrieben. Mit RStudio müssen Sie sich nicht mehr mit zwei oder drei Programmen herumschlagen, z. B. Excel, Word und SPSS, wo Sie die Hälfte Ihrer Zeit mit dem Kopieren, Einfügen und Formatieren von Daten, Bildern und Tests verbringen, sondern können alles an einem Ort erledigen, so dass nichts mehr falsch gelesen, getippt oder vergessen wird.
+Mit RStudio, einem Programm, das Sie beim Schreiben von R-Code unterstützt, können Sie mittels RMarkdown einfach und nahtlos R-Code, Analysen, Diagramme und geschriebenen Text zu eleganten Dokumenten an einem Ort kombinieren. Tatsächlich wurde dieses gesamte Skript (Text, Formatierung, Diagramme, Code...) in RStudio mit R Markdown geschrieben. Mit RStudio müssen Sie sich nicht mehr mit zwei oder drei Programmen herumschlagen, z. B. Excel, Word und SPSS, wo Sie die Hälfte Ihrer Zeit mit dem Kopieren, Einfügen und Formatieren von Daten, Bildern und Tests verbringen, sondern können alles an einem Ort erledigen, so dass nichts mehr falsch gelesen, getippt oder vergessen wird.
 
 ## Transparenz
 
@@ -52,7 +52,7 @@ Insbesondere die Cheat Sheets zu ggplot2 und dplyr sind zu empfehlen (RStudio Ch
 
 ## Hilfe und Inspiration online
 
-Eine Googlesuche nach einem spezifischen R Problem bringt Sie (fast) immer an Ihr Ziel. Häufig findet man gute Antworten in den github Hilfsmatierialien einzelner Pakete, auf den Community Seiten von R Studio und in den Foren von stackoverflow.
+Eine Internetsuche nach einem spezifischen R Problem bringt Sie (fast) immer an Ihr Ziel. Häufig findet man gute Antworten in den github Hilfsmatierialien einzelner Pakete, auf den Community Seiten von R Studio und in den Foren von stackoverflow.
 
 ## Andere Bücher
 

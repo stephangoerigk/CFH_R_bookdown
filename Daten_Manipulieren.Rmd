@@ -1,4 +1,4 @@
-# Datenmanipulation
+# Daten bearbeiten
 
 ## Daten hinzufügen
 
@@ -201,11 +201,11 @@ Dieses Item gibt uns eine nützliche Information hinsichtlich der Introversion d
 
 Mein Ziel ist also folgendes:
 
-1 $\rightarrow$ 5
-2 $\rightarrow$ 4
-3 $\rightarrow$ 3
-4 $\rightarrow$ 2
-5 $\rightarrow$ 1
+1 $\rightarrow$ 5 
+2 $\rightarrow$ 4 
+3 $\rightarrow$ 3 
+4 $\rightarrow$ 2 
+5 $\rightarrow$ 1 
 
 Der 1. Impuls wäre folgendes:
 
@@ -213,12 +213,12 @@ Der 1. Impuls wäre folgendes:
 # test$Item[test$Item == 1] = 5
 ```
 
-Das Problem damit ist, dass alle ursprünglichen 1er Werte die ich zu 5er Werten mache, sich wieder zu 1er Werten verändern, sobald ich die ursprünglichen 5er in 1er verändere. Ich muss also alle Werte "auf einmal" ändern.
+Das Problem mit dieser Methode ist, dass alle ursprünglichen 1er Werte die ich zu 5er Werten mache, sich wieder zu 1er Werten verändern, sobald ich die ursprünglichen 5er in 1er verändere. Ich muss also alle Werte "auf einmal" (parallel) ändern.
 
 Dafür nutzen wir die `recode()` Funktion aus dem Paket `dplyr`:
 
 ```{r}
-test$Item = recode(test$Item, "1" = 5, "2" = 4, "4" = 2, "5" = 1)
+test$Item_r = recode(test$Item, "1" = 5, "2" = 4, "4" = 2, "5" = 1)
 
 test
 ```

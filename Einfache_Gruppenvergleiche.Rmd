@@ -1,4 +1,4 @@
-# Einfache Hypothesentests
+# Tests für einfache Gruppenvergleiche
 
 ```{r echo=F, message=FALSE, warning=FALSE}
 options(scipen = 999)

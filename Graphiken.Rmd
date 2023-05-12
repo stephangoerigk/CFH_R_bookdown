@@ -22,11 +22,11 @@ Warum ist ggplot2 gut?
 
 * Bietet eine Plattform zur Erstellung einfacher Diagramme, die eine Fülle von Informationen liefern.
 
-## ggplot()
+## ggplot()-Funktion
 
 Die von ggplot2 implizierte "Grammatik der Grafik", beruht auf dem Prinzip, dass ein Plot in die folgenden grundlegenden Teile aufgeteilt werden kann:
 
-Plot = data + aesthetics + geometry
+$Plot = data + aesthetics + geometry$
 
 * **data** bezieht sich auf einen Datensatz (`data.frame`).
 
