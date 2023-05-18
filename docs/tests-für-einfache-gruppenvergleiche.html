@@ -1420,8 +1420,8 @@ Cohen’s d lässt sich mit dem Paket <code>effsize</code> berechnen. Dieses ver
 <div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie)</span></code></pre></div>
 <pre><code>##       
 ##        Placebo Antidepressivum
-##   Nein       9               7
-##   Ja        11              13</code></pre>
+##   Nein      14               3
+##   Ja         6              17</code></pre>
 <p>Es lässt sich bereits sehen, dass von insgesamt 20 Personen in der Antidepressivum-Gruppe 17 einen Behandlungserfolg hatten. Von den 20 Personen in der Placebo-Gruppe jedoch nur 8.</p>
 <p>Um zu prüfen, ob dieser numerische Unterschied signifikant ist, rechnen wir den <span class="math inline">\(\chi\)</span><sup>2</sup>-Test.</p>
 </div>
@@ -1434,7 +1434,7 @@ Cohen’s d lässt sich mit dem Paket <code>effsize</code> berechnen. Dieses ver
 ##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
 ## 
 ## data:  table(data$Remission, data$Therapie)
-## X-squared = 0.10417, df = 1, p-value = 0.7469</code></pre>
+## X-squared = 10.23, df = 1, p-value = 0.001382</code></pre>
 </div>
 <div id="relevante-parameter-extrahieren-4" class="section level3 hasAnchor" number="14.6.3">
 <h3><span class="header-section-number">14.6.3</span> Relevante Parameter extrahieren<a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1448,14 +1448,14 @@ Cohen’s d lässt sich mit dem Paket <code>effsize</code> berechnen. Dieses ver
 <p><span class="math inline">\(\chi\)</span><sup>2</sup>-Wert (Teststatistik):</p>
 <div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie))<span class="sc">$</span>statistic</span></code></pre></div>
 <pre><code>## X-squared 
-## 0.1041667</code></pre>
+##  10.23018</code></pre>
 <p>df (Freiheitsgerade):</p>
 <div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie))<span class="sc">$</span>parameter</span></code></pre></div>
 <pre><code>## df 
 ##  1</code></pre>
 <p>P-Wert:</p>
 <div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie))<span class="sc">$</span>p.value</span></code></pre></div>
-<pre><code>## [1] 0.7468856</code></pre>
+<pre><code>## [1] 0.001381613</code></pre>
 </div>
 <div id="voraussetzungsprüfung-und-alternativen-2" class="section level3 hasAnchor" number="14.6.4">
 <h3><span class="header-section-number">14.6.4</span> Voraussetzungsprüfung und Alternativen<a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1476,16 +1476,16 @@ Cohen’s d lässt sich mit dem Paket <code>effsize</code> berechnen. Dieses ver
 <div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb438-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie)))</span></code></pre></div>
 <pre><code>## Phi (adj.) |       95% CI
 ## -------------------------
-## 0.00       | [0.00, 1.00]
+## 0.53       | [0.25, 1.00]
 ## 
 ## - One-sided CIs: upper bound fixed at [1.00].</code></pre>
 <p>Auch die Einzelparameter von <span class="math inline">\(\phi\)</span> lassen sich extrahieren:</p>
 <p><span class="math inline">\(\phi\)</span>:</p>
 <div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb440-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie)))<span class="sc">$</span>phi_adjusted</span></code></pre></div>
-<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0.5327494</code></pre>
 <p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
 <div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb442-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie)))<span class="sc">$</span>CI_low</span></code></pre></div>
-<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0.2492089</code></pre>
 <div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb444-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie)))<span class="sc">$</span>CI_high</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>Die Interpretation von <span class="math inline">\(\phi\)</span> lautet wie folgt <span class="citation">Cohen (<a href="#ref-cohen1988statistical" role="doc-biblioref">1988</a>)</span>:</p>
@@ -1525,9 +1525,9 @@ Cohen’s d lässt sich mit dem Paket <code>effsize</code> berechnen. Dieses ver
 <div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Erfolg, data<span class="sc">$</span>Therapie)</span></code></pre></div>
 <pre><code>##            
 ##             Placebo Antidepressivum
-##   Nein            9               8
-##   Remission       8              11
-##   Rückfall        3               1</code></pre>
+##   Nein            4               4
+##   Remission      11              12
+##   Rückfall        5               4</code></pre>
 <p>Wir können die Funktion <code>cramers_v()</code> aus dem <code>effectsize</code> R-Paket verwenden:</p>
 <div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb448-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Erfolg, data<span class="sc">$</span>Therapie)))</span></code></pre></div>
 <pre><code>## Cramer&#39;s V (adj.) |       95% CI

@@ -97,7 +97,7 @@ Bitte installieren Sie dann RStudio - das Programm, über welches wir auf R zugr
 Um RStudio zu installieren, klicken Sie auf diesen Link und befolgen Sie die Anleitungen: [http://www.rstudio.com/products/rstudio/download/](http://www.rstudio.com/products/rstudio/download/)
 
 ```{r}
-knitr::include_app("https://yihui.shinyapps.io/miniUI/",
+knitr::include_app("https://learnr-examples.shinyapps.io/ex-data-filter/#section-welcome",
   height = "600px")
 ```
 
