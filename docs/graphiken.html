@@ -176,14 +176,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="installation.html"><a href="installation.html#videotutorial"><i class="fa fa-check"></i><b>3.1.1</b> Videotutorial</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="installation.html"><a href="installation.html#videotutorial-1"><i class="fa fa-check"></i><b>3.2.1</b> Videotutorial</a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a></li>
+<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="programmaufbau.html"><a href="programmaufbau.html"><i class="fa fa-check"></i><b>4</b> Programmaufbau</a>
 <ul>
@@ -503,15 +497,15 @@ div.csl-indent {
 <li><p><strong>geometrie</strong> bezieht sich auf die Art der Grafik (Balkendiagramm, Histogramm, Boxplot, Liniendiagramm, Density-Plot, Streu-/Punktdiagramm usw.)</p></li>
 </ul>
 <p>Wir werden zum Üben den Datensatz <code>diamonds</code> aus dem <code>tidyverse</code> Paket nutzen. Er behandelt den Preis und die Charakteristika von Edelsteinen, also ein schönes Thema für schöne Graphen. Bevor wir also loslegen, installieren Sie die Pakete <code>ggplot2</code> und <code>tidyverse</code> und führen Sie aus:</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="graphiken.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb276-2"><a href="graphiken.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="graphiken.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb277-2"><a href="graphiken.html#cb277-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>Der wichtigste (und grundlegenste) Befehl zum Erstellen von Graphiken mit <code>ggplot2</code> ist <code>ggplot()</code>.</p>
 <p>Mit <code>ggplot()</code> sagen wir R, dass jetzt eine Graphik erstellt wird. Wir können es mit dem Aufstellen einer weißen Leinwand vergleichen, die wir nun füllen wollen.</p>
 <p>Der Befehl <code>ggplot()</code> wird mit den ersten 2 Elementen der “Grammatik der Grafik” gefüllt, <code>data</code> und aesthetics, kurs <code>aes()</code>. Wir geben also an, wo unsere Daten herkommen und welche Variable auf die X-Achse und welche auf die Y-Achse gelegt werden soll. Dieses Vorgehen ist für jede Art von Graphen gleich.</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="graphiken.html#cb277-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Var1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb277-2"><a href="graphiken.html#cb277-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">Var2 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="graphiken.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="fu">aes</span>(<span class="at">x =</span> Var1, <span class="at">y =</span> Var2))</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="graphiken.html#cb278-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Var1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb278-2"><a href="graphiken.html#cb278-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">Var2 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="graphiken.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="fu">aes</span>(<span class="at">x =</span> Var1, <span class="at">y =</span> Var2))</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
 <p>Das Ergebnis ist ein leerer Graph, mit der Variable <code>Var1</code> auf der X-Achse und der Variable <code>Var2</code> auf der Y-Achse.</p>
 </div>
 <div id="streu-punktdiagramm" class="section level2 hasAnchor" number="12.3">
@@ -519,7 +513,7 @@ div.csl-indent {
 <p>Streudiagramme können Ihnen helfen, die Beziehung zwischen zwei Variablen zu erkennen. Ein Streudiagramm ist eine einfache Darstellung der Kovariation einer Variablen mit einer zweiten Variable.</p>
 <p>Besonders gut funktioniert dies, wenn man 2 numerische Variablen gegeneinander plotted.</p>
 <p>Im Datensatz <code>diamonds</code> gibt es beispielsweise die Variable <code>price</code> (Kosten des Steins) und die Karatzahl (Masse).</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="graphiken.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diamonds)</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="graphiken.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diamonds)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 10
 ##   carat cut       color clarity depth table price     x     y     z
 ##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -532,47 +526,47 @@ div.csl-indent {
 <div id="streudiagramm-mit-2-variablen" class="section level3 hasAnchor" number="12.3.1">
 <h3><span class="header-section-number">12.3.1</span> Streudiagramm mit 2 Variablen<a href="graphiken.html#streudiagramm-mit-2-variablen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Stellen wir zunächst einmal unsere Grundfunktion auf:</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="graphiken.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price))</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="graphiken.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price))</span></code></pre></div>
 <p>Das Ergebnis ist ein leerer Graph, mit der Variable <code>carat</code> auf der X-Achse und der Variable <code>price</code> auf der Y-Achse. Wir könnten also betrachten, ob der Preis von Diamanten steigt, wenn die Karat (Masse) höher sind.</p>
 </div>
 <div id="geom_point" class="section level3 hasAnchor" number="12.3.2">
 <h3><span class="header-section-number">12.3.2</span> geom_point()<a href="graphiken.html#geom_point" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Nun fehlen uns nun noch die charakteristischen “Punkte”, die den Graph zum Streudiagramm machen. Jeder Punkt repräsentiert einen Stein mit einer Karatzahl und einem Preis.</p>
 <p>Wir wollen also ein neues Element in unseren Graphen zeichnen,sozusagen eine weitere Schicht auftragen. Dies funktioniert in <code>ggplot2</code> mit dem <code>+</code> Operator. Die Punkte sind eine Geometrie (das 3. Element unserer Grammatik). Geometrie wird i.d.R. mit <code>geom</code> geschrieben:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="graphiken.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
-<span id="cb282-2"><a href="graphiken.html#cb282-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="graphiken.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb283-2"><a href="graphiken.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
 <p>Es scheint, als bestünde ein <strong>positiver</strong> Zusammenhang zwischen <code>carat</code> und <code>price</code>. Mit zunehmender Karatzahl werden Steine also tendenziell teurer.</p>
 </div>
 <div id="geom_smooth" class="section level3 hasAnchor" number="12.3.3">
 <h3><span class="header-section-number">12.3.3</span> geom_smooth()<a href="graphiken.html#geom_smooth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Manchmal ist es praktisch in das “Chaos” der Punkte des Streudiagramms etwas Ordnung zu bringen und sich die Zusammenhänge noch einmal mit einer linearen Funktion zu visualisieren (Regressionsgerade). Dies lässt sich mit der Funktion <code>geom_smooth()</code> machen. Wir hängen sie also einfach mit einem weiteren <code>+</code> an unseren Graphen dran:</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="graphiken.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
-<span id="cb283-2"><a href="graphiken.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb283-3"><a href="graphiken.html#cb283-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
-<p>Die Angabe <code>method = "lm"</code> macht die Linie zur Geraden, geben wir dieses Argument nicht an, bekommen wir eine sogenannte loess-Kurve, die jedoch schnell unübersichtlich wird:</p>
 <div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="graphiken.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
 <span id="cb284-2"><a href="graphiken.html#cb284-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb284-3"><a href="graphiken.html#cb284-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
+<span id="cb284-3"><a href="graphiken.html#cb284-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
+<p>Die Angabe <code>method = "lm"</code> macht die Linie zur Geraden, geben wir dieses Argument nicht an, bekommen wir eine sogenannte loess-Kurve, die jedoch schnell unübersichtlich wird:</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="graphiken.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb285-2"><a href="graphiken.html#cb285-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb285-3"><a href="graphiken.html#cb285-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
 </div>
 <div id="streudiagramm-mit-mehr-als-2-variablen" class="section level3 hasAnchor" number="12.3.4">
 <h3><span class="header-section-number">12.3.4</span> Streudiagramm mit mehr als 2 Variablen<a href="graphiken.html#streudiagramm-mit-mehr-als-2-variablen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ein weiteres wichtiges Merkmal eines Diamanten ist sein Schliff, im <code>diamonds</code> Datensatz heißt diese Variable <code>cut</code>. Sie wird in mehreren Kategorien gemessen:</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="graphiken.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(diamonds<span class="sc">$</span>cut)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="graphiken.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(diamonds<span class="sc">$</span>cut)</span></code></pre></div>
 <pre><code>## 
 ##      Fair      Good Very Good   Premium     Ideal 
 ##      1610      4906     12082     13791     21551</code></pre>
 <p>Wollen wir diese 3. Variable auch in unserem Graphen darstellen, haben wir das Problem, dass wir neben X und Y keine weitere Achse haben. Oft behilft man sich in solchen Situationen durch die Hinzunahme einer weiteren <strong>aesthetics</strong> Kategorie, z.B. <strong>Farben</strong> (<code>colour</code>). Jede Schliffkategorie erhält also ihre eigene Farbe:</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="graphiken.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
-<span id="cb287-2"><a href="graphiken.html#cb287-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb287-3"><a href="graphiken.html#cb287-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="graphiken.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
+<span id="cb288-2"><a href="graphiken.html#cb288-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb288-3"><a href="graphiken.html#cb288-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
 <p>Es wären auch andere <strong>aesthetics</strong> zur Unterscheidung denkbar, z.B. die Form der Punkte (<code>shape</code>):</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="graphiken.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">shape =</span> cut)) <span class="sc">+</span></span>
-<span id="cb288-2"><a href="graphiken.html#cb288-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="graphiken.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">shape =</span> cut)) <span class="sc">+</span></span>
+<span id="cb289-2"><a href="graphiken.html#cb289-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
 </div>
 </div>
 <div id="histogramm" class="section level2 hasAnchor" number="12.4">
@@ -580,21 +574,21 @@ div.csl-indent {
 <p>Das Histogramm ist der wichtigste Graph zur Darstellung der Verteilung einer Variable. Er ist hinsichtlich der Komplexität sogar noch etwas leichter als das Streudiagramm, da nur 1 Variable enthalten ist.</p>
 <p>Die darzustellende Variable liegt i.d.R. auf der X-Achse, während auf der Y-Achse die absolute oder relative Häufigkeit der Merkmalsausprägungen dargestellt wird.</p>
 <p>Lassen Sie uns anhand der Variable <code>price</code> einmal ausprobieren ein Histogramm zu erstellen:</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="graphiken.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span></span>
-<span id="cb289-2"><a href="graphiken.html#cb289-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="graphiken.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span></span>
+<span id="cb290-2"><a href="graphiken.html#cb290-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
 <p>Wie wir sehen, kommen günstigere Diamanten häufiger vor als teure. In diesem Fall haben wir also nicht die beliebte <strong>normalverteilte</strong> Form der Verteilung, sondern eine rechtsschiefte Form.</p>
 <p>R gibt uns die Warnmeldung “Pick better value with <code>binwidth</code>”. Dies ist ein Hinweis, dass die Standardanzahl von 30 Balken für die hohe Auflösung der Variable <code>price</code> nicht ausreicht. Es wird uns eine Auflösung von <code>binwidth = 39</code> vorgeschlagen:</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="graphiken.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span></span>
-<span id="cb291-2"><a href="graphiken.html#cb291-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">39</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="graphiken.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span></span>
+<span id="cb292-2"><a href="graphiken.html#cb292-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">39</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
 <div id="histogramm-für-mehrere-gruppen" class="section level3 hasAnchor" number="12.4.1">
 <h3><span class="header-section-number">12.4.1</span> Histogramm für mehrere Gruppen<a href="graphiken.html#histogramm-für-mehrere-gruppen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Natürlich lassen sich Histogramme, also die Verteilungen einer Variable auch getrennt für unterschiedliche Kategorien darstellen:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="graphiken.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
-<span id="cb292-2"><a href="graphiken.html#cb292-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">39</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="graphiken.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
+<span id="cb293-2"><a href="graphiken.html#cb293-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">39</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-165-1.png" width="672" /></p>
 </div>
 </div>
 <div id="balkendiagramm" class="section level2 hasAnchor" number="12.5">
@@ -602,19 +596,19 @@ div.csl-indent {
 <p>Das Balkendiagramm ist eine Möglichkeit, die Höhe einer Deskriptivstatistik (aka summary statistics) mit der Höhe eines Balkens zu visualisieren. Es wird z.B. eingesetzt, um Gruppenunterschiede, bzw. Unterschiede zwischen den Kategorien einer Variable darzustellen.</p>
 <p>Probieren wir es doch gleich einmal mit der Variable <code>cut</code> (Schliff eines Diamanten) aus, die wir oben bereits kennengelernt haben. Wir wollen die durchschnittlichen Karat (Gewicht) der Steine für jede Kategorie von <code>cut</code> darstellen. Die höhe der Balken muss also jeweils den Mittelwert repräsentieren.</p>
 <p>Da wir nun keinen Wert visualisieren wollen der “direkt” als Zahl im Datensatz steht, sondern für die Berechnung des Mittelwerts eigentlich ein weiterer Rechenschritt erfolgen muss, benutzen wir die <code>stat_summary</code> Funktion:</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="graphiken.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat)) <span class="sc">+</span></span>
-<span id="cb293-2"><a href="graphiken.html#cb293-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="at">fun =</span> mean) </span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
-<p>Selbiges funktioniert natürlich auch mit jeder anderen Deskriptivstatistik, z.B. dem Median</p>
 <div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="graphiken.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat)) <span class="sc">+</span></span>
-<span id="cb294-2"><a href="graphiken.html#cb294-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="at">fun =</span> median) </span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-165-1.png" width="672" /></p>
-<p>Oder theoretisch auch mit anderen <code>geoms</code></p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="graphiken.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat)) <span class="sc">+</span></span>
-<span id="cb295-2"><a href="graphiken.html#cb295-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">fun =</span> mean) </span></code></pre></div>
+<span id="cb294-2"><a href="graphiken.html#cb294-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="at">fun =</span> mean) </span></code></pre></div>
 <p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
+<p>Selbiges funktioniert natürlich auch mit jeder anderen Deskriptivstatistik, z.B. dem Median</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="graphiken.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat)) <span class="sc">+</span></span>
+<span id="cb295-2"><a href="graphiken.html#cb295-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="at">fun =</span> median) </span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-167-1.png" width="672" /></p>
+<p>Oder theoretisch auch mit anderen <code>geoms</code></p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="graphiken.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat)) <span class="sc">+</span></span>
+<span id="cb296-2"><a href="graphiken.html#cb296-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">fun =</span> mean) </span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
 <p>Häufig möchte man zusätzlich eine Art von Streuung/Unschärfe darstellen, wenn Mittelwerte dargestellt werden. Eine beliebte Variante ist es, das 95% Konfidenzintervall um den Mittelwert mit sogenannten <strong>Fehlerbalken</strong> (error bars) zu visualisieren. Vorher installieren und laden wir noch das Paket <code>Hmisc</code>, welches uns die Berechnung der Fehlerbalken ermöglicht:</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="graphiken.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="graphiken.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span></code></pre></div>
 <pre><code>## Warning: package &#39;Hmisc&#39; was built under R version 3.6.2</code></pre>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## Warning: package &#39;lattice&#39; was built under R version 3.6.2</code></pre>
@@ -633,46 +627,46 @@ div.csl-indent {
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     format.pval, units</code></pre>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="graphiken.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat)) <span class="sc">+</span></span>
-<span id="cb308-2"><a href="graphiken.html#cb308-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_normal,  <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="sc">+</span></span>
-<span id="cb308-3"><a href="graphiken.html#cb308-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">fun =</span> mean) </span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-167-1.png" width="672" /></p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="graphiken.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat)) <span class="sc">+</span></span>
+<span id="cb309-2"><a href="graphiken.html#cb309-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_normal,  <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="sc">+</span></span>
+<span id="cb309-3"><a href="graphiken.html#cb309-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">fun =</span> mean) </span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-169-1.png" width="672" /></p>
 </div>
 <div id="balkendiagramm-mit-mehr-als-3-variablen" class="section level2 hasAnchor" number="12.6">
 <h2><span class="header-section-number">12.6</span> Balkendiagramm mit mehr als 3 Variablen<a href="graphiken.html#balkendiagramm-mit-mehr-als-3-variablen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Genau wie beim Streudiagramm lässt sich das Balkendiagramm auch für mehr als 2 Variablen darstellen. Statt Farben oder Punktfarben ist die einfachste Art Balken zu differenzieren mit der <code>fill</code> Ästhetik:</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="graphiken.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat, <span class="at">fill =</span> clarity)) <span class="sc">+</span></span>
-<span id="cb309-2"><a href="graphiken.html#cb309-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="at">fun =</span> mean, <span class="at">position =</span> <span class="fu">position_dodge2</span>(.<span class="dv">95</span>))</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="graphiken.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat, <span class="at">fill =</span> clarity)) <span class="sc">+</span></span>
+<span id="cb310-2"><a href="graphiken.html#cb310-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="at">fun =</span> mean, <span class="at">position =</span> <span class="fu">position_dodge2</span>(.<span class="dv">95</span>))</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-170-1.png" width="672" /></p>
 <p>Das Argument <code>position_dodge2()</code> sorgt dafür, dass die Balken nebeneinander positioniert sind und nicht voreinander. Probieren Sie den Code gerne auch einmal ohne <code>position_dodge2()</code> aus.</p>
 </div>
 <div id="boxplot" class="section level2 hasAnchor" number="12.7">
 <h2><span class="header-section-number">12.7</span> Boxplot<a href="graphiken.html#boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ähnlich wie das Balkendiagramm, lassen sich Gruppenunterschiede gut mit einem Boxplot darstellen. Dieses zeigt standardmäßig den Median (Mittelbalken), sowie die Streuung der Daten mittels der Box (Quartilabstand, IQR) und die sogenannten Whiskers (1.5 * Quartilabstand). Punkte außerhalb der Whiskers werden als Ausreißer mit einem Punkt gekennzeichnet.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="graphiken.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat)) <span class="sc">+</span></span>
-<span id="cb310-2"><a href="graphiken.html#cb310-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-169-1.png" width="672" /></p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="graphiken.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat)) <span class="sc">+</span></span>
+<span id="cb311-2"><a href="graphiken.html#cb311-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
 </div>
 <div id="facetting" class="section level2 hasAnchor" number="12.8">
 <h2><span class="header-section-number">12.8</span> Facetting<a href="graphiken.html#facetting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Wir sehen uns noch einmal unser 3-farbiges Streudiagramm von zuvor an:</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="graphiken.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
-<span id="cb311-2"><a href="graphiken.html#cb311-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb311-3"><a href="graphiken.html#cb311-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-170-1.png" width="672" /></p>
-<p>Es ist sichtbar, dass die Darstellung vieler Kategorien mittels weiterer aesthetics, wie Farben, Füllungen, Punktarten, etc. schnell unübersichtlich wird.</p>
-<p>Oft ist es nützlich, durch die Darstellung einzelner Gruppen in Teilgraphen (Facetten) etwas mehr Klarheit in die Darstellung zu bringen. Der Befehl dafür ist <code>facet_grid()</code>:</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="graphiken.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
 <span id="cb312-2"><a href="graphiken.html#cb312-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb312-3"><a href="graphiken.html#cb312-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb312-4"><a href="graphiken.html#cb312-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">cols =</span> <span class="fu">vars</span>(cut))</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
-<p>Es ist auch eine reihenweise Darstellung möglich</p>
+<span id="cb312-3"><a href="graphiken.html#cb312-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
+<p>Es ist sichtbar, dass die Darstellung vieler Kategorien mittels weiterer aesthetics, wie Farben, Füllungen, Punktarten, etc. schnell unübersichtlich wird.</p>
+<p>Oft ist es nützlich, durch die Darstellung einzelner Gruppen in Teilgraphen (Facetten) etwas mehr Klarheit in die Darstellung zu bringen. Der Befehl dafür ist <code>facet_grid()</code>:</p>
 <div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="graphiken.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
 <span id="cb313-2"><a href="graphiken.html#cb313-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb313-3"><a href="graphiken.html#cb313-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb313-4"><a href="graphiken.html#cb313-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(cut))</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
+<span id="cb313-4"><a href="graphiken.html#cb313-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">cols =</span> <span class="fu">vars</span>(cut))</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
+<p>Es ist auch eine reihenweise Darstellung möglich</p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="graphiken.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
+<span id="cb314-2"><a href="graphiken.html#cb314-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb314-3"><a href="graphiken.html#cb314-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb314-4"><a href="graphiken.html#cb314-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(cut))</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
 </div>
 <div id="ästhetische-anpassungen" class="section level2 hasAnchor" number="12.9">
 <h2><span class="header-section-number">12.9</span> Ästhetische Anpassungen<a href="graphiken.html#ästhetische-anpassungen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -680,42 +674,42 @@ div.csl-indent {
 <div id="ggtitle" class="section level3 hasAnchor" number="12.9.1">
 <h3><span class="header-section-number">12.9.1</span> ggtitle()<a href="graphiken.html#ggtitle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Um unserer Graphik einen Titel zu geben, nutzen wir den Befehl <code>ggtitle()</code>. Vorsicht: Wie jede Zeichenkette schreiben wir auch hier den Namen in Anführungszeichen:</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="graphiken.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
-<span id="cb314-2"><a href="graphiken.html#cb314-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb314-3"><a href="graphiken.html#cb314-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb314-4"><a href="graphiken.html#cb314-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Abb 1: Streudiagramm Diamantenpreis&quot;</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="graphiken.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
+<span id="cb315-2"><a href="graphiken.html#cb315-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb315-3"><a href="graphiken.html#cb315-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb315-4"><a href="graphiken.html#cb315-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Abb 1: Streudiagramm Diamantenpreis&quot;</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
 </div>
 <div id="labs" class="section level3 hasAnchor" number="12.9.2">
 <h3><span class="header-section-number">12.9.2</span> labs()<a href="graphiken.html#labs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>ggplot2</code> benutzt zur Beschriftung von X- und Y-Achse sowie als Titel der Legende automatisch die im <code>data.frame</code> enthaltenen Variablennamen</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="graphiken.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(diamonds)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="graphiken.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(diamonds)</span></code></pre></div>
 <pre><code>##  [1] &quot;carat&quot;   &quot;cut&quot;     &quot;color&quot;   &quot;clarity&quot; &quot;depth&quot;   &quot;table&quot;   &quot;price&quot;  
 ##  [8] &quot;x&quot;       &quot;y&quot;       &quot;z&quot;</code></pre>
 <p>Wollen wir dort eine schönere Beschriftung verwenden, nutzen den Befehl <code>labs()</code>. Die Y-Achse wollen wir nun auf deutsch “Preis” nennen, die X-Achse “Karat” und die Legende soll den Titel “Schliff” haben:</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="graphiken.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
-<span id="cb317-2"><a href="graphiken.html#cb317-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb317-3"><a href="graphiken.html#cb317-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb317-4"><a href="graphiken.html#cb317-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="graphiken.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
+<span id="cb318-2"><a href="graphiken.html#cb318-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb318-3"><a href="graphiken.html#cb318-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb318-4"><a href="graphiken.html#cb318-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
 </div>
 <div id="achsen-verändern" class="section level3 hasAnchor" number="12.9.3">
 <h3><span class="header-section-number">12.9.3</span> Achsen verändern<a href="graphiken.html#achsen-verändern" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Auch die Einheiten, mit denen die Achsen beschriftet werden (axis ticks) werden von R automatisch und gleichmäßig gewählt. Die Beschriftung kann auch manuell gesteuert werden. Der Befehl lautet <code>scale_x_continuous()</code>, bzw. <code>scale_y_continuous()</code> für kontinuierliche (numerische) X- und Y-Achsen. Für kategoriale X- und Y-Achsen (Namen/Kategorien) lautet der Befehl <code>scale_x_discrete()</code>, bzw. <code>scale_y_discrete ()</code>.</p>
 <p>Wir wollen zum Üben in dem vorangegangenen Graphen auf der X-Achse (Karat) manuell nur die Werte 0, 2 und 4 zulassen. Dies erfolgt über <code>breaks = c()</code>:</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="graphiken.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
-<span id="cb318-2"><a href="graphiken.html#cb318-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb318-3"><a href="graphiken.html#cb318-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb318-4"><a href="graphiken.html#cb318-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
-<span id="cb318-5"><a href="graphiken.html#cb318-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>))</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
-<p>Automatisch werden an den angegebenen Positionen der kontinuierlichen X-Achse die Zahlen eingetragen, also 0, 2 und 4. Wir könnten diese aber auch mit <code>labels</code> versehen:</p>
 <div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="graphiken.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
 <span id="cb319-2"><a href="graphiken.html#cb319-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb319-3"><a href="graphiken.html#cb319-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
 <span id="cb319-4"><a href="graphiken.html#cb319-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
-<span id="cb319-5"><a href="graphiken.html#cb319-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Null&quot;</span>, <span class="st">&quot;Zwei&quot;</span>, <span class="st">&quot;Vier&quot;</span>))</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
+<span id="cb319-5"><a href="graphiken.html#cb319-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>))</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
+<p>Automatisch werden an den angegebenen Positionen der kontinuierlichen X-Achse die Zahlen eingetragen, also 0, 2 und 4. Wir könnten diese aber auch mit <code>labels</code> versehen:</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="graphiken.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
+<span id="cb320-2"><a href="graphiken.html#cb320-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb320-3"><a href="graphiken.html#cb320-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb320-4"><a href="graphiken.html#cb320-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
+<span id="cb320-5"><a href="graphiken.html#cb320-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Null&quot;</span>, <span class="st">&quot;Zwei&quot;</span>, <span class="st">&quot;Vier&quot;</span>))</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
 </div>
 </div>
 <div id="theme" class="section level2 hasAnchor" number="12.10">
@@ -725,53 +719,53 @@ div.csl-indent {
 <div id="elemente-von-theme" class="section level3 hasAnchor" number="12.10.1">
 <h3><span class="header-section-number">12.10.1</span> Elemente von theme()<a href="graphiken.html#elemente-von-theme" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sehen wir uns dennoch einmal ein Beispiel an. Wie wäre es, wenn wir den gesamten Text in unserem Graphen etwas kleiner machen? Das geht so:</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="graphiken.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
-<span id="cb320-2"><a href="graphiken.html#cb320-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb320-3"><a href="graphiken.html#cb320-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb320-4"><a href="graphiken.html#cb320-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
-<span id="cb320-5"><a href="graphiken.html#cb320-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">5</span>))</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
-<p>Wir können auf diese Art auch Elemente (Achsen, Beschriftungen…) aus unserem Graphen löschen. Dafür wählt man die Option <code>element_blank()</code>. Lassen wir zum Beispiel einmal die kleinen Striche, die die Einheiten an den Achsen anzeigen verschwinden:</p>
 <div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="graphiken.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
 <span id="cb321-2"><a href="graphiken.html#cb321-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb321-3"><a href="graphiken.html#cb321-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
 <span id="cb321-4"><a href="graphiken.html#cb321-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
-<span id="cb321-5"><a href="graphiken.html#cb321-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.ticks =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
+<span id="cb321-5"><a href="graphiken.html#cb321-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">5</span>))</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
+<p>Wir können auf diese Art auch Elemente (Achsen, Beschriftungen…) aus unserem Graphen löschen. Dafür wählt man die Option <code>element_blank()</code>. Lassen wir zum Beispiel einmal die kleinen Striche, die die Einheiten an den Achsen anzeigen verschwinden:</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="graphiken.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
+<span id="cb322-2"><a href="graphiken.html#cb322-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb322-3"><a href="graphiken.html#cb322-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb322-4"><a href="graphiken.html#cb322-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
+<span id="cb322-5"><a href="graphiken.html#cb322-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.ticks =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
 </div>
 <div id="legende" class="section level3 hasAnchor" number="12.10.2">
 <h3><span class="header-section-number">12.10.2</span> Legende<a href="graphiken.html#legende" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Auch die Legende des Graphen lässt sich über <code>theme()</code> steuern. Dazu nutzen wir das Argument <code>legend.position</code>.</p>
 <p>Die Optionen sind “right” (das ist der Standard), “left”, “top”, “bottom”. Lassen Sie uns die Legende einmal unter den Graphen verschieben:</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="graphiken.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
-<span id="cb322-2"><a href="graphiken.html#cb322-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb322-3"><a href="graphiken.html#cb322-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb322-4"><a href="graphiken.html#cb322-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
-<span id="cb322-5"><a href="graphiken.html#cb322-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="graphiken.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
+<span id="cb323-2"><a href="graphiken.html#cb323-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb323-3"><a href="graphiken.html#cb323-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb323-4"><a href="graphiken.html#cb323-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
+<span id="cb323-5"><a href="graphiken.html#cb323-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-182-1.png" width="672" /></p>
 </div>
 <div id="vorgefertigte-themes" class="section level3 hasAnchor" number="12.10.3">
 <h3><span class="header-section-number">12.10.3</span> Vorgefertigte themes<a href="graphiken.html#vorgefertigte-themes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Wenn wir nicht alle optischen Elemente des Graphen einzeln anpassen möchten, aber ihn doch etwas individueller aussehen lassen wollen, können wir eines der vorgefertigten Themen nutzen.</p>
 <p>Hier einige häufig gewählte Beispiele:</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="graphiken.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
-<span id="cb323-2"><a href="graphiken.html#cb323-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb323-3"><a href="graphiken.html#cb323-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb323-4"><a href="graphiken.html#cb323-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
-<span id="cb323-5"><a href="graphiken.html#cb323-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
 <div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="graphiken.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
 <span id="cb324-2"><a href="graphiken.html#cb324-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb324-3"><a href="graphiken.html#cb324-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
 <span id="cb324-4"><a href="graphiken.html#cb324-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
-<span id="cb324-5"><a href="graphiken.html#cb324-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-182-1.png" width="672" /></p>
+<span id="cb324-5"><a href="graphiken.html#cb324-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-183-1.png" width="672" /></p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="graphiken.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
 <span id="cb325-2"><a href="graphiken.html#cb325-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb325-3"><a href="graphiken.html#cb325-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
 <span id="cb325-4"><a href="graphiken.html#cb325-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
-<span id="cb325-5"><a href="graphiken.html#cb325-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dark</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-183-1.png" width="672" /></p>
+<span id="cb325-5"><a href="graphiken.html#cb325-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-184-1.png" width="672" /></p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="graphiken.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
+<span id="cb326-2"><a href="graphiken.html#cb326-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb326-3"><a href="graphiken.html#cb326-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb326-4"><a href="graphiken.html#cb326-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Karat&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Preis&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Schliff&quot;</span>) <span class="sc">+</span></span>
+<span id="cb326-5"><a href="graphiken.html#cb326-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dark</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-185-1.png" width="672" /></p>
 <p>Es gibt R-Pakete, die hunderte weitere Optionen bereitstellen, so zum Beispiel das Paket <code>ggthemes</code>. Installieren Sie es einfach mittels <code>install.packages()</code> und testen Sie es aus.</p>
 </div>
 </div>
@@ -780,29 +774,29 @@ div.csl-indent {
 <p>Gerade bei komplexeren Fragestellungen oder Studien mit mehreren abhängigen Variablen (AVs) kommt es vor, dass die Anzahl der Graphen etwas zu groß wird.</p>
 <p>Dann kann es helfen, mehrere Graphen zu einem kombinierte Graph zusammenzusetzen. Die Funktion dafür heißt <code>ggarrange()</code> und kommt aus dem R-Paket <code>ggpubr</code>.</p>
 <p>Also installieren Sie kurz das Paket <code>ggpubr</code>, laden es mittels <code>library()</code> und dann geht es gleich weiter:</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="graphiken.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggpubr&quot;)</span></span>
-<span id="cb326-2"><a href="graphiken.html#cb326-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="graphiken.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggpubr&quot;)</span></span>
+<span id="cb327-2"><a href="graphiken.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code></pre></div>
 <p>Damit es sich auch lohnt, nehmen wir uns gleich einmal 4 Graphen vor. Nehmen wir doch einen von jeder Art. Damit es nicht zu unübersichtlich wird, benennen wir die 4 Graphen mit <code>a</code>, <code>b</code>, <code>c</code> und <code>d</code>:</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="graphiken.html#cb327-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span></span>
-<span id="cb327-2"><a href="graphiken.html#cb327-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb327-3"><a href="graphiken.html#cb327-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb327-4"><a href="graphiken.html#cb327-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
-<span id="cb327-5"><a href="graphiken.html#cb327-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb327-6"><a href="graphiken.html#cb327-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb327-7"><a href="graphiken.html#cb327-7" aria-hidden="true" tabindex="-1"></a>c <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> color, <span class="at">y =</span> carat)) <span class="sc">+</span></span>
-<span id="cb327-8"><a href="graphiken.html#cb327-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="at">fun =</span> mean) </span>
-<span id="cb327-9"><a href="graphiken.html#cb327-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb327-10"><a href="graphiken.html#cb327-10" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span></span>
-<span id="cb327-11"><a href="graphiken.html#cb327-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="graphiken.html#cb328-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span></span>
+<span id="cb328-2"><a href="graphiken.html#cb328-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb328-3"><a href="graphiken.html#cb328-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb328-4"><a href="graphiken.html#cb328-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb328-5"><a href="graphiken.html#cb328-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb328-6"><a href="graphiken.html#cb328-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb328-7"><a href="graphiken.html#cb328-7" aria-hidden="true" tabindex="-1"></a>c <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> color, <span class="at">y =</span> carat)) <span class="sc">+</span></span>
+<span id="cb328-8"><a href="graphiken.html#cb328-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="at">fun =</span> mean) </span>
+<span id="cb328-9"><a href="graphiken.html#cb328-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb328-10"><a href="graphiken.html#cb328-10" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span></span>
+<span id="cb328-11"><a href="graphiken.html#cb328-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p>Diese 4 Objekte <code>a</code>, <code>b</code>, <code>c</code> und <code>d</code> setzen wir dann einfach in <code>ggarrange()</code> ein. Es macht Sinn den Graphen auch ein Label zu geben, dann kann man in der Fußnote der Abbildung darauf verweise, was in welchem Graphen zu sehen ist (z.B. “<em>In Graphik A sieht man ein Histogramm von…</em>”):</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="graphiken.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(a, b, c, d, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>))</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-186-1.png" width="672" /></p>
-<p>Wir können auch steuern, wie das Gitter der Graphen zusammengesetzt sein soll, zum Beispiel untereinander…</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="graphiken.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(a, b, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-187-1.png" width="672" /></p>
-<p>… oder nebeneinander:</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="graphiken.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(a, b, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="graphiken.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(a, b, c, d, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>))</span></code></pre></div>
 <p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-188-1.png" width="672" /></p>
+<p>Wir können auch steuern, wie das Gitter der Graphen zusammengesetzt sein soll, zum Beispiel untereinander…</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="graphiken.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(a, b, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-189-1.png" width="672" /></p>
+<p>… oder nebeneinander:</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="graphiken.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(a, b, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-190-1.png" width="672" /></p>
 </div>
 <div id="abbildungen-exportieren" class="section level2 hasAnchor" number="12.12">
 <h2><span class="header-section-number">12.12</span> Abbildungen exportieren<a href="graphiken.html#abbildungen-exportieren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -816,12 +810,12 @@ div.csl-indent {
 </ol>
 <p>Größe (in cm) und Auflösung (in dpi) lassen sich direkt innerhalb des Befehls steuern.</p>
 <p>Ein Beispiel:</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="graphiken.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file =</span> <span class="st">&quot;Figure1.png&quot;</span>, <span class="at">width =</span> <span class="dv">5</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
-<span id="cb331-2"><a href="graphiken.html#cb331-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb331-3"><a href="graphiken.html#cb331-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
-<span id="cb331-4"><a href="graphiken.html#cb331-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">39</span>)</span>
-<span id="cb331-5"><a href="graphiken.html#cb331-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb331-6"><a href="graphiken.html#cb331-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="graphiken.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file =</span> <span class="st">&quot;Figure1.png&quot;</span>, <span class="at">width =</span> <span class="dv">5</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb332-2"><a href="graphiken.html#cb332-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb332-3"><a href="graphiken.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price, <span class="at">colour =</span> cut)) <span class="sc">+</span></span>
+<span id="cb332-4"><a href="graphiken.html#cb332-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">39</span>)</span>
+<span id="cb332-5"><a href="graphiken.html#cb332-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb332-6"><a href="graphiken.html#cb332-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
 <p>Das Argument <code>file</code> gibt den Zielnamen der .png Datei an. Die Argumente <code>width</code> und <code>height</code> die Dimensionen (hier quadratisch <span class="math inline">\(\rightarrow\)</span> für rechteckig einfach eine der beiden vergrößern/verkleinern). Die Auflösung von 300 dpi ist sehr gebräuchlich und muss nur selten verändert werden.</p>

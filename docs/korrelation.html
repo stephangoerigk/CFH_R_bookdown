@@ -176,14 +176,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="installation.html"><a href="installation.html#videotutorial"><i class="fa fa-check"></i><b>3.1.1</b> Videotutorial</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="installation.html"><a href="installation.html#videotutorial-1"><i class="fa fa-check"></i><b>3.2.1</b> Videotutorial</a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a></li>
+<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="programmaufbau.html"><a href="programmaufbau.html"><i class="fa fa-check"></i><b>4</b> Programmaufbau</a>
 <ul>
@@ -484,15 +478,15 @@ div.csl-indent {
 <p>Bei einem Korrelationstest wird die Beziehung zwischen zwei Variablen auf einer Verhältnis- oder Intervallskala untersucht: z. B. Größe und Gewicht oder Einkommen und Selbstvertrauen</p>
 <p>Die Teststatistik bei einem Korrelationstest wird als Korrelationskoeffizient bezeichnet und durch den Buchstaben <span class="math inline">\(r\)</span> dargestellt.</p>
 <p>Der Koeffizient kann zwischen -1 und +1 liegen, wobei -1 für eine starke negative Beziehung und +1 für eine starke positive Beziehung steht.</p>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-206-1.png" width="672" /></p>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-208-1.png" width="672" /></p>
 <div id="hypothesen" class="section level2 hasAnchor" number="14.1">
 <h2><span class="header-section-number">14.1</span> Hypothesen<a href="korrelation.html#hypothesen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="korrelation.html#cb351-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">rnorm_multi</span>(<span class="at">n =</span> <span class="dv">100</span>, </span>
-<span id="cb351-2"><a href="korrelation.html#cb351-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">8</span>),</span>
-<span id="cb351-3"><a href="korrelation.html#cb351-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">2</span>),</span>
-<span id="cb351-4"><a href="korrelation.html#cb351-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">r =</span> <span class="fu">c</span>(<span class="fl">0.69</span>), </span>
-<span id="cb351-5"><a href="korrelation.html#cb351-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">varnames =</span> <span class="fu">c</span>(<span class="st">&quot;Konzentration&quot;</span>, <span class="st">&quot;Schlaf&quot;</span>),</span>
-<span id="cb351-6"><a href="korrelation.html#cb351-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">empirical =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="korrelation.html#cb352-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">rnorm_multi</span>(<span class="at">n =</span> <span class="dv">100</span>, </span>
+<span id="cb352-2"><a href="korrelation.html#cb352-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">8</span>),</span>
+<span id="cb352-3"><a href="korrelation.html#cb352-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">2</span>),</span>
+<span id="cb352-4"><a href="korrelation.html#cb352-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">r =</span> <span class="fu">c</span>(<span class="fl">0.69</span>), </span>
+<span id="cb352-5"><a href="korrelation.html#cb352-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">varnames =</span> <span class="fu">c</span>(<span class="st">&quot;Konzentration&quot;</span>, <span class="st">&quot;Schlaf&quot;</span>),</span>
+<span id="cb352-6"><a href="korrelation.html#cb352-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">empirical =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>Die Korrelation prüft als Signifikanztest, ob ein Zusammenhang zwischen 2 Variablen besteht.</p>
 <p>Da Korrelationskoeffizient von 0 bedeutet, dass kein Zusammenhang zwischen den Variablen besteht, wird im Signifikanztest i.d.R. <span class="math inline">\(r\)</span> gegen 0 getestet (daher Nullhypothese).</p>
 <p>Folgende Hypothesen sind denkbar:</p>
@@ -513,27 +507,27 @@ div.csl-indent {
 </ul>
 <p>Eine typische psychologische Fragestellung für eine Zusammenhangshypothese könnte sein, ob die Anzahl der in der Nacht geschlafenen Stunden (<code>Schlaf</code>) mit der Leistung in einem Konzentrationstest zusammenhängt (<code>Konzentration</code>).</p>
 <p>Ein entsprechender Datensatz könnte wie folgt aussehen (die ersten 6 Zeilen von <span class="math inline">\(N=100)\)</span>:</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="korrelation.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>##   Konzentration   Schlaf
-## 1      43.46458 7.779774
-## 2     100.23203 9.503095
-## 3      73.28376 6.904448
-## 4      86.24484 8.461528
-## 5      89.79502 6.318588
-## 6      64.37581 7.544464</code></pre>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="korrelation.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   Konzentration    Schlaf
+## 1     115.31075  9.009106
+## 2     101.58951  9.853620
+## 3     114.05790  7.972126
+## 4      71.40586  6.498890
+## 5     110.53665 10.583116
+## 6     114.78045 10.154649</code></pre>
 <p>Um einen ersten Eindruck vom Zusammenhang zu gewinnen, können wir uns die Daten in einem Streudiagramm darstellen:</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="korrelation.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> Schlaf, <span class="at">y =</span> Konzentration)) <span class="sc">+</span></span>
-<span id="cb354-2"><a href="korrelation.html#cb354-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb354-3"><a href="korrelation.html#cb354-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-209-1.png" width="672" /></p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="korrelation.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> Schlaf, <span class="at">y =</span> Konzentration)) <span class="sc">+</span></span>
+<span id="cb355-2"><a href="korrelation.html#cb355-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb355-3"><a href="korrelation.html#cb355-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-211-1.png" width="672" /></p>
 </div>
 <div id="berechnung-der-korrelation" class="section level2 hasAnchor" number="14.2">
 <h2><span class="header-section-number">14.2</span> Berechnung der Korrelation<a href="korrelation.html#berechnung-der-korrelation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Der Korrelationskoeffizient lässt sich mit der R-Basisfunktion <code>cor()</code> berechnen.</p>
 <p>Dafür schreiben wir ganz einfach die beiden zu korrelierenden Variablen nebeneinander in die Funktion:</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="korrelation.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf)</span></code></pre></div>
-<pre><code>## [1] 0.6936524</code></pre>
-<p>Wie Sie sehen, erhalten wir einen Korrelationskoeffizienten von <span class="math inline">\(r=0.69\)</span>. Also einen positiven Zusammenhang.</p>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="korrelation.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf)</span></code></pre></div>
+<pre><code>## [1] 0.5955099</code></pre>
+<p>Wie Sie sehen, erhalten wir einen Korrelationskoeffizienten von <span class="math inline">\(r=0.6\)</span>. Also einen positiven Zusammenhang.</p>
 </div>
 <div id="unterschiedliche-korrelationsmethoden" class="section level2 hasAnchor" number="14.3">
 <h2><span class="header-section-number">14.3</span> Unterschiedliche Korrelationsmethoden<a href="korrelation.html#unterschiedliche-korrelationsmethoden" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -553,16 +547,16 @@ div.csl-indent {
 <p>Der <strong>Spearman</strong> Korrelationskoeffizient funktioniert im Wesentlichen wie der Pearson Korrelationskoeffizient, jedoch wird er auf Ordinalskalenniveau berechnet.</p>
 <p>Das macht ihn unempfindlicher gegenüber Verteilungsverletzungen und Ausreißern.</p>
 <p>Die Berechnung des <strong>Spearman</strong> Korrelationskoeffizienten erfolgt nach derselben Methode, mit einer kleinen Spezifikation:</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="korrelation.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] 0.6773957</code></pre>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="korrelation.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0.569973</code></pre>
 <p>In der Regel ist die Abweichung der beiden Korrelationskoeffizienten voneinander nicht allzu hoch.</p>
 </div>
 <div id="kendall-korrelation" class="section level3 hasAnchor" number="14.3.3">
 <h3><span class="header-section-number">14.3.3</span> Kendall-Korrelation<a href="korrelation.html#kendall-korrelation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Rangkorrelationskoeffizienten von Spearman und Kendall sind beide Koeffizienten, die den Zusammenhang ordinalskalierter Merkmale beschreiben können.</p>
 <p>Der Vorteil des Kendall <span class="math inline">\(τ\)</span> liegt darin, dass seine Verteilung bei kleineren Stichprobenumfängen bessere statistische Eigenschaften bietet und er weniger empfindlich gegen Ausreißer-Rangpaare ist.</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="korrelation.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] 0.4945455</code></pre>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="korrelation.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0.4080808</code></pre>
 </div>
 </div>
 <div id="korrelation-als-hypothesentest" class="section level2 hasAnchor" number="14.4">
@@ -604,18 +598,18 @@ div.csl-indent {
 </tbody>
 </table>
 <p>Wenn wir zum Beispiel testen wollten, ob ein signifikanter negativer Zusammenhang zwischen Konzentration und Schlaf besteht, könnten wir das mit folgendem Signifikanztest prüfen:</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="korrelation.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="korrelation.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(data<span class="sc">$</span>Konzentration, data<span class="sc">$</span>Schlaf, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  data$Konzentration and data$Schlaf
-## t = 9.5331, df = 98, p-value = 1
+## t = 7.3383, df = 98, p-value = 1
 ## alternative hypothesis: true correlation is less than 0
 ## 95 percent confidence interval:
-##  -1.000000  0.770668
+##  -1.0000000  0.6927221
 ## sample estimates:
 ##       cor 
-## 0.6936524</code></pre>
+## 0.5955099</code></pre>
 
 </div>
 </div>

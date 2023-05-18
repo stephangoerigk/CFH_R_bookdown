@@ -176,14 +176,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="installation.html"><a href="installation.html#videotutorial"><i class="fa fa-check"></i><b>3.1.1</b> Videotutorial</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="installation.html"><a href="installation.html#videotutorial-1"><i class="fa fa-check"></i><b>3.2.1</b> Videotutorial</a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a></li>
+<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="programmaufbau.html"><a href="programmaufbau.html"><i class="fa fa-check"></i><b>4</b> Programmaufbau</a>
 <ul>
@@ -490,7 +484,7 @@ div.csl-indent {
 <p>Um schnell Informationen über ein R Objekt (Vektor, data.frame, Bild o.ä.) zu erhalten, nutzen wir den <code>str()</code> Befehl.</p>
 <p>So können wir einen schnellen Überblick erhalten, um was für ein Objekt es sich handelt und “was in dem Objekt drin steckt”.</p>
 <p>Als Beispiel benutzen wir den <code>iris</code> Datensatz, der in der Basisversion von R enthalten ist. Dieser enthält Informationen über 3 Spezies der Blumenart Iris.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="daten-beschreiben.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris) <span class="co"># erste 6 Zeilen ansehen</span></span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="daten-beschreiben.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris) <span class="co"># erste 6 Zeilen ansehen</span></span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -498,7 +492,7 @@ div.csl-indent {
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="daten-beschreiben.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="daten-beschreiben.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
@@ -512,38 +506,38 @@ div.csl-indent {
 <div id="length" class="section level4 hasAnchor" number="9.1.2.1">
 <h4><span class="header-section-number">9.1.2.1</span> length()<a href="daten-beschreiben.html#length" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Um herauszufinden, wie viele Stellen ein Vektor hat, nutzen wir die Funktion <code>length()</code>:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="daten-beschreiben.html#cb116-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
-<span id="cb116-2"><a href="daten-beschreiben.html#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-3"><a href="daten-beschreiben.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(vektor)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="daten-beschreiben.html#cb117-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
+<span id="cb117-2"><a href="daten-beschreiben.html#cb117-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-3"><a href="daten-beschreiben.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(vektor)</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 </div>
 <div id="is-funktionen" class="section level4 hasAnchor" number="9.1.2.2">
 <h4><span class="header-section-number">9.1.2.2</span> is… Funktionen<a href="daten-beschreiben.html#is-funktionen" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Wir können zudem die Variablenart des Vektors abfragen. Dies funktioniert mit dem <code>is.()</code> Befehl, ergänzt durch die Variablenart, nach der wir fragen wollen. Z.B. enthält die Variable <code>Petal.Length</code> des <code>iris</code> Datensatzes ausschließlich Zahlen:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="daten-beschreiben.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(iris<span class="sc">$</span>Petal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="daten-beschreiben.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(iris<span class="sc">$</span>Petal.Length)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="daten-beschreiben.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(iris<span class="sc">$</span>Petal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="daten-beschreiben.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(iris<span class="sc">$</span>Petal.Length)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="is.na" class="section level4 hasAnchor" number="9.1.2.3">
 <h4><span class="header-section-number">9.1.2.3</span> is.na()<a href="daten-beschreiben.html#is.na" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Wir können auch spezifisch nach fehlenden Werten Fragen. Erstellen wir uns schnell einen Beispielvektor:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="daten-beschreiben.html#cb122-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">5</span>, <span class="cn">NA</span>)</span>
-<span id="cb122-2"><a href="daten-beschreiben.html#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-3"><a href="daten-beschreiben.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(a)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="daten-beschreiben.html#cb123-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">5</span>, <span class="cn">NA</span>)</span>
+<span id="cb123-2"><a href="daten-beschreiben.html#cb123-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-3"><a href="daten-beschreiben.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(a)</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE  TRUE FALSE  TRUE</code></pre>
 <p>Auf diese Art, können wir auch leicht zählen, wie viele Elemente eines Vektors als “fehlende Werte” berücksichtigt werden müssen:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="daten-beschreiben.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(a))</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="daten-beschreiben.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(a))</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 </div>
 </div>
 <div id="informationen-über-dataframes" class="section level3 hasAnchor" number="9.1.3">
 <h3><span class="header-section-number">9.1.3</span> Informationen über dataframes<a href="daten-beschreiben.html#informationen-über-dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="daten-beschreiben.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co">#length()</span></span>
-<span id="cb126-2"><a href="daten-beschreiben.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="co">#str()</span></span>
-<span id="cb126-3"><a href="daten-beschreiben.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="co">#nrow()</span></span>
-<span id="cb126-4"><a href="daten-beschreiben.html#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="co">#ncol()</span></span>
-<span id="cb126-5"><a href="daten-beschreiben.html#cb126-5" aria-hidden="true" tabindex="-1"></a><span class="co">#is.na()</span></span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="daten-beschreiben.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co">#length()</span></span>
+<span id="cb127-2"><a href="daten-beschreiben.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co">#str()</span></span>
+<span id="cb127-3"><a href="daten-beschreiben.html#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="co">#nrow()</span></span>
+<span id="cb127-4"><a href="daten-beschreiben.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co">#ncol()</span></span>
+<span id="cb127-5"><a href="daten-beschreiben.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="co">#is.na()</span></span></code></pre></div>
 </div>
 </div>
 <div id="deskriptivstatistiken" class="section level2 hasAnchor" number="9.2">
@@ -587,20 +581,20 @@ div.csl-indent {
 <h4><span class="header-section-number">9.2.1.2</span> Absolute Häufigkeiten<a href="daten-beschreiben.html#absolute-häufigkeiten" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Leider gibt es zum Zusammenfassen kategorialer (nominalskalierter) Variablen nicht so viele Möglichkeiten wie für die numerischen Variablen (die Mittelwert, Median, Standardabweichung… ermöglichen).</p>
 <p>Die gängigste Deskription einer kategorialen Variable ist die Erstellung einer Häufigkeitstabelle. Eine Häufigkeitstabelle mit absoluten Häufigkeiten lässt sich mit dem <code>table()</code> Befehl erstellen.</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="daten-beschreiben.html#cb127-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Geschlecht =</span> <span class="fu">c</span>(<span class="st">&quot;männlich&quot;</span>, <span class="st">&quot;männlich&quot;</span>, <span class="st">&quot;männlich&quot;</span>, <span class="st">&quot;weiblich&quot;</span>, <span class="st">&quot;weiblich&quot;</span>),</span>
-<span id="cb127-2"><a href="daten-beschreiben.html#cb127-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">Diagnose =</span> <span class="fu">c</span>(<span class="st">&quot;Depression&quot;</span>, <span class="st">&quot;Depression&quot;</span>, <span class="st">&quot;Angst&quot;</span>, <span class="st">&quot;Depression&quot;</span>, <span class="st">&quot;Angst&quot;</span>))</span>
-<span id="cb127-3"><a href="daten-beschreiben.html#cb127-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-4"><a href="daten-beschreiben.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>Diagnose)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="daten-beschreiben.html#cb128-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Geschlecht =</span> <span class="fu">c</span>(<span class="st">&quot;männlich&quot;</span>, <span class="st">&quot;männlich&quot;</span>, <span class="st">&quot;männlich&quot;</span>, <span class="st">&quot;weiblich&quot;</span>, <span class="st">&quot;weiblich&quot;</span>),</span>
+<span id="cb128-2"><a href="daten-beschreiben.html#cb128-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">Diagnose =</span> <span class="fu">c</span>(<span class="st">&quot;Depression&quot;</span>, <span class="st">&quot;Depression&quot;</span>, <span class="st">&quot;Angst&quot;</span>, <span class="st">&quot;Depression&quot;</span>, <span class="st">&quot;Angst&quot;</span>))</span>
+<span id="cb128-3"><a href="daten-beschreiben.html#cb128-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-4"><a href="daten-beschreiben.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>Diagnose)</span></code></pre></div>
 <pre><code>## 
 ##      Angst Depression 
 ##          2          3</code></pre>
 <p>Wollen wir die Häufigkeit einer bestimmten Kategorie (z.B. nur der Diagnose Depression) auswählen, dann geht dies so:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="daten-beschreiben.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>Diagnose)[<span class="st">&quot;Depression&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="daten-beschreiben.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>Diagnose)[<span class="st">&quot;Depression&quot;</span>]</span></code></pre></div>
 <pre><code>## Depression 
 ##          3</code></pre>
 <p>Wollen wir die Häufigkeit einer Kategorie innerhalb von unterschiedlichen Gruppen darstellen, geht dies ebenfalls mit <code>table()</code>.</p>
 <p>Wir schreiben lediglich die beide relevanten Variablen in die Klammer:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="daten-beschreiben.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>Diagnose, df<span class="sc">$</span>Geschlecht)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="daten-beschreiben.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>Diagnose, df<span class="sc">$</span>Geschlecht)</span></code></pre></div>
 <pre><code>##             
 ##              männlich weiblich
 ##   Angst             1        1
@@ -613,7 +607,7 @@ div.csl-indent {
 <div id="unique-funktion" class="section level4 hasAnchor" number="9.2.1.4">
 <h4><span class="header-section-number">9.2.1.4</span> unique() Funktion<a href="daten-beschreiben.html#unique-funktion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Wollen wir in einem Vektor, der viele Wiederholungen der selben Merkmalsausprägungen enthält, jede Ausprägung nur einmal anzeigen lassen, nutzen wir <code>unique()</code>:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="daten-beschreiben.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Diagnose)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="daten-beschreiben.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Diagnose)</span></code></pre></div>
 <pre><code>## [1] Depression Angst     
 ## Levels: Angst Depression</code></pre>
 </div>
@@ -677,20 +671,20 @@ div.csl-indent {
 </ul>
 <p>Lagemaße sind nützliche Werkzeuge, um einen Überblick über Daten zu gewinnen und Vergleiche zwischen verschiedenen Verteilungen anzustellen (z.B. bei Gruppenvergleichen).</p>
 <p>Schauen wir uns die Funktionen einmal in Aktion an:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="daten-beschreiben.html#cb135-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
-<span id="cb135-2"><a href="daten-beschreiben.html#cb135-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb135-3"><a href="daten-beschreiben.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vektor)</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="daten-beschreiben.html#cb136-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb136-2"><a href="daten-beschreiben.html#cb136-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-3"><a href="daten-beschreiben.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vektor)</span></code></pre></div>
 <pre><code>## [1] 3.375</code></pre>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="daten-beschreiben.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(vektor)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="daten-beschreiben.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(vektor)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Diese Funktionen funktionieren nur für Vektoren, nicht für <code>data.frames()</code>.</p>
 <p><strong>Vorsicht:</strong> Es kann vorkommen, dass wir in unseren Daten fehlende Werte (missings) haben. Dann funktionieren die Funktionen nicht mehr:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="daten-beschreiben.html#cb139-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="cn">NA</span>)</span>
-<span id="cb139-2"><a href="daten-beschreiben.html#cb139-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-3"><a href="daten-beschreiben.html#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vektor)</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="daten-beschreiben.html#cb140-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="cn">NA</span>)</span>
+<span id="cb140-2"><a href="daten-beschreiben.html#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-3"><a href="daten-beschreiben.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vektor)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>Wir können das Problem jedoch mit einem kleinen Extra-Argument (<code>na.rm = T</code>) lösen. Die Statistik wird dann auf Basis aller verfügbaren Werte berechnet und die fehlenden Werte werden ignoriert:</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="daten-beschreiben.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vektor, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="daten-beschreiben.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vektor, <span class="at">na.rm =</span> T)</span></code></pre></div>
 <pre><code>## [1] 3.166667</code></pre>
 </div>
 <div id="streuungsmaße" class="section level4 hasAnchor" number="9.2.2.2">
@@ -705,21 +699,21 @@ div.csl-indent {
 </ul>
 <p>Streuungsmaße helfen dabei, die Homogenität oder Heterogenität von Daten zu analysieren und den Grad der Variation zu verstehen.</p>
 <p>Nun probieren wir die Funktionen zur Berechnung der Streuungsmaße aus:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="daten-beschreiben.html#cb143-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
-<span id="cb143-2"><a href="daten-beschreiben.html#cb143-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-3"><a href="daten-beschreiben.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(vektor)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="daten-beschreiben.html#cb144-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb144-2"><a href="daten-beschreiben.html#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-3"><a href="daten-beschreiben.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(vektor)</span></code></pre></div>
 <pre><code>## [1] 3.410714</code></pre>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="daten-beschreiben.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(vektor)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="daten-beschreiben.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(vektor)</span></code></pre></div>
 <pre><code>## [1] 1.846812</code></pre>
 <p>Wie wir wissen, ist die Standardabweichung die Wurzel aus der Varianz:</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="daten-beschreiben.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">var</span>(vektor))</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="daten-beschreiben.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">var</span>(vektor))</span></code></pre></div>
 <pre><code>## [1] 1.846812</code></pre>
 <p>Zur Berechnung des Quartilabstands (IQR) benutzen wir die <code>IQR()</code> Funktion aus dem <code>stats</code> Paket:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="daten-beschreiben.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;stats&quot;)</span></span>
-<span id="cb149-2"><a href="daten-beschreiben.html#cb149-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-3"><a href="daten-beschreiben.html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span>
-<span id="cb149-4"><a href="daten-beschreiben.html#cb149-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-5"><a href="daten-beschreiben.html#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(vektor)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="daten-beschreiben.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;stats&quot;)</span></span>
+<span id="cb150-2"><a href="daten-beschreiben.html#cb150-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb150-3"><a href="daten-beschreiben.html#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span>
+<span id="cb150-4"><a href="daten-beschreiben.html#cb150-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb150-5"><a href="daten-beschreiben.html#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(vektor)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
 </div>
@@ -773,21 +767,21 @@ div.csl-indent {
 <h2><span class="header-section-number">9.4</span> Alles auf einen Blick<a href="daten-beschreiben.html#alles-auf-einen-blick" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Manchmal uns nicht die Mühe machen, die Deskriptivstatistiken alle einzeln und nacheinander zu berechnen. Schöner wäre es, mit einer Funktion alle relevanten Kennwerte auf einmal zu erhalten.</p>
 <p>Eine solche Funktion ist <code>describe()</code> aus dem <code>psych</code> Paket:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="daten-beschreiben.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;psych&quot;)</span></span>
-<span id="cb151-2"><a href="daten-beschreiben.html#cb151-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-3"><a href="daten-beschreiben.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="daten-beschreiben.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;psych&quot;)</span></span>
+<span id="cb152-2"><a href="daten-beschreiben.html#cb152-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-3"><a href="daten-beschreiben.html#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;psych&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:ggplot2&#39;:
 ## 
 ##     %+%, alpha</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="daten-beschreiben.html#cb154-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
-<span id="cb154-2"><a href="daten-beschreiben.html#cb154-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-3"><a href="daten-beschreiben.html#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(vektor)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="daten-beschreiben.html#cb155-1" aria-hidden="true" tabindex="-1"></a>vektor <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb155-2"><a href="daten-beschreiben.html#cb155-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-3"><a href="daten-beschreiben.html#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(vektor)</span></code></pre></div>
 <pre><code>##    vars n mean   sd median trimmed  mad min max range skew kurtosis   se
 ## X1    1 8 3.38 1.85      3    3.38 2.22   1   6     5 0.11    -1.88 0.65</code></pre>
 <p>Diese Funktion funktioniert sogar, wenn wir sie auf einen <code>data.frame</code> anwenden. Nehmen wir hierfür noch einmal den <code>iris</code> Datensatz vom Anfang dieses Kapitels:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="daten-beschreiben.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="daten-beschreiben.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(iris)</span></code></pre></div>
 <pre><code>##              vars   n mean   sd median trimmed  mad min max range  skew
 ## Sepal.Length    1 150 5.84 0.83   5.80    5.81 1.04 4.3 7.9   3.6  0.31
 ## Sepal.Width     2 150 3.06 0.44   3.00    3.04 0.44 2.0 4.4   2.4  0.31
@@ -805,12 +799,12 @@ div.csl-indent {
 <h2><span class="header-section-number">9.5</span> Deskriptivstatistiken für Subgruppen<a href="daten-beschreiben.html#deskriptivstatistiken-für-subgruppen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Häufig müssen Stichproben nicht als Ganzes, sondern unterteilt in Teilgruppen beschrieben werden.</p>
 <p>Ein klassisches Beispiel ist der Aufbau einer experimentellen Studie mit Versuchs- und Kontrollgruppe (klin. Kontext: Verum vs. Placebo).</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="daten-beschreiben.html#cb158-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Gruppe =</span> <span class="fu">c</span>(<span class="st">&quot;Experiment&quot;</span>, <span class="st">&quot;Kontrolle&quot;</span>, <span class="st">&quot;Experiment&quot;</span>, <span class="st">&quot;Kontrolle&quot;</span>, <span class="st">&quot;Kontrolle&quot;</span>, <span class="st">&quot;Experiment&quot;</span>),</span>
-<span id="cb158-2"><a href="daten-beschreiben.html#cb158-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">Alter =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">41</span>, <span class="dv">51</span>, <span class="dv">39</span>, <span class="dv">71</span>, <span class="dv">25</span>),</span>
-<span id="cb158-3"><a href="daten-beschreiben.html#cb158-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">Konzentration =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">2</span>),</span>
-<span id="cb158-4"><a href="daten-beschreiben.html#cb158-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">Schlafdauer =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">14</span>, <span class="dv">7</span>, <span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">11</span>),</span>
-<span id="cb158-5"><a href="daten-beschreiben.html#cb158-5" aria-hidden="true" tabindex="-1"></a>                Schlafqualität <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">8</span> , <span class="dv">5</span>))</span>
-<span id="cb158-6"><a href="daten-beschreiben.html#cb158-6" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="daten-beschreiben.html#cb159-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Gruppe =</span> <span class="fu">c</span>(<span class="st">&quot;Experiment&quot;</span>, <span class="st">&quot;Kontrolle&quot;</span>, <span class="st">&quot;Experiment&quot;</span>, <span class="st">&quot;Kontrolle&quot;</span>, <span class="st">&quot;Kontrolle&quot;</span>, <span class="st">&quot;Experiment&quot;</span>),</span>
+<span id="cb159-2"><a href="daten-beschreiben.html#cb159-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">Alter =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">41</span>, <span class="dv">51</span>, <span class="dv">39</span>, <span class="dv">71</span>, <span class="dv">25</span>),</span>
+<span id="cb159-3"><a href="daten-beschreiben.html#cb159-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">Konzentration =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">2</span>),</span>
+<span id="cb159-4"><a href="daten-beschreiben.html#cb159-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">Schlafdauer =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">14</span>, <span class="dv">7</span>, <span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">11</span>),</span>
+<span id="cb159-5"><a href="daten-beschreiben.html#cb159-5" aria-hidden="true" tabindex="-1"></a>                Schlafqualität <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">8</span> , <span class="dv">5</span>))</span>
+<span id="cb159-6"><a href="daten-beschreiben.html#cb159-6" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##       Gruppe Alter Konzentration Schlafdauer Schlafqualität
 ## 1 Experiment    22             3           6              5
 ## 2  Kontrolle    41             7          14              8
@@ -819,11 +813,11 @@ div.csl-indent {
 ## 5  Kontrolle    71             5          15              8
 ## 6 Experiment    25             2          11              5</code></pre>
 <p>Der manuelle Weg würde eine Datenselektion erfordern (z.B. für das durchschnittsalter der Kontrollgruppe):</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="daten-beschreiben.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df<span class="sc">$</span>Alter[df<span class="sc">$</span>Gruppe <span class="sc">==</span> <span class="st">&quot;Kontrolle&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="daten-beschreiben.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df<span class="sc">$</span>Alter[df<span class="sc">$</span>Gruppe <span class="sc">==</span> <span class="st">&quot;Kontrolle&quot;</span>])</span></code></pre></div>
 <pre><code>## [1] 50.33333</code></pre>
 <p>Wollte man die gesamte Tabelle so zusammenfassen, z.B. für die tabellarische Stichprobenbeschreibung in einem Paper, würde einem dies jedoch einige Mühe bereiten.</p>
 <p>Glücklicherweise können wir eine Variante der <code>describe()</code> Funktion nutzen, nähmlich <code>describeBy()</code></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="daten-beschreiben.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describeBy</span>(df, <span class="at">group =</span> <span class="st">&quot;Gruppe&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="daten-beschreiben.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describeBy</span>(df, <span class="at">group =</span> <span class="st">&quot;Gruppe&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Descriptive statistics by group 
 ## Gruppe: Experiment
@@ -854,9 +848,9 @@ div.csl-indent {
 ## Schlafdauer       -2.33  0.88
 ## Schlafqualität    -2.33  2.33</code></pre>
 <p>Eine weitere, sogar noch etwas besser für Paper nutzbare Option, ist die <code>report_sample()</code> Funktion aus dem <code>report</code> Paket:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="daten-beschreiben.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(report)</span>
-<span id="cb164-2"><a href="daten-beschreiben.html#cb164-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-3"><a href="daten-beschreiben.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="fu">report_sample</span>(df, <span class="at">group_by =</span> <span class="st">&quot;Gruppe&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="daten-beschreiben.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(report)</span>
+<span id="cb165-2"><a href="daten-beschreiben.html#cb165-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-3"><a href="daten-beschreiben.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="fu">report_sample</span>(df, <span class="at">group_by =</span> <span class="st">&quot;Gruppe&quot;</span>)</span></code></pre></div>
 <pre><code>## # Descriptive Statistics
 ## 
 ## Variable                 | Experiment (n=3) | Kontrolle (n=3) |   Total (n=6)

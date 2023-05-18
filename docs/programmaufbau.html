@@ -176,14 +176,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="installation.html"><a href="installation.html#videotutorial"><i class="fa fa-check"></i><b>3.1.1</b> Videotutorial</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="installation.html"><a href="installation.html#videotutorial-1"><i class="fa fa-check"></i><b>3.2.1</b> Videotutorial</a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a></li>
+<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="programmaufbau.html"><a href="programmaufbau.html"><i class="fa fa-check"></i><b>4</b> Programmaufbau</a>
 <ul>
@@ -483,7 +477,7 @@ div.csl-indent {
 <div id="die-vier-rstudio-fenster" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Die vier RStudio Fenster<a href="programmaufbau.html#die-vier-rstudio-fenster" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Wenn Sie RStudio öffnen, sehen Sie vier Fenster, wie in der folgenden Abbildung dargestellt:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
 <img src="images/windows.png" alt="Die vier RStudio Fenster" width="1011" />
 <p class="caption">
 Figure 4.1: Die vier RStudio Fenster
@@ -498,7 +492,7 @@ Sie können die Fenster auch verstecken (Minimieren/Maximieren Symbol an der obe
 Wenn Sie RStudio öffnen, wird automatisch ein neues unbenanntes Skript gestartet.
 Bevor Sie mit der Eingabe eines unbenannten R-Skripts beginnen, sollten Sie die Datei immer unter einem neuen Dateinamen speichern (z.B. “Mein_RScript.R”).
 Wenn Ihr Computer während der Arbeit abstürzt, steht Ihr Code in R zur Verfügung, wenn Sie RStudio erneut öffnen.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="images/windows_source.png" alt="Die vier RStudio Fenster" width="1011" />
 <p class="caption">
 Figure 4.2: Die vier RStudio Fenster
@@ -510,11 +504,11 @@ Figure 4.2: Die vier RStudio Fenster
 <div id="konsole---das-herzstück-von-r" class="section level3 hasAnchor" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Konsole - Das Herzstück von R<a href="programmaufbau.html#konsole---das-herzstück-von-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Konsole ist das Herzstück von R. Hier führt R den Code aus. Am Anfang der Konsole sehen Sie das Zeichen “&gt;”. Dies ist eine Eingabeaufforderung (sog. “Prompt”), die Ihnen mitteilt, dass R bereit für neuen Code ist. Sie können direkt nach dem Prompt <code>&gt;</code> Code in die Konsole eingeben und erhalten sofort eine Antwort. Wenn Sie zum Beispiel 2+2 in die Konsole eingeben und die Eingabetaste drücken, werden Sie sehen, dass R sofort eine Ausgabe von 4 liefert.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="programmaufbau.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="programmaufbau.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>Versuchen Sie, 2+2 zu berechnen, indem Sie den Code direkt in die Konsole eingeben - und dann Enter drücken.
 Sie sollten das Ergebnis <code>[1] 4</code> sehen. Machen Sie sich keine Gedanken über die <code>[1]</code>, dazu kommen wir später.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
 <img src="images/windows_console.png" alt="Die vier RStudio Fenster" width="1011" />
 <p class="caption">
 Figure 4.3: Die vier RStudio Fenster
@@ -526,7 +520,7 @@ Figure 4.3: Die vier RStudio Fenster
 <div id="environmenthistory---das-gedächtnis-von-r" class="section level3 hasAnchor" number="4.1.3">
 <h3><span class="header-section-number">4.1.3</span> Environment/History - Das Gedächtnis von R<a href="programmaufbau.html#environmenthistory---das-gedächtnis-von-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In dem Tab “Environment” dieses Bereichs werden die Namen aller Datenobjekte (wie Vektoren, Matrizen und Datenrahmen) angezeigt, die Sie in Ihrer aktuellen R-Session definiert haben. Sie können auch Informationen wie die Anzahl der Spalten und Zeilen in Datensätzen sehen. Der Tab enthält auch einige anklickbare Aktionen wie “Datensatz importieren”, wodurch eine grafische Benutzeroberfläche (GUI) für wichtige Daten in R geöffnet wird.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
 <img src="images/windows_env.png" alt="Die vier RStudio Fenster" width="1011" />
 <p class="caption">
 Figure 4.4: Die vier RStudio Fenster
@@ -538,7 +532,7 @@ Figure 4.4: Die vier RStudio Fenster
 <div id="filesplotspackageshelpviewer---interaktion-von-r-mit-dateien" class="section level3 hasAnchor" number="4.1.4">
 <h3><span class="header-section-number">4.1.4</span> Files/Plots/Packages/Help/Viewer - Interaktion von R mit Dateien<a href="programmaufbau.html#filesplotspackageshelpviewer---interaktion-von-r-mit-dateien" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Tabs Files/Plots/Packages/Help/Viewer zeigen Ihnen viele hilfreiche Informationen. Schauen wir uns die einzelnen Registerkarten im Detail an:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
 <img src="images/windows_files.png" alt="Die vier RStudio Fenster" width="1011" />
 <p class="caption">
 Figure 4.5: Die vier RStudio Fenster
@@ -550,8 +544,8 @@ Figure 4.5: Die vier RStudio Fenster
 <li><p>Pakete - Zeigt eine Liste aller auf Ihrer Festplatte installierten R-Pakete und gibt an, ob sie derzeit geladen sind oder nicht. Pakete, die in der aktuellen Sitzung geladen sind, sind markiert, während Pakete, die installiert, aber noch nicht geladen sind, nicht markiert sind. Auf die Pakete gehen wir im nächsten Abschnitt näher ein.</p></li>
 <li><p>Hilfe - Hilfemenü für R-Funktionen. Sie können entweder den Namen einer Funktion in das Suchfenster eingeben oder den Code in der Konsole verwenden, um nach einer Funktion mit dem Namen zu suchen:</p></li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="programmaufbau.html#cb3-1" aria-hidden="true" tabindex="-1"></a>?hist   <span class="co"># Wie funktioniert die Histogrammfunktion?</span></span>
-<span id="cb3-2"><a href="programmaufbau.html#cb3-2" aria-hidden="true" tabindex="-1"></a>?t.test <span class="co"># Wie funktioniert der t-Test?</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="programmaufbau.html#cb4-1" aria-hidden="true" tabindex="-1"></a>?hist   <span class="co"># Wie funktioniert die Histogrammfunktion?</span></span>
+<span id="cb4-2"><a href="programmaufbau.html#cb4-2" aria-hidden="true" tabindex="-1"></a>?t.test <span class="co"># Wie funktioniert der t-Test?</span></span></code></pre></div>
 </div>
 </div>
 <div id="r-packages" class="section level2 hasAnchor" number="4.2">
@@ -567,24 +561,24 @@ Ein R-Package ist einfach ein Bündel von Funktionen (also bereits geschriebener
 <p>Ein Paket zu installieren bedeutet einfach, den Paketcode auf Ihren Computer herunterzuladen. Die gängigste Methode ist das Herunterladen aus dem Comprehensive R Archive Network (CRAN).</p>
 <p>Um ein neues R-Paket von CRAN zu installieren, können Sie einfach den Code install.packages(“name”) ausführen, wobei “name” der Name des Pakets ist.</p>
 <p>Um zum Beispiel das Paket ggplot2 herunterzuladen, welches wir oft zum Erstellen von Graphen verwenden, geben Sie ein:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="programmaufbau.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="programmaufbau.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span></code></pre></div>
 </div>
 <div id="r-packages-laden" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> R Packages laden<a href="programmaufbau.html#r-packages-laden" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sobald Sie ein Paket installiert haben, befindet es sich auf Ihrem Computer. Aber nur weil es auf Ihrem Computer ist, bedeutet das nicht, dass R bereit ist, es zu benutzen. Wenn Sie etwas wie eine Funktion oder einen Datensatz aus einem Paket verwenden wollen, müssen Sie <em>immer</em> zuerst das Paket in Ihrer R-Sitzung <em>laden</em>. Genau wie bei einer Glühbirne müssen Sie sie einschalten, um sie zu benutzen!</p>
 <p>Um ein Paket zu laden, verwenden Sie die Funktion <code>library()</code>. Nachdem wir zum Beispiel das Paket <code>ggplot2</code> installiert haben, können wir es mit <code>library("ggplot2")</code> laden:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="programmaufbau.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Laden des &quot;ggplot2&quot; Pakekts, damit wir es benutzen können!</span></span>
-<span id="cb5-2"><a href="programmaufbau.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   Pakete müssen zu Beginn jeder R Session neu geladen werden!</span></span>
-<span id="cb5-3"><a href="programmaufbau.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="programmaufbau.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Laden des &quot;ggplot2&quot; Pakekts, damit wir es benutzen können!</span></span>
+<span id="cb6-2"><a href="programmaufbau.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   Pakete müssen zu Beginn jeder R Session neu geladen werden!</span></span>
+<span id="cb6-3"><a href="programmaufbau.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
 <p>Jetzt, wo Sie das Paket <code>ggplot2</code> geladen haben, können Sie jede seiner Funktionen benutzen (hier die Funktion <code>ggplot</code>, um einen Graph zu erstellen)!</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="programmaufbau.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span> </span>
-<span id="cb6-2"><a href="programmaufbau.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="programmaufbau.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span> </span>
+<span id="cb7-2"><a href="programmaufbau.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Pakete müssen zu Beginn jeder R Session neu geladen werden. Deswegen schreiben wir in der Regel ganz an den Anfang unseres Skripts gleich mehrere Zeilen, mit <code>library()</code> Befehlen für alle R Pakete, die wir für unsere Analyse benötigen werden.</p>
 <p>In R gibt es eine Möglichkeit, ein Paket vorübergehend zu laden, ohne die Funktion <code>library()</code> zu verwenden. Um dies zu tun, können Sie einfach die Notation <code>package::funktion</code> verwenden. Diese Notation sagt R einfach, dass es das Paket nur für diesen einen Codeabschnitt laden soll. Zum Beispiel könnte ich die Funktion <code>ggplot</code> aus dem Paket <code>ggplot2</code> wie folgt verwenden:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="programmaufbau.html#cb7-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span> </span>
-<span id="cb7-2"><a href="programmaufbau.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="programmaufbau.html#cb8-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span> </span>
+<span id="cb8-2"><a href="programmaufbau.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Ein Vorteil der Notation “package::function” ist, dass für jeden, der den Code liest, sofort klar ist, welches Paket die Funktion enthält. Ein Nachteil ist jedoch, dass Sie, wenn Sie eine Funktion aus einem Paket häufig verwenden, gezwungen sind, den Paketnamen ständig neu einzugeben. Sie können jede Methode verwenden, die für Sie sinnvoll ist.</p>
 
 </div>

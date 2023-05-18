@@ -176,14 +176,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="installation.html"><a href="installation.html#videotutorial"><i class="fa fa-check"></i><b>3.1.1</b> Videotutorial</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="installation.html"><a href="installation.html#videotutorial-1"><i class="fa fa-check"></i><b>3.2.1</b> Videotutorial</a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a></li>
+<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="programmaufbau.html"><a href="programmaufbau.html"><i class="fa fa-check"></i><b>4</b> Programmaufbau</a>
 <ul>
@@ -483,17 +477,17 @@ div.csl-indent {
 <div id="manuell" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Manuell<a href="daten-erstellen.html#manuell" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Die manuelle Eingabe von Daten erfolgt über die <code>c()</code> Funktion. Mit ihrer Hilfe können wir Skalare zu Vektoren verbinden…</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="daten-erstellen.html#cb38-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="daten-erstellen.html#cb39-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">1</span>)</span></code></pre></div>
 <p>…mehrere Vektoren aneinanderhängen…</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="daten-erstellen.html#cb39-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">1</span>)</span>
-<span id="cb39-2"><a href="daten-erstellen.html#cb39-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb39-3"><a href="daten-erstellen.html#cb39-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">=</span> <span class="fu">c</span>(a, b)</span>
-<span id="cb39-4"><a href="daten-erstellen.html#cb39-4" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="daten-erstellen.html#cb40-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb40-2"><a href="daten-erstellen.html#cb40-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb40-3"><a href="daten-erstellen.html#cb40-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">=</span> <span class="fu">c</span>(a, b)</span>
+<span id="cb40-4"><a href="daten-erstellen.html#cb40-4" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
 <pre><code>## [1] 1 2 4 6 1 2 3</code></pre>
 <p>…und Vektoren gleicher Länge zu data.frames kombinieren:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="daten-erstellen.html#cb41-1" aria-hidden="true" tabindex="-1"></a>daten <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">aufmerksamkeit =</span> <span class="fu">c</span>(<span class="dv">58</span>, <span class="dv">46</span>, <span class="dv">29</span>, <span class="dv">51</span>),</span>
-<span id="cb41-2"><a href="daten-erstellen.html#cb41-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">gedaechtnis =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">67</span>, <span class="dv">22</span>, <span class="dv">31</span>))</span>
-<span id="cb41-3"><a href="daten-erstellen.html#cb41-3" aria-hidden="true" tabindex="-1"></a>daten</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="daten-erstellen.html#cb42-1" aria-hidden="true" tabindex="-1"></a>daten <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">aufmerksamkeit =</span> <span class="fu">c</span>(<span class="dv">58</span>, <span class="dv">46</span>, <span class="dv">29</span>, <span class="dv">51</span>),</span>
+<span id="cb42-2"><a href="daten-erstellen.html#cb42-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">gedaechtnis =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">67</span>, <span class="dv">22</span>, <span class="dv">31</span>))</span>
+<span id="cb42-3"><a href="daten-erstellen.html#cb42-3" aria-hidden="true" tabindex="-1"></a>daten</span></code></pre></div>
 <pre><code>##   aufmerksamkeit gedaechtnis
 ## 1             58          22
 ## 2             46          67
@@ -548,11 +542,11 @@ div.csl-indent {
 <p>In R kann man Daten anhand einer Wahrscheinlichkeitsverteilung simulieren.</p>
 <p>Wollen wir z.B. eine normalverteilte Variable mit zufälligen Werten erstellen, können wir die <code>rnorm()</code> Funktion nutzen.</p>
 <p>Dafür müssen wir lediglich angeben, wie viele Werte wir haben wollen (<code>n</code>) und welchen Mittelwert (<code>mean</code>) und welche Standardabweichung (<code>sd</code>) die Verteilung haben soll:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="daten-erstellen.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
-<pre><code>##  [1] -0.0214766788 -0.7647699519 -0.4959815009  0.0003301651  0.3925549514
-##  [6] -0.5724062511  0.7701915101  0.8859081324  1.8329987797 -0.6028993470
-## [11]  0.4272981287 -1.0003796446 -0.0534420261 -0.5589703627 -0.1053474837
-## [16]  0.4056303511  1.2212293030 -0.4607149152  2.0330214989 -0.6994396814</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="daten-erstellen.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##  [1]  0.19794571 -0.17738559 -0.65741062  2.25824434 -0.24203196  0.02643059
+##  [7]  0.57847973 -1.01533019 -0.19073062 -0.51982523  0.33795956 -1.11197960
+## [13]  0.56848720 -0.94790209  0.86814257 -0.72575296  0.81972009  1.68361747
+## [19] -0.86442703 -1.52059932</code></pre>
 
 </div>
 </div>
