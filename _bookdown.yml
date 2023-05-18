@@ -1,6 +1,7 @@
 book_filename: "CFH_R_bookdown"
 delete_merged_file: true
 output_dir: "docs"
+runtime: shiny
 language:
   ui:
     chapter_name: "Kapitel "
@@ -15,7 +16,7 @@ rmd_files: [
   "Daten_Beschreiben.Rmd",
   "Daten_Manipulieren.Rmd",
   "Schleifen.Rmd",
-  "Graphiken.Rmd",
+  #"Graphiken.Rmd",
   "Tabellen.Rmd",
   # "Preprocessing.Rmd",
   "Korrelationen.Rmd",

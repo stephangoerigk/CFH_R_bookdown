@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 15 Tests für einfache Gruppenvergleiche | Einführung in R</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 15 Tests für einfache Gruppenvergleiche | Einführung in R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 15 Tests für einfache Gruppenvergleiche | Einführung in R" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Stephan Goerigk" />
+
+
+<meta name="date" content="2023-05-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="korrelation.html"/>
+<link rel="next" href="varianzanalyse-anova.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R and der CFH</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="über-dieses-skript.html"><a href="über-dieses-skript.html"><i class="fa fa-check"></i>Über dieses Skript</a></li>
+<li class="chapter" data-level="1" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html"><i class="fa fa-check"></i><b>1</b> Warum ist R empfehlenswert?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#open-source"><i class="fa fa-check"></i><b>1.1</b> Open Source</a></li>
+<li class="chapter" data-level="1.2" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#vielseitigkeit"><i class="fa fa-check"></i><b>1.2</b> Vielseitigkeit</a></li>
+<li class="chapter" data-level="1.3" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#rmarkdown"><i class="fa fa-check"></i><b>1.3</b> RMarkdown</a></li>
+<li class="chapter" data-level="1.4" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#transparenz"><i class="fa fa-check"></i><b>1.4</b> Transparenz</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-materialien.html"><a href="r-materialien.html"><i class="fa fa-check"></i><b>2</b> R Materialien</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-materialien.html"><a href="r-materialien.html#cheat-sheets"><i class="fa fa-check"></i><b>2.1</b> Cheat Sheets</a></li>
+<li class="chapter" data-level="2.2" data-path="r-materialien.html"><a href="r-materialien.html#hilfe-und-inspiration-online"><i class="fa fa-check"></i><b>2.2</b> Hilfe und Inspiration online</a></li>
+<li class="chapter" data-level="2.3" data-path="r-materialien.html"><a href="r-materialien.html#andere-bücher"><i class="fa fa-check"></i><b>2.3</b> Andere Bücher</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a></li>
+<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="programmaufbau.html"><a href="programmaufbau.html"><i class="fa fa-check"></i><b>4</b> Programmaufbau</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="programmaufbau.html"><a href="programmaufbau.html#die-vier-rstudio-fenster"><i class="fa fa-check"></i><b>4.1</b> Die vier RStudio Fenster</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="programmaufbau.html"><a href="programmaufbau.html#source---ihr-schreibblock-für-code"><i class="fa fa-check"></i><b>4.1.1</b> Source - Ihr Schreibblock für Code</a></li>
+<li class="chapter" data-level="4.1.2" data-path="programmaufbau.html"><a href="programmaufbau.html#konsole---das-herzstück-von-r"><i class="fa fa-check"></i><b>4.1.2</b> Konsole - Das Herzstück von R</a></li>
+<li class="chapter" data-level="4.1.3" data-path="programmaufbau.html"><a href="programmaufbau.html#environmenthistory---das-gedächtnis-von-r"><i class="fa fa-check"></i><b>4.1.3</b> Environment/History - Das Gedächtnis von R</a></li>
+<li class="chapter" data-level="4.1.4" data-path="programmaufbau.html"><a href="programmaufbau.html#filesplotspackageshelpviewer---interaktion-von-r-mit-dateien"><i class="fa fa-check"></i><b>4.1.4</b> Files/Plots/Packages/Help/Viewer - Interaktion von R mit Dateien</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages"><i class="fa fa-check"></i><b>4.2</b> R Packages</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages-installieren"><i class="fa fa-check"></i><b>4.2.1</b> R Packages installieren</a></li>
+<li class="chapter" data-level="4.2.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages-laden"><i class="fa fa-check"></i><b>4.2.2</b> R Packages laden</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="datenformate.html"><a href="datenformate.html"><i class="fa fa-check"></i><b>5</b> Datenformate</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datenformate.html"><a href="datenformate.html#skalar"><i class="fa fa-check"></i><b>5.1</b> Skalar</a></li>
+<li class="chapter" data-level="5.2" data-path="datenformate.html"><a href="datenformate.html#vektor"><i class="fa fa-check"></i><b>5.2</b> Vektor</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="datenformate.html"><a href="datenformate.html#vektor-typen"><i class="fa fa-check"></i><b>5.2.1</b> Vektor Typen</a></li>
+<li class="chapter" data-level="5.2.2" data-path="datenformate.html"><a href="datenformate.html#faktor-variablen"><i class="fa fa-check"></i><b>5.2.2</b> Faktor Variablen</a></li>
+<li class="chapter" data-level="5.2.3" data-path="datenformate.html"><a href="datenformate.html#vektor-indizierung"><i class="fa fa-check"></i><b>5.2.3</b> Vektor Indizierung</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-data.frames"><i class="fa fa-check"></i><b>5.3</b> Matrizen und data.frames</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="datenformate.html"><a href="datenformate.html#erstellen-von-datenmatrizen"><i class="fa fa-check"></i><b>5.3.1</b> Erstellen von Datenmatrizen</a></li>
+<li class="chapter" data-level="5.3.2" data-path="datenformate.html"><a href="datenformate.html#indizierung"><i class="fa fa-check"></i><b>5.3.2</b> Indizierung</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="daten-erstellen.html"><a href="daten-erstellen.html"><i class="fa fa-check"></i><b>6</b> Daten erstellen</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="daten-erstellen.html"><a href="daten-erstellen.html#manuell"><i class="fa fa-check"></i><b>6.1</b> Manuell</a></li>
+<li class="chapter" data-level="6.2" data-path="daten-erstellen.html"><a href="daten-erstellen.html#automatisch"><i class="fa fa-check"></i><b>6.2</b> Automatisch</a></li>
+<li class="chapter" data-level="6.3" data-path="daten-erstellen.html"><a href="daten-erstellen.html#zufällig"><i class="fa fa-check"></i><b>6.3</b> Zufällig</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html"><i class="fa fa-check"></i><b>7</b> Daten importieren und speichern</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#funktionen-zur-organisation-des-workspace"><i class="fa fa-check"></i><b>7.1</b> Funktionen zur Organisation des Workspace</a></li>
+<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#arbeitsverzeichnis-working-directory"><i class="fa fa-check"></i><b>7.2</b> Arbeitsverzeichnis (Working Directory)</a></li>
+<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.3</b> Working Environment</a></li>
+<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.4</b> Daten importieren</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format"><i class="fa fa-check"></i><b>7.4.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.4.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format"><i class="fa fa-check"></i><b>7.4.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.4.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format"><i class="fa fa-check"></i><b>7.4.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.4.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format"><i class="fa fa-check"></i><b>7.4.4</b> xlsx-Format</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.5</b> Daten speichern</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format-1"><i class="fa fa-check"></i><b>7.5.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.5.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format-1"><i class="fa fa-check"></i><b>7.5.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.5.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format-1"><i class="fa fa-check"></i><b>7.5.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.5.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format-1"><i class="fa fa-check"></i><b>7.5.4</b> xlsx-Format</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="daten-auswählen.html"><a href="daten-auswählen.html"><i class="fa fa-check"></i><b>8</b> Daten auswählen</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#vektor-1"><i class="fa fa-check"></i><b>8.1</b> Vektor</a></li>
+<li class="chapter" data-level="8.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#dataframe"><i class="fa fa-check"></i><b>8.2</b> Dataframe</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#zeilen-fälle-auswählen"><i class="fa fa-check"></i><b>8.2.1</b> Zeilen (Fälle) auswählen</a></li>
+<li class="chapter" data-level="8.2.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#spalten-variablen-auswählen"><i class="fa fa-check"></i><b>8.2.2</b> Spalten (Variablen) auswählen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html"><i class="fa fa-check"></i><b>9</b> Daten beschreiben</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-über-r-objekte"><i class="fa fa-check"></i><b>9.1</b> Informationen über R Objekte</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#str"><i class="fa fa-check"></i><b>9.1.1</b> str()</a></li>
+<li class="chapter" data-level="9.1.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-über-vektoren"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Vektoren</a></li>
+<li class="chapter" data-level="9.1.3" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-über-dataframes"><i class="fa fa-check"></i><b>9.1.3</b> Informationen über dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>9.2</b> Deskriptivstatistiken</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#kategorische-variablen"><i class="fa fa-check"></i><b>9.2.1</b> Kategorische Variablen</a></li>
+<li class="chapter" data-level="9.2.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#numerische-variablen"><i class="fa fa-check"></i><b>9.2.2</b> Numerische Variablen</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken-berichten"><i class="fa fa-check"></i><b>9.3</b> Deskriptivstatistiken berichten</a></li>
+<li class="chapter" data-level="9.4" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#alles-auf-einen-blick"><i class="fa fa-check"></i><b>9.4</b> Alles auf einen Blick</a></li>
+<li class="chapter" data-level="9.5" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken-für-subgruppen"><i class="fa fa-check"></i><b>9.5</b> Deskriptivstatistiken für Subgruppen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html"><i class="fa fa-check"></i><b>10</b> Daten bearbeiten</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-hinzufügen"><i class="fa fa-check"></i><b>10.1</b> Daten hinzufügen</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-hinzufügen"><i class="fa fa-check"></i><b>10.1.1</b> Variablen hinzufügen</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-löschen"><i class="fa fa-check"></i><b>10.2</b> Daten löschen</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-löschen"><i class="fa fa-check"></i><b>10.2.1</b> Variablen löschen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#fälle-löschen"><i class="fa fa-check"></i><b>10.2.2</b> Fälle löschen</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-umbenennen"><i class="fa fa-check"></i><b>10.3</b> Variablen umbenennen</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablennamen-ändern"><i class="fa fa-check"></i><b>10.3.1</b> Variablennamen ändern</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-verändern"><i class="fa fa-check"></i><b>10.4</b> Daten verändern</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#werte-ändern"><i class="fa fa-check"></i><b>10.4.1</b> Werte ändern</a></li>
+<li class="chapter" data-level="10.4.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#recodieren"><i class="fa fa-check"></i><b>10.4.2</b> Recodieren</a></li>
+<li class="chapter" data-level="10.4.3" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#worte-ändern"><i class="fa fa-check"></i><b>10.4.3</b> Worte ändern</a></li>
+<li class="chapter" data-level="10.4.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#faktorstufen-ändern"><i class="fa fa-check"></i><b>10.4.4</b> Faktorstufen ändern</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-sortieren"><i class="fa fa-check"></i><b>10.5</b> Daten sortieren</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#sortieren-nach-numerischen-variablen"><i class="fa fa-check"></i><b>10.5.1</b> Sortieren nach numerischen Variablen</a></li>
+<li class="chapter" data-level="10.5.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#sortieren-nach-variablen-mit-worten"><i class="fa fa-check"></i><b>10.5.2</b> Sortieren nach Variablen mit Worten</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datensätze-zusammensetzen"><i class="fa fa-check"></i><b>10.6</b> Datensätze zusammensetzen</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#cbind-und-rbind"><i class="fa fa-check"></i><b>10.6.1</b> cbind und rbind</a></li>
+<li class="chapter" data-level="10.6.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#merge"><i class="fa fa-check"></i><b>10.6.2</b> merge</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datensätze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#von-wide--und-long-format"><i class="fa fa-check"></i><b>10.7.1</b> Von Wide- und Long-Format</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="schleifen-loops.html"><a href="schleifen-loops.html"><i class="fa fa-check"></i><b>11</b> Schleifen (Loops)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for-loop"><i class="fa fa-check"></i><b>11.1</b> for()-Loop</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for-im-datensatz"><i class="fa fa-check"></i><b>11.1.1</b> for() im Datensatz</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="schleifen-loops.html"><a href="schleifen-loops.html#if-loop"><i class="fa fa-check"></i><b>11.2</b> if()-Loop</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graphiken.html"><a href="graphiken.html"><i class="fa fa-check"></i><b>12</b> Graphiken</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="graphiken.html"><a href="graphiken.html#das-ggplot2-paket"><i class="fa fa-check"></i><b>12.1</b> Das ggplot2 Paket</a></li>
+<li class="chapter" data-level="12.2" data-path="graphiken.html"><a href="graphiken.html#ggplot-funktion"><i class="fa fa-check"></i><b>12.2</b> ggplot()-Funktion</a></li>
+<li class="chapter" data-level="12.3" data-path="graphiken.html"><a href="graphiken.html#streu-punktdiagramm"><i class="fa fa-check"></i><b>12.3</b> Streu-/Punktdiagramm</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="graphiken.html"><a href="graphiken.html#streudiagramm-mit-2-variablen"><i class="fa fa-check"></i><b>12.3.1</b> Streudiagramm mit 2 Variablen</a></li>
+<li class="chapter" data-level="12.3.2" data-path="graphiken.html"><a href="graphiken.html#geom_point"><i class="fa fa-check"></i><b>12.3.2</b> geom_point()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="graphiken.html"><a href="graphiken.html#geom_smooth"><i class="fa fa-check"></i><b>12.3.3</b> geom_smooth()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="graphiken.html"><a href="graphiken.html#streudiagramm-mit-mehr-als-2-variablen"><i class="fa fa-check"></i><b>12.3.4</b> Streudiagramm mit mehr als 2 Variablen</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="graphiken.html"><a href="graphiken.html#histogramm"><i class="fa fa-check"></i><b>12.4</b> Histogramm</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-für-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm"><i class="fa fa-check"></i><b>12.5</b> Balkendiagramm</a></li>
+<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-3-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 3 Variablen</a></li>
+<li class="chapter" data-level="12.7" data-path="graphiken.html"><a href="graphiken.html#boxplot"><i class="fa fa-check"></i><b>12.7</b> Boxplot</a></li>
+<li class="chapter" data-level="12.8" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>12.8</b> Facetting</a></li>
+<li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#ästhetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
+<ul>
+<li class="chapter" data-level="12.9.1" data-path="graphiken.html"><a href="graphiken.html#ggtitle"><i class="fa fa-check"></i><b>12.9.1</b> ggtitle()</a></li>
+<li class="chapter" data-level="12.9.2" data-path="graphiken.html"><a href="graphiken.html#labs"><i class="fa fa-check"></i><b>12.9.2</b> labs()</a></li>
+<li class="chapter" data-level="12.9.3" data-path="graphiken.html"><a href="graphiken.html#achsen-verändern"><i class="fa fa-check"></i><b>12.9.3</b> Achsen verändern</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="graphiken.html"><a href="graphiken.html#theme"><i class="fa fa-check"></i><b>12.10</b> theme()</a>
+<ul>
+<li class="chapter" data-level="12.10.1" data-path="graphiken.html"><a href="graphiken.html#elemente-von-theme"><i class="fa fa-check"></i><b>12.10.1</b> Elemente von theme()</a></li>
+<li class="chapter" data-level="12.10.2" data-path="graphiken.html"><a href="graphiken.html#legende"><i class="fa fa-check"></i><b>12.10.2</b> Legende</a></li>
+<li class="chapter" data-level="12.10.3" data-path="graphiken.html"><a href="graphiken.html#vorgefertigte-themes"><i class="fa fa-check"></i><b>12.10.3</b> Vorgefertigte themes</a></li>
+</ul></li>
+<li class="chapter" data-level="12.11" data-path="graphiken.html"><a href="graphiken.html#abbildungen-kombinieren"><i class="fa fa-check"></i><b>12.11</b> Abbildungen kombinieren</a></li>
+<li class="chapter" data-level="12.12" data-path="graphiken.html"><a href="graphiken.html#abbildungen-exportieren"><i class="fa fa-check"></i><b>12.12</b> Abbildungen exportieren</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="tabellen.html"><a href="tabellen.html"><i class="fa fa-check"></i><b>13</b> Tabellen</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="tabellen.html"><a href="tabellen.html#data.frames"><i class="fa fa-check"></i><b>13.1</b> data.frames</a></li>
+<li class="chapter" data-level="13.2" data-path="tabellen.html"><a href="tabellen.html#format"><i class="fa fa-check"></i><b>13.2</b> Format</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="tabellen.html"><a href="tabellen.html#text"><i class="fa fa-check"></i><b>13.2.1</b> Text</a></li>
+<li class="chapter" data-level="13.2.2" data-path="tabellen.html"><a href="tabellen.html#zellen"><i class="fa fa-check"></i><b>13.2.2</b> Zellen</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="tabellen.html"><a href="tabellen.html#layout"><i class="fa fa-check"></i><b>13.3</b> Layout</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einfügen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="tabellen.html"><a href="tabellen.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>14</b> Korrelation</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="korrelation.html"><a href="korrelation.html#hypothesen"><i class="fa fa-check"></i><b>14.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.2" data-path="korrelation.html"><a href="korrelation.html#berechnung-der-korrelation"><i class="fa fa-check"></i><b>14.2</b> Berechnung der Korrelation</a></li>
+<li class="chapter" data-level="14.3" data-path="korrelation.html"><a href="korrelation.html#unterschiedliche-korrelationsmethoden"><i class="fa fa-check"></i><b>14.3</b> Unterschiedliche Korrelationsmethoden</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>14.3.1</b> Pearson-Korrelation</a></li>
+<li class="chapter" data-level="14.3.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation-aka-rangkorrelation"><i class="fa fa-check"></i><b>14.3.2</b> Spearman-Korrelation (aka Rangkorrelation)</a></li>
+<li class="chapter" data-level="14.3.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>14.3.3</b> Kendall-Korrelation</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="korrelation.html"><a href="korrelation.html#korrelation-als-hypothesentest"><i class="fa fa-check"></i><b>14.4</b> Korrelation als Hypothesentest</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html"><i class="fa fa-check"></i><b>15</b> Tests für einfache Gruppenvergleiche</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>15.1</b> Ein-Stichproben t-Test</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-1"><i class="fa fa-check"></i><b>15.1.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.1.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.1.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen"><i class="fa fa-check"></i><b>15.1.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.1.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>15.1.4</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="15.1.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#ergebnis-berichten"><i class="fa fa-check"></i><b>15.1.5</b> Ergebnis berichten</a></li>
+<li class="chapter" data-level="15.1.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke"><i class="fa fa-check"></i><b>15.1.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.1.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>15.1.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>15.2</b> t-Test bei unabhängigen Stichproben</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-2"><i class="fa fa-check"></i><b>15.2.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.2.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>15.2.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.2.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-1"><i class="fa fa-check"></i><b>15.2.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.2.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>15.2.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.2.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>15.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.2.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-1"><i class="fa fa-check"></i><b>15.2.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.2.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>15.2.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>15.3</b> t-Test bei abhängigen Stichproben</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-3"><i class="fa fa-check"></i><b>15.3.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.3.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>15.3.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.3.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-2"><i class="fa fa-check"></i><b>15.3.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.3.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>15.3.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.3.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>15.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.3.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-2"><i class="fa fa-check"></i><b>15.3.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.3.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>15.3.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>15.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-4"><i class="fa fa-check"></i><b>15.4.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.4.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-3"><i class="fa fa-check"></i><b>15.4.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.4.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>15.4.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.4.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-3"><i class="fa fa-check"></i><b>15.4.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.4.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>15.4.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>15.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-5"><i class="fa fa-check"></i><b>15.5.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.5.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-4"><i class="fa fa-check"></i><b>15.5.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.5.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>15.5.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.5.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-4"><i class="fa fa-check"></i><b>15.5.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.5.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>15.5.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#chi2-test"><i class="fa fa-check"></i><b>15.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>15.6.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.6.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-5"><i class="fa fa-check"></i><b>15.6.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.6.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>15.6.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.6.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>15.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.6.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-5"><i class="fa fa-check"></i><b>15.6.5</b> Effektstärke</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#fishers-exakter-test"><i class="fa fa-check"></i><b>15.7</b> Fisher’s Exakter Test</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-6"><i class="fa fa-check"></i><b>15.7.1</b> Test durchführen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html"><i class="fa fa-check"></i><b>16</b> Varianzanalyse (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#einfaktorielle-anova"><i class="fa fa-check"></i><b>16.1</b> Einfaktorielle ANOVA</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#alpha-fehler-kumulierung"><i class="fa fa-check"></i><b>16.1.1</b> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung</a></li>
+<li class="chapter" data-level="16.1.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#deskriptive-einordnung-4"><i class="fa fa-check"></i><b>16.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.1.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#berechnung-der-anova"><i class="fa fa-check"></i><b>16.1.3</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.1.4" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#interpretation"><i class="fa fa-check"></i><b>16.1.4</b> Interpretation</a></li>
+<li class="chapter" data-level="16.1.5" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#post-hoc-tests"><i class="fa fa-check"></i><b>16.1.5</b> Post-hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#mehrfaktorielle-anova"><i class="fa fa-check"></i><b>16.2</b> Mehrfaktorielle ANOVA</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#deskriptive-einordnung-5"><i class="fa fa-check"></i><b>16.2.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.2.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#berechnung-der-anova-1"><i class="fa fa-check"></i><b>16.2.2</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.2.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#interpretation-1"><i class="fa fa-check"></i><b>16.2.3</b> Interpretation</a></li>
+<li class="chapter" data-level="16.2.4" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>16.2.4</b> Post-hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#prüfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>16.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#testen-der-empirisch-testbaren-annahmen"><i class="fa fa-check"></i><b>16.3.1</b> Testen der empirisch testbaren Annahmen</a></li>
+<li class="chapter" data-level="16.3.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#homogenität-der-varianzen"><i class="fa fa-check"></i><b>16.3.2</b> Homogenität der Varianzen:</a></li>
+<li class="chapter" data-level="16.3.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#sphärizität"><i class="fa fa-check"></i><b>16.3.3</b> Sphärizität:</a></li>
+<li class="chapter" data-level="16.3.4" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#normalverteilung-der-residuen"><i class="fa fa-check"></i><b>16.3.4</b> Normalverteilung der Residuen:</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Einführung in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tests-für-einfache-gruppenvergleiche" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Kapitel 15</span> Tests für einfache Gruppenvergleiche<a href="tests-für-einfache-gruppenvergleiche.html#tests-für-einfache-gruppenvergleiche" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="ein-stichproben-t-test" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Ein-Stichproben t-Test<a href="tests-für-einfache-gruppenvergleiche.html#ein-stichproben-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb363-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/One sample t-test.csv&quot;</span>)</span>
+<span id="cb363-2"><a href="tests-für-einfache-gruppenvergleiche.html#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;gewicht&quot;</span>, <span class="st">&quot;groesse&quot;</span>)</span></code></pre></div>
+<div id="hypothesen-1" class="section level3 hasAnchor" number="15.1.1">
+<h3><span class="header-section-number">15.1.1</span> Hypothesen<a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Mit einem Ein-Stichproben t-Test vergleichen wir den Mittelwert einer Gruppe mit einem hypothetischen Mittelwert.</p>
+<p>Der Test prüft also anhand des Mittelwerts einer Stichprobe, ob der Erwartungswert in der entsprechenden Population gleich einem vorgegebenen Wert ist (dem unter <span class="math inline">\(H_{0}\)</span> erwarteten <span class="math inline">\(μ_{0}\)</span>).</p>
+<p>Es sind folgende Hypothesen denkbar:</p>
+<p>Test auf Unterschiedlichkeit von dem Referenzwert (ungerichtet):</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(μ=μ_{0}\)</span></li>
+<li><span class="math inline">\(H_1\)</span>: <span class="math inline">\(μ\neqμ_0\)</span></li>
+</ul>
+<p>Test, ob Mittelwert größer/kleiner als Referenzwert ist (gerichtet):</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(μ≤μ_{0}\)</span>; <span class="math inline">\(H_1\)</span>: <span class="math inline">\(μ&gt;μ_{0}\)</span></li>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(μ≥μ_{0}\)</span>; <span class="math inline">\(H_1\)</span>: <span class="math inline">\(μ&lt;μ_{0}\)</span></li>
+</ul>
+<p>Zum Beispiel könnten wir eine Stichprobe von Menschen aus Deutschland erhoben haben und uns dafür interessieren, ob diese signifikant größer, bzw. kleiner als der Durchschnitt in Deutschland sind.</p>
+<p>Die ersten Zeilen des Stichprobendatensatzes könnten so aussehen:</p>
+<pre><code>##   gewicht groesse
+## 1      77     182
+## 2      68     177
+## 3      76     170
+## 4      76     167
+## 5      69     186
+## 6      71     178</code></pre>
+<p>Zunächst brauchen wir einen hypothetischen Vergleichswert. Sucht man die geschlechterübergreifende Durchschnittsgröße in Deutschland im Internet findet man einen Wert von ca. 173 cm.</p>
+</div>
+<div id="deskriptive-einordnung" class="section level3 hasAnchor" number="15.1.2">
+<h3><span class="header-section-number">15.1.2</span> Deskriptive Einordnung<a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die Berechnung unseres Mittelwerts ist einfache Deskriptivstatistik:</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data<span class="sc">$</span>groesse)</span></code></pre></div>
+<pre><code>## [1] 177.6087</code></pre>
+<p>Der Sachverhalt lässt sich auch graphisch darstellen:</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> groesse)) <span class="sc">+</span></span>
+<span id="cb367-2"><a href="tests-für-einfache-gruppenvergleiche.html#cb367-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb367-3"><a href="tests-für-einfache-gruppenvergleiche.html#cb367-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Größe&quot;</span>, <span class="at">y =</span> <span class="st">&quot;N&quot;</span>) <span class="sc">+</span></span>
+<span id="cb367-4"><a href="tests-für-einfache-gruppenvergleiche.html#cb367-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">173</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb367-5"><a href="tests-für-einfache-gruppenvergleiche.html#cb367-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(data<span class="sc">$</span>groesse), <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;green&quot;</span>) <span class="sc">+</span></span>
+<span id="cb367-6"><a href="tests-für-einfache-gruppenvergleiche.html#cb367-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() </span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-218-1.png" width="672" /></p>
+<p>Die grüne Linie im Zentrum des Histogramms stellt unseren Stichprobenmittelwert dar. Die rote Linie ist der angenommene Mittelwert in der Population von 173 cm.</p>
+</div>
+<div id="test-durchführen" class="section level3 hasAnchor" number="15.1.3">
+<h3><span class="header-section-number">15.1.3</span> Test durchführen<a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zur Durchführung des Tests nutzen wir die in der Grundform von R vorinstallierte <code>t.test()</code> Funktion.</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  data$groesse
+## t = 4.4969, df = 22, p-value = 0.0001792
+## alternative hypothesis: true mean is not equal to 173
+## 95 percent confidence interval:
+##  175.4833 179.7341
+## sample estimates:
+## mean of x 
+##  177.6087</code></pre>
+<p>Wir wählen die Variable <code>groesse</code> innerhalb unseres Datensatzes mit dem <code>$</code> Zeichen an. Über das <code>mu</code> Argument geben wir den hypothetischen Vergleichswert an. Unter <code>alternative</code> können wir auswählen, ob der Test gerichtet oder ungerichtet (aka ein- oder zweiseitig) durchgeführt werden soll. Je nach Hypothese wählen wir <code>"two.sided"</code> für einen ungerichteten Test und entweder <code>"less"</code> oder <code>"greater"</code> für einen gerichteten Test. Das <code>conf.level</code> entsprich unserem Signifikanzniveau.</p>
+</div>
+<div id="ergebnis-interpretieren" class="section level3 hasAnchor" number="15.1.4">
+<h3><span class="header-section-number">15.1.4</span> Ergebnis interpretieren<a href="tests-für-einfache-gruppenvergleiche.html#ergebnis-interpretieren" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Das Ergebnis des Tests lässt sich am P-Wert ablesen (p=0.0001792). Ist der P-wert kleiner als das gewählte Signifikanzniveau (i.d.R <span class="math inline">\(\alpha=.05\)</span>) unterscheidet sich unser Stichprobenmittelwert (177.61 cm) signifikant von der Durchschnittsgröße in Deutschland (173 cm). Wir verwerfen also die Nullhypothese (H0) zugunsten unserer Alternativhypothese (H1).</p>
+</div>
+<div id="ergebnis-berichten" class="section level3 hasAnchor" number="15.1.5">
+<h3><span class="header-section-number">15.1.5</span> Ergebnis berichten<a href="tests-für-einfache-gruppenvergleiche.html#ergebnis-berichten" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die relevanten Parameter zum Berichten eines Ein-Stichproben t-Tests sind</p>
+<ul>
+<li>M (Mittelwert)</li>
+<li>Grenzen des Konfidenzintervalls des Mittelwerts</li>
+<li>t-Wert (Teststatistik)</li>
+<li>df (Freiheitsgerade)</li>
+<li>P-Wert</li>
+</ul>
+<p>Beim Berichten im Fließtext schreibt man:</p>
+<p>Die Größe in der Stichpobe unterschied sich signifikant von der Durchschnittsgröße in Deutschland (173 cm), M = 177.61, 95% CI (175.48, 179.73), t (22) = 4.5; p &lt; .001.</p>
+<p>Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:</p>
+<p>t-Wert (Teststatistik):</p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>statistic</span></code></pre></div>
+<pre><code>##        t 
+## 4.496872</code></pre>
+<p>df (Freiheitsgerade):</p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>parameter</span></code></pre></div>
+<pre><code>## df 
+## 22</code></pre>
+<p>P-Wert:</p>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.0001792355</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 175.4833</code></pre>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 179.7341</code></pre>
+</div>
+<div id="effektstärke" class="section level3 hasAnchor" number="15.1.6">
+<h3><span class="header-section-number">15.1.6</span> Effektstärke<a href="tests-für-einfache-gruppenvergleiche.html#effektstärke" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="cohens-d" class="section level4 hasAnchor" number="15.1.6.1">
+<h4><span class="header-section-number">15.1.6.1</span> Cohen’s d<a href="tests-für-einfache-gruppenvergleiche.html#cohens-d" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Die am häufigsten verwendete Effektstärke für den Ein-Stichproben t-Test ist Cohen’s d <span class="citation">Cohen (<a href="#ref-cohen1988statistical" role="doc-biblioref">1988</a>)</span>.
+Cohen’s d lässt sich mit dem Paket <code>effsize</code> berechnen. Dieses verwendet praktischerweise die gleiche Schreibweise, wie der t-Test:</p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb380-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(data<span class="sc">$</span>groesse, <span class="at">f =</span> <span class="cn">NA</span>, <span class="at">mu =</span> <span class="dv">173</span>)</span></code></pre></div>
+<pre><code>## 
+## Cohen&#39;s d (single sample)
+## 
+## d estimate: 0.9376626 (large)
+## Reference mu: 173
+## 95 percent confidence interval:
+##      lower      upper 
+## 0.02651145 1.84881385</code></pre>
+<p>Auch die Einzelparameter von Cohen’s d lassen sich extrahieren:</p>
+<p>Cohen’s d:</p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb382-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(<span class="at">d =</span> data<span class="sc">$</span>groesse, <span class="at">f =</span> <span class="cn">NA</span>, <span class="at">mu =</span> <span class="dv">173</span>)<span class="sc">$</span>estimate</span></code></pre></div>
+<pre><code>## [1] 0.9376626</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb384-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(<span class="at">d =</span> data<span class="sc">$</span>groesse, <span class="at">f =</span> <span class="cn">NA</span>, <span class="at">mu =</span> <span class="dv">173</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##      lower 
+## 0.02651145</code></pre>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb386-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(<span class="at">d =</span> data<span class="sc">$</span>groesse, <span class="at">f =</span> <span class="cn">NA</span>, <span class="at">mu =</span> <span class="dv">173</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##    upper 
+## 1.848814</code></pre>
+<p>Die Interpretation von Cohens’d lautet wie folgt <span class="citation">Cohen (<a href="#ref-cohen1992quantitative" role="doc-biblioref">1992</a>)</span>:</p>
+<caption>
+<span id="tab:unnamed-chunk-227">Table 15.1: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Interpretation von Cohen’s d.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">d</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">|&gt;0.2|</td>
+<td align="left">kleiner Effekt</td>
+</tr>
+<tr class="even">
+<td align="left">|&gt;0.5|</td>
+<td align="left">mittlerer Effekt</td>
+</tr>
+<tr class="odd">
+<td align="left">|&gt;0.8|</td>
+<td align="left">großer Effekt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="darstellung-in-tabellenform" class="section level3 hasAnchor" number="15.1.7">
+<h3><span class="header-section-number">15.1.7</span> Darstellung in Tabellenform<a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zur sauberen Darstellung des Ergebnisses in einer bereits nach APA formatierten Tabelle, lassen sich die Funktionen <code>apa_print</code> und <code>apa_table</code> aus dem Paket <code>papaja</code> verwenden.</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span>
+<span id="cb388-2"><a href="tests-für-einfache-gruppenvergleiche.html#cb388-2" aria-hidden="true" tabindex="-1"></a>apa_test <span class="ot">&lt;-</span> <span class="fu">apa_print</span>(</span>
+<span id="cb388-3"><a href="tests-für-einfache-gruppenvergleiche.html#cb388-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t.test</span>(data<span class="sc">$</span>groesse, <span class="at">mu =</span> <span class="dv">173</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb388-4"><a href="tests-für-einfache-gruppenvergleiche.html#cb388-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb388-5"><a href="tests-für-einfache-gruppenvergleiche.html#cb388-5" aria-hidden="true" tabindex="-1"></a><span class="fu">apa_table</span>(</span>
+<span id="cb388-6"><a href="tests-für-einfache-gruppenvergleiche.html#cb388-6" aria-hidden="true" tabindex="-1"></a>  apa_test<span class="sc">$</span>table, <span class="at">caption =</span> <span class="st">&quot;Tabelle für den Ein-Stichproben t-Test.&quot;</span></span>
+<span id="cb388-7"><a href="tests-für-einfache-gruppenvergleiche.html#cb388-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<caption>
+<span id="tab:unnamed-chunk-228">Table 15.2: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Tabelle für den Ein-Stichproben t-Test.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(M\)</span></th>
+<th align="left">95% CI</th>
+<th align="left"><span class="math inline">\(t\)</span></th>
+<th align="left"><span class="math inline">\(\mathit{df}\)</span></th>
+<th align="left"><span class="math inline">\(p\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">177.61</td>
+<td align="left">[175.48, 179.73]</td>
+<td align="left">4.50</td>
+<td align="left">22</td>
+<td align="left">&lt; .001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="t-test-bei-unabhängigen-stichproben" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> t-Test bei unabhängigen Stichproben<a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-unabhängigen-stichproben" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="hypothesen-2" class="section level3 hasAnchor" number="15.2.1">
+<h3><span class="header-section-number">15.2.1</span> Hypothesen<a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Mit einem unabhängigen t-Test vergleichen wir die Mittelwerte von 2 unabhängigen Gruppen. Im Datensatz müssen zwei Variablen vorhanden sein, eine numerische Variable (AV), für die Mittelwerte berechnet werden können und eine dichotome Gruppenvariable (UV).</p>
+<p>Es sind folgende Hypothesen denkbar:</p>
+<p>Test auf Unterschiedlichkeit der beiden Gruppenmittelwerte (ungerichtet):</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(μ_1=μ_2\)</span> bzw. <span class="math inline">\(μ_1−μ_2=0\)</span> und <span class="math inline">\(σ_1=σ_2=σ\)</span></li>
+<li><span class="math inline">\(H_1\)</span>: <span class="math inline">\(μ_1\neqμ_2\)</span> bzw. <span class="math inline">\(μ_1−μ_2\neq0\)</span> und <span class="math inline">\(σ_1=σ_2=σ\)</span></li>
+</ul>
+<p>Test, ob Mittelwert der einen Gruppe größer/kleiner als Mittelwert der anderen Gruppe ist (gerichtet):</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(μ_1\leqμ_2\)</span> bzw. <span class="math inline">\(μ_1−μ_2\leq0\)</span> und <span class="math inline">\(σ_1=σ_2=σ\)</span></li>
+<li><span class="math inline">\(H_1\)</span>: <span class="math inline">\(μ_1&gt;μ_2\)</span> bzw. <span class="math inline">\(μ_1−μ_2&gt;0\)</span> und <span class="math inline">\(σ_1=σ_2=σ\)</span></li>
+</ul>
+<p>Zum Beispiel könnten wir eine Stichprobe bestehend aus Männern und Frauen erhoben haben, die eine Diät durchgeführt haben. Eine Fragestellung könnte sein, ob Männer und Frauen (Geschlecht = dichotome UV) unterschiedlich viel abgenommen haben (Gewichtsverlust = numerische AV).</p>
+<p>Die ersten Zeilen des Stichprobendatensatzes könnten so aussehen:</p>
+<pre><code>##   Gender Weight.loss
+## 1  Males         0.0
+## 2  Males         0.0
+## 3  Males         3.8
+## 4  Males         6.0
+## 5  Males         0.7
+## 6  Males         2.9</code></pre>
+</div>
+<div id="deskriptive-einordnung-1" class="section level3 hasAnchor" number="15.2.2">
+<h3><span class="header-section-number">15.2.2</span> Deskriptive Einordnung<a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zunächst können wir uns die Deskriptivstatistiken innerhalb der beiden Gruppen einmal anschauen:</p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb390-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describeBy</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)</span></code></pre></div>
+<pre><code>## 
+##  Descriptive statistics by group 
+## Gender: Females
+##             vars  n mean   sd median trimmed  mad min  max range skew kurtosis
+## Weight.loss    1 42 6.93 2.24      7     6.9 1.93 1.6 12.2  10.6 0.12     0.38
+##               se
+## Weight.loss 0.35
+## ------------------------------------------------------------ 
+## Gender: Males
+##             vars  n mean   sd median trimmed  mad  min max range skew kurtosis
+## Weight.loss    1 45 3.72 2.59    3.4    3.75 2.82 -2.1 8.5  10.6 0.01    -0.92
+##               se
+## Weight.loss 0.39</code></pre>
+<p>Rein deskriptiv lässt sich bereits feststellen, dass Männer mit 3.72kg etwas weniger abgenommen zu haben scheinen, als Frauen mit 3.72kg.</p>
+<p>Ob sich dieser numerische Unterschied auch als signifikant erweist, prüfen wir mit dem t-Test.</p>
+</div>
+<div id="test-durchführen-1" class="section level3 hasAnchor" number="15.2.3">
+<h3><span class="header-section-number">15.2.3</span> Test durchführen<a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zur Durchführung des Tests nutzen wir die in der Grundform von R vorinstallierte <code>t.test()</code> Funktion.</p>
+<p>Die Schreibweise in Formelformat nimmt die Form <code>AV ~ UV</code> an, wobei <code>~</code> soviel heißt wie “wird vorhergesagt durch”.</p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Weight.loss by Gender
+## t = 6.191, df = 84.544, p-value = 0.00000002069
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  2.178046 4.239097
+## sample estimates:
+## mean in group Females   mean in group Males 
+##              6.928571              3.720000</code></pre>
+<p>Alternative Schreibweise:</p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>Weight.loss[data<span class="sc">$</span>Gender <span class="sc">==</span> <span class="st">&quot;Males&quot;</span>], data<span class="sc">$</span>Weight.loss[data<span class="sc">$</span>Gender <span class="sc">==</span> <span class="st">&quot;Females&quot;</span>])</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  data$Weight.loss[data$Gender == &quot;Males&quot;] and data$Weight.loss[data$Gender == &quot;Females&quot;]
+## t = -6.191, df = 84.544, p-value = 0.00000002069
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -4.239097 -2.178046
+## sample estimates:
+## mean of x mean of y 
+##  3.720000  6.928571</code></pre>
+<p>Für einen gerichteten Test (z.B. Frauen nehmen mehr ab als Männer)</p>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Weight.loss by Gender
+## t = 6.191, df = 84.544, p-value = 0.00000001035
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  2.34666     Inf
+## sample estimates:
+## mean in group Females   mean in group Males 
+##              6.928571              3.720000</code></pre>
+</div>
+<div id="relevante-parameter-extrahieren" class="section level3 hasAnchor" number="15.2.4">
+<h3><span class="header-section-number">15.2.4</span> Relevante Parameter extrahieren<a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die relevanten Parameter zum Berichten eines unabhängigen t-Tests sind:</p>
+<ul>
+<li><span class="math inline">\(\Delta\)</span>M (Differenz vom Mittelwert zum Referenzwert)</li>
+<li>Grenzen des Konfidenzintervalls der Mittelwertsdifferenz</li>
+<li>t-Wert (Teststatistik)</li>
+<li>df (Freiheitsgerade)</li>
+<li>P-Wert</li>
+</ul>
+<p>Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:</p>
+<p>t-Wert (Teststatistik):</p>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>statistic</span></code></pre></div>
+<pre><code>##        t 
+## 6.191013</code></pre>
+<p>df (Freiheitsgerade):</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>parameter</span></code></pre></div>
+<pre><code>##     df 
+## 84.544</code></pre>
+<p>P-Wert:</p>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.00000002069288</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 2.178046</code></pre>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 4.239097</code></pre>
+</div>
+<div id="voraussetzungsprüfung-und-alternativen" class="section level3 hasAnchor" number="15.2.5">
+<h3><span class="header-section-number">15.2.5</span> Voraussetzungsprüfung und Alternativen<a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Folgende Vorraussetzungen gelten für den unabhängigen t-Test:
+* unabhängige Messungen
+* Intervallskala
+* Normalverteilung in beiden Gruppen
+* Homogenität der Varianzen</p>
+<p>Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt sein, muss ein robuster Test gerechnet werden (s.u. U-Test).</p>
+<p>Die Varianzhomogenität wird mittels Levene’s Test (F-Test) geprüft <span class="citation">Levene (<a href="#ref-levene1960robust" role="doc-biblioref">1960</a>)</span>. Eine Funktion dafür ist im Patek <code>car</code> enthalten.</p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb408-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)</span></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##       Df F value Pr(&gt;F)
+## group  1  2.0175 0.1591
+##       85</code></pre>
+<p>Ein signifikanter Levene’s Test bedeutet, dass sich die Varianzen innerhalb der Gruppen signifikant unterscheiden. Sie sind also nicht “homogen”.</p>
+<p>Zum Berichten eines Levene’s Test gibt es nicht viel zu tun. Lediglich die Freiheitsgrade, der F-Wert und die Signifikanz sind zu berichten. Die übliche Form hierfür ist die folgende: F(1,49) = 16,908, p = 0,0001493</p>
+<p>Liegt keine Varianzhomogenität vor, berechnet man stattdessen einen <strong>Welch-Test</strong>.</p>
+<p>Um einen <strong>Welch-Test</strong> zu berechnen, ändern wir nur leicht die Funktion:</p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Weight.loss by Gender
+## t = 6.191, df = 84.544, p-value = 0.00000002069
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  2.178046 4.239097
+## sample estimates:
+## mean in group Females   mean in group Males 
+##              6.928571              3.720000</code></pre>
+</div>
+<div id="effektstärke-1" class="section level3 hasAnchor" number="15.2.6">
+<h3><span class="header-section-number">15.2.6</span> Effektstärke<a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="cohens-d-1" class="section level4 hasAnchor" number="15.2.6.1">
+<h4><span class="header-section-number">15.2.6.1</span> Cohen’s d<a href="tests-für-einfache-gruppenvergleiche.html#cohens-d-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Die am häufigsten verwendete Effektstärke für den Vergleich zweier unabhängiger Gruppen ist Cohen’s d <span class="citation">Cohen (<a href="#ref-cohen1988statistical" role="doc-biblioref">1988</a>)</span>.
+Cohen’s d lässt sich mit dem Paket <code>effsize</code> berechnen. Dieses verwendet praktischerweise die gleiche Schreibweise, wie der t-Test:</p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb412-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)</span></code></pre></div>
+<pre><code>## 
+## Cohen&#39;s d
+## 
+## d estimate: 1.321689 (large)
+## 95 percent confidence interval:
+##     lower     upper 
+## 0.8508801 1.7924981</code></pre>
+<p>Auch die Einzelparameter von Cohen’s d lassen sich extrahieren:</p>
+<p>Cohen’s d:</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb414-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>estimate</span></code></pre></div>
+<pre><code>## [1] 1.321689</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb416-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##     lower 
+## 0.8508801</code></pre>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb418-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##    upper 
+## 1.792498</code></pre>
+<p>Die Interpretation von Cohens’d lautet wie folgt <span class="citation">Cohen (<a href="#ref-cohen1992quantitative" role="doc-biblioref">1992</a>)</span>:</p>
+<caption>
+<span id="tab:unnamed-chunk-244">Table 15.3: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Interpretation von Cohen’s d.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">d</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">|&gt;0.2|</td>
+<td align="left">kleiner Effekt</td>
+</tr>
+<tr class="even">
+<td align="left">|&gt;0.5|</td>
+<td align="left">mittlerer Effekt</td>
+</tr>
+<tr class="odd">
+<td align="left">|&gt;0.8|</td>
+<td align="left">großer Effekt</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="hedges-g" class="section level4 hasAnchor" number="15.2.6.2">
+<h4><span class="header-section-number">15.2.6.2</span> Hedges’ g<a href="tests-für-einfache-gruppenvergleiche.html#hedges-g" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Eine gelegentlich verwendete Alternative zu Cohen’s d ist das Hedges’ g. Hedges’ g wird weitgehend analog zu Cohen’s d verwendet, korrigiert dabei jedoch statistisch für besonders kleine Gruppengößen (N&lt;20) <span class="citation">Hedges and Olkin (<a href="#ref-hedges2014statistical" role="doc-biblioref">2014</a>)</span></p>
+<p>Es lässt sich mit derselben Funktion berechnen:</p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb420-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data, <span class="at">hedges.correction =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+## Hedges&#39;s g
+## 
+## g estimate: 1.309993 (large)
+## 95 percent confidence interval:
+##     lower     upper 
+## 0.8440869 1.7758986</code></pre>
+<p>Die Interpretation von Hedges’ g ist identisch wie die von von Cohens’d:</p>
+<caption>
+<span id="tab:unnamed-chunk-246">Table 15.4: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Interpretation von Hedges’ g.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">g</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">|&gt;0.2|</td>
+<td align="left">kleiner Effekt</td>
+</tr>
+<tr class="even">
+<td align="left">|&gt;0.5|</td>
+<td align="left">mittlerer Effekt</td>
+</tr>
+<tr class="odd">
+<td align="left">|&gt;0.8|</td>
+<td align="left">großer Effekt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="darstellung-in-tabellenform-1" class="section level3 hasAnchor" number="15.2.7">
+<h3><span class="header-section-number">15.2.7</span> Darstellung in Tabellenform<a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zur sauberen Darstellung des Ergebnisses in einer bereits nach APA formatierten Tabelle, lassen sich die Funktionen <code>apa_print</code> und <code>apa_table</code> aus dem Paket <code>papaja</code> verwenden.</p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span>
+<span id="cb422-2"><a href="tests-für-einfache-gruppenvergleiche.html#cb422-2" aria-hidden="true" tabindex="-1"></a>apa_test <span class="ot">&lt;-</span> <span class="fu">apa_print</span>(</span>
+<span id="cb422-3"><a href="tests-für-einfache-gruppenvergleiche.html#cb422-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">t.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)</span>
+<span id="cb422-4"><a href="tests-für-einfache-gruppenvergleiche.html#cb422-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb422-5"><a href="tests-für-einfache-gruppenvergleiche.html#cb422-5" aria-hidden="true" tabindex="-1"></a><span class="fu">apa_table</span>(</span>
+<span id="cb422-6"><a href="tests-für-einfache-gruppenvergleiche.html#cb422-6" aria-hidden="true" tabindex="-1"></a>  apa_test<span class="sc">$</span>table, <span class="at">caption =</span> <span class="st">&quot;Tabelle für den unabhängigen t-Test.&quot;</span></span>
+<span id="cb422-7"><a href="tests-für-einfache-gruppenvergleiche.html#cb422-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<caption>
+<span id="tab:unnamed-chunk-247">Table 15.5: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Tabelle für den unabhängigen t-Test.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(\Delta M\)</span></th>
+<th align="left">95% CI</th>
+<th align="left"><span class="math inline">\(t\)</span></th>
+<th align="left"><span class="math inline">\(\mathit{df}\)</span></th>
+<th align="left"><span class="math inline">\(p\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">3.21</td>
+<td align="left">[2.18, 4.24]</td>
+<td align="left">6.19</td>
+<td align="left">84.54</td>
+<td align="left">&lt; .001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="t-test-bei-abhängigen-stichproben" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> t-Test bei abhängigen Stichproben<a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-abhängigen-stichproben" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="hypothesen-3" class="section level3 hasAnchor" number="15.3.1">
+<h3><span class="header-section-number">15.3.1</span> Hypothesen<a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Mit einem abhängigen t-Test vergleichen wir die Mittelwerte zweier abhängiger Messungen. Ein klassisches Beispiel dafür ist der Vergleich von zwei Messzeitpunkten derselben Variable in derselben Gruppe von Personen.</p>
+<p>Im Datensatz muss eine numerische Variable mit Messungen zu zwei Zeiten vorliegen (AV). Die dichotome UV, so wie wir sie vom unabhängigen t-Test kennen ist der Zeitpunkt (z.B. Prä vs. Post).</p>
+<p>Es sind folgende Hypothesen denkbar:</p>
+<p>Test auf Unterschiedlichkeit der Mittelwerte beider Messungen (ungerichtet):</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(μ_d = 0\)</span></li>
+<li><span class="math inline">\(H_1\)</span>: <span class="math inline">\(μ_d \neq 0\)</span></li>
+</ul>
+<p>Test, ob Mittelwert der einen Messung größer/kleiner als Mittelwert der anderen Messung ist (gerichtet):</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(μ_d \leq 0\)</span></li>
+<li><span class="math inline">\(H_1\)</span>: <span class="math inline">\(μ_d &gt; 0\)</span></li>
+</ul>
+<p>Zum Beispiel könnten wir eine Stichprobe von Personen erhoben haben, die eine Diät durchgeführt haben. Es gäbe eine Messung des Gewichts vor der Diät (Prä), dann erfolgt die Diät und dann gäbe es eine weitere Messung des Gewichts nach der Diät (Post).</p>
+<p>Die ersten Zeilen des Stichprobendatensatzes könnten so aussehen:</p>
+<pre><code>##   gewicht_prä gewicht_post
+## 1          60           60
+## 2         103          103
+## 3          58           54
+## 4          60           54
+## 5          64           63
+## 6          64           61</code></pre>
+<p>Die Testung der Hypothesen erfolgt mathematisch hinsichtlich der Differenz der Wertepaare aller Personen:</p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb424-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>d <span class="ot">=</span> data<span class="sc">$</span>gewicht_prä <span class="sc">-</span> data<span class="sc">$</span>gewicht_post</span>
+<span id="cb424-2"><a href="tests-für-einfache-gruppenvergleiche.html#cb424-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-3"><a href="tests-für-einfache-gruppenvergleiche.html#cb424-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   gewicht_prä gewicht_post d
+## 1          60           60 0
+## 2         103          103 0
+## 3          58           54 4
+## 4          60           54 6
+## 5          64           63 1
+## 6          64           61 3</code></pre>
+</div>
+<div id="deskriptive-einordnung-2" class="section level3 hasAnchor" number="15.3.2">
+<h3><span class="header-section-number">15.3.2</span> Deskriptive Einordnung<a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zunächst können wir uns die Deskriptivstatistiken zu beiden Zeitpunkten einmal anschauen:</p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb426-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(data<span class="sc">$</span>gewicht_prä)</span></code></pre></div>
+<pre><code>##    vars  n  mean   sd median trimmed mad min max range skew kurtosis   se
+## X1    1 78 72.53 8.72     72    72.2 8.9  58 103    45 0.49     0.39 0.99</code></pre>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb428-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(data<span class="sc">$</span>gewicht_post)</span></code></pre></div>
+<pre><code>##    vars  n  mean   sd median trimmed   mad min max range skew kurtosis   se
+## X1    1 78 68.74 9.01     69   68.45 10.38  53 103    50 0.62        1 1.02</code></pre>
+<p>Rein deskriptiv lässt sich bereits feststellen, dass das Gewicht zur 1. Messung mit 72.53kg etwas höher zu sein scheint, als zur 2. Messung mit 68.74kg.</p>
+<p>Ob sich dieser numerische Unterschied auch als signifikant erweist, prüfen wir mit dem abhängigen t-Test.</p>
+</div>
+<div id="test-durchführen-2" class="section level3 hasAnchor" number="15.3.3">
+<h3><span class="header-section-number">15.3.3</span> Test durchführen<a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zur Durchführung des Tests nutzen wir die in der Grundform von R vorinstallierte <code>t.test()</code> Funktion.</p>
+<p>Die Spezifizierung zur Durchführung eines abhängigen t-Tests erreichen wir mit dem Argument <code>paired = T</code>.</p>
+<p>Für eine ungerichtete Hypothese:</p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)</span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  data$gewicht_prä and data$gewicht_post
+## t = 13.039, df = 77, p-value &lt; 0.00000000000000022
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  3.204479 4.359624
+## sample estimates:
+## mean of the differences 
+##                3.782051</code></pre>
+<p>Für eine gerichtete Hypothese (z.B. Prä-Gewicht höher als Post-Gewicht):</p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  data$gewicht_prä and data$gewicht_post
+## t = 13.039, df = 77, p-value &lt; 0.00000000000000022
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  3.299144      Inf
+## sample estimates:
+## mean of the differences 
+##                3.782051</code></pre>
+</div>
+<div id="relevante-parameter-extrahieren-1" class="section level3 hasAnchor" number="15.3.4">
+<h3><span class="header-section-number">15.3.4</span> Relevante Parameter extrahieren<a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die relevanten Parameter zum Berichten eines abhängigen t-Tests sind:</p>
+<ul>
+<li><span class="math inline">\(M_d\)</span> (Mittelwert der Differenzen)</li>
+<li>Grenzen des Konfidenzintervalls des Mittelwert der Differenzen</li>
+<li>t-Wert (Teststatistik)</li>
+<li>df (Freiheitsgerade)</li>
+<li>P-Wert</li>
+</ul>
+<p>Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:</p>
+<p>t-Wert (Teststatistik):</p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)<span class="sc">$</span>statistic</span></code></pre></div>
+<pre><code>##       t 
+## 13.0391</code></pre>
+<p>df (Freiheitsgerade):</p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)<span class="sc">$</span>parameter</span></code></pre></div>
+<pre><code>## df 
+## 77</code></pre>
+<p>P-Wert:</p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.000000000000000000003513805</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 3.204479</code></pre>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 4.359624</code></pre>
+</div>
+<div id="voraussetzungsprüfung-und-alternativen-1" class="section level3 hasAnchor" number="15.3.5">
+<h3><span class="header-section-number">15.3.5</span> Voraussetzungsprüfung und Alternativen<a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Folgende Vorraussetzungen gelten für den abhängigen t-Test:
+* abhängige Messungen
+* Intervallskala
+* Normalverteilung der Differenzwerte</p>
+<p>Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt sein, muss ein robuster Test gerechnet werden (s.u. U-Test).</p>
+<p>Die Varianzhomogenität (Voraussetzung beim unabhängigen t-Test) ist beim abhängigen t-Test nicht relevant.</p>
+</div>
+<div id="effektstärke-2" class="section level3 hasAnchor" number="15.3.6">
+<h3><span class="header-section-number">15.3.6</span> Effektstärke<a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="cohens-d-2" class="section level4 hasAnchor" number="15.3.6.1">
+<h4><span class="header-section-number">15.3.6.1</span> Cohen’s d<a href="tests-für-einfache-gruppenvergleiche.html#cohens-d-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Die am häufigsten verwendete Effektstärke für den Vergleich zweier abhängiger Messungen ist Cohen’s d <span class="citation">Cohen (<a href="#ref-cohen1988statistical" role="doc-biblioref">1988</a>)</span>.
+Cohen’s d lässt sich mit dem Paket <code>effsize</code> berechnen. Dieses verwendet praktischerweise die gleiche Schreibweise, wie der t-Test.</p>
+<p>VORSICHT: Auch hier muss <code>paired = T</code> angegeben werden:</p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb444-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)</span></code></pre></div>
+<pre><code>## 
+## Cohen&#39;s d
+## 
+## d estimate: 0.423984 (small)
+## 95 percent confidence interval:
+##     lower     upper 
+## 0.3569237 0.4910444</code></pre>
+<p>Auch die Einzelparameter von Cohen’s d lassen sich extrahieren:</p>
+<p>Cohen’s d:</p>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb446-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)<span class="sc">$</span>estimate</span></code></pre></div>
+<pre><code>## [1] 0.423984</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb448-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##     lower 
+## 0.3569237</code></pre>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb450-1" aria-hidden="true" tabindex="-1"></a>effsize<span class="sc">::</span><span class="fu">cohen.d</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##     upper 
+## 0.4910444</code></pre>
+<p>Die Interpretation von Cohens’d lautet wie folgt <span class="citation">Cohen (<a href="#ref-cohen1992quantitative" role="doc-biblioref">1992</a>)</span>:</p>
+<caption>
+<span id="tab:unnamed-chunk-261">Table 15.6: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Interpretation von Cohen’s d.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">d</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">|&gt;0.2|</td>
+<td align="left">kleiner Effekt</td>
+</tr>
+<tr class="even">
+<td align="left">|&gt;0.5|</td>
+<td align="left">mittlerer Effekt</td>
+</tr>
+<tr class="odd">
+<td align="left">|&gt;0.8|</td>
+<td align="left">großer Effekt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="darstellung-in-tabellenform-2" class="section level3 hasAnchor" number="15.3.7">
+<h3><span class="header-section-number">15.3.7</span> Darstellung in Tabellenform<a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zur sauberen Darstellung des Ergebnisses in einer bereits nach APA formatierten Tabelle, lassen sich die Funktionen <code>apa_print</code> und <code>apa_table</code> aus dem Paket <code>papaja</code> verwenden.</p>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span>
+<span id="cb452-2"><a href="tests-für-einfache-gruppenvergleiche.html#cb452-2" aria-hidden="true" tabindex="-1"></a>apa_test <span class="ot">&lt;-</span> <span class="fu">apa_print</span>(</span>
+<span id="cb452-3"><a href="tests-für-einfache-gruppenvergleiche.html#cb452-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">t.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)</span>
+<span id="cb452-4"><a href="tests-für-einfache-gruppenvergleiche.html#cb452-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb452-5"><a href="tests-für-einfache-gruppenvergleiche.html#cb452-5" aria-hidden="true" tabindex="-1"></a><span class="fu">apa_table</span>(</span>
+<span id="cb452-6"><a href="tests-für-einfache-gruppenvergleiche.html#cb452-6" aria-hidden="true" tabindex="-1"></a>  apa_test<span class="sc">$</span>table, <span class="at">caption =</span> <span class="st">&quot;Tabelle für den abhängigen t-Test.&quot;</span></span>
+<span id="cb452-7"><a href="tests-für-einfache-gruppenvergleiche.html#cb452-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<caption>
+<span id="tab:unnamed-chunk-262">Table 15.7: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Tabelle für den abhängigen t-Test.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(M_D\)</span></th>
+<th align="left">95% CI</th>
+<th align="left"><span class="math inline">\(t\)</span></th>
+<th align="left"><span class="math inline">\(\mathit{df}\)</span></th>
+<th align="left"><span class="math inline">\(p\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">3.78</td>
+<td align="left">[3.20, 4.36]</td>
+<td align="left">13.04</td>
+<td align="left">77</td>
+<td align="left">&lt; .001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)<a href="tests-für-einfache-gruppenvergleiche.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt sein, muss ein robuster (non-paramterischer) Test gerechnet werden.</p>
+<p>Der Wilcoxon–Mann–Whitney-U Test ist eine <strong>Alternative zum unabhängigen t-Test</strong>.</p>
+<div id="hypothesen-4" class="section level3 hasAnchor" number="15.4.1">
+<h3><span class="header-section-number">15.4.1</span> Hypothesen<a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Er prüft im Wesentlichen dieselben Hypothesen, funktioniert aber auf Rangskalenniveau anstelle des Intervallskalenniveaus.</p>
+<p>Um beide Tests vergleichen zu können, verwenden wir noch einmal dasselbe Beispiel, wie im Kapitel zum unabhängigen t-Test (Unterschied im Gewichtsverlust nach Diät: Männer vs. Frauen).</p>
+</div>
+<div id="test-durchführen-3" class="section level3 hasAnchor" number="15.4.2">
+<h3><span class="header-section-number">15.4.2</span> Test durchführen<a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Der Test nimmt dieselbe Form an wie der abhängige t-Test:</p>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data, <span class="at">exact =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  Weight.loss by Gender
+## W = 1542.5, p-value = 0.0000003907
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Alternative Schreibweise:</p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(data<span class="sc">$</span>Weight.loss[data<span class="sc">$</span>Gender <span class="sc">==</span> <span class="st">&quot;Males&quot;</span>], data<span class="sc">$</span>Weight.loss[data<span class="sc">$</span>Gender <span class="sc">==</span> <span class="st">&quot;Females&quot;</span>], <span class="at">exact =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  data$Weight.loss[data$Gender == &quot;Males&quot;] and data$Weight.loss[data$Gender == &quot;Females&quot;]
+## W = 347.5, p-value = 0.0000003907
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Für einen gerichteten Test (z.B. Frauen nehmen mehr ab als Männer)</p>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="at">exact =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  Weight.loss by Gender
+## W = 1542.5, p-value = 0.0000001953
+## alternative hypothesis: true location shift is greater than 0</code></pre>
+</div>
+<div id="relevante-parameter-extrahieren-2" class="section level3 hasAnchor" number="15.4.3">
+<h3><span class="header-section-number">15.4.3</span> Relevante Parameter extrahieren<a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die relevanten Parameter zum Berichten eines Wilcoxon–Mann–Whitney-U Tests sind:</p>
+<ul>
+<li>Wilcoxon Statistik (W)</li>
+<li>P-Wert</li>
+</ul>
+<p>Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:</p>
+<p>Wilcoxon Statistik (W, Teststatistik):</p>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data, <span class="at">exact =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>statistic</span></code></pre></div>
+<pre><code>##      W 
+## 1542.5</code></pre>
+<p>P-Wert:</p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data, <span class="at">exact =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.0000003906867</code></pre>
+</div>
+<div id="effektstärke-3" class="section level3 hasAnchor" number="15.4.4">
+<h3><span class="header-section-number">15.4.4</span> Effektstärke<a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="rangsummenkoeffizient-r" class="section level4 hasAnchor" number="15.4.4.1">
+<h4><span class="header-section-number">15.4.4.1</span> Rangsummenkoeffizient <span class="math inline">\((r)\)</span><a href="tests-für-einfache-gruppenvergleiche.html#rangsummenkoeffizient-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Die am häufigsten verwendete Effektstärke für den non-parametrischen Vergleich zweier unabhängiger Gruppen ist der sogenannte Rangsummenkoeffizient <span class="citation">(<a href="#ref-tomczak2014need" role="doc-biblioref">Tomczak and Tomczak 2014</a>)</span>.</p>
+<p>Der Rangsummenkoeffizient <span class="math inline">\((r)\)</span> lässt sich mit dem Paket <code>rstatix</code> berechnen. Die Funktion lautet <code>wilcox_effsize()</code>. Zudem müssen wir vorher das Paket <code>coin</code> installieren.</p>
+<p>Die Funktion zur Berechnung des Rangsummenkoeffizienten wird wie folgt aufgestellt:</p>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb463-1" aria-hidden="true" tabindex="-1"></a>rstatix<span class="sc">::</span><span class="fu">wilcox_effsize</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.         group1  group2 effsize    n1    n2 magnitude
+## * &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
+## 1 Weight.loss Females Males    0.544    42    45 large</code></pre>
+<p>Auch die Einzelparameter des Rangsummenkoeffizient lassen sich extrahieren:</p>
+<p>Rangsummenkoeffizient:</p>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb465-1" aria-hidden="true" tabindex="-1"></a>rstatix<span class="sc">::</span><span class="fu">wilcox_effsize</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)<span class="sc">$</span>effsize</span></code></pre></div>
+<pre><code>## Effect size (r) 
+##       0.5443855</code></pre>
+<p>Die Interpretation des Rangsummenkoeffizienten lautet wie folgt:</p>
+<caption>
+<span id="tab:unnamed-chunk-271">Table 15.8: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Interpretation des Rangsummenkoeffizienten.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">r</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">|&gt;0.1|</td>
+<td align="left">kleiner Effekt</td>
+</tr>
+<tr class="even">
+<td align="left">|&gt;0.3|</td>
+<td align="left">mittlerer Effekt</td>
+</tr>
+<tr class="odd">
+<td align="left">|&gt;0.5|</td>
+<td align="left">großer Effekt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="darstellung-in-tabellenform-3" class="section level3 hasAnchor" number="15.4.5">
+<h3><span class="header-section-number">15.4.5</span> Darstellung in Tabellenform<a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zur sauberen Darstellung des Ergebnisses in einer bereits nach APA formatierten Tabelle, lassen sich die Funktionen <code>apa_print</code> und <code>apa_table</code> aus dem Paket <code>papaja</code> verwenden.</p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span>
+<span id="cb467-2"><a href="tests-für-einfache-gruppenvergleiche.html#cb467-2" aria-hidden="true" tabindex="-1"></a>apa_test <span class="ot">&lt;-</span> <span class="fu">apa_print</span>(</span>
+<span id="cb467-3"><a href="tests-für-einfache-gruppenvergleiche.html#cb467-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">wilcox.test</span>(Weight.loss <span class="sc">~</span> Gender, <span class="at">data =</span> data)</span>
+<span id="cb467-4"><a href="tests-für-einfache-gruppenvergleiche.html#cb467-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## Warning in wilcox.test.default(x = c(2.4, 4.1, 7.5, 7.1, 12, 5.4, 6.9, 6.5, :
+## cannot compute exact p-value with ties</code></pre>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apa_table</span>(</span>
+<span id="cb469-2"><a href="tests-für-einfache-gruppenvergleiche.html#cb469-2" aria-hidden="true" tabindex="-1"></a>  apa_test<span class="sc">$</span>table, <span class="at">caption =</span> <span class="st">&quot;Tabelle für den Wilcoxon–Mann–Whitney-U Test.&quot;</span></span>
+<span id="cb469-3"><a href="tests-für-einfache-gruppenvergleiche.html#cb469-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<caption>
+<span id="tab:unnamed-chunk-272">Table 15.9: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Tabelle für den Wilcoxon–Mann–Whitney-U Test.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(W\)</span></th>
+<th align="left"><span class="math inline">\(p\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1,542.50</td>
+<td align="left">&lt; .001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="wilcoxonmannu-test-wilcoxon-signed-rank-test" class="section level2 hasAnchor" number="15.5">
+<h2><span class="header-section-number">15.5</span> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)<a href="tests-für-einfache-gruppenvergleiche.html#wilcoxonmannu-test-wilcoxon-signed-rank-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt sein, muss ein robuster (non-paramterischer) Test gerechnet werden.</p>
+<p>Der Wilcoxon–Mann–U Test ist eine <strong>Alternative zum abhängigen t-Test</strong>.</p>
+<div id="hypothesen-5" class="section level3 hasAnchor" number="15.5.1">
+<h3><span class="header-section-number">15.5.1</span> Hypothesen<a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Er prüft im Wesentlichen die selben Hypothesen, funktioniert aber auf Rangskalenniveau anstelle des Intervallskalenniveaus.</p>
+<p>Um beide Tests vergleichen zu können, verwenden wir noch einmal dasselbe Beispiel, wie im Kapitel zum abhängigen t-Test (Unterschied im Gewicht: vor einer Diät vs. nach einer Diät).</p>
+</div>
+<div id="test-durchführen-4" class="section level3 hasAnchor" number="15.5.2">
+<h3><span class="header-section-number">15.5.2</span> Test durchführen<a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Der Test nimmt die selbe Form an wie der abhängige t-Test:</p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon signed rank test with continuity correction
+## 
+## data:  data$gewicht_prä and data$gewicht_post
+## V = 2817.5, p-value = 0.0000000000001731
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Für einen gerichteten Test z.B. Prä-Gewicht höher als Post-Gewicht)</p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon signed rank test with continuity correction
+## 
+## data:  data$gewicht_prä and data$gewicht_post
+## V = 2817.5, p-value = 0.00000000000008655
+## alternative hypothesis: true location shift is greater than 0</code></pre>
+</div>
+<div id="relevante-parameter-extrahieren-3" class="section level3 hasAnchor" number="15.5.3">
+<h3><span class="header-section-number">15.5.3</span> Relevante Parameter extrahieren<a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die relevanten Parameter zum Berichten eines Wilcoxon–Mann–U Tests sind:</p>
+<ul>
+<li>Wilcoxon Statistik (W)</li>
+<li>P-Wert</li>
+</ul>
+<p>Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:</p>
+<p>Wilcoxon Statistik (W, Teststatistik):</p>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)<span class="sc">$</span>statistic</span></code></pre></div>
+<pre><code>##      V 
+## 2817.5</code></pre>
+<p>P-Wert:</p>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.000000000000173098</code></pre>
+</div>
+<div id="effektstärke-4" class="section level3 hasAnchor" number="15.5.4">
+<h3><span class="header-section-number">15.5.4</span> Effektstärke<a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="rangsummenkoeffizient-r-1" class="section level4 hasAnchor" number="15.5.4.1">
+<h4><span class="header-section-number">15.5.4.1</span> Rangsummenkoeffizient <span class="math inline">\((r)\)</span><a href="tests-für-einfache-gruppenvergleiche.html#rangsummenkoeffizient-r-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Die am häufigsten verwendete Effektstärke für den non-parametrischen Vergleich zweier abhängiger Messungen ist der sogenannte Rangsummenkoeffizient <span class="citation">Tomczak and Tomczak (<a href="#ref-tomczak2014need" role="doc-biblioref">2014</a>)</span>.</p>
+<p>Der Rangsummenkoeffizient <span class="math inline">\((r)\)</span> lässt sich mit dem Paket <code>rstatix</code> berechnen. Die Funktion lautet <code>wilcox_effsize()</code>.</p>
+<p>Dafür muss der Datensatz jedoch im long-Format (und nicht wie zuvor im wide-Format) vorliegen. Wir transformieren die Daten mit der Funktion <code>pivot_longer</code> aus dem <code>tidyr</code> R-Paket.</p>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb478-1" aria-hidden="true" tabindex="-1"></a>data_long <span class="ot">=</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">data =</span> data, </span>
+<span id="cb478-2"><a href="tests-für-einfache-gruppenvergleiche.html#cb478-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;gewicht_prä&quot;</span>, <span class="st">&quot;gewicht_post&quot;</span>), </span>
+<span id="cb478-3"><a href="tests-für-einfache-gruppenvergleiche.html#cb478-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">values_to =</span> <span class="st">&quot;Gewicht&quot;</span>,</span>
+<span id="cb478-4"><a href="tests-für-einfache-gruppenvergleiche.html#cb478-4" aria-hidden="true" tabindex="-1"></a>                                <span class="at">names_to =</span> <span class="st">&quot;Zeitpunkt&quot;</span>)</span>
+<span id="cb478-5"><a href="tests-für-einfache-gruppenvergleiche.html#cb478-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb478-6"><a href="tests-für-einfache-gruppenvergleiche.html#cb478-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_long)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   Zeitpunkt    Gewicht
+##   &lt;chr&gt;          &lt;int&gt;
+## 1 gewicht_prä       60
+## 2 gewicht_post      60
+## 3 gewicht_prä      103
+## 4 gewicht_post     103
+## 5 gewicht_prä       58
+## 6 gewicht_post      54</code></pre>
+<p>Die Funktion zur Berechnung des Rangsummenkoeffizienten wird wie folgt aufgestellt:</p>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb480-1" aria-hidden="true" tabindex="-1"></a>rstatix<span class="sc">::</span><span class="fu">wilcox_effsize</span>(Gewicht <span class="sc">~</span> Zeitpunkt, <span class="at">data =</span> data_long, <span class="at">paired =</span> T)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.     group1       group2      effsize    n1    n2 magnitude
+## * &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;         &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
+## 1 Gewicht gewicht_post gewicht_prä   0.844    78    78 large</code></pre>
+<p>Auch die Einzelparameter des Rangsummenkoeffizient lassen sich extrahieren:</p>
+<p>Rangsummenkoeffizient:</p>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb482-1" aria-hidden="true" tabindex="-1"></a>rstatix<span class="sc">::</span><span class="fu">wilcox_effsize</span>(Gewicht <span class="sc">~</span> Zeitpunkt, <span class="at">data =</span> data_long, <span class="at">paired =</span> T)<span class="sc">$</span>effsize</span></code></pre></div>
+<pre><code>## Effect size (r) 
+##       0.8438155</code></pre>
+<p>Die Interpretation des Rangsummenkoeffizienten lautet wie folgt:</p>
+<caption>
+<span id="tab:unnamed-chunk-281">Table 15.10: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Interpretation des Rangsummenkoeffizienten.</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">r</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">|&gt;0.1|</td>
+<td align="left">kleiner Effekt</td>
+</tr>
+<tr class="even">
+<td align="left">|&gt;0.3|</td>
+<td align="left">mittlerer Effekt</td>
+</tr>
+<tr class="odd">
+<td align="left">|&gt;0.5|</td>
+<td align="left">großer Effekt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="darstellung-in-tabellenform-4" class="section level3 hasAnchor" number="15.5.5">
+<h3><span class="header-section-number">15.5.5</span> Darstellung in Tabellenform<a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zur sauberen Darstellung des Ergebnisses in einer bereits nach APA formatierten Tabelle, lassen sich die Funktionen <code>apa_print</code> und <code>apa_table</code> aus dem Paket <code>papaja</code> verwenden.</p>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span>
+<span id="cb484-2"><a href="tests-für-einfache-gruppenvergleiche.html#cb484-2" aria-hidden="true" tabindex="-1"></a>apa_test <span class="ot">&lt;-</span> <span class="fu">apa_print</span>(</span>
+<span id="cb484-3"><a href="tests-für-einfache-gruppenvergleiche.html#cb484-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">wilcox.test</span>(data<span class="sc">$</span>gewicht_prä, data<span class="sc">$</span>gewicht_post, <span class="at">paired =</span> T)</span>
+<span id="cb484-4"><a href="tests-für-einfache-gruppenvergleiche.html#cb484-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb484-5"><a href="tests-für-einfache-gruppenvergleiche.html#cb484-5" aria-hidden="true" tabindex="-1"></a><span class="fu">apa_table</span>(</span>
+<span id="cb484-6"><a href="tests-für-einfache-gruppenvergleiche.html#cb484-6" aria-hidden="true" tabindex="-1"></a>  apa_test<span class="sc">$</span>table, <span class="at">caption =</span> <span class="st">&quot;Tabelle für den Wilcoxon–Mann–U Test&quot;</span></span>
+<span id="cb484-7"><a href="tests-für-einfache-gruppenvergleiche.html#cb484-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<caption>
+<span id="tab:unnamed-chunk-282">Table 15.11: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Tabelle für den Wilcoxon–Mann–U Test</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(V\)</span></th>
+<th align="left"><span class="math inline">\(p\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2,817.50</td>
+<td align="left">&lt; .001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="chi2-test" class="section level2 hasAnchor" number="15.6">
+<h2><span class="header-section-number">15.6</span> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test<a href="tests-für-einfache-gruppenvergleiche.html#chi2-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Wir haben nun die t-Tests kennengelernt. Diese haben alle gemeinsam, dass Sie Mittelwerte vergleichen. Sie setzen somit voraus, dass die AV numerisch ist.</p>
+<p>Wie können wir aber Vergleiche rechnen, wenn unsere AV eine kategoriale (z.B. binäre) Variable ist?</p>
+<p>Die verglichene Statistik ist dann die Verteilung, bzw. die Häufigkeit der Ausprägungen der AV anstelle von Mittelwerten.</p>
+<p>Ein Beispiel für so ein Szenario könnte sein, dass wir ähnlich wie beim unabhängigen t-Test als UV eine binäre Gruppenvariable mit 2 Gruppen haben:</p>
+<ul>
+<li>Gruppe 1 erhält ein Antidepressivum</li>
+<li>Gruppe 2 erhält ein Placebo.</li>
+</ul>
+<p>Die AV könnte der Behandlungserfolg sein, also ob die Personen nach der Behandlung in Remission waren.</p>
+<p>Wir haben also keine numerische AV mehr, für die wir einen Mittelwert bilden könnten, sondern eine Variable mit 2 Stufen (Remission: ja/nein).</p>
+<div id="deskriptive-einordnung-3" class="section level3 hasAnchor" number="15.6.1">
+<h3><span class="header-section-number">15.6.1</span> Deskriptive Einordnung<a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Um uns die Remissionsraten innerhalb der Antidepressivum-Gruppe und der Placebo-Gruppe in einer Häufigkeitstabelle anzusehen, eignet sich der <code>table()</code> Befehl:</p>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie)</span></code></pre></div>
+<pre><code>##       
+##        Placebo Antidepressivum
+##   Nein      12               4
+##   Ja         8              16</code></pre>
+<p>Es lässt sich bereits sehen, dass von insgesamt 20 Personen in der Antidepressivum-Gruppe 17 einen Behandlungserfolg hatten. Von den 20 Personen in der Placebo-Gruppe jedoch nur 8.</p>
+<p>Um zu prüfen, ob dieser numerische Unterschied signifikant ist, rechnen wir den <span class="math inline">\(\chi\)</span><sup>2</sup>-Test.</p>
+</div>
+<div id="test-durchführen-5" class="section level3 hasAnchor" number="15.6.2">
+<h3><span class="header-section-number">15.6.2</span> Test durchführen<a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zur Durchführung des <span class="math inline">\(\chi\)</span><sup>2</sup>-Test nutzen wir die in der Grundform von R vorinstallierte <code>chisq.test()</code> Funktion.</p>
+<p>Diese umschließt ganz einfach den <code>table()</code> Befehl, den wir gerade schon verwendet haben:</p>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie))</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  table(data$Remission, data$Therapie)
+## X-squared = 5.1042, df = 1, p-value = 0.02387</code></pre>
+</div>
+<div id="relevante-parameter-extrahieren-4" class="section level3 hasAnchor" number="15.6.3">
+<h3><span class="header-section-number">15.6.3</span> Relevante Parameter extrahieren<a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die relevanten Parameter zum Berichten eines abhängigen t-Tests sind:</p>
+<ul>
+<li><span class="math inline">\(\chi\)</span><sup>2</sup>-Wert (Teststatistik)</li>
+<li>df (Freiheitsgerade)</li>
+<li>P-Wert</li>
+</ul>
+<p>Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:</p>
+<p><span class="math inline">\(\chi\)</span><sup>2</sup>-Wert (Teststatistik):</p>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie))<span class="sc">$</span>statistic</span></code></pre></div>
+<pre><code>## X-squared 
+##  5.104167</code></pre>
+<p>df (Freiheitsgerade):</p>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie))<span class="sc">$</span>parameter</span></code></pre></div>
+<pre><code>## df 
+##  1</code></pre>
+<p>P-Wert:</p>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie))<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.02386844</code></pre>
+</div>
+<div id="voraussetzungsprüfung-und-alternativen-2" class="section level3 hasAnchor" number="15.6.4">
+<h3><span class="header-section-number">15.6.4</span> Voraussetzungsprüfung und Alternativen<a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Folgende Vorraussetzungen gelten für den <span class="math inline">\(\chi\)</span><sup>2</sup>-Test:</p>
+<ul>
+<li>unabhängige Messungen</li>
+<li>Nominalskala</li>
+<li>Jede Zelle der Häufigkeitstabelle hat 5 oder mehr Beobachtungen.</li>
+</ul>
+<p>Sollte die Vorraussetzung, dass jede Zelle der Häufigkeitstabelle 5 oder mehr Beobachtungen hat nicht gegeben sein, wird uns R in der Ausgabe darauf hinweisen. Dann muss ersatzweise der exakte Test nach Fisher berechnet werden (s.u.)</p>
+</div>
+<div id="effektstärke-5" class="section level3 hasAnchor" number="15.6.5">
+<h3><span class="header-section-number">15.6.5</span> Effektstärke<a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="phi-koeffizient" class="section level4 hasAnchor" number="15.6.5.1">
+<h4><span class="header-section-number">15.6.5.1</span> <span class="math inline">\(\phi\)</span>-Koeffizient<a href="tests-für-einfache-gruppenvergleiche.html#phi-koeffizient" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Wenn wir eine 2x2 dimensionale Häufigkeitstabelle haben, wird als Effektstärke <span class="math inline">\(\phi\)</span> berechnet.</p>
+<p>Wir können die Funktion <code>phi()</code> aus dem <code>effectsize</code> R-Paket verwenden:</p>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb495-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie)))</span></code></pre></div>
+<pre><code>## Phi (adj.) |       95% CI
+## -------------------------
+## 0.38       | [0.00, 1.00]
+## 
+## - One-sided CIs: upper bound fixed at [1.00].</code></pre>
+<p>Auch die Einzelparameter von <span class="math inline">\(\phi\)</span> lassen sich extrahieren:</p>
+<p><span class="math inline">\(\phi\)</span>:</p>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb497-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie)))<span class="sc">$</span>phi_adjusted</span></code></pre></div>
+<pre><code>## [1] 0.3755338</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb499-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie)))<span class="sc">$</span>CI_low</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb501-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">phi</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie)))<span class="sc">$</span>CI_high</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Die Interpretation von <span class="math inline">\(\phi\)</span> lautet wie folgt <span class="citation">Cohen (<a href="#ref-cohen1988statistical" role="doc-biblioref">1988</a>)</span>:</p>
+<caption>
+<span id="tab:unnamed-chunk-292">Table 15.12: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Interpretation von φ</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">φ</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">&gt;0.1</td>
+<td align="left">kleiner Effekt</td>
+</tr>
+<tr class="even">
+<td align="left">&gt;0.3</td>
+<td align="left">mittlerer Effekt</td>
+</tr>
+<tr class="odd">
+<td align="left">&gt;0.5</td>
+<td align="left">großer Effekt</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="cramers-v" class="section level4 hasAnchor" number="15.6.5.2">
+<h4><span class="header-section-number">15.6.5.2</span> Cramer’s <span class="math inline">\(V\)</span><a href="tests-für-einfache-gruppenvergleiche.html#cramers-v" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Wenn wir eine Häufigkeitstabelle mit mehr als 2x2 Dimensionen haben, wird als Effektstärke Cramer’s <span class="math inline">\(V\)</span> berechnet.</p>
+<p>Nehmen wir dafür einmal an, unsere Therapieerfolg Variable hätte eine 3. Ausprägung “Rückfall”. Das wären Personen, die zunächst eine Remission hatten, dann aber wieder erkranken.</p>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Erfolg, data<span class="sc">$</span>Therapie)</span></code></pre></div>
+<pre><code>##            
+##             Placebo Antidepressivum
+##   Nein            3               1
+##   Remission       8              17
+##   Rückfall        9               2</code></pre>
+<p>Wir können die Funktion <code>cramers_v()</code> aus dem <code>effectsize</code> R-Paket verwenden:</p>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb505-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Erfolg, data<span class="sc">$</span>Therapie)))</span></code></pre></div>
+<pre><code>## Cramer&#39;s V (adj.) |       95% CI
+## --------------------------------
+## 0.41              | [0.00, 1.00]
+## 
+## - One-sided CIs: upper bound fixed at [1.00].</code></pre>
+<p>Auch die Einzelparameter von Cramer’s <span class="math inline">\(V\)</span> lassen sich extrahieren:</p>
+<p>Cramer’s <span class="math inline">\(V\)</span>:</p>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb507-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Erfolg, data<span class="sc">$</span>Therapie)))<span class="sc">$</span>Cramers_v_adjusted</span></code></pre></div>
+<pre><code>## [1] 0.4128585</code></pre>
+<p>Grenzen des Konfidenzintervalls (unten &amp; oben):</p>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb509-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Erfolg, data<span class="sc">$</span>Therapie)))<span class="sc">$</span>CI_low</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb511-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cramers_v</span>(<span class="fu">chisq.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Erfolg, data<span class="sc">$</span>Therapie)))<span class="sc">$</span>CI_high</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Die Interpretation von Cramer’s <span class="math inline">\(V\)</span> lautet wie folgt <span class="citation">Ellis (<a href="#ref-ellis2010essential" role="doc-biblioref">2010</a>)</span>:</p>
+<caption>
+<span id="tab:unnamed-chunk-298">Table 15.13: </span>
+</caption>
+<div custom-style="Table Caption">
+<em>Interpretation des Cramer’s V</em>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">r</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">&gt;0.1</td>
+<td align="left">kleiner Effekt</td>
+</tr>
+<tr class="even">
+<td align="left">&gt;0.3</td>
+<td align="left">mittlerer Effekt</td>
+</tr>
+<tr class="odd">
+<td align="left">&gt;0.5</td>
+<td align="left">großer Effekt</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="fishers-exakter-test" class="section level2 hasAnchor" number="15.7">
+<h2><span class="header-section-number">15.7</span> Fisher’s Exakter Test<a href="tests-für-einfache-gruppenvergleiche.html#fishers-exakter-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sollte die Vorraussetzung des <span class="math inline">\(\chi\)</span><sup>2</sup>-Tests, dass jede Zelle der Häufigkeitstabelle 5 oder mehr Beobachtungen hat nicht gegeben sein, muss ersatzweise der exakte Test nach Fisher berechnet werden</p>
+<p>Dieser funktioniert jedoch im Wesentlichen analog.</p>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb513-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie)</span></code></pre></div>
+<pre><code>##       
+##        Placebo Antidepressivum
+##   Nein      10               1
+##   Ja        10              19</code></pre>
+<div id="test-durchführen-6" class="section level3 hasAnchor" number="15.7.1">
+<h3><span class="header-section-number">15.7.1</span> Test durchführen<a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Zur Durchführung von Fisher’s Exaktem Test nutzen wir die in der Grundform von R vorinstallierte <code>fisher.test()</code> Funktion.</p>
+<p>Diese umschließt ganz einfach den <code>table()</code> Befehl, den wir gerade schon verwendet haben:</p>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="tests-für-einfache-gruppenvergleiche.html#cb515-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(<span class="fu">table</span>(data<span class="sc">$</span>Remission, data<span class="sc">$</span>Therapie))</span></code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  table(data$Remission, data$Therapie)
+## p-value = 0.003342
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##    2.019468 862.182470
+## sample estimates:
+## odds ratio 
+##   17.65165</code></pre>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-cohen1988statistical" class="csl-entry">
+Cohen, Jacob. 1988. <span>“Statistical Power Analysis for the Behavioral Sciences. Lawrence Erlbaum Associates.”</span> <em>Hillsdale, NJ</em>, 20–26.
+</div>
+<div id="ref-cohen1992quantitative" class="csl-entry">
+———. 1992. <span>“Quantitative Methods in Psychology: A Power Primer.”</span> In <em>Psychological Bulletin</em>. Citeseer.
+</div>
+<div id="ref-ellis2010essential" class="csl-entry">
+Ellis, Paul D. 2010. <em>The Essential Guide to Effect Sizes: Statistical Power, Meta-Analysis, and the Interpretation of Research Results</em>. Cambridge university press.
+</div>
+<div id="ref-hedges2014statistical" class="csl-entry">
+Hedges, Larry V, and Ingram Olkin. 2014. <em>Statistical Methods for Meta-Analysis</em>. Academic press.
+</div>
+<div id="ref-levene1960robust" class="csl-entry">
+Levene, Howard. 1960. <span>“Robust Tests for Equality of Variances. Contributions to Probability and Statistics (1960).”</span>
+</div>
+<div id="ref-tomczak2014need" class="csl-entry">
+Tomczak, Maciej, and Ewa Tomczak. 2014. <span>“The Need to Report Effect Size Estimates Revisited. An Overview of Some Recommended Measures of Effect Size.”</span> <em>Trends in Sport Sciences</em> 1 (21): 19–25.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="korrelation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="varianzanalyse-anova.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CFH_R_bookdown.pdf", "CFH_R_bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
