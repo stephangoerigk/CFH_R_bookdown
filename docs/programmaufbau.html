@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2023-05-12" />
+<meta name="date" content="2023-05-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -176,8 +176,14 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a></li>
-<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a></li>
+<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="installation.html"><a href="installation.html#videotutorial"><i class="fa fa-check"></i><b>3.1.1</b> Videotutorial</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="installation.html"><a href="installation.html#videotutorial-1"><i class="fa fa-check"></i><b>3.2.1</b> Videotutorial</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="programmaufbau.html"><a href="programmaufbau.html"><i class="fa fa-check"></i><b>4</b> Programmaufbau</a>
 <ul>
@@ -477,7 +483,7 @@ div.csl-indent {
 <div id="die-vier-rstudio-fenster" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Die vier RStudio Fenster<a href="programmaufbau.html#die-vier-rstudio-fenster" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Wenn Sie RStudio öffnen, sehen Sie vier Fenster, wie in der folgenden Abbildung dargestellt:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
 <img src="images/windows.png" alt="Die vier RStudio Fenster" width="1011" />
 <p class="caption">
 Figure 4.1: Die vier RStudio Fenster
@@ -492,7 +498,7 @@ Sie können die Fenster auch verstecken (Minimieren/Maximieren Symbol an der obe
 Wenn Sie RStudio öffnen, wird automatisch ein neues unbenanntes Skript gestartet.
 Bevor Sie mit der Eingabe eines unbenannten R-Skripts beginnen, sollten Sie die Datei immer unter einem neuen Dateinamen speichern (z.B. “Mein_RScript.R”).
 Wenn Ihr Computer während der Arbeit abstürzt, steht Ihr Code in R zur Verfügung, wenn Sie RStudio erneut öffnen.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
 <img src="images/windows_source.png" alt="Die vier RStudio Fenster" width="1011" />
 <p class="caption">
 Figure 4.2: Die vier RStudio Fenster
@@ -508,7 +514,7 @@ Figure 4.2: Die vier RStudio Fenster
 <pre><code>## [1] 4</code></pre>
 <p>Versuchen Sie, 2+2 zu berechnen, indem Sie den Code direkt in die Konsole eingeben - und dann Enter drücken.
 Sie sollten das Ergebnis <code>[1] 4</code> sehen. Machen Sie sich keine Gedanken über die <code>[1]</code>, dazu kommen wir später.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="images/windows_console.png" alt="Die vier RStudio Fenster" width="1011" />
 <p class="caption">
 Figure 4.3: Die vier RStudio Fenster
@@ -520,7 +526,7 @@ Figure 4.3: Die vier RStudio Fenster
 <div id="environmenthistory---das-gedächtnis-von-r" class="section level3 hasAnchor" number="4.1.3">
 <h3><span class="header-section-number">4.1.3</span> Environment/History - Das Gedächtnis von R<a href="programmaufbau.html#environmenthistory---das-gedächtnis-von-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In dem Tab “Environment” dieses Bereichs werden die Namen aller Datenobjekte (wie Vektoren, Matrizen und Datenrahmen) angezeigt, die Sie in Ihrer aktuellen R-Session definiert haben. Sie können auch Informationen wie die Anzahl der Spalten und Zeilen in Datensätzen sehen. Der Tab enthält auch einige anklickbare Aktionen wie “Datensatz importieren”, wodurch eine grafische Benutzeroberfläche (GUI) für wichtige Daten in R geöffnet wird.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
 <img src="images/windows_env.png" alt="Die vier RStudio Fenster" width="1011" />
 <p class="caption">
 Figure 4.4: Die vier RStudio Fenster
@@ -532,7 +538,7 @@ Figure 4.4: Die vier RStudio Fenster
 <div id="filesplotspackageshelpviewer---interaktion-von-r-mit-dateien" class="section level3 hasAnchor" number="4.1.4">
 <h3><span class="header-section-number">4.1.4</span> Files/Plots/Packages/Help/Viewer - Interaktion von R mit Dateien<a href="programmaufbau.html#filesplotspackageshelpviewer---interaktion-von-r-mit-dateien" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Tabs Files/Plots/Packages/Help/Viewer zeigen Ihnen viele hilfreiche Informationen. Schauen wir uns die einzelnen Registerkarten im Detail an:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
 <img src="images/windows_files.png" alt="Die vier RStudio Fenster" width="1011" />
 <p class="caption">
 Figure 4.5: Die vier RStudio Fenster
@@ -573,12 +579,12 @@ Ein R-Package ist einfach ein Bündel von Funktionen (also bereits geschriebener
 <p>Jetzt, wo Sie das Paket <code>ggplot2</code> geladen haben, können Sie jede seiner Funktionen benutzen (hier die Funktion <code>ggplot</code>, um einen Graph zu erstellen)!</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="programmaufbau.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span> </span>
 <span id="cb6-2"><a href="programmaufbau.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>Pakete müssen zu Beginn jeder R Session neu geladen werden. Deswegen schreiben wir in der Regel ganz an den Anfang unseres Skripts gleich mehrere Zeilen, mit <code>library()</code> Befehlen für alle R Pakete, die wir für unsere Analyse benötigen werden.</p>
 <p>In R gibt es eine Möglichkeit, ein Paket vorübergehend zu laden, ohne die Funktion <code>library()</code> zu verwenden. Um dies zu tun, können Sie einfach die Notation <code>package::funktion</code> verwenden. Diese Notation sagt R einfach, dass es das Paket nur für diesen einen Codeabschnitt laden soll. Zum Beispiel könnte ich die Funktion <code>ggplot</code> aus dem Paket <code>ggplot2</code> wie folgt verwenden:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="programmaufbau.html#cb7-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span> </span>
 <span id="cb7-2"><a href="programmaufbau.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Ein Vorteil der Notation “package::function” ist, dass für jeden, der den Code liest, sofort klar ist, welches Paket die Funktion enthält. Ein Nachteil ist jedoch, dass Sie, wenn Sie eine Funktion aus einem Paket häufig verwenden, gezwungen sind, den Paketnamen ständig neu einzugeben. Sie können jede Methode verwenden, die für Sie sinnvoll ist.</p>
 
 </div>

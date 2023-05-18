@@ -86,6 +86,12 @@ Um R zu installieren, klicken Sie auf den Ihrem Betriebssystem entsprechenden Li
 |     Windows|    [http://cran.r-project.org/bin/windows/base/](http://cran.r-project.org/bin/windows/base/)|
 |     Mac|    [http://cran.r-project.org/bin/macosx/](http://cran.r-project.org/bin/macosx/)|
 
+### Videotutorial 
+
+Für eine genaue Anleitung zur Installation folgt hier ein Videoturial:
+
+![](https://vimeo.com/203516510)
+
 Nach dieser Installation haben Sie bereits die volle Funktionalität des Programms. Sie werden jedoch feststellen, dass beinahe alle R-Nutzer RStudio zum programmieren nutzen, da dieses eine leichter nutzbare Oberfläche hat. 
 Tatsächlich müssen Sie nach der Installation von RStudio das R Basisprogramm nie wieder öffnen.
 
@@ -95,13 +101,13 @@ Bitte installieren Sie dann RStudio - das Programm, über welches wir auf R zugr
 
 Um RStudio zu installieren, klicken Sie auf diesen Link und befolgen Sie die Anleitungen: [http://www.rstudio.com/products/rstudio/download/](http://www.rstudio.com/products/rstudio/download/)
 
-```{r eval=FALSE, include=FALSE}
-#Ginzberg
-#Salaries
-#Leerkes # WRS2
-#spider
-#teachsat
-```
+### Videotutorial 
+
+Für eine genaue Anleitung zur Installation folgt hier ein Videoturial:
+
+![](https://vimeo.com/203516968)
+
+
 
 
 <!--chapter:end:Installation.Rmd-->
