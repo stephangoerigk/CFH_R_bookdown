@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 17 Einfache lineare Regression | Einführung in R</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 17 Einfache lineare Regression | Einführung in R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 17 Einfache lineare Regression | Einführung in R" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Stephan Goerigk" />
+
+
+<meta name="date" content="2026-10-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="varianzanalyse-anova.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R and der CFH</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Über dieses Skript</a></li>
+<li class="chapter" data-level="1" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html"><i class="fa fa-check"></i><b>1</b> Warum ist R empfehlenswert?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#open-source"><i class="fa fa-check"></i><b>1.1</b> Open Source</a></li>
+<li class="chapter" data-level="1.2" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#vielseitigkeit"><i class="fa fa-check"></i><b>1.2</b> Vielseitigkeit</a></li>
+<li class="chapter" data-level="1.3" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#rmarkdown"><i class="fa fa-check"></i><b>1.3</b> RMarkdown</a></li>
+<li class="chapter" data-level="1.4" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#transparenz"><i class="fa fa-check"></i><b>1.4</b> Transparenz</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-materialien.html"><a href="r-materialien.html"><i class="fa fa-check"></i><b>2</b> R Materialien</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-materialien.html"><a href="r-materialien.html#cheat-sheets"><i class="fa fa-check"></i><b>2.1</b> Cheat Sheets</a></li>
+<li class="chapter" data-level="2.2" data-path="r-materialien.html"><a href="r-materialien.html#hilfe-und-inspiration-online"><i class="fa fa-check"></i><b>2.2</b> Hilfe und Inspiration online</a></li>
+<li class="chapter" data-level="2.3" data-path="r-materialien.html"><a href="r-materialien.html#andere-b%C3%BCcher"><i class="fa fa-check"></i><b>2.3</b> Andere Bücher</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="installation.html"><a href="installation.html#installation-von-r"><i class="fa fa-check"></i><b>3.1</b> Installation von R</a></li>
+<li class="chapter" data-level="3.2" data-path="installation.html"><a href="installation.html#installation-von-rstudio"><i class="fa fa-check"></i><b>3.2</b> Installation von RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="programmaufbau.html"><a href="programmaufbau.html"><i class="fa fa-check"></i><b>4</b> Programmaufbau</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="programmaufbau.html"><a href="programmaufbau.html#die-vier-rstudio-fenster"><i class="fa fa-check"></i><b>4.1</b> Die vier RStudio Fenster</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="programmaufbau.html"><a href="programmaufbau.html#source---ihr-schreibblock-f%C3%BCr-code"><i class="fa fa-check"></i><b>4.1.1</b> Source - Ihr Schreibblock für Code</a></li>
+<li class="chapter" data-level="4.1.2" data-path="programmaufbau.html"><a href="programmaufbau.html#konsole---das-herzst%C3%BCck-von-r"><i class="fa fa-check"></i><b>4.1.2</b> Konsole - Das Herzstück von R</a></li>
+<li class="chapter" data-level="4.1.3" data-path="programmaufbau.html"><a href="programmaufbau.html#environmenthistory---das-ged%C3%A4chtnis-von-r"><i class="fa fa-check"></i><b>4.1.3</b> Environment/History - Das Gedächtnis von R</a></li>
+<li class="chapter" data-level="4.1.4" data-path="programmaufbau.html"><a href="programmaufbau.html#filesplotspackageshelpviewer---interaktion-von-r-mit-dateien"><i class="fa fa-check"></i><b>4.1.4</b> Files/Plots/Packages/Help/Viewer - Interaktion von R mit Dateien</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages"><i class="fa fa-check"></i><b>4.2</b> R Packages</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages-installieren"><i class="fa fa-check"></i><b>4.2.1</b> R Packages installieren</a></li>
+<li class="chapter" data-level="4.2.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages-laden"><i class="fa fa-check"></i><b>4.2.2</b> R Packages laden</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="datenformate.html"><a href="datenformate.html"><i class="fa fa-check"></i><b>5</b> Datenformate</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datenformate.html"><a href="datenformate.html#skalar"><i class="fa fa-check"></i><b>5.1</b> Skalar</a></li>
+<li class="chapter" data-level="5.2" data-path="datenformate.html"><a href="datenformate.html#vektor"><i class="fa fa-check"></i><b>5.2</b> Vektor</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="datenformate.html"><a href="datenformate.html#vektor-typen"><i class="fa fa-check"></i><b>5.2.1</b> Vektor Typen</a></li>
+<li class="chapter" data-level="5.2.2" data-path="datenformate.html"><a href="datenformate.html#faktor-variablen"><i class="fa fa-check"></i><b>5.2.2</b> Faktor Variablen</a></li>
+<li class="chapter" data-level="5.2.3" data-path="datenformate.html"><a href="datenformate.html#vektor-indizierung"><i class="fa fa-check"></i><b>5.2.3</b> Vektor Indizierung</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="datenformate.html"><a href="datenformate.html#matrizen-und-data.frames"><i class="fa fa-check"></i><b>5.3</b> Matrizen und data.frames</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="datenformate.html"><a href="datenformate.html#erstellen-von-datenmatrizen"><i class="fa fa-check"></i><b>5.3.1</b> Erstellen von Datenmatrizen</a></li>
+<li class="chapter" data-level="5.3.2" data-path="datenformate.html"><a href="datenformate.html#indizierung"><i class="fa fa-check"></i><b>5.3.2</b> Indizierung</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="daten-erstellen.html"><a href="daten-erstellen.html"><i class="fa fa-check"></i><b>6</b> Daten erstellen</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="daten-erstellen.html"><a href="daten-erstellen.html#manuell"><i class="fa fa-check"></i><b>6.1</b> Manuell</a></li>
+<li class="chapter" data-level="6.2" data-path="daten-erstellen.html"><a href="daten-erstellen.html#automatisch"><i class="fa fa-check"></i><b>6.2</b> Automatisch</a></li>
+<li class="chapter" data-level="6.3" data-path="daten-erstellen.html"><a href="daten-erstellen.html#zuf%C3%A4llig"><i class="fa fa-check"></i><b>6.3</b> Zufällig</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html"><i class="fa fa-check"></i><b>7</b> Daten importieren und speichern</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#funktionen-zur-organisation-des-workspace"><i class="fa fa-check"></i><b>7.1</b> Funktionen zur Organisation des Workspace</a></li>
+<li class="chapter" data-level="7.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#arbeitsverzeichnis-working-directory"><i class="fa fa-check"></i><b>7.2</b> Arbeitsverzeichnis (Working Directory)</a></li>
+<li class="chapter" data-level="7.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#working-environment"><i class="fa fa-check"></i><b>7.3</b> Working Environment</a></li>
+<li class="chapter" data-level="7.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-importieren"><i class="fa fa-check"></i><b>7.4</b> Daten importieren</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format"><i class="fa fa-check"></i><b>7.4.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.4.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format"><i class="fa fa-check"></i><b>7.4.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.4.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format"><i class="fa fa-check"></i><b>7.4.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.4.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format"><i class="fa fa-check"></i><b>7.4.4</b> xlsx-Format</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#daten-speichern"><i class="fa fa-check"></i><b>7.5</b> Daten speichern</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#rds-format-1"><i class="fa fa-check"></i><b>7.5.1</b> rds-Format</a></li>
+<li class="chapter" data-level="7.5.2" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#csv-format-1"><i class="fa fa-check"></i><b>7.5.2</b> csv-Format</a></li>
+<li class="chapter" data-level="7.5.3" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#sav-format-1"><i class="fa fa-check"></i><b>7.5.3</b> sav-Format</a></li>
+<li class="chapter" data-level="7.5.4" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html#xlsx-format-1"><i class="fa fa-check"></i><b>7.5.4</b> xlsx-Format</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="daten-auswählen.html"><a href="daten-auswählen.html"><i class="fa fa-check"></i><b>8</b> Daten auswählen</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#vektor-1"><i class="fa fa-check"></i><b>8.1</b> Vektor</a></li>
+<li class="chapter" data-level="8.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#dataframe"><i class="fa fa-check"></i><b>8.2</b> Dataframe</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#zeilen-f%C3%A4lle-ausw%C3%A4hlen"><i class="fa fa-check"></i><b>8.2.1</b> Zeilen (Fälle) auswählen</a></li>
+<li class="chapter" data-level="8.2.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#spalten-variablen-ausw%C3%A4hlen"><i class="fa fa-check"></i><b>8.2.2</b> Spalten (Variablen) auswählen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html"><i class="fa fa-check"></i><b>9</b> Daten beschreiben</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-%C3%BCber-r-objekte"><i class="fa fa-check"></i><b>9.1</b> Informationen über R Objekte</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#str"><i class="fa fa-check"></i><b>9.1.1</b> str()</a></li>
+<li class="chapter" data-level="9.1.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-%C3%BCber-vektoren"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Vektoren</a></li>
+<li class="chapter" data-level="9.1.3" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-%C3%BCber-dataframes"><i class="fa fa-check"></i><b>9.1.3</b> Informationen über dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>9.2</b> Deskriptivstatistiken</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#kategorische-variablen"><i class="fa fa-check"></i><b>9.2.1</b> Kategorische Variablen</a></li>
+<li class="chapter" data-level="9.2.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#numerische-variablen"><i class="fa fa-check"></i><b>9.2.2</b> Numerische Variablen</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken-berichten"><i class="fa fa-check"></i><b>9.3</b> Deskriptivstatistiken berichten</a></li>
+<li class="chapter" data-level="9.4" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#alles-auf-einen-blick"><i class="fa fa-check"></i><b>9.4</b> Alles auf einen Blick</a></li>
+<li class="chapter" data-level="9.5" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken-f%C3%BCr-subgruppen"><i class="fa fa-check"></i><b>9.5</b> Deskriptivstatistiken für Subgruppen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html"><i class="fa fa-check"></i><b>10</b> Daten bearbeiten</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-hinzuf%C3%BCgen"><i class="fa fa-check"></i><b>10.1</b> Daten hinzufügen</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-hinzuf%C3%BCgen"><i class="fa fa-check"></i><b>10.1.1</b> Variablen hinzufügen</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-l%C3%B6schen"><i class="fa fa-check"></i><b>10.2</b> Daten löschen</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-l%C3%B6schen"><i class="fa fa-check"></i><b>10.2.1</b> Variablen löschen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#f%C3%A4lle-l%C3%B6schen"><i class="fa fa-check"></i><b>10.2.2</b> Fälle löschen</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-umbenennen"><i class="fa fa-check"></i><b>10.3</b> Variablen umbenennen</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablennamen-%C3%A4ndern"><i class="fa fa-check"></i><b>10.3.1</b> Variablennamen ändern</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-ver%C3%A4ndern"><i class="fa fa-check"></i><b>10.4</b> Daten verändern</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#werte-%C3%A4ndern"><i class="fa fa-check"></i><b>10.4.1</b> Werte ändern</a></li>
+<li class="chapter" data-level="10.4.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#recodieren"><i class="fa fa-check"></i><b>10.4.2</b> Recodieren</a></li>
+<li class="chapter" data-level="10.4.3" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#worte-%C3%A4ndern"><i class="fa fa-check"></i><b>10.4.3</b> Worte ändern</a></li>
+<li class="chapter" data-level="10.4.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#faktorstufen-%C3%A4ndern"><i class="fa fa-check"></i><b>10.4.4</b> Faktorstufen ändern</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-sortieren"><i class="fa fa-check"></i><b>10.5</b> Daten sortieren</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#sortieren-nach-numerischen-variablen"><i class="fa fa-check"></i><b>10.5.1</b> Sortieren nach numerischen Variablen</a></li>
+<li class="chapter" data-level="10.5.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#sortieren-nach-variablen-mit-worten"><i class="fa fa-check"></i><b>10.5.2</b> Sortieren nach Variablen mit Worten</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datens%C3%A4tze-zusammensetzen"><i class="fa fa-check"></i><b>10.6</b> Datensätze zusammensetzen</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#cbind-und-rbind"><i class="fa fa-check"></i><b>10.6.1</b> cbind und rbind</a></li>
+<li class="chapter" data-level="10.6.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#merge"><i class="fa fa-check"></i><b>10.6.2</b> merge</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datens%C3%A4tze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#wide--und-long-format"><i class="fa fa-check"></i><b>10.7.1</b> Wide- und Long-Format</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="schleifen-loops.html"><a href="schleifen-loops.html"><i class="fa fa-check"></i><b>11</b> Schleifen (Loops)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for-loop"><i class="fa fa-check"></i><b>11.1</b> for()-Loop</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="schleifen-loops.html"><a href="schleifen-loops.html#for-im-datensatz"><i class="fa fa-check"></i><b>11.1.1</b> for() im Datensatz</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="schleifen-loops.html"><a href="schleifen-loops.html#if-loop"><i class="fa fa-check"></i><b>11.2</b> if()-Loop</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graphiken.html"><a href="graphiken.html"><i class="fa fa-check"></i><b>12</b> Graphiken</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="graphiken.html"><a href="graphiken.html#das-ggplot2-paket"><i class="fa fa-check"></i><b>12.1</b> Das ggplot2 Paket</a></li>
+<li class="chapter" data-level="12.2" data-path="graphiken.html"><a href="graphiken.html#ggplot-funktion"><i class="fa fa-check"></i><b>12.2</b> ggplot()-Funktion</a></li>
+<li class="chapter" data-level="12.3" data-path="graphiken.html"><a href="graphiken.html#streu-punktdiagramm"><i class="fa fa-check"></i><b>12.3</b> Streu-/Punktdiagramm</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="graphiken.html"><a href="graphiken.html#streudiagramm-mit-2-variablen"><i class="fa fa-check"></i><b>12.3.1</b> Streudiagramm mit 2 Variablen</a></li>
+<li class="chapter" data-level="12.3.2" data-path="graphiken.html"><a href="graphiken.html#geom_point"><i class="fa fa-check"></i><b>12.3.2</b> geom_point()</a></li>
+<li class="chapter" data-level="12.3.3" data-path="graphiken.html"><a href="graphiken.html#geom_smooth"><i class="fa fa-check"></i><b>12.3.3</b> geom_smooth()</a></li>
+<li class="chapter" data-level="12.3.4" data-path="graphiken.html"><a href="graphiken.html#streudiagramm-mit-mehr-als-2-variablen"><i class="fa fa-check"></i><b>12.3.4</b> Streudiagramm mit mehr als 2 Variablen</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="graphiken.html"><a href="graphiken.html#histogramm"><i class="fa fa-check"></i><b>12.4</b> Histogramm</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-f%C3%BCr-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm"><i class="fa fa-check"></i><b>12.5</b> Balkendiagramm</a></li>
+<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-3-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 3 Variablen</a></li>
+<li class="chapter" data-level="12.7" data-path="graphiken.html"><a href="graphiken.html#boxplot"><i class="fa fa-check"></i><b>12.7</b> Boxplot</a></li>
+<li class="chapter" data-level="12.8" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>12.8</b> Facetting</a></li>
+<li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#%C3%A4sthetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
+<ul>
+<li class="chapter" data-level="12.9.1" data-path="graphiken.html"><a href="graphiken.html#ggtitle"><i class="fa fa-check"></i><b>12.9.1</b> ggtitle()</a></li>
+<li class="chapter" data-level="12.9.2" data-path="graphiken.html"><a href="graphiken.html#labs"><i class="fa fa-check"></i><b>12.9.2</b> labs()</a></li>
+<li class="chapter" data-level="12.9.3" data-path="graphiken.html"><a href="graphiken.html#achsen-ver%C3%A4ndern"><i class="fa fa-check"></i><b>12.9.3</b> Achsen verändern</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="graphiken.html"><a href="graphiken.html#theme"><i class="fa fa-check"></i><b>12.10</b> theme()</a>
+<ul>
+<li class="chapter" data-level="12.10.1" data-path="graphiken.html"><a href="graphiken.html#elemente-von-theme"><i class="fa fa-check"></i><b>12.10.1</b> Elemente von theme()</a></li>
+<li class="chapter" data-level="12.10.2" data-path="graphiken.html"><a href="graphiken.html#legende"><i class="fa fa-check"></i><b>12.10.2</b> Legende</a></li>
+<li class="chapter" data-level="12.10.3" data-path="graphiken.html"><a href="graphiken.html#vorgefertigte-themes"><i class="fa fa-check"></i><b>12.10.3</b> Vorgefertigte themes</a></li>
+</ul></li>
+<li class="chapter" data-level="12.11" data-path="graphiken.html"><a href="graphiken.html#abbildungen-kombinieren"><i class="fa fa-check"></i><b>12.11</b> Abbildungen kombinieren</a></li>
+<li class="chapter" data-level="12.12" data-path="graphiken.html"><a href="graphiken.html#abbildungen-exportieren"><i class="fa fa-check"></i><b>12.12</b> Abbildungen exportieren</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="tabellen.html"><a href="tabellen.html"><i class="fa fa-check"></i><b>13</b> Tabellen</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="tabellen.html"><a href="tabellen.html#data.frames"><i class="fa fa-check"></i><b>13.1</b> data.frames</a></li>
+<li class="chapter" data-level="13.2" data-path="tabellen.html"><a href="tabellen.html#format"><i class="fa fa-check"></i><b>13.2</b> Format</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="tabellen.html"><a href="tabellen.html#text"><i class="fa fa-check"></i><b>13.2.1</b> Text</a></li>
+<li class="chapter" data-level="13.2.2" data-path="tabellen.html"><a href="tabellen.html#zellen"><i class="fa fa-check"></i><b>13.2.2</b> Zellen</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="tabellen.html"><a href="tabellen.html#layout"><i class="fa fa-check"></i><b>13.3</b> Layout</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einf%C3%BCgen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="tabellen.html"><a href="tabellen.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>14</b> Korrelation</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="korrelation.html"><a href="korrelation.html#hypothesen"><i class="fa fa-check"></i><b>14.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="14.2" data-path="korrelation.html"><a href="korrelation.html#berechnung-der-korrelation"><i class="fa fa-check"></i><b>14.2</b> Berechnung der Korrelation</a></li>
+<li class="chapter" data-level="14.3" data-path="korrelation.html"><a href="korrelation.html#unterschiedliche-korrelationsmethoden"><i class="fa fa-check"></i><b>14.3</b> Unterschiedliche Korrelationsmethoden</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="korrelation.html"><a href="korrelation.html#pearson-korrelation"><i class="fa fa-check"></i><b>14.3.1</b> Pearson-Korrelation</a></li>
+<li class="chapter" data-level="14.3.2" data-path="korrelation.html"><a href="korrelation.html#spearman-korrelation-aka-rangkorrelation"><i class="fa fa-check"></i><b>14.3.2</b> Spearman-Korrelation (aka Rangkorrelation)</a></li>
+<li class="chapter" data-level="14.3.3" data-path="korrelation.html"><a href="korrelation.html#kendall-korrelation"><i class="fa fa-check"></i><b>14.3.3</b> Kendall-Korrelation</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="korrelation.html"><a href="korrelation.html#korrelation-als-hypothesentest"><i class="fa fa-check"></i><b>14.4</b> Korrelation als Hypothesentest</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html"><i class="fa fa-check"></i><b>15</b> Tests für einfache Gruppenvergleiche</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#ein-stichproben-t-test"><i class="fa fa-check"></i><b>15.1</b> Ein-Stichproben t-Test</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-1"><i class="fa fa-check"></i><b>15.1.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.1.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.1.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren"><i class="fa fa-check"></i><b>15.1.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.1.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>15.1.4</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="15.1.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#ergebnis-berichten"><i class="fa fa-check"></i><b>15.1.5</b> Ergebnis berichten</a></li>
+<li class="chapter" data-level="15.1.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke"><i class="fa fa-check"></i><b>15.1.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.1.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>15.1.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-unabh%C3%A4ngigen-stichproben"><i class="fa fa-check"></i><b>15.2</b> t-Test bei unabhängigen Stichproben</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-2"><i class="fa fa-check"></i><b>15.2.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.2.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>15.2.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.2.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-1"><i class="fa fa-check"></i><b>15.2.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.2.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>15.2.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.2.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungspr%C3%BCfung-und-alternativen"><i class="fa fa-check"></i><b>15.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.2.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-1"><i class="fa fa-check"></i><b>15.2.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.2.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>15.2.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-abh%C3%A4ngigen-stichproben"><i class="fa fa-check"></i><b>15.3</b> t-Test bei abhängigen Stichproben</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-3"><i class="fa fa-check"></i><b>15.3.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.3.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>15.3.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.3.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-2"><i class="fa fa-check"></i><b>15.3.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.3.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>15.3.4</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.3.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungspr%C3%BCfung-und-alternativen-1"><i class="fa fa-check"></i><b>15.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.3.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-2"><i class="fa fa-check"></i><b>15.3.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.3.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>15.3.7</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>15.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-4"><i class="fa fa-check"></i><b>15.4.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.4.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-3"><i class="fa fa-check"></i><b>15.4.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.4.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>15.4.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.4.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-3"><i class="fa fa-check"></i><b>15.4.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.4.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>15.4.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>15.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-5"><i class="fa fa-check"></i><b>15.5.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="15.5.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-4"><i class="fa fa-check"></i><b>15.5.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.5.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>15.5.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.5.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-4"><i class="fa fa-check"></i><b>15.5.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.5.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>15.5.5</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#chi2-test"><i class="fa fa-check"></i><b>15.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>15.6.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="15.6.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-5"><i class="fa fa-check"></i><b>15.6.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.6.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>15.6.3</b> Relevante Parameter extrahieren</a></li>
+<li class="chapter" data-level="15.6.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungspr%C3%BCfung-und-alternativen-2"><i class="fa fa-check"></i><b>15.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.6.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-5"><i class="fa fa-check"></i><b>15.6.5</b> Effektstärke</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#fishers-exakter-test"><i class="fa fa-check"></i><b>15.7</b> Fisher’s Exakter Test</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-6"><i class="fa fa-check"></i><b>15.7.1</b> Test durchführen</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html"><i class="fa fa-check"></i><b>16</b> Varianzanalyse (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#einfaktorielle-anova"><i class="fa fa-check"></i><b>16.1</b> Einfaktorielle ANOVA</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#alpha-fehler-kumulierung"><i class="fa fa-check"></i><b>16.1.1</b> <span class="math inline">\(\alpha\)</span>-Fehler Kumulierung</a></li>
+<li class="chapter" data-level="16.1.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#deskriptive-einordnung-4"><i class="fa fa-check"></i><b>16.1.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.1.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#berechnung-der-anova"><i class="fa fa-check"></i><b>16.1.3</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.1.4" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#interpretation"><i class="fa fa-check"></i><b>16.1.4</b> Interpretation</a></li>
+<li class="chapter" data-level="16.1.5" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#post-hoc-tests"><i class="fa fa-check"></i><b>16.1.5</b> Post-hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#mehrfaktorielle-anova"><i class="fa fa-check"></i><b>16.2</b> Mehrfaktorielle ANOVA</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#deskriptive-einordnung-5"><i class="fa fa-check"></i><b>16.2.1</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="16.2.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#berechnung-der-anova-1"><i class="fa fa-check"></i><b>16.2.2</b> Berechnung der ANOVA</a></li>
+<li class="chapter" data-level="16.2.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#interpretation-1"><i class="fa fa-check"></i><b>16.2.3</b> Interpretation</a></li>
+<li class="chapter" data-level="16.2.4" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>16.2.4</b> Post-hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#pr%C3%BCfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>16.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#testen-der-empirisch-testbaren-annahmen"><i class="fa fa-check"></i><b>16.3.1</b> Testen der empirisch testbaren Annahmen</a></li>
+<li class="chapter" data-level="16.3.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#homogenit%C3%A4t-der-varianzen"><i class="fa fa-check"></i><b>16.3.2</b> Homogenität der Varianzen:</a></li>
+<li class="chapter" data-level="16.3.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#sph%C3%A4rizit%C3%A4t"><i class="fa fa-check"></i><b>16.3.3</b> Sphärizität:</a></li>
+<li class="chapter" data-level="16.3.4" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#normalverteilung-der-residuen"><i class="fa fa-check"></i><b>16.3.4</b> Normalverteilung der Residuen:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html"><i class="fa fa-check"></i><b>17</b> Einfache lineare Regression</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#hypothesen-6"><i class="fa fa-check"></i><b>17.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="17.2" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#deskriptive-einordnung-6"><i class="fa fa-check"></i><b>17.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="17.3" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#berechnung-interpretation"><i class="fa fa-check"></i><b>17.3</b> Berechnung &amp; Interpretation</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#ergebnis-interpretieren-1"><i class="fa fa-check"></i><b>17.3.1</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="17.3.2" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#relevante-parameter-extrahieren-5"><i class="fa fa-check"></i><b>17.3.2</b> Relevante Parameter extrahieren</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#standardisierte-regressionsgewichte"><i class="fa fa-check"></i><b>17.4</b> Standardisierte Regressionsgewichte</a></li>
+<li class="chapter" data-level="17.5" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#vorhergesagte-werte-und-residuen"><i class="fa fa-check"></i><b>17.5</b> Vorhergesagte Werte und Residuen</a></li>
+<li class="chapter" data-level="17.6" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#dichotome-pr%C3%A4diktoren"><i class="fa fa-check"></i><b>17.6</b> Dichotome Prädiktoren</a></li>
+<li class="chapter" data-level="17.7" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#ausblick-multiple-regression"><i class="fa fa-check"></i><b>17.7</b> Ausblick: Multiple Regression</a></li>
+<li class="chapter" data-level="17.8" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#voraussetzungspr%C3%BCfung"><i class="fa fa-check"></i><b>17.8</b> Voraussetzungsprüfung</a>
+<ul>
+<li class="chapter" data-level="17.8.1" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#linearit%C3%A4t"><i class="fa fa-check"></i><b>17.8.1</b> Linearität</a></li>
+<li class="chapter" data-level="17.8.2" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#normalverteilung-der-residuen-1"><i class="fa fa-check"></i><b>17.8.2</b> Normalverteilung der Residuen</a></li>
+<li class="chapter" data-level="17.8.3" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#homoskedastizit%C3%A4t"><i class="fa fa-check"></i><b>17.8.3</b> Homoskedastizität</a></li>
+<li class="chapter" data-level="17.8.4" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#voraussetzungspr%C3%BCfung-mit-performance"><i class="fa fa-check"></i><b>17.8.4</b> Voraussetzungsprüfung mit <code>performance</code></a></li>
+</ul></li>
+<li class="chapter" data-level="17.9" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#darstellung-in-tabellenform-5"><i class="fa fa-check"></i><b>17.9</b> Darstellung in Tabellenform</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Einführung in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="einfache-lineare-regression" class="section level1 hasAnchor" number="17">
+<h1><span class="header-section-number">Kapitel 17</span> Einfache lineare Regression<a href="einfache-lineare-regression.html#einfache-lineare-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Mit der Korrelation haben wir bereits <strong>ungerichtete</strong> Zusammenhänge zwischen zwei Variablen untersucht. Bei der Regression unterstellen wir nun eine <strong>Wirkrichtung</strong>: Eine unabhängige Variable (UV, <em>Prädiktor</em>) sagt eine abhängige Variable (AV, <em>Kriterium</em>) vorher.</p>
+<p>Zur Erinnerung aus der Vorlesung Quantitative Methoden II: Die einfache lineare Regression beschreibt den Zusammenhang zwischen UV und AV durch eine Gerade:</p>
+<p><span class="math display">\[\hat{y}_i=a+b \cdot x_i\]</span></p>
+<ul>
+<li><span class="math inline">\(a\)</span>: Y-Achsenabschnitt <span class="math inline">\(\rightarrow\)</span> erwarteter Wert der AV, wenn die UV <span class="math inline">\(=0\)</span> ist</li>
+<li><span class="math inline">\(b\)</span>: Steigung <span class="math inline">\(\rightarrow\)</span> Veränderung der AV, wenn die UV um 1 Einheit zunimmt</li>
+</ul>
+<p>Die Koeffizienten werden so geschätzt, dass die Abweichungen der beobachteten von den vorhergesagten Werten (die <strong>Residuen</strong>) möglichst klein sind (Methode der kleinsten Quadrate). Diese Rechnung übernimmt R für uns.</p>
+<div id="hypothesen-6" class="section level2 hasAnchor" number="17.1">
+<h2><span class="header-section-number">17.1</span> Hypothesen<a href="einfache-lineare-regression.html#hypothesen-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Für unser Beispiel nutzen wir wieder den Datensatz aus dem Kapitel zur ANOVA:</p>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="einfache-lineare-regression.html#cb561-1" tabindex="-1"></a>therapy4groups <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/stephangoerigk/WAF_Folien/master/therapy4groups.csv&quot;</span>)</span>
+<span id="cb561-2"><a href="einfache-lineare-regression.html#cb561-2" tabindex="-1"></a></span>
+<span id="cb561-3"><a href="einfache-lineare-regression.html#cb561-3" tabindex="-1"></a><span class="fu">head</span>(therapy4groups)</span></code></pre></div>
+<pre><code>##   ID Therapy Symptoms  Diagnosis Behandlungsversuche
+## 1  1    SSRI       46 Depression                   3
+## 2  2    SSRI       69      Angst                   3
+## 3  3    SSRI       39 Depression                   2
+## 4  4    SSRI       80      Angst                   4
+## 5  5    SSRI       50 Depression                   2
+## 6  6    SSRI       63      Angst                   5</code></pre>
+<p>Der Datensatz enthält für jede Patient:in die erhaltene Therapie, die Diagnose und die Symptomschwere (<code>Symptoms</code>) nach der Behandlung.</p>
+<p>Zusätzlich wurde bei allen Patient:innen erhoben, wie viele <strong>Stunden pro Woche</strong> sie <strong>Sport</strong> treiben. Körperliche Aktivität gilt als ein möglicher Einflussfaktor auf die Symptomschwere bei Depressionen und Angststörungen. Diese Variable ist im heruntergeladenen Datensatz noch nicht enthalten. Wir fügen sie daher als Vektor hinzu (siehe Kapitel Daten bearbeiten). Die Werte sind in derselben Reihenfolge wie die Zeilen des Datensatzes angegeben, d.h. der 1. Wert gehört zur Patient:in in der 1. Zeile usw.:</p>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="einfache-lineare-regression.html#cb563-1" tabindex="-1"></a>therapy4groups<span class="sc">$</span>Sport <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">3.5</span>, <span class="fl">4.0</span>, <span class="fl">8.0</span>, <span class="fl">4.0</span>, <span class="fl">5.0</span>, <span class="fl">6.0</span>, <span class="fl">5.5</span>, <span class="fl">7.0</span>, <span class="fl">4.0</span>, <span class="fl">3.5</span>,</span>
+<span id="cb563-2"><a href="einfache-lineare-regression.html#cb563-2" tabindex="-1"></a>                         <span class="fl">7.5</span>, <span class="fl">4.5</span>, <span class="fl">5.0</span>, <span class="fl">3.0</span>, <span class="fl">1.0</span>, <span class="fl">6.0</span>, <span class="fl">0.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>, <span class="fl">2.0</span>,</span>
+<span id="cb563-3"><a href="einfache-lineare-regression.html#cb563-3" tabindex="-1"></a>                         <span class="fl">6.0</span>, <span class="fl">5.0</span>, <span class="fl">3.0</span>, <span class="fl">5.0</span>, <span class="fl">5.0</span>, <span class="fl">5.0</span>, <span class="fl">4.0</span>, <span class="fl">4.0</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>)</span>
+<span id="cb563-4"><a href="einfache-lineare-regression.html#cb563-4" tabindex="-1"></a></span>
+<span id="cb563-5"><a href="einfache-lineare-regression.html#cb563-5" tabindex="-1"></a><span class="fu">head</span>(therapy4groups)</span></code></pre></div>
+<pre><code>##   ID Therapy Symptoms  Diagnosis Behandlungsversuche Sport
+## 1  1    SSRI       46 Depression                   3   3.5
+## 2  2    SSRI       69      Angst                   3   4.0
+## 3  3    SSRI       39 Depression                   2   8.0
+## 4  4    SSRI       80      Angst                   4   4.0
+## 5  5    SSRI       50 Depression                   2   5.0
+## 6  6    SSRI       63      Angst                   5   6.0</code></pre>
+<p>Eine denkbare Forschungsfrage könnte wie folgt lauten:</p>
+<p><em>Lässt sich die Symptomschwere durch die Anzahl der Sportstunden pro Woche vorhersagen?</em></p>
+<ul>
+<li>UV (Prädiktor): <code>Sport</code></li>
+<li>AV (Kriterium): <code>Symptoms</code></li>
+</ul>
+<p>Die Wirkrichtung (Sport <span class="math inline">\(\rightarrow\)</span> Symptome) leiten wir, wie in der Vorlesung Quantitative Methoden II beschrieben, aus theoretischen Überlegungen her. Beachten Sie aber: Da es sich um Beobachtungsdaten handelt (die Sportstunden wurden nicht experimentell variiert), kann die Regression allein keinen kausalen Zusammenhang beweisen.</p>
+<p>Statistisch prüfen wir, ob die Steigung signifikant von 0 verschieden ist:</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta = 0\)</span> (kein linearer Zusammenhang)</li>
+<li><span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta \neq 0\)</span> (linearer Zusammenhang)</li>
+</ul>
+</div>
+<div id="deskriptive-einordnung-6" class="section level2 hasAnchor" number="17.2">
+<h2><span class="header-section-number">17.2</span> Deskriptive Einordnung<a href="einfache-lineare-regression.html#deskriptive-einordnung-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Zunächst können wir uns die Deskriptivstatistiken der beiden Variablen anschauen:</p>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="einfache-lineare-regression.html#cb565-1" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(therapy4groups[, <span class="fu">c</span>(<span class="st">&quot;Sport&quot;</span>, <span class="st">&quot;Symptoms&quot;</span>)])</span></code></pre></div>
+<pre><code>##          vars  n  mean    sd median trimmed   mad min max range  skew kurtosis
+## Sport       1 30  4.33  1.77   4.25    4.35  1.11   0   8     8 -0.21     0.05
+## Symptoms    2 30 60.00 17.41  61.00   61.08 17.79  15  90    75 -0.49    -0.29
+##            se
+## Sport    0.32
+## Symptoms 3.18</code></pre>
+<p>Einen ersten Eindruck vom Zusammenhang erhalten wir mit einem Streudiagramm. Mit <code>geom_smooth(method = "lm")</code> lassen wir uns direkt die Regressionsgerade einzeichnen (siehe Kapitel Graphiken):</p>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="einfache-lineare-regression.html#cb567-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> therapy4groups, <span class="fu">aes</span>(<span class="at">x =</span> Sport, <span class="at">y =</span> Symptoms)) <span class="sc">+</span></span>
+<span id="cb567-2"><a href="einfache-lineare-regression.html#cb567-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb567-3"><a href="einfache-lineare-regression.html#cb567-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb567-4"><a href="einfache-lineare-regression.html#cb567-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Sport (Stunden pro Woche)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Symptomschwere&quot;</span>) <span class="sc">+</span></span>
+<span id="cb567-5"><a href="einfache-lineare-regression.html#cb567-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-330-1.png" alt="" width="672" /></p>
+<p>Rein deskriptiv scheint ein <strong>negativer</strong> Zusammenhang zu bestehen: Patient:innen, die mehr Sport treiben, weisen tendenziell schwächere Symptome auf. Ob dieser Zusammenhang signifikant ist, prüfen wir mit der Regression.</p>
+</div>
+<div id="berechnung-interpretation" class="section level2 hasAnchor" number="17.3">
+<h2><span class="header-section-number">17.3</span> Berechnung &amp; Interpretation<a href="einfache-lineare-regression.html#berechnung-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Die Regression berechnen wir mit der <code>lm()</code> Funktion, die wir bereits aus dem Kapitel zur ANOVA kennen. Auch hier steht links die AV, rechts die UV und <code>~</code> heißt soviel wie “wird vorhergesagt durch”:</p>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="einfache-lineare-regression.html#cb568-1" tabindex="-1"></a>reg <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Sport, <span class="at">data =</span> therapy4groups)</span></code></pre></div>
+<p>Anders als bei der ANOVA wenden wir auf das Modell nicht <code>anova()</code>, sondern <code>summary()</code> an:</p>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="einfache-lineare-regression.html#cb569-1" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Symptoms ~ Sport, data = therapy4groups)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -30.687  -6.765   2.813  11.203  25.375 
+## 
+## Coefficients:
+##             Estimate Std. Error t value        Pr(&gt;|t|)    
+## (Intercept)   81.936      7.429  11.029 0.0000000000106 ***
+## Sport         -5.062      1.591  -3.183         0.00356 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 15.19 on 28 degrees of freedom
+## Multiple R-squared:  0.2657, Adjusted R-squared:  0.2394 
+## F-statistic: 10.13 on 1 and 28 DF,  p-value: 0.003558</code></pre>
+<p><strong>Tipp:</strong> Werden sehr kleine p-Werte in wissenschaftlicher Schreibweise angezeigt (z.B. <code>1.37e-05</code>), lässt sich dies mit <code>options(scipen = 999)</code> zu Beginn des Skripts abstellen.</p>
+<div id="ergebnis-interpretieren-1" class="section level3 hasAnchor" number="17.3.1">
+<h3><span class="header-section-number">17.3.1</span> Ergebnis interpretieren<a href="einfache-lineare-regression.html#ergebnis-interpretieren-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die wichtigsten Teile des Outputs sind:</p>
+<ul>
+<li><strong>Coefficients</strong>, Spalte <code>Estimate</code>: Die Regressionskoeffizienten. <code>(Intercept)</code> ist der Y-Achsenabschnitt <span class="math inline">\(a\)</span>, <code>Sport</code> ist die Steigung <span class="math inline">\(b\)</span>.</li>
+<li><strong>Coefficients</strong>, Spalten <code>t value</code> und <code>Pr(&gt;|t|)</code>: t-Wert und p-Wert des Signifikanztests für jeden Koeffizienten. Für unsere Hypothese ist nur die Zeile der Steigung relevant.</li>
+<li><strong>Multiple R-squared</strong>: Das Bestimmtheitsmaß <span class="math inline">\(R^2\)</span>, also der Anteil der Varianz der AV, der durch die UV erklärt wird.</li>
+<li><strong>F-statistic</strong>: Test des Gesamtmodells (bei nur 1 UV gleichbedeutend mit dem Test der Steigung).</li>
+</ul>
+<p>Für unser Beispiel bedeutet das:</p>
+<ul>
+<li><strong>Y-Achsenabschnitt</strong> <span class="math inline">\((a=81.94)\)</span>: Für Patient:innen, die gar keinen Sport treiben (0 Stunden), sagt das Modell eine Symptomschwere von 81.94 vorher.</li>
+<li><strong>Steigung</strong> <span class="math inline">\((b=-5.06)\)</span>: Pro zusätzlicher Stunde Sport pro Woche sinkt die vorhergesagte Symptomschwere um 5.06 Punkte. Das negative Vorzeichen zeigt den negativen Zusammenhang an.</li>
+<li>Die Steigung ist signifikant <span class="math inline">\((p=0.004 &lt; .05)\)</span>. Wir verwerfen also die <span class="math inline">\(H_0\)</span>.</li>
+<li>Die Sportstunden erklären 26.6% der Varianz der Symptomschwere.</li>
+</ul>
+<p>Die Regressionsgleichung lautet: <span class="math inline">\(\hat{y}=81.94 + -5.06 \cdot x\)</span></p>
+</div>
+<div id="relevante-parameter-extrahieren-5" class="section level3 hasAnchor" number="17.3.2">
+<h3><span class="header-section-number">17.3.2</span> Relevante Parameter extrahieren<a href="einfache-lineare-regression.html#relevante-parameter-extrahieren-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die relevanten Parameter zum Berichten einer einfachen linearen Regression sind:</p>
+<ul>
+<li><span class="math inline">\(b\)</span> (Steigung) mit Konfidenzintervall</li>
+<li>t-Wert und df</li>
+<li>p-Wert</li>
+<li><span class="math inline">\(R^2\)</span></li>
+</ul>
+<p>Diese Werte lassen sich wie folgt aus dem Modell extrahieren:</p>
+<p>Koeffizienten (Y-Achsenabschnitt &amp; Steigung):</p>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="einfache-lineare-regression.html#cb571-1" tabindex="-1"></a><span class="fu">coef</span>(reg)</span></code></pre></div>
+<pre><code>## (Intercept)       Sport 
+##   81.936015   -5.062157</code></pre>
+<p>Nur die Steigung:</p>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="einfache-lineare-regression.html#cb573-1" tabindex="-1"></a><span class="fu">coef</span>(reg)[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##     Sport 
+## -5.062157</code></pre>
+<p>Gesamte Koeffiziententabelle (Estimate, Standardfehler, t-Wert, p-Wert):</p>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="einfache-lineare-regression.html#cb575-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>coefficients</span></code></pre></div>
+<pre><code>##              Estimate Std. Error   t value            Pr(&gt;|t|)
+## (Intercept) 81.936015   7.429164 11.028969 0.00000000001061244
+## Sport       -5.062157   1.590544 -3.182657 0.00355775099560277</code></pre>
+<p>t-Wert und p-Wert der Steigung (Zeile 2, Spalte 3 bzw. 4):</p>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="einfache-lineare-regression.html#cb577-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>coefficients[<span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] -3.182657</code></pre>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="einfache-lineare-regression.html#cb579-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>coefficients[<span class="dv">2</span>, <span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] 0.003557751</code></pre>
+<p>df (Freiheitsgrade, <span class="math inline">\(N-2\)</span>):</p>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="einfache-lineare-regression.html#cb581-1" tabindex="-1"></a>reg<span class="sc">$</span>df.residual</span></code></pre></div>
+<pre><code>## [1] 28</code></pre>
+<p><span class="math inline">\(R^2\)</span>:</p>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="einfache-lineare-regression.html#cb583-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.2656568</code></pre>
+<p>Grenzen der Konfidenzintervalle (unten &amp; oben) erhalten wir mit der Funktion <code>confint()</code>:</p>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="einfache-lineare-regression.html#cb585-1" tabindex="-1"></a><span class="fu">confint</span>(reg)</span></code></pre></div>
+<pre><code>##                 2.5 %    97.5 %
+## (Intercept) 66.718063 97.153967
+## Sport       -8.320239 -1.804075</code></pre>
+<p>Das KI wird für beide Koeffizienten berechnet. Umschließt das KI der Steigung die 0 nicht, ist sie signifikant. Einzeln extrahiert:</p>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="einfache-lineare-regression.html#cb587-1" tabindex="-1"></a><span class="fu">confint</span>(reg)[<span class="dv">2</span>, <span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] -8.320239</code></pre>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="einfache-lineare-regression.html#cb589-1" tabindex="-1"></a><span class="fu">confint</span>(reg)[<span class="dv">2</span>, <span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] -1.804075</code></pre>
+</div>
+</div>
+<div id="standardisierte-regressionsgewichte" class="section level2 hasAnchor" number="17.4">
+<h2><span class="header-section-number">17.4</span> Standardisierte Regressionsgewichte<a href="einfache-lineare-regression.html#standardisierte-regressionsgewichte" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Die Steigung <span class="math inline">\(b\)</span> ist in der Originalmetrik der AV angegeben (hier: Symptompunkte pro Stunde Sport). Um Effekte über Modelle hinweg vergleichbar zu machen, nutzen wir das <strong>standardisierte Regressionsgewicht</strong> <span class="math inline">\(\beta\)</span>. Es gibt an, um wie viele Standardabweichungen sich die AV verändert, wenn die UV um 1 Standardabweichung zunimmt.</p>
+<p>Dafür z-standardisieren wir beide Variablen mit der <code>scale()</code> Funktion und rechnen das Modell erneut:</p>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="einfache-lineare-regression.html#cb591-1" tabindex="-1"></a>therapy4groups<span class="sc">$</span>std_Symptoms <span class="ot">=</span> <span class="fu">scale</span>(therapy4groups<span class="sc">$</span>Symptoms)</span>
+<span id="cb591-2"><a href="einfache-lineare-regression.html#cb591-2" tabindex="-1"></a>therapy4groups<span class="sc">$</span>std_Sport <span class="ot">=</span> <span class="fu">scale</span>(therapy4groups<span class="sc">$</span>Sport)</span>
+<span id="cb591-3"><a href="einfache-lineare-regression.html#cb591-3" tabindex="-1"></a></span>
+<span id="cb591-4"><a href="einfache-lineare-regression.html#cb591-4" tabindex="-1"></a>reg_std <span class="ot">=</span> <span class="fu">lm</span>(std_Symptoms <span class="sc">~</span> std_Sport, <span class="at">data =</span> therapy4groups)</span>
+<span id="cb591-5"><a href="einfache-lineare-regression.html#cb591-5" tabindex="-1"></a><span class="fu">summary</span>(reg_std)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = std_Symptoms ~ std_Sport, data = therapy4groups)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.7622 -0.3885  0.1615  0.6433  1.4572 
+## 
+## Coefficients:
+##                           Estimate             Std. Error t value Pr(&gt;|t|)   
+## (Intercept)  0.0000000000000001091  0.1592241379408986246   0.000  1.00000   
+## std_Sport   -0.5154190151263693398  0.1619461152498134215  -3.183  0.00356 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.8721 on 28 degrees of freedom
+## Multiple R-squared:  0.2657, Adjusted R-squared:  0.2394 
+## F-statistic: 10.13 on 1 and 28 DF,  p-value: 0.003558</code></pre>
+<p>Die Steigung entspricht nun <span class="math inline">\(\beta\)</span>. In der einfachen Regression (nur 1 UV) ist <span class="math inline">\(\beta\)</span> identisch mit der Pearson-Korrelation:</p>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="einfache-lineare-regression.html#cb593-1" tabindex="-1"></a><span class="fu">cor</span>(therapy4groups<span class="sc">$</span>Symptoms, therapy4groups<span class="sc">$</span>Sport)</span></code></pre></div>
+<pre><code>## [1] -0.515419</code></pre>
+</div>
+<div id="vorhergesagte-werte-und-residuen" class="section level2 hasAnchor" number="17.5">
+<h2><span class="header-section-number">17.5</span> Vorhergesagte Werte und Residuen<a href="einfache-lineare-regression.html#vorhergesagte-werte-und-residuen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Die vorhergesagten Werte <span class="math inline">\(\hat{y}\)</span> und die Residuen für alle Personen lassen sich mit <code>fitted()</code> und <code>residuals()</code> aus dem Modell ziehen und als neue Variablen an den Datensatz anhängen:</p>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="einfache-lineare-regression.html#cb595-1" tabindex="-1"></a>therapy4groups<span class="sc">$</span>Vorhersage <span class="ot">=</span> <span class="fu">fitted</span>(reg)</span>
+<span id="cb595-2"><a href="einfache-lineare-regression.html#cb595-2" tabindex="-1"></a>therapy4groups<span class="sc">$</span>Residuum <span class="ot">=</span> <span class="fu">residuals</span>(reg)</span>
+<span id="cb595-3"><a href="einfache-lineare-regression.html#cb595-3" tabindex="-1"></a></span>
+<span id="cb595-4"><a href="einfache-lineare-regression.html#cb595-4" tabindex="-1"></a><span class="fu">head</span>(therapy4groups[, <span class="fu">c</span>(<span class="st">&quot;Sport&quot;</span>, <span class="st">&quot;Symptoms&quot;</span>, <span class="st">&quot;Vorhersage&quot;</span>, <span class="st">&quot;Residuum&quot;</span>)])</span></code></pre></div>
+<pre><code>##   Sport Symptoms Vorhersage   Residuum
+## 1   3.5       46   64.21846 -18.218464
+## 2   4.0       69   61.68739   7.312614
+## 3   8.0       39   41.43876  -2.438757
+## 4   4.0       80   61.68739  18.312614
+## 5   5.0       50   56.62523  -6.625229
+## 6   6.0       63   51.56307  11.436929</code></pre>
+<p>Mit <code>predict()</code> können wir außerdem Werte für <strong>neue</strong> Personen vorhersagen, von denen wir nur die UV kennen. Die neuen Werte übergeben wir als data.frame (gleicher Variablenname wie im Modell). Mit <code>interval = "confidence"</code> erhalten wir zusätzlich ein KI für die Vorhersage:</p>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="einfache-lineare-regression.html#cb597-1" tabindex="-1"></a>neue_patienten <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sport =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">8</span>))</span>
+<span id="cb597-2"><a href="einfache-lineare-regression.html#cb597-2" tabindex="-1"></a></span>
+<span id="cb597-3"><a href="einfache-lineare-regression.html#cb597-3" tabindex="-1"></a><span class="fu">predict</span>(reg, <span class="at">newdata =</span> neue_patienten, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>)</span></code></pre></div>
+<pre><code>##        fit      lwr      upr
+## 1 81.93601 66.71806 97.15397
+## 2 61.68739 55.90486 67.46991
+## 3 41.43876 28.21105 54.66646</code></pre>
+</div>
+<div id="dichotome-prädiktoren" class="section level2 hasAnchor" number="17.6">
+<h2><span class="header-section-number">17.6</span> Dichotome Prädiktoren<a href="einfache-lineare-regression.html#dichotome-pr%C3%A4diktoren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Als UV kann auch eine dichotome (nominalskalierte) Variable verwendet werden, z.B. die Diagnose. R kodiert sie automatisch mit 0 und 1 (<strong>Dummy-Kodierung</strong>). Die Referenzkategorie (= 0) ist die 1. Faktorstufe, bei character Variablen also alphabetisch (hier: <code>Angst</code>).</p>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="einfache-lineare-regression.html#cb599-1" tabindex="-1"></a>reg_diag <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Diagnosis, <span class="at">data =</span> therapy4groups)</span>
+<span id="cb599-2"><a href="einfache-lineare-regression.html#cb599-2" tabindex="-1"></a><span class="fu">summary</span>(reg_diag)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Symptoms ~ Diagnosis, data = therapy4groups)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -47.13 -10.82   1.00  11.63  27.87 
+## 
+## Coefficients:
+##                     Estimate Std. Error t value           Pr(&gt;|t|)    
+## (Intercept)           62.133      4.540  13.685 0.0000000000000632 ***
+## DiagnosisDepression   -4.267      6.421  -0.665              0.512    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 17.58 on 28 degrees of freedom
+## Multiple R-squared:  0.01553,    Adjusted R-squared:  -0.01963 
+## F-statistic: 0.4416 on 1 and 28 DF,  p-value: 0.5118</code></pre>
+<p>Die Interpretation der Koeffizienten ändert sich:</p>
+<ul>
+<li><span class="math inline">\(a\)</span> (Intercept): Mittelwert der Referenzkategorie (<code>Angst</code>)</li>
+<li><span class="math inline">\(b\)</span> (<code>DiagnosisDepression</code>): Mittelwertsdifferenz zwischen <code>Depression</code> und <code>Angst</code></li>
+</ul>
+<p><strong>Hinweis:</strong> Da die Steigung genau der Mittelwertsdifferenz entspricht, kommt der Signifikanztest der Steigung zum identischen Ergebnis (gleicher t- und p-Wert) wie ein unabhängiger t-Test mit <code>var.equal = TRUE</code> - beide Verfahren beruhen auf dem Allgemeinen Linearen Modell.</p>
+</div>
+<div id="ausblick-multiple-regression" class="section level2 hasAnchor" number="17.7">
+<h2><span class="header-section-number">17.7</span> Ausblick: Multiple Regression<a href="einfache-lineare-regression.html#ausblick-multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Die Regression lässt sich leicht um weitere UVs erweitern. Diese werden mit <code>+</code> in die Formel aufgenommen:</p>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="einfache-lineare-regression.html#cb601-1" tabindex="-1"></a>reg2 <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Sport <span class="sc">+</span> Diagnosis, <span class="at">data =</span> therapy4groups)</span>
+<span id="cb601-2"><a href="einfache-lineare-regression.html#cb601-2" tabindex="-1"></a><span class="fu">summary</span>(reg2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Symptoms ~ Sport + Diagnosis, data = therapy4groups)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -31.493  -7.060   2.058   9.895  28.702 
+## 
+## Coefficients:
+##                     Estimate Std. Error t value        Pr(&gt;|t|)    
+## (Intercept)           86.033      8.203  10.488 0.0000000000506 ***
+## Sport                 -5.272      1.592  -3.311         0.00264 ** 
+## DiagnosisDepression   -6.375      5.551  -1.149         0.26080    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 15.1 on 27 degrees of freedom
+## Multiple R-squared:  0.2999, Adjusted R-squared:  0.248 
+## F-statistic: 5.782 on 2 and 27 DF,  p-value: 0.008127</code></pre>
+<p>Mit <code>*</code> statt <code>+</code> wird zusätzlich die Interaktion der UVs berechnet (wie bei der mehrfaktoriellen ANOVA). So lässt sich prüfen, ob der Zusammenhang zwischen Sport und Symptomen je nach Diagnose unterschiedlich ausfällt:</p>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="einfache-lineare-regression.html#cb603-1" tabindex="-1"></a>reg3 <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Sport <span class="sc">*</span> Diagnosis, <span class="at">data =</span> therapy4groups)</span>
+<span id="cb603-2"><a href="einfache-lineare-regression.html#cb603-2" tabindex="-1"></a><span class="fu">summary</span>(reg3)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Symptoms ~ Sport * Diagnosis, data = therapy4groups)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -28.411  -8.600   1.858  10.918  26.505 
+## 
+## Coefficients:
+##                           Estimate Std. Error t value      Pr(&gt;|t|)    
+## (Intercept)                 99.925     10.950   9.125 0.00000000138 ***
+## Sport                       -8.336      2.270  -3.672       0.00109 ** 
+## DiagnosisDepression        -30.747     14.379  -2.138       0.04205 *  
+## Sport:DiagnosisDepression    5.600      3.069   1.825       0.07955 .  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 14.49 on 26 degrees of freedom
+## Multiple R-squared:  0.3793, Adjusted R-squared:  0.3077 
+## F-statistic: 5.297 on 3 and 26 DF,  p-value: 0.005517</code></pre>
+<p>Die Zeile <code>Sport:DiagnosisDepression</code> ist der Interaktionseffekt. Ein solcher Effekt wird auch <strong>Moderation</strong> genannt: Die Diagnose würde dann den Zusammenhang zwischen Sport und Symptomen <em>moderieren</em> (abschwächen oder verstärken).</p>
+</div>
+<div id="voraussetzungsprüfung" class="section level2 hasAnchor" number="17.8">
+<h2><span class="header-section-number">17.8</span> Voraussetzungsprüfung<a href="einfache-lineare-regression.html#voraussetzungspr%C3%BCfung" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Folgende Voraussetzungen gelten für die einfache lineare Regression:</p>
+<ul>
+<li>AV intervallskaliert</li>
+<li>UV nominal (dichotom), ordinal oder intervallskaliert</li>
+<li>unabhängige Messungen</li>
+<li>linearer Zusammenhang</li>
+<li>Homoskedastizität</li>
+<li>Normalverteilung der Residuen</li>
+</ul>
+<p>Die letzten drei Voraussetzungen können wir in R prüfen.</p>
+<div id="linearität" class="section level3 hasAnchor" number="17.8.1">
+<h3><span class="header-section-number">17.8.1</span> Linearität<a href="einfache-lineare-regression.html#linearit%C3%A4t" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die Linearität prüfen wir graphisch mit einem Streudiagramm (wie in der deskriptiven Einordnung). Zusätzlich zur Regressionsgeraden (<code>method = "lm"</code>, blau) zeichnen wir eine geglättete Kurve ein (<code>method = "loess"</code>, rot), die sich frei an die Daten anpasst:</p>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="einfache-lineare-regression.html#cb605-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> therapy4groups, <span class="fu">aes</span>(<span class="at">x =</span> Sport, <span class="at">y =</span> Symptoms)) <span class="sc">+</span></span>
+<span id="cb605-2"><a href="einfache-lineare-regression.html#cb605-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb605-3"><a href="einfache-lineare-regression.html#cb605-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb605-4"><a href="einfache-lineare-regression.html#cb605-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb605-5"><a href="einfache-lineare-regression.html#cb605-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Sport (Stunden pro Woche)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Symptomschwere&quot;</span>) <span class="sc">+</span></span>
+<span id="cb605-6"><a href="einfache-lineare-regression.html#cb605-6" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-348-1.png" alt="" width="672" /></p>
+<p>Die Punkte sollten sich ungefähr entlang einer Geraden verteilen und keinen erkennbaren Bogen (z.B. U-Form) beschreiben. Liegt die rote Kurve ungefähr auf der blauen Geraden, können wir von einem linearen Zusammenhang ausgehen.</p>
+</div>
+<div id="normalverteilung-der-residuen-1" class="section level3 hasAnchor" number="17.8.2">
+<h3><span class="header-section-number">17.8.2</span> Normalverteilung der Residuen<a href="einfache-lineare-regression.html#normalverteilung-der-residuen-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Die Normalverteilung der Residuen prüfen wir graphisch mit einem QQ-Plot und statistisch mit dem Shapiro-Wilk Test. Dafür nutzen wir die standardisierten Residuen, die wir mit <code>rstandard()</code> erhalten:</p>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="einfache-lineare-regression.html#cb606-1" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">rstandard</span>(reg))</span>
+<span id="cb606-2"><a href="einfache-lineare-regression.html#cb606-2" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">rstandard</span>(reg))</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-349-1.png" alt="" width="672" /></p>
+<p>Die Punkte sollten möglichst auf der Diagonalen liegen.</p>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="einfache-lineare-regression.html#cb607-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">rstandard</span>(reg))</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  rstandard(reg)
+## W = 0.95712, p-value = 0.2609</code></pre>
+<p>Ein nicht-signifikanter Shapiro-Wilk Test <span class="math inline">\((p &gt; .05)\)</span> bedeutet: Die Residuen weichen nicht signifikant von der Normalverteilung ab.</p>
+</div>
+<div id="homoskedastizität" class="section level3 hasAnchor" number="17.8.3">
+<h3><span class="header-section-number">17.8.3</span> Homoskedastizität<a href="einfache-lineare-regression.html#homoskedastizit%C3%A4t" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Homoskedastizität bedeutet, dass die <strong>Streuung der Residuen über den gesamten Wertebereich gleich groß</strong> ist. Das Modell sagt also für Personen, die wenig Sport treiben, ungefähr genauso genau (bzw. ungenau) vorher wie für Personen, die viel Sport treiben. Ist das nicht der Fall (z.B. kleine Vorhersagefehler bei wenig, große Vorhersagefehler bei viel Sport), spricht man von <strong>Heteroskedastizität</strong>.</p>
+<p>Die Homoskedastizität prüfen wir graphisch, indem wir die Residuen gegen die vorhergesagten Werte plotten. Dafür nutzen wir die eingebaute <code>plot()</code> Funktion für lm-Objekte:</p>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="einfache-lineare-regression.html#cb609-1" tabindex="-1"></a><span class="fu">plot</span>(reg, <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-351-1.png" alt="" width="672" /></p>
+<p>In diesem Plot werden die Residuen (Y-Achse) gegen die vorhergesagten Werte (X-Achse) abgetragen. Jeder Punkt ist eine Person. Die rote Linie ist eine geglättete Trendlinie durch die Punkte.</p>
+<p>So lesen wir den Plot (wie in der Vorlesung Quantitative Methoden II):</p>
+<ul>
+<li>Ideal ist eine Punktewolke <strong>ohne erkennbare Systematik</strong> (kein Muster, z.B. keine Trichterform)</li>
+<li>Die <strong>rote Linie</strong> sollte relativ <strong>horizontal</strong> verlaufen</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> Dann ist die Homoskedastizitätsannahme gegeben.</p>
+<p>Statistisch lässt sich die Homoskedastizität mit dem <strong>Breusch-Pagan Test</strong> prüfen. Dieser prüft, ob die Varianz der Residuen mit den vorhergesagten Werten zusammenhängt. Die Nullhypothese lautet, dass die Fehlervarianz konstant ist (Homoskedastizität). Eine Funktion dafür ist im Paket <code>lmtest</code> enthalten:</p>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="einfache-lineare-regression.html#cb610-1" tabindex="-1"></a><span class="co"># install.packages(&quot;lmtest&quot;)</span></span>
+<span id="cb610-2"><a href="einfache-lineare-regression.html#cb610-2" tabindex="-1"></a>lmtest<span class="sc">::</span><span class="fu">bptest</span>(reg)</span></code></pre></div>
+<pre><code>## 
+##  studentized Breusch-Pagan test
+## 
+## data:  reg
+## BP = 0.39893, df = 1, p-value = 0.5276</code></pre>
+<p>Wie beim Levene’s Test entspricht die Nullhypothese der erfüllten Voraussetzung. Wir wünschen uns also ein <strong>nicht-signifikantes</strong> Ergebnis <span class="math inline">\((p &gt; .05)\)</span>.</p>
+</div>
+<div id="voraussetzungsprüfung-mit-performance" class="section level3 hasAnchor" number="17.8.4">
+<h3><span class="header-section-number">17.8.4</span> Voraussetzungsprüfung mit <code>performance</code><a href="einfache-lineare-regression.html#voraussetzungspr%C3%BCfung-mit-performance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Alternativ können wir die Funktionen aus dem <code>performance</code> Paket nutzen, die wir bereits im Kapitel zur ANOVA kennengelernt haben. Diese rechnen im Hintergrund dieselben Tests:</p>
+<ul>
+<li><code>check_normality()</code> berechnet den <strong>Shapiro-Wilk Test</strong> auf den Residuen des Modells.</li>
+<li><code>check_heteroscedasticity()</code> berechnet den <strong>Breusch-Pagan Test</strong>.</li>
+</ul>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="einfache-lineare-regression.html#cb612-1" tabindex="-1"></a><span class="fu">check_normality</span>(reg)</span></code></pre></div>
+<pre><code>## OK: residuals appear as normally distributed (p = 0.261).</code></pre>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="einfache-lineare-regression.html#cb614-1" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(reg)</span></code></pre></div>
+<pre><code>## OK: Error variance appears to be homoscedastic (p = 0.603).</code></pre>
+<p>Die Funktionen geben das Ergebnis praktischerweise direkt als Satz aus (z.B. <em>“Error variance appears to be homoscedastic”</em>).</p>
+<p>Mit <code>check_model()</code> erhalten wir zudem alle diagnostischen Plots auf einen Blick (dafür müssen zusätzlich die Pakete <code>see</code> und <code>patchwork</code> installiert sein):</p>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="einfache-lineare-regression.html#cb616-1" tabindex="-1"></a><span class="co"># install.packages(c(&quot;see&quot;, &quot;patchwork&quot;))</span></span>
+<span id="cb616-2"><a href="einfache-lineare-regression.html#cb616-2" tabindex="-1"></a><span class="fu">check_model</span>(reg)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-354-1.png" alt="" width="768" /></p>
+<p><strong>Vorsicht:</strong> Wie bereits im Kapitel zur ANOVA erwähnt, sollte man sich nicht blind auf die Tests verlassen. Bei kleinen Stichproben (wie hier mit <span class="math inline">\(N=30\)</span>) haben sie wenig Teststärke, bei großen Stichproben werden schon minimale Abweichungen signifikant. Die graphische Prüfung ist daher mindestens genauso wichtig.</p>
+</div>
+</div>
+<div id="darstellung-in-tabellenform-5" class="section level2 hasAnchor" number="17.9">
+<h2><span class="header-section-number">17.9</span> Darstellung in Tabellenform<a href="einfache-lineare-regression.html#darstellung-in-tabellenform-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Zur sauberen Darstellung des Ergebnisses in einer bereits nach APA formatierten Tabelle, lassen sich die Funktionen <code>apa_print</code> und <code>apa_table</code> aus dem Paket <code>papaja</code> verwenden:</p>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="einfache-lineare-regression.html#cb617-1" tabindex="-1"></a>apa_reg <span class="ot">&lt;-</span> <span class="fu">apa_print</span>(reg)</span>
+<span id="cb617-2"><a href="einfache-lineare-regression.html#cb617-2" tabindex="-1"></a><span class="fu">apa_table</span>(</span>
+<span id="cb617-3"><a href="einfache-lineare-regression.html#cb617-3" tabindex="-1"></a>  apa_reg<span class="sc">$</span>table, <span class="at">caption =</span> <span class="st">&quot;Tabelle für die einfache lineare Regression.&quot;</span></span>
+<span id="cb617-4"><a href="einfache-lineare-regression.html#cb617-4" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-355">Table 17.1: </span> Tabelle für die einfache lineare Regression.</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictor</th>
+<th align="left"><span class="math inline">\(b\)</span></th>
+<th align="left">95% CI</th>
+<th align="left"><span class="math inline">\(t\)</span></th>
+<th align="left"><span class="math inline">\(\mathit{df}\)</span></th>
+<th align="left"><span class="math inline">\(p\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Intercept</td>
+<td align="left">81.94</td>
+<td align="left">[66.72, 97.15]</td>
+<td align="left">11.03</td>
+<td align="left">28</td>
+<td align="left">&lt; .001</td>
+</tr>
+<tr class="even">
+<td align="left">Sport</td>
+<td align="left">-5.06</td>
+<td align="left">[-8.32, -1.80]</td>
+<td align="left">-3.18</td>
+<td align="left">28</td>
+<td align="left">.004</td>
+</tr>
+</tbody>
+</table>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Cohen, Jacob. 1988. <span>“Statistical Power Analysis for the Behavioral Sciences. Lawrence Erlbaum Associates.”</span> <em>Hillsdale, NJ</em>, 20–26.
+</div>
+<div class="csl-entry">
+Cohen, Jacob. 1992. <span>“Quantitative Methods in Psychology: A Power Primer.”</span> <em>Psychological Bulletin</em>.
+</div>
+<div class="csl-entry">
+Ellis, Paul D. 2010. <em>The Essential Guide to Effect Sizes: Statistical Power, Meta-Analysis, and the Interpretation of Research Results</em>. Cambridge university press.
+</div>
+<div class="csl-entry">
+Hedges, Larry V, and Ingram Olkin. 2014. <em>Statistical Methods for Meta-Analysis</em>. Academic press.
+</div>
+<div class="csl-entry">
+Levene, Howard. 1960. <em>Robust Tests for Equality of Variances. Contributions to Probability and Statistics (1960)</em>.
+</div>
+<div class="csl-entry">
+Tomczak, Maciej, and Ewa Tomczak. 2014. <span>“The Need to Report Effect Size Estimates Revisited. An Overview of Some Recommended Measures of Effect Size.”</span> <em>Trends in Sport Sciences</em> 1 (21): 19–25.
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="varianzanalyse-anova.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["CFH_R_bookdown.pdf", "CFH_R_bookdown.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

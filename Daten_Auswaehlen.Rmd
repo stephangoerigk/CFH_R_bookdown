@@ -1,6 +1,6 @@
 # Daten auswählen
 
-Oft wollen wir nur mit einem Teil der verfügbaren Daten rechnen. In diesem Fall müssen wir uns die relevanten Daten aus dem größeren Datenobjet "herausziehen".
+Oft wollen wir nur mit einem Teil der verfügbaren Daten rechnen. In diesem Fall müssen wir uns die relevanten Daten aus dem größeren Datenobjekt "herausziehen".
 
 Eine Möglichkeit, die **Indizierung** mit Zahlen haben wir bereits kennengelernt. Diese funktioniert mit eckigen Klammern `[]`. Für die Auswahl eines bestimmten Objekts schreiben wir einfach dessen numerische Position mittels einer Zahl in die Klammern:
 
@@ -64,9 +64,9 @@ gewicht = starwars$mass
 gewicht
 ```
 
-Anstatt mit Indizes zu arbeiten können wir Werte nach einer Logik auswählen. Dafür eigenen sich sogenannte Bool'sche Operatoren `=, >, <`
+Anstatt mit Indizes zu arbeiten können wir Werte nach einer Logik auswählen. Dafür eignen sich sogenannte Bool'sche Operatoren `=, >, <`
 
-Um zum z.B. die Gewichte aller Charaktere auszuwählen, die **genau** 79kg wiegen schreiben wir:
+Um z.B. die Gewichte aller Charaktere auszuwählen, die **genau** 79kg wiegen schreiben wir:
 
 ```{r}
 gewicht[gewicht == 79]
@@ -93,7 +93,7 @@ Zur Auswahl nur braunhaariger Charaktere schreiben wir z.B.:
 haarfarbe[which(haarfarbe == "brown")]
 ```
 
-Interessieren uns alle Werte, die genau nicht 79 kg (also ungleich 79 sind) sind nutzen wir `!`, was in R immer so viel wie *nicht* bedeutet:
+Interessieren uns alle Werte, die nicht genau 79 kg wiegen (also ungleich 79 sind), nutzen wir `!`, was in R immer so viel wie *nicht* bedeutet:
 
 ```{r}
 gewicht[which(gewicht != 79)]
@@ -139,7 +139,7 @@ Die Logik in der Auswahl der Fälle funktioniert analog zur Auswahl bei den Vekt
 Zur Auswahl aller Fälle, die braune Haare haben, schreiben wir z.B.
 
 ```{r}
-# starwars[starwars$hair_color == "brown",]
+ starwars[starwars$hair_color == "brown",]
 ```
 
 ### Spalten (Variablen) auswählen

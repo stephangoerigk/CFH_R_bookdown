@@ -1,6 +1,6 @@
 # Varianzanalyse (ANOVA)
 
-Die ANOVA (Analysis of variance, dt. Varianzanalyse) ist ein weiterer Signifikanztest. Mit der ANOVA können wir Prüfen, ob eine unabhängige Variable (UV) einen signifikanten Anteil Varianz der abhängigen Variable erklärt (AV). Die UVs nennen wir bei der ANOVA i.d.R. **Faktor**.
+Die ANOVA (Analysis of variance, dt. Varianzanalyse) ist ein weiterer Signifikanztest. Mit der ANOVA können wir prüfen, ob eine unabhängige Variable (UV) einen signifikanten Anteil Varianz der abhängigen Variable erklärt (AV). Die UVs nennen wir bei der ANOVA i.d.R. **Faktor**.
 
 Statistisch ist die ANOVA ein F-Test (Varianzquotient).
 
@@ -13,7 +13,7 @@ Ein Beispiel wäre der Vergleich der Stärke von Symptomen, die Patient:innen na
 Laden wir uns einen fiktiven Datensatz herunter, der dieses Szenario wiederspiegelt:
 
 ```{r}
-therapy = read.csv("https://raw.githubusercontent.com/stephangoerigk/WAF_Folien/master/therapy4groups.csv")[,2:5]
+therapy = read.csv("https://raw.githubusercontent.com/stephangoerigk/WAF_Folien/master/therapy4groups.csv")
 
 summary(therapy)
 ```
@@ -39,7 +39,7 @@ Unter Annahme eines Signifikanzniveaus von $\alpha=.05$ erlauben wir uns 5% Wahr
 
 Selbst bei 3 t-Tests steigt die Wahrscheinlichkeit für einen Fehler 1. Art mit $0.05^3=0.14$ rasant auf 14% statt 5% an.
 
-Um dieses Problem zu vermeiden rechenen wir die ANOVA, welche uns nicht alle Vergleiche einzeln, sondern die Signifikanz des gesamten Faktors auf einmal berechnet (Omnibus Test). Daraus folgt jedoch auch, dass die ANOVA als Signifikanztest Hypothesen **immer ungerichtet** testet.
+Um dieses Problem zu vermeiden rechnen wir die ANOVA, welche uns nicht alle Vergleiche einzeln, sondern die Signifikanz des gesamten Faktors auf einmal berechnet (Omnibus Test). Daraus folgt jedoch auch, dass die ANOVA als Signifikanztest Hypothesen **immer ungerichtet** testet.
 
 ### Deskriptive Einordnung
 
@@ -59,7 +59,7 @@ ggplot(data = therapy, aes(x = Therapy, y = Symptoms)) +
   stat_summary(geom = "point", fun = mean) 
 ```
 
-Ob sich die numerischen Unterschiede sich auch als signifikant erweisen, prüfen wir mit der ANOVA.
+Ob sich die numerischen Unterschiede auch als signifikant erweisen, prüfen wir mit der ANOVA.
 
 ### Berechnung der ANOVA
 
@@ -116,7 +116,7 @@ mod
 ```
 
 Wie wir sehen, wird der Schritt des Aufstellens des linearen Modells hier übersprungen und direkt die ANOVA (F-Test) gerechnet.
-Das Ergebnise ist jedoch identisch.
+Das Ergebnis ist jedoch identisch.
 
 Falls im Datensatz keine `id` Variable enthalten ist, lässt sich diese leicht erstellen, indem wir einfach jeder Person Ihre Position im Datensatz als Namen geben:
 
@@ -165,7 +165,7 @@ Nun haben wir im Abschnitt über die $\alpha$-Fehler Kumulierung bereits erfahre
 
 Post-hoc Tests lösen dieses Problem durch eine Korrektur des p-Werts. Je mehr Vergleiche gemacht werden, desto mehr wird er nach oben korrigiert. Automatisch wendet `emmeans()` die sogenannte Tukey-Korrektur an (ganz unten im Output sichtbar).
 
-Zwei weitere Korrekturen sind gängig, die etwas strengere Bonferroni-Korrektur und die etwas weniger strenge Benjamini-Hochberg Korrektur (auch false-dicovery-rate Korrektur - FDR genannt). 
+Zwei weitere Korrekturen sind gängig, die etwas strengere Bonferroni-Korrektur und die etwas weniger strenge Benjamini-Hochberg Korrektur (auch false-discovery-rate Korrektur - FDR genannt). 
 
 Wollen wir die Korrekturmethode ändern, lässt sich das leicht über das `adjust` Argument erreichen:
 
@@ -173,7 +173,7 @@ Wollen wir die Korrekturmethode ändern, lässt sich das leicht über das `adjus
 emmeans(mod, pairwise ~ Therapy, adjust = "bonferroni")
 ```
 
-Wir sehen, dass die etwas strengere Bonferroni-Korrektur die p-Werte vergleichsweise höher werden lässt, als mit der Tukey-Korrektur. Es ist also für den p-Wert schwieriger, unter das Signifikanznivea $\alpha=.05$ zu kommen.
+Wir sehen, dass die etwas strengere Bonferroni-Korrektur die p-Werte vergleichsweise höher werden lässt, als mit der Tukey-Korrektur. Es ist also für den p-Wert schwieriger, unter das Signifikanzniveau $\alpha=.05$ zu kommen.
 
 Mit der Benjamini-Hochberg Korrektur sind die Anpassungen weniger streng:
 
@@ -197,7 +197,7 @@ Unsere Fragestellung würde sich um 2 weitere Aspekte erweitern:
 
 1. *Nach welcher Therapie haben die Patient:innen die schwächsten Symptome?* (hatten wir bereits - Haupteffekt Therapie)
 2. *Welche Diagnose hatte die schwächsten Symptome?* (Haupteffekt Diagnose)
-3. *Gibt es, je nachdem welche Diagnose die Patienten hatten, Unterschiede in der Wirksamkeit der Therapie?* (Interaktioniseffekt)
+3. *Gibt es, je nachdem welche Diagnose die Patienten hatten, Unterschiede in der Wirksamkeit der Therapie?* (Interaktionseffekt)
 
 ### Deskriptive Einordnung
 
@@ -250,7 +250,7 @@ Die beiden Haupteffekte und der Interaktionseffekt können einzeln interpretiert
 
 Der Haupteffekt von `Therapy` spiegelt im Wesentlichen das Ergebnis wieder, welches wir bereits von der einfaktoriellen ANOVA kennen. Es handelt sich um den Effekt der Therapie, wenn man den Effekt der 2. UV (Diagnosis) außer Acht lässt.
 
-Der Haupteffekt ist signifikant bei $F_{(3,22)}=9.94, p<.001$. Wir können schlussfolgern, dass es einen Unterschied zwischen den Diagnosen gibt. Wo die Unterschiede genau liegenm, können wir mit den Post-hoc Tests bestimmen, wie oben bereits geschehen.
+Der Haupteffekt ist signifikant bei $F_{(3,22)}=9.94, p<.001$. Wir können schlussfolgern, dass es einen Unterschied zwischen den Diagnosen gibt. Wo die Unterschiede genau liegen, können wir mit den Post-hoc Tests bestimmen, wie oben bereits geschehen.
 
 #### Haupteffekt 2
 
@@ -298,7 +298,7 @@ Lassen Sie uns nun alle drei empirisch testbaren Annahmen im Detail betrachten. 
 
 Wenn das Hauptziel einer ANOVA darin besteht, zu sehen, ob bestimmte Effekte signifikant sind oder nicht, dann ist die Annahme der Normalverteilung der Residuen nur für kleine Stichproben erforderlich, dank des zentralen Grenzwertsatzes. Wie von Lumley et al. (2002) gezeigt, sind selbst extreme Verletzungen der Normalitätsannahmen bei Stichproben von ein paar hundert Probanden unproblematisch. Daher sind leichte Verletzungen dieser Annahme unproblematisch.
 
-Eine angemessene explorative Datenanalyse oft besser ist als die blindes Anwenden von statistischen Annahmetests. Dennoch sind Annahmetests natürlich ein wichtiges Werkzeug im statistischen Werkzeugkasten und können in vielen Situationen hilfreich sein.
+Eine angemessene explorative Datenanalyse ist oft besser als das blinde Anwenden von statistischen Annahmetests. Dennoch sind Annahmetests natürlich ein wichtiges Werkzeug im statistischen Werkzeugkasten und können in vielen Situationen hilfreich sein.
 
 ### Testen der empirisch testbaren Annahmen
 
@@ -332,7 +332,7 @@ check_homogeneity(mod)
 
 Diese Ergebnisse deuten darauf hin, dass die Homogenität nicht signifikant verletzt ist.
 
-#### Maßnahmen wenn Vorraussetzung verletzt
+#### Maßnahmen wenn Voraussetzung verletzt
 
 ANOVAs sind im Allgemeinen robust gegenüber "leichter" Heteroskedastizität, aber es gibt verschiedene andere Methoden (die in `afex` nicht verfügbar sind), um robuste Fehlerabschätzungen zu erhalten.
 
@@ -356,7 +356,7 @@ check_sphericity(mod)
 
 Wir können sehen, dass beide Fehlerterme der Länge:Reiz und Aufgabe:Länge:Reiz-Interaktionen die Annahme der Sphärizität bei $p = 0.021$ signifikant verletzen. Beachten Sie, dass Aufgabe als Faktor zwischen den Probanden gilt und dass beide Interaktionsterme denselben Fehlerterm teilen!
 
-#### Maßnahmen wenn Vorraussetzung verletzt
+#### Maßnahmen wenn Voraussetzung verletzt
 
 Für ANOVA-Tabellen kann eine Korrektur der Freiheitsgrade verwendet werden - afex bietet sowohl die Greenhouse-Geisser (die standardmäßig verwendet wird) als auch die Hyunh-Feldt-Korrekturen an.
 Für Nachfolgekontraste mit emmeans kann ein multivariates Modell verwendet werden, das keine Sphärizität annimmt (dies wird seit afex 1.0 standardmäßig verwendet).
@@ -404,7 +404,7 @@ Wir können das Diagramm weiter verbessern, indem wir den Trend entfernen und ni
 # plot(is_norm, type = "qq", detrend = TRUE)
 ```
 
-#### Maßnahmen wenn Vorraussetzung verletzt
+#### Maßnahmen wenn Voraussetzung verletzt
 
 Wie bei der Annahme der Homogenität der Varianzen können wir auf Permutationstests für ANOVA-Tabellen und Bootstrap-Schätzungen / Kontraste zurückgreifen.
 

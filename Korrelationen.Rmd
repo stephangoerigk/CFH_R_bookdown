@@ -19,7 +19,7 @@ dat1 <- rnorm_multi(n = 100,
 dat2 <- rnorm_multi(n = 100, 
                   mu = c(20, 20),
                   sd = c(5, 5),
-                  r = c(0.02), 
+                  r = c(-0.02), 
                   varnames = c("A", "B"),
                   empirical = FALSE)
 dat3 <- rnorm_multi(n = 100, 
@@ -50,7 +50,7 @@ data <- rnorm_multi(n = 100,
 
 Die Korrelation prüft als Signifikanztest, ob ein Zusammenhang zwischen 2 Variablen besteht. 
 
-Da Korrelationskoeffizient von 0 bedeutet, dass kein Zusammenhang zwischen den Variablen besteht, wird im Signifikanztest i.d.R. $r$ gegen 0 getestet (daher Nullhypothese).
+Da ein Korrelationskoeffizient von 0 bedeutet, dass kein Zusammenhang zwischen den Variablen besteht, wird im Signifikanztest i.d.R. $r$ gegen 0 getestet (daher Nullhypothese).
 
 Folgende Hypothesen sind denkbar:
 
@@ -141,12 +141,12 @@ Wie Sie bereits bemerkt haben werden, liefert Ihnen die `cor()` Funktion ledigli
 
 Ein Signifikanztest für den Korrelationskoeffizienten lässt sich jedoch einfach mit der Funktion `cor.test()` rechnen. Die Argumente der Funktion sind in der folgenden Tabelle zusammengefasst:
 
-| Argument| Description| 
+| Argument| Beschreibung| 
 |:------------|:-------------------------------------------------|
 |`formula`|Argument in Formelformat `~ x + y`, x und y sind die Namen der Variablen deren bivariater Zusammenhang getestet werden soll. Diese Variablen sollten in getrennten Spalten eines dataframes stehen.|
 |`data`|Der data.frame, der x und y enthält|
-|`alternative`|Hier kann die Richtung der Alternativhypothese angegeben werden. Wählen Sie `"two.sided"` für eine ungerichtete Hypothese, oder `"greater"` bzw. "`less"` für eine gerichtete Hypothese.|
-|`method`|Gibt die Art des zu berechnenden Korrelationskoeffizienten an. `"pearson"` (default) steht für die Produkt-Moment Korrelation, `"kendall"` und `"spearman"` stehen für die Rangkorrelatioinen nach Kendall und Spearman. |
+|`alternative`|Hier kann die Richtung der Alternativhypothese angegeben werden. Wählen Sie `"two.sided"` für eine ungerichtete Hypothese, oder `"greater"` bzw. `"less"` für eine gerichtete Hypothese.|
+|`method`|Gibt die Art des zu berechnenden Korrelationskoeffizienten an. `"pearson"` (default) steht für die Produkt-Moment Korrelation, `"kendall"` und `"spearman"` stehen für die Rangkorrelationen nach Kendall und Spearman. |
 |`subset`|Hier kann direkt ein Teildatensatz ausgewählt werden. Z.B.; `subset = sex == "female"`|
 
 Wenn wir zum Beispiel testen wollten, ob ein signifikanter negativer Zusammenhang zwischen Konzentration und Schlaf besteht, könnten wir das mit folgendem Signifikanztest prüfen:

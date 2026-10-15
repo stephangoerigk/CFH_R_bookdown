@@ -18,7 +18,7 @@ dieses Skript soll Sie in die grundlegenden Analysewerkzeuge in R einführen, vo
 
 Wenn R Ihre erste Programmiersprache ist, ist das völlig in Ordnung. Wir gehen alles Schritt für Schritt gemeinsam durch. Die Techniken in diesem Skript sind zwar auf die meisten Datenanalyseprobleme anwendbar, da wir jedoch aus der Psychologie kommen, werde ich den Kurs auf die Lösung von Analyseproblemen ausrichten, die in der psychologischen Forschung häufig auftreten.
 
-Ich wünsche Ihnen Viel Erfolg und Spaß! 
+Ich wünsche Ihnen viel Erfolg und Spaß! 
 
 # Warum ist R empfehlenswert?
 
@@ -52,11 +52,11 @@ Insbesondere die Cheat Sheets zu ggplot2 und dplyr sind zu empfehlen (RStudio Ch
 
 ## Hilfe und Inspiration online
 
-Eine Internetsuche nach einem spezifischen R Problem bringt Sie (fast) immer an Ihr Ziel. Häufig findet man gute Antworten in den github Hilfsmatierialien einzelner Pakete, auf den Community Seiten von R Studio und in den Foren von stackoverflow.
+Eine Internetsuche nach einem spezifischen R Problem bringt Sie (fast) immer an Ihr Ziel. Häufig findet man gute Antworten in den github Hilfsmaterialien einzelner Pakete, auf den Community Seiten von R Studio und in den Foren von stackoverflow.
 
 ## Andere Bücher
 
-Die Inhalte dieser Bücher sind nicht prüfunsrelevant.
+Die Inhalte dieser Bücher sind nicht prüfungsrelevant.
 
 Es gibt viele, viele gute Bücher über R. Hier sind zwei, die ich empfehlen kann (von denen eines sogar umsonst ist):
 

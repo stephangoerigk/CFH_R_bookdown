@@ -99,7 +99,7 @@ highlight(flextable(df), j = 1, color = "yellow")
 
 #### Text rotieren
 
-Zum Totieren von Text nutzen wir die `rotate()` Funktion:
+Zum Rotieren von Text nutzen wir die `rotate()` Funktion:
 
 ```{r}
 rotate(flextable(df), j = 2, rotation = "tbrl")
@@ -148,9 +148,9 @@ Ein Export der Tabelle in ein weiterverwendbares Format ist für folgende Dateit
 * .png (Bild)
 
 ```{r}
-# save_as_html(df, "meine_tabelle.html") 
-# save_as_docx(df, "meine_tabelle.docx") 
-# save_as_pptx(df, "meine_tabelle.pptx") 
-# save_as_image(df, "meine_tabelle.png")
+# save_as_html(df, path ="meine_tabelle.html") 
+# save_as_docx(df, path ="meine_tabelle.docx") 
+# save_as_pptx(df, path ="meine_tabelle.pptx") 
+# save_as_image(df, path ="meine_tabelle.png")
 ```
 

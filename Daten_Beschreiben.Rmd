@@ -22,7 +22,7 @@ head(iris) # erste 6 Zeilen ansehen
 str(iris)
 ```
 
-Der Befehl zeigt uns eine Übersicht, welche Variablen in dem `iris` Datensatz enthalten sind. zusätzlich sehen wir die Dimensionen (150 Zeilen, 5 Spalten) des dataframes. Für die einzelnen Variablen wird uns jeweils die Variablenart (z.B. `Petal.Length`, engl Blütenblattlänge = numerisch; `Species` = factor) sowie einzelne in dem Variablen enthaltene Werte.
+Der Befehl zeigt uns eine Übersicht, welche Variablen in dem `iris` Datensatz enthalten sind. Zusätzlich sehen wir die Dimensionen (150 Zeilen, 5 Spalten) des dataframes. Für die einzelnen Variablen wird uns jeweils die Variablenart (z.B. `Petal.Length`, engl Blütenblattlänge = numerisch; `Species` = factor) sowie einzelne in der Variable enthaltene Werte angezeigt.
 
 ### Informationen über Vektoren
 
@@ -50,7 +50,7 @@ is.numeric(iris$Petal.Length)
 
 #### is.na()
 
-Wir können auch spezifisch nach fehlenden Werten Fragen. Erstellen wir uns schnell einen Beispielvektor:
+Wir können auch spezifisch nach fehlenden Werten fragen. Erstellen wir uns schnell einen Beispielvektor:
 
 ```{r}
 a = c(1, 2, 3, NA, 5, NA)
@@ -118,7 +118,7 @@ Das Ergebnis ist eine sogenannte **4-Felder Tafel**.
 
 #### unique() Funktion
 
-Wollen wir in einem Vektor, der viele Wiederholungen der selben Merkmalsausprägungen enthält, jede Ausprägung nur einmal anzeigen lassen, nutzen wir `unique()`:
+Wollen wir in einem Vektor, der viele Wiederholungen derselben Merkmalsausprägungen enthält, jede Ausprägung nur einmal anzeigen lassen, nutzen wir `unique()`:
 
 ```{r}
 unique(df$Diagnose)
@@ -128,7 +128,7 @@ unique(df$Diagnose)
 
 | Funktion| Beispiel|Ergebnis |
 |:-------------------|:----------------------|:-----------------------|
-|     `sum(x), product(x)`|    `sum(1:10)` |`r sum(1:10)`     |
+|     `sum(x), prod(x)`|    `sum(1:10)` |`r sum(1:10)`     |
 |     `min(x), max(x)`|    `min(1:10)`|`r min(1:10)`    |
 |     `mean(x), median(x)`|    `mean(1:10)`     | `r mean(1:10)` |
 |     `sd(x), var(x), range(x)`|    `sd(1:10)` | `r sd(1:10)` |
@@ -212,7 +212,7 @@ IQR(vektor)
 
 ## Deskriptivstatistiken berichten
 
-Berichtet man Deskriptivstatistiken im Ergebnisteil eines Papers oder in Tabellen, gibt man diese Häufig in Kombination an.
+Berichtet man Deskriptivstatistiken im Ergebnisteil eines Papers oder in Tabellen, gibt man diese häufig in Kombination an.
 
 Ein Streuungsmaß ist z.B. wenig informativ, ohne zu wissen um welches Lagemaß es herum streut.
 
@@ -232,7 +232,7 @@ Man würde zum Beispiel schreiben:
 
 ## Alles auf einen Blick
 
-Manchmal uns nicht die Mühe machen, die Deskriptivstatistiken alle einzeln und nacheinander zu berechnen. Schöner wäre es, mit einer Funktion alle relevanten Kennwerte auf einmal zu erhalten.
+Manchmal wollen wir uns nicht die Mühe machen, die Deskriptivstatistiken alle einzeln und nacheinander zu berechnen. Schöner wäre es, mit einer Funktion alle relevanten Kennwerte auf einmal zu erhalten.
 
 Eine solche Funktion ist `describe()` aus dem `psych` Paket:
 
@@ -267,7 +267,7 @@ df = data.frame(Gruppe = c("Experiment", "Kontrolle", "Experiment", "Kontrolle",
 df
 ```
 
-Der manuelle Weg würde eine Datenselektion erfordern (z.B. für das durchschnittsalter der Kontrollgruppe):
+Der manuelle Weg würde eine Datenselektion erfordern (z.B. für das Durchschnittsalter der Kontrollgruppe):
 
 ```{r}
 mean(df$Alter[df$Gruppe == "Kontrolle"])
@@ -275,7 +275,7 @@ mean(df$Alter[df$Gruppe == "Kontrolle"])
 
 Wollte man die gesamte Tabelle so zusammenfassen, z.B. für die tabellarische Stichprobenbeschreibung in einem Paper, würde einem dies jedoch einige Mühe bereiten. 
 
-Glücklicherweise können wir eine Variante der `describe()` Funktion nutzen, nähmlich `describeBy()`
+Glücklicherweise können wir eine Variante der `describe()` Funktion nutzen, nämlich `describeBy()`
 
 ```{r}
 describeBy(df, group = "Gruppe")

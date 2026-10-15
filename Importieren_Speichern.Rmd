@@ -6,10 +6,10 @@ In diesem Kapitel werden wir die Grundlagen der R-Objektverwaltung behandeln. Es
 
 In diesem Kapitel werden wir einige hilfreiche Funktionen zur Verwaltung Ihres Arbeitsbereichs vorstellen:
 
-| Code| Description| 
+| Code| Beschreibung| 
 |:------------------------|:----------------------------------|
 |`ls()`|Alle Objekte im aktuellen Arbeitsbereich anzeigen|
-|`rm(x, y, ..)`|Entfernt die Objete `y`, `y`... aus dem Arbeitsbereich|
+|`rm(x, y, ..)`|Entfernt die Objekte `x`, `y`... aus dem Arbeitsbereich|
 |`rm(list = ls())`|Entfernt *alle* Objekte aus dem Arbeitsbereich|
 |`getwd()`|Zeigt das aktuelle Arbeitsverzeichnis an |
 |`setwd(file = "dir)`|Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad |
@@ -17,11 +17,11 @@ In diesem Kapitel werden wir einige hilfreiche Funktionen zur Verwaltung Ihres A
 |`write.table(x, file = "mydata.txt", sep)`|speichert das Objekt `x` als Textdatei `mydata.txt`. Definiere die Trennung der Spalten mittels `sep` (z.B.; `sep = ","` für eine kommagetrennte Datei (csv) und `sep = \t"` für eine tab-getrennte Datei).|
 |`write_rds(x,"meineDaten.rds)`|Speichert Objekt x in das R Objekt  `meineDaten.rds` |
 |`save.image(file = "meineSession.RData")`|Speichert *alle* Objekte aus dem Arbeitsbereich nach `meineSession.RData`|
-|`read_rds`("Daten.rds")`|Läd das rds Objekt `Daten.rds`|
-|`read.csv`("Daten.csv")`|Läd den csv Datensatz `Daten.csv`|
-|`foreign::read.spss("Daten.sav")`|Läd den SPSS Datensatz `Daten.sav`|
-|`read.csv("Daten.csv")`|Läd den csv Datensatz `Daten.csv`|
-|`readxl::read_xlsx("Daten.xlsx")`|Läd den Excel Datensatz `Daten.xlsx`|
+|`read_rds`("Daten.rds")`|Lädt das rds Objekt `Daten.rds`|
+|`read.csv`("Daten.csv")`|Lädt den csv Datensatz `Daten.csv`|
+|`foreign::read.spss("Daten.sav")`|Lädt den SPSS Datensatz `Daten.sav`|
+|`read.csv("Daten.csv")`|Lädt den csv Datensatz `Daten.csv`|
+|`readxl::read_xlsx("Daten.xlsx")`|Lädt den Excel Datensatz `Daten.xlsx`|
 
 Ihr Computer ist ein Labyrinth aus Ordnern und Dateien. Wenn Sie außerhalb von R eine bestimmte Datei öffnen möchten, öffnen Sie wahrscheinlich ein Explorer-Fenster, mit dem Sie die Ordner auf Ihrem Computer visuell durchsuchen können. Oder Sie wählen die zuletzt geöffneten Dateien aus oder geben den Namen der Datei in ein Suchfeld ein, um den Computer die Suche für Sie übernehmen zu lassen. Während dieses Vorgehen normalerweise für nicht-programmierende Aufgaben funktioniert, ist es für R ein No-Go. Das Hauptproblem ist, dass Sie bei all diesen Methoden Ihre Ordner visuell durchsuchen und die Maus bewegen müssen, um Ordner und Dateien auszuwählen, die dem Gesuchten entsprechen. Wenn Sie in R programmieren, müssen Sie alle Schritte in Ihren Analysen so spezifizieren, dass sie von anderen und von Ihnen selbst leicht nachvollzogen werden können. Das bedeutet, dass Sie nicht einfach sagen können: "Finde diese eine Datei, die ich mir vor einer Woche gemailt habe" oder "Suche nach einer Datei, die so aussieht wie "MeinFoto.jpg". Stattdessen müssen Sie in der Lage sein, R-Code zu schreiben, der R genau sagt, wo wichtige Dateien zu finden sind - entweder auf Ihrem Computer oder im Internet.
 
@@ -49,10 +49,13 @@ Je nachdem in welchem Format die Daten vorliegen, muss ein eigener Befehl genutz
 
 ### rds-Format
 
-.rds ist das R-eigene Format. Es speichert alle Objekte die es in R gibt, also potentiell nicht nur Datensätze, sondern auch Testergebnisse, Bilder, o.ä. mittels der Funktion `read_rds()` können wir die Objekte einlesen. Dafür müssen wir das Paket `readr` installiert und mittels `library` eingelesen haben. 
+.rds ist das R-eigene Format. Es speichert alle Objekte die es in R gibt, also potentiell nicht nur Datensätze, sondern auch Testergebnisse, Bilder, o.ä. Mittels der Funktion `read_rds()` können wir die Objekte einlesen. Dafür müssen wir das Paket `readr` installiert und mittels `library` eingelesen haben. 
 
 ```{r}
-data = load(file = "data/personality.RData")
+install.packages("readr")
+library(readr)
+
+data = read_rds("data/personality.rds")
 
 # erste Zeilen des Datensatzes ansehen
 head(data)
@@ -62,7 +65,7 @@ head(data)
 
 Das .csv Format (comma-separated-values) ist eines der gängigsten in der Statistik. Es lässt sich mit allen gebräuchlichen Tabellenprogrammen öffnen (also neben R auch mit Excel, Numbers, o.ä.).
 
-Um einen .csv Datensatz einzulesen, speichern wir ihn mittel `read.csv()` in ein von uns benanntes Objekt. Dieses können wir nennen wie wir wollen, z.B. `data` (schön kurz): 
+Um einen .csv Datensatz einzulesen, speichern wir ihn mittels `read.csv()` in ein von uns benanntes Objekt. Dieses können wir nennen wie wir wollen, z.B. `data` (schön kurz): 
 
 ```{r}
 data = read.csv("data/personality.csv")
@@ -73,9 +76,9 @@ head(data)
 
 ### sav-Format
 
-Das .sav Format ist das Format in welchem SPSS Datensätze abgespeichert werden. Dies kommt gerade in den Sozialwissenschaften relativ häufig vor, weshalb wir diese Art von Datein auf jeden Fall einlesen können sollten.
+Das .sav Format ist das Format in welchem SPSS Datensätze abgespeichert werden. Dies kommt gerade in den Sozialwissenschaften relativ häufig vor, weshalb wir diese Art von Dateien auf jeden Fall einlesen können sollten.
 
-Um einen .sav Datensatz einzulesen, speichern wir ihn mittel `read.spss()` in ein von uns benanntes Objekt. Dafür müssen wir das Paket `foreign` installiert und mittels `library` eingelesen haben. Damit R den Datensatz automatisch in einen data.frame speichert, geben wir als Zusatzoption `to.data.frame = TRUE` an:
+Um einen .sav Datensatz einzulesen, speichern wir ihn mittels `read.spss()` in ein von uns benanntes Objekt. Dafür müssen wir das Paket `foreign` installiert und mittels `library` eingelesen haben. Damit R den Datensatz automatisch in einen data.frame speichert, geben wir als Zusatzoption `to.data.frame = TRUE` an:
 
 ```{r}
 library(foreign)
@@ -112,7 +115,7 @@ newdata
 
 ### rds-Format
 
-Um in das R eigene .rds Format zu speichern, nutzen wir wieder das `readr` Paket, welches wir zunächst mittels `library` laden. Der Befehl ist nun `write_rds()`. Innerhalb des Befehls geben wir einfach das Objekt (z.B. unseren Datensatz) an, welches wir speichern wollen. Unter `file` geben wir der Datei einen Namen, so wie wir sie auf unserer Festplatte gepeichert haben wollen. Wichtig: Das Kürzel des Dateityps (.rds) nicht vergessen:
+Um in das R eigene .rds Format zu speichern, nutzen wir wieder das `readr` Paket, welches wir zunächst mittels `library` laden. Der Befehl ist nun `write_rds()`. Innerhalb des Befehls geben wir einfach das Objekt (z.B. unseren Datensatz) an, welches wir speichern wollen. Unter `file` geben wir der Datei einen Namen, so wie wir sie auf unserer Festplatte gespeichert haben wollen. Wichtig: Das Kürzel des Dateityps (.rds) nicht vergessen:
 
 ```{r}
 library(readr)
@@ -130,7 +133,7 @@ Speichern in das .csv Format funktioniert analog:
 write.csv(x = newdata, file = "newdata.csv")
 ```
 
-Hier ein Tipp für Sie: Wie oben bereits erwähnt ist csv ein "Komma-getrenntes" Format. In Deutschland haben wir die besonderheit, dass wir Dezimalstellen manchmal mit "," trennen, während man im englisch-sprachigen Raum i.d.R. "." verwendet. Sollte die abgespeicherte Datei komisch aussehen, wenn Sie sie z.B. in Excel öffnen, liegt das vermutlich an der deutschen Einstellung Ihres Programms. Probieren Sie in diesem Fall statt der `write.csv()` Funktion einmal die `write.csv2()` Funktion aus, dies wird Ihr Problem lösen.
+Hier ein Tipp für Sie: Wie oben bereits erwähnt ist csv ein "Komma-getrenntes" Format. In Deutschland haben wir die Besonderheit, dass wir Dezimalstellen manchmal mit "," trennen, während man im englisch-sprachigen Raum i.d.R. "." verwendet. Sollte die abgespeicherte Datei komisch aussehen, wenn Sie sie z.B. in Excel öffnen, liegt das vermutlich an der deutschen Einstellung Ihres Programms. Probieren Sie in diesem Fall statt der `write.csv()` Funktion einmal die `write.csv2()` Funktion aus, dies wird Ihr Problem lösen.
 
 ```{r}
 write.csv2(x = newdata, file = "newdata.csv")
@@ -138,7 +141,7 @@ write.csv2(x = newdata, file = "newdata.csv")
 
 ### sav-Format
 
-Zum Speichern in das SPSS Format .sav nutzen wir die Funktion `write_sav()` aus dem Paket `haven`, welches wir zuvor mittel `library()` laden.
+Zum Speichern in das SPSS Format .sav nutzen wir die Funktion `write_sav()` aus dem Paket `haven`, welches wir zuvor mittels `library()` laden.
 
 ```{r}
 library(haven)
@@ -148,7 +151,7 @@ write_sav(newdata, "newdata.sav")
 
 ### xlsx-Format
 
-Zum Speichern in das Excel Format .xlsx nutzen wir die Funktion `WriteXLS` aus dem Paket `WriteXLS`, welches wir zuvor mittel `library()` laden.
+Zum Speichern in das Excel Format .xlsx nutzen wir die Funktion `WriteXLS` aus dem Paket `WriteXLS`, welches wir zuvor mittels `library()` laden.
 
 ```{r}
 library(WriteXLS)

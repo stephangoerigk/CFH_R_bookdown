@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kapitel 4 Programmaufbau | Einführung in R</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kapitel 4 Programmaufbau | Einführung in R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2023-05-18" />
+<meta name="date" content="2026-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,11 +52,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -122,6 +123,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
@@ -160,7 +165,7 @@ div.csl-indent {
 <li><a href="./">R and der CFH</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="über-dieses-skript.html"><a href="über-dieses-skript.html"><i class="fa fa-check"></i>Über dieses Skript</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Über dieses Skript</a></li>
 <li class="chapter" data-level="1" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html"><i class="fa fa-check"></i><b>1</b> Warum ist R empfehlenswert?</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#open-source"><i class="fa fa-check"></i><b>1.1</b> Open Source</a></li>
@@ -172,7 +177,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1" data-path="r-materialien.html"><a href="r-materialien.html#cheat-sheets"><i class="fa fa-check"></i><b>2.1</b> Cheat Sheets</a></li>
 <li class="chapter" data-level="2.2" data-path="r-materialien.html"><a href="r-materialien.html#hilfe-und-inspiration-online"><i class="fa fa-check"></i><b>2.2</b> Hilfe und Inspiration online</a></li>
-<li class="chapter" data-level="2.3" data-path="r-materialien.html"><a href="r-materialien.html#andere-bücher"><i class="fa fa-check"></i><b>2.3</b> Andere Bücher</a></li>
+<li class="chapter" data-level="2.3" data-path="r-materialien.html"><a href="r-materialien.html#andere-b%C3%BCcher"><i class="fa fa-check"></i><b>2.3</b> Andere Bücher</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
 <ul>
@@ -183,9 +188,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.1" data-path="programmaufbau.html"><a href="programmaufbau.html#die-vier-rstudio-fenster"><i class="fa fa-check"></i><b>4.1</b> Die vier RStudio Fenster</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="programmaufbau.html"><a href="programmaufbau.html#source---ihr-schreibblock-für-code"><i class="fa fa-check"></i><b>4.1.1</b> Source - Ihr Schreibblock für Code</a></li>
-<li class="chapter" data-level="4.1.2" data-path="programmaufbau.html"><a href="programmaufbau.html#konsole---das-herzstück-von-r"><i class="fa fa-check"></i><b>4.1.2</b> Konsole - Das Herzstück von R</a></li>
-<li class="chapter" data-level="4.1.3" data-path="programmaufbau.html"><a href="programmaufbau.html#environmenthistory---das-gedächtnis-von-r"><i class="fa fa-check"></i><b>4.1.3</b> Environment/History - Das Gedächtnis von R</a></li>
+<li class="chapter" data-level="4.1.1" data-path="programmaufbau.html"><a href="programmaufbau.html#source---ihr-schreibblock-f%C3%BCr-code"><i class="fa fa-check"></i><b>4.1.1</b> Source - Ihr Schreibblock für Code</a></li>
+<li class="chapter" data-level="4.1.2" data-path="programmaufbau.html"><a href="programmaufbau.html#konsole---das-herzst%C3%BCck-von-r"><i class="fa fa-check"></i><b>4.1.2</b> Konsole - Das Herzstück von R</a></li>
+<li class="chapter" data-level="4.1.3" data-path="programmaufbau.html"><a href="programmaufbau.html#environmenthistory---das-ged%C3%A4chtnis-von-r"><i class="fa fa-check"></i><b>4.1.3</b> Environment/History - Das Gedächtnis von R</a></li>
 <li class="chapter" data-level="4.1.4" data-path="programmaufbau.html"><a href="programmaufbau.html#filesplotspackageshelpviewer---interaktion-von-r-mit-dateien"><i class="fa fa-check"></i><b>4.1.4</b> Files/Plots/Packages/Help/Viewer - Interaktion von R mit Dateien</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages"><i class="fa fa-check"></i><b>4.2</b> R Packages</a>
@@ -213,7 +218,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="6.1" data-path="daten-erstellen.html"><a href="daten-erstellen.html#manuell"><i class="fa fa-check"></i><b>6.1</b> Manuell</a></li>
 <li class="chapter" data-level="6.2" data-path="daten-erstellen.html"><a href="daten-erstellen.html#automatisch"><i class="fa fa-check"></i><b>6.2</b> Automatisch</a></li>
-<li class="chapter" data-level="6.3" data-path="daten-erstellen.html"><a href="daten-erstellen.html#zufällig"><i class="fa fa-check"></i><b>6.3</b> Zufällig</a></li>
+<li class="chapter" data-level="6.3" data-path="daten-erstellen.html"><a href="daten-erstellen.html#zuf%C3%A4llig"><i class="fa fa-check"></i><b>6.3</b> Zufällig</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html"><i class="fa fa-check"></i><b>7</b> Daten importieren und speichern</a>
 <ul>
@@ -240,17 +245,17 @@ div.csl-indent {
 <li class="chapter" data-level="8.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#vektor-1"><i class="fa fa-check"></i><b>8.1</b> Vektor</a></li>
 <li class="chapter" data-level="8.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#dataframe"><i class="fa fa-check"></i><b>8.2</b> Dataframe</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#zeilen-fälle-auswählen"><i class="fa fa-check"></i><b>8.2.1</b> Zeilen (Fälle) auswählen</a></li>
-<li class="chapter" data-level="8.2.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#spalten-variablen-auswählen"><i class="fa fa-check"></i><b>8.2.2</b> Spalten (Variablen) auswählen</a></li>
+<li class="chapter" data-level="8.2.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#zeilen-f%C3%A4lle-ausw%C3%A4hlen"><i class="fa fa-check"></i><b>8.2.1</b> Zeilen (Fälle) auswählen</a></li>
+<li class="chapter" data-level="8.2.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#spalten-variablen-ausw%C3%A4hlen"><i class="fa fa-check"></i><b>8.2.2</b> Spalten (Variablen) auswählen</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html"><i class="fa fa-check"></i><b>9</b> Daten beschreiben</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-über-r-objekte"><i class="fa fa-check"></i><b>9.1</b> Informationen über R Objekte</a>
+<li class="chapter" data-level="9.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-%C3%BCber-r-objekte"><i class="fa fa-check"></i><b>9.1</b> Informationen über R Objekte</a>
 <ul>
 <li class="chapter" data-level="9.1.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#str"><i class="fa fa-check"></i><b>9.1.1</b> str()</a></li>
-<li class="chapter" data-level="9.1.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-über-vektoren"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Vektoren</a></li>
-<li class="chapter" data-level="9.1.3" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-über-dataframes"><i class="fa fa-check"></i><b>9.1.3</b> Informationen über dataframes</a></li>
+<li class="chapter" data-level="9.1.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-%C3%BCber-vektoren"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Vektoren</a></li>
+<li class="chapter" data-level="9.1.3" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-%C3%BCber-dataframes"><i class="fa fa-check"></i><b>9.1.3</b> Informationen über dataframes</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>9.2</b> Deskriptivstatistiken</a>
 <ul>
@@ -259,43 +264,43 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken-berichten"><i class="fa fa-check"></i><b>9.3</b> Deskriptivstatistiken berichten</a></li>
 <li class="chapter" data-level="9.4" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#alles-auf-einen-blick"><i class="fa fa-check"></i><b>9.4</b> Alles auf einen Blick</a></li>
-<li class="chapter" data-level="9.5" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken-für-subgruppen"><i class="fa fa-check"></i><b>9.5</b> Deskriptivstatistiken für Subgruppen</a></li>
+<li class="chapter" data-level="9.5" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken-f%C3%BCr-subgruppen"><i class="fa fa-check"></i><b>9.5</b> Deskriptivstatistiken für Subgruppen</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html"><i class="fa fa-check"></i><b>10</b> Daten bearbeiten</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-hinzufügen"><i class="fa fa-check"></i><b>10.1</b> Daten hinzufügen</a>
+<li class="chapter" data-level="10.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-hinzuf%C3%BCgen"><i class="fa fa-check"></i><b>10.1</b> Daten hinzufügen</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-hinzufügen"><i class="fa fa-check"></i><b>10.1.1</b> Variablen hinzufügen</a></li>
+<li class="chapter" data-level="10.1.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-hinzuf%C3%BCgen"><i class="fa fa-check"></i><b>10.1.1</b> Variablen hinzufügen</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-löschen"><i class="fa fa-check"></i><b>10.2</b> Daten löschen</a>
+<li class="chapter" data-level="10.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-l%C3%B6schen"><i class="fa fa-check"></i><b>10.2</b> Daten löschen</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-löschen"><i class="fa fa-check"></i><b>10.2.1</b> Variablen löschen</a></li>
-<li class="chapter" data-level="10.2.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#fälle-löschen"><i class="fa fa-check"></i><b>10.2.2</b> Fälle löschen</a></li>
+<li class="chapter" data-level="10.2.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-l%C3%B6schen"><i class="fa fa-check"></i><b>10.2.1</b> Variablen löschen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#f%C3%A4lle-l%C3%B6schen"><i class="fa fa-check"></i><b>10.2.2</b> Fälle löschen</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-umbenennen"><i class="fa fa-check"></i><b>10.3</b> Variablen umbenennen</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablennamen-ändern"><i class="fa fa-check"></i><b>10.3.1</b> Variablennamen ändern</a></li>
+<li class="chapter" data-level="10.3.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablennamen-%C3%A4ndern"><i class="fa fa-check"></i><b>10.3.1</b> Variablennamen ändern</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-verändern"><i class="fa fa-check"></i><b>10.4</b> Daten verändern</a>
+<li class="chapter" data-level="10.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-ver%C3%A4ndern"><i class="fa fa-check"></i><b>10.4</b> Daten verändern</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#werte-ändern"><i class="fa fa-check"></i><b>10.4.1</b> Werte ändern</a></li>
+<li class="chapter" data-level="10.4.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#werte-%C3%A4ndern"><i class="fa fa-check"></i><b>10.4.1</b> Werte ändern</a></li>
 <li class="chapter" data-level="10.4.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#recodieren"><i class="fa fa-check"></i><b>10.4.2</b> Recodieren</a></li>
-<li class="chapter" data-level="10.4.3" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#worte-ändern"><i class="fa fa-check"></i><b>10.4.3</b> Worte ändern</a></li>
-<li class="chapter" data-level="10.4.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#faktorstufen-ändern"><i class="fa fa-check"></i><b>10.4.4</b> Faktorstufen ändern</a></li>
+<li class="chapter" data-level="10.4.3" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#worte-%C3%A4ndern"><i class="fa fa-check"></i><b>10.4.3</b> Worte ändern</a></li>
+<li class="chapter" data-level="10.4.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#faktorstufen-%C3%A4ndern"><i class="fa fa-check"></i><b>10.4.4</b> Faktorstufen ändern</a></li>
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-sortieren"><i class="fa fa-check"></i><b>10.5</b> Daten sortieren</a>
 <ul>
 <li class="chapter" data-level="10.5.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#sortieren-nach-numerischen-variablen"><i class="fa fa-check"></i><b>10.5.1</b> Sortieren nach numerischen Variablen</a></li>
 <li class="chapter" data-level="10.5.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#sortieren-nach-variablen-mit-worten"><i class="fa fa-check"></i><b>10.5.2</b> Sortieren nach Variablen mit Worten</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datensätze-zusammensetzen"><i class="fa fa-check"></i><b>10.6</b> Datensätze zusammensetzen</a>
+<li class="chapter" data-level="10.6" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datens%C3%A4tze-zusammensetzen"><i class="fa fa-check"></i><b>10.6</b> Datensätze zusammensetzen</a>
 <ul>
 <li class="chapter" data-level="10.6.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#cbind-und-rbind"><i class="fa fa-check"></i><b>10.6.1</b> cbind und rbind</a></li>
 <li class="chapter" data-level="10.6.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#merge"><i class="fa fa-check"></i><b>10.6.2</b> merge</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datensätze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
+<li class="chapter" data-level="10.7" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datens%C3%A4tze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
 <ul>
-<li class="chapter" data-level="10.7.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#von-wide--und-long-format"><i class="fa fa-check"></i><b>10.7.1</b> Von Wide- und Long-Format</a></li>
+<li class="chapter" data-level="10.7.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#wide--und-long-format"><i class="fa fa-check"></i><b>10.7.1</b> Wide- und Long-Format</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="schleifen-loops.html"><a href="schleifen-loops.html"><i class="fa fa-check"></i><b>11</b> Schleifen (Loops)</a>
@@ -319,17 +324,17 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="graphiken.html"><a href="graphiken.html#histogramm"><i class="fa fa-check"></i><b>12.4</b> Histogramm</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-für-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
+<li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-f%C3%BCr-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
 </ul></li>
 <li class="chapter" data-level="12.5" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm"><i class="fa fa-check"></i><b>12.5</b> Balkendiagramm</a></li>
 <li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-3-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 3 Variablen</a></li>
 <li class="chapter" data-level="12.7" data-path="graphiken.html"><a href="graphiken.html#boxplot"><i class="fa fa-check"></i><b>12.7</b> Boxplot</a></li>
 <li class="chapter" data-level="12.8" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>12.8</b> Facetting</a></li>
-<li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#ästhetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
+<li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#%C3%A4sthetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
 <ul>
 <li class="chapter" data-level="12.9.1" data-path="graphiken.html"><a href="graphiken.html#ggtitle"><i class="fa fa-check"></i><b>12.9.1</b> ggtitle()</a></li>
 <li class="chapter" data-level="12.9.2" data-path="graphiken.html"><a href="graphiken.html#labs"><i class="fa fa-check"></i><b>12.9.2</b> labs()</a></li>
-<li class="chapter" data-level="12.9.3" data-path="graphiken.html"><a href="graphiken.html#achsen-verändern"><i class="fa fa-check"></i><b>12.9.3</b> Achsen verändern</a></li>
+<li class="chapter" data-level="12.9.3" data-path="graphiken.html"><a href="graphiken.html#achsen-ver%C3%A4ndern"><i class="fa fa-check"></i><b>12.9.3</b> Achsen verändern</a></li>
 </ul></li>
 <li class="chapter" data-level="12.10" data-path="graphiken.html"><a href="graphiken.html#theme"><i class="fa fa-check"></i><b>12.10</b> theme()</a>
 <ul>
@@ -350,7 +355,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="tabellen.html"><a href="tabellen.html#layout"><i class="fa fa-check"></i><b>13.3</b> Layout</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einfügen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
+<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einf%C3%BCgen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="tabellen.html"><a href="tabellen.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern</a></li>
 </ul></li>
@@ -372,59 +377,59 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-1"><i class="fa fa-check"></i><b>15.1.1</b> Hypothesen</a></li>
 <li class="chapter" data-level="15.1.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.1.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen"><i class="fa fa-check"></i><b>15.1.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.1.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren"><i class="fa fa-check"></i><b>15.1.3</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.1.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>15.1.4</b> Ergebnis interpretieren</a></li>
 <li class="chapter" data-level="15.1.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#ergebnis-berichten"><i class="fa fa-check"></i><b>15.1.5</b> Ergebnis berichten</a></li>
-<li class="chapter" data-level="15.1.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke"><i class="fa fa-check"></i><b>15.1.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.1.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke"><i class="fa fa-check"></i><b>15.1.6</b> Effektstärke</a></li>
 <li class="chapter" data-level="15.1.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>15.1.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>15.2</b> t-Test bei unabhängigen Stichproben</a>
+<li class="chapter" data-level="15.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-unabh%C3%A4ngigen-stichproben"><i class="fa fa-check"></i><b>15.2</b> t-Test bei unabhängigen Stichproben</a>
 <ul>
 <li class="chapter" data-level="15.2.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-2"><i class="fa fa-check"></i><b>15.2.1</b> Hypothesen</a></li>
 <li class="chapter" data-level="15.2.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>15.2.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.2.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-1"><i class="fa fa-check"></i><b>15.2.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.2.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-1"><i class="fa fa-check"></i><b>15.2.3</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.2.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>15.2.4</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="15.2.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>15.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="15.2.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-1"><i class="fa fa-check"></i><b>15.2.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.2.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungspr%C3%BCfung-und-alternativen"><i class="fa fa-check"></i><b>15.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.2.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-1"><i class="fa fa-check"></i><b>15.2.6</b> Effektstärke</a></li>
 <li class="chapter" data-level="15.2.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>15.2.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>15.3</b> t-Test bei abhängigen Stichproben</a>
+<li class="chapter" data-level="15.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-abh%C3%A4ngigen-stichproben"><i class="fa fa-check"></i><b>15.3</b> t-Test bei abhängigen Stichproben</a>
 <ul>
 <li class="chapter" data-level="15.3.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-3"><i class="fa fa-check"></i><b>15.3.1</b> Hypothesen</a></li>
 <li class="chapter" data-level="15.3.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>15.3.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.3.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-2"><i class="fa fa-check"></i><b>15.3.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.3.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-2"><i class="fa fa-check"></i><b>15.3.3</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.3.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>15.3.4</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="15.3.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>15.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="15.3.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-2"><i class="fa fa-check"></i><b>15.3.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.3.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungspr%C3%BCfung-und-alternativen-1"><i class="fa fa-check"></i><b>15.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.3.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-2"><i class="fa fa-check"></i><b>15.3.6</b> Effektstärke</a></li>
 <li class="chapter" data-level="15.3.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>15.3.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>15.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
 <ul>
 <li class="chapter" data-level="15.4.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-4"><i class="fa fa-check"></i><b>15.4.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="15.4.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-3"><i class="fa fa-check"></i><b>15.4.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.4.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-3"><i class="fa fa-check"></i><b>15.4.2</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.4.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>15.4.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="15.4.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-3"><i class="fa fa-check"></i><b>15.4.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.4.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-3"><i class="fa fa-check"></i><b>15.4.4</b> Effektstärke</a></li>
 <li class="chapter" data-level="15.4.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>15.4.5</b> Darstellung in Tabellenform</a></li>
 </ul></li>
 <li class="chapter" data-level="15.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>15.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
 <ul>
 <li class="chapter" data-level="15.5.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-5"><i class="fa fa-check"></i><b>15.5.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="15.5.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-4"><i class="fa fa-check"></i><b>15.5.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.5.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-4"><i class="fa fa-check"></i><b>15.5.2</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.5.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>15.5.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="15.5.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-4"><i class="fa fa-check"></i><b>15.5.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.5.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-4"><i class="fa fa-check"></i><b>15.5.4</b> Effektstärke</a></li>
 <li class="chapter" data-level="15.5.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>15.5.5</b> Darstellung in Tabellenform</a></li>
 </ul></li>
 <li class="chapter" data-level="15.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#chi2-test"><i class="fa fa-check"></i><b>15.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
 <ul>
 <li class="chapter" data-level="15.6.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>15.6.1</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.6.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-5"><i class="fa fa-check"></i><b>15.6.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.6.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-5"><i class="fa fa-check"></i><b>15.6.2</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.6.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>15.6.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="15.6.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>15.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="15.6.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-5"><i class="fa fa-check"></i><b>15.6.5</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.6.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungspr%C3%BCfung-und-alternativen-2"><i class="fa fa-check"></i><b>15.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.6.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-5"><i class="fa fa-check"></i><b>15.6.5</b> Effektstärke</a></li>
 </ul></li>
 <li class="chapter" data-level="15.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#fishers-exakter-test"><i class="fa fa-check"></i><b>15.7</b> Fisher’s Exakter Test</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-6"><i class="fa fa-check"></i><b>15.7.1</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.7.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-6"><i class="fa fa-check"></i><b>15.7.1</b> Test durchführen</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html"><i class="fa fa-check"></i><b>16</b> Varianzanalyse (ANOVA)</a>
@@ -444,13 +449,35 @@ div.csl-indent {
 <li class="chapter" data-level="16.2.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#interpretation-1"><i class="fa fa-check"></i><b>16.2.3</b> Interpretation</a></li>
 <li class="chapter" data-level="16.2.4" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>16.2.4</b> Post-hoc Tests</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#prüfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>16.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
+<li class="chapter" data-level="16.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#pr%C3%BCfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>16.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
 <ul>
 <li class="chapter" data-level="16.3.1" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#testen-der-empirisch-testbaren-annahmen"><i class="fa fa-check"></i><b>16.3.1</b> Testen der empirisch testbaren Annahmen</a></li>
-<li class="chapter" data-level="16.3.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#homogenität-der-varianzen"><i class="fa fa-check"></i><b>16.3.2</b> Homogenität der Varianzen:</a></li>
-<li class="chapter" data-level="16.3.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#sphärizität"><i class="fa fa-check"></i><b>16.3.3</b> Sphärizität:</a></li>
+<li class="chapter" data-level="16.3.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#homogenit%C3%A4t-der-varianzen"><i class="fa fa-check"></i><b>16.3.2</b> Homogenität der Varianzen:</a></li>
+<li class="chapter" data-level="16.3.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#sph%C3%A4rizit%C3%A4t"><i class="fa fa-check"></i><b>16.3.3</b> Sphärizität:</a></li>
 <li class="chapter" data-level="16.3.4" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#normalverteilung-der-residuen"><i class="fa fa-check"></i><b>16.3.4</b> Normalverteilung der Residuen:</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html"><i class="fa fa-check"></i><b>17</b> Einfache lineare Regression</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#hypothesen-6"><i class="fa fa-check"></i><b>17.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="17.2" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#deskriptive-einordnung-6"><i class="fa fa-check"></i><b>17.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="17.3" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#berechnung-interpretation"><i class="fa fa-check"></i><b>17.3</b> Berechnung &amp; Interpretation</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#ergebnis-interpretieren-1"><i class="fa fa-check"></i><b>17.3.1</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="17.3.2" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#relevante-parameter-extrahieren-5"><i class="fa fa-check"></i><b>17.3.2</b> Relevante Parameter extrahieren</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#standardisierte-regressionsgewichte"><i class="fa fa-check"></i><b>17.4</b> Standardisierte Regressionsgewichte</a></li>
+<li class="chapter" data-level="17.5" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#vorhergesagte-werte-und-residuen"><i class="fa fa-check"></i><b>17.5</b> Vorhergesagte Werte und Residuen</a></li>
+<li class="chapter" data-level="17.6" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#dichotome-pr%C3%A4diktoren"><i class="fa fa-check"></i><b>17.6</b> Dichotome Prädiktoren</a></li>
+<li class="chapter" data-level="17.7" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#ausblick-multiple-regression"><i class="fa fa-check"></i><b>17.7</b> Ausblick: Multiple Regression</a></li>
+<li class="chapter" data-level="17.8" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#voraussetzungspr%C3%BCfung"><i class="fa fa-check"></i><b>17.8</b> Voraussetzungsprüfung</a>
+<ul>
+<li class="chapter" data-level="17.8.1" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#linearit%C3%A4t"><i class="fa fa-check"></i><b>17.8.1</b> Linearität</a></li>
+<li class="chapter" data-level="17.8.2" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#normalverteilung-der-residuen-1"><i class="fa fa-check"></i><b>17.8.2</b> Normalverteilung der Residuen</a></li>
+<li class="chapter" data-level="17.8.3" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#homoskedastizit%C3%A4t"><i class="fa fa-check"></i><b>17.8.3</b> Homoskedastizität</a></li>
+<li class="chapter" data-level="17.8.4" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#voraussetzungspr%C3%BCfung-mit-performance"><i class="fa fa-check"></i><b>17.8.4</b> Voraussetzungsprüfung mit <code>performance</code></a></li>
+</ul></li>
+<li class="chapter" data-level="17.9" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#darstellung-in-tabellenform-5"><i class="fa fa-check"></i><b>17.9</b> Darstellung in Tabellenform</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -478,22 +505,22 @@ div.csl-indent {
 <h2><span class="header-section-number">4.1</span> Die vier RStudio Fenster<a href="programmaufbau.html#die-vier-rstudio-fenster" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Wenn Sie RStudio öffnen, sehen Sie vier Fenster, wie in der folgenden Abbildung dargestellt:</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<img src="images/windows.png" alt="Die vier RStudio Fenster" width="1011" />
+<img src="images/windows.png" alt="Die vier RStudio Fenster"  />
 <p class="caption">
 Figure 4.1: Die vier RStudio Fenster
 </p>
 </div>
 <p>Wenn Sie mögen, können Sie die Reihenfolge der Fenster in den RStudio Einstellungen verändern.
-Sie können die Fenster auch verstecken (Minimieren/Maximieren Symbol an der oberen rechten Ecke jedes Fensters) oder ihre Größe verändern, indem die sie ihre Grenzbalken anklicken und verschieben.</p>
+Sie können die Fenster auch verstecken (Minimieren/Maximieren Symbol an der oberen rechten Ecke jedes Fensters) oder ihre Größe verändern, indem Sie ihre Grenzbalken anklicken und verschieben.</p>
 <p>Lassen Sie uns jetzt schauen, was genau die Funktion jedes der Fenster ist:</p>
 <div id="source---ihr-schreibblock-für-code" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Source - Ihr Schreibblock für Code<a href="programmaufbau.html#source---ihr-schreibblock-für-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.1.1</span> Source - Ihr Schreibblock für Code<a href="programmaufbau.html#source---ihr-schreibblock-f%C3%BCr-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Im Source Fenster erstellen und bearbeiten Sie “R-Skripte” - Ihre Codesammlungen. Keine Sorge, R-Skripte sind nur Textdateien mit der Erweiterung “.R”.
 Wenn Sie RStudio öffnen, wird automatisch ein neues unbenanntes Skript gestartet.
 Bevor Sie mit der Eingabe eines unbenannten R-Skripts beginnen, sollten Sie die Datei immer unter einem neuen Dateinamen speichern (z.B. “Mein_RScript.R”).
 Wenn Ihr Computer während der Arbeit abstürzt, steht Ihr Code in R zur Verfügung, wenn Sie RStudio erneut öffnen.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<img src="images/windows_source.png" alt="Die vier RStudio Fenster" width="1011" />
+<img src="images/windows_source.png" alt="Die vier RStudio Fenster"  />
 <p class="caption">
 Figure 4.2: Die vier RStudio Fenster
 </p>
@@ -502,14 +529,14 @@ Figure 4.2: Die vier RStudio Fenster
 <p>Es gibt viele Möglichkeiten, Ihren Code aus dem Skript an die Konsole zu senden. Die langsamste Methode ist das Kopieren und Einfügen. Schneller geht es, wenn Sie den Code, den Sie auswerten möchten, markieren und auf die Schaltfläche “Run” oben rechts in der Quelle klicken. Alternativ können Sie auch die Tastenkombination “Command + Return” auf dem Mac oder “Control + Enter” auf dem PC verwenden, um den gesamten markierten Code an die Konsole zu senden.</p>
 </div>
 <div id="konsole---das-herzstück-von-r" class="section level3 hasAnchor" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Konsole - Das Herzstück von R<a href="programmaufbau.html#konsole---das-herzstück-von-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.1.2</span> Konsole - Das Herzstück von R<a href="programmaufbau.html#konsole---das-herzst%C3%BCck-von-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Konsole ist das Herzstück von R. Hier führt R den Code aus. Am Anfang der Konsole sehen Sie das Zeichen “&gt;”. Dies ist eine Eingabeaufforderung (sog. “Prompt”), die Ihnen mitteilt, dass R bereit für neuen Code ist. Sie können direkt nach dem Prompt <code>&gt;</code> Code in die Konsole eingeben und erhalten sofort eine Antwort. Wenn Sie zum Beispiel 2+2 in die Konsole eingeben und die Eingabetaste drücken, werden Sie sehen, dass R sofort eine Ausgabe von 4 liefert.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="programmaufbau.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="programmaufbau.html#cb1-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>Versuchen Sie, 2+2 zu berechnen, indem Sie den Code direkt in die Konsole eingeben - und dann Enter drücken.
 Sie sollten das Ergebnis <code>[1] 4</code> sehen. Machen Sie sich keine Gedanken über die <code>[1]</code>, dazu kommen wir später.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
-<img src="images/windows_console.png" alt="Die vier RStudio Fenster" width="1011" />
+<img src="images/windows_console.png" alt="Die vier RStudio Fenster"  />
 <p class="caption">
 Figure 4.3: Die vier RStudio Fenster
 </p>
@@ -518,10 +545,10 @@ Figure 4.3: Die vier RStudio Fenster
 <p><strong>Tipp</strong>: Wie Sie sehen, können Sie Code entweder über das Skript oder durch direkte Eingabe in die Konsole ausführen. In 99% der Fälle sollten Sie jedoch das Skript und nicht die Konsole verwenden. Der Grund dafür ist ganz einfach: Wenn Sie den Code in die Konsole eingeben, wird er nicht gespeichert (obwohl Sie in Ihrem Befehlsverlauf nachsehen können). Und wenn Sie beim Eingeben von Code in die Konsole einen Fehler machen, müssen Sie alles noch einmal von vorne eingeben. Stattdessen ist es besser, den gesamten Code in das Skript zu schreiben. Wenn Sie bereit sind, einen Code auszuführen, können Sie ihn mit “Run” an die Konsole senden.</p>
 </div>
 <div id="environmenthistory---das-gedächtnis-von-r" class="section level3 hasAnchor" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Environment/History - Das Gedächtnis von R<a href="programmaufbau.html#environmenthistory---das-gedächtnis-von-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.1.3</span> Environment/History - Das Gedächtnis von R<a href="programmaufbau.html#environmenthistory---das-ged%C3%A4chtnis-von-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In dem Tab “Environment” dieses Bereichs werden die Namen aller Datenobjekte (wie Vektoren, Matrizen und Datenrahmen) angezeigt, die Sie in Ihrer aktuellen R-Session definiert haben. Sie können auch Informationen wie die Anzahl der Spalten und Zeilen in Datensätzen sehen. Der Tab enthält auch einige anklickbare Aktionen wie “Datensatz importieren”, wodurch eine grafische Benutzeroberfläche (GUI) für wichtige Daten in R geöffnet wird.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
-<img src="images/windows_env.png" alt="Die vier RStudio Fenster" width="1011" />
+<img src="images/windows_env.png" alt="Die vier RStudio Fenster"  />
 <p class="caption">
 Figure 4.4: Die vier RStudio Fenster
 </p>
@@ -533,7 +560,7 @@ Figure 4.4: Die vier RStudio Fenster
 <h3><span class="header-section-number">4.1.4</span> Files/Plots/Packages/Help/Viewer - Interaktion von R mit Dateien<a href="programmaufbau.html#filesplotspackageshelpviewer---interaktion-von-r-mit-dateien" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Tabs Files/Plots/Packages/Help/Viewer zeigen Ihnen viele hilfreiche Informationen. Schauen wir uns die einzelnen Registerkarten im Detail an:</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
-<img src="images/windows_files.png" alt="Die vier RStudio Fenster" width="1011" />
+<img src="images/windows_files.png" alt="Die vier RStudio Fenster"  />
 <p class="caption">
 Figure 4.5: Die vier RStudio Fenster
 </p>
@@ -544,8 +571,8 @@ Figure 4.5: Die vier RStudio Fenster
 <li><p>Pakete - Zeigt eine Liste aller auf Ihrer Festplatte installierten R-Pakete und gibt an, ob sie derzeit geladen sind oder nicht. Pakete, die in der aktuellen Sitzung geladen sind, sind markiert, während Pakete, die installiert, aber noch nicht geladen sind, nicht markiert sind. Auf die Pakete gehen wir im nächsten Abschnitt näher ein.</p></li>
 <li><p>Hilfe - Hilfemenü für R-Funktionen. Sie können entweder den Namen einer Funktion in das Suchfenster eingeben oder den Code in der Konsole verwenden, um nach einer Funktion mit dem Namen zu suchen:</p></li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="programmaufbau.html#cb3-1" aria-hidden="true" tabindex="-1"></a>?hist   <span class="co"># Wie funktioniert die Histogrammfunktion?</span></span>
-<span id="cb3-2"><a href="programmaufbau.html#cb3-2" aria-hidden="true" tabindex="-1"></a>?t.test <span class="co"># Wie funktioniert der t-Test?</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="programmaufbau.html#cb3-1" tabindex="-1"></a>?hist   <span class="co"># Wie funktioniert die Histogrammfunktion?</span></span>
+<span id="cb3-2"><a href="programmaufbau.html#cb3-2" tabindex="-1"></a>?t.test <span class="co"># Wie funktioniert der t-Test?</span></span></code></pre></div>
 </div>
 </div>
 <div id="r-packages" class="section level2 hasAnchor" number="4.2">
@@ -561,24 +588,24 @@ Ein R-Package ist einfach ein Bündel von Funktionen (also bereits geschriebener
 <p>Ein Paket zu installieren bedeutet einfach, den Paketcode auf Ihren Computer herunterzuladen. Die gängigste Methode ist das Herunterladen aus dem Comprehensive R Archive Network (CRAN).</p>
 <p>Um ein neues R-Paket von CRAN zu installieren, können Sie einfach den Code install.packages(“name”) ausführen, wobei “name” der Name des Pakets ist.</p>
 <p>Um zum Beispiel das Paket ggplot2 herunterzuladen, welches wir oft zum Erstellen von Graphen verwenden, geben Sie ein:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="programmaufbau.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="programmaufbau.html#cb4-1" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span></code></pre></div>
 </div>
 <div id="r-packages-laden" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> R Packages laden<a href="programmaufbau.html#r-packages-laden" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sobald Sie ein Paket installiert haben, befindet es sich auf Ihrem Computer. Aber nur weil es auf Ihrem Computer ist, bedeutet das nicht, dass R bereit ist, es zu benutzen. Wenn Sie etwas wie eine Funktion oder einen Datensatz aus einem Paket verwenden wollen, müssen Sie <em>immer</em> zuerst das Paket in Ihrer R-Sitzung <em>laden</em>. Genau wie bei einer Glühbirne müssen Sie sie einschalten, um sie zu benutzen!</p>
 <p>Um ein Paket zu laden, verwenden Sie die Funktion <code>library()</code>. Nachdem wir zum Beispiel das Paket <code>ggplot2</code> installiert haben, können wir es mit <code>library("ggplot2")</code> laden:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="programmaufbau.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Laden des &quot;ggplot2&quot; Pakekts, damit wir es benutzen können!</span></span>
-<span id="cb5-2"><a href="programmaufbau.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   Pakete müssen zu Beginn jeder R Session neu geladen werden!</span></span>
-<span id="cb5-3"><a href="programmaufbau.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="programmaufbau.html#cb5-1" tabindex="-1"></a><span class="co">#   Laden des &quot;ggplot2&quot; Pakets, damit wir es benutzen können!</span></span>
+<span id="cb5-2"><a href="programmaufbau.html#cb5-2" tabindex="-1"></a><span class="co">#   Pakete müssen zu Beginn jeder R Session neu geladen werden!</span></span>
+<span id="cb5-3"><a href="programmaufbau.html#cb5-3" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
 <p>Jetzt, wo Sie das Paket <code>ggplot2</code> geladen haben, können Sie jede seiner Funktionen benutzen (hier die Funktion <code>ggplot</code>, um einen Graph zu erstellen)!</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="programmaufbau.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span> </span>
-<span id="cb6-2"><a href="programmaufbau.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="programmaufbau.html#cb6-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span> </span>
+<span id="cb6-2"><a href="programmaufbau.html#cb6-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672" /></p>
 <p>Pakete müssen zu Beginn jeder R Session neu geladen werden. Deswegen schreiben wir in der Regel ganz an den Anfang unseres Skripts gleich mehrere Zeilen, mit <code>library()</code> Befehlen für alle R Pakete, die wir für unsere Analyse benötigen werden.</p>
 <p>In R gibt es eine Möglichkeit, ein Paket vorübergehend zu laden, ohne die Funktion <code>library()</code> zu verwenden. Um dies zu tun, können Sie einfach die Notation <code>package::funktion</code> verwenden. Diese Notation sagt R einfach, dass es das Paket nur für diesen einen Codeabschnitt laden soll. Zum Beispiel könnte ich die Funktion <code>ggplot</code> aus dem Paket <code>ggplot2</code> wie folgt verwenden:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="programmaufbau.html#cb7-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span> </span>
-<span id="cb7-2"><a href="programmaufbau.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="programmaufbau.html#cb7-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span> </span>
+<span id="cb7-2"><a href="programmaufbau.html#cb7-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" /></p>
 <p>Ein Vorteil der Notation “package::function” ist, dass für jeden, der den Code liest, sofort klar ist, welches Paket die Funktion enthält. Ein Nachteil ist jedoch, dass Sie, wenn Sie eine Funktion aus einem Paket häufig verwenden, gezwungen sind, den Paketnamen ständig neu einzugeben. Sie können jede Methode verwenden, die für Sie sinnvoll ist.</p>
 
 </div>
@@ -604,42 +631,42 @@ Ein R-Package ist einfach ein Bündel von Funktionen (also bereits geschriebener
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["CFH_R_bookdown.pdf", "CFH_R_bookdown.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["CFH_R_bookdown.pdf", "CFH_R_bookdown.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
@@ -650,7 +677,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

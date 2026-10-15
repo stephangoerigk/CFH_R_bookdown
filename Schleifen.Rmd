@@ -3,7 +3,7 @@
 ## for()-Loop
 
 Der for()-Loop ist eine gängige Schleifenstruktur in R. Mit dem for()-Loop können wiederholte Aufgaben automatisiert und effizient ausgeführt werden. 
-Während jeder Iteration des Loops wird der Codeblock innerhalb des Loops ausgeführt. Dabei kann auf den aktuellen Iterationsschritt zugegriffen werden, um den Code entsprechend anzupassen. Der for()-Loop ist besonders nützlich, um über eine vordefinierte Sequenz von Elementen zu iterieren, wie zum Beispiel eine Vektor oder eine Liste. Durch die effektive Nutzung des for()-Loops können wiederholte Aufgaben in R effizient gelöst werden.
+Während jeder Iteration des Loops wird der Codeblock innerhalb des Loops ausgeführt. Dabei kann auf den aktuellen Iterationsschritt zugegriffen werden, um den Code entsprechend anzupassen. Der for()-Loop ist besonders nützlich, um über eine vordefinierte Sequenz von Elementen zu iterieren, wie zum Beispiel ein Vektor oder eine Liste. Durch die effektive Nutzung des for()-Loops können wiederholte Aufgaben in R effizient gelöst werden.
 
 Die `for()` Schleife wiederholt alles was wir wollen, so oft wir wollen. Man arbeitet hier mit einem so genannten Index (häufig nutzt man die Abkürzung i), der z.B. die Position innerhalb des Vektors anzeigt.
 
@@ -55,7 +55,7 @@ for (i in 1:10) {
 }
 ```
 
-Das ganze funktioniert auch in Kobination mit den eckigen Klammern.
+Das ganze funktioniert auch in Kombination mit den eckigen Klammern.
 
 ```{r}
 vector = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J")
@@ -72,7 +72,7 @@ Nun druckt die `print()` Funktion das i-te Element aus unserem Vektor
 
 Das Prinzip des `for()`-Loops lässt sich nutzen, wenn wir mit Datensätzen arbeiten. Wir lassen einfach die Schleife über die Zeilen bzw. Spalten des Datensatzes laufen.
 
-Erstellen wir einen kleinen Beispieldatensatz für einen Fragebogen, der 5 Depressionssymtome erfasst (Skala von 1-5):
+Erstellen wir einen kleinen Beispieldatensatz für einen Fragebogen, der 5 Depressionssymptome erfasst (Skala von 1-5):
 
 ```{r}
 df = data.frame(
@@ -105,7 +105,7 @@ for (i in 2:ncol(df)) {
 }
 ```
 
-Dafür lassen wir die Variable über Spalten laufen. Da die erste Spalte keine Depressionssymptomvariable ist (`ID`), beginnen wir bei der 2. loszulaufen und laufen bis zur letzten Spalte.
+Dafür lassen wir die Variable über Spalten laufen. Da die erste Spalte keine Depressionssymptomvariable ist (`ID`), beginnen wir bei der 2. Spalte und laufen bis zur letzten Spalte.
 
 
 ## if()-Loop
