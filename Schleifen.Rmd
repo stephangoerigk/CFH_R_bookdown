@@ -87,7 +87,7 @@ df = data.frame(
 df
 ```
 
-Wir könnten uns z.B. automatisch nacheinander die Werte der Variable `Stimmung` anzeigen lassen. Dafür lassen wir die Schleife von der 1. bis zur letzten Zeile (`ncol(df)`) laufen:
+Wir könnten uns z.B. automatisch nacheinander die Werte der Variable `Stimmung` anzeigen lassen. Dafür lassen wir die Schleife von der 1. bis zur letzten Zeile (`nrow(df)`) laufen:
 
 ```{r}
 for (i in 1:nrow(df)) {

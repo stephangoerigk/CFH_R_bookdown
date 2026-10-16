@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2026-10-15" />
+<meta name="date" content="2026-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -327,7 +327,7 @@ div.csl-indent {
 <li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-f%C3%BCr-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
 </ul></li>
 <li class="chapter" data-level="12.5" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm"><i class="fa fa-check"></i><b>12.5</b> Balkendiagramm</a></li>
-<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-3-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 3 Variablen</a></li>
+<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-2-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 2 Variablen</a></li>
 <li class="chapter" data-level="12.7" data-path="graphiken.html"><a href="graphiken.html#boxplot"><i class="fa fa-check"></i><b>12.7</b> Boxplot</a></li>
 <li class="chapter" data-level="12.8" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>12.8</b> Facetting</a></li>
 <li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#%C3%A4sthetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
@@ -355,7 +355,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="tabellen.html"><a href="tabellen.html#layout"><i class="fa fa-check"></i><b>13.3</b> Layout</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einf%C3%BCgen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
+<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#spaltennamen-%C3%A4ndern"><i class="fa fa-check"></i><b>13.3.1</b> Spaltennamen ändern</a></li>
+<li class="chapter" data-level="13.3.2" data-path="tabellen.html"><a href="tabellen.html#zus%C3%A4tzliche-kopfzeile"><i class="fa fa-check"></i><b>13.3.2</b> Zusätzliche Kopfzeile</a></li>
+<li class="chapter" data-level="13.3.3" data-path="tabellen.html"><a href="tabellen.html#tabellentitel"><i class="fa fa-check"></i><b>13.3.3</b> Tabellentitel</a></li>
+<li class="chapter" data-level="13.3.4" data-path="tabellen.html"><a href="tabellen.html#anmerkungen-unter-der-tabelle"><i class="fa fa-check"></i><b>13.3.4</b> Anmerkungen unter der Tabelle</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="tabellen.html"><a href="tabellen.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern</a></li>
 </ul></li>
@@ -534,7 +537,7 @@ div.csl-indent {
 <td align="left">Zeigt das aktuelle Arbeitsverzeichnis an</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>setwd(file = "dir)</code></td>
+<td align="left"><code>setwd(dir = "Pfad")</code></td>
 <td align="left">Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad</td>
 </tr>
 <tr class="even">
@@ -543,10 +546,10 @@ div.csl-indent {
 </tr>
 <tr class="odd">
 <td align="left"><code>write.table(x, file = "mydata.txt", sep)</code></td>
-<td align="left">speichert das Objekt <code>x</code> als Textdatei <code>mydata.txt</code>. Definiere die Trennung der Spalten mittels <code>sep</code> (z.B.; <code>sep = ","</code> für eine kommagetrennte Datei (csv) und <code>sep = \t"</code> für eine tab-getrennte Datei).</td>
+<td align="left">speichert das Objekt <code>x</code> als Textdatei <code>mydata.txt</code>. Definiere die Trennung der Spalten mittels <code>sep</code> (z.B.; <code>sep = ","</code> für eine kommagetrennte Datei (csv) und <code>sep = "\t"</code> für eine tab-getrennte Datei).</td>
 </tr>
 <tr class="even">
-<td align="left"><code>write_rds(x,"meineDaten.rds)</code></td>
+<td align="left"><code>write_rds(x,"meineDaten.rds")</code></td>
 <td align="left">Speichert Objekt x in das R Objekt <code>meineDaten.rds</code></td>
 </tr>
 <tr class="odd">
@@ -554,16 +557,16 @@ div.csl-indent {
 <td align="left">Speichert <em>alle</em> Objekte aus dem Arbeitsbereich nach <code>meineSession.RData</code></td>
 </tr>
 <tr class="even">
-<td align="left"><code>read_rds</code>(“Daten.rds”)<code>|Lädt das rds Objekt</code>Daten.rds<code>| |</code>read.csv<code>("Daten.csv")</code></td>
-<td align="left">Lädt den csv Datensatz <code>Daten.csv</code></td>
+<td align="left"><code>read_rds("Daten.rds")</code></td>
+<td align="left">Lädt das rds Objekt <code>Daten.rds</code></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>foreign::read.spss("Daten.sav")</code></td>
-<td align="left">Lädt den SPSS Datensatz <code>Daten.sav</code></td>
-</tr>
-<tr class="even">
 <td align="left"><code>read.csv("Daten.csv")</code></td>
 <td align="left">Lädt den csv Datensatz <code>Daten.csv</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>foreign::read.spss("Daten.sav")</code></td>
+<td align="left">Lädt den SPSS Datensatz <code>Daten.sav</code></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>readxl::read_xlsx("Daten.xlsx")</code></td>
@@ -591,16 +594,13 @@ div.csl-indent {
 <div id="rds-format" class="section level3 hasAnchor" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> rds-Format<a href="daten-importieren-und-speichern.html#rds-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>.rds ist das R-eigene Format. Es speichert alle Objekte die es in R gibt, also potentiell nicht nur Datensätze, sondern auch Testergebnisse, Bilder, o.ä. Mittels der Funktion <code>read_rds()</code> können wir die Objekte einlesen. Dafür müssen wir das Paket <code>readr</code> installiert und mittels <code>library</code> eingelesen haben.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="daten-importieren-und-speichern.html#cb46-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## The downloaded binary packages are in
-##  /var/folders/pq/tml1b1k90yb91fw7l1cscrxc0000gn/T//RtmpHViCTu/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="daten-importieren-und-speichern.html#cb48-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb48-2"><a href="daten-importieren-und-speichern.html#cb48-2" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="daten-importieren-und-speichern.html#cb48-3" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/personality.rds&quot;</span>)</span>
-<span id="cb48-4"><a href="daten-importieren-und-speichern.html#cb48-4" tabindex="-1"></a></span>
-<span id="cb48-5"><a href="daten-importieren-und-speichern.html#cb48-5" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
-<span id="cb48-6"><a href="daten-importieren-und-speichern.html#cb48-6" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="daten-importieren-und-speichern.html#cb46-1" tabindex="-1"></a><span class="co">#install.packages(&quot;readr&quot;)</span></span>
+<span id="cb46-2"><a href="daten-importieren-und-speichern.html#cb46-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb46-3"><a href="daten-importieren-und-speichern.html#cb46-3" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="daten-importieren-und-speichern.html#cb46-4" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/personality.rds&quot;</span>)</span>
+<span id="cb46-5"><a href="daten-importieren-und-speichern.html#cb46-5" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="daten-importieren-und-speichern.html#cb46-6" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb46-7"><a href="daten-importieren-und-speichern.html#cb46-7" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>##   ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
 ## 1  1       2       4       0       3       3       0       2       3       0
 ## 2  2       4       4       0       3       4       0       4       4       0
@@ -662,10 +662,10 @@ div.csl-indent {
 <h3><span class="header-section-number">7.4.2</span> csv-Format<a href="daten-importieren-und-speichern.html#csv-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Das .csv Format (comma-separated-values) ist eines der gängigsten in der Statistik. Es lässt sich mit allen gebräuchlichen Tabellenprogrammen öffnen (also neben R auch mit Excel, Numbers, o.ä.).</p>
 <p>Um einen .csv Datensatz einzulesen, speichern wir ihn mittels <code>read.csv()</code> in ein von uns benanntes Objekt. Dieses können wir nennen wie wir wollen, z.B. <code>data</code> (schön kurz):</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="daten-importieren-und-speichern.html#cb50-1" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/personality.csv&quot;</span>)</span>
-<span id="cb50-2"><a href="daten-importieren-und-speichern.html#cb50-2" tabindex="-1"></a></span>
-<span id="cb50-3"><a href="daten-importieren-und-speichern.html#cb50-3" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
-<span id="cb50-4"><a href="daten-importieren-und-speichern.html#cb50-4" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="daten-importieren-und-speichern.html#cb48-1" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/personality.csv&quot;</span>)</span>
+<span id="cb48-2"><a href="daten-importieren-und-speichern.html#cb48-2" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="daten-importieren-und-speichern.html#cb48-3" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb48-4"><a href="daten-importieren-und-speichern.html#cb48-4" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>##   ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
 ## 1  1       2       4       0       3       3       0       2       3       0
 ## 2  2       4       4       0       3       4       0       4       4       0
@@ -727,11 +727,11 @@ div.csl-indent {
 <h3><span class="header-section-number">7.4.3</span> sav-Format<a href="daten-importieren-und-speichern.html#sav-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Das .sav Format ist das Format in welchem SPSS Datensätze abgespeichert werden. Dies kommt gerade in den Sozialwissenschaften relativ häufig vor, weshalb wir diese Art von Dateien auf jeden Fall einlesen können sollten.</p>
 <p>Um einen .sav Datensatz einzulesen, speichern wir ihn mittels <code>read.spss()</code> in ein von uns benanntes Objekt. Dafür müssen wir das Paket <code>foreign</code> installiert und mittels <code>library</code> eingelesen haben. Damit R den Datensatz automatisch in einen data.frame speichert, geben wir als Zusatzoption <code>to.data.frame = TRUE</code> an:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="daten-importieren-und-speichern.html#cb52-1" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
-<span id="cb52-2"><a href="daten-importieren-und-speichern.html#cb52-2" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.spss</span>(<span class="st">&quot;data/personality.sav&quot;</span>, <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb52-3"><a href="daten-importieren-und-speichern.html#cb52-3" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="daten-importieren-und-speichern.html#cb52-4" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
-<span id="cb52-5"><a href="daten-importieren-und-speichern.html#cb52-5" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="daten-importieren-und-speichern.html#cb50-1" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
+<span id="cb50-2"><a href="daten-importieren-und-speichern.html#cb50-2" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.spss</span>(<span class="st">&quot;data/personality.sav&quot;</span>, <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb50-3"><a href="daten-importieren-und-speichern.html#cb50-3" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="daten-importieren-und-speichern.html#cb50-4" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb50-5"><a href="daten-importieren-und-speichern.html#cb50-5" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>##   ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
 ## 1  1       2       4       0       3       3       0       2       3       0
 ## 2  2       4       4       0       3       4       0       4       4       0
@@ -793,11 +793,11 @@ div.csl-indent {
 <h3><span class="header-section-number">7.4.4</span> xlsx-Format<a href="daten-importieren-und-speichern.html#xlsx-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Das .xlsx Format ist das Format in welchem Excel Datensätze abgespeichert werden. Auch das kommt oft vor, da es viele Forscher:innen vorziehen Daten in Excel Tabellen einzutragen.</p>
 <p>Um einen .xlsx Datensatz einzulesen, speichern wir ihn mittels <code>read_xlsx()</code> in ein von uns benanntes Objekt. Dafür müssen wir das Paket <code>readxl</code> installiert und mittels <code>library</code> eingelesen haben. Da in Excel Tabellen manchmal mehrere Arbeitsblätter (engl. “sheets”) vorliegen, geben wir den Namen des Arbeitsblatt, welches wir brauchen, zusätzlich an:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="daten-importieren-und-speichern.html#cb54-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb54-2"><a href="daten-importieren-und-speichern.html#cb54-2" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/personality.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;Tabelle1&quot;</span>)</span>
-<span id="cb54-3"><a href="daten-importieren-und-speichern.html#cb54-3" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="daten-importieren-und-speichern.html#cb54-4" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
-<span id="cb54-5"><a href="daten-importieren-und-speichern.html#cb54-5" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="daten-importieren-und-speichern.html#cb52-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb52-2"><a href="daten-importieren-und-speichern.html#cb52-2" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/personality.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;Tabelle1&quot;</span>)</span>
+<span id="cb52-3"><a href="daten-importieren-und-speichern.html#cb52-3" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="daten-importieren-und-speichern.html#cb52-4" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb52-5"><a href="daten-importieren-und-speichern.html#cb52-5" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 61
 ##      ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
 ##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
@@ -819,9 +819,9 @@ div.csl-indent {
 <div id="daten-speichern" class="section level2 hasAnchor" number="7.5">
 <h2><span class="header-section-number">7.5</span> Daten speichern<a href="daten-importieren-und-speichern.html#daten-speichern" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In alle vorgestellten Formate können wir unsere Daten natürlich auch abspeichern. Erstellen wir dafür einen schnellen Test-Datensatz mittels <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="daten-importieren-und-speichern.html#cb56-1" tabindex="-1"></a>newdata <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Variable1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
-<span id="cb56-2"><a href="daten-importieren-und-speichern.html#cb56-2" tabindex="-1"></a>                     <span class="at">Variable2 =</span> <span class="fu">c</span>(<span class="st">&quot;Person1&quot;</span>, <span class="st">&quot;Person2&quot;</span>, <span class="st">&quot;Person3&quot;</span>, <span class="st">&quot;Person4&quot;</span>))</span>
-<span id="cb56-3"><a href="daten-importieren-und-speichern.html#cb56-3" tabindex="-1"></a>newdata</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="daten-importieren-und-speichern.html#cb54-1" tabindex="-1"></a>newdata <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Variable1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
+<span id="cb54-2"><a href="daten-importieren-und-speichern.html#cb54-2" tabindex="-1"></a>                     <span class="at">Variable2 =</span> <span class="fu">c</span>(<span class="st">&quot;Person1&quot;</span>, <span class="st">&quot;Person2&quot;</span>, <span class="st">&quot;Person3&quot;</span>, <span class="st">&quot;Person4&quot;</span>))</span>
+<span id="cb54-3"><a href="daten-importieren-und-speichern.html#cb54-3" tabindex="-1"></a>newdata</span></code></pre></div>
 <pre><code>##   Variable1 Variable2
 ## 1         1   Person1
 ## 2         2   Person2
@@ -830,31 +830,31 @@ div.csl-indent {
 <div id="rds-format-1" class="section level3 hasAnchor" number="7.5.1">
 <h3><span class="header-section-number">7.5.1</span> rds-Format<a href="daten-importieren-und-speichern.html#rds-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Um in das R eigene .rds Format zu speichern, nutzen wir wieder das <code>readr</code> Paket, welches wir zunächst mittels <code>library</code> laden. Der Befehl ist nun <code>write_rds()</code>. Innerhalb des Befehls geben wir einfach das Objekt (z.B. unseren Datensatz) an, welches wir speichern wollen. Unter <code>file</code> geben wir der Datei einen Namen, so wie wir sie auf unserer Festplatte gespeichert haben wollen. Wichtig: Das Kürzel des Dateityps (.rds) nicht vergessen:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="daten-importieren-und-speichern.html#cb58-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb58-2"><a href="daten-importieren-und-speichern.html#cb58-2" tabindex="-1"></a></span>
-<span id="cb58-3"><a href="daten-importieren-und-speichern.html#cb58-3" tabindex="-1"></a><span class="fu">write_rds</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;data.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="daten-importieren-und-speichern.html#cb56-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb56-2"><a href="daten-importieren-und-speichern.html#cb56-2" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="daten-importieren-und-speichern.html#cb56-3" tabindex="-1"></a><span class="fu">write_rds</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;data.rds&quot;</span>)</span></code></pre></div>
 <p>Die Datei erscheint nun in Ihrem Arbeitsverzeichnis.</p>
 </div>
 <div id="csv-format-1" class="section level3 hasAnchor" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> csv-Format<a href="daten-importieren-und-speichern.html#csv-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Speichern in das .csv Format funktioniert analog:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="daten-importieren-und-speichern.html#cb59-1" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;newdata.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="daten-importieren-und-speichern.html#cb57-1" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;newdata.csv&quot;</span>)</span></code></pre></div>
 <p>Hier ein Tipp für Sie: Wie oben bereits erwähnt ist csv ein “Komma-getrenntes” Format. In Deutschland haben wir die Besonderheit, dass wir Dezimalstellen manchmal mit “,” trennen, während man im englisch-sprachigen Raum i.d.R. “.” verwendet. Sollte die abgespeicherte Datei komisch aussehen, wenn Sie sie z.B. in Excel öffnen, liegt das vermutlich an der deutschen Einstellung Ihres Programms. Probieren Sie in diesem Fall statt der <code>write.csv()</code> Funktion einmal die <code>write.csv2()</code> Funktion aus, dies wird Ihr Problem lösen.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="daten-importieren-und-speichern.html#cb60-1" tabindex="-1"></a><span class="fu">write.csv2</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;newdata.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="daten-importieren-und-speichern.html#cb58-1" tabindex="-1"></a><span class="fu">write.csv2</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;newdata.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="sav-format-1" class="section level3 hasAnchor" number="7.5.3">
 <h3><span class="header-section-number">7.5.3</span> sav-Format<a href="daten-importieren-und-speichern.html#sav-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Zum Speichern in das SPSS Format .sav nutzen wir die Funktion <code>write_sav()</code> aus dem Paket <code>haven</code>, welches wir zuvor mittels <code>library()</code> laden.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="daten-importieren-und-speichern.html#cb61-1" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb61-2"><a href="daten-importieren-und-speichern.html#cb61-2" tabindex="-1"></a></span>
-<span id="cb61-3"><a href="daten-importieren-und-speichern.html#cb61-3" tabindex="-1"></a><span class="fu">write_sav</span>(newdata, <span class="st">&quot;newdata.sav&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="daten-importieren-und-speichern.html#cb59-1" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb59-2"><a href="daten-importieren-und-speichern.html#cb59-2" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="daten-importieren-und-speichern.html#cb59-3" tabindex="-1"></a><span class="fu">write_sav</span>(newdata, <span class="st">&quot;newdata.sav&quot;</span>)</span></code></pre></div>
 </div>
 <div id="xlsx-format-1" class="section level3 hasAnchor" number="7.5.4">
 <h3><span class="header-section-number">7.5.4</span> xlsx-Format<a href="daten-importieren-und-speichern.html#xlsx-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Zum Speichern in das Excel Format .xlsx nutzen wir die Funktion <code>WriteXLS</code> aus dem Paket <code>WriteXLS</code>, welches wir zuvor mittels <code>library()</code> laden.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="daten-importieren-und-speichern.html#cb62-1" tabindex="-1"></a><span class="fu">library</span>(WriteXLS)</span>
-<span id="cb62-2"><a href="daten-importieren-und-speichern.html#cb62-2" tabindex="-1"></a></span>
-<span id="cb62-3"><a href="daten-importieren-und-speichern.html#cb62-3" tabindex="-1"></a><span class="fu">WriteXLS</span>(newdata, <span class="st">&quot;newdata.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="daten-importieren-und-speichern.html#cb60-1" tabindex="-1"></a><span class="fu">library</span>(WriteXLS)</span>
+<span id="cb60-2"><a href="daten-importieren-und-speichern.html#cb60-2" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="daten-importieren-und-speichern.html#cb60-3" tabindex="-1"></a><span class="fu">WriteXLS</span>(newdata, <span class="st">&quot;newdata.xlsx&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>

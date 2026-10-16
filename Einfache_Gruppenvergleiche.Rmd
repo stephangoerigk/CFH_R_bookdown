@@ -782,7 +782,7 @@ chisq.test(table(data$Remission, data$Therapie))
 
 ### Relevante Parameter extrahieren
 
-Die relevanten Parameter zum Berichten des $\chi$^2^-Test sind:
+Die relevanten Parameter zum Berichten des $\chi$^2^-Tests sind:
 
 * $\chi$^2^-Wert (Teststatistik)
 * df (Freiheitsgrade)

@@ -202,7 +202,7 @@ ggplot(data = diamonds, aes(x = cut, y = carat)) +
   stat_summary(geom = "point", fun = mean) 
 ```
 
-## Balkendiagramm mit mehr als 3 Variablen
+## Balkendiagramm mit mehr als 2 Variablen
 
 Genau wie beim Streudiagramm lässt sich das Balkendiagramm auch für mehr als 2 Variablen darstellen. Statt Farben oder Punktfarben ist die einfachste Art Balken zu differenzieren mit der `fill` Ästhetik:
 
@@ -224,7 +224,7 @@ ggplot(data = diamonds, aes(x = cut, y = carat)) +
 
 ## Facetting
 
-Wir sehen uns noch einmal unser 3-farbiges Streudiagramm von zuvor an:
+Wir sehen uns noch einmal unser mehrfarbiges Streudiagramm von zuvor an:
 
 ```{r message=FALSE, warning=FALSE}
 ggplot(data = diamonds, aes(x = carat, y = price, colour = cut)) +
@@ -448,7 +448,7 @@ Größe (in cm) und Auflösung (in dpi) lassen sich direkt innerhalb des Befehls
 Ein Beispiel:
 
 ```{r}
-png(file = "Figure1.png", width = 5, height = 5, units = "in", res = 300)
+png(file = "Figure1.png", width = 15, height = 10, units = "cm", res = 300)
 
 ggplot(data = diamonds, aes(x = price, colour = cut)) +
   geom_histogram(binwidth = 39)

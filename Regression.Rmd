@@ -156,12 +156,6 @@ Grenzen der Konfidenzintervalle (unten & oben) erhalten wir mit der Funktion `co
 confint(reg)
 ```
 
-Das KI wird für beide Koeffizienten berechnet. Umschließt das KI der Steigung die 0 nicht, ist sie signifikant. Einzeln extrahiert:
-```{r}
-confint(reg)[2, 1]
-confint(reg)[2, 2]
-```
-
 ## Standardisierte Regressionsgewichte
 
 Die Steigung $b$ ist in der Originalmetrik der AV angegeben (hier: Symptompunkte pro Stunde Sport). Um Effekte über Modelle hinweg vergleichbar zu machen, nutzen wir das **standardisierte Regressionsgewicht** $\beta$. Es gibt an, um wie viele Standardabweichungen sich die AV verändert, wenn die UV um 1 Standardabweichung zunimmt.

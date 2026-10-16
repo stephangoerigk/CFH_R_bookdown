@@ -12,15 +12,14 @@ In diesem Kapitel werden wir einige hilfreiche Funktionen zur Verwaltung Ihres A
 |`rm(x, y, ..)`|Entfernt die Objekte `x`, `y`... aus dem Arbeitsbereich|
 |`rm(list = ls())`|Entfernt *alle* Objekte aus dem Arbeitsbereich|
 |`getwd()`|Zeigt das aktuelle Arbeitsverzeichnis an |
-|`setwd(file = "dir)`|Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad |
+|`setwd(dir = "Pfad")`|Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad |
 |`list.files()`|Zeigt die Namen aller Dateien im Arbeitsverzeichnis an |
-|`write.table(x, file = "mydata.txt", sep)`|speichert das Objekt `x` als Textdatei `mydata.txt`. Definiere die Trennung der Spalten mittels `sep` (z.B.; `sep = ","` für eine kommagetrennte Datei (csv) und `sep = \t"` für eine tab-getrennte Datei).|
-|`write_rds(x,"meineDaten.rds)`|Speichert Objekt x in das R Objekt  `meineDaten.rds` |
+|`write.table(x, file = "mydata.txt", sep)`|speichert das Objekt `x` als Textdatei `mydata.txt`. Definiere die Trennung der Spalten mittels `sep` (z.B.; `sep = ","` für eine kommagetrennte Datei (csv) und `sep = "\t"` für eine tab-getrennte Datei).|
+|`write_rds(x,"meineDaten.rds")`|Speichert Objekt x in das R Objekt  `meineDaten.rds` |
 |`save.image(file = "meineSession.RData")`|Speichert *alle* Objekte aus dem Arbeitsbereich nach `meineSession.RData`|
-|`read_rds`("Daten.rds")`|Lädt das rds Objekt `Daten.rds`|
-|`read.csv`("Daten.csv")`|Lädt den csv Datensatz `Daten.csv`|
-|`foreign::read.spss("Daten.sav")`|Lädt den SPSS Datensatz `Daten.sav`|
+|`read_rds("Daten.rds")`|Lädt das rds Objekt `Daten.rds`|
 |`read.csv("Daten.csv")`|Lädt den csv Datensatz `Daten.csv`|
+|`foreign::read.spss("Daten.sav")`|Lädt den SPSS Datensatz `Daten.sav`|
 |`readxl::read_xlsx("Daten.xlsx")`|Lädt den Excel Datensatz `Daten.xlsx`|
 
 Ihr Computer ist ein Labyrinth aus Ordnern und Dateien. Wenn Sie außerhalb von R eine bestimmte Datei öffnen möchten, öffnen Sie wahrscheinlich ein Explorer-Fenster, mit dem Sie die Ordner auf Ihrem Computer visuell durchsuchen können. Oder Sie wählen die zuletzt geöffneten Dateien aus oder geben den Namen der Datei in ein Suchfeld ein, um den Computer die Suche für Sie übernehmen zu lassen. Während dieses Vorgehen normalerweise für nicht-programmierende Aufgaben funktioniert, ist es für R ein No-Go. Das Hauptproblem ist, dass Sie bei all diesen Methoden Ihre Ordner visuell durchsuchen und die Maus bewegen müssen, um Ordner und Dateien auszuwählen, die dem Gesuchten entsprechen. Wenn Sie in R programmieren, müssen Sie alle Schritte in Ihren Analysen so spezifizieren, dass sie von anderen und von Ihnen selbst leicht nachvollzogen werden können. Das bedeutet, dass Sie nicht einfach sagen können: "Finde diese eine Datei, die ich mir vor einer Woche gemailt habe" oder "Suche nach einer Datei, die so aussieht wie "MeinFoto.jpg". Stattdessen müssen Sie in der Lage sein, R-Code zu schreiben, der R genau sagt, wo wichtige Dateien zu finden sind - entweder auf Ihrem Computer oder im Internet.
@@ -52,7 +51,7 @@ Je nachdem in welchem Format die Daten vorliegen, muss ein eigener Befehl genutz
 .rds ist das R-eigene Format. Es speichert alle Objekte die es in R gibt, also potentiell nicht nur Datensätze, sondern auch Testergebnisse, Bilder, o.ä. Mittels der Funktion `read_rds()` können wir die Objekte einlesen. Dafür müssen wir das Paket `readr` installiert und mittels `library` eingelesen haben. 
 
 ```{r}
-install.packages("readr")
+#install.packages("readr")
 library(readr)
 
 data = read_rds("data/personality.rds")

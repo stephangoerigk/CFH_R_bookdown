@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2026-10-15" />
+<meta name="date" content="2026-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -327,7 +327,7 @@ div.csl-indent {
 <li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-f%C3%BCr-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
 </ul></li>
 <li class="chapter" data-level="12.5" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm"><i class="fa fa-check"></i><b>12.5</b> Balkendiagramm</a></li>
-<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-3-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 3 Variablen</a></li>
+<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-2-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 2 Variablen</a></li>
 <li class="chapter" data-level="12.7" data-path="graphiken.html"><a href="graphiken.html#boxplot"><i class="fa fa-check"></i><b>12.7</b> Boxplot</a></li>
 <li class="chapter" data-level="12.8" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>12.8</b> Facetting</a></li>
 <li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#%C3%A4sthetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
@@ -355,7 +355,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="tabellen.html"><a href="tabellen.html#layout"><i class="fa fa-check"></i><b>13.3</b> Layout</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einf%C3%BCgen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
+<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#spaltennamen-%C3%A4ndern"><i class="fa fa-check"></i><b>13.3.1</b> Spaltennamen ändern</a></li>
+<li class="chapter" data-level="13.3.2" data-path="tabellen.html"><a href="tabellen.html#zus%C3%A4tzliche-kopfzeile"><i class="fa fa-check"></i><b>13.3.2</b> Zusätzliche Kopfzeile</a></li>
+<li class="chapter" data-level="13.3.3" data-path="tabellen.html"><a href="tabellen.html#tabellentitel"><i class="fa fa-check"></i><b>13.3.3</b> Tabellentitel</a></li>
+<li class="chapter" data-level="13.3.4" data-path="tabellen.html"><a href="tabellen.html#anmerkungen-unter-der-tabelle"><i class="fa fa-check"></i><b>13.3.4</b> Anmerkungen unter der Tabelle</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="tabellen.html"><a href="tabellen.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern</a></li>
 </ul></li>
@@ -512,9 +515,9 @@ div.csl-indent {
 <div id="hypothesen-6" class="section level2 hasAnchor" number="17.1">
 <h2><span class="header-section-number">17.1</span> Hypothesen<a href="einfache-lineare-regression.html#hypothesen-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Für unser Beispiel nutzen wir wieder den Datensatz aus dem Kapitel zur ANOVA:</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="einfache-lineare-regression.html#cb561-1" tabindex="-1"></a>therapy4groups <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/stephangoerigk/WAF_Folien/master/therapy4groups.csv&quot;</span>)</span>
-<span id="cb561-2"><a href="einfache-lineare-regression.html#cb561-2" tabindex="-1"></a></span>
-<span id="cb561-3"><a href="einfache-lineare-regression.html#cb561-3" tabindex="-1"></a><span class="fu">head</span>(therapy4groups)</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="einfache-lineare-regression.html#cb564-1" tabindex="-1"></a>therapy4groups <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/stephangoerigk/WAF_Folien/master/therapy4groups.csv&quot;</span>)</span>
+<span id="cb564-2"><a href="einfache-lineare-regression.html#cb564-2" tabindex="-1"></a></span>
+<span id="cb564-3"><a href="einfache-lineare-regression.html#cb564-3" tabindex="-1"></a><span class="fu">head</span>(therapy4groups)</span></code></pre></div>
 <pre><code>##   ID Therapy Symptoms  Diagnosis Behandlungsversuche
 ## 1  1    SSRI       46 Depression                   3
 ## 2  2    SSRI       69      Angst                   3
@@ -524,11 +527,11 @@ div.csl-indent {
 ## 6  6    SSRI       63      Angst                   5</code></pre>
 <p>Der Datensatz enthält für jede Patient:in die erhaltene Therapie, die Diagnose und die Symptomschwere (<code>Symptoms</code>) nach der Behandlung.</p>
 <p>Zusätzlich wurde bei allen Patient:innen erhoben, wie viele <strong>Stunden pro Woche</strong> sie <strong>Sport</strong> treiben. Körperliche Aktivität gilt als ein möglicher Einflussfaktor auf die Symptomschwere bei Depressionen und Angststörungen. Diese Variable ist im heruntergeladenen Datensatz noch nicht enthalten. Wir fügen sie daher als Vektor hinzu (siehe Kapitel Daten bearbeiten). Die Werte sind in derselben Reihenfolge wie die Zeilen des Datensatzes angegeben, d.h. der 1. Wert gehört zur Patient:in in der 1. Zeile usw.:</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="einfache-lineare-regression.html#cb563-1" tabindex="-1"></a>therapy4groups<span class="sc">$</span>Sport <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">3.5</span>, <span class="fl">4.0</span>, <span class="fl">8.0</span>, <span class="fl">4.0</span>, <span class="fl">5.0</span>, <span class="fl">6.0</span>, <span class="fl">5.5</span>, <span class="fl">7.0</span>, <span class="fl">4.0</span>, <span class="fl">3.5</span>,</span>
-<span id="cb563-2"><a href="einfache-lineare-regression.html#cb563-2" tabindex="-1"></a>                         <span class="fl">7.5</span>, <span class="fl">4.5</span>, <span class="fl">5.0</span>, <span class="fl">3.0</span>, <span class="fl">1.0</span>, <span class="fl">6.0</span>, <span class="fl">0.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>, <span class="fl">2.0</span>,</span>
-<span id="cb563-3"><a href="einfache-lineare-regression.html#cb563-3" tabindex="-1"></a>                         <span class="fl">6.0</span>, <span class="fl">5.0</span>, <span class="fl">3.0</span>, <span class="fl">5.0</span>, <span class="fl">5.0</span>, <span class="fl">5.0</span>, <span class="fl">4.0</span>, <span class="fl">4.0</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>)</span>
-<span id="cb563-4"><a href="einfache-lineare-regression.html#cb563-4" tabindex="-1"></a></span>
-<span id="cb563-5"><a href="einfache-lineare-regression.html#cb563-5" tabindex="-1"></a><span class="fu">head</span>(therapy4groups)</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="einfache-lineare-regression.html#cb566-1" tabindex="-1"></a>therapy4groups<span class="sc">$</span>Sport <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">3.5</span>, <span class="fl">4.0</span>, <span class="fl">8.0</span>, <span class="fl">4.0</span>, <span class="fl">5.0</span>, <span class="fl">6.0</span>, <span class="fl">5.5</span>, <span class="fl">7.0</span>, <span class="fl">4.0</span>, <span class="fl">3.5</span>,</span>
+<span id="cb566-2"><a href="einfache-lineare-regression.html#cb566-2" tabindex="-1"></a>                         <span class="fl">7.5</span>, <span class="fl">4.5</span>, <span class="fl">5.0</span>, <span class="fl">3.0</span>, <span class="fl">1.0</span>, <span class="fl">6.0</span>, <span class="fl">0.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>, <span class="fl">2.0</span>,</span>
+<span id="cb566-3"><a href="einfache-lineare-regression.html#cb566-3" tabindex="-1"></a>                         <span class="fl">6.0</span>, <span class="fl">5.0</span>, <span class="fl">3.0</span>, <span class="fl">5.0</span>, <span class="fl">5.0</span>, <span class="fl">5.0</span>, <span class="fl">4.0</span>, <span class="fl">4.0</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>)</span>
+<span id="cb566-4"><a href="einfache-lineare-regression.html#cb566-4" tabindex="-1"></a></span>
+<span id="cb566-5"><a href="einfache-lineare-regression.html#cb566-5" tabindex="-1"></a><span class="fu">head</span>(therapy4groups)</span></code></pre></div>
 <pre><code>##   ID Therapy Symptoms  Diagnosis Behandlungsversuche Sport
 ## 1  1    SSRI       46 Depression                   3   3.5
 ## 2  2    SSRI       69      Angst                   3   4.0
@@ -552,7 +555,7 @@ div.csl-indent {
 <div id="deskriptive-einordnung-6" class="section level2 hasAnchor" number="17.2">
 <h2><span class="header-section-number">17.2</span> Deskriptive Einordnung<a href="einfache-lineare-regression.html#deskriptive-einordnung-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Zunächst können wir uns die Deskriptivstatistiken der beiden Variablen anschauen:</p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="einfache-lineare-regression.html#cb565-1" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(therapy4groups[, <span class="fu">c</span>(<span class="st">&quot;Sport&quot;</span>, <span class="st">&quot;Symptoms&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="einfache-lineare-regression.html#cb568-1" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(therapy4groups[, <span class="fu">c</span>(<span class="st">&quot;Sport&quot;</span>, <span class="st">&quot;Symptoms&quot;</span>)])</span></code></pre></div>
 <pre><code>##          vars  n  mean    sd median trimmed   mad min max range  skew kurtosis
 ## Sport       1 30  4.33  1.77   4.25    4.35  1.11   0   8     8 -0.21     0.05
 ## Symptoms    2 30 60.00 17.41  61.00   61.08 17.79  15  90    75 -0.49    -0.29
@@ -560,20 +563,20 @@ div.csl-indent {
 ## Sport    0.32
 ## Symptoms 3.18</code></pre>
 <p>Einen ersten Eindruck vom Zusammenhang erhalten wir mit einem Streudiagramm. Mit <code>geom_smooth(method = "lm")</code> lassen wir uns direkt die Regressionsgerade einzeichnen (siehe Kapitel Graphiken):</p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="einfache-lineare-regression.html#cb567-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> therapy4groups, <span class="fu">aes</span>(<span class="at">x =</span> Sport, <span class="at">y =</span> Symptoms)) <span class="sc">+</span></span>
-<span id="cb567-2"><a href="einfache-lineare-regression.html#cb567-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb567-3"><a href="einfache-lineare-regression.html#cb567-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb567-4"><a href="einfache-lineare-regression.html#cb567-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Sport (Stunden pro Woche)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Symptomschwere&quot;</span>) <span class="sc">+</span></span>
-<span id="cb567-5"><a href="einfache-lineare-regression.html#cb567-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-330-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="einfache-lineare-regression.html#cb570-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> therapy4groups, <span class="fu">aes</span>(<span class="at">x =</span> Sport, <span class="at">y =</span> Symptoms)) <span class="sc">+</span></span>
+<span id="cb570-2"><a href="einfache-lineare-regression.html#cb570-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb570-3"><a href="einfache-lineare-regression.html#cb570-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb570-4"><a href="einfache-lineare-regression.html#cb570-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Sport (Stunden pro Woche)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Symptomschwere&quot;</span>) <span class="sc">+</span></span>
+<span id="cb570-5"><a href="einfache-lineare-regression.html#cb570-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-335-1.png" alt="" width="672" /></p>
 <p>Rein deskriptiv scheint ein <strong>negativer</strong> Zusammenhang zu bestehen: Patient:innen, die mehr Sport treiben, weisen tendenziell schwächere Symptome auf. Ob dieser Zusammenhang signifikant ist, prüfen wir mit der Regression.</p>
 </div>
 <div id="berechnung-interpretation" class="section level2 hasAnchor" number="17.3">
 <h2><span class="header-section-number">17.3</span> Berechnung &amp; Interpretation<a href="einfache-lineare-regression.html#berechnung-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Die Regression berechnen wir mit der <code>lm()</code> Funktion, die wir bereits aus dem Kapitel zur ANOVA kennen. Auch hier steht links die AV, rechts die UV und <code>~</code> heißt soviel wie “wird vorhergesagt durch”:</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="einfache-lineare-regression.html#cb568-1" tabindex="-1"></a>reg <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Sport, <span class="at">data =</span> therapy4groups)</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="einfache-lineare-regression.html#cb571-1" tabindex="-1"></a>reg <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Sport, <span class="at">data =</span> therapy4groups)</span></code></pre></div>
 <p>Anders als bei der ANOVA wenden wir auf das Modell nicht <code>anova()</code>, sondern <code>summary()</code> an:</p>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="einfache-lineare-regression.html#cb569-1" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="einfache-lineare-regression.html#cb572-1" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Symptoms ~ Sport, data = therapy4groups)
@@ -622,38 +625,38 @@ div.csl-indent {
 </ul>
 <p>Diese Werte lassen sich wie folgt aus dem Modell extrahieren:</p>
 <p>Koeffizienten (Y-Achsenabschnitt &amp; Steigung):</p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="einfache-lineare-regression.html#cb571-1" tabindex="-1"></a><span class="fu">coef</span>(reg)</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="einfache-lineare-regression.html#cb574-1" tabindex="-1"></a><span class="fu">coef</span>(reg)</span></code></pre></div>
 <pre><code>## (Intercept)       Sport 
 ##   81.936015   -5.062157</code></pre>
 <p>Nur die Steigung:</p>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="einfache-lineare-regression.html#cb573-1" tabindex="-1"></a><span class="fu">coef</span>(reg)[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="einfache-lineare-regression.html#cb576-1" tabindex="-1"></a><span class="fu">coef</span>(reg)[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##     Sport 
 ## -5.062157</code></pre>
 <p>Gesamte Koeffiziententabelle (Estimate, Standardfehler, t-Wert, p-Wert):</p>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="einfache-lineare-regression.html#cb575-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>coefficients</span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="einfache-lineare-regression.html#cb578-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>coefficients</span></code></pre></div>
 <pre><code>##              Estimate Std. Error   t value            Pr(&gt;|t|)
 ## (Intercept) 81.936015   7.429164 11.028969 0.00000000001061244
 ## Sport       -5.062157   1.590544 -3.182657 0.00355775099560277</code></pre>
 <p>t-Wert und p-Wert der Steigung (Zeile 2, Spalte 3 bzw. 4):</p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="einfache-lineare-regression.html#cb577-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>coefficients[<span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="einfache-lineare-regression.html#cb580-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>coefficients[<span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] -3.182657</code></pre>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="einfache-lineare-regression.html#cb579-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>coefficients[<span class="dv">2</span>, <span class="dv">4</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="einfache-lineare-regression.html#cb582-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>coefficients[<span class="dv">2</span>, <span class="dv">4</span>]</span></code></pre></div>
 <pre><code>## [1] 0.003557751</code></pre>
 <p>df (Freiheitsgrade, <span class="math inline">\(N-2\)</span>):</p>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="einfache-lineare-regression.html#cb581-1" tabindex="-1"></a>reg<span class="sc">$</span>df.residual</span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="einfache-lineare-regression.html#cb584-1" tabindex="-1"></a>reg<span class="sc">$</span>df.residual</span></code></pre></div>
 <pre><code>## [1] 28</code></pre>
 <p><span class="math inline">\(R^2\)</span>:</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="einfache-lineare-regression.html#cb583-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="einfache-lineare-regression.html#cb586-1" tabindex="-1"></a><span class="fu">summary</span>(reg)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.2656568</code></pre>
 <p>Grenzen der Konfidenzintervalle (unten &amp; oben) erhalten wir mit der Funktion <code>confint()</code>:</p>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="einfache-lineare-regression.html#cb585-1" tabindex="-1"></a><span class="fu">confint</span>(reg)</span></code></pre></div>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="einfache-lineare-regression.html#cb588-1" tabindex="-1"></a><span class="fu">confint</span>(reg)</span></code></pre></div>
 <pre><code>##                 2.5 %    97.5 %
 ## (Intercept) 66.718063 97.153967
 ## Sport       -8.320239 -1.804075</code></pre>
 <p>Das KI wird für beide Koeffizienten berechnet. Umschließt das KI der Steigung die 0 nicht, ist sie signifikant. Einzeln extrahiert:</p>
-<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="einfache-lineare-regression.html#cb587-1" tabindex="-1"></a><span class="fu">confint</span>(reg)[<span class="dv">2</span>, <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="einfache-lineare-regression.html#cb590-1" tabindex="-1"></a><span class="fu">confint</span>(reg)[<span class="dv">2</span>, <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] -8.320239</code></pre>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="einfache-lineare-regression.html#cb589-1" tabindex="-1"></a><span class="fu">confint</span>(reg)[<span class="dv">2</span>, <span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="einfache-lineare-regression.html#cb592-1" tabindex="-1"></a><span class="fu">confint</span>(reg)[<span class="dv">2</span>, <span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] -1.804075</code></pre>
 </div>
 </div>
@@ -661,11 +664,11 @@ div.csl-indent {
 <h2><span class="header-section-number">17.4</span> Standardisierte Regressionsgewichte<a href="einfache-lineare-regression.html#standardisierte-regressionsgewichte" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Die Steigung <span class="math inline">\(b\)</span> ist in der Originalmetrik der AV angegeben (hier: Symptompunkte pro Stunde Sport). Um Effekte über Modelle hinweg vergleichbar zu machen, nutzen wir das <strong>standardisierte Regressionsgewicht</strong> <span class="math inline">\(\beta\)</span>. Es gibt an, um wie viele Standardabweichungen sich die AV verändert, wenn die UV um 1 Standardabweichung zunimmt.</p>
 <p>Dafür z-standardisieren wir beide Variablen mit der <code>scale()</code> Funktion und rechnen das Modell erneut:</p>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="einfache-lineare-regression.html#cb591-1" tabindex="-1"></a>therapy4groups<span class="sc">$</span>std_Symptoms <span class="ot">=</span> <span class="fu">scale</span>(therapy4groups<span class="sc">$</span>Symptoms)</span>
-<span id="cb591-2"><a href="einfache-lineare-regression.html#cb591-2" tabindex="-1"></a>therapy4groups<span class="sc">$</span>std_Sport <span class="ot">=</span> <span class="fu">scale</span>(therapy4groups<span class="sc">$</span>Sport)</span>
-<span id="cb591-3"><a href="einfache-lineare-regression.html#cb591-3" tabindex="-1"></a></span>
-<span id="cb591-4"><a href="einfache-lineare-regression.html#cb591-4" tabindex="-1"></a>reg_std <span class="ot">=</span> <span class="fu">lm</span>(std_Symptoms <span class="sc">~</span> std_Sport, <span class="at">data =</span> therapy4groups)</span>
-<span id="cb591-5"><a href="einfache-lineare-regression.html#cb591-5" tabindex="-1"></a><span class="fu">summary</span>(reg_std)</span></code></pre></div>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="einfache-lineare-regression.html#cb594-1" tabindex="-1"></a>therapy4groups<span class="sc">$</span>std_Symptoms <span class="ot">=</span> <span class="fu">scale</span>(therapy4groups<span class="sc">$</span>Symptoms)</span>
+<span id="cb594-2"><a href="einfache-lineare-regression.html#cb594-2" tabindex="-1"></a>therapy4groups<span class="sc">$</span>std_Sport <span class="ot">=</span> <span class="fu">scale</span>(therapy4groups<span class="sc">$</span>Sport)</span>
+<span id="cb594-3"><a href="einfache-lineare-regression.html#cb594-3" tabindex="-1"></a></span>
+<span id="cb594-4"><a href="einfache-lineare-regression.html#cb594-4" tabindex="-1"></a>reg_std <span class="ot">=</span> <span class="fu">lm</span>(std_Symptoms <span class="sc">~</span> std_Sport, <span class="at">data =</span> therapy4groups)</span>
+<span id="cb594-5"><a href="einfache-lineare-regression.html#cb594-5" tabindex="-1"></a><span class="fu">summary</span>(reg_std)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = std_Symptoms ~ std_Sport, data = therapy4groups)
@@ -685,16 +688,16 @@ div.csl-indent {
 ## Multiple R-squared:  0.2657, Adjusted R-squared:  0.2394 
 ## F-statistic: 10.13 on 1 and 28 DF,  p-value: 0.003558</code></pre>
 <p>Die Steigung entspricht nun <span class="math inline">\(\beta\)</span>. In der einfachen Regression (nur 1 UV) ist <span class="math inline">\(\beta\)</span> identisch mit der Pearson-Korrelation:</p>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="einfache-lineare-regression.html#cb593-1" tabindex="-1"></a><span class="fu">cor</span>(therapy4groups<span class="sc">$</span>Symptoms, therapy4groups<span class="sc">$</span>Sport)</span></code></pre></div>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="einfache-lineare-regression.html#cb596-1" tabindex="-1"></a><span class="fu">cor</span>(therapy4groups<span class="sc">$</span>Symptoms, therapy4groups<span class="sc">$</span>Sport)</span></code></pre></div>
 <pre><code>## [1] -0.515419</code></pre>
 </div>
 <div id="vorhergesagte-werte-und-residuen" class="section level2 hasAnchor" number="17.5">
 <h2><span class="header-section-number">17.5</span> Vorhergesagte Werte und Residuen<a href="einfache-lineare-regression.html#vorhergesagte-werte-und-residuen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Die vorhergesagten Werte <span class="math inline">\(\hat{y}\)</span> und die Residuen für alle Personen lassen sich mit <code>fitted()</code> und <code>residuals()</code> aus dem Modell ziehen und als neue Variablen an den Datensatz anhängen:</p>
-<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="einfache-lineare-regression.html#cb595-1" tabindex="-1"></a>therapy4groups<span class="sc">$</span>Vorhersage <span class="ot">=</span> <span class="fu">fitted</span>(reg)</span>
-<span id="cb595-2"><a href="einfache-lineare-regression.html#cb595-2" tabindex="-1"></a>therapy4groups<span class="sc">$</span>Residuum <span class="ot">=</span> <span class="fu">residuals</span>(reg)</span>
-<span id="cb595-3"><a href="einfache-lineare-regression.html#cb595-3" tabindex="-1"></a></span>
-<span id="cb595-4"><a href="einfache-lineare-regression.html#cb595-4" tabindex="-1"></a><span class="fu">head</span>(therapy4groups[, <span class="fu">c</span>(<span class="st">&quot;Sport&quot;</span>, <span class="st">&quot;Symptoms&quot;</span>, <span class="st">&quot;Vorhersage&quot;</span>, <span class="st">&quot;Residuum&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="einfache-lineare-regression.html#cb598-1" tabindex="-1"></a>therapy4groups<span class="sc">$</span>Vorhersage <span class="ot">=</span> <span class="fu">fitted</span>(reg)</span>
+<span id="cb598-2"><a href="einfache-lineare-regression.html#cb598-2" tabindex="-1"></a>therapy4groups<span class="sc">$</span>Residuum <span class="ot">=</span> <span class="fu">residuals</span>(reg)</span>
+<span id="cb598-3"><a href="einfache-lineare-regression.html#cb598-3" tabindex="-1"></a></span>
+<span id="cb598-4"><a href="einfache-lineare-regression.html#cb598-4" tabindex="-1"></a><span class="fu">head</span>(therapy4groups[, <span class="fu">c</span>(<span class="st">&quot;Sport&quot;</span>, <span class="st">&quot;Symptoms&quot;</span>, <span class="st">&quot;Vorhersage&quot;</span>, <span class="st">&quot;Residuum&quot;</span>)])</span></code></pre></div>
 <pre><code>##   Sport Symptoms Vorhersage   Residuum
 ## 1   3.5       46   64.21846 -18.218464
 ## 2   4.0       69   61.68739   7.312614
@@ -703,9 +706,9 @@ div.csl-indent {
 ## 5   5.0       50   56.62523  -6.625229
 ## 6   6.0       63   51.56307  11.436929</code></pre>
 <p>Mit <code>predict()</code> können wir außerdem Werte für <strong>neue</strong> Personen vorhersagen, von denen wir nur die UV kennen. Die neuen Werte übergeben wir als data.frame (gleicher Variablenname wie im Modell). Mit <code>interval = "confidence"</code> erhalten wir zusätzlich ein KI für die Vorhersage:</p>
-<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="einfache-lineare-regression.html#cb597-1" tabindex="-1"></a>neue_patienten <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sport =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">8</span>))</span>
-<span id="cb597-2"><a href="einfache-lineare-regression.html#cb597-2" tabindex="-1"></a></span>
-<span id="cb597-3"><a href="einfache-lineare-regression.html#cb597-3" tabindex="-1"></a><span class="fu">predict</span>(reg, <span class="at">newdata =</span> neue_patienten, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="einfache-lineare-regression.html#cb600-1" tabindex="-1"></a>neue_patienten <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sport =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">8</span>))</span>
+<span id="cb600-2"><a href="einfache-lineare-regression.html#cb600-2" tabindex="-1"></a></span>
+<span id="cb600-3"><a href="einfache-lineare-regression.html#cb600-3" tabindex="-1"></a><span class="fu">predict</span>(reg, <span class="at">newdata =</span> neue_patienten, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>)</span></code></pre></div>
 <pre><code>##        fit      lwr      upr
 ## 1 81.93601 66.71806 97.15397
 ## 2 61.68739 55.90486 67.46991
@@ -714,8 +717,8 @@ div.csl-indent {
 <div id="dichotome-prädiktoren" class="section level2 hasAnchor" number="17.6">
 <h2><span class="header-section-number">17.6</span> Dichotome Prädiktoren<a href="einfache-lineare-regression.html#dichotome-pr%C3%A4diktoren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Als UV kann auch eine dichotome (nominalskalierte) Variable verwendet werden, z.B. die Diagnose. R kodiert sie automatisch mit 0 und 1 (<strong>Dummy-Kodierung</strong>). Die Referenzkategorie (= 0) ist die 1. Faktorstufe, bei character Variablen also alphabetisch (hier: <code>Angst</code>).</p>
-<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="einfache-lineare-regression.html#cb599-1" tabindex="-1"></a>reg_diag <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Diagnosis, <span class="at">data =</span> therapy4groups)</span>
-<span id="cb599-2"><a href="einfache-lineare-regression.html#cb599-2" tabindex="-1"></a><span class="fu">summary</span>(reg_diag)</span></code></pre></div>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="einfache-lineare-regression.html#cb602-1" tabindex="-1"></a>reg_diag <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Diagnosis, <span class="at">data =</span> therapy4groups)</span>
+<span id="cb602-2"><a href="einfache-lineare-regression.html#cb602-2" tabindex="-1"></a><span class="fu">summary</span>(reg_diag)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Symptoms ~ Diagnosis, data = therapy4groups)
@@ -744,8 +747,8 @@ div.csl-indent {
 <div id="ausblick-multiple-regression" class="section level2 hasAnchor" number="17.7">
 <h2><span class="header-section-number">17.7</span> Ausblick: Multiple Regression<a href="einfache-lineare-regression.html#ausblick-multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Die Regression lässt sich leicht um weitere UVs erweitern. Diese werden mit <code>+</code> in die Formel aufgenommen:</p>
-<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="einfache-lineare-regression.html#cb601-1" tabindex="-1"></a>reg2 <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Sport <span class="sc">+</span> Diagnosis, <span class="at">data =</span> therapy4groups)</span>
-<span id="cb601-2"><a href="einfache-lineare-regression.html#cb601-2" tabindex="-1"></a><span class="fu">summary</span>(reg2)</span></code></pre></div>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="einfache-lineare-regression.html#cb604-1" tabindex="-1"></a>reg2 <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Sport <span class="sc">+</span> Diagnosis, <span class="at">data =</span> therapy4groups)</span>
+<span id="cb604-2"><a href="einfache-lineare-regression.html#cb604-2" tabindex="-1"></a><span class="fu">summary</span>(reg2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Symptoms ~ Sport + Diagnosis, data = therapy4groups)
@@ -766,8 +769,8 @@ div.csl-indent {
 ## Multiple R-squared:  0.2999, Adjusted R-squared:  0.248 
 ## F-statistic: 5.782 on 2 and 27 DF,  p-value: 0.008127</code></pre>
 <p>Mit <code>*</code> statt <code>+</code> wird zusätzlich die Interaktion der UVs berechnet (wie bei der mehrfaktoriellen ANOVA). So lässt sich prüfen, ob der Zusammenhang zwischen Sport und Symptomen je nach Diagnose unterschiedlich ausfällt:</p>
-<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="einfache-lineare-regression.html#cb603-1" tabindex="-1"></a>reg3 <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Sport <span class="sc">*</span> Diagnosis, <span class="at">data =</span> therapy4groups)</span>
-<span id="cb603-2"><a href="einfache-lineare-regression.html#cb603-2" tabindex="-1"></a><span class="fu">summary</span>(reg3)</span></code></pre></div>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="einfache-lineare-regression.html#cb606-1" tabindex="-1"></a>reg3 <span class="ot">=</span> <span class="fu">lm</span>(Symptoms <span class="sc">~</span> Sport <span class="sc">*</span> Diagnosis, <span class="at">data =</span> therapy4groups)</span>
+<span id="cb606-2"><a href="einfache-lineare-regression.html#cb606-2" tabindex="-1"></a><span class="fu">summary</span>(reg3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Symptoms ~ Sport * Diagnosis, data = therapy4groups)
@@ -805,23 +808,23 @@ div.csl-indent {
 <div id="linearität" class="section level3 hasAnchor" number="17.8.1">
 <h3><span class="header-section-number">17.8.1</span> Linearität<a href="einfache-lineare-regression.html#linearit%C3%A4t" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Linearität prüfen wir graphisch mit einem Streudiagramm (wie in der deskriptiven Einordnung). Zusätzlich zur Regressionsgeraden (<code>method = "lm"</code>, blau) zeichnen wir eine geglättete Kurve ein (<code>method = "loess"</code>, rot), die sich frei an die Daten anpasst:</p>
-<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="einfache-lineare-regression.html#cb605-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> therapy4groups, <span class="fu">aes</span>(<span class="at">x =</span> Sport, <span class="at">y =</span> Symptoms)) <span class="sc">+</span></span>
-<span id="cb605-2"><a href="einfache-lineare-regression.html#cb605-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb605-3"><a href="einfache-lineare-regression.html#cb605-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb605-4"><a href="einfache-lineare-regression.html#cb605-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb605-5"><a href="einfache-lineare-regression.html#cb605-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Sport (Stunden pro Woche)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Symptomschwere&quot;</span>) <span class="sc">+</span></span>
-<span id="cb605-6"><a href="einfache-lineare-regression.html#cb605-6" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-348-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="einfache-lineare-regression.html#cb608-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> therapy4groups, <span class="fu">aes</span>(<span class="at">x =</span> Sport, <span class="at">y =</span> Symptoms)) <span class="sc">+</span></span>
+<span id="cb608-2"><a href="einfache-lineare-regression.html#cb608-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb608-3"><a href="einfache-lineare-regression.html#cb608-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb608-4"><a href="einfache-lineare-regression.html#cb608-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb608-5"><a href="einfache-lineare-regression.html#cb608-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Sport (Stunden pro Woche)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Symptomschwere&quot;</span>) <span class="sc">+</span></span>
+<span id="cb608-6"><a href="einfache-lineare-regression.html#cb608-6" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-353-1.png" alt="" width="672" /></p>
 <p>Die Punkte sollten sich ungefähr entlang einer Geraden verteilen und keinen erkennbaren Bogen (z.B. U-Form) beschreiben. Liegt die rote Kurve ungefähr auf der blauen Geraden, können wir von einem linearen Zusammenhang ausgehen.</p>
 </div>
 <div id="normalverteilung-der-residuen-1" class="section level3 hasAnchor" number="17.8.2">
 <h3><span class="header-section-number">17.8.2</span> Normalverteilung der Residuen<a href="einfache-lineare-regression.html#normalverteilung-der-residuen-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Die Normalverteilung der Residuen prüfen wir graphisch mit einem QQ-Plot und statistisch mit dem Shapiro-Wilk Test. Dafür nutzen wir die standardisierten Residuen, die wir mit <code>rstandard()</code> erhalten:</p>
-<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="einfache-lineare-regression.html#cb606-1" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">rstandard</span>(reg))</span>
-<span id="cb606-2"><a href="einfache-lineare-regression.html#cb606-2" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">rstandard</span>(reg))</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-349-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="einfache-lineare-regression.html#cb609-1" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">rstandard</span>(reg))</span>
+<span id="cb609-2"><a href="einfache-lineare-regression.html#cb609-2" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">rstandard</span>(reg))</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-354-1.png" alt="" width="672" /></p>
 <p>Die Punkte sollten möglichst auf der Diagonalen liegen.</p>
-<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="einfache-lineare-regression.html#cb607-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">rstandard</span>(reg))</span></code></pre></div>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="einfache-lineare-regression.html#cb610-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">rstandard</span>(reg))</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -833,8 +836,8 @@ div.csl-indent {
 <h3><span class="header-section-number">17.8.3</span> Homoskedastizität<a href="einfache-lineare-regression.html#homoskedastizit%C3%A4t" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Homoskedastizität bedeutet, dass die <strong>Streuung der Residuen über den gesamten Wertebereich gleich groß</strong> ist. Das Modell sagt also für Personen, die wenig Sport treiben, ungefähr genauso genau (bzw. ungenau) vorher wie für Personen, die viel Sport treiben. Ist das nicht der Fall (z.B. kleine Vorhersagefehler bei wenig, große Vorhersagefehler bei viel Sport), spricht man von <strong>Heteroskedastizität</strong>.</p>
 <p>Die Homoskedastizität prüfen wir graphisch, indem wir die Residuen gegen die vorhergesagten Werte plotten. Dafür nutzen wir die eingebaute <code>plot()</code> Funktion für lm-Objekte:</p>
-<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="einfache-lineare-regression.html#cb609-1" tabindex="-1"></a><span class="fu">plot</span>(reg, <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-351-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="einfache-lineare-regression.html#cb612-1" tabindex="-1"></a><span class="fu">plot</span>(reg, <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-356-1.png" alt="" width="672" /></p>
 <p>In diesem Plot werden die Residuen (Y-Achse) gegen die vorhergesagten Werte (X-Achse) abgetragen. Jeder Punkt ist eine Person. Die rote Linie ist eine geglättete Trendlinie durch die Punkte.</p>
 <p>So lesen wir den Plot (wie in der Vorlesung Quantitative Methoden II):</p>
 <ul>
@@ -843,8 +846,8 @@ div.csl-indent {
 </ul>
 <p><span class="math inline">\(\rightarrow\)</span> Dann ist die Homoskedastizitätsannahme gegeben.</p>
 <p>Statistisch lässt sich die Homoskedastizität mit dem <strong>Breusch-Pagan Test</strong> prüfen. Dieser prüft, ob die Varianz der Residuen mit den vorhergesagten Werten zusammenhängt. Die Nullhypothese lautet, dass die Fehlervarianz konstant ist (Homoskedastizität). Eine Funktion dafür ist im Paket <code>lmtest</code> enthalten:</p>
-<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="einfache-lineare-regression.html#cb610-1" tabindex="-1"></a><span class="co"># install.packages(&quot;lmtest&quot;)</span></span>
-<span id="cb610-2"><a href="einfache-lineare-regression.html#cb610-2" tabindex="-1"></a>lmtest<span class="sc">::</span><span class="fu">bptest</span>(reg)</span></code></pre></div>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="einfache-lineare-regression.html#cb613-1" tabindex="-1"></a><span class="co"># install.packages(&quot;lmtest&quot;)</span></span>
+<span id="cb613-2"><a href="einfache-lineare-regression.html#cb613-2" tabindex="-1"></a>lmtest<span class="sc">::</span><span class="fu">bptest</span>(reg)</span></code></pre></div>
 <pre><code>## 
 ##  studentized Breusch-Pagan test
 ## 
@@ -859,27 +862,27 @@ div.csl-indent {
 <li><code>check_normality()</code> berechnet den <strong>Shapiro-Wilk Test</strong> auf den Residuen des Modells.</li>
 <li><code>check_heteroscedasticity()</code> berechnet den <strong>Breusch-Pagan Test</strong>.</li>
 </ul>
-<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="einfache-lineare-regression.html#cb612-1" tabindex="-1"></a><span class="fu">check_normality</span>(reg)</span></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="einfache-lineare-regression.html#cb615-1" tabindex="-1"></a><span class="fu">check_normality</span>(reg)</span></code></pre></div>
 <pre><code>## OK: residuals appear as normally distributed (p = 0.261).</code></pre>
-<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="einfache-lineare-regression.html#cb614-1" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(reg)</span></code></pre></div>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="einfache-lineare-regression.html#cb617-1" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(reg)</span></code></pre></div>
 <pre><code>## OK: Error variance appears to be homoscedastic (p = 0.603).</code></pre>
 <p>Die Funktionen geben das Ergebnis praktischerweise direkt als Satz aus (z.B. <em>“Error variance appears to be homoscedastic”</em>).</p>
 <p>Mit <code>check_model()</code> erhalten wir zudem alle diagnostischen Plots auf einen Blick (dafür müssen zusätzlich die Pakete <code>see</code> und <code>patchwork</code> installiert sein):</p>
-<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="einfache-lineare-regression.html#cb616-1" tabindex="-1"></a><span class="co"># install.packages(c(&quot;see&quot;, &quot;patchwork&quot;))</span></span>
-<span id="cb616-2"><a href="einfache-lineare-regression.html#cb616-2" tabindex="-1"></a><span class="fu">check_model</span>(reg)</span></code></pre></div>
-<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-354-1.png" alt="" width="768" /></p>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="einfache-lineare-regression.html#cb619-1" tabindex="-1"></a><span class="co"># install.packages(c(&quot;see&quot;, &quot;patchwork&quot;))</span></span>
+<span id="cb619-2"><a href="einfache-lineare-regression.html#cb619-2" tabindex="-1"></a><span class="fu">check_model</span>(reg)</span></code></pre></div>
+<p><img src="CFH_R_bookdown_files/figure-html/unnamed-chunk-359-1.png" alt="" width="768" /></p>
 <p><strong>Vorsicht:</strong> Wie bereits im Kapitel zur ANOVA erwähnt, sollte man sich nicht blind auf die Tests verlassen. Bei kleinen Stichproben (wie hier mit <span class="math inline">\(N=30\)</span>) haben sie wenig Teststärke, bei großen Stichproben werden schon minimale Abweichungen signifikant. Die graphische Prüfung ist daher mindestens genauso wichtig.</p>
 </div>
 </div>
 <div id="darstellung-in-tabellenform-5" class="section level2 hasAnchor" number="17.9">
 <h2><span class="header-section-number">17.9</span> Darstellung in Tabellenform<a href="einfache-lineare-regression.html#darstellung-in-tabellenform-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Zur sauberen Darstellung des Ergebnisses in einer bereits nach APA formatierten Tabelle, lassen sich die Funktionen <code>apa_print</code> und <code>apa_table</code> aus dem Paket <code>papaja</code> verwenden:</p>
-<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="einfache-lineare-regression.html#cb617-1" tabindex="-1"></a>apa_reg <span class="ot">&lt;-</span> <span class="fu">apa_print</span>(reg)</span>
-<span id="cb617-2"><a href="einfache-lineare-regression.html#cb617-2" tabindex="-1"></a><span class="fu">apa_table</span>(</span>
-<span id="cb617-3"><a href="einfache-lineare-regression.html#cb617-3" tabindex="-1"></a>  apa_reg<span class="sc">$</span>table, <span class="at">caption =</span> <span class="st">&quot;Tabelle für die einfache lineare Regression.&quot;</span></span>
-<span id="cb617-4"><a href="einfache-lineare-regression.html#cb617-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="einfache-lineare-regression.html#cb620-1" tabindex="-1"></a>apa_reg <span class="ot">&lt;-</span> <span class="fu">apa_print</span>(reg)</span>
+<span id="cb620-2"><a href="einfache-lineare-regression.html#cb620-2" tabindex="-1"></a><span class="fu">apa_table</span>(</span>
+<span id="cb620-3"><a href="einfache-lineare-regression.html#cb620-3" tabindex="-1"></a>  apa_reg<span class="sc">$</span>table, <span class="at">caption =</span> <span class="st">&quot;Tabelle für die einfache lineare Regression.&quot;</span></span>
+<span id="cb620-4"><a href="einfache-lineare-regression.html#cb620-4" tabindex="-1"></a>)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-355">Table 17.1: </span> Tabelle für die einfache lineare Regression.</caption>
+<caption><span id="tab:unnamed-chunk-360">Table 17.1: </span> Tabelle für die einfache lineare Regression.</caption>
 <thead>
 <tr class="header">
 <th align="left">Predictor</th>

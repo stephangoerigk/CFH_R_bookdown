@@ -80,7 +80,7 @@ sum(is.na(a))
 
 #### Deskription kategorische Vektoren
 
-| Funktion| Beispiel | Ergebnis|Result |
+| Funktion| Beschreibung | Beispiel |Ergebnis|
 |:----------|:--------------------|:-------------------------|:--------------------|
 |     `unique(x)`|  Zeigt Vektor aller einzigartiger Werte an |   `unique(c(1, 1, 2, 10))` |`r unique(c(1, 1, 2, 10))`     |
 |     `table(x)`|  Gibt Tabelle aller einzigartiger Werte und deren absolute Häufigkeit an. Um auch fehlende Werte zu zählen wählen Sie `exclude = NULL` |  `table(c("a", "a", "b", "c"))`|` 2-"a", 1-"b", 1-"c"`    |
@@ -220,7 +220,7 @@ Ein Lagemaß alleine gibt der Leserschaft zwar eine Information über die Mitte 
 
 Die gängigsten Kombinationen sind wie folgt:
 
-| | Statistik 1|Statistik 2 | Bericht | Beispiel
+| Statistik 1|Statistik 2 | Bericht | Beispiel
 |:-------------------|:----------------------|:-----------------------|:-----------------------|
 |     Absolute Häufigkeit|    Relative Häufigkeit |n (%)     | 23 (34%)
 |     Mittelwert|    Standardabweichung|m (SD)    | 42.11 (8.51)

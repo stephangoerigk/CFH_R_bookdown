@@ -250,18 +250,18 @@ Die beiden Haupteffekte und der Interaktionseffekt können einzeln interpretiert
 
 Der Haupteffekt von `Therapy` spiegelt im Wesentlichen das Ergebnis wieder, welches wir bereits von der einfaktoriellen ANOVA kennen. Es handelt sich um den Effekt der Therapie, wenn man den Effekt der 2. UV (Diagnosis) außer Acht lässt.
 
-Der Haupteffekt ist signifikant bei $F_{(3,22)}=9.94, p<.001$. Wir können schlussfolgern, dass es einen Unterschied zwischen den Diagnosen gibt. Wo die Unterschiede genau liegen, können wir mit den Post-hoc Tests bestimmen, wie oben bereits geschehen.
+Der Haupteffekt ist signifikant bei $F_{(3,22)}=9.94, p<.001$. Wir können schlussfolgern, dass es einen Unterschied zwischen den Therapien gibt. Wo die Unterschiede genau liegen, können wir mit den Post-hoc Tests bestimmen, wie oben bereits geschehen.
 
 #### Haupteffekt 2
 
-Der Haupteffekt von `Diagnosis` ist nichts anderes als ein unabhängiger t-Test. Es handelt sich um den Effekt der Diagnose, wenn man den Effekt der 1. UV (Therapy) außer Acht lässt. Dieser Haupteffekt ist nicht signifikant $F_{(1,22)}=0.004, p<.949$. Über alle Therapien hinweg scheint es keinen Unterschied in der Symptomatik der Patient:innen mit Depressionen und Angststörungen zu geben.
+Der Haupteffekt von `Diagnosis` ist nichts anderes als ein unabhängiger t-Test. Es handelt sich um den Effekt der Diagnose, wenn man den Effekt der 1. UV (Therapy) außer Acht lässt. Dieser Haupteffekt ist nicht signifikant $F_{(1,22)}=0.004, p=.949$. Über alle Therapien hinweg scheint es keinen Unterschied in der Symptomatik der Patient:innen mit Depressionen und Angststörungen zu geben.
 
 #### Interaktionseffekt
 
 Der Interaktionseffekt von `Therapy * Diagnosis` prüft, ob der Effekt der Therapie in beiden Diagnosen unterschiedlich wirkt.
 Er ist somit eine Möglichkeit den "kombinierten Effekt" der beiden Variablen zu prüfen.
 
-Der Interaktionseffekt ist signifikant $F_{(3,22)}=3.33, p<.038$. Entsprechend scheinen die Patient:innen nach den Therapien unterschiedlich wenige Symptome zu haben, je nachdem welche Diagnose sie hatten.
+Der Interaktionseffekt ist signifikant $F_{(3,22)}=3.33, p=.038$. Entsprechend scheinen die Patient:innen nach den Therapien unterschiedlich wenige Symptome zu haben, je nachdem welche Diagnose sie hatten.
 
 Um diesen Effekt inhaltlich zu verstehen, empfiehlt sich ein Blick auf die Graphik, in Kombination mit Post-Hoc Tests.
 
@@ -276,7 +276,7 @@ emmeans(mod, pairwise ~ Therapy|Diagnosis)
 
 Wir sehen, dass die Symptome nach SSRI insbesondere in der Gruppe der depressiven Patient:innen reduziert sind. Zudem sind die Symtome nach der VT deutlich reduziert (insbesondere bei Angststörungen).
 
-Dies führt dazu, dass die VT (in dieser Stichprobe) in der Behandlung von Angststörungen der Kontrollgruppe $(t_{(22)}=4.68, p<.001)$, der Psychoanalyse $(t_{(22)}=4.02, p=.003)$ und den SSRI $(t_{(22)}=3.99, p=.003)$ überlegen war. In der Behandlung von Angststörungen waren sowohl SSRI $(t_{(22)}=3.29, p=.016)$ als auch VT $(t_{(22)}=3.38, p=.013)$ besser als die Kontrollgruppe, unterschieden sich jedoch nicht signifikant von der Psychoanalyse und auch nicht voneinander.
+Dies führt dazu, dass die VT (in dieser Stichprobe) in der Behandlung von Angststörungen der Kontrollgruppe $(t_{(22)}=4.68, p<.001)$, der Psychoanalyse $(t_{(22)}=4.02, p=.003)$ und den SSRI $(t_{(22)}=3.99, p=.003)$ überlegen war. In der Behandlung von Depressionen waren sowohl SSRI $(t_{(22)}=3.29, p=.016)$ als auch VT $(t_{(22)}=3.38, p=.013)$ besser als die Kontrollgruppe, unterschieden sich jedoch nicht signifikant von der Psychoanalyse und auch nicht voneinander.
 
 ## Prüfen der Voraussetzungen von ANOVAs
 

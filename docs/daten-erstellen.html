@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2026-10-15" />
+<meta name="date" content="2026-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -327,7 +327,7 @@ div.csl-indent {
 <li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-f%C3%BCr-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
 </ul></li>
 <li class="chapter" data-level="12.5" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm"><i class="fa fa-check"></i><b>12.5</b> Balkendiagramm</a></li>
-<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-3-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 3 Variablen</a></li>
+<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-2-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 2 Variablen</a></li>
 <li class="chapter" data-level="12.7" data-path="graphiken.html"><a href="graphiken.html#boxplot"><i class="fa fa-check"></i><b>12.7</b> Boxplot</a></li>
 <li class="chapter" data-level="12.8" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>12.8</b> Facetting</a></li>
 <li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#%C3%A4sthetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
@@ -355,7 +355,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="tabellen.html"><a href="tabellen.html#layout"><i class="fa fa-check"></i><b>13.3</b> Layout</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einf%C3%BCgen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
+<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#spaltennamen-%C3%A4ndern"><i class="fa fa-check"></i><b>13.3.1</b> Spaltennamen ändern</a></li>
+<li class="chapter" data-level="13.3.2" data-path="tabellen.html"><a href="tabellen.html#zus%C3%A4tzliche-kopfzeile"><i class="fa fa-check"></i><b>13.3.2</b> Zusätzliche Kopfzeile</a></li>
+<li class="chapter" data-level="13.3.3" data-path="tabellen.html"><a href="tabellen.html#tabellentitel"><i class="fa fa-check"></i><b>13.3.3</b> Tabellentitel</a></li>
+<li class="chapter" data-level="13.3.4" data-path="tabellen.html"><a href="tabellen.html#anmerkungen-unter-der-tabelle"><i class="fa fa-check"></i><b>13.3.4</b> Anmerkungen unter der Tabelle</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="tabellen.html"><a href="tabellen.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern</a></li>
 </ul></li>
@@ -570,10 +573,10 @@ div.csl-indent {
 <p>Wollen wir z.B. eine normalverteilte Variable mit zufälligen Werten erstellen, können wir die <code>rnorm()</code> Funktion nutzen.</p>
 <p>Dafür müssen wir lediglich angeben, wie viele Werte wir haben wollen (<code>n</code>) und welchen Mittelwert (<code>mean</code>) und welche Standardabweichung (<code>sd</code>) die Verteilung haben soll:</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="daten-erstellen.html#cb43-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
-<pre><code>##  [1]  1.33952248 -0.07779982 -1.61956320  0.29343229 -0.69280396 -1.46610131
-##  [7] -0.21288876  0.31070864  0.94309189 -0.22162240  0.78989747 -1.26658512
-## [13] -0.92796698 -1.92768700  0.74782497  0.04385843  1.19877234  0.83803373
-## [19]  0.37273738  0.87180223</code></pre>
+<pre><code>##  [1]  0.3424970  1.1479652  1.3485417  1.5646337 -0.9505613 -0.1541768
+##  [7]  0.7375797  0.5908377 -1.7413474 -0.6770110  1.2536193  0.3604645
+## [13]  0.3747440  1.3580461 -1.3836380  1.1407468 -0.8095847  0.1189261
+## [19]  0.7420355  0.4345358</code></pre>
 
 </div>
 </div>
