@@ -66,11 +66,11 @@ Zur Durchführung des Tests nutzen wir die in der Grundform von R vorinstalliert
 ```{r}
 t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)
 ```
-Wir wählen die Variable `groesse` innerhalb unseres Datensatzes mit dem `$` Zeichen an. Über das `mu` Argument geben wir den hypothetischen Vergleichswert an. Unter `alternative` können wir auswählen, ob der Test gerichtet oder ungerichtet (aka ein- oder zweiseitig) durchgeführt werden soll. Je nach Hypothese wählen wir `"two.sided"` für einen ungerichteten Test und entweder `"less"` oder `"greater"` für einen gerichteten Test. Das `conf.level` entsprich unserem  Signifikanzniveau. 
+Wir wählen die Variable `groesse` innerhalb unseres Datensatzes mit dem `$` Zeichen an. Über das `mu` Argument geben wir den hypothetischen Vergleichswert an. Unter `alternative` können wir auswählen, ob der Test gerichtet oder ungerichtet (aka ein- oder zweiseitig) durchgeführt werden soll. Je nach Hypothese wählen wir `"two.sided"` für einen ungerichteten Test und entweder `"less"` oder `"greater"` für einen gerichteten Test. Das `conf.level` entspricht unserem  Signifikanzniveau. 
 
 ### Ergebnis interpretieren
 
-Das Ergebnis des Tests lässt sich am P-Wert ablesen (p=`r t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$p.value`). Ist der P-wert kleiner als das gewählte Signifikanzniveau (i.d.R $\alpha=.05$) unterscheidet sich unser Stichprobenmittelwert (`r round(mean(data$groesse), 2)` cm) signifikant von der Durchschnittsgröße in Deutschland (173 cm). Wir verwerfen also die Nullhypothese (H0) zugunsten unserer Alternativhypothese (H1).
+Das Ergebnis des Tests lässt sich am P-Wert ablesen (p=`r t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$p.value`). Ist der P-Wert kleiner als das gewählte Signifikanzniveau (i.d.R. $\alpha=.05$) unterscheidet sich unser Stichprobenmittelwert (`r round(mean(data$groesse), 2)` cm) signifikant von der Durchschnittsgröße in Deutschland (173 cm). Wir verwerfen also die Nullhypothese (H0) zugunsten unserer Alternativhypothese (H1).
 
 ### Ergebnis berichten
 
@@ -79,12 +79,12 @@ Die relevanten Parameter zum Berichten eines Ein-Stichproben t-Tests sind
 * M (Mittelwert)
 * Grenzen des Konfidenzintervalls des Mittelwerts
 * t-Wert (Teststatistik)
-* df (Freiheitsgerade)
+* df (Freiheitsgrade)
 * P-Wert
 
 Beim Berichten im Fließtext schreibt man: 
 
-Die Größe in der Stichpobe unterschied sich signifikant von der Durchschnittsgröße in Deutschland (173 cm),  M = `r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$estimate, 2)`, 95% CI (`r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$conf.int[1], 2)`, `r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$conf.int[2], 2)`), t (`r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$parameter, 2)`) = `r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$statistic, 2)`; p < .001.
+Die Größe in der Stichprobe unterschied sich signifikant von der Durchschnittsgröße in Deutschland (173 cm),  M = `r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$estimate, 2)`, 95% CI (`r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$conf.int[1], 2)`, `r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$conf.int[2], 2)`), t (`r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$parameter, 2)`) = `r round(t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$statistic, 2)`; p < .001.
 
 Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:
 
@@ -93,7 +93,7 @@ t-Wert (Teststatistik):
 t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$statistic
 ```
 
-df (Freiheitsgerade):
+df (Freiheitsgrade):
 ```{r}
 t.test(data$groesse, mu = 173, alternative = "two.sided", conf.level = 0.95)$parameter
 ```
@@ -133,7 +133,7 @@ effsize::cohen.d(d = data$groesse, f = NA, mu = 173)$conf.int[1]
 effsize::cohen.d(d = data$groesse, f = NA, mu = 173)$conf.int[2]
 ```
 
-Die Interpretation von Cohens'd lautet wie folgt @cohen1992quantitative:
+Die Interpretation von Cohen's d lautet wie folgt @cohen1992quantitative:
 
 ```{r echo = F}
 d = data.frame("d" = c("|>0.2|",
@@ -197,7 +197,7 @@ Zunächst können wir uns die Deskriptivstatistiken innerhalb der beiden Gruppen
 psych::describeBy(Weight.loss ~ Gender, data = data)
 ```
 
-Rein deskriptiv lässt sich bereits feststellen, dass Männer mit `r round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg etwas weniger abgenommen zu haben scheinen, als Frauen mit `r round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg. 
+Rein deskriptiv lässt sich bereits feststellen, dass Männer mit `r round(mean(data$Weight.loss[data$Gender == "Males"]), 2)`kg etwas weniger abgenommen zu haben scheinen, als Frauen mit `r round(mean(data$Weight.loss[data$Gender == "Females"]), 2)`kg. 
 
 Ob sich dieser numerische Unterschied auch als signifikant erweist, prüfen wir mit dem t-Test.
 
@@ -227,10 +227,10 @@ t.test(Weight.loss ~ Gender, data = data, alternative = "greater")
 
 Die relevanten Parameter zum Berichten eines unabhängigen t-Tests sind:
 
-* $\Delta$M (Differenz vom Mittelwert zum Referenzwert)
+* $\Delta$M (Differenz der Mittelwerte)
 * Grenzen des Konfidenzintervalls der Mittelwertsdifferenz
 * t-Wert (Teststatistik)
-* df (Freiheitsgerade)
+* df (Freiheitsgrade)
 * P-Wert
 
 Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:
@@ -240,7 +240,7 @@ t-Wert (Teststatistik):
 t.test(Weight.loss ~ Gender, data = data)$statistic
 ```
 
-df (Freiheitsgerade):
+df (Freiheitsgrade):
 ```{r}
 t.test(Weight.loss ~ Gender, data = data)$parameter
 ```
@@ -258,15 +258,15 @@ t.test(Weight.loss ~ Gender, data = data)$conf.int[2]
 
 ### Voraussetzungsprüfung und Alternativen
 
-Folgende Vorraussetzungen gelten für den unabhängigen t-Test:
+Folgende Voraussetzungen gelten für den unabhängigen t-Test:
 * unabhängige Messungen
 * Intervallskala
 * Normalverteilung in beiden Gruppen 
 * Homogenität der Varianzen
 
-Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt sein, muss ein robuster Test gerechnet werden (s.u. U-Test).
+Sollten die Voraussetzungen Intervallskalenniveau und Normalverteilung verletzt sein, muss ein robuster Test gerechnet werden (s.u. U-Test).
 
-Die Varianzhomogenität wird mittels Levene's Test (F-Test) geprüft @levene1960robust. Eine Funktion dafür ist im Patek `car` enthalten.
+Die Varianzhomogenität wird mittels Levene's Test (F-Test) geprüft @levene1960robust. Eine Funktion dafür ist im Paket `car` enthalten.
 
 ```{r}
 car::leveneTest(Weight.loss ~ Gender, data = data)
@@ -307,7 +307,7 @@ effsize::cohen.d(Weight.loss ~ Gender, data = data)$conf.int[1]
 effsize::cohen.d(Weight.loss ~ Gender, data = data)$conf.int[2]
 ```
 
-Die Interpretation von Cohens'd lautet wie folgt @cohen1992quantitative:
+Die Interpretation von Cohen's d lautet wie folgt @cohen1992quantitative:
 
 ```{r echo = F}
 d = data.frame("d" = c("|>0.2|",
@@ -321,7 +321,7 @@ apa_table(d, caption = "Interpretation von Cohen's d.")
 
 #### Hedges' g
 
-Eine gelegentlich verwendete Alternative zu Cohen's d ist das Hedges' g. Hedges' g wird weitgehend analog zu Cohen's d verwendet, korrigiert dabei jedoch statistisch für besonders kleine Gruppengößen (N<20) @hedges2014statistical
+Eine gelegentlich verwendete Alternative zu Cohen's d ist das Hedges' g. Hedges' g wird weitgehend analog zu Cohen's d verwendet, korrigiert dabei jedoch statistisch für besonders kleine Gruppengrößen (N<20) @hedges2014statistical
 
 Es lässt sich mit derselben Funktion berechnen:
 
@@ -329,7 +329,7 @@ Es lässt sich mit derselben Funktion berechnen:
 effsize::cohen.d(Weight.loss ~ Gender, data = data, hedges.correction = TRUE)
 ```
 
-Die Interpretation von Hedges' g ist identisch wie die von von Cohens'd: 
+Die Interpretation von Hedges' g ist identisch wie die von von Cohen's d: 
 
 ```{r echo = F}
 d = data.frame("g" = c("|>0.2|",
@@ -432,7 +432,7 @@ Die relevanten Parameter zum Berichten eines abhängigen t-Tests sind:
 * $M_d$ (Mittelwert der Differenzen)
 * Grenzen des Konfidenzintervalls des Mittelwert der Differenzen
 * t-Wert (Teststatistik)
-* df (Freiheitsgerade)
+* df (Freiheitsgrade)
 * P-Wert
 
 Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:
@@ -442,7 +442,7 @@ t-Wert (Teststatistik):
 t.test(data$gewicht_prä, data$gewicht_post, paired = T)$statistic
 ```
 
-df (Freiheitsgerade):
+df (Freiheitsgrade):
 ```{r}
 t.test(data$gewicht_prä, data$gewicht_post, paired = T)$parameter
 ```
@@ -460,12 +460,12 @@ t.test(data$gewicht_prä, data$gewicht_post, paired = T)$conf.int[2]
 
 ### Voraussetzungsprüfung und Alternativen
 
-Folgende Vorraussetzungen gelten für den abhängigen t-Test:
+Folgende Voraussetzungen gelten für den abhängigen t-Test:
 * abhängige Messungen
 * Intervallskala
 * Normalverteilung der Differenzwerte 
 
-Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt sein, muss ein robuster Test gerechnet werden (s.u. U-Test).
+Sollten die Voraussetzungen Intervallskalenniveau und Normalverteilung verletzt sein, muss ein robuster Test gerechnet werden (s.u. Wilcoxon–Mann–U-Test).
 
 Die Varianzhomogenität (Voraussetzung beim unabhängigen t-Test) ist beim abhängigen t-Test nicht relevant.
 
@@ -495,7 +495,7 @@ effsize::cohen.d(data$gewicht_prä, data$gewicht_post, paired = T)$conf.int[1]
 effsize::cohen.d(data$gewicht_prä, data$gewicht_post, paired = T)$conf.int[2]
 ```
 
-Die Interpretation von Cohens'd lautet wie folgt @cohen1992quantitative:
+Die Interpretation von Cohen's d lautet wie folgt @cohen1992quantitative:
 
 ```{r echo = F}
 d = data.frame("d" = c("|>0.2|",
@@ -523,7 +523,7 @@ apa_table(
 
 ## Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)
 
-Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt sein, muss ein robuster (non-paramterischer) Test gerechnet werden.
+Sollten die Voraussetzungen Intervallskalenniveau und Normalverteilung verletzt sein, muss ein robuster (nicht-parametrischer) Test gerechnet werden.
 
 Der Wilcoxon–Mann–Whitney-U Test ist eine **Alternative zum unabhängigen t-Test**. 
 
@@ -564,7 +564,7 @@ Die relevanten Parameter zum Berichten eines Wilcoxon–Mann–Whitney-U Tests s
 * Wilcoxon Statistik (W)
 * P-Wert
 
-Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:
+Diese Werte lassen sich wie folgt aus dem Test Objekt extrahieren:
 
 Wilcoxon Statistik (W, Teststatistik):
 ```{r warning=FALSE}
@@ -626,13 +626,13 @@ apa_table(
 
 ## Wilcoxon–Mann–U Test (Wilcoxon signed rank test)
 
-Sollten die Vorraussetzungen Intervallskalekniveau und Normalverteilung verletzt sein, muss ein robuster (non-paramterischer) Test gerechnet werden.
+Sollten die Voraussetzungen Intervallskalenniveau und Normalverteilung verletzt sein, muss ein robuster (nicht-parametrischer) Test gerechnet werden.
 
 Der Wilcoxon–Mann–U Test ist eine **Alternative zum abhängigen t-Test**. 
 
 ### Hypothesen
 
-Er prüft im Wesentlichen die selben Hypothesen, funktioniert aber auf Rangskalenniveau anstelle des Intervallskalenniveaus.
+Er prüft im Wesentlichen dieselben Hypothesen, funktioniert aber auf Rangskalenniveau anstelle des Intervallskalenniveaus.
 
 Um beide Tests vergleichen zu können, verwenden wir noch einmal dasselbe Beispiel, wie im Kapitel zum abhängigen t-Test (Unterschied im Gewicht: vor einer Diät vs. nach einer Diät).
 
@@ -643,7 +643,7 @@ names(data) = c("gewicht_prä", "gewicht_post")
 
 ### Test durchführen
 
-Der Test nimmt die selbe Form an wie der abhängige t-Test:
+Der Test nimmt dieselbe Form an wie der abhängige t-Test:
 
 ```{r warning=FALSE}
 wilcox.test(data$gewicht_prä, data$gewicht_post, paired = T)
@@ -662,7 +662,7 @@ Die relevanten Parameter zum Berichten eines Wilcoxon–Mann–U Tests sind:
 * Wilcoxon Statistik (W)
 * P-Wert
 
-Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:
+Diese Werte lassen sich wie folgt aus dem Test Objekt extrahieren:
 
 Wilcoxon Statistik (W, Teststatistik):
 ```{r warning=FALSE}
@@ -734,7 +734,7 @@ apa_table(
 
 ## $\chi$^2^-Test
 
-Wir haben nun die t-Tests kennengelernt. Diese haben alle gemeinsam, dass Sie Mittelwerte vergleichen. Sie setzen somit voraus, dass die AV numerisch ist.
+Wir haben nun die t-Tests kennengelernt. Diese haben alle gemeinsam, dass sie Mittelwerte vergleichen. Sie setzen somit voraus, dass die AV numerisch ist.
 
 Wie können wir aber Vergleiche rechnen, wenn unsere AV eine kategoriale (z.B. binäre) Variable ist?
 
@@ -782,20 +782,20 @@ chisq.test(table(data$Remission, data$Therapie))
 
 ### Relevante Parameter extrahieren
 
-Die relevanten Parameter zum Berichten eines abhängigen t-Tests sind:
+Die relevanten Parameter zum Berichten des $\chi$^2^-Tests sind:
 
 * $\chi$^2^-Wert (Teststatistik)
-* df (Freiheitsgerade)
+* df (Freiheitsgrade)
 * P-Wert
 
-Diese Werte lassen sich wie folgt aus dem t-Test Objekt extrahieren:
+Diese Werte lassen sich wie folgt aus dem Test Objekt extrahieren:
 
 $\chi$^2^-Wert (Teststatistik):
 ```{r}
 chisq.test(table(data$Remission, data$Therapie))$statistic
 ```
 
-df (Freiheitsgerade):
+df (Freiheitsgrade):
 ```{r}
 chisq.test(table(data$Remission, data$Therapie))$parameter
 ```
@@ -807,13 +807,13 @@ chisq.test(table(data$Remission, data$Therapie))$p.value
 
 ### Voraussetzungsprüfung und Alternativen
 
-Folgende Vorraussetzungen gelten für den $\chi$^2^-Test:
+Folgende Voraussetzungen gelten für den $\chi$^2^-Test:
 
 * unabhängige Messungen
 * Nominalskala
 * Jede Zelle der Häufigkeitstabelle hat 5 oder mehr Beobachtungen.
 
-Sollte die Vorraussetzung, dass jede Zelle der Häufigkeitstabelle 5 oder mehr Beobachtungen hat nicht gegeben sein, wird uns R in der Ausgabe darauf hinweisen. Dann muss ersatzweise der exakte Test nach Fisher berechnet werden (s.u.)
+Sollte die Voraussetzung, dass jede Zelle der Häufigkeitstabelle 5 oder mehr Beobachtungen hat nicht gegeben sein, wird uns R in der Ausgabe darauf hinweisen. Dann muss ersatzweise der exakte Test nach Fisher berechnet werden (s.u.)
 
 ### Effektstärke
 
@@ -856,7 +856,7 @@ apa_table(d, caption = "Interpretation von φ")
 
 Wenn wir eine Häufigkeitstabelle mit mehr als 2x2 Dimensionen haben, wird als Effektstärke Cramer's $V$ berechnet.
 
-Nehmen wir dafür einmal an, unsere Therapieerfolg Variable hätte eine 3. Ausprägung "Rückfall". Das wären Personen, die zunächst eine Remission hatten, dann aber wieder erkranken.
+Nehmen wir dafür einmal an, unsere Therapieerfolg Variable hätte eine 3. Ausprägung "Rückfall". Das wären Personen, die zunächst eine Remission hatten, dann aber wieder erkrankten.
 
 ```{r include=FALSE}
 data1 = data.frame(Erfolg = sample(0:2, 20, replace = T, prob = c(0.3, 0.3, 0.3)),
@@ -905,7 +905,7 @@ apa_table(d, caption = "Interpretation des Cramer's V")
 
 ## Fisher's Exakter Test
 
-Sollte die Vorraussetzung des $\chi$^2^-Tests, dass jede Zelle der Häufigkeitstabelle 5 oder mehr Beobachtungen hat nicht gegeben sein, muss ersatzweise der exakte Test nach Fisher berechnet werden
+Sollte die Voraussetzung des $\chi$^2^-Tests, dass jede Zelle der Häufigkeitstabelle 5 oder mehr Beobachtungen hat nicht gegeben sein, muss ersatzweise der exakte Test nach Fisher berechnet werden
 
 Dieser funktioniert jedoch im Wesentlichen analog. 
 

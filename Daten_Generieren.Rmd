@@ -33,7 +33,7 @@ Die `c()` Funktion ist die einfachste Art einen Vektor zu erstellen, sie ist abe
 
 Glücklicherweise hat R viele eingebaute Funktionen, um leicht automatisch numerische Vektoren zu erstellen. 
 
-Lassen Sie uns mit dreien davon starten`a:b`, `seq()`, and `rep()`:
+Lassen Sie uns mit dreien davon starten: `a:b`, `seq()` und `rep()`:
 
 | Funktion| Beispiel|Ergebnis |
 |:-------------------------|:-----------------------------|:----------|

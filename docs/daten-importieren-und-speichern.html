@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kapitel 7 Daten importieren und speichern | Einführung in R</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kapitel 7 Daten importieren und speichern | Einführung in R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Stephan Goerigk" />
 
 
-<meta name="date" content="2023-05-18" />
+<meta name="date" content="2026-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,11 +52,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -122,6 +123,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
@@ -160,7 +165,7 @@ div.csl-indent {
 <li><a href="./">R and der CFH</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="über-dieses-skript.html"><a href="über-dieses-skript.html"><i class="fa fa-check"></i>Über dieses Skript</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Über dieses Skript</a></li>
 <li class="chapter" data-level="1" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html"><i class="fa fa-check"></i><b>1</b> Warum ist R empfehlenswert?</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="warum-ist-r-empfehlenswert.html"><a href="warum-ist-r-empfehlenswert.html#open-source"><i class="fa fa-check"></i><b>1.1</b> Open Source</a></li>
@@ -172,7 +177,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1" data-path="r-materialien.html"><a href="r-materialien.html#cheat-sheets"><i class="fa fa-check"></i><b>2.1</b> Cheat Sheets</a></li>
 <li class="chapter" data-level="2.2" data-path="r-materialien.html"><a href="r-materialien.html#hilfe-und-inspiration-online"><i class="fa fa-check"></i><b>2.2</b> Hilfe und Inspiration online</a></li>
-<li class="chapter" data-level="2.3" data-path="r-materialien.html"><a href="r-materialien.html#andere-bücher"><i class="fa fa-check"></i><b>2.3</b> Andere Bücher</a></li>
+<li class="chapter" data-level="2.3" data-path="r-materialien.html"><a href="r-materialien.html#andere-b%C3%BCcher"><i class="fa fa-check"></i><b>2.3</b> Andere Bücher</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a>
 <ul>
@@ -183,9 +188,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.1" data-path="programmaufbau.html"><a href="programmaufbau.html#die-vier-rstudio-fenster"><i class="fa fa-check"></i><b>4.1</b> Die vier RStudio Fenster</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="programmaufbau.html"><a href="programmaufbau.html#source---ihr-schreibblock-für-code"><i class="fa fa-check"></i><b>4.1.1</b> Source - Ihr Schreibblock für Code</a></li>
-<li class="chapter" data-level="4.1.2" data-path="programmaufbau.html"><a href="programmaufbau.html#konsole---das-herzstück-von-r"><i class="fa fa-check"></i><b>4.1.2</b> Konsole - Das Herzstück von R</a></li>
-<li class="chapter" data-level="4.1.3" data-path="programmaufbau.html"><a href="programmaufbau.html#environmenthistory---das-gedächtnis-von-r"><i class="fa fa-check"></i><b>4.1.3</b> Environment/History - Das Gedächtnis von R</a></li>
+<li class="chapter" data-level="4.1.1" data-path="programmaufbau.html"><a href="programmaufbau.html#source---ihr-schreibblock-f%C3%BCr-code"><i class="fa fa-check"></i><b>4.1.1</b> Source - Ihr Schreibblock für Code</a></li>
+<li class="chapter" data-level="4.1.2" data-path="programmaufbau.html"><a href="programmaufbau.html#konsole---das-herzst%C3%BCck-von-r"><i class="fa fa-check"></i><b>4.1.2</b> Konsole - Das Herzstück von R</a></li>
+<li class="chapter" data-level="4.1.3" data-path="programmaufbau.html"><a href="programmaufbau.html#environmenthistory---das-ged%C3%A4chtnis-von-r"><i class="fa fa-check"></i><b>4.1.3</b> Environment/History - Das Gedächtnis von R</a></li>
 <li class="chapter" data-level="4.1.4" data-path="programmaufbau.html"><a href="programmaufbau.html#filesplotspackageshelpviewer---interaktion-von-r-mit-dateien"><i class="fa fa-check"></i><b>4.1.4</b> Files/Plots/Packages/Help/Viewer - Interaktion von R mit Dateien</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="programmaufbau.html"><a href="programmaufbau.html#r-packages"><i class="fa fa-check"></i><b>4.2</b> R Packages</a>
@@ -213,7 +218,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="6.1" data-path="daten-erstellen.html"><a href="daten-erstellen.html#manuell"><i class="fa fa-check"></i><b>6.1</b> Manuell</a></li>
 <li class="chapter" data-level="6.2" data-path="daten-erstellen.html"><a href="daten-erstellen.html#automatisch"><i class="fa fa-check"></i><b>6.2</b> Automatisch</a></li>
-<li class="chapter" data-level="6.3" data-path="daten-erstellen.html"><a href="daten-erstellen.html#zufällig"><i class="fa fa-check"></i><b>6.3</b> Zufällig</a></li>
+<li class="chapter" data-level="6.3" data-path="daten-erstellen.html"><a href="daten-erstellen.html#zuf%C3%A4llig"><i class="fa fa-check"></i><b>6.3</b> Zufällig</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="daten-importieren-und-speichern.html"><a href="daten-importieren-und-speichern.html"><i class="fa fa-check"></i><b>7</b> Daten importieren und speichern</a>
 <ul>
@@ -240,17 +245,17 @@ div.csl-indent {
 <li class="chapter" data-level="8.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#vektor-1"><i class="fa fa-check"></i><b>8.1</b> Vektor</a></li>
 <li class="chapter" data-level="8.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#dataframe"><i class="fa fa-check"></i><b>8.2</b> Dataframe</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#zeilen-fälle-auswählen"><i class="fa fa-check"></i><b>8.2.1</b> Zeilen (Fälle) auswählen</a></li>
-<li class="chapter" data-level="8.2.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#spalten-variablen-auswählen"><i class="fa fa-check"></i><b>8.2.2</b> Spalten (Variablen) auswählen</a></li>
+<li class="chapter" data-level="8.2.1" data-path="daten-auswählen.html"><a href="daten-auswählen.html#zeilen-f%C3%A4lle-ausw%C3%A4hlen"><i class="fa fa-check"></i><b>8.2.1</b> Zeilen (Fälle) auswählen</a></li>
+<li class="chapter" data-level="8.2.2" data-path="daten-auswählen.html"><a href="daten-auswählen.html#spalten-variablen-ausw%C3%A4hlen"><i class="fa fa-check"></i><b>8.2.2</b> Spalten (Variablen) auswählen</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html"><i class="fa fa-check"></i><b>9</b> Daten beschreiben</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-über-r-objekte"><i class="fa fa-check"></i><b>9.1</b> Informationen über R Objekte</a>
+<li class="chapter" data-level="9.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-%C3%BCber-r-objekte"><i class="fa fa-check"></i><b>9.1</b> Informationen über R Objekte</a>
 <ul>
 <li class="chapter" data-level="9.1.1" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#str"><i class="fa fa-check"></i><b>9.1.1</b> str()</a></li>
-<li class="chapter" data-level="9.1.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-über-vektoren"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Vektoren</a></li>
-<li class="chapter" data-level="9.1.3" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-über-dataframes"><i class="fa fa-check"></i><b>9.1.3</b> Informationen über dataframes</a></li>
+<li class="chapter" data-level="9.1.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-%C3%BCber-vektoren"><i class="fa fa-check"></i><b>9.1.2</b> Informationen über Vektoren</a></li>
+<li class="chapter" data-level="9.1.3" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#informationen-%C3%BCber-dataframes"><i class="fa fa-check"></i><b>9.1.3</b> Informationen über dataframes</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken"><i class="fa fa-check"></i><b>9.2</b> Deskriptivstatistiken</a>
 <ul>
@@ -259,43 +264,43 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken-berichten"><i class="fa fa-check"></i><b>9.3</b> Deskriptivstatistiken berichten</a></li>
 <li class="chapter" data-level="9.4" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#alles-auf-einen-blick"><i class="fa fa-check"></i><b>9.4</b> Alles auf einen Blick</a></li>
-<li class="chapter" data-level="9.5" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken-für-subgruppen"><i class="fa fa-check"></i><b>9.5</b> Deskriptivstatistiken für Subgruppen</a></li>
+<li class="chapter" data-level="9.5" data-path="daten-beschreiben.html"><a href="daten-beschreiben.html#deskriptivstatistiken-f%C3%BCr-subgruppen"><i class="fa fa-check"></i><b>9.5</b> Deskriptivstatistiken für Subgruppen</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html"><i class="fa fa-check"></i><b>10</b> Daten bearbeiten</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-hinzufügen"><i class="fa fa-check"></i><b>10.1</b> Daten hinzufügen</a>
+<li class="chapter" data-level="10.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-hinzuf%C3%BCgen"><i class="fa fa-check"></i><b>10.1</b> Daten hinzufügen</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-hinzufügen"><i class="fa fa-check"></i><b>10.1.1</b> Variablen hinzufügen</a></li>
+<li class="chapter" data-level="10.1.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-hinzuf%C3%BCgen"><i class="fa fa-check"></i><b>10.1.1</b> Variablen hinzufügen</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-löschen"><i class="fa fa-check"></i><b>10.2</b> Daten löschen</a>
+<li class="chapter" data-level="10.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-l%C3%B6schen"><i class="fa fa-check"></i><b>10.2</b> Daten löschen</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-löschen"><i class="fa fa-check"></i><b>10.2.1</b> Variablen löschen</a></li>
-<li class="chapter" data-level="10.2.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#fälle-löschen"><i class="fa fa-check"></i><b>10.2.2</b> Fälle löschen</a></li>
+<li class="chapter" data-level="10.2.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-l%C3%B6schen"><i class="fa fa-check"></i><b>10.2.1</b> Variablen löschen</a></li>
+<li class="chapter" data-level="10.2.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#f%C3%A4lle-l%C3%B6schen"><i class="fa fa-check"></i><b>10.2.2</b> Fälle löschen</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablen-umbenennen"><i class="fa fa-check"></i><b>10.3</b> Variablen umbenennen</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablennamen-ändern"><i class="fa fa-check"></i><b>10.3.1</b> Variablennamen ändern</a></li>
+<li class="chapter" data-level="10.3.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#variablennamen-%C3%A4ndern"><i class="fa fa-check"></i><b>10.3.1</b> Variablennamen ändern</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-verändern"><i class="fa fa-check"></i><b>10.4</b> Daten verändern</a>
+<li class="chapter" data-level="10.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-ver%C3%A4ndern"><i class="fa fa-check"></i><b>10.4</b> Daten verändern</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#werte-ändern"><i class="fa fa-check"></i><b>10.4.1</b> Werte ändern</a></li>
+<li class="chapter" data-level="10.4.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#werte-%C3%A4ndern"><i class="fa fa-check"></i><b>10.4.1</b> Werte ändern</a></li>
 <li class="chapter" data-level="10.4.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#recodieren"><i class="fa fa-check"></i><b>10.4.2</b> Recodieren</a></li>
-<li class="chapter" data-level="10.4.3" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#worte-ändern"><i class="fa fa-check"></i><b>10.4.3</b> Worte ändern</a></li>
-<li class="chapter" data-level="10.4.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#faktorstufen-ändern"><i class="fa fa-check"></i><b>10.4.4</b> Faktorstufen ändern</a></li>
+<li class="chapter" data-level="10.4.3" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#worte-%C3%A4ndern"><i class="fa fa-check"></i><b>10.4.3</b> Worte ändern</a></li>
+<li class="chapter" data-level="10.4.4" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#faktorstufen-%C3%A4ndern"><i class="fa fa-check"></i><b>10.4.4</b> Faktorstufen ändern</a></li>
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#daten-sortieren"><i class="fa fa-check"></i><b>10.5</b> Daten sortieren</a>
 <ul>
 <li class="chapter" data-level="10.5.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#sortieren-nach-numerischen-variablen"><i class="fa fa-check"></i><b>10.5.1</b> Sortieren nach numerischen Variablen</a></li>
 <li class="chapter" data-level="10.5.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#sortieren-nach-variablen-mit-worten"><i class="fa fa-check"></i><b>10.5.2</b> Sortieren nach Variablen mit Worten</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datensätze-zusammensetzen"><i class="fa fa-check"></i><b>10.6</b> Datensätze zusammensetzen</a>
+<li class="chapter" data-level="10.6" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datens%C3%A4tze-zusammensetzen"><i class="fa fa-check"></i><b>10.6</b> Datensätze zusammensetzen</a>
 <ul>
 <li class="chapter" data-level="10.6.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#cbind-und-rbind"><i class="fa fa-check"></i><b>10.6.1</b> cbind und rbind</a></li>
 <li class="chapter" data-level="10.6.2" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#merge"><i class="fa fa-check"></i><b>10.6.2</b> merge</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datensätze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
+<li class="chapter" data-level="10.7" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#datens%C3%A4tze-transformieren"><i class="fa fa-check"></i><b>10.7</b> Datensätze transformieren</a>
 <ul>
-<li class="chapter" data-level="10.7.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#von-wide--und-long-format"><i class="fa fa-check"></i><b>10.7.1</b> Von Wide- und Long-Format</a></li>
+<li class="chapter" data-level="10.7.1" data-path="daten-bearbeiten.html"><a href="daten-bearbeiten.html#wide--und-long-format"><i class="fa fa-check"></i><b>10.7.1</b> Wide- und Long-Format</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="schleifen-loops.html"><a href="schleifen-loops.html"><i class="fa fa-check"></i><b>11</b> Schleifen (Loops)</a>
@@ -319,17 +324,17 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="graphiken.html"><a href="graphiken.html#histogramm"><i class="fa fa-check"></i><b>12.4</b> Histogramm</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-für-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
+<li class="chapter" data-level="12.4.1" data-path="graphiken.html"><a href="graphiken.html#histogramm-f%C3%BCr-mehrere-gruppen"><i class="fa fa-check"></i><b>12.4.1</b> Histogramm für mehrere Gruppen</a></li>
 </ul></li>
 <li class="chapter" data-level="12.5" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm"><i class="fa fa-check"></i><b>12.5</b> Balkendiagramm</a></li>
-<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-3-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 3 Variablen</a></li>
+<li class="chapter" data-level="12.6" data-path="graphiken.html"><a href="graphiken.html#balkendiagramm-mit-mehr-als-2-variablen"><i class="fa fa-check"></i><b>12.6</b> Balkendiagramm mit mehr als 2 Variablen</a></li>
 <li class="chapter" data-level="12.7" data-path="graphiken.html"><a href="graphiken.html#boxplot"><i class="fa fa-check"></i><b>12.7</b> Boxplot</a></li>
 <li class="chapter" data-level="12.8" data-path="graphiken.html"><a href="graphiken.html#facetting"><i class="fa fa-check"></i><b>12.8</b> Facetting</a></li>
-<li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#ästhetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
+<li class="chapter" data-level="12.9" data-path="graphiken.html"><a href="graphiken.html#%C3%A4sthetische-anpassungen"><i class="fa fa-check"></i><b>12.9</b> Ästhetische Anpassungen</a>
 <ul>
 <li class="chapter" data-level="12.9.1" data-path="graphiken.html"><a href="graphiken.html#ggtitle"><i class="fa fa-check"></i><b>12.9.1</b> ggtitle()</a></li>
 <li class="chapter" data-level="12.9.2" data-path="graphiken.html"><a href="graphiken.html#labs"><i class="fa fa-check"></i><b>12.9.2</b> labs()</a></li>
-<li class="chapter" data-level="12.9.3" data-path="graphiken.html"><a href="graphiken.html#achsen-verändern"><i class="fa fa-check"></i><b>12.9.3</b> Achsen verändern</a></li>
+<li class="chapter" data-level="12.9.3" data-path="graphiken.html"><a href="graphiken.html#achsen-ver%C3%A4ndern"><i class="fa fa-check"></i><b>12.9.3</b> Achsen verändern</a></li>
 </ul></li>
 <li class="chapter" data-level="12.10" data-path="graphiken.html"><a href="graphiken.html#theme"><i class="fa fa-check"></i><b>12.10</b> theme()</a>
 <ul>
@@ -350,7 +355,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="tabellen.html"><a href="tabellen.html#layout"><i class="fa fa-check"></i><b>13.3</b> Layout</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#titelzeilen-einfügen"><i class="fa fa-check"></i><b>13.3.1</b> Titelzeilen einfügen</a></li>
+<li class="chapter" data-level="13.3.1" data-path="tabellen.html"><a href="tabellen.html#spaltennamen-%C3%A4ndern"><i class="fa fa-check"></i><b>13.3.1</b> Spaltennamen ändern</a></li>
+<li class="chapter" data-level="13.3.2" data-path="tabellen.html"><a href="tabellen.html#zus%C3%A4tzliche-kopfzeile"><i class="fa fa-check"></i><b>13.3.2</b> Zusätzliche Kopfzeile</a></li>
+<li class="chapter" data-level="13.3.3" data-path="tabellen.html"><a href="tabellen.html#tabellentitel"><i class="fa fa-check"></i><b>13.3.3</b> Tabellentitel</a></li>
+<li class="chapter" data-level="13.3.4" data-path="tabellen.html"><a href="tabellen.html#anmerkungen-unter-der-tabelle"><i class="fa fa-check"></i><b>13.3.4</b> Anmerkungen unter der Tabelle</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="tabellen.html"><a href="tabellen.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern</a></li>
 </ul></li>
@@ -372,59 +380,59 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-1"><i class="fa fa-check"></i><b>15.1.1</b> Hypothesen</a></li>
 <li class="chapter" data-level="15.1.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung"><i class="fa fa-check"></i><b>15.1.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.1.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen"><i class="fa fa-check"></i><b>15.1.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.1.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren"><i class="fa fa-check"></i><b>15.1.3</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.1.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#ergebnis-interpretieren"><i class="fa fa-check"></i><b>15.1.4</b> Ergebnis interpretieren</a></li>
 <li class="chapter" data-level="15.1.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#ergebnis-berichten"><i class="fa fa-check"></i><b>15.1.5</b> Ergebnis berichten</a></li>
-<li class="chapter" data-level="15.1.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke"><i class="fa fa-check"></i><b>15.1.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.1.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke"><i class="fa fa-check"></i><b>15.1.6</b> Effektstärke</a></li>
 <li class="chapter" data-level="15.1.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform"><i class="fa fa-check"></i><b>15.1.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-unabhängigen-stichproben"><i class="fa fa-check"></i><b>15.2</b> t-Test bei unabhängigen Stichproben</a>
+<li class="chapter" data-level="15.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-unabh%C3%A4ngigen-stichproben"><i class="fa fa-check"></i><b>15.2</b> t-Test bei unabhängigen Stichproben</a>
 <ul>
 <li class="chapter" data-level="15.2.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-2"><i class="fa fa-check"></i><b>15.2.1</b> Hypothesen</a></li>
 <li class="chapter" data-level="15.2.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-1"><i class="fa fa-check"></i><b>15.2.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.2.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-1"><i class="fa fa-check"></i><b>15.2.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.2.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-1"><i class="fa fa-check"></i><b>15.2.3</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.2.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren"><i class="fa fa-check"></i><b>15.2.4</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="15.2.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen"><i class="fa fa-check"></i><b>15.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="15.2.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-1"><i class="fa fa-check"></i><b>15.2.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.2.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungspr%C3%BCfung-und-alternativen"><i class="fa fa-check"></i><b>15.2.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.2.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-1"><i class="fa fa-check"></i><b>15.2.6</b> Effektstärke</a></li>
 <li class="chapter" data-level="15.2.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-1"><i class="fa fa-check"></i><b>15.2.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-abhängigen-stichproben"><i class="fa fa-check"></i><b>15.3</b> t-Test bei abhängigen Stichproben</a>
+<li class="chapter" data-level="15.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#t-test-bei-abh%C3%A4ngigen-stichproben"><i class="fa fa-check"></i><b>15.3</b> t-Test bei abhängigen Stichproben</a>
 <ul>
 <li class="chapter" data-level="15.3.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-3"><i class="fa fa-check"></i><b>15.3.1</b> Hypothesen</a></li>
 <li class="chapter" data-level="15.3.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-2"><i class="fa fa-check"></i><b>15.3.2</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.3.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-2"><i class="fa fa-check"></i><b>15.3.3</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.3.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-2"><i class="fa fa-check"></i><b>15.3.3</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.3.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-1"><i class="fa fa-check"></i><b>15.3.4</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="15.3.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen-1"><i class="fa fa-check"></i><b>15.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="15.3.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-2"><i class="fa fa-check"></i><b>15.3.6</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.3.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungspr%C3%BCfung-und-alternativen-1"><i class="fa fa-check"></i><b>15.3.5</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.3.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-2"><i class="fa fa-check"></i><b>15.3.6</b> Effektstärke</a></li>
 <li class="chapter" data-level="15.3.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-2"><i class="fa fa-check"></i><b>15.3.7</b> Darstellung in Tabellenform</a></li>
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#wilcoxonmannwhitney-u-test-wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>15.4</b> Wilcoxon–Mann–Whitney-U Test (Wilcoxon rank sum test)</a>
 <ul>
 <li class="chapter" data-level="15.4.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-4"><i class="fa fa-check"></i><b>15.4.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="15.4.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-3"><i class="fa fa-check"></i><b>15.4.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.4.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-3"><i class="fa fa-check"></i><b>15.4.2</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.4.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-2"><i class="fa fa-check"></i><b>15.4.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="15.4.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-3"><i class="fa fa-check"></i><b>15.4.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.4.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-3"><i class="fa fa-check"></i><b>15.4.4</b> Effektstärke</a></li>
 <li class="chapter" data-level="15.4.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-3"><i class="fa fa-check"></i><b>15.4.5</b> Darstellung in Tabellenform</a></li>
 </ul></li>
 <li class="chapter" data-level="15.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#wilcoxonmannu-test-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>15.5</b> Wilcoxon–Mann–U Test (Wilcoxon signed rank test)</a>
 <ul>
 <li class="chapter" data-level="15.5.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#hypothesen-5"><i class="fa fa-check"></i><b>15.5.1</b> Hypothesen</a></li>
-<li class="chapter" data-level="15.5.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-4"><i class="fa fa-check"></i><b>15.5.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.5.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-4"><i class="fa fa-check"></i><b>15.5.2</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.5.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-3"><i class="fa fa-check"></i><b>15.5.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="15.5.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-4"><i class="fa fa-check"></i><b>15.5.4</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.5.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-4"><i class="fa fa-check"></i><b>15.5.4</b> Effektstärke</a></li>
 <li class="chapter" data-level="15.5.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#darstellung-in-tabellenform-4"><i class="fa fa-check"></i><b>15.5.5</b> Darstellung in Tabellenform</a></li>
 </ul></li>
 <li class="chapter" data-level="15.6" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#chi2-test"><i class="fa fa-check"></i><b>15.6</b> <span class="math inline">\(\chi\)</span><sup>2</sup>-Test</a>
 <ul>
 <li class="chapter" data-level="15.6.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#deskriptive-einordnung-3"><i class="fa fa-check"></i><b>15.6.1</b> Deskriptive Einordnung</a></li>
-<li class="chapter" data-level="15.6.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-5"><i class="fa fa-check"></i><b>15.6.2</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.6.2" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-5"><i class="fa fa-check"></i><b>15.6.2</b> Test durchführen</a></li>
 <li class="chapter" data-level="15.6.3" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#relevante-parameter-extrahieren-4"><i class="fa fa-check"></i><b>15.6.3</b> Relevante Parameter extrahieren</a></li>
-<li class="chapter" data-level="15.6.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungsprüfung-und-alternativen-2"><i class="fa fa-check"></i><b>15.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
-<li class="chapter" data-level="15.6.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektstärke-5"><i class="fa fa-check"></i><b>15.6.5</b> Effektstärke</a></li>
+<li class="chapter" data-level="15.6.4" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#voraussetzungspr%C3%BCfung-und-alternativen-2"><i class="fa fa-check"></i><b>15.6.4</b> Voraussetzungsprüfung und Alternativen</a></li>
+<li class="chapter" data-level="15.6.5" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#effektst%C3%A4rke-5"><i class="fa fa-check"></i><b>15.6.5</b> Effektstärke</a></li>
 </ul></li>
 <li class="chapter" data-level="15.7" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#fishers-exakter-test"><i class="fa fa-check"></i><b>15.7</b> Fisher’s Exakter Test</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchführen-6"><i class="fa fa-check"></i><b>15.7.1</b> Test durchführen</a></li>
+<li class="chapter" data-level="15.7.1" data-path="tests-für-einfache-gruppenvergleiche.html"><a href="tests-für-einfache-gruppenvergleiche.html#test-durchf%C3%BChren-6"><i class="fa fa-check"></i><b>15.7.1</b> Test durchführen</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html"><i class="fa fa-check"></i><b>16</b> Varianzanalyse (ANOVA)</a>
@@ -444,13 +452,35 @@ div.csl-indent {
 <li class="chapter" data-level="16.2.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#interpretation-1"><i class="fa fa-check"></i><b>16.2.3</b> Interpretation</a></li>
 <li class="chapter" data-level="16.2.4" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>16.2.4</b> Post-hoc Tests</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#prüfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>16.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
+<li class="chapter" data-level="16.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#pr%C3%BCfen-der-voraussetzungen-von-anovas"><i class="fa fa-check"></i><b>16.3</b> Prüfen der Voraussetzungen von ANOVAs</a>
 <ul>
 <li class="chapter" data-level="16.3.1" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#testen-der-empirisch-testbaren-annahmen"><i class="fa fa-check"></i><b>16.3.1</b> Testen der empirisch testbaren Annahmen</a></li>
-<li class="chapter" data-level="16.3.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#homogenität-der-varianzen"><i class="fa fa-check"></i><b>16.3.2</b> Homogenität der Varianzen:</a></li>
-<li class="chapter" data-level="16.3.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#sphärizität"><i class="fa fa-check"></i><b>16.3.3</b> Sphärizität:</a></li>
+<li class="chapter" data-level="16.3.2" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#homogenit%C3%A4t-der-varianzen"><i class="fa fa-check"></i><b>16.3.2</b> Homogenität der Varianzen:</a></li>
+<li class="chapter" data-level="16.3.3" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#sph%C3%A4rizit%C3%A4t"><i class="fa fa-check"></i><b>16.3.3</b> Sphärizität:</a></li>
 <li class="chapter" data-level="16.3.4" data-path="varianzanalyse-anova.html"><a href="varianzanalyse-anova.html#normalverteilung-der-residuen"><i class="fa fa-check"></i><b>16.3.4</b> Normalverteilung der Residuen:</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html"><i class="fa fa-check"></i><b>17</b> Einfache lineare Regression</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#hypothesen-6"><i class="fa fa-check"></i><b>17.1</b> Hypothesen</a></li>
+<li class="chapter" data-level="17.2" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#deskriptive-einordnung-6"><i class="fa fa-check"></i><b>17.2</b> Deskriptive Einordnung</a></li>
+<li class="chapter" data-level="17.3" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#berechnung-interpretation"><i class="fa fa-check"></i><b>17.3</b> Berechnung &amp; Interpretation</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#ergebnis-interpretieren-1"><i class="fa fa-check"></i><b>17.3.1</b> Ergebnis interpretieren</a></li>
+<li class="chapter" data-level="17.3.2" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#relevante-parameter-extrahieren-5"><i class="fa fa-check"></i><b>17.3.2</b> Relevante Parameter extrahieren</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#standardisierte-regressionsgewichte"><i class="fa fa-check"></i><b>17.4</b> Standardisierte Regressionsgewichte</a></li>
+<li class="chapter" data-level="17.5" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#vorhergesagte-werte-und-residuen"><i class="fa fa-check"></i><b>17.5</b> Vorhergesagte Werte und Residuen</a></li>
+<li class="chapter" data-level="17.6" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#dichotome-pr%C3%A4diktoren"><i class="fa fa-check"></i><b>17.6</b> Dichotome Prädiktoren</a></li>
+<li class="chapter" data-level="17.7" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#ausblick-multiple-regression"><i class="fa fa-check"></i><b>17.7</b> Ausblick: Multiple Regression</a></li>
+<li class="chapter" data-level="17.8" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#voraussetzungspr%C3%BCfung"><i class="fa fa-check"></i><b>17.8</b> Voraussetzungsprüfung</a>
+<ul>
+<li class="chapter" data-level="17.8.1" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#linearit%C3%A4t"><i class="fa fa-check"></i><b>17.8.1</b> Linearität</a></li>
+<li class="chapter" data-level="17.8.2" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#normalverteilung-der-residuen-1"><i class="fa fa-check"></i><b>17.8.2</b> Normalverteilung der Residuen</a></li>
+<li class="chapter" data-level="17.8.3" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#homoskedastizit%C3%A4t"><i class="fa fa-check"></i><b>17.8.3</b> Homoskedastizität</a></li>
+<li class="chapter" data-level="17.8.4" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#voraussetzungspr%C3%BCfung-mit-performance"><i class="fa fa-check"></i><b>17.8.4</b> Voraussetzungsprüfung mit <code>performance</code></a></li>
+</ul></li>
+<li class="chapter" data-level="17.9" data-path="einfache-lineare-regression.html"><a href="einfache-lineare-regression.html#darstellung-in-tabellenform-5"><i class="fa fa-check"></i><b>17.9</b> Darstellung in Tabellenform</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -486,7 +516,7 @@ div.csl-indent {
 <thead>
 <tr class="header">
 <th align="left">Code</th>
-<th align="left">Description</th>
+<th align="left">Beschreibung</th>
 </tr>
 </thead>
 <tbody>
@@ -496,7 +526,7 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td align="left"><code>rm(x, y, ..)</code></td>
-<td align="left">Entfernt die Objete <code>y</code>, <code>y</code>… aus dem Arbeitsbereich</td>
+<td align="left">Entfernt die Objekte <code>x</code>, <code>y</code>… aus dem Arbeitsbereich</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>rm(list = ls())</code></td>
@@ -507,7 +537,7 @@ div.csl-indent {
 <td align="left">Zeigt das aktuelle Arbeitsverzeichnis an</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>setwd(file = "dir)</code></td>
+<td align="left"><code>setwd(dir = "Pfad")</code></td>
 <td align="left">Wechselt das Arbeitsverzeichnis zu einem bestimmten Dateipfad</td>
 </tr>
 <tr class="even">
@@ -516,10 +546,10 @@ div.csl-indent {
 </tr>
 <tr class="odd">
 <td align="left"><code>write.table(x, file = "mydata.txt", sep)</code></td>
-<td align="left">speichert das Objekt <code>x</code> als Textdatei <code>mydata.txt</code>. Definiere die Trennung der Spalten mittels <code>sep</code> (z.B.; <code>sep = ","</code> für eine kommagetrennte Datei (csv) und <code>sep = \t"</code> für eine tab-getrennte Datei).</td>
+<td align="left">speichert das Objekt <code>x</code> als Textdatei <code>mydata.txt</code>. Definiere die Trennung der Spalten mittels <code>sep</code> (z.B.; <code>sep = ","</code> für eine kommagetrennte Datei (csv) und <code>sep = "\t"</code> für eine tab-getrennte Datei).</td>
 </tr>
 <tr class="even">
-<td align="left"><code>write_rds(x,"meineDaten.rds)</code></td>
+<td align="left"><code>write_rds(x,"meineDaten.rds")</code></td>
 <td align="left">Speichert Objekt x in das R Objekt <code>meineDaten.rds</code></td>
 </tr>
 <tr class="odd">
@@ -527,20 +557,20 @@ div.csl-indent {
 <td align="left">Speichert <em>alle</em> Objekte aus dem Arbeitsbereich nach <code>meineSession.RData</code></td>
 </tr>
 <tr class="even">
-<td align="left"><code>read_rds</code>(“Daten.rds”)<code>|Läd das rds Objekt</code>Daten.rds<code>| |</code>read.csv<code>("Daten.csv")</code></td>
-<td align="left">Läd den csv Datensatz <code>Daten.csv</code></td>
+<td align="left"><code>read_rds("Daten.rds")</code></td>
+<td align="left">Lädt das rds Objekt <code>Daten.rds</code></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>foreign::read.spss("Daten.sav")</code></td>
-<td align="left">Läd den SPSS Datensatz <code>Daten.sav</code></td>
+<td align="left"><code>read.csv("Daten.csv")</code></td>
+<td align="left">Lädt den csv Datensatz <code>Daten.csv</code></td>
 </tr>
 <tr class="even">
-<td align="left"><code>read.csv("Daten.csv")</code></td>
-<td align="left">Läd den csv Datensatz <code>Daten.csv</code></td>
+<td align="left"><code>foreign::read.spss("Daten.sav")</code></td>
+<td align="left">Lädt den SPSS Datensatz <code>Daten.sav</code></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>readxl::read_xlsx("Daten.xlsx")</code></td>
-<td align="left">Läd den Excel Datensatz <code>Daten.xlsx</code></td>
+<td align="left">Lädt den Excel Datensatz <code>Daten.xlsx</code></td>
 </tr>
 </tbody>
 </table>
@@ -555,7 +585,7 @@ div.csl-indent {
 <div id="working-environment" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Working Environment<a href="daten-importieren-und-speichern.html#working-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Der Arbeitsbereich (auch als Arbeitsumgebung bezeichnet) enthält alle Objekte und Funktionen, die Sie entweder in der aktuellen Sitzung definiert oder aus einer früheren Sitzung geladen haben. Als Sie RStudio zum ersten Mal starteten, war die Arbeitsumgebung leer, da Sie keine neuen Objekte oder Funktionen erstellt hatten. Wenn Sie jedoch neue Objekte und Funktionen mit dem Zuweisungsoperator = definiert haben, wurden diese neuen Objekte in Ihrer Arbeitsumgebung gespeichert. Wenn Sie RStudio nach der Definition neuer Objekte schlossen, erhielten Sie wahrscheinlich eine Meldung mit der Frage “Save workspace image…?”. Damit möchte RStudio Sie fragen, ob Sie alle derzeit in Ihrem Arbeitsbereich definierten Objekte als Bilddatei auf Ihrem Computer speichern möchten.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="daten-importieren-und-speichern.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># getwd()</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="daten-importieren-und-speichern.html#cb45-1" tabindex="-1"></a><span class="co"># getwd()</span></span></code></pre></div>
 </div>
 <div id="daten-importieren" class="section level2 hasAnchor" number="7.4">
 <h2><span class="header-section-number">7.4</span> Daten importieren<a href="daten-importieren-und-speichern.html#daten-importieren" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -563,21 +593,79 @@ div.csl-indent {
 <p>Je nachdem in welchem Format die Daten vorliegen, muss ein eigener Befehl genutzt werden. Teilweise braucht man hier auch eigene Pakete (z.B. Excel- oder SPSS-Format).</p>
 <div id="rds-format" class="section level3 hasAnchor" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> rds-Format<a href="daten-importieren-und-speichern.html#rds-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>.rds ist das R-eigene Format. Es speichert alle Objekte die es in R gibt, also potentiell nicht nur Datensätze, sondern auch Testergebnisse, Bilder, o.ä. mittels der Funktion <code>read_rds()</code> können wir die Objekte einlesen. Dafür müssen wir das Paket <code>readr</code> installiert und mittels <code>library</code> eingelesen haben.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="daten-importieren-und-speichern.html#cb46-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">load</span>(<span class="at">file =</span> <span class="st">&quot;data/personality.RData&quot;</span>)</span>
-<span id="cb46-2"><a href="daten-importieren-und-speichern.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="daten-importieren-und-speichern.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
-<span id="cb46-4"><a href="daten-importieren-und-speichern.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
-<pre><code>## [1] &quot;data&quot;</code></pre>
+<p>.rds ist das R-eigene Format. Es speichert alle Objekte die es in R gibt, also potentiell nicht nur Datensätze, sondern auch Testergebnisse, Bilder, o.ä. Mittels der Funktion <code>read_rds()</code> können wir die Objekte einlesen. Dafür müssen wir das Paket <code>readr</code> installiert und mittels <code>library</code> eingelesen haben.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="daten-importieren-und-speichern.html#cb46-1" tabindex="-1"></a><span class="co">#install.packages(&quot;readr&quot;)</span></span>
+<span id="cb46-2"><a href="daten-importieren-und-speichern.html#cb46-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb46-3"><a href="daten-importieren-und-speichern.html#cb46-3" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="daten-importieren-und-speichern.html#cb46-4" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/personality.rds&quot;</span>)</span>
+<span id="cb46-5"><a href="daten-importieren-und-speichern.html#cb46-5" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="daten-importieren-und-speichern.html#cb46-6" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb46-7"><a href="daten-importieren-und-speichern.html#cb46-7" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
+## 1  1       2       4       0       3       3       0       2       3       0
+## 2  2       4       4       0       3       4       0       4       4       0
+## 3  3       4       4       2       4       4       0       4       4       0
+## 4  4       4       3       4       3       3       0       2       4       0
+## 5  5       4       4       1       3       3       0       3       4       4
+## 6  6       4       4       0       4       0       1       4       4       0
+##   NEO_10_G NEO_11_N NEO_12_E NEO_13_O NEO_14_V NEO_15_G NEO_16_N NEO_17_E
+## 1        3        4        1        2        0        4        4        3
+## 2        4        1        0        3        0        3        4        4
+## 3        4        4        2        4        0        0        4        4
+## 4        3        0        0        2        0        0        4        4
+## 5        3        1        4        4        0        0        4        4
+## 6        2        0        0        4        0        0        4        4
+##   NEO_18_O NEO_19_V NEO_20_G NEO_21_N NEO_22_E NEO_23_O NEO_24_V NEO_25_G
+## 1        4        3        4        0        4        2        2        3
+## 2        3        4        4        0        3        4        0        4
+## 3        0        4        4        0        4        4        1        4
+## 4        0        4        4        4        4        4        0        3
+## 5        0        4        1        1        3        4        0        2
+## 6        0        4        4        0        3        4        4        4
+##   NEO_26_N NEO_27_E NEO_28_O NEO_29_V NEO_30_G NEO_31_N NEO_32_E NEO_33_O
+## 1        4        4        4        2        4        3        0        0
+## 2        2        0        1        0        4        4        4        4
+## 3        4        0        0        0        1        4        4        3
+## 4        0        0        0        0        0        4        4        0
+## 5        0        4        4        2        4        4        3        4
+## 6        0        0        4        2        0        4        3        2
+##   NEO_34_V NEO_35_G NEO_36_N NEO_37_E NEO_38_O NEO_39_V NEO_40_G NEO_41_N
+## 1        3        4        2        4        1        0        4        4
+## 2        4        4        0        4        3        1        4        0
+## 3        4        4        3        4        2        0        4        0
+## 4        3        4        0        3        3        1        4        0
+## 5        3        3        0        4        0        2        3        0
+## 6        4        4        0        2        4        2        4        0
+##   NEO_42_E NEO_43_O NEO_44_V NEO_45_G NEO_46_N NEO_47_E NEO_48_O NEO_49_V
+## 1        2        1        4        0        4        4        3        3
+## 2        2        4        0        2        4        0        4        4
+## 3        4        4        4        0        4        0        4        4
+## 4        2        2        0        0        4        4        3        3
+## 5        0        2        0        1        4        0        2        3
+## 6        0        4        0        0        4        0        2        4
+##   NEO_50_G NEO_51_N NEO_52_E NEO_53_O NEO_54_V NEO_55_G NEO_56_N NEO_57_E
+## 1        3        0        4        2        0        0        2        2
+## 2        4        0        4        4        0        0        0        0
+## 3        4        3        4        4        4        0        0        1
+## 4        4        4        4        1        0        0        4        0
+## 5        3        0        3        3        0        4        0        1
+## 6        4        0        4        4        1        0        0        0
+##   NEO_58_O NEO_59_V NEO_60_G
+## 1        3        1        4
+## 2        3        0        4
+## 3        4        0        4
+## 4        4        1        3
+## 5        3        4        4
+## 6        4        0        3</code></pre>
 </div>
 <div id="csv-format" class="section level3 hasAnchor" number="7.4.2">
 <h3><span class="header-section-number">7.4.2</span> csv-Format<a href="daten-importieren-und-speichern.html#csv-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Das .csv Format (comma-separated-values) ist eines der gängigsten in der Statistik. Es lässt sich mit allen gebräuchlichen Tabellenprogrammen öffnen (also neben R auch mit Excel, Numbers, o.ä.).</p>
-<p>Um einen .csv Datensatz einzulesen, speichern wir ihn mittel <code>read.csv()</code> in ein von uns benanntes Objekt. Dieses können wir nennen wie wir wollen, z.B. <code>data</code> (schön kurz):</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="daten-importieren-und-speichern.html#cb48-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/personality.csv&quot;</span>)</span>
-<span id="cb48-2"><a href="daten-importieren-und-speichern.html#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="daten-importieren-und-speichern.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
-<span id="cb48-4"><a href="daten-importieren-und-speichern.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<p>Um einen .csv Datensatz einzulesen, speichern wir ihn mittels <code>read.csv()</code> in ein von uns benanntes Objekt. Dieses können wir nennen wie wir wollen, z.B. <code>data</code> (schön kurz):</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="daten-importieren-und-speichern.html#cb48-1" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/personality.csv&quot;</span>)</span>
+<span id="cb48-2"><a href="daten-importieren-und-speichern.html#cb48-2" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="daten-importieren-und-speichern.html#cb48-3" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb48-4"><a href="daten-importieren-und-speichern.html#cb48-4" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>##   ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
 ## 1  1       2       4       0       3       3       0       2       3       0
 ## 2  2       4       4       0       3       4       0       4       4       0
@@ -637,13 +725,13 @@ div.csl-indent {
 </div>
 <div id="sav-format" class="section level3 hasAnchor" number="7.4.3">
 <h3><span class="header-section-number">7.4.3</span> sav-Format<a href="daten-importieren-und-speichern.html#sav-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Das .sav Format ist das Format in welchem SPSS Datensätze abgespeichert werden. Dies kommt gerade in den Sozialwissenschaften relativ häufig vor, weshalb wir diese Art von Datein auf jeden Fall einlesen können sollten.</p>
-<p>Um einen .sav Datensatz einzulesen, speichern wir ihn mittel <code>read.spss()</code> in ein von uns benanntes Objekt. Dafür müssen wir das Paket <code>foreign</code> installiert und mittels <code>library</code> eingelesen haben. Damit R den Datensatz automatisch in einen data.frame speichert, geben wir als Zusatzoption <code>to.data.frame = TRUE</code> an:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="daten-importieren-und-speichern.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
-<span id="cb50-2"><a href="daten-importieren-und-speichern.html#cb50-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.spss</span>(<span class="st">&quot;data/personality.sav&quot;</span>, <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb50-3"><a href="daten-importieren-und-speichern.html#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="daten-importieren-und-speichern.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
-<span id="cb50-5"><a href="daten-importieren-und-speichern.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<p>Das .sav Format ist das Format in welchem SPSS Datensätze abgespeichert werden. Dies kommt gerade in den Sozialwissenschaften relativ häufig vor, weshalb wir diese Art von Dateien auf jeden Fall einlesen können sollten.</p>
+<p>Um einen .sav Datensatz einzulesen, speichern wir ihn mittels <code>read.spss()</code> in ein von uns benanntes Objekt. Dafür müssen wir das Paket <code>foreign</code> installiert und mittels <code>library</code> eingelesen haben. Damit R den Datensatz automatisch in einen data.frame speichert, geben wir als Zusatzoption <code>to.data.frame = TRUE</code> an:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="daten-importieren-und-speichern.html#cb50-1" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
+<span id="cb50-2"><a href="daten-importieren-und-speichern.html#cb50-2" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.spss</span>(<span class="st">&quot;data/personality.sav&quot;</span>, <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb50-3"><a href="daten-importieren-und-speichern.html#cb50-3" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="daten-importieren-und-speichern.html#cb50-4" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb50-5"><a href="daten-importieren-und-speichern.html#cb50-5" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>##   ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
 ## 1  1       2       4       0       3       3       0       2       3       0
 ## 2  2       4       4       0       3       4       0       4       4       0
@@ -705,11 +793,11 @@ div.csl-indent {
 <h3><span class="header-section-number">7.4.4</span> xlsx-Format<a href="daten-importieren-und-speichern.html#xlsx-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Das .xlsx Format ist das Format in welchem Excel Datensätze abgespeichert werden. Auch das kommt oft vor, da es viele Forscher:innen vorziehen Daten in Excel Tabellen einzutragen.</p>
 <p>Um einen .xlsx Datensatz einzulesen, speichern wir ihn mittels <code>read_xlsx()</code> in ein von uns benanntes Objekt. Dafür müssen wir das Paket <code>readxl</code> installiert und mittels <code>library</code> eingelesen haben. Da in Excel Tabellen manchmal mehrere Arbeitsblätter (engl. “sheets”) vorliegen, geben wir den Namen des Arbeitsblatt, welches wir brauchen, zusätzlich an:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="daten-importieren-und-speichern.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb52-2"><a href="daten-importieren-und-speichern.html#cb52-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/personality.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;Tabelle1&quot;</span>)</span>
-<span id="cb52-3"><a href="daten-importieren-und-speichern.html#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="daten-importieren-und-speichern.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
-<span id="cb52-5"><a href="daten-importieren-und-speichern.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="daten-importieren-und-speichern.html#cb52-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb52-2"><a href="daten-importieren-und-speichern.html#cb52-2" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/personality.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;Tabelle1&quot;</span>)</span>
+<span id="cb52-3"><a href="daten-importieren-und-speichern.html#cb52-3" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="daten-importieren-und-speichern.html#cb52-4" tabindex="-1"></a><span class="co"># erste Zeilen des Datensatzes ansehen</span></span>
+<span id="cb52-5"><a href="daten-importieren-und-speichern.html#cb52-5" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 61
 ##      ID NEO_1_N NEO_2_E NEO_3_O NEO_4_V NEO_5_G NEO_6_N NEO_7_E NEO_8_O NEO_9_V
 ##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
@@ -731,9 +819,9 @@ div.csl-indent {
 <div id="daten-speichern" class="section level2 hasAnchor" number="7.5">
 <h2><span class="header-section-number">7.5</span> Daten speichern<a href="daten-importieren-und-speichern.html#daten-speichern" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In alle vorgestellten Formate können wir unsere Daten natürlich auch abspeichern. Erstellen wir dafür einen schnellen Test-Datensatz mittels <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="daten-importieren-und-speichern.html#cb54-1" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Variable1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
-<span id="cb54-2"><a href="daten-importieren-und-speichern.html#cb54-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Variable2 =</span> <span class="fu">c</span>(<span class="st">&quot;Person1&quot;</span>, <span class="st">&quot;Person2&quot;</span>, <span class="st">&quot;Person3&quot;</span>, <span class="st">&quot;Person4&quot;</span>))</span>
-<span id="cb54-3"><a href="daten-importieren-und-speichern.html#cb54-3" aria-hidden="true" tabindex="-1"></a>newdata</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="daten-importieren-und-speichern.html#cb54-1" tabindex="-1"></a>newdata <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Variable1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
+<span id="cb54-2"><a href="daten-importieren-und-speichern.html#cb54-2" tabindex="-1"></a>                     <span class="at">Variable2 =</span> <span class="fu">c</span>(<span class="st">&quot;Person1&quot;</span>, <span class="st">&quot;Person2&quot;</span>, <span class="st">&quot;Person3&quot;</span>, <span class="st">&quot;Person4&quot;</span>))</span>
+<span id="cb54-3"><a href="daten-importieren-und-speichern.html#cb54-3" tabindex="-1"></a>newdata</span></code></pre></div>
 <pre><code>##   Variable1 Variable2
 ## 1         1   Person1
 ## 2         2   Person2
@@ -741,32 +829,32 @@ div.csl-indent {
 ## 4         4   Person4</code></pre>
 <div id="rds-format-1" class="section level3 hasAnchor" number="7.5.1">
 <h3><span class="header-section-number">7.5.1</span> rds-Format<a href="daten-importieren-und-speichern.html#rds-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Um in das R eigene .rds Format zu speichern, nutzen wir wieder das <code>readr</code> Paket, welches wir zunächst mittels <code>library</code> laden. Der Befehl ist nun <code>write_rds()</code>. Innerhalb des Befehls geben wir einfach das Objekt (z.B. unseren Datensatz) an, welches wir speichern wollen. Unter <code>file</code> geben wir der Datei einen Namen, so wie wir sie auf unserer Festplatte gepeichert haben wollen. Wichtig: Das Kürzel des Dateityps (.rds) nicht vergessen:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="daten-importieren-und-speichern.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb56-2"><a href="daten-importieren-und-speichern.html#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-3"><a href="daten-importieren-und-speichern.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;data.rds&quot;</span>)</span></code></pre></div>
+<p>Um in das R eigene .rds Format zu speichern, nutzen wir wieder das <code>readr</code> Paket, welches wir zunächst mittels <code>library</code> laden. Der Befehl ist nun <code>write_rds()</code>. Innerhalb des Befehls geben wir einfach das Objekt (z.B. unseren Datensatz) an, welches wir speichern wollen. Unter <code>file</code> geben wir der Datei einen Namen, so wie wir sie auf unserer Festplatte gespeichert haben wollen. Wichtig: Das Kürzel des Dateityps (.rds) nicht vergessen:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="daten-importieren-und-speichern.html#cb56-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb56-2"><a href="daten-importieren-und-speichern.html#cb56-2" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="daten-importieren-und-speichern.html#cb56-3" tabindex="-1"></a><span class="fu">write_rds</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;data.rds&quot;</span>)</span></code></pre></div>
 <p>Die Datei erscheint nun in Ihrem Arbeitsverzeichnis.</p>
 </div>
 <div id="csv-format-1" class="section level3 hasAnchor" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> csv-Format<a href="daten-importieren-und-speichern.html#csv-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Speichern in das .csv Format funktioniert analog:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="daten-importieren-und-speichern.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;newdata.csv&quot;</span>)</span></code></pre></div>
-<p>Hier ein Tipp für Sie: Wie oben bereits erwähnt ist csv ein “Komma-getrenntes” Format. In Deutschland haben wir die besonderheit, dass wir Dezimalstellen manchmal mit “,” trennen, während man im englisch-sprachigen Raum i.d.R. “.” verwendet. Sollte die abgespeicherte Datei komisch aussehen, wenn Sie sie z.B. in Excel öffnen, liegt das vermutlich an der deutschen Einstellung Ihres Programms. Probieren Sie in diesem Fall statt der <code>write.csv()</code> Funktion einmal die <code>write.csv2()</code> Funktion aus, dies wird Ihr Problem lösen.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="daten-importieren-und-speichern.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv2</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;newdata.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="daten-importieren-und-speichern.html#cb57-1" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;newdata.csv&quot;</span>)</span></code></pre></div>
+<p>Hier ein Tipp für Sie: Wie oben bereits erwähnt ist csv ein “Komma-getrenntes” Format. In Deutschland haben wir die Besonderheit, dass wir Dezimalstellen manchmal mit “,” trennen, während man im englisch-sprachigen Raum i.d.R. “.” verwendet. Sollte die abgespeicherte Datei komisch aussehen, wenn Sie sie z.B. in Excel öffnen, liegt das vermutlich an der deutschen Einstellung Ihres Programms. Probieren Sie in diesem Fall statt der <code>write.csv()</code> Funktion einmal die <code>write.csv2()</code> Funktion aus, dies wird Ihr Problem lösen.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="daten-importieren-und-speichern.html#cb58-1" tabindex="-1"></a><span class="fu">write.csv2</span>(<span class="at">x =</span> newdata, <span class="at">file =</span> <span class="st">&quot;newdata.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="sav-format-1" class="section level3 hasAnchor" number="7.5.3">
 <h3><span class="header-section-number">7.5.3</span> sav-Format<a href="daten-importieren-und-speichern.html#sav-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Zum Speichern in das SPSS Format .sav nutzen wir die Funktion <code>write_sav()</code> aus dem Paket <code>haven</code>, welches wir zuvor mittel <code>library()</code> laden.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="daten-importieren-und-speichern.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb59-2"><a href="daten-importieren-und-speichern.html#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-3"><a href="daten-importieren-und-speichern.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sav</span>(newdata, <span class="st">&quot;newdata.sav&quot;</span>)</span></code></pre></div>
+<p>Zum Speichern in das SPSS Format .sav nutzen wir die Funktion <code>write_sav()</code> aus dem Paket <code>haven</code>, welches wir zuvor mittels <code>library()</code> laden.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="daten-importieren-und-speichern.html#cb59-1" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb59-2"><a href="daten-importieren-und-speichern.html#cb59-2" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="daten-importieren-und-speichern.html#cb59-3" tabindex="-1"></a><span class="fu">write_sav</span>(newdata, <span class="st">&quot;newdata.sav&quot;</span>)</span></code></pre></div>
 </div>
 <div id="xlsx-format-1" class="section level3 hasAnchor" number="7.5.4">
 <h3><span class="header-section-number">7.5.4</span> xlsx-Format<a href="daten-importieren-und-speichern.html#xlsx-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Zum Speichern in das Excel Format .xlsx nutzen wir die Funktion <code>WriteXLS</code> aus dem Paket <code>WriteXLS</code>, welches wir zuvor mittel <code>library()</code> laden.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="daten-importieren-und-speichern.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(WriteXLS)</span>
-<span id="cb60-2"><a href="daten-importieren-und-speichern.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-3"><a href="daten-importieren-und-speichern.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">WriteXLS</span>(newdata, <span class="st">&quot;newdata.xlsx&quot;</span>)</span></code></pre></div>
+<p>Zum Speichern in das Excel Format .xlsx nutzen wir die Funktion <code>WriteXLS</code> aus dem Paket <code>WriteXLS</code>, welches wir zuvor mittels <code>library()</code> laden.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="daten-importieren-und-speichern.html#cb60-1" tabindex="-1"></a><span class="fu">library</span>(WriteXLS)</span>
+<span id="cb60-2"><a href="daten-importieren-und-speichern.html#cb60-2" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="daten-importieren-und-speichern.html#cb60-3" tabindex="-1"></a><span class="fu">WriteXLS</span>(newdata, <span class="st">&quot;newdata.xlsx&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -791,42 +879,42 @@ div.csl-indent {
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["CFH_R_bookdown.pdf", "CFH_R_bookdown.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["CFH_R_bookdown.pdf", "CFH_R_bookdown.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
@@ -837,7 +925,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

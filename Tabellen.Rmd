@@ -99,7 +99,7 @@ highlight(flextable(df), j = 1, color = "yellow")
 
 #### Text rotieren
 
-Zum Totieren von Text nutzen wir die `rotate()` Funktion:
+Zum Rotieren von Text nutzen wir die `rotate()` Funktion:
 
 ```{r}
 rotate(flextable(df), j = 2, rotation = "tbrl")
@@ -135,8 +135,48 @@ bg(flextable(df), i = 1, bg = "grey")
 
 ## Layout
 
-### Titelzeilen einfügen
+### Spaltennamen ändern
 
+Standardmäßig übernimmt `flextable()` die Variablennamen aus dem `data.frame` als Spaltenüberschriften. Mit der `set_header_labels()` Funktion können wir sie umbenennen. Links vom `=` steht der Variablenname, rechts die neue Überschrift:
+
+```{r}
+bg = set_header_labels(flextable(df), 
+                       Schlafdauer = "Schlafdauer (Std.)",
+                       Schlafqualität = "Schlafqualität (1-10)")
+bg
+```
+
+### Zusätzliche Kopfzeile
+
+Mit der `add_header_row()` Funktion können wir über den Spaltenüberschriften eine weitere Kopfzeile einfügen, z.B. um mehrere Spalten unter einem Oberbegriff zusammenzufassen. Unter `values` geben wir die Beschriftungen an, unter `colwidths` wie viele Spalten jede Beschriftung überspannen soll:
+
+```{r}
+bg = add_header_row(flextable(df), 
+                    values = c("", "Kognition", "Schlaf"), 
+                    colwidths = c(1, 1, 2))
+bg = align(bg, i = 1, align = "center", part= "header")
+bg
+```
+
+Die Summe von `colwidths` muss dabei der Anzahl der Spalten entsprechen (hier 1 + 1 + 2 = 4).
+
+### Tabellentitel
+
+Einen Titel (engl. *caption*) über der Tabelle fügen wir mit der `set_caption()` Funktion hinzu:
+
+```{r}
+bg = set_caption(flextable(df), caption = "Konzentration und Schlaf nach Geschlecht")
+bg
+```
+
+### Anmerkungen unter der Tabelle
+
+Anmerkungen, z.B. zu Abkürzungen oder Skalen, fügen wir mit der `add_footer_lines()` Funktion unterhalb der Tabelle ein:
+
+```{r}
+bg = add_footer_lines(flextable(df), values = "Anmerkung. Std. = Stunden; Schlafqualität wurde auf einer Skala von 1 bis 10 erfasst.")
+bg
+```
 
 ## Tabelle speichern
 
@@ -148,9 +188,9 @@ Ein Export der Tabelle in ein weiterverwendbares Format ist für folgende Dateit
 * .png (Bild)
 
 ```{r}
-# save_as_html(df, "meine_tabelle.html") 
-# save_as_docx(df, "meine_tabelle.docx") 
-# save_as_pptx(df, "meine_tabelle.pptx") 
-# save_as_image(df, "meine_tabelle.png")
+# save_as_html(flextable(df), path ="meine_tabelle.html") 
+# save_as_docx(flextable(df), path ="meine_tabelle.docx") 
+# save_as_pptx(flextable(df), path ="meine_tabelle.pptx") 
+# save_as_image(flextable(df), path ="meine_tabelle.png")
 ```
 

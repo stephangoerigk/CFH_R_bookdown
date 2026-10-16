@@ -11,7 +11,7 @@ Der einfachste Objekttyp in R ist der **Skalar**. Ein Skalar Objekt ist einfach 
 Hier sind einige Beispiele für numerische Skalar Objekte:
 
 ```{r}
-# Examples of numeric scalars
+# Beispiele für numerische Skalare
 a <- 100
 b <- 3 / 100
 c <- (a + b) / b
@@ -53,7 +53,7 @@ a = c(1, 2, 3, 4, 5, 6, 7)
 a
 ```
 
-Sie können auch character Vektoren erstellen, indem Sie die `c()` auf einzelne character Skalare Funktion anwenden: 
+Sie können auch character Vektoren erstellen, indem Sie die `c()` Funktion auf einzelne character Skalare anwenden: 
 
 ```{r}
 char.vec = c("Freud", "Wundt", "Bandura", "Watson", "Jung")
@@ -63,7 +63,7 @@ char.vec
 
 ### Vektor Typen
 
-Vektoren sind ein zentrales Element von R. Ein Vektor kann Zahlen, Buchstaben oder logische Werte enthalten, aber niemals eine Kombination
+Vektoren sind ein zentrales Element von R. Ein Vektor kann Zahlen, Buchstaben oder logische Werte enthalten, aber niemals eine Kombination.
 
 Der Vektor ist die Entsprechung der **Variable** und die Skalare, aus denen der Vektor besteht, sind die **Merkmalsausprägungen** der Variable.
 
@@ -73,7 +73,7 @@ Wir haben bereits gelernt, wie man einen Vektor aus character Objekten erstellt.
 
 In einer factor Variable ist jeder Kategorie eine Zahl zugeordnet (z.B. 1 = männlich, 2 = weiblich).
 
-Um Faktor Variablen zu erstellen, machen wie einen Vorgang, den man **Kodieren** nennt und das geht so:
+Um Faktor Variablen zu erstellen, machen wir einen Vorgang, den man **Kodieren** nennt und das geht so:
 
 Wir haben einen Vektor mit Codes 1 und 2 für männlich und weiblich vorliegen:
 
@@ -83,7 +83,7 @@ geschlecht = c(1, 2, 2, 1, 2)
 geschlecht
 ```
 
-In dieser Form erkennt R diesen Vektor als numerische Variable. Um Sie in einen Faktor umzuwandeln, definieren wir die Zahlen (1 und 2) als `levels` des Faktors und geben dann jedem level einen Namen (`labels`):
+In dieser Form erkennt R diesen Vektor als numerische Variable. Um sie in einen Faktor umzuwandeln, definieren wir die Zahlen (1 und 2) als `levels` des Faktors und geben dann jedem level einen Namen (`labels`):
 
 ```{r}
 geschlecht = factor(geschlecht, levels = c(1,2), labels = c("männlich", "weiblich"))
@@ -91,7 +91,7 @@ geschlecht = factor(geschlecht, levels = c(1,2), labels = c("männlich", "weibli
 geschlecht
 ```
 
-Das Ergebnis ist eine codierte Faktorvariable. Wenn wir Sie uns ausgeben lassen erhalten wir unter den Merkmalsausprägungen eine Liste mit den einzelnen Kategorien (levels) des Faktors.
+Das Ergebnis ist eine codierte Faktorvariable. Wenn wir sie uns ausgeben lassen erhalten wir unter den Merkmalsausprägungen eine Liste mit den einzelnen Kategorien (levels) des Faktors.
 
 R wird uns für Faktoren alle Ergebnisse nach der **Reihenfolge** der levels anzeigen. Wenn wir keine Faktorvariable haben, sondern eine character Variable funktioniert die Reihenfolge immer alphabetisch.
 
@@ -104,7 +104,7 @@ Benötigen wir aus einem Vektor z.B. genau den 3. Skalar, schreiben wir einfach 
 ```{r}
 char.vec = c("Freud", "Wundt", "Bandura", "Watson", "Jung")
 # Das Ergebnis ausgeben
-char.vec[5]
+char.vec[3]
 ```
 
 ## Matrizen und data.frames
@@ -155,7 +155,7 @@ df$Alter
 
 ### Indizierung
 
-Wollen wir aus dem data.frame wieder einzelne Elemente verwenden, nutzen wir wieder die Indizierung. Auch hier brauchen wir die `[]`. Da wir im data.frame Zeilen und Spalten haben, brauchen wir eine Möglichkeit, beides auszuwählen, wie ein Curser der von links nach rechts, bzw. von oben nach unten läuft. 
+Wollen wir aus dem data.frame wieder einzelne Elemente verwenden, nutzen wir wieder die Indizierung. Auch hier brauchen wir die `[]`. Da wir im data.frame Zeilen und Spalten haben, brauchen wir eine Möglichkeit, beides auszuwählen, wie ein Cursor der von links nach rechts, bzw. von oben nach unten läuft. 
 
 Wir trennen dafür unsere `[]` mit einem Komma `[,]`. Alles, was **links vom Komma** steht, bezieht sich auf Zeilen alles **rechts vom Komma** bezieht sich auf Spalten.
 
@@ -171,7 +171,7 @@ Lassen wir die Zahl vor dem Komma weg, bekommen wir alle Werte aus der Spalte:
 df[,3]
 ```
 
-Lassen wir die Zahl nach dem Komma weg, bekommen wir alle Werte aus der Reihe:
+Lassen wir die Zahl nach dem Komma weg, bekommen wir alle Werte aus der Zeile:
 
 ```{r}
 df[1,]

@@ -24,7 +24,7 @@ Warum ist ggplot2 gut?
 
 ## ggplot()-Funktion
 
-Die von ggplot2 implizierte "Grammatik der Grafik", beruht auf dem Prinzip, dass ein Plot in die folgenden grundlegenden Teile aufgeteilt werden kann:
+Die von ggplot2 implementierte "Grammatik der Grafik", beruht auf dem Prinzip, dass ein Plot in die folgenden grundlegenden Teile aufgeteilt werden kann:
 
 $Plot = data + aesthetics + geometry$
 
@@ -41,11 +41,11 @@ library(ggplot2)
 library(tidyverse)
 ```
 
-Der wichtigste (und grundlegenste) Befehl zum Erstellen von Graphiken mit `ggplot2` ist `ggplot()`.
+Der wichtigste (und grundlegendste) Befehl zum Erstellen von Graphiken mit `ggplot2` ist `ggplot()`.
 
 Mit `ggplot()` sagen wir R, dass jetzt eine Graphik erstellt wird. Wir können es mit dem Aufstellen einer weißen Leinwand vergleichen, die wir nun füllen wollen. 
 
-Der Befehl `ggplot()` wird mit den ersten 2 Elementen der "Grammatik der Grafik" gefüllt, `data` und aesthetics, kurs `aes()`. Wir geben also an, wo unsere Daten herkommen und welche Variable auf die X-Achse und welche auf die Y-Achse gelegt werden soll. Dieses Vorgehen ist für jede Art von Graphen gleich.
+Der Befehl `ggplot()` wird mit den ersten 2 Elementen der "Grammatik der Grafik" gefüllt, `data` und aesthetics, kurz `aes()`. Wir geben also an, wo unsere Daten herkommen und welche Variable auf die X-Achse und welche auf die Y-Achse gelegt werden soll. Dieses Vorgehen ist für jede Art von Graphen gleich.
 
 ```{r}
 df = data.frame(Var1 = 1:10,
@@ -62,7 +62,7 @@ Das Ergebnis ist ein leerer Graph, mit der Variable `Var1` auf der X-Achse und d
 
 Streudiagramme können Ihnen helfen, die Beziehung zwischen zwei Variablen zu erkennen. Ein Streudiagramm ist eine einfache Darstellung der Kovariation einer Variablen mit einer zweiten Variable.
 
-Besonders gut funktioniert dies, wenn man 2 numerische Variablen gegeneinander plotted.
+Besonders gut funktioniert dies, wenn man 2 numerische Variablen gegeneinander plottet.
 
 Im Datensatz `diamonds` gibt es beispielsweise die Variable `price` (Kosten des Steins) und die Karatzahl (Masse).
 
@@ -82,9 +82,9 @@ Das Ergebnis ist ein leerer Graph, mit der Variable `carat` auf der X-Achse und 
 
 ### geom_point()
 
-Nun fehlen uns nun noch die charakteristischen "Punkte", die den Graph zum Streudiagramm machen. Jeder Punkt repräsentiert einen Stein mit einer Karatzahl und einem Preis.
+Nun fehlen uns noch die charakteristischen "Punkte", die den Graph zum Streudiagramm machen. Jeder Punkt repräsentiert einen Stein mit einer Karatzahl und einem Preis.
 
-Wir wollen also ein neues Element in unseren Graphen zeichnen,sozusagen eine weitere Schicht auftragen. Dies funktioniert in `ggplot2` mit dem `+` Operator. Die Punkte sind eine Geometrie (das 3. Element unserer Grammatik). Geometrie wird i.d.R. mit `geom` geschrieben:
+Wir wollen also ein neues Element in unseren Graphen zeichnen, sozusagen eine weitere Schicht auftragen. Dies funktioniert in `ggplot2` mit dem `+` Operator. Die Punkte sind eine Geometrie (das 3. Element unserer Grammatik). Geometrie wird i.d.R. mit `geom` geschrieben:
 
 ```{r}
 ggplot(data = diamonds, aes(x = carat, y = price)) +
@@ -147,7 +147,7 @@ ggplot(data = diamonds, aes(x = price)) +
   geom_histogram()
 ```
 
-Wie wir sehen, kommen günstigere Diamanten häufiger vor als teure. In diesem Fall haben wir also nicht die beliebte **normalverteilte** Form der Verteilung, sondern eine rechtsschiefte Form.
+Wie wir sehen, kommen günstigere Diamanten häufiger vor als teure. In diesem Fall haben wir also nicht die beliebte **normalverteilte** Form der Verteilung, sondern eine rechtsschiefe Form.
 
 R gibt uns die Warnmeldung "Pick better value with `binwidth`". Dies ist ein Hinweis, dass die Standardanzahl von 30 Balken für die hohe Auflösung der Variable `price` nicht ausreicht. Es wird uns eine Auflösung von `binwidth = 39` vorgeschlagen:
 
@@ -169,7 +169,7 @@ ggplot(data = diamonds, aes(x = price, colour = cut)) +
 
 Das Balkendiagramm ist eine Möglichkeit, die Höhe einer Deskriptivstatistik (aka summary statistics) mit der Höhe eines Balkens zu visualisieren. Es wird z.B. eingesetzt, um Gruppenunterschiede, bzw. Unterschiede zwischen den Kategorien einer Variable darzustellen.
 
-Probieren wir es doch gleich einmal mit der Variable `cut` (Schliff eines Diamanten) aus, die wir oben bereits kennengelernt haben. Wir wollen die durchschnittlichen Karat (Gewicht) der Steine für jede Kategorie von `cut` darstellen. Die höhe der Balken muss also jeweils den Mittelwert repräsentieren.
+Probieren wir es doch gleich einmal mit der Variable `cut` (Schliff eines Diamanten) aus, die wir oben bereits kennengelernt haben. Wir wollen die durchschnittlichen Karat (Gewicht) der Steine für jede Kategorie von `cut` darstellen. Die Höhe der Balken muss also jeweils den Mittelwert repräsentieren.
 
 Da wir nun keinen Wert visualisieren wollen der "direkt" als Zahl im Datensatz steht, sondern für die Berechnung des Mittelwerts eigentlich ein weiterer Rechenschritt erfolgen muss, benutzen wir die `stat_summary` Funktion:
 
@@ -202,7 +202,7 @@ ggplot(data = diamonds, aes(x = cut, y = carat)) +
   stat_summary(geom = "point", fun = mean) 
 ```
 
-## Balkendiagramm mit mehr als 3 Variablen
+## Balkendiagramm mit mehr als 2 Variablen
 
 Genau wie beim Streudiagramm lässt sich das Balkendiagramm auch für mehr als 2 Variablen darstellen. Statt Farben oder Punktfarben ist die einfachste Art Balken zu differenzieren mit der `fill` Ästhetik:
 
@@ -215,7 +215,7 @@ Das Argument `position_dodge2()` sorgt dafür, dass die Balken nebeneinander pos
 
 ## Boxplot
 
-Ähnlich wie das Balkendiagramm, lassen sich Gruppenunterschiede gut mit einem Boxplot darstellen. Dieses zeigt standardmäßig den Median (Mittelbalken), sowie die Streuung der Daten mittels der Box (Quartilabstand, IQR) und die sogenannten Whiskers (1.5 * Quartilabstand). Punkte außerhalb der Whiskers werden als Ausreißer mit einem Punkt gekennzeichnet.
+Ähnlich wie das Balkendiagramm, lassen sich Gruppenunterschiede gut mit einem Boxplot darstellen. Dieser zeigt standardmäßig den Median (Mittelbalken), sowie die Streuung der Daten mittels der Box (Quartilabstand, IQR) und die sogenannten Whiskers (1.5 * Quartilabstand). Punkte außerhalb der Whiskers werden als Ausreißer mit einem Punkt gekennzeichnet.
 
 ```{r}
 ggplot(data = diamonds, aes(x = cut, y = carat)) +
@@ -224,7 +224,7 @@ ggplot(data = diamonds, aes(x = cut, y = carat)) +
 
 ## Facetting
 
-Wir sehen uns noch einmal unser 3-farbiges Streudiagramm von zuvor an:
+Wir sehen uns noch einmal unser mehrfarbiges Streudiagramm von zuvor an:
 
 ```{r message=FALSE, warning=FALSE}
 ggplot(data = diamonds, aes(x = carat, y = price, colour = cut)) +
@@ -275,7 +275,7 @@ ggplot(data = diamonds, aes(x = carat, y = price, colour = cut)) +
 names(diamonds)
 ```
 
-Wollen wir dort eine schönere Beschriftung verwenden, nutzen den Befehl `labs()`. Die Y-Achse wollen wir nun auf deutsch "Preis" nennen, die X-Achse "Karat" und die Legende soll den Titel "Schliff" haben:
+Wollen wir dort eine schönere Beschriftung verwenden, nutzen wir den Befehl `labs()`. Die Y-Achse wollen wir nun auf Deutsch "Preis" nennen, die X-Achse "Karat" und die Legende soll den Titel "Schliff" haben:
 
 ```{r message=FALSE, warning=FALSE}
 ggplot(data = diamonds, aes(x = carat, y = price, colour = cut)) +
@@ -286,7 +286,7 @@ ggplot(data = diamonds, aes(x = carat, y = price, colour = cut)) +
 
 ### Achsen verändern
 
-Auch die Einheiten, mit denen die Achsen beschriftet werden (axis ticks) werden von R automatisch und gleichmäßig gewählt. Die Beschriftung kann auch manuell gesteuert werden. Der Befehl lautet `scale_x_continuous()`, bzw. `scale_y_continuous()` für kontinuierliche (numerische)  X- und Y-Achsen. Für kategoriale X- und Y-Achsen (Namen/Kategorien) lautet der Befehl `scale_x_discrete()`, bzw. `scale_y_discrete ()`.
+Auch die Einheiten, mit denen die Achsen beschriftet werden (axis ticks) werden von R automatisch und gleichmäßig gewählt. Die Beschriftung kann auch manuell gesteuert werden. Der Befehl lautet `scale_x_continuous()`, bzw. `scale_y_continuous()` für kontinuierliche (numerische)  X- und Y-Achsen. Für kategoriale X- und Y-Achsen (Namen/Kategorien) lautet der Befehl `scale_x_discrete()`, bzw. `scale_y_discrete()`.
 
 Wir wollen zum Üben in dem vorangegangenen Graphen auf der X-Achse (Karat) manuell nur die Werte 0, 2 und 4 zulassen. Dies erfolgt über `breaks = c()`:
 
@@ -386,7 +386,7 @@ Es gibt R-Pakete, die hunderte weitere Optionen bereitstellen, so zum Beispiel d
 
 Gerade bei komplexeren Fragestellungen oder Studien mit mehreren abhängigen Variablen (AVs) kommt es vor, dass die Anzahl der Graphen etwas zu groß wird. 
 
-Dann kann es helfen, mehrere Graphen zu einem kombinierte Graph zusammenzusetzen. Die Funktion dafür heißt `ggarrange()` und kommt aus dem R-Paket `ggpubr`.
+Dann kann es helfen, mehrere Graphen zu einem kombinierten Graph zusammenzusetzen. Die Funktion dafür heißt `ggarrange()` und kommt aus dem R-Paket `ggpubr`.
 
 Also installieren Sie kurz das Paket `ggpubr`, laden es mittels `library()` und dann geht es gleich weiter:
 
@@ -411,7 +411,7 @@ d = ggplot(data = diamonds, aes(x = price)) +
   geom_boxplot()
 ```
 
-Diese 4 Objekte `a`, `b`, `c` und `d` setzen wir dann einfach in `ggarrange()` ein. Es macht Sinn den Graphen auch ein Label zu geben, dann kann man in der Fußnote der Abbildung darauf verweise, was in welchem Graphen zu sehen ist (z.B. "*In Graphik A sieht man ein Histogramm von...*"):
+Diese 4 Objekte `a`, `b`, `c` und `d` setzen wir dann einfach in `ggarrange()` ein. Es macht Sinn den Graphen auch ein Label zu geben, dann kann man in der Fußnote der Abbildung darauf verweisen, was in welchem Graphen zu sehen ist (z.B. "*In Graphik A sieht man ein Histogramm von...*"):
 
 ```{r message=FALSE, warning=FALSE}
 ggarrange(a, b, c, d, labels = c("A", "B", "C", "D"))
@@ -435,7 +435,7 @@ Der Export der Graphen meint im Prinzip folgendes: Speichere mir den Graphen in 
 
 Das Vorgehen funktioniert für alle Formate gleich:
 
-1. Wenn noch nicht geschehen, mit `setwd()` das gewünschte Arbeitsverzeichnnis setzen
+1. Wenn noch nicht geschehen, mit `setwd()` das gewünschte Arbeitsverzeichnis setzen
 
 2. Mittels Befehl angeben, welche Art von Export gewünscht ist, z.B. `png()`
 
@@ -448,7 +448,7 @@ Größe (in cm) und Auflösung (in dpi) lassen sich direkt innerhalb des Befehls
 Ein Beispiel:
 
 ```{r}
-png(file = "Figure1.png", width = 5, height = 5, units = "in", res = 300)
+png(file = "Figure1.png", width = 15, height = 10, units = "cm", res = 300)
 
 ggplot(data = diamonds, aes(x = price, colour = cut)) +
   geom_histogram(binwidth = 39)
@@ -458,5 +458,5 @@ dev.off()
 
 Das Argument `file` gibt den Zielnamen der .png Datei an. Die Argumente `width` und `height` die Dimensionen (hier quadratisch $\rightarrow$ für rechteckig einfach eine der beiden vergrößern/verkleinern). Die Auflösung von 300 dpi ist sehr gebräuchlich und muss nur selten verändert werden.
 
-Ausführen des Befehls speichert Ihnen die Datei Figure1.png in das Arbeitsverzeichnnis. Schauen Sie gleich einmal nach!
+Ausführen des Befehls speichert Ihnen die Datei Figure1.png in das Arbeitsverzeichnis. Schauen Sie gleich einmal nach!
 

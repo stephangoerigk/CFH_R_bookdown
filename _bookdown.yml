@@ -6,7 +6,7 @@ language:
   ui:
     chapter_name: "Kapitel "
 rmd_files: [
-  "Index.Rmd",
+  "index.Rmd",
   "Installation.Rmd",
   "Programmaufbau.Rmd",
   "Datenformate.Rmd",
@@ -21,8 +21,8 @@ rmd_files: [
   # "Preprocessing.Rmd",
   "Korrelationen.Rmd",
   "Einfache_Gruppenvergleiche.Rmd",
-  "ANOVA.Rmd"
-  # "Regression.Rmd",
+  "ANOVA.Rmd",
+  "Regression.Rmd"
   # "Mehrstufige_UVs.Rmd",
   # "Mehrere_UVs.Rmd",
   # "RMarkdown_Manuskripterstellung.Rmd"

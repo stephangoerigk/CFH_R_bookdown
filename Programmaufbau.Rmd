@@ -9,7 +9,7 @@ knitr::include_graphics(c("images/windows.png"))
 ```
 
 Wenn Sie mögen, können Sie die Reihenfolge der Fenster in den RStudio Einstellungen verändern. 
-Sie können die Fenster auch verstecken (Minimieren/Maximieren Symbol an der oberen rechten Ecke jedes Fensters) oder ihre Größe verändern, indem die sie ihre Grenzbalken anklicken und verschieben.
+Sie können die Fenster auch verstecken (Minimieren/Maximieren Symbol an der oberen rechten Ecke jedes Fensters) oder ihre Größe verändern, indem Sie ihre Grenzbalken anklicken und verschieben.
 
 Lassen Sie uns jetzt schauen, was genau die Funktion jedes der Fenster ist:
 
@@ -109,7 +109,7 @@ Sobald Sie ein Paket installiert haben, befindet es sich auf Ihrem Computer. Abe
 Um ein Paket zu laden, verwenden Sie die Funktion `library()`. Nachdem wir zum Beispiel das Paket `ggplot2` installiert haben, können wir es mit `library("ggplot2")` laden:
 
 ```{r, message = FALSE}
-#   Laden des "ggplot2" Pakekts, damit wir es benutzen können!
+#   Laden des "ggplot2" Pakets, damit wir es benutzen können!
 #   Pakete müssen zu Beginn jeder R Session neu geladen werden!
 library("ggplot2")
 ```

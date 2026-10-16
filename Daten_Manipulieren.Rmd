@@ -36,7 +36,7 @@ test
 Diese Methoden hängen neue Spalten immer ganz hinten (ganz rechts) an den data.frame an. 
 Wollen wir die neue Variable an einer bestimmten Position des data.frames einfügen, nutzen wir die `add_column()` Funktion aus dem `tibble` Paket.
 
-Wollen wir zum Beispiel eine Variable an die 2. Position des Datensatzes einfügen nutzen wir und spezifizieren das `.after` oder `.before` Argument mit dem Index oder dem Namen der vorherigen/folgenden Variable:
+Wollen wir zum Beispiel eine Variable an die 2. Position des Datensatzes einfügen, nutzen wir diese Funktion und spezifizieren das `.after` oder `.before` Argument mit dem Index oder dem Namen der vorherigen/folgenden Variable:
 
 ```{r message=FALSE, warning=FALSE}
 library(tibble)
@@ -56,7 +56,7 @@ test
 
 Wir möchten aus unserem `test` Datensatz die Variable `Lieblingsfilm` wieder löschen.
 
-Der einfachste Weg um eine Variable zu löschen funktioniert wieder einmal mit den `$` Operator.
+Der einfachste Weg um eine Variable zu löschen funktioniert wieder einmal mit dem `$` Operator.
 
 ```{r}
 test$Lieblingsfilm = NULL
@@ -125,21 +125,21 @@ names(test)
 
 Dieselbe Funktion können wir auch nutzen um Variablen umzubenennen.
 
-Wir wollen die 1. Variable anstelle von `ID` gerne `Idenfikation` nennen:
+Wir wollen die 1. Variable anstelle von `ID` gerne `Identifikation` nennen:
 
 ```{r}
-names(test)[1] = "Idenfikation"
+names(test)[1] = "Identifikation"
 
 test
 ```
 
-Dasselbe funktioniert auch mit logischen Argumenten (die Variable, die `ID` heisst...)
+Dasselbe funktioniert auch mit logischen Argumenten (die Variable, die `ID` heißt...)
 
 ```{r}
-names(test)[names(test) == "ID"] = "Idenfikation"
+names(test)[names(test) == "ID"] = "Identifikation"
 ```
 
-Wollen wir mehrere Variablen auf einmal umbennen eimpfiehlt sich die `rename()` Funktion aus `dplyr`. Wir bauen uns zunächst noch einmal 3 leere Dummy Variablen, die wir dann umbenennen:
+Wollen wir mehrere Variablen auf einmal umbenennen, empfiehlt sich die `rename()` Funktion aus `dplyr`. Wir bauen uns zunächst noch einmal 3 leere Dummy Variablen, die wir dann umbenennen:
 
 ```{r}
 test$A = NA
@@ -149,7 +149,7 @@ test$C = NA
 test
 ```
 
-Nun zum Umbennen:
+Nun zum Umbenennen:
 
 ```{r}
 test = rename(test, c(D = A, 
@@ -244,7 +244,7 @@ test$Gruppe = c("GruppeA", "GruppeB", "GruppeC", "GruppeD", "GruppeE")
 test
 ```
 
-Nehmen wir an, ich wollte das Wort `Gruppe` ind `Klasse` verändern die Bezeichnungen A-E aber beibehalten. Dann muss ich einen bestimmten Worteil für alle Werte in der Variable ersetzten. Dafür ist die Funktion `gsub()` ideal:
+Nehmen wir an, ich wollte das Wort `Gruppe` in `Klasse` verändern die Bezeichnungen A-E aber beibehalten. Dann muss ich einen bestimmten Wortteil für alle Werte in der Variable ersetzen. Dafür ist die Funktion `gsub()` ideal:
 
 ```{r}
 test$Gruppe = gsub(pattern = "Gruppe", replacement = "Klasse", x = test$Gruppe)
@@ -252,7 +252,7 @@ test$Gruppe = gsub(pattern = "Gruppe", replacement = "Klasse", x = test$Gruppe)
 test
 ```
 
-Dasselbe lässt sich natürlich auf für Variablennamen anwenden. Wir erstellen noch einmal 3 leere Dummy Variablen
+Dasselbe lässt sich natürlich auch für Variablennamen anwenden. Wir erstellen noch einmal 3 leere Dummy Variablen
 
 ```{r}
 test$Test1 = NA
@@ -262,7 +262,7 @@ test$Test3 = NA
 test
 ```
 
-Nun bennen wir sie mit `gsub()` automatisch um. Wir wollen probieren, dass `Test` zu `Item` wird:
+Nun benennen wir sie mit `gsub()` automatisch um. Wir wollen probieren, dass `Test` zu `Item` wird:
 
 ```{r}
 names(test) = gsub(pattern = "Test", replacement = "Item", x = names(test))
@@ -372,11 +372,11 @@ Beim Zusammensetzen von dataframes sind 2 Szenarien denkbar:
 1. **Spalten** des einen dataframes rechts an die Spalten des anderen dataframes (beide dataframes haben gleich viele Zeilen)
 2. **Zeilen** des einen dataframes unten an die Zeilen des anderen dataframes (beide dataframes haben gleich viele Spalten)
 
-Dafür gibt es die Funktionen `cbind()` (colums aka Spalten verbinden) und `rbind()` (rows aka Zeilen verbinden).
+Dafür gibt es die Funktionen `cbind()` (columns aka Spalten verbinden) und `rbind()` (rows aka Zeilen verbinden).
 
 #### cbind
 
-Zur Demonstration der `cbind()` Funktion bauen wir uns 2 kleine Test-dataframes. Wichtig ist, dass diese die selbe Anzahl von Zeilen haben:
+Zur Demonstration der `cbind()` Funktion bauen wir uns 2 kleine Test-dataframes. Wichtig ist, dass diese dieselbe Anzahl von Zeilen haben:
 
 ```{r}
 test1 <- data.frame("ID" = c(1, 2, 3, 4, 5),
@@ -398,7 +398,7 @@ Und hier den dataframe test2:
 test2
 ```
 
-Zum Zusammensetzen der beiden (test2 rechts an test 1 "dranhängen") schreiben wir beide dataframes in die `cbind()` Funktion. Der kombinierte Datensatz soll test 3 heißen:
+Zum Zusammensetzen der beiden (test2 rechts an test1 "dranhängen") schreiben wir beide dataframes in die `cbind()` Funktion. Der kombinierte Datensatz soll test3 heißen:
 
 ```{r}
 test3 = cbind(test1, test2)
@@ -410,7 +410,7 @@ test3
 
 #### rbind
 
-Zur Demonstration der `rbind()` Funktion bauen wir uns 2 weitere kleine Test-dataframes. Wichtig ist, dass diese die selbe Anzahl von Spalten haben und dass diese die selben Variablennamen haben:
+Zur Demonstration der `rbind()` Funktion bauen wir uns 2 weitere kleine Test-dataframes. Wichtig ist, dass diese dieselbe Anzahl von Spalten haben und dass diese dieselben Variablennamen haben:
 
 ```{r}
 test1 <- data.frame("ID" = c(1, 2, 3, 4, 5),
@@ -432,7 +432,7 @@ Und hier den dataframe test2:
 test2
 ```
 
-Zum Zusammensetzen der beiden (test2 unten an test 1 "dranhängen") schreiben wir beide dataframes in die `rbind()` Funktion. Der kombinierte Datensatz soll test 3 heißen:
+Zum Zusammensetzen der beiden (test2 unten an test1 "dranhängen") schreiben wir beide dataframes in die `rbind()` Funktion. Der kombinierte Datensatz soll test3 heißen:
 
 ```{r}
 test3 = rbind(test1, test2)
@@ -466,7 +466,7 @@ test3
 
 ## Datensätze transformieren
 
-### Von Wide- und Long-Format
+### Wide- und Long-Format
 
 Datensätze können entweder im Wide- oder Long-Format vorliegen, wobei jede Formatierung ihre eigenen Vor- und Nachteile aufweist. 
 
@@ -489,7 +489,7 @@ df_wide = data.frame(ID, Geschlecht, Depression_T1, Depression_T2, Depression_T3
 df_wide
 ```
 
-Wichtig: Jede Person hat eine Zeile. Gibt es Messwiederholungen (hier T1, T2 und T3 des Depressionswerte; T = Time), erhält jede Messung seine eigene Spalte.
+Wichtig: Jede Person hat eine Zeile. Gibt es Messwiederholungen (hier T1, T2 und T3 der Depressionswerte; T = Time), erhält jede Messung ihre eigene Spalte.
 
 Mit jeder zusätzlichen Spalte (bzw. Messung) wird der Datensatz breiter, daher der Name "Wide-Format".
 
@@ -502,7 +502,7 @@ Wichtig:
 * Jede Zeile muss mittels einer `ID` Variable eindeutig den Personen zugeordnet werden
 * Eine weitere Variable (bei Messwiederholungen z.B. `Zeit`) muss angeben, weshalb es mehrere Werte pro Fall gibt
 
-Schauen wir uns das Datenbeispiel der von eben nun noch einmal $N=5$ Personen von eben nun im Long-Format an:
+Schauen wir uns das Datenbeispiel der $N=5$ Personen von eben nun im Long-Format an:
 
 ```{r}
 ID = c(1, 2, 3, 4, 5, 

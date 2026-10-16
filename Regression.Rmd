@@ -1,7 +1,340 @@
-# Regression
 
-## Lineare Regression
+# Einfache lineare Regression
 
-## Logistische Regression
+```{r echo=F, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(papaja)
+library(performance)
+options(scipen = 999)
+```
+
+Mit der Korrelation haben wir bereits **ungerichtete** Zusammenhänge zwischen zwei Variablen untersucht. Bei der Regression unterstellen wir nun eine **Wirkrichtung**: Eine unabhängige Variable (UV, *Prädiktor*) sagt eine abhängige Variable (AV, *Kriterium*) vorher.
+
+Zur Erinnerung aus der Vorlesung Quantitative Methoden II: Die einfache lineare Regression beschreibt den Zusammenhang zwischen UV und AV durch eine Gerade:
+
+$$\hat{y}_i=a+b \cdot x_i$$
+
+* $a$: Y-Achsenabschnitt $\rightarrow$ erwarteter Wert der AV, wenn die UV $=0$ ist
+* $b$: Steigung $\rightarrow$ Veränderung der AV, wenn die UV um 1 Einheit zunimmt
+
+Die Koeffizienten werden so geschätzt, dass die Abweichungen der beobachteten von den vorhergesagten Werten (die **Residuen**) möglichst klein sind (Methode der kleinsten Quadrate). Diese Rechnung übernimmt R für uns.
+
+## Hypothesen
+
+Für unser Beispiel nutzen wir wieder den Datensatz aus dem Kapitel zur ANOVA:
+
+```{r}
+therapy4groups = read.csv("https://raw.githubusercontent.com/stephangoerigk/WAF_Folien/master/therapy4groups.csv")
+
+head(therapy4groups)
+```
+
+Der Datensatz enthält für jede Patient:in die erhaltene Therapie, die Diagnose und die Symptomschwere (`Symptoms`) nach der Behandlung.
+
+Zusätzlich wurde bei allen Patient:innen erhoben, wie viele **Stunden pro Woche** sie **Sport** treiben. Körperliche Aktivität gilt als ein möglicher Einflussfaktor auf die Symptomschwere bei Depressionen und Angststörungen. Diese Variable ist im heruntergeladenen Datensatz noch nicht enthalten. Wir fügen sie daher als Vektor hinzu (siehe Kapitel Daten bearbeiten). Die Werte sind in derselben Reihenfolge wie die Zeilen des Datensatzes angegeben, d.h. der 1. Wert gehört zur Patient:in in der 1. Zeile usw.:
+
+```{r}
+therapy4groups$Sport = c(3.5, 4.0, 8.0, 4.0, 5.0, 6.0, 5.5, 7.0, 4.0, 3.5,
+                         7.5, 4.5, 5.0, 3.0, 1.0, 6.0, 0.0, 2.0, 3.0, 2.0,
+                         6.0, 5.0, 3.0, 5.0, 5.0, 5.0, 4.0, 4.0, 4.0, 4.5)
+
+head(therapy4groups)
+```
+
+Eine denkbare Forschungsfrage könnte wie folgt lauten:
+
+*Lässt sich die Symptomschwere durch die Anzahl der Sportstunden pro Woche vorhersagen?*
+
+* UV (Prädiktor): `Sport`
+* AV (Kriterium): `Symptoms`
+
+Die Wirkrichtung (Sport $\rightarrow$ Symptome) leiten wir, wie in der Vorlesung Quantitative Methoden II beschrieben, aus theoretischen Überlegungen her. Beachten Sie aber: Da es sich um Beobachtungsdaten handelt (die Sportstunden wurden nicht experimentell variiert), kann die Regression allein keinen kausalen Zusammenhang beweisen.
+
+Statistisch prüfen wir, ob die Steigung signifikant von 0 verschieden ist:
+
+* $H_0$: $\beta = 0$ (kein linearer Zusammenhang)
+* $H_1$: $\beta \neq 0$ (linearer Zusammenhang)
+
+## Deskriptive Einordnung
+
+Zunächst können wir uns die Deskriptivstatistiken der beiden Variablen anschauen:
+
+```{r}
+psych::describe(therapy4groups[, c("Sport", "Symptoms")])
+```
+
+Einen ersten Eindruck vom Zusammenhang erhalten wir mit einem Streudiagramm. Mit `geom_smooth(method = "lm")` lassen wir uns direkt die Regressionsgerade einzeichnen (siehe Kapitel Graphiken):
+
+```{r message=FALSE, warning=FALSE}
+ggplot(data = therapy4groups, aes(x = Sport, y = Symptoms)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(x = "Sport (Stunden pro Woche)", y = "Symptomschwere") +
+  theme_classic()
+```
+
+Rein deskriptiv scheint ein **negativer** Zusammenhang zu bestehen: Patient:innen, die mehr Sport treiben, weisen tendenziell schwächere Symptome auf. Ob dieser Zusammenhang signifikant ist, prüfen wir mit der Regression.
+
+## Berechnung & Interpretation
+
+Die Regression berechnen wir mit der `lm()` Funktion, die wir bereits aus dem Kapitel zur ANOVA kennen. Auch hier steht links die AV, rechts die UV und `~` heißt soviel wie "wird vorhergesagt durch":
+
+```{r}
+reg = lm(Symptoms ~ Sport, data = therapy4groups)
+```
+
+Anders als bei der ANOVA wenden wir auf das Modell nicht `anova()`, sondern `summary()` an:
+
+```{r}
+summary(reg)
+```
+
+**Tipp:** Werden sehr kleine p-Werte in wissenschaftlicher Schreibweise angezeigt (z.B. `1.37e-05`), lässt sich dies mit `options(scipen = 999)` zu Beginn des Skripts abstellen.
+
+### Ergebnis interpretieren
+
+Die wichtigsten Teile des Outputs sind:
+
+* **Coefficients**, Spalte `Estimate`: Die Regressionskoeffizienten. `(Intercept)` ist der Y-Achsenabschnitt $a$, `Sport` ist die Steigung $b$.
+* **Coefficients**, Spalten `t value` und `Pr(>|t|)`: t-Wert und p-Wert des Signifikanztests für jeden Koeffizienten. Für unsere Hypothese ist nur die Zeile der Steigung relevant.
+* **Multiple R-squared**: Das Bestimmtheitsmaß $R^2$, also der Anteil der Varianz der AV, der durch die UV erklärt wird.
+* **F-statistic**: Test des Gesamtmodells (bei nur 1 UV gleichbedeutend mit dem Test der Steigung).
+
+Für unser Beispiel bedeutet das:
+
+* **Y-Achsenabschnitt** $(a=`r round(coef(reg)[1], 2)`)$: Für Patient:innen, die gar keinen Sport treiben (0 Stunden), sagt das Modell eine Symptomschwere von `r round(coef(reg)[1], 2)` vorher.
+* **Steigung** $(b=`r round(coef(reg)[2], 2)`)$: Pro zusätzlicher Stunde Sport pro Woche sinkt die vorhergesagte Symptomschwere um `r abs(round(coef(reg)[2], 2))` Punkte. Das negative Vorzeichen zeigt den negativen Zusammenhang an.
+* Die Steigung ist signifikant $(p=`r round(summary(reg)$coefficients[2, 4], 3)` < .05)$. Wir verwerfen also die $H_0$.
+* Die Sportstunden erklären `r round(summary(reg)$r.squared * 100, 1)`% der Varianz der Symptomschwere.
+
+Die Regressionsgleichung lautet: $\hat{y}=`r round(coef(reg)[1], 2)` + `r round(coef(reg)[2], 2)` \cdot x$
+
+### Relevante Parameter extrahieren
+
+Die relevanten Parameter zum Berichten einer einfachen linearen Regression sind:
+
+* $b$ (Steigung) mit Konfidenzintervall
+* t-Wert und df
+* p-Wert
+* $R^2$
+
+Diese Werte lassen sich wie folgt aus dem Modell extrahieren:
+
+Koeffizienten (Y-Achsenabschnitt & Steigung):
+```{r}
+coef(reg)
+```
+
+Nur die Steigung:
+```{r}
+coef(reg)[2]
+```
+
+Gesamte Koeffiziententabelle (Estimate, Standardfehler, t-Wert, p-Wert):
+```{r}
+summary(reg)$coefficients
+```
+
+t-Wert und p-Wert der Steigung (Zeile 2, Spalte 3 bzw. 4):
+```{r}
+summary(reg)$coefficients[2, 3]
+summary(reg)$coefficients[2, 4]
+```
+
+df (Freiheitsgrade, $N-2$):
+```{r}
+reg$df.residual
+```
+
+$R^2$:
+```{r}
+summary(reg)$r.squared
+```
+
+Grenzen der Konfidenzintervalle (unten & oben) erhalten wir mit der Funktion `confint()`:
+```{r}
+confint(reg)
+```
+
+## Standardisierte Regressionsgewichte
+
+Die Steigung $b$ ist in der Originalmetrik der AV angegeben (hier: Symptompunkte pro Stunde Sport). Um Effekte über Modelle hinweg vergleichbar zu machen, nutzen wir das **standardisierte Regressionsgewicht** $\beta$. Es gibt an, um wie viele Standardabweichungen sich die AV verändert, wenn die UV um 1 Standardabweichung zunimmt.
+
+Dafür z-standardisieren wir beide Variablen mit der `scale()` Funktion und rechnen das Modell erneut:
+
+```{r}
+therapy4groups$std_Symptoms = scale(therapy4groups$Symptoms)
+therapy4groups$std_Sport = scale(therapy4groups$Sport)
+
+reg_std = lm(std_Symptoms ~ std_Sport, data = therapy4groups)
+summary(reg_std)
+```
+
+Die Steigung entspricht nun $\beta$. In der einfachen Regression (nur 1 UV) ist $\beta$ identisch mit der Pearson-Korrelation:
+
+```{r}
+cor(therapy4groups$Symptoms, therapy4groups$Sport)
+```
+
+## Vorhergesagte Werte und Residuen
+
+Die vorhergesagten Werte $\hat{y}$ und die Residuen für alle Personen lassen sich mit `fitted()` und `residuals()` aus dem Modell ziehen und als neue Variablen an den Datensatz anhängen:
+
+```{r}
+therapy4groups$Vorhersage = fitted(reg)
+therapy4groups$Residuum = residuals(reg)
+
+head(therapy4groups[, c("Sport", "Symptoms", "Vorhersage", "Residuum")])
+```
+
+Mit `predict()` können wir außerdem Werte für **neue** Personen vorhersagen, von denen wir nur die UV kennen. Die neuen Werte übergeben wir als data.frame (gleicher Variablenname wie im Modell). Mit `interval = "confidence"` erhalten wir zusätzlich ein KI für die Vorhersage:
+
+```{r}
+neue_patienten = data.frame(Sport = c(0, 4, 8))
+
+predict(reg, newdata = neue_patienten, interval = "confidence")
+```
+
+## Dichotome Prädiktoren
+
+Als UV kann auch eine dichotome (nominalskalierte) Variable verwendet werden, z.B. die Diagnose. R kodiert sie automatisch mit 0 und 1 (**Dummy-Kodierung**). Die Referenzkategorie (= 0) ist die 1. Faktorstufe, bei character Variablen also alphabetisch (hier: `Angst`).
+
+```{r}
+reg_diag = lm(Symptoms ~ Diagnosis, data = therapy4groups)
+summary(reg_diag)
+```
+
+Die Interpretation der Koeffizienten ändert sich:
+
+* $a$ (Intercept): Mittelwert der Referenzkategorie (`Angst`)
+* $b$ (`DiagnosisDepression`): Mittelwertsdifferenz zwischen `Depression` und `Angst`
+
+**Hinweis:** Da die Steigung genau der Mittelwertsdifferenz entspricht, kommt der Signifikanztest der Steigung zum identischen Ergebnis (gleicher t- und p-Wert) wie ein unabhängiger t-Test mit `var.equal = TRUE` - beide Verfahren beruhen auf dem Allgemeinen Linearen Modell.
+
+## Ausblick: Multiple Regression
+
+Die Regression lässt sich leicht um weitere UVs erweitern. Diese werden mit `+` in die Formel aufgenommen:
+
+```{r}
+reg2 = lm(Symptoms ~ Sport + Diagnosis, data = therapy4groups)
+summary(reg2)
+```
+
+Mit `*` statt `+` wird zusätzlich die Interaktion der UVs berechnet (wie bei der mehrfaktoriellen ANOVA). So lässt sich prüfen, ob der Zusammenhang zwischen Sport und Symptomen je nach Diagnose unterschiedlich ausfällt:
+
+```{r}
+reg3 = lm(Symptoms ~ Sport * Diagnosis, data = therapy4groups)
+summary(reg3)
+```
+
+Die Zeile `Sport:DiagnosisDepression` ist der Interaktionseffekt. Ein solcher Effekt wird auch **Moderation** genannt: Die Diagnose würde dann den Zusammenhang zwischen Sport und Symptomen *moderieren* (abschwächen oder verstärken).
+
+## Voraussetzungsprüfung
+
+Folgende Voraussetzungen gelten für die einfache lineare Regression:
+
+* AV intervallskaliert
+* UV nominal (dichotom), ordinal oder intervallskaliert
+* unabhängige Messungen
+* linearer Zusammenhang
+* Homoskedastizität
+* Normalverteilung der Residuen
+
+Die letzten drei Voraussetzungen können wir in R prüfen.
+
+### Linearität
+
+Die Linearität prüfen wir graphisch mit einem Streudiagramm (wie in der deskriptiven Einordnung). Zusätzlich zur Regressionsgeraden (`method = "lm"`, blau) zeichnen wir eine geglättete Kurve ein (`method = "loess"`, rot), die sich frei an die Daten anpasst:
+
+```{r message=FALSE, warning=FALSE}
+ggplot(data = therapy4groups, aes(x = Sport, y = Symptoms)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, colour = "blue") +
+  geom_smooth(method = "loess", se = FALSE, colour = "red") +
+  labs(x = "Sport (Stunden pro Woche)", y = "Symptomschwere") +
+  theme_classic()
+```
+
+Die Punkte sollten sich ungefähr entlang einer Geraden verteilen und keinen erkennbaren Bogen (z.B. U-Form) beschreiben. Liegt die rote Kurve ungefähr auf der blauen Geraden, können wir von einem linearen Zusammenhang ausgehen.
+
+### Normalverteilung der Residuen
+
+Die Normalverteilung der Residuen prüfen wir graphisch mit einem QQ-Plot und statistisch mit dem Shapiro-Wilk Test. Dafür nutzen wir die standardisierten Residuen, die wir mit `rstandard()` erhalten:
+
+```{r}
+qqnorm(rstandard(reg))
+qqline(rstandard(reg))
+```
+
+Die Punkte sollten möglichst auf der Diagonalen liegen.
+
+```{r}
+shapiro.test(rstandard(reg))
+```
+
+Ein nicht-signifikanter Shapiro-Wilk Test $(p > .05)$ bedeutet: Die Residuen weichen nicht signifikant von der Normalverteilung ab.
+
+### Homoskedastizität
+
+Homoskedastizität bedeutet, dass die **Streuung der Residuen über den gesamten Wertebereich gleich groß** ist. Das Modell sagt also für Personen, die wenig Sport treiben, ungefähr genauso genau (bzw. ungenau) vorher wie für Personen, die viel Sport treiben. Ist das nicht der Fall (z.B. kleine Vorhersagefehler bei wenig, große Vorhersagefehler bei viel Sport), spricht man von **Heteroskedastizität**.
+
+Die Homoskedastizität prüfen wir graphisch, indem wir die Residuen gegen die vorhergesagten Werte plotten. Dafür nutzen wir die eingebaute `plot()` Funktion für lm-Objekte:
+
+```{r}
+plot(reg, 1)
+```
+
+In diesem Plot werden die Residuen (Y-Achse) gegen die vorhergesagten Werte (X-Achse) abgetragen. Jeder Punkt ist eine Person. Die rote Linie ist eine geglättete Trendlinie durch die Punkte.
+
+So lesen wir den Plot (wie in der Vorlesung Quantitative Methoden II):
+
+* Ideal ist eine Punktewolke **ohne erkennbare Systematik** (kein Muster, z.B. keine Trichterform)
+* Die **rote Linie** sollte relativ **horizontal** verlaufen
+
+$\rightarrow$ Dann ist die Homoskedastizitätsannahme gegeben.
+
+Statistisch lässt sich die Homoskedastizität mit dem **Breusch-Pagan Test** prüfen. Dieser prüft, ob die Varianz der Residuen mit den vorhergesagten Werten zusammenhängt. Die Nullhypothese lautet, dass die Fehlervarianz konstant ist (Homoskedastizität). Eine Funktion dafür ist im Paket `lmtest` enthalten:
+
+```{r message=FALSE, warning=FALSE}
+# install.packages("lmtest")
+lmtest::bptest(reg)
+```
+
+Wie beim Levene's Test entspricht die Nullhypothese der erfüllten Voraussetzung. Wir wünschen uns also ein **nicht-signifikantes** Ergebnis $(p > .05)$.
+
+### Voraussetzungsprüfung mit `performance`
+
+Alternativ können wir die Funktionen aus dem `performance` Paket nutzen, die wir bereits im Kapitel zur ANOVA kennengelernt haben. Diese rechnen im Hintergrund dieselben Tests:
+
+* `check_normality()` berechnet den **Shapiro-Wilk Test** auf den Residuen des Modells.
+* `check_heteroscedasticity()` berechnet den **Breusch-Pagan Test**.
+
+```{r}
+check_normality(reg)
+check_heteroscedasticity(reg)
+```
+
+Die Funktionen geben das Ergebnis praktischerweise direkt als Satz aus (z.B. *"Error variance appears to be homoscedastic"*).
+
+Mit `check_model()` erhalten wir zudem alle diagnostischen Plots auf einen Blick (dafür müssen zusätzlich die Pakete `see` und `patchwork` installiert sein):
+
+```{r fig.height=8, fig.width=8, message=FALSE, warning=FALSE}
+# install.packages(c("see", "patchwork"))
+check_model(reg)
+```
+
+**Vorsicht:** Wie bereits im Kapitel zur ANOVA erwähnt, sollte man sich nicht blind auf die Tests verlassen. Bei kleinen Stichproben (wie hier mit $N=30$) haben sie wenig Teststärke, bei großen Stichproben werden schon minimale Abweichungen signifikant. Die graphische Prüfung ist daher mindestens genauso wichtig.
+
+## Darstellung in Tabellenform
+
+Zur sauberen Darstellung des Ergebnisses in einer bereits nach APA formatierten Tabelle, lassen sich die Funktionen `apa_print` und `apa_table` aus dem Paket `papaja` verwenden:
+
+```{r}
+apa_reg <- apa_print(reg)
+apa_table(
+  apa_reg$table, caption = "Tabelle für die einfache lineare Regression."
+)
+```
 
 
+<!--chapter:end:Regression.Rmd-->
